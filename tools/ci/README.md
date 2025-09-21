@@ -75,12 +75,13 @@
 npm i --prefix tools/ci --no-audit --no-fund
 
 # Прогон одной работы локально
-node tools/ci/src/check-runner.mjs --paths '["students/your_id/task_01"]'
+# <ваш_идентификатор> = <группа>-<№ п/п>-<SurnameName>-v<вариант> (например, AC100-1-NiasiukAndrei-2)
+node tools/ci/src/check-runner.mjs --paths '["students/<ваш_идентификатор>/task_01"]'
 
 # (опционально) MCP для локального прогона
 $env:MCP_SERVER_URL="https://your-mcp.example.com"
 $env:MCP_API_KEY="<token>"
-node tools/ci/src/check-runner.mjs --paths '["students/your_id/task_01"]'
+node tools/ci/src/check-runner.mjs --paths '["students/<ваш_идентификатор>/task_01"]'
 ```
 
 ## Секреты и переменные
