@@ -1,64 +1,134 @@
-/* Существующие стили из вашего проекта */
+/* CSS custom properties for themes */
+:root {
+    --bg-body: linear-gradient(to bottom, #f5f5dc, #d2b48c);
+    --text-color: #4b3621;
+    --section-bg: #fffaf0;
+    --section-heading: #8b4513;
+    --header-bg: linear-gradient(to right, #8b4513, #d2691e);
+    --nav-link: #fff;
+    --nav-hover: #ffd700;
+    --table-header-bg: #8b4513;
+    --table-border: #ddd;
+    --footer-bg: #4b3621;
+    --footer-text: #fff;
+}
+
+[data-theme="dark"] {
+    --bg-body: linear-gradient(to bottom, #2c2c2c, #4b3621);
+    --text-color: #e0e0e0;
+    --section-bg: #3c2f2f;
+    --section-heading: #d2691e;
+    --header-bg: linear-gradient(to right, #4b3621, #8b4513);
+    --nav-link: #e0e0e0;
+    --nav-hover: #ffd700;
+    --table-header-bg: #d2691e;
+    --table-border: #555;
+    --footer-bg: #2c2c2c;
+    --footer-text: #e0e0e0;
+}
+
+/* Mobile-first approach */
 body {
     font-family: 'Roboto', sans-serif;
-    background: linear-gradient(to bottom, #f5f5dc, #d2b48c);
-    margin: 20px;
-    color: #4b3621;
+    background: var(--bg-body);
+    margin: 0;
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 10px;
 }
 
 header {
-    background: linear-gradient(to right, #8b4513, #d2691e);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    border-radius: 10px;
+    background: var(--header-bg);
+    color: var(--nav-link);
+    padding: 15px;
+    border-radius: 10px; /* Match section border-radius */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header h1 {
     margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+#theme-toggle {
+    margin: 10px 0 0;
+    background: none;
+    border: 2px solid var(--nav-link);
+    color: var(--nav-link);
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+#theme-toggle:hover,
+#theme-toggle:focus-visible {
+    background: var(--nav-hover);
+    color: var(--section-bg);
+    outline: 2px solid var(--nav-hover);
+    outline-offset: 2px;
 }
 
 nav {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-top: 10px;
 }
 
 nav a {
-    color: #fff;
-    margin: 0 15px;
+    color: var(--nav-link);
+    margin: 10px 0;
     text-decoration: none;
     font-weight: bold;
     transition: color 0.3s, transform 0.3s;
 }
 
-nav a:hover {
-    color: #ffd700;
+nav a:hover,
+nav a:focus-visible {
+    color: var(--nav-hover);
     transform: scale(1.1);
+    outline: 2px solid var(--nav-hover);
+    outline-offset: 2px;
 }
 
 main {
-    max-width: 1200px;
-    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
 }
 
 section {
-    background: #fffaf0;
-    margin: 20px 0;
-    padding: 20px;
+    background: var(--section-bg);
+    padding: 15px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 section h2 {
-    color: #8b4513;
+    color: var(--section-heading);
+    font-size: 1.25rem;
+    margin-top: 0;
 }
 
 img {
     max-width: 100%;
+    max-height: 300px;
+    width: auto;
     height: auto;
     border-radius: 5px;
-    margin: 10px 0;
+    margin: 10px auto;
+    display: block;
 }
 
 table {
@@ -67,60 +137,119 @@ table {
     margin: 10px 0;
 }
 
-table th, table td {
-    border: 1px solid #ddd;
+table th,
+table td {
+    border: 1px solid var(--table-border);
     padding: 8px;
     text-align: left;
 }
 
 table th {
-    background: #8b4513;
-    color: #fff;
+    background: var(--table-header-bg);
+    color: var(--nav-link);
 }
 
-ul, ol {
+ul,
+ol {
     margin: 10px 0;
     padding-left: 20px;
 }
 
 footer {
-    background: #4b3621;
-    color: #fff;
+    background: var(--footer-bg);
+    color: var(--footer-text);
     text-align: center;
     padding: 10px;
-    border-radius: 10px;
+    border-radius: 10px; /* Match section border-radius */
     margin-top: 20px;
 }
 
-.image-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Visually hidden for screen readers */
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
 }
 
-@media (max-width: 600px) {
-    body {
-        font-size: 16px;
-        margin: 10px;
+/* Tablet (601–1024px) */
+@media (min-width: 601px) {
+    .container {
+        padding: 20px;
     }
-    
+
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    #theme-toggle {
+        margin: 0 15px 0 0;
+    }
+
     nav {
-        flex-direction: column;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 0;
     }
-    
+
     nav a {
-        margin: 10px 0;
+        margin: 0 15px;
     }
-    
+
     section {
-        padding: 15px;
+        padding: 20px;
+    }
+
+    section h2 {
+        font-size: 1.5rem;
+    }
+
+    img {
+        max-height: 350px;
     }
 }
 
-img.centered-image {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    height: auto;
-    border-radius: 5px;
+/* Desktop (>1024px) */
+@media (min-width: 1025px) {
+    .container {
+        max-width: 1200px;
+        padding: 20px;
+    }
+
+    main {
+        grid-template-columns: 1fr; /* Single column to stack sections vertically */
+    }
+
+    header {
+        padding: 25px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    section {
+        padding: 25px;
+    }
+
+    section h2 {
+        font-size: 1.75rem;
+    }
+
+    img {
+        max-width: 600px;
+        max-height: 400px;
+    }
 }
