@@ -33,7 +33,7 @@
 | АС-63 | 3 | 1 | Грицук Дмитрий | GritsukDmitriy |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | АС-63 | 4 | 1 | Грицук Павел | GritsukPavel |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | АС-63 | 5 | 1 | Казаренко Павел | KazarenkoPavel |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
-| АС-63 | 6 | 1 | Карпеш Никита | KarpeshNikita | [students/АС63-6-KarpeshNikita-6] (./students/АС63-6-KarpeshNikita-6) | ✓ | ✓ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
+| АС-63 | 6 | 1 | Карпеш Никита | KarpeshNikita | [students/АС63-6-KarpeshNikita-6](./students/АС63-6-KarpeshNikita-6/) | ✓ | ✓ |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | АС-63 | 7 | 1 | Козлович Антон | KozlovichAnton |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | АС-63 | 8 | 1 | Козловская Анна | KozlovskayaAnna |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
 | АС-63 | 9 | 1 | Колодич Максим | KolodichMaksim |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
