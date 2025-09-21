@@ -1,0 +1,126 @@
+/* Существующие стили из вашего проекта */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(to bottom, #f5f5dc, #d2b48c);
+    margin: 20px;
+    color: #4b3621;
+}
+
+header {
+    background: linear-gradient(to right, #8b4513, #d2691e);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+    color: #ffd700;
+    transform: scale(1.1);
+}
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    background: #fffaf0;
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+section h2 {
+    color: #8b4513;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 10px 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background: #8b4513;
+    color: #fff;
+}
+
+ul, ol {
+    margin: 10px 0;
+    padding-left: 20px;
+}
+
+footer {
+    background: #4b3621;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 600px) {
+    body {
+        font-size: 16px;
+        margin: 10px;
+    }
+    
+    nav {
+        flex-direction: column;
+    }
+    
+    nav a {
+        margin: 10px 0;
+    }
+    
+    section {
+        padding: 15px;
+    }
+}
+
+img.centered-image {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
