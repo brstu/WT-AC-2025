@@ -1,8 +1,9 @@
+---
 name: Universal Lab Check and Grading
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
       - 'students/**'
       - 'tasks/**'
@@ -19,9 +20,8 @@ jobs:
       # Thresholds
       A11Y_MIN: '90'
       BP_MIN: '90'
-      # Optional: MCP (Model Context Protocol) external AI server
-      MCP_SERVER_URL: ${{ secrets.MCP_SERVER_URL }}
-      MCP_API_KEY: ${{ secrets.MCP_API_KEY }}
+  # Optional: MCP (Model Context Protocol) external AI server
+  # Set MCP_SERVER_URL and MCP_API_KEY as repository/organization secrets if used
       # Score threshold to fail CI (adjust per policy)
       SCORE_MIN: '50'
 

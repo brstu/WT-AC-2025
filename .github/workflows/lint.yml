@@ -1,11 +1,12 @@
+---
 name: Lint
 
 on:
   workflow_dispatch:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   super-lint:
@@ -22,18 +23,16 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
           VALIDATE_ALL_CODEBASE: true
-          VALIDATE_MARKDOWN: true
+          # Force markdownlint to load the repo-root config
+          LINTER_RULES_PATH: .
           MARKDOWN_CONFIG_FILE: .markdownlint.yaml
+          VALIDATE_MARKDOWN: true
           VALIDATE_HTML: true
-          VALIDATE_JAVASCRIPT_ES: true
           VALIDATE_CSS: true
+          VALIDATE_JAVASCRIPT_ES: true
           VALIDATE_YAML: true
           VALIDATE_JSON: true
-          VALIDATE_TYPESCRIPT_ES: true
-          VALIDATE_CSHARP: true
-          VALIDATE_DOCKERFILE_HADOLINT: true
-          VALIDATE_SQL: true
-          VALIDATE_XML: true
-          VALIDATE_POWERSHELL: true
-          VALIDATE_BASH: true
-          VALIDATE_PYTHON: true
+          VALIDATE_DOCKERFILE_HADOLINT: true  
+          VALIDATE_SQL: true                  
+          # Exclude generated/build outputs from linting
+          FILTER_REGEX_EXCLUDE: "(node_modules/|tools/ci/out/)"

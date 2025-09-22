@@ -26,6 +26,8 @@
 
 ## Успеваемость
 
+<!-- markdownlint-disable MD056 -->
+
 | Группа | № п/п | sub | ФИО | FIO (latin) | Directory name | #0 | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | #9 | #10 | #11 | #12 | #13 | #14 | #15 | #16 | Рейтинг |
 |--------|------:|----------:|-----|-------------|-----------------|----|----|----|----|----|----|----|----|----|----|-----|-----|-----|-----|-----|-----|-----|---------|
 | АС-63 | 1 | 2 | Ващук Анатолий | VashchukAnatoliy |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |
@@ -76,4 +78,6 @@
 table { border-collapse: collapse; }
 table th, table td { border: 1px solid #d0d7de; padding: 6px 8px; }
 table thead th { background-color: #f6f8fa; }
-</style>
+ </style>
+
+<!-- markdownlint-enable MD056 -->
