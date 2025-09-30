@@ -34,6 +34,12 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Use CI tooling from main
+        run: |
+          git fetch --no-tags --depth=1 origin ${GITHUB_BASE_REF:-main}
+          rm -rf tools/ci
+          git checkout origin/${GITHUB_BASE_REF:-main} -- tools/ci
+
       - name: Install CI tool dependencies
         run: |
           cd tools/ci

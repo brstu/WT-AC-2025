@@ -13,7 +13,6 @@
     "globby": "^14.0.0",
     "html-validate": "^9.0.0",
     "http-server": "^14.1.1",
-    "jq-cli-wrapper": "^1.7.0",
     "lighthouse": "^12.0.0",
     "postcss": "^8.4.41",
     "postcss-safe-parser": "^6.0.0"

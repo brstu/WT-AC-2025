@@ -1,7 +1,7 @@
 // Universal lab checker/grader routed by task rubric plugins
 import fs from 'node:fs';
 import path from 'node:path';
-import globby from 'globby';
+import { globby, globbySync } from 'globby';
 import { pathToFileURL } from 'node:url';
 
 function readJsonArg(name, def) {
@@ -30,7 +30,7 @@ const outRoot = path.join(repoRoot, 'tools/ci/out');
 fs.mkdirSync(outRoot, { recursive: true });
 
 // Load rubrics dynamically
-const rubricFiles = globby.sync(['src/rubrics/task_*.mjs'], { cwd: path.join(repoRoot, 'tools/ci') });
+const rubricFiles = globbySync(['src/rubrics/task_*.mjs'], { cwd: path.join(repoRoot, 'tools/ci') });
 const rubrics = await Promise.all(
   rubricFiles.map(async f => {
     const abs = path.join(repoRoot, 'tools/ci', f);

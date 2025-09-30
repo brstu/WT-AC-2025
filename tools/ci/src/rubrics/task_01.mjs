@@ -5,6 +5,7 @@ import cheerio from 'cheerio';
 import postcss from 'postcss';
 import safeParser from 'postcss-safe-parser';
 import { spawn, execSync } from 'node:child_process';
+import { globbySync } from 'globby';
 import { askMCP } from '../mcp-client.mjs';
 import https from 'node:https';
 
@@ -147,7 +148,7 @@ export async function check({ repoRoot, studentTaskPath, thresholds, ai }) {
     const hasPub = /(github\.io|netlify|vercel)/i.test(docReadme);
     if (!hasPub) issues.push('Нет ссылки на публикацию');
     const hasLH = /lighthouse/i.test(docReadme);
-    const imgs = globby.sync(['**/*.{png,jpg,jpeg,webp}'], { cwd: docDir, dot: false });
+  const imgs = globbySync(['**/*.{png,jpg,jpeg,webp}'], { cwd: docDir, dot: false });
     if (!hasLH || imgs.length < 3) issues.push('Нет скриншотов (Lighthouse/брейкпоинты)');
     return { ok: issues.length===0, issues };
   })();
