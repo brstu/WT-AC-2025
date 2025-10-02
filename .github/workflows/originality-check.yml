@@ -2,7 +2,7 @@ name: Duplicate Code Check
 
 on:
   pull_request:
-    paths: ['labs/**']  # Запускается только при изменении файлов в папке labs
+    paths: ['students/**']  # Запускается только при изменении файлов в папке labs
 
 jobs:
   duplicate-code-check:
