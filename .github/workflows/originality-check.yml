@@ -1,0 +1,24 @@
+name: Duplicate Code Check
+
+on:
+  pull_request:
+    paths: ['labs/**']  # Запускается только при изменении файлов в папке labs
+
+jobs:
+  duplicate-code-check:
+    name: Check for duplicate code
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run Duplicate Code Detection
+        uses: platisd/duplicate-code-detection-tool@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          directories: "labs"        # Директория для анализа
+          ignore_below: 20           # Игнорировать сходство ниже 20%
+          fail_above: 70             # Завершить с ошибкой при сходстве выше 70%
+          warn_above: 20             # Показать предупреждение при сходстве выше 20%
+          file_extensions: "js, html, css"  # Проверять только файлы с этими расширениями
+          one_comment: true          # Обновлять один комментарий, а не создавать новые
