@@ -2,7 +2,7 @@ name: Duplicate Code Check
 
 on:
   pull_request:
-    paths: ['students/**']  # Запускается только при изменении файлов в папке labs
+    paths: ['students/**']  
 
 jobs:
   duplicate-code-check:
@@ -16,7 +16,7 @@ jobs:
         uses: platisd/duplicate-code-detection-tool@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          directories: "labs"        # Директория для анализа
+          directories: "students"        # Директория для анализа
           ignore_below: 20           # Игнорировать сходство ниже 20%
           fail_above: 70             # Завершить с ошибкой при сходстве выше 70%
           warn_above: 20             # Показать предупреждение при сходстве выше 20%
