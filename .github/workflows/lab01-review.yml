@@ -1,10 +1,10 @@
 name: Lab01 Review with Copilot
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - 'students/**/task_01/**'
+  # pull_request:
+  #   branches: [main]
+  #   paths:
+  #     - 'students/**/task_01/**'
   workflow_dispatch:
     inputs:
       pr_number:
