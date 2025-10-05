@@ -45,6 +45,9 @@ CSS: W3C CSS Validator, без ошибок.
 ![скриншот](./img/PCDark.png) 
 ![скриншот](./img/PCLight.png)
 
+**Ссылка на GithubPages**
+https://frosyka.github.io
+
 **Установка и запуск**
 
 Склонируйте репозиторий: git clone [ссылка].
