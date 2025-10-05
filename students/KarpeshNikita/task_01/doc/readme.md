@@ -50,6 +50,6 @@ https://frosyka.github.io
 
 **Установка и запуск**
 
-Склонируйте репозиторий: git clone [ссылка].
+Склонируйте репозиторий: git clone https://github.com/Frosyka/WT-AC-2025.
 Откройте index.html в браузере или разверните на локальном сервере (npx serve).
 Проверьте адаптивность через DevTools (Device Mode).
