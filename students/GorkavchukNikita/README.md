@@ -1,1 +1,1 @@
-﻿Student directory placeholder
+[dir](./students/GorkavchukNikita)

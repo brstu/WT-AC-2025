@@ -2,6 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import https from 'node:https';
+import { execSync } from 'node:child_process';
 import { globby } from 'globby';
 
 function readArg(name, def) {
@@ -10,7 +11,44 @@ function readArg(name, def) {
   return def;
 }
 
-const studentTask = readArg('student-task', '');
+let studentTask = readArg('student-task', '');
+
+function detectStudentTask() {
+  try {
+    const eventPath = process.env.GITHUB_EVENT_PATH;
+    let baseSha = '';
+    let headSha = process.env.GITHUB_SHA || '';
+    if (eventPath && fs.existsSync(eventPath)) {
+      try {
+        const event = JSON.parse(fs.readFileSync(eventPath, 'utf8'));
+        if (event.pull_request) {
+          baseSha = event.pull_request?.base?.sha || '';
+          headSha = event.pull_request?.head?.sha || headSha;
+        }
+      } catch {}
+    }
+    let diffOutput = '';
+    if (baseSha && headSha) {
+      diffOutput = execSync(`git diff --name-only ${baseSha}...${headSha}`, { stdio: ['ignore', 'pipe', 'ignore'] }).toString();
+    } else {
+      try {
+        execSync('git fetch --no-tags --depth=1 origin main', { stdio: 'ignore' });
+      } catch {}
+      diffOutput = execSync('git diff --name-only origin/main...HEAD', { stdio: ['ignore', 'pipe', 'ignore'] }).toString();
+    }
+    const lines = diffOutput.split(/\r?\n/).filter(Boolean);
+    const paths = Array.from(new Set(lines
+      .filter(p => /^students\/[^/]+\/task_01\//.test(p))
+      .map(p => p.split('/').slice(0,3).join('/'))));
+    return paths[0] || '';
+  } catch {
+    return '';
+  }
+}
+
+if (!studentTask) {
+  studentTask = detectStudentTask();
+}
 if (!studentTask) {
   console.log('No student task provided');
   process.exit(0);
