@@ -2,6 +2,7 @@
 :root {
   --color-bg: #ffffff;
   --color-text: #222222;
+  --color-border: #ccc;
   --color-accent: #005bbb;
   --color-accent-contrast: #ffffff;
   --color-section-bg: #eaeaea;
@@ -89,7 +90,7 @@ header {
   object-fit: cover;
   box-shadow: 0 2px 8px rgba(0,0,0,0.12);
   border: 2px solid var(--color-accent-contrast);
-  background: #fff;
+  background: var(--color-bg);
   transition: var(--transition);
   cursor: pointer;
 }
@@ -122,7 +123,7 @@ header {
 .nav-list a:hover,
 .nav-list a:focus {
   background: rgba(255,255,255,0.15);
-  color: #fff;
+  color: var(--color-bg);
   text-decoration: none;
 }
 
@@ -193,7 +194,7 @@ header {
 }
 
 .project-card {
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 1rem;
   background: var(--color-bg);

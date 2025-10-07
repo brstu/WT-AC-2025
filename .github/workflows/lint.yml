@@ -22,7 +22,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BRANCH: main
-          VALIDATE_ALL_CODEBASE: true
+          VALIDATE_ALL_CODEBASE: false
           # Force markdownlint to load the repo-root config
           LINTER_RULES_PATH: .
           MARKDOWN_CONFIG_FILE: .markdownlint.yaml

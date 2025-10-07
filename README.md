@@ -15,12 +15,12 @@
 9. Лабораторная работа [#8](./tasks/task_08/readme.md)
 
 - Сделайте fork этого репозитория в свой GitHub‑аккаунт.
-- Для каждой ЛР создавайте используйте папкуы: students/'NameLAtin'/task_xx/{doc,src}.
+- Для каждой ЛР создавайте используйте папку: students/'NameLAtin'/task_xx/{doc,src}.
   - В doc — отчёт (readme.md) со скриншотами и инструкцией запуска.
   - В src — исходники (.NET/Node/HTML/CSS/JS и т.д.).
 - Оформляйте Pull Request в этот репозиторий. Минимум 2 review другим студентам.
 
-См. также: [CONTRIBUTING.md](./CONTRIBUTING.md) и [Code of Conduct](./CODE_OF_CONDUCT.md).
+См. также: [CONTRIBUTING.md](./CONTRIBUTING.md), [Code of Conduct](./CODE_OF_CONDUCT.md) и [Вспомогательные материалы](./resources/README.md).
 
 Шаблон и критерии см. в заданиях и в [обзоре заданий](./tasks/readme.md).
 
@@ -53,7 +53,7 @@
 | 20 | АС-63 | 20 | 2 | Стельмашук Иван | StelmashukIvan | [dir](./students/StelmashukIvan) | [KulibinI](https://github.com/KulibinI) |  |  |  |  |  |  |  |  |  |  |
 | 21 | АС-63 | 21 | 2 | Тунчик Антон | TunchikAnton | [dir](./students/TunchikAnton) | [Stis25](https://github.com/Stis25) |  |  |  |  |  |  |  |  |  |  |
 | 22 | АС-63 | 22 | 2 | Филипчук Дмитрий | FilipchukDmitriy | [dir](./students/FilipchukDmitriy) | [kuddel11](https://github.com/kuddel11) |  |  |  |  |  |  |  |  |  |  |
-| 23 | АС-63 | 23 | 2 | Ярмола Александр | YarmolaAleksandr | [dir](./students/YarmolaAleksandr) | [alexandro007](https://github.com/alexandro007) |  |  |  |  |  |  |  |  |  |  |
+| 23 | АС-63 | 23 | 2 | Ярмола Александр | YarmolaAleksandr | [dir](./students/YarmolaAleksandr) | [alexsandro007](https://github.com/alexsandro007) |  |  |  |  |  |  |  |  |  |  |
 | 24 | АС-63 | 24 | 2 | Ярмолович Александр | YarmolovichAleksandr | [dir](./students/YarmolovichAleksandr) | [yarmolov](https://github.com/yarmolov) |  |  |  |  |  |  |  |  |  |  |
 | 25 | АС-64 | 1 | 1 | Белаш Александр | BelashAleksandr | [dir](./students/BelashAleksandr) | [went2smoke](https://github.com/went2smoke) |  |  |  |  |  |  |  |  |  |  |
 | 26 | АС-64 | 2 | 1 | Брызгалов Юрий | BryzgalovYuriy | [dir](./students/BryzgalovYuriy) | [Gena-Cidarmyan](https://github.com/Gena-Cidarmyan) |  |  |  |  |  |  |  |  |  |  |
