@@ -1,0 +1,257 @@
+/* ====== Переменные ====== */
+:root {
+  --color-bg: #ffffff;
+  --color-text: #222222;
+  --color-accent: #005bbb;
+  --color-accent-contrast: #ffffff;
+  --color-section-bg: #eaeaea;
+  --color-footer-bg: #eeeeee;
+
+  --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --radius: 0.5rem;
+  --transition: all 0.3s ease;
+}
+
+/* Тёмная тема вручную */
+body.dark-theme {
+  --color-bg: #121212;
+  --color-text: #f5f5f5;
+  --color-accent: #3399ff;
+  --color-accent-contrast: #000000;
+  --color-section-bg: #262626;
+  --color-footer-bg: #1a1a1a;
+}
+
+/* ====== Базовые стили ====== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, sans-serif;
+  line-height: 1.6;
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition: var(--transition);
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  padding: 0.5rem;
+  border-radius: var(--radius);
+}
+
+/* ====== HEADER ====== */
+header {
+  background: linear-gradient(90deg, var(--color-accent) 60%, #2571c3 100%);
+  color: var(--color-accent-contrast);
+  padding: 1.5rem 0 1rem 0;
+  box-shadow: var(--shadow);
+}
+
+/* Контейнер для header-контента */
+.header-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 601px) {
+  .header-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* Профиль: аватар + имя */
+.header-profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  border: 2px solid var(--color-accent-contrast);
+  background: #fff;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.header-profile h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list a {
+  color: var(--color-accent-contrast);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius);
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-list a:hover,
+.nav-list a:focus {
+  background: rgba(255,255,255,0.15);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Кнопка темы */
+#theme-toggle {
+  background: rgba(0,0,0,0.10);
+  border: 2px solid var(--color-accent-contrast);
+  color: var(--color-accent-contrast);
+  padding: 0.2rem 0.7rem;
+  border-radius: var(--radius);
+  font-size: 1.4rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  transition: var(--transition);
+}
+
+#theme-toggle:hover,
+#theme-toggle:focus {
+  background: var(--color-accent-contrast);
+  color: var(--color-accent);
+}
+
+/* ====== Контейнер для основного контента ====== */
+.content-wrapper {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+@media (min-width: 601px) {
+  .content-wrapper {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+@media (min-width: 1025px) {
+  .content-wrapper {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+}
+
+/* ====== Секции и сетки ====== */
+.section {
+  padding: 2rem 1rem;
+  max-width: 1000px;
+  margin: 1rem auto;
+  background: var(--color-section-bg);
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+/* Проекты - адаптивная сетка */
+.projects-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+@media (min-width: 601px) {
+  .projects-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1025px) {
+  .projects-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.project-card {
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  padding: 1rem;
+  background: var(--color-bg);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.project-card img,
+.project-card picture {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius);
+  max-width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+}
+
+/* ====== Форма ====== */
+.contact-form {
+  display: grid;
+  gap: 0.5rem;
+}
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+  font: inherit;
+  padding: 0.5rem;
+  border-radius: var(--radius);
+  border: 1px solid #ccc;
+  transition: var(--transition);
+  background: var(--color-bg);
+  box-shadow: var(--shadow);
+}
+.contact-form button {
+  background: var(--color-accent);
+  color: var(--color-accent-contrast);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+.contact-form button:hover,
+.contact-form button:focus {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ====== Footer ====== */
+footer {
+  background: var(--color-footer-bg);
+  padding: 1rem;
+  text-align: center;
+  transition: var(--transition);
+}
