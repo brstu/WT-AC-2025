@@ -13,16 +13,15 @@
 
 ## Скриншоты
 
-- Lighthouse Accessibility:  
+- Lighthouse Accessibility:
   ![lh-a11y](./Accessibility.png)
-- Lighthouse Best Practices:  
+- Lighthouse Best Practices:
   ![lh-best](./Best_Practices.png)
-- Валидатор HTML:  
+- Валидатор HTML:
   ![html-validator](./valid_html.png)
-- Валидатор CSS:  
+- Валидатор CSS:
   ![css-validator](./valid_css.png)
-- Адаптив:  
+- Адаптив:
   ![mobile](./mobile.png)
   ![tablet](./tablet.png)
   ![desktop](./web.png)
-  
