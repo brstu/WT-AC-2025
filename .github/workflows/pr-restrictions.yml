@@ -1,0 +1,62 @@
+name: PR Restrictions Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main, master]
+
+jobs:
+  check-pr-changes:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check PR changes against restrictions
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: files } = await github.rest.pulls.listFiles({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: context.issue.number,
+            });
+
+            const allowedPaths = [
+              'README.md',
+              'students/'
+            ];
+
+            const forbiddenChanges = files.filter(file => {
+              const filename = file.filename;
+              
+              const isAllowed = allowedPaths.some(allowedPath => {
+                if (allowedPath.endsWith('/')) {
+                  return filename.startsWith(allowedPath);
+                } else if (allowedPath.includes('**')) {
+                  const pattern = allowedPath.replace('**', '.*');
+                  return new RegExp(pattern).test(filename);
+                } else {
+                  return filename === allowedPath;
+                }
+              });
+              
+              return !isAllowed;
+            });
+
+            if (forbiddenChanges.length > 0) {
+              const forbiddenFiles = forbiddenChanges.map(f => f.filename).join('\n- ');
+              
+              core.setFailed(`🚫 PR содержит изменения в запрещённых файлах:\n\n- ${forbiddenFiles}\n\nРазрешены изменения только в:\n- README.md\n- Директории students/ и её содержимом\n\nОбратитесь к maintainer-ам для изменения других файлов.`);
+              
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body: `❌ **PR Check Failed**\n\nЭтот PR содержит изменения в защищённых файлах:\n\`\`\`\n${forbiddenFiles}\n\`\`\`\n\n**Разрешены изменения только в:**\n- \`README.md\`\n- Директории \`students/\` и её содержимом\n\nПожалуйста, уберите изменения из защищённых файлов или обратитесь к maintainer-ам.`
+              });
+            } else {
+              console.log('✅ PR содержит изменения только в разрешённых файлах');
+            }
