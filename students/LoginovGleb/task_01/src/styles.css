@@ -206,6 +206,14 @@ main {
     flex: 1;
 }
 
+/* Заголовки секций — общий стиль (ранее объявлен для соблюдения специфичности относительно .hero-section h2) */
+section h2 {
+    font-size: 1.875rem;
+    margin-bottom: var(--spacing-lg);
+    text-align: center;
+    color: var(--color-text);
+}
+
 /* Hero секция */
 .hero-section {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
@@ -251,13 +259,6 @@ main {
    ============================================ */
 section {
     padding: var(--spacing-xl) 0;
-}
-
-section h2 {
-    font-size: 1.875rem;
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
-    color: var(--color-text);
 }
 
 /* Обзоры - Mobile First Grid */
