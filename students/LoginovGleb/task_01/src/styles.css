@@ -486,22 +486,24 @@ section h2 {
 
 .submit-button {
   padding: var(--spacing-sm) var(--spacing-lg);
-  background-color: var(--color-text);
-  color: #fff;
+  background-color: white;
+  color: var(--color-primary);
   border: 0;
   border-radius: 8px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
   transition: var(--transition-base);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
 }
 
 .submit-button:hover,
 .submit-button:focus {
   transform: scale(1.02);
-  opacity: 0.9;
+  background-color: #f8f9fa;
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+  box-shadow: 0 6px 16px rgb(0 0 0 / 30%);
 }
 
 /* ============================================
