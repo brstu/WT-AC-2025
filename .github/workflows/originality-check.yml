@@ -30,7 +30,7 @@ jobs:
             echo "No task directory found in changes"
             exit 0
           fi
-          
+          g
           echo "task_dir=$TASK_DIR" >> $GITHUB_OUTPUT
           echo "Detected task directory: $TASK_DIR"
 
