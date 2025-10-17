@@ -24,6 +24,7 @@
     --spacing-xl: 3rem;
 
     /* Типографика */
+
     /* Сделаем ключевые слова в одном регистре, чтобы удовлетворять линтер */
     --font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, 'Helvetica Neue', arial, sans-serif;
     --font-size-sm: 0.875rem;
@@ -724,6 +725,7 @@ section {
         opacity: 0;
         transform: translateY(-50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
