@@ -22,7 +22,7 @@
     --spacing-md: 1.5rem;
     --spacing-lg: 2rem;
     --spacing-xl: 3rem;
-    
+
     /* Типографика */
     /* Сделаем ключевые слова в одном регистре, чтобы удовлетворять линтер */
     --font-family: -apple-system, blinkmacsystemfont, 'Segoe UI', roboto, 'Helvetica Neue', arial, sans-serif;
@@ -51,7 +51,7 @@
     --color-text: #f1f5f9;
     --color-text-muted: #94a3b8;
     --color-border: #334155;
-    --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-shadow: rgb(0 0 0 / 50%);
 }
 
 /* Поддержка prefers-color-scheme: dark */
@@ -63,7 +63,7 @@
         --color-text: #f1f5f9;
         --color-text-muted: #94a3b8;
         --color-border: #334155;
-        --color-shadow: rgba(0, 0, 0, 0.5);
+    --color-shadow: rgb(0 0 0 / 50%);
     }
 }
 
@@ -116,7 +116,7 @@ p {
     padding: 0 var(--spacing-sm);
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .container {
         padding: 0 var(--spacing-md);
     }
@@ -204,7 +204,7 @@ section {
     opacity: 0.9;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .hero {
         padding: 4rem 0;
     }
@@ -301,13 +301,13 @@ section {
     margin-top: var(--spacing-lg);
 }
 
-@media (min-width: 640px) {
+@media (width >= 640px) {
     .video-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
     .video-grid {
         grid-template-columns: repeat(4, 1fr);
     }
@@ -430,13 +430,13 @@ section {
     margin-top: var(--spacing-lg);
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .posts-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
     .posts-grid {
         grid-template-columns: repeat(3, 1fr);
     }
