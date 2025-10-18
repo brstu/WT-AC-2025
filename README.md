@@ -35,7 +35,7 @@
 | 2 | АС-63 | 2 | 1 | Выржемковский Даниил | VyrzhemkovskiyDaniil | [dir](./students/VyrzhemkovskiyDaniil) | [r0mb123](https://github.com/r0mb123) |  |  |  |  |  |  |  |  |  |  |
 | 3 | АС-63 | 3 | 1 | Грицук Дмитрий | GritsukDmitriy | [dir](./students/GritsukDmitriy) | [llayyz](https://github.com/llayyz) |  |  |  |  |  |  |  |  |  |  |
 | 4 | АС-63 | 4 | 1 | Грицук Павел | GritsukPavel | [dir](./students/GritsukPavel) | [momo-kitsune](https://github.com/momo-kitsune) |  |  |  |  |  |  |  |  |  |  |
-| 5 | АС-63 | 5 | 1 | Казаренко Павел | KazarenkoPavel | [dir](./students/KazarenkoPavel) | [Catsker](https://github.com/Catsker) | ✅ | ✅ |  |  |  |  |  |  |  |  |
+| 5 | АС-63 | 5 | 1 | Казаренко Павел | KazarenkoPavel | [dir](./students/KazarenkoPavel) | [Catsker](https://github.com/Catsker) |  |  |  |  |  |  |  |  |  |  |
 | 6 | АС-63 | 6 | 1 | Карпеш Никита | KarpeshNikita | [dir](./students/KarpeshNikita) | [Frosyka](https://github.com/Frosyka) |  |  |  |  |  |  |  |  |  |  |
 | 7 | АС-63 | 7 | 1 | Козлович Антон | KozlovichAnton | [dir](./students/KozlovichAnton) | [Anton777kozlovich](https://github.com/Anton777kozlovich) |  |  |  |  |  |  |  |  |  |  |
 | 8 | АС-63 | 8 | 1 | Козловская Анна | KozlovskayaAnna | [dir](./students/KozlovskayaAnna) | [annkrq](https://github.com/annkrq) |  |  |  |  |  |  |  |  |  |  |
