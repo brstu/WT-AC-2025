@@ -1,0 +1,137 @@
+name: AI check student lab
+
+on:
+  workflow_dispatch:
+    inputs:
+      name_task:
+        description: 'Provide [NameLatin][taskN] (e.g. [IvanovIvan][task01])'
+        required: true
+        type: string
+      model:
+        description: 'GitHub Models name (default gpt5-mini)'
+        required: false
+        type: string
+      model_candidates:
+        description: 'Comma-separated fallback models (used if primary fails). Example: phi-3.5-mini,mistral-7b-instruct,starcoder2-7b'
+        required: false
+        type: string
+      debug:
+        description: 'Enable verbose debug output'
+        required: false
+        type: boolean
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  ai-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Parse input [NameLatin][taskN]
+        id: parse
+        run: |
+          raw='${{ github.event.inputs.name_task }}'
+          # Remove leading colon or spaces
+          raw=$(echo "$raw" | sed -E 's/^:+//; s/^\s+//')
+          # strip optional [LABS] prefix and any surrounding brackets, split on ][
+          norm=$(echo "$raw" | sed -E 's/^\[LABS\]\[?//; s/\]\[/ /g; s/[\[\]]/ /g')
+          # collapse multiple spaces
+          norm=$(echo "$norm" | tr -s ' ')
+          name=$(echo "$norm" | awk '{print $1}')
+          task=$(echo "$norm" | awk '{print $2}')
+          # if name still contains a bracket fragment, clean again
+          name=$(echo "$name" | sed -E 's/[^A-Za-z0-9_-]//g')
+          if [ -z "$name" ] || [ -z "$task" ]; then
+            echo "Invalid input, expected [NameLatin][taskN]"
+            exit 1
+          fi
+          # normalize task like task_XX
+          num=$(echo "$task" | sed -E 's/[^0-9]//g')
+          if [ -z "$num" ]; then
+            echo "Task number missing"
+            exit 1
+          fi
+          task_folder=$(printf 'task_%02d' "$num")
+          echo "student=$name" >> $GITHUB_OUTPUT
+          echo "task_n=task$num" >> $GITHUB_OUTPUT
+          echo "task_folder=$task_folder" >> $GITHUB_OUTPUT
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install requests
+
+      - name: Build prompt
+        run: |
+          python .github/scripts/prepare_AI_prompt.py --student "${{ steps.parse.outputs.student }}" --task "${{ steps.parse.outputs.task_folder }}" > ai_prompt.txt
+
+      - name: Run AI check (with optional fallback)
+        id: run_models
+        env:
+          # Uses default GITHUB_TOKEN; to supply a PAT with models permission, temporarily replace this line locally when dispatching or fork a variant workflow.
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          MODEL: ${{ github.event.inputs.model || 'gpt5-mini' }}
+          DEBUG: ${{ github.event.inputs.debug && '1' || '' }}
+        run: |
+          set -e
+          extra=""
+          if [ "${{ github.event.inputs.debug }}" = "true" ]; then extra="--debug"; fi
+          # Build candidate list: primary MODEL first, then optional model_candidates input.
+          candidates="${{ github.event.inputs.model || 'gpt5-mini' }}"
+          if [ -n "${{ github.event.inputs.model_candidates }}" ]; then
+            candidates="$candidates,${{ github.event.inputs.model_candidates }}"
+          else
+            # Default broad set of generally-available open models across vendors (availability varies by account/region)
+            candidates="$candidates,phi-3.5-mini,phi-3-mini-4k,phi-3-mini-128k,llama-3.1-8b-instruct,llama-3.1-70b-instruct,mistral-7b-instruct,mixtral-8x7b-instruct,gemma2-2b-it,gemma2-9b-it,starcoder2-7b,starcoder2-15b,codestral-latest,codegemma"
+          fi
+          chosen=""
+          IFS=','
+          for m in $candidates; do
+            m_trim=$(echo "$m" | xargs)
+            [ -z "$m_trim" ] && continue
+            echo "Attempting model: $m_trim" >&2
+            MODEL="$m_trim" python .github/scripts/run_ai_check.py --student "${{ steps.parse.outputs.student }}" --task "${{ steps.parse.outputs.task_folder }}" --prompt-file ai_prompt.txt --out ai_response.md $extra && { chosen="$m_trim"; break; }
+            echo "Model $m_trim failed, trying next (if any)" >&2
+          done
+          unset IFS
+          if [ -z "$chosen" ]; then
+            echo "No model succeeded; keeping last error output" >&2
+          else
+            echo "Chosen model: $chosen" >&2
+            echo "chosen_model=$chosen" >> $GITHUB_OUTPUT
+          fi
+          echo '--- ai_response.md (debug) ---'
+          if [ -f ai_response.md ]; then cat ai_response.md; else echo 'ai_response.md missing'; fi
+
+      - name: Post AI response to tracking issue
+        uses: actions/github-script@v7
+        env:
+          STUDENT: ${{ steps.parse.outputs.student }}
+          TASKN: ${{ steps.parse.outputs.task_n }}
+          CHOSEN_MODEL: ${{ steps.run_models.outputs.chosen_model || '' }}
+        with:
+          script: |
+            const fs = require('fs');
+            const body = fs.existsSync('ai_response.md') ? fs.readFileSync('ai_response.md', 'utf8') : 'No AI response';
+            const title = `[LABS][${process.env.STUDENT}][${process.env.TASKN}]`;
+            // find issue by exact title
+            const issues = await github.rest.issues.listForRepo({ owner: context.repo.owner, repo: context.repo.repo, state: 'open', per_page: 100 });
+            const match = issues.data.find(i => i.title === title);
+            if (!match) {
+              core.setFailed(`Issue not found: ${title}`);
+            } else {
+              let prefix = '';
+              if (process.env.CHOSEN_MODEL) {
+                prefix = `Model: ${process.env.CHOSEN_MODEL}\n\n`;
+              }
+              await github.rest.issues.createComment({ owner: context.repo.owner, repo: context.repo.repo, issue_number: match.number, body: prefix + body });
+            }
