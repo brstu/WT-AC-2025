@@ -175,17 +175,19 @@ function getFocusableElements(container){
 function disableFocusable(container){
   const els = Array.from(container.querySelectorAll('a, button, input, textarea, select, [tabindex]'));
   els.forEach(el => {
-    if (el.hasAttribute('tabindex')) el.dataset._savedTabindex = el.getAttribute('tabindex');
+    if (el.hasAttribute('tabindex')) el.dataset.savedTabindex = el.getAttribute('tabindex');
     el.setAttribute('tabindex', '-1');
   });
 }
 
 function restoreFocusable(container){
-  const els = Array.from(container.querySelectorAll('[data-_saved-tabindex], [tabindex]'));
+  const els = Array.from(container.querySelectorAll('[data-saved-tabindex], [tabindex]'));
   els.forEach(el => {
-    if (el.dataset._savedTabindex !== undefined) {
-      el.setAttribute('tabindex', el.dataset._savedTabindex);
-      delete el.dataset._savedTabindex;
+    if (el.dataset.savedtabindex !== undefined || el.dataset.savedTabindex !== undefined) {
+      const saved = el.dataset.savedTabindex !== undefined ? el.dataset.savedTabindex : el.dataset.savedtabindex;
+      el.setAttribute('tabindex', saved);
+      delete el.dataset.savedTabindex;
+      delete el.dataset.savedtabindex;
     } else if (el.getAttribute('tabindex') === '-1') {
       el.removeAttribute('tabindex');
     }
