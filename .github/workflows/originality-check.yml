@@ -74,4 +74,4 @@ jobs:
           warn_above: 93
           # Leave only one comment with the report and update it for consecutive runs
           one_comment: true
-          file_extensions: "js, html, css"  # Расширил список расширений
+          file_extensions: "js, html, css"  # Ограничиваем проверку только этими типами файлов

@@ -1,0 +1,117 @@
+/* --- Базовые стили страницы --- */
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #0f172a;
+  color: #f1f5f9;
+  overflow-x: hidden;
+}
+
+header, footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1e293b;
+}
+
+footer {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+/* --- Сетка карточек --- */
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  padding-bottom: 6rem; /* чтобы футер не перекрывался */
+  align-items: stretch; /* карточки одинаковой высоты */
+}
+
+/* --- Карточка игры --- */
+.game-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* текст сверху, скриншот снизу */
+  background: #1e293b;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  padding: 1.5rem;
+}
+
+.game-card h3 {
+  color: #38bdf8;
+  margin: 0 0 1rem 0;
+  font-size: 1.5rem;
+}
+
+.section h4 {
+  color: #facc15;
+  margin-bottom: 0.25rem;
+}
+
+.section p,
+.section ul {
+  margin-top: 0;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+/* --- Скриншоты --- */
+.screenshots {
+  margin-top: auto;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.screenshots img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Убираем hover-эффект */
+.screenshots:hover img {
+  transform: none;
+  box-shadow: none;
+}
+
+/* --- Модальное окно для увеличения изображения --- */
+#modal {
+  display: none;
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  cursor: pointer;
+}
+
+#modal img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+  transition: transform 0.3s ease;
+}
+
+/* --- Адаптив --- */
+@media (max-width: 600px) {
+  .game-card {
+    padding: 1rem;
+  }
+  .game-card h3 {
+    font-size: 1.25rem;
+  }
+}
