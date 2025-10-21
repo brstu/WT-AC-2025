@@ -139,7 +139,7 @@ def main() -> int:
 
     # Avoid duplicate label
     existing_labels = get_issue_labels(repo, pr, headers)
-    label = 'invalid-directory'
+    label = 'Wrong dir'
     if label in existing_labels:
         LOG.info('Label %s already present — skipping', label)
     else:
