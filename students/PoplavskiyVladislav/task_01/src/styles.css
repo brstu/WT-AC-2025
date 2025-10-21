@@ -1,0 +1,321 @@
+/* CSS Variables */
+:root {
+    --primary: #6a11cb;
+    --secondary: #2575fc;
+    --accent: #00b4db;
+    --dark: #0f1419;
+    --text: #e2e8f0;
+    --surface: #1e293b;
+}
+
+/* Base Styles */
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body { 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    line-height: 1.6; 
+    color: var(--text);
+    background: var(--dark);
+}
+
+.container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 0 1rem; 
+}
+
+/* Accessibility */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem;
+    text-decoration: none;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Header */
+.header { 
+    background: var(--surface); 
+    padding: 1rem 0; 
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-content { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.logo { 
+    color: var(--accent); 
+    font-size: 1.5rem; 
+    font-weight: bold; 
+}
+
+.nav-list { 
+    display: flex; 
+    list-style: none; 
+    gap: 2rem; 
+}
+
+.nav-link { 
+    color: var(--text); 
+    text-decoration: none; 
+    transition: color 0.3s; 
+}
+
+.nav-link:hover { 
+    color: var(--accent); 
+}
+
+/* Hero Section */
+.hero { 
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.hero-title { 
+    font-size: 2.5rem; 
+    margin-bottom: 1rem; 
+}
+
+.hero-subtitle { 
+    font-size: 1.2rem; 
+    opacity: 0.9; 
+    margin-bottom: 2rem;
+}
+
+/* Sections */
+.section { 
+    padding: 3rem 0; 
+}
+
+.section-title { 
+    text-align: center; 
+    font-size: 2rem; 
+    margin-bottom: 2rem;
+    color: var(--accent);
+}
+
+/* Grid Layouts */
+.idea-grid { 
+    display: grid; 
+    gap: 2rem; 
+}
+
+.tech-grid { 
+    display: grid; 
+    gap: 1rem; 
+}
+
+.challenges-grid { 
+    display: grid; 
+    gap: 1rem; 
+}
+
+.results-stats { 
+    display: grid; 
+    gap: 1rem; 
+    margin-bottom: 2rem;
+}
+
+/* Cards */
+.stat-card, .tech-card, .challenge-card, .result-item {
+    background: var(--surface);
+    padding: 1.5rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.stat-number, .result-number {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Timeline */
+.timeline { 
+    position: relative; 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 1rem;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary);
+}
+
+.timeline-item { 
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.timeline-marker {
+    width: 60px;
+    height: 60px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+}
+
+/* Form */
+.contact-form { 
+    max-width: 600px; 
+    margin: 0 auto; 
+}
+
+.form-group { 
+    margin-bottom: 1rem; 
+}
+
+.form-label { 
+    display: block; 
+    margin-bottom: 0.5rem; 
+}
+
+.form-input, .form-textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.submit-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s;
+}
+
+.submit-btn:hover {
+    background: var(--secondary);
+}
+
+/* Footer */
+.footer { 
+    background: var(--surface); 
+    padding: 2rem 0; 
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .header-content { 
+        flex-direction: column; 
+        gap: 1rem; 
+    }
+    
+    .nav-list { 
+        flex-direction: column; 
+        gap: 0.5rem; 
+        text-align: center; 
+    }
+    
+    .hero-title { 
+        font-size: 2rem; 
+    }
+    
+    .timeline-item {
+        grid-template-columns: 40px 1fr;
+    }
+    
+    .timeline-marker {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .tech-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .challenges-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .results-stats { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .idea-grid { 
+        grid-template-columns: 2fr 1fr; 
+    }
+}
+
+@media (min-width: 1024px) {
+    .tech-grid { 
+        grid-template-columns: repeat(4, 1fr); 
+    }
+    
+    .challenges-grid { 
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    .results-stats { 
+        grid-template-columns: repeat(4, 1fr); 
+    }
+    
+    .idea-grid { 
+        grid-template-columns: 2fr 1fr; 
+    }
+    
+    .timeline::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+        grid-template-columns: 1fr 60px 1fr;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+        grid-column: 1;
+        text-align: right;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-marker {
+        grid-column: 2;
+    }
+    
+    .timeline-item:nth-child(even) .timeline-content {
+        grid-column: 3;
+    }
+}
