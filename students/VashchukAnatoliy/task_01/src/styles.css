@@ -1,0 +1,149 @@
+/* ----------------------------
+   Базовые стили для mobile-first
+----------------------------- */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f7f7f7;
+  color: #222;
+  padding: 1rem;
+}
+
+/* ----------------------------
+   Header & Nav
+----------------------------- */
+header {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+header h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  text-decoration: none;
+  color: #0a84ff;
+  font-weight: bold;
+}
+
+nav a:hover,
+nav a:focus-visible {
+  text-decoration: underline;
+}
+
+/* ----------------------------
+   Sections
+----------------------------- */
+section {
+  margin-bottom: 2rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+/* ----------------------------
+   Articles (Top Memes)
+----------------------------- */
+article {
+  margin-bottom: 1rem;
+}
+
+article h3 {
+  margin-bottom: 0.3rem;
+  font-size: 1.1rem;
+}
+
+article p {
+  margin-bottom: 0.5rem;
+}
+
+article img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* ----------------------------
+   Галерея (Grid)
+----------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.grid img {
+  width: 100%;
+  border-radius: 6px;
+}
+
+/* ----------------------------
+   Footer
+----------------------------- */
+footer {
+  text-align: center;
+  padding: 1rem 0;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* ----------------------------
+   Фокус и доступность
+----------------------------- */
+:focus-visible {
+  outline: 2px solid #0a84ff;
+  outline-offset: 2px;
+}
+
+/* ----------------------------
+   Медиазапросы для планшета
+----------------------------- */
+@media (min-width: 600px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ----------------------------
+   Медиазапросы для десктопа
+----------------------------- */
+@media (min-width: 1024px) {
+  header h1 {
+    font-size: 2.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  nav ul {
+    gap: 2rem;
+  }
+}
