@@ -30,17 +30,25 @@ jobs:
             echo "No task directory found in changes"
             exit 0
           fi
-          g
+          
           echo "task_dir=$TASK_DIR" >> $GITHUB_OUTPUT
           echo "Detected task directory: $TASK_DIR"
+
+      - name: Create comparison directories list
+        id: create_dirs
+        run: |
+          # Создаем список директорий для сравнения, исключая your_id
+          COMPARE_DIRS=$(find students -type d -name "${{ steps.detect_task.outputs.task_dir }}" | grep -v "students/your_id" | tr '\n' ' ')
+          echo "compare_dirs=$COMPARE_DIRS" >> $GITHUB_OUTPUT
+          echo "Directories to compare: $COMPARE_DIRS"
 
       - name: Run Duplicate Code Detection
         uses: platisd/duplicate-code-detection-tool@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          directories: "students/**/${{ steps.detect_task.outputs.task_dir }}"  # Сравниваем только соответствующие task_папки
+          directories: "${{ steps.create_dirs.outputs.compare_dirs }}"  # Используем только разрешенные директории
           ignore_below: 20           # Игнорировать сходство ниже 20%
           fail_above: 80             # Завершить с ошибкой при сходстве выше 80%
           warn_above: 20             # Показать предупреждение при сходстве выше 20%
-          file_extensions: "js, html, css"  # Расширил список расширений
+          file_extensions: "js, html, css"  # Проверяемые расширения файлов
           one_comment: true          # Обновлять один комментарий, а не создавать новые
