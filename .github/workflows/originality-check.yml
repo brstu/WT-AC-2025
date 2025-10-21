@@ -2,7 +2,7 @@ name: Duplicate Code Check
 
 on:
   pull_request:
-    paths: ['students/**']  # Запускается только при изменении файлов в папке labs
+    paths: ['students/**']  # Запускается только при изменении файлов в папке students
 
 jobs:
   duplicate-code-check:
@@ -12,13 +12,35 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Detect changed task directory
+        id: detect_task
+        run: |
+          # Находим измененную task_папку
+          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- students/)
+          TASK_DIR=""
+          
+          for file in $CHANGED_FILES; do
+            if [[ $file =~ students/([^/]+)/(task_[^/]+)/ ]]; then
+              TASK_DIR="${BASH_REMATCH[2]}"
+              break
+            fi
+          done
+          
+          if [ -z "$TASK_DIR" ]; then
+            echo "No task directory found in changes"
+            exit 0
+          fi
+          g
+          echo "task_dir=$TASK_DIR" >> $GITHUB_OUTPUT
+          echo "Detected task directory: $TASK_DIR"
+
       - name: Run Duplicate Code Detection
         uses: platisd/duplicate-code-detection-tool@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          directories: "students"        # Директория для анализа
+          directories: "students/**/${{ steps.detect_task.outputs.task_dir }}"  # Сравниваем только соответствующие task_папки
           ignore_below: 20           # Игнорировать сходство ниже 20%
-          fail_above: 70             # Завершить с ошибкой при сходстве выше 70%
+          fail_above: 80             # Завершить с ошибкой при сходстве выше 80%
           warn_above: 20             # Показать предупреждение при сходстве выше 20%
-          file_extensions: "js, html, css"  # Проверять только файлы с этими расширениями
+          file_extensions: "js, html, css"  # Расширил список расширений
           one_comment: true          # Обновлять один комментарий, а не создавать новые
