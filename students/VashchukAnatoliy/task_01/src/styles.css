@@ -1,11 +1,7 @@
 /* ----------------------------
    Базовые стили (mobile-first)
 ----------------------------- */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
@@ -16,20 +12,30 @@ body {
   transition: all 0.3s ease;
 }
 
+header { text-align: center; margin-bottom: 1.5rem; position: relative; }
+header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #111; }
+
 /* ----------------------------
-   Header & Nav
+   Кнопка переключения темы
 ----------------------------- */
-header {
-  text-align: center;
-  margin-bottom: 1rem;
+#theme-toggle {
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  background: none;
+  border: 2px solid #0a84ff;
+  border-radius: 6px;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
-header h1 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-  color: #111;
-}
+#theme-toggle:hover { background-color: #0a84ff20; }
 
+/* ----------------------------
+   Nav
+----------------------------- */
 nav ul {
   list-style: none;
   display: flex;
@@ -42,13 +48,15 @@ nav a {
   text-decoration: none;
   color: #0a84ff;
   font-weight: 600;
-  transition: color 0.2s ease;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
 }
 
-nav a:hover,
-nav a:focus-visible {
-  text-decoration: underline;
+nav a:hover, nav a:focus-visible {
+  background-color: #0a84ff20;
   color: #005fcc;
+  outline: none;
 }
 
 /* ----------------------------
@@ -57,43 +65,39 @@ nav a:focus-visible {
 section {
   margin-bottom: 2rem;
   background-color: #fff;
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 section h2 {
   margin-bottom: 1rem;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   border-bottom: 2px solid #eee;
   padding-bottom: 0.5rem;
 }
 
 /* ----------------------------
-   Articles (Top Memes)
+   Articles
 ----------------------------- */
-article {
-  margin-bottom: 1.5rem;
-}
-
-article h3 {
-  margin-bottom: 0.3rem;
-  font-size: 1.1rem;
-}
-
-article p {
-  margin-bottom: 0.5rem;
-}
+article { margin-bottom: 1.5rem; }
+article h3 { margin-bottom: 0.3rem; font-size: 1.2rem; }
+article p { margin-bottom: 0.5rem; }
 
 article img {
   width: 100%;
   height: auto;
-  border-radius: 6px;
+  border-radius: 12px;
   object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+article img:hover { transform: scale(1.05); filter: brightness(1.1); }
+
 /* ----------------------------
-   Галерея (Grid)
+   Галерея
 ----------------------------- */
 .grid {
   display: grid;
@@ -103,13 +107,12 @@ article img {
 
 .grid img {
   width: 100%;
-  border-radius: 6px;
-  transition: transform 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-.grid img:hover {
-  transform: scale(1.03);
-}
+.grid img:hover { transform: scale(1.05); filter: brightness(1.1); }
 
 /* ----------------------------
    Footer
@@ -125,84 +128,46 @@ footer {
 /* ----------------------------
    Фокус и доступность
 ----------------------------- */
-:focus-visible {
-  outline: 2px solid #0a84ff;
-  outline-offset: 2px;
-}
+:focus-visible { outline: 2px solid #0a84ff; outline-offset: 2px; }
 
 /* ----------------------------
    Адаптивность
 ----------------------------- */
-
-/* ---- 📱 Мобильные устройства (по умолчанию) ---- */
-/* Всё уже оптимизировано под мобильные */
-
-/* ---- 📟 Планшеты (min-width: 600px) ---- */
 @media (min-width: 600px) {
-  body {
-    padding: 2rem;
-  }
-
-  header h1 {
-    font-size: 2rem;
-  }
-
-  main {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  article img {
-    max-height: 350px;
-  }
+  body { padding: 2rem; }
+  header h1 { font-size: 2rem; }
+  main { display: flex; flex-direction: column; gap: 1.5rem; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  article img { max-height: 350px; }
 }
 
-/* ---- 🖥️ Десктопы (min-width: 1024px) ---- */
 @media (min-width: 1024px) {
-  body {
-    max-width: 1200px;
-    margin: 0 auto;
-  }
-
-  header h1 {
-    font-size: 2.5rem;
-  }
-
-  nav ul {
-    gap: 2rem;
-  }
-
-  main {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 2rem;
-  }
-
-  #top-memes {
-    grid-column: 1 / -1;
-  }
-
-  #gallery .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  article {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  article img {
-    width: 40%;
-    border-radius: 8px;
-  }
-
-  article p {
-    flex: 1;
-  }
+  body { max-width: 1200px; margin: 0 auto; }
+  header h1 { font-size: 2.5rem; }
+  nav ul { gap: 2rem; }
+  main { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
+  #top-memes { grid-column: 1 / -1; }
+  #gallery .grid { grid-template-columns: repeat(3, 1fr); }
+  article { display: flex; align-items: center; gap: 1rem; }
+  article img { width: 40%; border-radius: 12px; }
+  article p { flex: 1; }
 }
+
+/* ----------------------------
+   Темная тема
+----------------------------- */
+body.dark {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark header,
+body.dark section,
+body.dark footer {
+  background-color: #2b2b2b;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+}
+
+body.dark nav a { color: #80c0ff; }
+body.dark nav a:hover,
+body.dark nav a:focus-visible { color: #1e90ff; background-color: #0a84ff20; }
