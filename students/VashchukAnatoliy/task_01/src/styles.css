@@ -351,7 +351,8 @@ nav a:focus {
 }
 
 /* --------- Responsive ---------- */
-@media (min-width: 601px) {
+@media screen and (min-width: 601px) {
+
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -359,9 +360,11 @@ nav a:focus {
   .categories-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+
 }
 
-@media (min-width: 1025px) {
+@media screen and (min-width: 1025px) {
+
   .cards {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -373,6 +376,7 @@ nav a:focus {
   .categories-grid {
     grid-template-columns: repeat(3, 1fr);
   }
+
 }
 
 /* --------- Dark mode ---------- */
