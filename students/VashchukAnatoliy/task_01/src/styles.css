@@ -40,7 +40,7 @@
 html {
   font-family: var(--font-sans);
   font-size: var(--base-font-size);
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--text);
   scroll-behavior: smooth;
   min-height: 100%;
@@ -386,8 +386,4 @@ body.dark {
   --shadow: 0 6px 20px rgb(0 0 0 / 60%);
   background-color: var(--bg);
   color: var(--text);
-}
-
-html {
-  background-color: var(--bg);
 }
