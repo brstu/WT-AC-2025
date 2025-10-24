@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Моя музыкальная коллекция</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1 id="main-title">Моя музыкальная коллекция</h1>
+    <nav aria-label="Главная навигация">
+      <ul>
+        <li><a href="#playlists">Плейлисты</a></li>
+        <li><a href="#reviews">Обзоры</a></li>
+        <li><a href="#recs">Рекомендации</a></li>
+      </ul>
+    </nav>
+    <button id="theme-toggle">🌙 Тёмная тема</button>
+  </header>
+
+  <main>
+    <section id="playlists" aria-labelledby="pl-heading">
+      <h2 id="pl-heading">Плейлисты</h2>
+      <div class="grid grid-cols" id="playlist-container">
+        <article tabindex="0">
+          <h3>Утренний плейлист</h3>
+          <p>Мягкие треки для бодрого старта</p>
+          <p><strong>Треки:</strong></p>
+          <ul>
+            <li>Весна — Анна П.</li>
+            <li>Пульс улиц — DJ Ночь</li>
+          </ul>
+          <picture>
+            <source srcset="assets/sunset.jpg" media="(min-width: 1025px)">
+            <source srcset="assets/sunset.jpg" media="(min-width: 601px)">
+            <img src="assets/sunset.jpg" alt="Обложка утреннего плейлиста">
+          </picture>
+        </article>
+
+        <article tabindex="0">
+          <h3>Вечерний чилл</h3>
+          <p>Спокойная музыка для отдыха после дня</p>
+          <p><strong>Треки:</strong></p>
+          <ul>
+            <li>Тишина — Moonlight</li>
+            <li>Сумерки — DJ Ветер</li>
+          </ul>
+          <picture>
+            <source srcset="assets/dawn.jpg" media="(min-width: 1025px)">
+            <source srcset="assets/dawn.jpg" media="(min-width: 601px)">
+            <img src="assets/dawn.jpg" alt="Обложка вечернего чилла">
+          </picture>
+        </article>
+
+        <article tabindex="0">
+          <h3>Кофе и утро</h3>
+          <p>Лёгкие инструменталы для продуктивного дня</p>
+          <p><strong>Треки:</strong></p>
+          <ul>
+            <li>Луч солнца — PianoSky</li>
+            <li>Завтрак на террасе — Smooth Waves</li>
+          </ul>
+          <picture>
+            <source srcset="assets/coffee.jpg" media="(min-width: 1025px)">
+            <source srcset="assets/coffee.jpg" media="(min-width: 601px)">
+            <img src="assets/coffee.jpg" alt="Обложка кофе и утро">
+          </picture>
+        </article>
+      </div>
+    </section>
+
+    <section id="reviews" aria-labelledby="rev-heading">
+      <h2 id="rev-heading">Обзоры альбомов</h2>
+      <div class="grid grid-cols" id="reviews-container">
+        <article tabindex="0">
+          <h3>Времена года</h3>
+          <p>Анна П. • 2019</p>
+          <p>★★★★☆</p>
+          <p>Тёплые оркестровые аранжировки...</p>
+          <picture>
+            <source srcset="assets/seasons.jpg" media="(min-width: 1025px)">
+            <source srcset="assets/seasons.jpg" media="(min-width: 601px)">
+            <img src="assets/seasons.jpg" alt="Обложка альбома Времена года">
+          </picture>
+        </article>
+
+        <article tabindex="0">
+          <h3>Городские истории</h3>
+          <p>DJ Ночь • 2021</p>
+          <p>★★★★☆</p>
+          <p>Современный электронный альбом...</p>
+          <picture>
+            <source srcset="assets/book.jpg" media="(min-width: 1025px)">
+            <source srcset="assets/book.jpg" media="(min-width: 601px)">
+            <img src="assets/book.jpg" alt="Обложка альбома Городские истории">
+          </picture>
+        </article>
+
+        <article tabindex="0">
+          <h3>Ночной джаз</h3>
+          <p>Jazz Trio • 2020</p>
+          <p>★★★★★</p>
+          <p>Мягкие саксофонные импровизации для вечернего отдыха.</p>
+          <picture>
+            <source srcset="assets/night_jazz.jpg" media="(min-width: 1025px)">
+            <source srcset="assets/night_jazz.jpg" media="(min-width: 601px)">
+            <img src="assets/night_jazz.jpg" alt="Обложка альбома Ночной джаз">
+          </picture>
+        </article>
+      </div>
+    </section>
+
+    <aside id="recs" aria-labelledby="rec-heading">
+      <h2 id="rec-heading">Рекомендации</h2>
+      <ul>
+        <li tabindex="0">Если вы любите акустику — послушайте «Акустика у костра»</li>
+        <li tabindex="0">Любителям бита: подборка 90-х</li>
+        <li tabindex="0">Для вечерних прогулок — «Ночной джаз»</li>
+        <li tabindex="0">Фанатам электроники: альбом «Синтез рассвета»</li>
+      </ul>
+    </aside>
+  </main>
+  
+  <footer>
+    <nav aria-label="Ссылки в подвале сайта">
+      <ul>
+        <li><a href="#main-title">Наверх ↑</a></li>
+        <li><a href="#playlists">Плейлисты</a></li>
+        <li><a href="#reviews">Обзоры</a></li>
+        <li><a href="#recs">Рекомендации</a></li>
+      </ul>
+    </nav>
+    <p id="end">© 2025 Моя музыкальная коллекция. Все права защищены.</p>
+  </footer>
+
+  <script>
+    const toggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-theme');
+      toggleBtn.textContent = '☀️ Светлая тема';
+    }
+
+    toggleBtn.addEventListener('click', () => {
+      const dark = body.classList.toggle('dark-theme');
+      toggleBtn.textContent = dark ? '☀️ Светлая тема' : '🌙 Тёмная тема';
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
