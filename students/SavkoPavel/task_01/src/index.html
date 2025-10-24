@@ -1,11 +1,11 @@
-<!doctype html> 
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="GameHub — описания, правила, стратегии и обзоры популярных игр." />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GameHub — описания, правила, стратегии и обзоры популярных игр.">
   <title>GameHub — игры, гайды и обзоры</title>
- 
+
   <!-- Подключение внешнего CSS -->
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -34,7 +34,7 @@
         </ul>
       </section>
       <div class="screenshots" tabindex="0">
-        <img 
+        <img
           src="assets/elden-ring/1.jpg"
           srcset="assets/elden-ring/1.jpg 300w, assets/elden-ring/1.jpg 600w"
           sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -61,7 +61,7 @@
         </ul>
       </section>
       <div class="screenshots" tabindex="0">
-        <img 
+        <img
           src="assets/ds3/1.jpg"
           srcset="assets/ds3/1.jpg 300w, assets/ds3/1.jpg 600w"
           sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -88,7 +88,7 @@
         </ul>
       </section>
       <div class="screenshots" tabindex="0">
-        <img 
+        <img
           src="assets/r6/1.jpg"
           srcset="assets/r6/1.jpg 300w, assets/r6/1.jpg 600w"
           sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -115,7 +115,7 @@
         </ul>
       </section>
       <div class="screenshots" tabindex="0">
-        <img 
+        <img
           src="assets/factorio/1.jpg"
           srcset="assets/factorio/1.jpg 300w, assets/factorio/1.jpg 600w"
           sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -142,7 +142,7 @@
         </ul>
       </section>
       <div class="screenshots" tabindex="0">
-        <img 
+        <img
           src="assets/dbd/1.jpg"
           srcset="assets/dbd/1.jpg 300w, assets/dbd/1.jpg 600w"
           sizes="(max-width: 600px) 100vw, (max-width: 1024px) 50vw, 33vw"
@@ -157,7 +157,10 @@
 
   <!-- Модальное окно -->
   <div id="modal" tabindex="0">
-    <img id="modal-img" src="" alt="Увеличенное изображение">
+    <img
+      id="modal-img"
+      src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=="
+      alt="Увеличенное изображение">
   </div>
 
   <script>
@@ -184,7 +187,8 @@
 
     function closeModal() {
       modal.style.display = 'none';
-      modalImg.src = '';
+      // Возвращаем прозрачный пиксель вместо пустого src
+      modalImg.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
     }
 
     modal.addEventListener('click', closeModal);

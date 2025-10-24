@@ -63,13 +63,13 @@
 ### 3. Скриншоты работы сайта
 
 - **Мобильная версия (≤600px):**  
-![](img/mobile.png)
+![](img/mobile.jpg)
 
 - **Планшетная версия (601–1024px):**  
-![](img/tablet.png)
+![](img/tablet.jpg)
 
 - **Десктопная версия (>1024px):**  
-![](img/desktop.png)
+![](img/desktop.jpg)
 
 ---
 
@@ -77,23 +77,20 @@
 
 ### Lighthouse
 
-Результаты проверки качества в браузере Google Chrome:
+Результаты проверки качества в браузере Google Chrome: 
 
-- **Accessibility:** 98  
-- **Best Practices:** 100  
-
-![](img/lighthouse_accessibility.png)  
-![](img/lighthouse_best_practices.png)
+![](img/lighthouse_accessibility.jpg)  
+![](img/lighthouse_best_practices.jpg)
 
 ---
 
 ### Валидаторы
 
 - **HTML Validator:** ошибок не обнаружено  
-![](img/html_validator.png)
+![](img/html_validator.jpg)
 
 - **CSS Validator:** предупреждений и ошибок нет  
-![](img/css_validator.png)
+![](img/css_validator.jpg)
 
 ---
 
