@@ -10,7 +10,7 @@
 <p align="right"><strong>Выполнил:</strong></p>
 <p align="right">Студент 4 курса</p>
 <p align="right">Группы АС-63</p>
-<p align="right">Савко Павел Станиславович</p>
+<p align="right">Савко П.С.</p>
 <p align="right"><strong>Проверил:</strong></p>
 <p align="right">Несюк А.Н.</p>
 <br><br><br><br><br>
