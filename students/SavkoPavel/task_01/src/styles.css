@@ -107,12 +107,34 @@ main {
 }
 
 /* --- Адаптив --- */
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .game-card {
     padding: 1rem;
   }
 
   .game-card h3 {
     font-size: 1.25rem;
+  }
+}
+
+/* Планшет */
+@media (600px < width <= 1024px) {
+  .game-card {
+    padding: 1.25rem;
+  }
+
+  .game-card h3 {
+    font-size: 1.4rem;
+  }
+}
+
+/* Десктоп */
+@media (width > 1024px) {
+  .game-card {
+    padding: 1.5rem;
+  }
+
+  .game-card h3 {
+    font-size: 1.5rem;
   }
 }
