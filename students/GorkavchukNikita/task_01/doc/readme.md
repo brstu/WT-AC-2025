@@ -6,21 +6,21 @@
 
 ## Lighthouse
 
-**Desktop**
+### Desktop
 ![lighthouse_desktop](./img/lighthouse_desktop.png)
-**Mobile**
+### Mobile
 ![lighthouse_mobile](./img/lighthouse_mobile.png)
 
 ## Валидаторы HTML/CSS
 
-**HTML**
+### HTML
 ![HTML](./img/html_validator.png)
-**Mobile**
+### Mobile
 ![CSS](./img/css_validator.png)
 
 ## Архитектура вёрстки (Flex / Grid / медиазапросы)
 
-**Базовые принципы**
+### Базовые принципы
 
 Контент обёрнут в `.container` (max-width: `1116px`, боковые поля из CSS-переменных).
 
