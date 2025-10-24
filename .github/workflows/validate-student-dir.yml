@@ -1,8 +1,7 @@
 name: Validate student directory
 
 on:
-  pull_request:
-    branches: [main]
+  pull_request_target:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
     inputs:
@@ -10,8 +9,13 @@ on:
         description: 'Pull request number to validate (required for manual run)'
         required: false
 
+permissions:
+  issues: write
+  pull-requests: write
+
 jobs:
   check-student-dir:
+    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR
