@@ -1,8 +1,7 @@
 name: Validate student directory
 
 on:
-  pull_request:
-    branches: [main]
+  pull_request_target:
     types: [opened, synchronize, reopened]
   workflow_dispatch:
     inputs:
@@ -10,8 +9,13 @@ on:
         description: 'Pull request number to validate (required for manual run)'
         required: false
 
+permissions:
+  issues: write
+  pull-requests: write
+
 jobs:
   check-student-dir:
+    if: github.base_ref == 'main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR
@@ -49,7 +53,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_EVENT_PATH: ${{ steps.prepare.outputs.event_path || github.event_path }}
           CHECK_RESULT_PATH: .github/check_result.json
-          WHITELIST: ${{ secrets.STUDENT_DIR_WHITELIST }}
+          # Optional whitelist secret; if undefined this will just be empty
+          WHITELIST: "${{ secrets.STUDENT_DIR_WHITELIST }}"
         run: |
           python .github/scripts/check_student_directory.py
 
@@ -66,8 +71,8 @@ jobs:
             echo '.github/check_result.json not found'
           fi
 
-      - name: Comment, label, and close PR on failure
-        if: ${{ failure() }}
+      - name: Comment, label 'Wrong dir', and close PR on failure
+        if: ${{ always() }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -75,4 +80,14 @@ jobs:
           CHECK_RESULT_PATH: .github/check_result.json
         run: |
           echo 'Checking result and possibly commenting/labeling (script)'
-          python .github/scripts/comment_and_label.py
+          python .github/scripts/comment_and_label.py || true
+
+      - name: "On success: label 'Dir approved' and create tracking issue"
+        if: ${{ steps.validate.outcome == 'success' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ steps.prepare.outputs.pr_number || github.event.pull_request.number }}
+          CHECK_RESULT_PATH: .github/check_result.json
+        run: |
+          python .github/scripts/on_success_create_issue.py
