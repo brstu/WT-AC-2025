@@ -7,15 +7,21 @@
 ## Lighthouse
 
 ### Desktop
+
 ![lighthouse_desktop](./img/lighthouse_desktop.png)
+
 ### Mobile
+
 ![lighthouse_mobile](./img/lighthouse_mobile.png)
 
 ## Валидаторы HTML/CSS
 
 ### HTML
+
 ![HTML](./img/html_validator.png)
-### Mobile
+
+### CSS
+
 ![CSS](./img/css_validator.png)
 
 ## Архитектура вёрстки (Flex / Grid / медиазапросы)
@@ -53,6 +59,7 @@
 .images__item { border-radius: var(--radius); overflow:hidden; height:30rem; }
 .images__item img { width:100%; height:100%; object-fit:cover; }
 ```
+
 * Расписание `.program` — сетка из трёх колонок на десктопе:
 
 ```css
