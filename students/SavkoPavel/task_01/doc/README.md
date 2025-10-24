@@ -121,6 +121,7 @@
 ## Ссылка на публикацию
 
 👉 [https://github.com/1nsirius/WT-AC-2025/tree/main/students/SavkoPavel/task_01]
+👉 [https://1nsirius.github.io/GameHub/]
 
 ---
 
