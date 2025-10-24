@@ -1,173 +1,289 @@
-/* ----------------------------
-   Базовые стили (mobile-first)
------------------------------ */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+/* ================================
+   styles.css — упрощённая версия с кнопкой темы справа
+   Mobile-first, адаптивность, доступность
+   Breakpoints:
+     - small: <=600px
+     - medium: 601–1024px
+     - large: >1024px
+   ================================= */
 
-body {
-  font-family: 'Segoe UI', Arial, sans-serif;
-  line-height: 1.6;
-  background-color: #f7f7f7;
-  color: #222;
-  padding: 1rem;
-  transition: all 0.3s ease;
+/* --------- Root variables ---------- */
+:root {
+  --bg: #fff;
+  --panel: #fff;
+  --text: #0b1220;
+  --muted: #475569;
+  --accent: #004aad;
+  --accent-2: #0b8cff;
+  --shadow: 0 6px 18px rgba(11,18,32,0.08);
+
+  --radius-lg: 12px;
+  --radius-md: 8px;
+
+  --gap-md: 1rem;
+  --max-width: 1200px;
+  --font-sans: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --base-font-size: 16px;
 }
 
-header { text-align: center; margin-bottom: 1.5rem; position: relative; }
-header h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #111; }
+/* --------- Reset & typography ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
 
-/* ----------------------------
-   Кнопка переключения темы
------------------------------ */
-#theme-toggle {
-  position: absolute;
-  top: 0.5rem;
-  right: 1rem;
-  padding: 0.3rem 0.6rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-  background: none;
-  border: 2px solid #0a84ff;
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--base-font-size);
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a, button, input, select, textarea { font: inherit; }
+
+/* --------- Focus & accessibility ---------- */
+:focus-visible { 
+  outline: 3px solid var(--accent-2);
+  outline-offset: 3px;
   border-radius: 6px;
-  transition: background 0.3s ease, color 0.3s ease;
 }
 
-#theme-toggle:hover { background-color: #0a84ff20; }
-
-/* ----------------------------
-   Nav
------------------------------ */
-nav ul {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+.skip-link {
+  position: absolute; left: -999px; top: -999px;
+  background: var(--accent); color: #fff;
+  padding: 0.5rem 1rem; border-radius: 0 0.25rem 0.25rem 0;
+  z-index: 999;
 }
+.skip-link:focus { left: 1rem; top: 1rem; box-shadow: var(--shadow); }
 
-nav a {
-  text-decoration: none;
-  color: #0a84ff;
-  font-weight: 600;
-  padding: 0.3rem 0.6rem;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-nav a:hover, nav a:focus-visible {
-  background-color: #0a84ff20;
-  color: #005fcc;
-  outline: none;
-}
-
-/* ----------------------------
-   Sections
------------------------------ */
-section {
-  margin-bottom: 2rem;
-  background-color: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
+/* --------- Layout ---------- */
+.container { width: 100%; max-width: var(--max-width); margin: 0 auto; padding: 0 1rem; }
+header, main, footer, section, article, nav { display: block; }
+header { padding: 1.25rem 0; border-bottom: 1px solid rgba(11,18,32,0.04); }
+main { padding: 1.5rem 0; }
+section { margin: 2rem 0; padding: 1.5rem; background: var(--panel); border-radius: var(--radius-lg); box-shadow: var(--shadow); }
 
 section h2 {
+  text-align: center;         /* центрируем текст */
+  font-size: 1.5rem;          /* размер шрифта */
+  color: var(--accent);       /* цвет */
   margin-bottom: 1rem;
-  font-size: 1.5rem;
-  border-bottom: 2px solid #eee;
-  padding-bottom: 0.5rem;
+  position: relative;         /* для псевдоэлемента линии */
 }
 
-/* ----------------------------
-   Articles
------------------------------ */
-article { margin-bottom: 1.5rem; }
-article h3 { margin-bottom: 0.3rem; font-size: 1.2rem; }
-article p { margin-bottom: 0.5rem; }
-
-article img {
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-  object-fit: cover;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s ease, filter 0.3s ease;
+/* Линия под заголовком */
+section h2::after {
+  content: "";
+  display: block;
+  width: 60px;                /* длина линии */
+  height: 3px;                /* толщина линии */
+  background: var(--accent);  /* цвет линии */
+  margin: 0.5rem auto 0;      /* центрируем по горизонтали */
+  border-radius: 2px;         /* закругление концов линии */
 }
-
-article img:hover { transform: scale(1.05); filter: brightness(1.1); }
-
-/* ----------------------------
-   Галерея
------------------------------ */
-.grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.5rem;
-}
-
-.grid img {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-
-.grid img:hover { transform: scale(1.05); filter: brightness(1.1); }
-
-/* ----------------------------
-   Footer
------------------------------ */
-footer {
+/* --------- Hero header: заголовок + кнопка темы ---------- */
+.hero {
+  position: relative;
   text-align: center;
-  padding: 1rem 0;
+  padding: 2rem 1rem;
+  background: var(--panel);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg); /* только нижние углы */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.hero h1 {
+  margin: 0 auto;
+  font-size: clamp(1.8rem, 3vw + 1rem, 3rem);
+}
+
+/* Кнопка фиксирована справа экрана на уровне заголовка */
+#theme-toggle {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+/* --------- Navigation ---------- */
+nav ul { display: flex; gap: var(--gap-md); flex-wrap: wrap; justify-content: center; list-style: none; padding: 0; margin: 0; }
+nav a { text-decoration: none; color: var(--text); font-weight: 600; padding: 0.45rem 0.75rem; border-radius: 8px; }
+nav a:hover,
+nav a:focus {
+    background-color: rgba(255, 0, 0, 0.08); /* пример смешанного цвета вручную */
+    color: var(--accent-2);
+}
+
+
+
+/* --------- Cards / Grid ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--gap-md);
+  justify-items: center; /* центрируем карточки */
+}
+
+.meme-card {
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  max-width: 550px; /* ограничиваем ширину */
+  display: flex;
+  flex-direction: column;
+}
+
+.meme-card:hover {
+  transform: translateY(-5px) scale(1.02); /* лёгкое поднятие и увеличение */
+  box-shadow: 0 12px 28px rgba(0,0,0,0.15); /* чуть более заметная тень */
+}
+
+.meme-card .media {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+.meme-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.meme-card .card-body {
+  padding: 0.75rem;
+}
+
+.meme-card h3 {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+  color: var(--text);
+}
+
+.meme-card .description {
+  margin: 0;
   font-size: 0.9rem;
-  color: #555;
-  border-top: 1px solid #ddd;
+  color: var(--muted);
 }
 
-/* ----------------------------
-   Фокус и доступность
------------------------------ */
-:focus-visible { outline: 2px solid #0a84ff; outline-offset: 2px; }
-
-/* ----------------------------
-   Адаптивность
------------------------------ */
-@media (min-width: 600px) {
-  body { padding: 2rem; }
-  header h1 { font-size: 2rem; }
-  main { display: flex; flex-direction: column; gap: 1.5rem; }
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  article img { max-height: 350px; }
+/**/
+/* Секция заголовка */
+#categories h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+#categories h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
 }
 
-@media (min-width: 1024px) {
-  body { max-width: 1200px; margin: 0 auto; }
-  header h1 { font-size: 2.5rem; }
-  nav ul { gap: 2rem; }
-  main { display: grid; grid-template-columns: 2fr 1fr; gap: 2rem; }
-  #top-memes { grid-column: 1 / -1; }
-  #gallery .grid { grid-template-columns: repeat(3, 1fr); }
-  article { display: flex; align-items: center; gap: 1rem; }
-  article img { width: 40%; border-radius: 12px; }
-  article p { flex: 1; }
+.category-title {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem 0;
+  color: var(--accent-2);
+}
+/* Ряд категории */
+.category-row {
+  margin-bottom: 2rem;
+}
+.category-row h3 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
 }
 
-/* ----------------------------
-   Темная тема
------------------------------ */
+/* Сетка карточек */
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: var(--gap-md);
+}
+
+/* Карточка */
+.categories-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* 3 карточки в ряд */
+  grid-auto-rows: 400px;                 /* высота каждой строки, можно подкорректировать */
+  gap: var(--gap-md);                     /* расстояние между карточками */
+}
+
+.category {
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* картинка полностью видна внутри карточки */
+}
+
+
+.category:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+}
+
+/* --------- Footer ---------- */
+footer { text-align: center; font-size: 0.9rem; color: var(--muted); padding: 1rem 0; border-top: 1px solid rgba(11,18,32,0.04); }
+
+/* --------- Responsive ---------- */
+@media (min-width: 601px) {
+  .cards, .grid { grid-template-columns: repeat(2, 1fr); }
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .cards, .grid { grid-template-columns: repeat(3, 1fr); }
+  .container { padding: 0 2rem; }
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --------- Dark mode через класс body.dark ---------- */
 body.dark {
-  background-color: #1e1e1e;
-  color: #f0f0f0;
+  --bg: #0b0f14;
+  --panel: #0f1720;
+  --text: #eef2f7;
+  --muted: #b8c2cc;
+  --accent: #3da2ff;
+  --accent-2: #66b9ff;
+  --shadow: 0 6px 20px rgba(0,0,0,0.6);
+
+  background-color: var(--bg);
+  color: var(--text);
 }
 
-body.dark header,
-body.dark section,
-body.dark footer {
-  background-color: #2b2b2b;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+/* Убедимся, что html тоже тянет фон в тёмной теме */
+html {
+  background-color: var(--bg);
 }
-
-body.dark nav a { color: #80c0ff; }
-body.dark nav a:hover,
-body.dark nav a:focus-visible { color: #1e90ff; background-color: #0a84ff20; }
