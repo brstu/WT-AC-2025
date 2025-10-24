@@ -47,11 +47,9 @@ html {
 
 body {
   text-rendering: optimizelegibility;
-
   font-size: 16px;
   font-family: var(--font-sans);
   margin: 0;
-
   background: var(--background);
   color: var(--foreground);
 }
@@ -87,7 +85,6 @@ a {
   border-radius: var(--radius);
   cursor: pointer;
   background-color: var(--btn-bg);
-
   transition-property: color, background-color;
   transition-duration: 300ms;
   transition-timing-function: linear;
@@ -179,7 +176,6 @@ h6.title {
 .intro {
   margin-bottom: 10rem;
   position: relative;
-
   width: 100vw;
   height: calc(100vw / 1.778);
   max-height: 470px;
@@ -244,7 +240,6 @@ h6.title {
   display: flex;
   justify-content: center;
   width: 100%;
-
   margin-top: 2.4rem;
 }
 
@@ -252,7 +247,6 @@ h6.title {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-2);
-
   width: 100%;
   padding: 3rem 0;
 }
