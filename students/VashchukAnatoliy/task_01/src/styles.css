@@ -351,7 +351,7 @@ nav a:focus {
 }
 
 /* --------- Responsive ---------- */
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (601px <= width <= 1024px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -361,7 +361,7 @@ nav a:focus {
   }
 }
 
-@media (min-width: 1025px) {
+@media (width >= 1025px) {
   .cards {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -375,6 +375,7 @@ nav a:focus {
   }
 }
 
+
 /* --------- Dark mode ---------- */
 body.dark {
   --bg: #0b0f14;
@@ -384,6 +385,7 @@ body.dark {
   --accent: #3da2ff;
   --accent-2: #66b9ff;
   --shadow: 0 6px 20px rgb(0 0 0 / 60%);
+ 
   background-color: var(--bg);
   color: var(--text);
 }
