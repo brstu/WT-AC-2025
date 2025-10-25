@@ -12,16 +12,15 @@
     --dark-color: #2c3e50;
     --text-color: #333;
     --bg-color: #f9f9f9;
-    --card-bg: #ffffff;
+    --card-bg: #fff;
     --border-radius: 8px;
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
     --transition: all 0.3s ease;
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #333;
     color: var(--text-color);
     background-color: var(--bg-color);
     display: flex;
@@ -49,7 +48,6 @@ h3 {
 a, button {
     color: var(--secondary-color);
     text-decoration: none;
-    transition: all .3s ease;
     transition: var(--transition);
 }
 
@@ -58,13 +56,22 @@ a:focus, button:focus {
     outline-offset: 2px;
 }
 
+button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
 a:hover, button:hover {
     color: var(--accent-color);
 }
 
+nav a:hover, nav a:focus {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
 header {
     background-color: var(--primary-color);
-    color: #ecf0f1;
     color: var(--light-color);
     padding: 1rem 2rem;
     box-shadow: var(--box-shadow);
@@ -94,7 +101,6 @@ nav {
     position: sticky;
     top: 0;
     z-index: 100;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-shadow: var(--box-shadow);
 }
 
@@ -118,11 +124,6 @@ nav a {
     padding: 0.5rem 1rem;
     border-radius: var(--border-radius);
     display: block;
-}
-
-nav a:hover, nav a:focus {
-    background-color: var(--secondary-color);
-    color: white;
 }
 
 main {
@@ -164,9 +165,7 @@ main {
     background-color: var(--card-bg);
     border-radius: var(--border-radius);
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-shadow: var(--box-shadow);
-    transition: all 0.3s ease;
     transition: var(--transition);
     display: flex;
     flex-direction: column;
@@ -174,7 +173,7 @@ main {
 
 .book-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 20px rgb(0 0 0 / 15%);
 }
 
 .book-image {
@@ -244,12 +243,9 @@ main {
 }
 
 .about {
-    background-color: #ffffff;
     background-color: var(--card-bg);
     padding: 2rem;
-    border-radius: 8px;
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     box-shadow: var(--box-shadow);
     margin-bottom: 3rem;
 }
@@ -284,11 +280,9 @@ input, textarea, select {
     width: 100%;
     padding: 0.75rem;
     border: 1px solid #ddd;
-    border-radius: 8px;
     border-radius: var(--border-radius);
     font-family: inherit;
     font-size: 1rem;
-    transition: all 0.3s ease;
     transition: var(--transition);
 }
 
@@ -302,25 +296,21 @@ button {
     color: white;
     border: none;
     padding: 0.75rem 1.5rem;
-    border-radius: 8px;
     border-radius: var(--border-radius);
     cursor: pointer;
     font-size: 1rem;
     font-weight: bold;
-    transition: all 0.3s ease;
     transition: var(--transition);
 }
 
-button:hover, button:focus {
+button:hover {
     background-color: #e74c3c;
     transform: translateY(-2px);
 }
 
 /* Footer */
 footer {
-    background-color: #2c3e50;
     background-color: var(--primary-color);
-    color: #ecf0f1;
     color: var(--light-color);
     text-align: center;
     padding: 2rem;
@@ -344,7 +334,7 @@ footer {
     font-size: 1.5rem;
     padding: 0.5rem;
     border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgb(255 255 255 / 10%);
     width: 40px;
     height: 40px;
     display: flex;
@@ -357,7 +347,47 @@ footer {
     transform: translateY(-2px);
 }
 
-@media (max-width: 600px) {
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #3498db;
+    color: white;
+    padding: 8px;
+    z-index: 1000;
+    transition: top 0.3s;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+@media (prefers-contrast: high) {
+    .book-image {
+        background: #000;
+        color: #fff;
+    }
+}
+
+@media (width <= 600px) {
     .header-content {
         flex-direction: column;
         text-align: center;
@@ -407,7 +437,7 @@ footer {
     }
 }
 
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (width >= 601px) and (width <= 1024px) {
     .books-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -421,49 +451,8 @@ footer {
     }
 }
 
-@media (min-width: 1025px) {
+@media (width >= 1025px) {
     .books-grid {
         grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip-path: inset(50%);
-    white-space: nowrap;
-    border: 0;
-}
-
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: #3498db;
-    color: white;
-    padding: 8px;
-    z-index: 1000;
-    transition: top 0.3s;
-}
-
-.skip-link:focus {
-    top: 0;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
-    }
-}
-
-
-@media (prefers-contrast: high) {
-    .book-image {
-        background: #000000;
-        color: #ffffff;
     }
 }
