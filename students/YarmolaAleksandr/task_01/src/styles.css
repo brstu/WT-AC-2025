@@ -11,6 +11,21 @@
   --transition: all 0.3s ease;
 }
 
+/* Автоматическая тёмная тема при системных настройках */
+@media (prefers-color-scheme: dark) {
+  :root:not(.light-theme) {
+    --color-bg: #121212;
+    --color-text: #f5f5f5;
+    --color-accent: #39f;
+    --color-accent-contrast: #000;
+    --color-section-bg: #262626;
+    --color-footer-bg: #1a1a1a;
+    --color-border: #444;
+  }
+}
+
+/* Класс для ручного переключения темы (перезаписывает системные настройки) */
+:root.dark-theme,
 body.dark-theme {
   --color-bg: #121212;
   --color-text: #f5f5f5;
