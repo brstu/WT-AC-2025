@@ -95,18 +95,18 @@ vr-architecture-studio/
 
 Результаты проверки качества в браузере Google Chrome:
 
-![Lighthouse Accessibility](img/test1.jpg "Lighthouse Accessibility")
-![Lighthouse Best Practices](img/test2.jpg "Lighthouse Best Practices")
+![Lighthouse Accessibility](image/test1.jpg "Lighthouse Accessibility")
+![Lighthouse Best Practices](image/test2.jpg "Lighthouse Best Practices")
 
 ---
 
 ### Валидаторы
 
 - **HTML Validator:** ошибок не обнаружено
-![HTML Validator](img/test3.jpg "HTML Validator")
+![HTML Validator](image/test3.jpg "HTML Validator")
 
 - **CSS Validator:** ошибок не обнаружено
-![CSS Validator](img/test4.jpg "CSS Validator")
+![CSS Validator](image/test4.jpg "CSS Validator")
 
 ---
 
