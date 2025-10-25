@@ -1,18 +1,22 @@
 #!/usr/bin/env python3
-"""Run AI check for a given student/task using GitHub Models.
+"""Run AI check for a given student/task using GitHub Models or OpenAI.
 
 Usage:
-  python .github/scripts/run_ai_check.py --student NameLatin --task task_XX --prompt-file ai_prompt.txt --out ai_response.md
+    python .github/scripts/run_ai_check.py --student NameLatin --task task_XX --prompt-file ai_prompt.txt --out ai_response.md --engine github
 
-Env:
-  GITHUB_TOKEN: GitHub token with access to Models API
-    MODEL: Optional, defaults to gpt5-mini
+Env (github engine):
+    GITHUB_TOKEN: GitHub token with access to Models API
+        MODEL: Optional, defaults to gpt5-mini
+
+Env (openai engine):
+    OPENAI_API_KEY: OpenAI API key
+        MODEL or OPENAI_MODEL: Optional, choose OpenAI model (defaults to gpt-4o-mini)
 
 This script:
-  - Reads the prepared prompt text
-  - Reads student files (text only) under students/NameLatin/task_XX
-  - Calls GitHub Models chat completions endpoint
-  - Writes the AI response to the output file
+    - Reads the prepared prompt text
+    - Reads student files (text only) under students/NameLatin/task_XX
+    - Calls either GitHub Models or OpenAI chat completions endpoint
+    - Writes the AI response to the output file
 """
 from __future__ import annotations
 
@@ -79,20 +83,39 @@ def collect_files(student: str, task_folder: str, limit_files: int = 50, limit_b
 
 
 def main(argv: list[str] | None = None) -> int:
-    ap = argparse.ArgumentParser(description='Run AI check (GitHub Models)')
+    ap = argparse.ArgumentParser(description='Run AI check (GitHub Models or OpenAI)')
     ap.add_argument('--student', required=True)
     ap.add_argument('--task', required=True, help='task folder name like task_01 or task_1 or 01')
     ap.add_argument('--prompt-file', required=True)
     ap.add_argument('--out', default='ai_response.md')
+    ap.add_argument('--engine', choices=['github', 'openai', 'openrouter', 'openrouter.ai'], default='github', help='Which API to use: github (default), openai (alias) or openrouter')
     ap.add_argument('--debug', action='store_true', help='Enable verbose debug output')
     args = ap.parse_args(argv)
 
-    token = os.environ.get('GITHUB_TOKEN')
-    if not token:
-        print('GITHUB_TOKEN is required in env', file=sys.stderr)
-        return 2
-    model = os.environ.get('MODEL', 'gpt5-mini')
+    engine = args.engine
     debug = args.debug or os.environ.get('DEBUG') == '1'
+
+    # tokens / keys per engine
+    if engine == 'github':
+        token = os.environ.get('GITHUB_TOKEN')
+        if not token:
+            print('GITHUB_TOKEN is required in env for github engine', file=sys.stderr)
+            return 2
+        model = os.environ.get('MODEL', 'gpt5-mini')
+    else:
+        # openai or openrouter
+        if engine in ('openrouter', 'openrouter.ai'):
+            token = os.environ.get('OPENROUTER_API_KEY') or os.environ.get('OPENAI_API_KEY')
+            if not token:
+                print('OPENROUTER_API_KEY (or OPENAI_API_KEY) is required in env for openrouter engine', file=sys.stderr)
+                return 2
+            model = os.environ.get('MODEL', os.environ.get('OPENROUTER_MODEL', os.environ.get('OPENAI_MODEL', 'gpt-4o-mini')))
+        else:  # openai (alias)
+            token = os.environ.get('OPENAI_API_KEY') or os.environ.get('OPENROUTER_API_KEY')
+            if not token:
+                print('OPENAI_API_KEY (or OPENROUTER_API_KEY) is required in env for openai engine', file=sys.stderr)
+                return 2
+            model = os.environ.get('MODEL', os.environ.get('OPENAI_MODEL', os.environ.get('OPENROUTER_MODEL', 'gpt-4o-mini')))
 
     def dbg(msg: str):
         if debug:
@@ -131,19 +154,37 @@ def main(argv: list[str] | None = None) -> int:
     if debug and len(combined) > 50000:
         dbg('Warning: very large prompt may be truncated or rejected by model API')
 
-    endpoint = 'https://models.inference.ai.azure.com/v1/chat/completions'
-    payload = {
-        'model': model,
-        'messages': [
-            {'role': 'user', 'content': combined}
-        ],
-        'temperature': 0.3,
-    }
-    headers = {
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    }
+    if engine == 'github':
+        endpoint = 'https://models.inference.ai.azure.com/v1/chat/completions'
+        payload = {
+            'model': model,
+            'messages': [
+                {'role': 'user', 'content': combined}
+            ],
+            'temperature': 0.3,
+        }
+        headers = {
+            'Authorization': f'Bearer {token}',
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+        }
+    else:
+        # OpenAI or OpenRouter Chat Completions endpoint
+        if engine in ('openrouter', 'openrouter.ai'):
+            endpoint = 'https://api.openrouter.ai/v1/chat/completions'
+        else:
+            endpoint = 'https://api.openai.com/v1/chat/completions'
+        payload = {
+            'model': model,
+            'messages': [
+                {'role': 'user', 'content': combined}
+            ],
+            'temperature': 0.3,
+        }
+        headers = {
+            'Authorization': f'Bearer {token}',
+            'Content-Type': 'application/json',
+        }
 
     try:
         print(f'Calling model {model} with {len(files)} files, prompt length={len(combined)}')
