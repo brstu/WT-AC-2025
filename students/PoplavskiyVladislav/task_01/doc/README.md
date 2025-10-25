@@ -77,7 +77,7 @@ vr-architecture-studio/
 - Контактной секции (contact-grid)
 
 **Медиазапросы:**
-```css
+
 /* Мобильные устройства */
 @media (max-width: 600px) { ... }
 
@@ -144,7 +144,7 @@ vr-architecture-studio/
 
 ## Ссылка на публикацию
 
-👉 [https://github.com/1nsirius/WT-AC-2025/tree/main/students/SavkoPavel/task_01]
+👉 [https://github.com/ImRaDeR1/WT-AC-2025/tree/main/students/PoplavskiyVladislav/task_01]
 👉 [https://imrader1.github.io/VR_Buisness_Project]
 
 ---
