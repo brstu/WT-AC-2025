@@ -69,13 +69,13 @@ Mobile-first подход с 2 брейкпоинтами:
 👉 Вставьте сюда 3 скриншота:
 
 - Мобильная версия (≤600px):
-![](img/mobile.png)
+![MOBILE](img/mobile.png)
 
 - Планшетная версия (601–1024px):
-![](img/tablet.png)
+![TABLET](img/tablet.png)
 
 - Десктопная версия (>1024px):
-![](img/desktop.png)
+![DESKTOP](img/desktop.png)
 
 ---
 
@@ -85,8 +85,8 @@ Mobile-first подход с 2 брейкпоинтами:
 
 👉 Вставьте результаты проверки Lighthouse (Accessibility, Best Practices ≥ 90):
 
-![](img/lighthouse_accessibility.png)
-![](img/lighthouse_best_practices.png)
+![ACCESSIBILITY](img/lighthouse_accessibility.png)
+![BEST_PRACTICES](img/lighthouse_best_practices.png)
 
 ### Валидаторы
 
@@ -96,7 +96,7 @@ Mobile-first подход с 2 брейкпоинтами:
 ![HTML_Validator](img/html_validator.png)
 
 - CSS Validator
-![](img/css_validator.png)
+![CSS_VALIDATOR](img/css_validator.png)
 
 ---
 
@@ -121,7 +121,7 @@ Mobile-first подход с 2 брейкпоинтами:
 
 ---
 
-## Ссылка на публикацию:
+## Ссылка на публикацию
 
 👉 Вставьте ссылку на GitHub Pages: https://eugenefr0st.github.io/WT/
 
