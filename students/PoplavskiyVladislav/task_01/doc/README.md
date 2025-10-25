@@ -103,9 +103,11 @@ vr-architecture-studio/
 ### Валидаторы
 
 - **HTML Validator:** ошибок не обнаружено
+
 ![HTML Validator](image/test3.jpg "HTML Validator")
 
 - **CSS Validator:** ошибок не обнаружено
+
 ![CSS Validator](image/test4.jpg "CSS Validator")
 
 ---
