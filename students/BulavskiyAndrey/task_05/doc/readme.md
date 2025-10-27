@@ -1,27 +1,37 @@
+# Лабораторная работа №5
+
 <p align="center">Министерство образования Республики Беларусь</p>
 <p align="center">Учреждение образования</p>
-<p align="center">“Брестский Государственный технический университет”</p>
+<p align="center">"Брестский Государственный технический университет"</p>
 <p align="center">Кафедра ИИТ</p>
+
 <br><br><br><br><br><br>
+
 <p align="center"><strong>Лабораторная работа №5</strong></p>
-<p align="center"><strong>По дисциплине:</strong> “Веб-технологии”</p>
-<p align="center"><strong>Тема:</strong>Серверное REST API на Node.js + Express</p>
+<p align="center"><strong>По дисциплине:</strong> "Веб-технологии"</p>
+<p align="center"><strong>Тема:</strong> Серверное REST API на Node.js + Express</p>
+
 <br><br><br><br><br><br>
+
 <p align="right"><strong>Выполнил:</strong></p>
 <p align="right">Студент 4 курса</p>
 <p align="right">Группы АС-64</p>
-<p align="right">Булавский А.C.</p>
+<p align="right">Булавский А.С.</p>
 <p align="right"><strong>Проверил:</strong></p>
 <p align="right">Несюк А.Н.</p>
+
 <br><br><br><br><br>
+
 <p align="center"><strong>Брест 2025</strong></p>
 
 ---
 
 ## Цель работы
+
 Разработка REST API для управления библиотекой книг с системой отзывов, включая валидацию данных, обработку ошибок и документацию Swagger.
 
 ### Выполненные задачи
+
 - ✅ Создана базовая структура Express-приложения
 - ✅ Реализованы CRUD операции для книг и отзывов
 - ✅ Добавлена валидация данных с использованием Zod
@@ -32,33 +42,47 @@
 ### Проверка работы API
 
 #### 1. Запуск сервера
+
 ![Запуск сервера](img/start.png)
+
 *Терминал с успешным запуском сервера командой `npm run dev`*
 
 #### 2. Swagger документация
+
 ![Swagger документация](img/swagger1.png)
+
 *Главная страница Swagger UI по адресу `/api/v1/docs`*
 
 ![Swagger документация](img/swagger2.png)
+
 *Пример 1*
 
 ![Swagger документация](img/swaggerRew.png)
+
 *Пример 2*
 
 #### 3. GET /api/v1/books - список книг
+
 ![GET Books](img/getList.png)
+
 *Запрос получения списка книг с пагинацией*
 
 #### 4. POST /api/v1/books - создание книги
+
 ![POST Book](img/post.png)
+
 *Успешное создание новой книги*
 
 #### 5. GET /api/v1/books/{id} - получение книги по ID
+
 ![GET Book by ID](img/get.png)
+
 *Получение конкретной книги по идентификатору*
 
 #### 6. Ошибка 404 - книга не найдена
+
 ![404 Error](img/getError.png)
+
 *Ответ на запрос несуществующей книги*
 
 ## Вывод
