@@ -1,17 +1,25 @@
 name: Validate student directory
 
 on:
-  pull_request:
+  pull_request_target:
     branches: [main]
     types: [opened, synchronize, reopened]
   workflow_dispatch:
     inputs:
       pr_number:
         description: 'Pull request number to validate (required for manual run)'
-        required: false
+        required: true
+
+permissions:
+  issues: write
+  pull-requests: write
 
 jobs:
   check-student-dir:
+    # Run on PRs targeting main, or manual runs when a PR number is provided
+    if: |
+      (github.event_name == 'pull_request_target' && github.event.pull_request.base.ref == 'main') ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.pr_number != '')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout PR
@@ -67,7 +75,7 @@ jobs:
             echo '.github/check_result.json not found'
           fi
 
-      - name: Comment, label 'Wrong dir', and close PR on failure
+      - name: Comment and label PR based on validation result
         if: ${{ always() }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -77,13 +85,3 @@ jobs:
         run: |
           echo 'Checking result and possibly commenting/labeling (script)'
           python .github/scripts/comment_and_label.py || true
-
-      - name: "On success: label 'Dir approved' and create tracking issue"
-        if: ${{ steps.validate.outcome == 'success' }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          REPO: ${{ github.repository }}
-          PR_NUMBER: ${{ steps.prepare.outputs.pr_number || github.event.pull_request.number }}
-          CHECK_RESULT_PATH: .github/check_result.json
-        run: |
-          python .github/scripts/on_success_create_issue.py

@@ -15,6 +15,10 @@ on:
         description: 'Comma-separated fallback models (used if primary fails). Example: phi-3.5-mini,mistral-7b-instruct,starcoder2-7b'
         required: false
         type: string
+      engine:
+        description: 'Which engine to use: github (default) or openai'
+        required: false
+        type: string
       debug:
         description: 'Enable verbose debug output'
         required: false
@@ -79,14 +83,24 @@ jobs:
         env:
           # Uses default GITHUB_TOKEN; to supply a PAT with models permission, temporarily replace this line locally when dispatching or fork a variant workflow.
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          MODEL: ${{ github.event.inputs.model || 'gpt5-mini' }}
-          DEBUG: ${{ github.event.inputs.debug && '1' || '' }}
+          # Optional OpenAI key (store in repository or org secrets as OPENAI_API_KEY)
+          # OPENAI_API_KEY will be exported in-shell from secrets to avoid expression lint warnings
+          # Engine selection - passed to the script as --engine (we default in-shell to 'github')
+          ENGINE: ${{ github.event.inputs.engine }}
+          MODEL: ${{ github.event.inputs.model }}
+          DEBUG: ${{ github.event.inputs.debug }}
         run: |
           set -e
+          # Export OpenAI secret into the shell environment if provided (keeps it out of the job env mapping)
+          export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
           extra=""
-          if [ "${{ github.event.inputs.debug }}" = "true" ]; then extra="--debug"; fi
+          # default MODEL/ENGINE/DEBUG if not provided via inputs
+          if [ -z "$MODEL" ]; then MODEL='gpt5-mini'; fi
+          if [ -z "$ENGINE" ]; then ENGINE='github'; fi
+          if [ "$DEBUG" = "true" ] || [ "$DEBUG" = "1" ]; then DEBUG=1; else DEBUG=0; fi
+          if [ "$DEBUG" = "1" ]; then extra="--debug"; fi
           # Build candidate list: primary MODEL first, then optional model_candidates input.
-          candidates="${{ github.event.inputs.model || 'gpt5-mini' }}"
+          candidates="$MODEL"
           if [ -n "${{ github.event.inputs.model_candidates }}" ]; then
             candidates="$candidates,${{ github.event.inputs.model_candidates }}"
           else
@@ -99,7 +113,7 @@ jobs:
             m_trim=$(echo "$m" | xargs)
             [ -z "$m_trim" ] && continue
             echo "Attempting model: $m_trim" >&2
-            MODEL="$m_trim" python .github/scripts/run_ai_check.py --student "${{ steps.parse.outputs.student }}" --task "${{ steps.parse.outputs.task_folder }}" --prompt-file ai_prompt.txt --out ai_response.md $extra && { chosen="$m_trim"; break; }
+            MODEL="$m_trim" python .github/scripts/run_ai_check.py --engine "$ENGINE" --student "${{ steps.parse.outputs.student }}" --task "${{ steps.parse.outputs.task_folder }}" --prompt-file ai_prompt.txt --out ai_response.md $extra && { chosen="$m_trim"; break; }
             echo "Model $m_trim failed, trying next (if any)" >&2
           done
           unset IFS
@@ -117,7 +131,7 @@ jobs:
         env:
           STUDENT: ${{ steps.parse.outputs.student }}
           TASKN: ${{ steps.parse.outputs.task_n }}
-          CHOSEN_MODEL: ${{ steps.run_models.outputs.chosen_model || '' }}
+          CHOSEN_MODEL: ${{ steps.run_models.outputs.chosen_model }}
         with:
           script: |
             const fs = require('fs');
