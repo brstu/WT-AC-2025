@@ -88,7 +88,7 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument('--task', required=True, help='task folder name like task_01 or task_1 or 01')
     ap.add_argument('--prompt-file', required=True)
     ap.add_argument('--out', default='ai_response.md')
-    ap.add_argument('--engine', choices=['github', 'openai', 'openrouter', 'openrouter.ai'], default='github', help='Which API to use: github (default), openai (alias) or openrouter')
+    ap.add_argument('--engine', choices=['github', 'openai'], default='github', help='Which API to use: github (default) or openai')
     ap.add_argument('--debug', action='store_true', help='Enable verbose debug output')
     args = ap.parse_args(argv)
 
@@ -102,20 +102,13 @@ def main(argv: list[str] | None = None) -> int:
             print('GITHUB_TOKEN is required in env for github engine', file=sys.stderr)
             return 2
         model = os.environ.get('MODEL', 'gpt5-mini')
-    else:
-        # openai or openrouter
-        if engine in ('openrouter', 'openrouter.ai'):
-            token = os.environ.get('OPENROUTER_API_KEY') or os.environ.get('OPENAI_API_KEY')
-            if not token:
-                print('OPENROUTER_API_KEY (or OPENAI_API_KEY) is required in env for openrouter engine', file=sys.stderr)
-                return 2
-            model = os.environ.get('MODEL', os.environ.get('OPENROUTER_MODEL', os.environ.get('OPENAI_MODEL', 'gpt-4o-mini')))
-        else:  # openai (alias)
-            token = os.environ.get('OPENAI_API_KEY') or os.environ.get('OPENROUTER_API_KEY')
-            if not token:
-                print('OPENAI_API_KEY (or OPENROUTER_API_KEY) is required in env for openai engine', file=sys.stderr)
-                return 2
-            model = os.environ.get('MODEL', os.environ.get('OPENAI_MODEL', os.environ.get('OPENROUTER_MODEL', 'gpt-4o-mini')))
+    else:  # openai
+        token = os.environ.get('OPENAI_API_KEY')
+        if not token:
+            print('OPENAI_API_KEY is required in env for openai engine', file=sys.stderr)
+            return 2
+        # map a common env name to OpenAI model name; user can set MODEL env var to choose
+        model = os.environ.get('MODEL', os.environ.get('OPENAI_MODEL', 'gpt-4o-mini'))
 
     def dbg(msg: str):
         if debug:
@@ -168,12 +161,9 @@ def main(argv: list[str] | None = None) -> int:
             'Content-Type': 'application/json',
             'Accept': 'application/json',
         }
-    else:
-        # OpenAI or OpenRouter Chat Completions endpoint
-        if engine in ('openrouter', 'openrouter.ai'):
-            endpoint = 'https://api.openrouter.ai/v1/chat/completions'
-        else:
-            endpoint = 'https://api.openai.com/v1/chat/completions'
+    else:  # openai
+        # OpenAI Chat Completions endpoint
+        endpoint = 'https://api.openai.com/v1/chat/completions'
         payload = {
             'model': model,
             'messages': [
