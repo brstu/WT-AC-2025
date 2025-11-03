@@ -351,7 +351,14 @@ nav a:focus {
 }
 
 /* --------- Responsive ---------- */
-@media (601px <= width <= 1024px) {
+
+/* small: до 600px */
+@media (max-width: 600px) {
+  /* мобильная версия — обычно здесь можно задать дополнительные стили при необходимости */
+}
+
+/* medium: 601–1024px */
+@media (min-width: 601px) and (max-width: 1024px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -361,7 +368,8 @@ nav a:focus {
   }
 }
 
-@media (width >= 1025px) {
+/* large: более 1024px */
+@media (min-width: 1025px) {
   .cards {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -374,7 +382,6 @@ nav a:focus {
     grid-template-columns: repeat(3, 1fr);
   }
 }
-
 
 /* --------- Dark mode ---------- */
 body.dark {
