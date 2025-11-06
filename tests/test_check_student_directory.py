@@ -61,3 +61,24 @@ def test_collect_task_dirs_detects_multiple_tasks():
     tasks = checker.collect_task_dirs(files, 'students/User')
 
     assert tasks == {'task_01', 'task_02'}
+
+
+def test_find_non_task_files_flags_readme_and_misc():
+    script_path = os.path.abspath('.github/scripts/check_student_directory.py')
+    spec = importlib.util.spec_from_file_location('checker', script_path)
+    checker = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(checker)
+
+    files = [
+        'students/User/README.md',
+        'students/User/task_01/src/index.html',
+        'students/User/docs/note.txt',
+        'some/other/place.txt',
+    ]
+
+    non_task = checker.find_non_task_files(files, 'students/User')
+
+    assert 'students/User/README.md' in non_task
+    assert 'students/User/docs/note.txt' in non_task
+    # file outside student dir should not be listed here
+    assert 'some/other/place.txt' not in non_task

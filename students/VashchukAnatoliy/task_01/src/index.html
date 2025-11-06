@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Мем-блог: свежие мемы, история и лучшие подборки интернет-шуток." />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Мой мемо-блог 😎</title>
+</head>
+<body>
+  <header class="hero">
+    <h1>Мем-блог: Путешествие по мем-культуре</h1>
+    <button id="theme-toggle" aria-label="Переключить тему" aria-pressed="false">🌙</button>
+
+    <nav aria-label="Главное меню">
+      <ul class="nav-list">
+        <li><a href="#fresh-memes">Топ мемы</a></li>
+        <li><a href="#history">История</a></li>
+        <li><a href="#categories">Подборки</a></li>
+      </ul>
+    </nav>
+  </header>
+
+
+
+
+  <main>
+    <!-- FRESH MEMES -->
+    <section id="fresh-memes" aria-labelledby="fresh-memes-title">
+      <h2 id="fresh-memes-title">Топ мемы</h2>
+      <div class="cards">
+        <!-- Карточка 1 -->
+        <article class="meme-card">
+          <div class="media">
+            <picture>
+              <source srcset="assets/umni.webp" type="image/webp">
+              <img src="assets/umni.jpg" alt="Мем с умным человеком в очках, шутка в стиле интернет-обоев" loading="lazy" />
+            </picture>
+          </div>
+          <div class="card-body">
+            <h3>Умный человек в очках</h3>
+            <p class="description">Шутка в стиле интернет-обоев, мем для умных людей.</p>
+          </div>
+        </article>
+
+        <!-- Карточка 2 -->
+        <article class="meme-card">
+          <div class="media">
+            <picture>
+              <source srcset="assets/okak.webp" type="image/webp">
+              <img src="assets/okak.jpg" alt="Мем «окак»: шутливая реакция на абсурдную ситуацию" loading="lazy" />
+            </picture>
+          </div>
+          <div class="card-body">
+            <h3>ОКАК</h3>
+            <p class="description">Шутливая реакция на абсурдные события и ситуации.</p>
+          </div>
+        </article>
+
+        <!-- Карточка 3 -->
+        <article class="meme-card">
+          <div class="media">
+            <picture>
+              <source srcset="assets/trala.webp" type="image/webp">
+              <img src="assets/trala.jpg" alt="Итальянский мем «брейнрот»: комичное изображение" loading="lazy" />
+            </picture>
+          </div>
+          <div class="card-body">
+            <h3>Итальянский брейнрот</h3>
+            <p class="description">Комичное изображение, иллюстрирующее абсурдное мышление.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- HISTORY -->
+    <section id="history" aria-labelledby="history-title">
+      <h2 id="history-title">Краткая история мемов</h2>
+      <p>
+        Мемы существуют в интернете почти столько же, сколько и сам интернет. Их история начинается с простых текстовых шуток и графических изображений, которые пользователи обменивались на форумах и в чатах в конце 1990-х и начале 2000-х годов. В то время популярными были «диафильмы» и демотиваторы — изображения с надписями, часто сатирическими или юмористическими.
+      </p>
+      <p>
+        С распространением социальных сетей мемы приобрели новую жизнь: фотографии с забавными подписями стали мгновенно распространяться по всему миру. В середине 2000-х популярными стали мемы вроде «LOLcats» — фотографии кошек с комичными подписями на ломаном английском языке.
+      </p>
+      <p>
+        В 2010-е мемы эволюционировали и стали более динамичными: GIF-анимации, короткие видео и трендовые форматы для платформ вроде Vine и Instagram стали нормой. Мемы начали отражать актуальные события, политические явления, интернет-культуру и повседневную жизнь пользователей.
+      </p>
+      <p>
+        Сегодня мемы — это универсальный язык цифрового поколения. Они служат средством юмора, способом выразить эмоции и часто становятся культурными феноменами. Платформы вроде TikTok, Reddit и Twitter ускорили распространение мемов, превращая их в мгновенные интернет-тренды. Мемы также стали важным инструментом маркетинга и коммуникации, так как способны быстро привлечь внимание аудитории.
+      </p>
+      <p>
+        Несмотря на постоянную эволюцию формата, суть мемов остаётся неизменной: кратко, ярко и остроумно отражать человеческие эмоции, наблюдения и культурные реалии.
+      </p>
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section id="categories">
+      <h2>Тематические подборки</h2>
+
+      <h3 class="category-title">Животные</h3>
+      <div class="categories-grid">
+        <div class="category"><img src="assets/animal_mems/bicycle.webp" alt="Животные"></div>
+        <div class="category"><img src="assets/animal_mems/dengi.webp" alt="Животные"></div>
+        <div class="category"><img src="assets/animal_mems/kot_anime.webp" alt="Животные"></div>
+        <div class="category"><img src="assets/animal_mems/kot_rabota.webp" alt="Животные"></div>
+        <div class="category"><img src="assets/animal_mems/sobachka.webp" alt="Животные"></div>
+      </div>
+
+      <h3 class="category-title">Офис</h3>
+      <div class="categories-grid">
+        <div class="category"><img src="assets/office_mems/cherniy_umor.webp" alt="Офис"></div>
+        <div class="category"><img src="assets/office_mems/family.webp" alt="Офис"></div>
+        <div class="category"><img src="assets/office_mems/ieroglifi.webp" alt="Офис"></div>
+        <div class="category"><img src="assets/office_mems/nitworking.webp" alt="Офис"></div>
+        <div class="category"><img src="assets/office_mems/tech_support.webp" alt="Офис"></div>
+        <div class="category"><img src="assets/office_mems/zakodirovaniy.webp" alt="Офис"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Мем-блог Ващука Анатолия</p>
+  </footer>
+
+  <!-- Скрипты -->
+  <script>
+    const themeToggle = document.getElementById('theme-toggle');
+    const body = document.body;
+
+    // Проверка сохранённой темы или системной (prefers-color-scheme)
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark' || (!savedTheme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      body.classList.add('dark');
+      themeToggle.textContent = '☀️'; // иконка сразу в тёмной теме
+      themeToggle.setAttribute('aria-pressed', true);
+    }
+
+    // Обработчик клика на кнопку
+    themeToggle.addEventListener('click', () => {
+      body.classList.toggle('dark');
+      const isDark = body.classList.contains('dark');
+      themeToggle.setAttribute('aria-pressed', isDark);
+      themeToggle.textContent = isDark ? '☀️' : '🌙';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+
+</body>
+</html>
