@@ -80,4 +80,4 @@
 ![CSS](./image/validcss.png)
 
 
-[Site](https://stis25.github.io/Web_Task01/)
+[Site](https://github.com/teenage717/web4kurs1lab)
