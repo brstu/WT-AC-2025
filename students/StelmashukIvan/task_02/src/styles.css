@@ -29,7 +29,7 @@ main {
     margin: 1rem 0;
     padding: 1.5rem;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
 }
 
 .section h2 {
@@ -37,7 +37,6 @@ main {
     color: #2c3e50;
 }
 
-/* Форма */
 .form-group {
     margin-bottom: 1rem;
 }
@@ -84,13 +83,13 @@ textarea:invalid {
     font-size: 1rem;
 }
 
-.submit-btn:not(:disabled):hover {
-    background: #2980b9;
-}
-
 .submit-btn:disabled {
     background: #bdc3c7;
     cursor: not-allowed;
+}
+
+.submit-btn:not(:disabled):hover {
+    background: #2980b9;
 }
 
 .form-result {
@@ -208,7 +207,6 @@ textarea:invalid {
     cursor: not-allowed;
 }
 
-/* Аккордеон */
 .accordion {
     margin-top: 1rem;
 }
@@ -273,7 +271,6 @@ textarea:invalid {
     margin: 0;
 }
 
-/* Задачи */
 .tasks-container {
     background: #f8f9fa;
     padding: 1rem;
@@ -356,7 +353,6 @@ textarea:invalid {
     background: #7f8c8d;
 }
 
-/* Тултип */
 .tooltip {
     position: absolute;
     background: #2c3e50;
@@ -386,7 +382,6 @@ textarea:invalid {
     opacity: 1;
 }
 
-/* Футер */
 footer {
     background: #2c3e50;
     color: white;
@@ -395,8 +390,7 @@ footer {
     margin-top: 2rem;
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .days-tablist {
         flex-direction: column;
     }
@@ -419,7 +413,6 @@ footer {
     }
 }
 
-/* Focus для доступности */
 button:focus,
 input:focus,
 textarea:focus {
