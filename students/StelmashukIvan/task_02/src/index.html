@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Планировщик поездки</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Планировщик поездки</h1>
+    </header>
+
+    <main>
+        <!-- Форма с валидацией -->
+        <section id="route-form" class="section">
+            <h2>Форма обратной связи</h2>
+            <form class="contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Имя *</label>
+                    <input type="text" id="name" name="name" required>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-mail *</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Сообщение *</label>
+                    <textarea id="message" name="message" required minlength="20" placeholder="Расскажите о вашей поездке..."></textarea>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <button type="submit" class="submit-btn" disabled>Отправить сообщение</button>
+            </form>
+            <div class="form-result" aria-live="polite"></div>
+        </section>
+
+        <!-- Табы дней поездки -->
+        <section id="days-tabs" class="section">
+            <h2>Дни поездки</h2>
+            <div class="tabs-container">
+                <div role="tablist" aria-label="Дни поездки" class="days-tablist">
+                    <!-- Табы генерируются динамически -->
+                </div>
+                
+                <div class="tab-panels">
+                    <!-- Панели дней генерируются динамически -->
+                </div>
+            </div>
+
+            <div class="day-actions">
+                <button class="add-day-btn">Добавить день</button>
+                <button class="remove-day-btn" disabled>Удалить день</button>
+            </div>
+        </section>
+
+        <!-- Аккордеон с частыми вопросами -->
+        <section id="faq" class="section">
+            <h2>Частые вопросы о поездках</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="panel-packing">
+                        Что взять с собой в поездку?
+                    </button>
+                    <div id="panel-packing" class="accordion-panel" aria-hidden="true">
+                        <p>Обязательно возьмите: документы, деньги, телефон, зарядные устройства, аптечку, сменную одежду.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="panel-booking">
+                        Как забронировать отель?
+                    </button>
+                    <div id="panel-booking" class="accordion-panel" aria-hidden="true">
+                        <p>Используйте проверенные сайты бронирования. Проверяйте отзывы и расположение отеля.</p>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-button" aria-expanded="false" aria-controls="panel-budget">
+                        Как рассчитать бюджет поездки?
+                    </button>
+                    <div id="panel-budget" class="accordion-panel" aria-hidden="true">
+                        <p>Учитывайте: транспорт, проживание, питание, экскурсии, сувениры и непредвиденные расходы (+10-15%).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Список задач с тултипами -->
+        <section id="tasks" class="section">
+            <h2>Задачи и напоминания</h2>
+            <div class="tasks-container">
+                <div class="task-list">
+                    <!-- Задачи будут добавляться динамически -->
+                </div>
+                <div class="add-task-form">
+                    <input type="text" class="new-task-input" placeholder="Новая задача">
+                    <button class="add-task-btn" data-tooltip="Добавить новую задачу в список">Добавить задачу</button>
+                </div>
+                
+                <!-- Примеры задач с тултипами -->
+                <div class="task-examples">
+                    <button class="task-example-btn" data-tooltip="Напоминание о бронировании отеля">🏨 Забронировать отель</button>
+                    <button class="task-example-btn" data-tooltip="Не забудьте купить билеты заранее">🎫 Купить билеты</button>
+                    <button class="task-example-btn" data-tooltip="Собрать необходимые лекарства">💊 Собрать аптечку</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Тултип (всплывающая подсказка) -->
+    <div class="tooltip" role="tooltip" aria-hidden="true"></div>
+
+    <footer>
+        <p>Планировщик поездки - Лабораторная работа 02</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>
