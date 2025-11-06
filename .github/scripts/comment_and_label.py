@@ -33,7 +33,7 @@ LONG_TEMPLATE = (
     '⚠️ Обнаружены изменения вне вашей разрешённой директории.\n\n'
     'Разрешённая директория: **{allowed}**\n\n'
     'Изменённые файлы, которые нужно перенести:\n{files}\n\n'
-    'Инструкция: перенесите ваши файлы в указанную папку и создайте новый PR. Если вы считаете, что изменения вне папки обоснованы, ответьте на этот комментарий и преподаватель рассмотрит ваш случай.'
+    'Инструкция: перенесите ваши файлы в указанную папку students/NameLatin/task_xx/ и создайте новый PR. Если вы считаете, что изменения вне папки обоснованы, ответьте на этот комментарий и преподаватель рассмотрит ваш случай.'
 )
 
 MULTI_TASK_TEMPLATE = (
@@ -74,6 +74,16 @@ def add_label(repo: str, pr_number: str, headers: dict, label: str) -> int:
     return r.status_code
 
 
+def remove_label(repo: str, pr_number: str, headers: dict, label: str) -> int:
+    # DELETE /repos/{owner}/{repo}/issues/{issue_number}/labels/{name}
+    import urllib.parse
+    name = urllib.parse.quote(label, safe='')
+    url = f'https://api.github.com/repos/{repo}/issues/{pr_number}/labels/{name}'
+    r = requests.delete(url, headers=headers)
+    LOG.info('remove_label(%s) status=%s', label, r.status_code)
+    return r.status_code
+
+
 def close_pull_request(repo: str, pr_number: str, headers: dict) -> int:
     url = f'https://api.github.com/repos/{repo}/issues/{pr_number}'
     r = requests.patch(url, headers=headers, json={'state': 'closed'})
@@ -97,11 +107,26 @@ def main() -> int:
 
     data: Any = json.load(open(path, encoding='utf-8'))
     exit_code = int(data.get('exit_code', 1))
-    if exit_code not in (2, 3, 4):
+    headers = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
+
+    # Success path (exit_code == 0): ensure label 'Dir approved', remove 'Wrong dir'
+    if exit_code == 0:
+        existing_labels = get_issue_labels(repo, pr, headers)
+        if 'Wrong dir' in existing_labels:
+            remove_label(repo, pr, headers, 'Wrong dir')
+        if 'Dir approved' not in existing_labels:
+            add_label(repo, pr, headers, 'Dir approved')
+        # no comment, do not close
+        LOG.info('Success: ensured label Dir approved and removed Wrong dir (if present)')
+        return 0
+
+    # Treat 2 (outside dir), 3 (no mapping), 4 (multiple tasks), 5 (non-task files) as failures
+    if exit_code not in (2, 3, 4, 5):
         LOG.info('No failure detected (exit_code=%s), nothing to do', exit_code)
         return 0
 
     violations = data.get('violations', [])
+    non_task_files = data.get('non_task_files', [])
     author = data.get('author', 'unknown')
     allowed = data.get('allowed', 'unknown')
     tasks = data.get('tasks', [])
@@ -113,10 +138,11 @@ def main() -> int:
         tasks_list = ', '.join(f'`{t}`' for t in tasks[:10])
         body = MULTI_TASK_TEMPLATE.format(tasks=tasks_list or '—')
     else:
-        files_list = '\n'.join(f'- {v}' for v in violations[:20])
+        # For exit_code 2 -> files outside allowed directory (violations)
+        # For exit_code 5 -> files inside student dir but outside task_* (non_task_files)
+        files_src = non_task_files if exit_code == 5 else violations
+        files_list = '\n'.join(f'- {v}' for v in files_src[:20])
         body = LONG_TEMPLATE.format(allowed=allowed, files=files_list)
-
-    headers = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
 
     # Avoid duplicate comments: look for an existing bot comment with marker and update it
     marker = '<!-- student-dir-checker -->'
@@ -137,13 +163,12 @@ def main() -> int:
     else:
         post_comment(repo, pr, headers, marked_body)
 
-    # Avoid duplicate label
+    # Remove previous success label and ensure failure label
     existing_labels = get_issue_labels(repo, pr, headers)
-    label = 'invalid-directory'
-    if label in existing_labels:
-        LOG.info('Label %s already present — skipping', label)
-    else:
-        add_label(repo, pr, headers, label)
+    if 'Dir approved' in existing_labels:
+        remove_label(repo, pr, headers, 'Dir approved')
+    if 'Wrong dir' not in existing_labels:
+        add_label(repo, pr, headers, 'Wrong dir')
 
     close_pull_request(repo, pr, headers)
 
