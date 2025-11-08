@@ -1,0 +1,233 @@
+:root {
+    --bg-body: linear-gradient(to right, #e6e6fa, #fffacd);
+    --text-color: #000000;
+    --section-bg: #fffaf0;
+    --section-heading: #000000;
+    --header-bg: linear-gradient(120deg, #6f89ad, #9486b3, #ba82a7, #deb0a1, #e4e4ce);
+    --nav-link: #000000;
+    --nav-hover: #ffd700;
+    --table-border: #ddd;
+    --footer-text: #000000;
+    --footer-bg: #f5f5f5; 
+    --background-section: linear-gradient(120deg, #6f89ad, #9486b3, #ba82a7, #deb0a1, #e4e4ce);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-body: linear-gradient(to right, #2c2c2c, #4b3621);
+        --text-color: #e0e0e0;
+        --section-bg: #3c2f2f;
+        --section-heading: #e0e0e0;
+        --header-bg: linear-gradient(to right, #054c76, #0c192a, #471c3a);
+        --nav-link: #e0e0e0;
+        --nav-hover: #ffd700;
+        
+        --table-border: #555;
+        --footer-text: #e0e0e0;
+        --footer-bg: #2c2c2c;
+        --background-section: linear-gradient(to right, #054c76, #0c192a, #471c3a);
+    }
+}
+
+[data-theme="dark"] {
+    --bg-body: linear-gradient(to right, #2c2c2c, #4b3621);
+    --text-color: #e0e0e0;
+    --section-bg: #3c2f2f;
+    --section-heading: #e0e0e0;
+    --header-bg: linear-gradient(to right, #054c76, #0c192a, #471c3a);
+    --nav-link: #e0e0e0;
+    --nav-hover: #ffd700;
+    --table-border: #555;
+    --footer-text: #e0e0e0;
+    --footer-bg: #2c2c2c;
+    --background-section: linear-gradient(to right, #054c76, #0c192a, #471c3a);
+}
+
+/* Рекомендация: Проверьте контрастность цветов (--text-color, --nav-link, --nav-hover) с помощью WebAIM Contrast Checker для соответствия ≥ 4.5:1 */
+
+body {
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    background: var(--bg-body);
+    margin: 0;
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+header {
+    text-align: center; 
+    padding: 10px 0; 
+    background: var(--header-bg);
+    color: var(--nav-link);
+    border-radius: 10px;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.fancy-title {
+    font-size: 48px;
+    margin: 0;
+    color: transparent;
+    text-align: center;
+}
+
+.subtitle {
+    font-size: 20px; 
+    margin-top: 10px; 
+    opacity: 0.9;
+}
+
+nav {
+    margin: 15px 0;
+}
+
+nav a {
+    margin: 0 15px;
+    color: var(--nav-link);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+    text-align: center;
+}
+
+nav a:hover, nav a:focus {
+    color: var(--nav-hover);
+    outline: 2px solid var(--nav-hover);
+    outline-offset: 2px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+section {
+    padding: 20px;
+    background: var(--background-section);
+    margin: 10px auto;
+    border-radius: 8px;
+    max-width: 1000px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.highlight {
+    padding: 20px;
+    background: var(--background-section);
+    margin: 10px auto;
+    border-radius: 8px;
+    max-width: 600px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    color: var(--section-heading);
+    border-bottom: 2px solid purple;
+    padding-bottom: 10px;
+    font-family: 'Trebuchet MS';
+    text-align: center;
+}
+
+footer {
+    background: var(--footer-bg);
+    color: var(--footer-text);
+    padding: 20px 0;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin: 10px 0;
+    font-family: 'Trebuchet MS';
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    margin: 10px 0;
+    font-family: 'Trebuchet MS';
+    text-align: left;
+    font-size: 24px;
+}
+
+.grid img {
+    width: 200px;
+    height: auto;
+    margin-right: 20px;
+    max-width: 100%; /* Добавлено для адаптивности */
+}
+
+#theme-toggle:focus {
+    outline: 2px solid var(--nav-hover);
+    outline-offset: 2px;
+}
+
+#habits-table {
+    border: 1px solid var(--table-border);
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 20px;
+}
+
+#habits-table th, #habits-table td {
+    border: 1px solid var(--table-border);
+    padding: 8px;
+    text-align: left;
+}
+
+#habits-table th {
+    background: var(--table-header-bg);
+}
+
+@media (max-width: 768px) {
+    nav ul li { 
+        display: block; 
+        margin: 10px 0; 
+    }
+    .grid { 
+        grid-template-columns: 1fr; 
+        text-align: center; 
+    }
+    .grid img { 
+        margin: 0 auto 20px; 
+    }
+}
+
+@media (min-width: 1024px) {
+    .container {
+        max-width: 1400px;
+        gap: 30px;
+    }
+    section {
+        max-width: 1200px;
+        padding: 30px;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+    .grid img {
+        width: 250px;
+    }
+}
