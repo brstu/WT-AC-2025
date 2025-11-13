@@ -1,17 +1,19 @@
 :root {
   --bg: #f4f6fb;
-  --card: #ffffff;
+  --card: #fff;
   --accent: #1f6feb;
   --muted: #6b7280;
   --danger: #dc2626;
   --radius: 10px;
-  --shadow: 0 6px 18px rgba(16, 24, 40, 0.08);
+  --shadow: 0 6px 18px rgb(16 24 40 / 8%);
 }
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
+
 body {
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial,
     "Noto Sans", sans-serif;
@@ -54,7 +56,7 @@ main {
   margin-bottom: 1.25rem;
   padding: 1rem;
   border-radius: 14px;
-  background: linear-gradient(90deg, #ffffff, #fbfdff);
+  background: linear-gradient(90deg, #fff, #fbfdff);
   box-shadow: var(--shadow);
 }
 
@@ -93,7 +95,7 @@ main {
 .tabs button[aria-selected="true"] {
   background: linear-gradient(90deg, var(--accent), #3b82f6);
   color: #fff;
-  box-shadow: 0 10px 30px rgba(31, 111, 235, 0.12);
+  box-shadow: 0 10px 30px rgb(31 111 235 / 12%);
 }
 
 .tabpanel {
@@ -102,7 +104,7 @@ main {
   border-radius: 12px;
   margin-bottom: 1rem;
   box-shadow: var(--shadow);
-  border: 1px solid rgba(15, 23, 42, 0.03);
+  border: 1px solid rgb(15 23 42 / 3%);
 }
 
 .lessons {
@@ -118,7 +120,7 @@ main {
   justify-content: space-between;
   padding: 0.8rem;
   border-radius: 10px;
-  border: 1px solid rgba(31, 111, 235, 0.06);
+  border: 1px solid rgb(31 111 235 / 6%);
   background: linear-gradient(180deg, #fff, #fbfdff);
 }
 
@@ -126,6 +128,7 @@ main {
   font-weight: 600;
   color: #0b1220;
 }
+
 .view-btn {
   background: transparent;
   border: 1px solid var(--accent);
@@ -137,7 +140,7 @@ main {
 }
 
 .view-btn:hover {
-  background: rgba(31, 111, 235, 0.06);
+  background: rgb(31 111 235 / 6%);
 }
 
 /* modal */
@@ -147,7 +150,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(2, 6, 23, 0.45);
+  background: rgb(2 6 23 / 45%);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.18s;
@@ -165,8 +168,8 @@ main {
   width: 96%;
   border-radius: 14px;
   position: relative;
-  box-shadow: 0 40px 80px rgba(2, 6, 23, 0.28);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  box-shadow: 0 40px 80px rgb(2 6 23 / 28%);
+  border: 1px solid rgb(15 23 42 / 4%);
 }
 
 .modal-close {
@@ -194,8 +197,8 @@ main {
   background: linear-gradient(180deg, #fff, #fcfdff);
   padding: 0.9rem;
   border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.06);
-  border: 1px solid rgba(15, 23, 42, 0.04);
+  box-shadow: 0 10px 24px rgb(2 6 23 / 6%);
+  border: 1px solid rgb(15 23 42 / 4%);
   display: flex;
   flex-direction: column;
   gap: 0.45rem;
@@ -204,6 +207,11 @@ main {
 .questions .meta {
   font-size: 0.85rem;
   color: var(--muted);
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.95rem;
 }
 
 .questions .q-title {
@@ -223,19 +231,19 @@ main {
 
 .questions .btn-inline {
   background: transparent;
-  border: 1px solid rgba(15, 23, 42, 0.06);
+  border: 1px solid rgb(15 23 42 / 6%);
   padding: 0.35rem 0.6rem;
   border-radius: 8px;
   cursor: pointer;
 }
 
 .questions .btn-delete {
-  border-color: rgba(220, 38, 38, 0.12);
+  border-color: rgb(220 38 38 / 12%);
   color: var(--danger);
 }
 
 .questions .btn-delete:hover {
-  background: rgba(220, 38, 38, 0.06);
+  background: rgb(220 38 38 / 6%);
 }
 
 /* Modal header */
@@ -244,7 +252,7 @@ main {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.04);
+  border-bottom: 1px solid rgb(15 23 42 / 4%);
   padding-bottom: 0.6rem;
   margin-bottom: 0.6rem;
 }
@@ -301,11 +309,6 @@ textarea {
   cursor: not-allowed;
 }
 
-.meta {
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-
 footer .container {
   max-width: 1100px;
   margin: 0 auto;
@@ -317,7 +320,7 @@ footer p {
   color: #6b7280;
 }
 
-@media (min-width: 880px) {
+@media (width >= 880px) {
   .lessons {
     grid-template-columns: 1fr 1fr;
   }
