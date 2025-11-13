@@ -29,7 +29,7 @@
 cd .\students\YarmolaAleksandr\task_02\src
 ```
 
-3. Откройте `index.html` в браузере двойным кликом или через PowerShell:
+1. Откройте `index.html` в браузере двойным кликом или через PowerShell:
 
 ```powershell
 start .\index.html
