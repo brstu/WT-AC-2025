@@ -1,6 +1,12 @@
 # Отчёт — Вариант 23: Каталог уроков
 
-Краткое описание
+## Публикация
+
+**Сайт опубликован:** https://alexsandro007.github.io/all_tasks_v23/task_02/src/index.html
+
+---
+
+## Краткое описание
 
 Реализован небольшой SPA‑подобный каталог уроков с тремя основными функциями:
 
@@ -20,7 +26,7 @@
 2. Перейдите в папку `task_02/src`:
 
 ```powershell
-cd .\tasks\task_02\src
+cd .\students\YarmolaAleksandr\task_02\src
 ```
 
 3. Откройте `index.html` в браузере двойным кликом или через PowerShell:
@@ -119,3 +125,28 @@ start .\index.html
 
 ![Мобильная версия](screenshots/mobile.png)
 *Рисунок 7: Мобильная версия*
+
+---
+
+## Валидация и качество кода
+
+### HTML Validator (W3C)
+
+HTML-код проверен через [W3C Markup Validator](https://validator.w3.org/).
+
+![HTML Validation](screenshots/validation/html_validator.png)
+*Рисунок 8: Результат валидации HTML — 0 ошибок, 0 предупреждений*
+
+### CSS Validator (W3C)
+
+CSS-код проверен через [W3C CSS Validator](https://jigsaw.w3.org/css-validator/).
+
+![CSS Validation](screenshots/validation/css_validator.png)
+*Рисунок 9: Результат валидации CSS — 0 ошибок*
+
+### Консоль браузера
+
+Проверка на отсутствие ошибок JavaScript в консоли браузера.
+
+![Clean Console](screenshots/validation/console_clean.png)
+*Рисунок 10: Консоль браузера без ошибок*

@@ -302,8 +302,15 @@ if (questionsEl) {
   });
 }
 
-// === Инициализация при загрузке ===
 submitBtn.disabled = true;
+
+document.querySelector('.cta-js-btn')?.addEventListener('click', () => {
+  const tab3 = document.querySelector('#tab-3');
+  if (tab3) {
+    tab3.focus();
+    activateTab(tab3);
+  }
+});
 
 document.addEventListener('DOMContentLoaded', () => {
   let initialTab = null;

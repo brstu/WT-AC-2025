@@ -306,6 +306,17 @@ textarea {
   font-size: 0.95rem;
 }
 
+footer .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+footer p {
+  margin: 0;
+  color: #6b7280;
+}
+
 @media (min-width: 880px) {
   .lessons {
     grid-template-columns: 1fr 1fr;

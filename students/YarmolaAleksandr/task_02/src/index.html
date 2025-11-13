@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Каталог уроков — Вариант 23</title>
-  <meta name="theme-color" content="#0f172a" />
+  <meta name="theme-color" content="#0f172a">
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +24,7 @@
         <p class="meta">Реализовано: табы, модалка, делегирование событий, клиентская валидация.</p>
       </div>
       <div class="cta">
-        <button class="view-btn" onclick="document.querySelector('#tab-3').click()">Перейти к JavaScript</button>
+        <button class="view-btn cta-js-btn">Перейти к JavaScript</button>
       </div>
     </div>
     <nav aria-label="Темы уроков">
@@ -43,7 +43,7 @@
       </ul>
     </section>
 
-    <section id="panel-2" class="tabpanel" role="tabpanel" aria-labelledby="tab-2" hidden aria-hidden="true">
+    <section id="panel-2" class="tabpanel" role="tabpanel" aria-labelledby="tab-2" hidden>
       <h2>CSS — Стили и адаптив</h2>
       <ul class="lessons" data-topic="CSS">
         <li data-id="css-1">Flexbox и Grid <button class="view-btn">Просмотр</button></li>
@@ -51,7 +51,7 @@
       </ul>
     </section>
 
-    <section id="panel-3" class="tabpanel" role="tabpanel" aria-labelledby="tab-3" hidden aria-hidden="true">
+    <section id="panel-3" class="tabpanel" role="tabpanel" aria-labelledby="tab-3" hidden>
       <h2>JavaScript — DOM и события</h2>
       <ul class="lessons" data-topic="JS">
         <li data-id="js-1">Работа с DOM <button class="view-btn">Просмотр</button></li>
@@ -66,13 +66,13 @@
       <form id="question-form" novalidate>
         <div class="field">
           <label for="name">Имя <span class="required">*</span></label>
-          <input id="name" name="name" type="text" required minlength="2" />
+          <input id="name" name="name" type="text" required minlength="2">
           <div class="error" aria-live="polite"></div>
         </div>
 
         <div class="field">
           <label for="email">E-mail <span class="required">*</span></label>
-          <input id="email" name="email" type="email" required />
+          <input id="email" name="email" type="email" required>
           <div class="error" aria-live="polite"></div>
         </div>
 
@@ -108,8 +108,8 @@
   </div>
 
   <footer>
-    <div class="container" style="max-width:1100px;margin:0 auto;padding:1rem;">
-      <p style="margin:0;color:#6b7280;">Автор: Ярмола Александр • ЛР02 — DOM и события — Вариант 23 • 2025</p>
+    <div class="container">
+      <p>Автор: Ярмола Александр • ЛР02 — DOM и события — Вариант 23 • 2025</p>
     </div>
   </footer>
 
