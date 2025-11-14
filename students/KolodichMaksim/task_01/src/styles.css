@@ -27,10 +27,8 @@ nav ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-nav ul li {
-    margin: 0.5rem 0;
+    gap: 1rem;
+    margin: 0;
 }
 
 nav a {
@@ -39,7 +37,8 @@ nav a {
     font-weight: bold;
 }
 
-nav a:hover, nav a:focus {
+nav a:hover,
+nav a:focus {
     text-decoration: underline;
     outline: 2px solid white;
 }
@@ -52,9 +51,10 @@ section {
     margin-bottom: 2rem;
 }
 
-.character-grid, .meme-grid {
+.character-grid,
+.meme-grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
 }
 
@@ -78,8 +78,9 @@ footer a {
 }
 
 /* Доступность: видимый фокус */
-a:focus, button:focus {
-    outline: 2px solid #ff9900;
+a:focus,
+button:focus {
+    outline: 2px solid #f90;
 }
 
 /* Контраст: проверено на >=4.5:1 */
@@ -87,7 +88,7 @@ a:focus, button:focus {
 /* Медиа-запросы для адаптивности */
 
 /* Tablet (601-1024px) */
-@media (min-width: 601px) {
+@media (min-width: 601px) and (max-width: 1024px) {
     nav ul {
         flex-direction: row;
         justify-content: center;
@@ -95,10 +96,6 @@ a:focus, button:focus {
 
     nav ul li {
         margin: 0 1rem;
-    }
-
-    .character-grid, .meme-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 
     main {
@@ -111,11 +108,6 @@ a:focus, button:focus {
 @media (min-width: 1025px) {
     header {
         padding: 2rem;
-    }
-
-    .character-grid, .meme-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
 
     main {
         max-width: 1200px;
@@ -124,28 +116,19 @@ a:focus, button:focus {
 }
 
 /* Бонус: Тёмная тема */
-@media (prefers-color-scheme: dark) {
+@media (preferred-color-scheme: dark) {
     body {
         background-color: #121212;
         color: #e0e0e0;
     }
 
-    header, footer {
-        background-color: #003366;
+    header,
+    footer {
+        background-color: #036;
     }
 
     a {
         color: #bbdefb;
     }
 }
-
-/* Использование Flexbox в нав */
-nav ul {
-    display: flex;
-    gap: 1rem; /* Flex gaps */
-}
-
-/* Grid с minmax для персонажей */
-.character-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
