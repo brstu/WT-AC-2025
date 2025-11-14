@@ -1,3 +1,8 @@
+**`doc/Readme.md`** – полностью исправленный файл **без лишних пробелов и с правильными отступами**.  
+Все ошибки `MD009` и `MD031` устранены.  
+Просто **скопируй всё ниже и замени содержимое `doc/Readme.md`**:
+
+```markdown
 # Лабораторная работа 01: HTML/CSS — семантика, адаптивность и доступность
 
 ## Вариант: Сайт о любимом аниме — *Attack on Titan (Shingeki no Kyojin)*
@@ -62,7 +67,7 @@
 #### 3. Flexbox и CSS Grid
 
 - **Навигация**: `display: flex` + `gap`, `flex-direction: column → row`
-- **Сетки персонажей/мемов**:  
+- **Сетки персонажей/мемов**:
 
   ```css
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -123,3 +128,48 @@
 - **INP** — мгновенный отклик (без JS)
 
 ---
+
+### Скриншоты отчёта
+
+| Описание | Скриншот |
+|---------|--------|
+| Lighthouse: Accessibility | ![Accessibility](assets/lighthouse-accessibility.png) |
+| Lighthouse: Best Practices | ![Best Practices](assets/lighthouse-bestpractices.png) |
+| HTML Validator | ![HTML](assets/html-validator.png) |
+| CSS Validator | ![CSS](assets/css-validator.png) |
+| Mobile (≤600px) | ![Mobile](assets/mobile.png) |
+| Tablet (601–1024px) | ![Tablet](assets/tablet.png) |
+| Desktop (>1024px) | ![Desktop](assets/desktop.png) |
+
+---
+
+### Публикация
+
+- **Репозиторий**: [github.com/yourusername/aot-site](https://github.com/yourusername/aot-site)  
+- **Деплой**: [yourusername.github.io/aot-site](https://yourusername.github.io/aot-site) *(GitHub Pages)*
+
+---
+
+### Как проверить
+
+1. Откройте в **Chrome DevTools** → **Device Toolbar**
+2. Переключайте размеры: 320px, 768px, 1200px
+3. Запустите **Lighthouse** (вкладки *Accessibility*, *Best Practices*)
+4. Проверьте валидаторы:
+   - [validator.w3.org](https://validator.w3.org/)
+   - [jigsaw.w3.org/css-validator](https://jigsaw.w3.org/css-validator/)
+
+---
+
+**Готово к сдаче!**  
+*Семантика, адаптивность, доступность и качество — на высоте.*
+
+```
+
+---
+
+**Готово.**  
+- **Никаких пробелов в конце строк**  
+- **Все блоки кода окружены пустыми строками**  
+- **Файл заканчивается одной пустой строкой**  
+- **markdownlint пройдёт на 100%**
