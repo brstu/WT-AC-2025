@@ -2,8 +2,6 @@
 
 ## Вариант: Сайт о любимом аниме — *Attack on Titan (Shingeki no Kyojin)*
 
----
-
 ### Описание проекта
 
 Одностраничный сайт, посвящённый аниме **"Атака титанов"**.  
@@ -15,8 +13,6 @@
 
 Реализована **семантическая разметка HTML5**, **адаптивная вёрстка (mobile-first)** и **доступность (a11y)**.  
 Проверено через **Lighthouse** и **W3C валидаторы**.
-
----
 
 ### Архитектура вёрстки
 
@@ -53,8 +49,6 @@
   @media (min-width: 1025px) { ... }
   ```
 
----
-
 ### Доступность (a11y)
 
 | Критерий               | Реализация |
@@ -66,8 +60,6 @@
 | **Управление с клавиатуры** | Все ссылки доступны через `Tab` |
 | **Контраст**           | ≥ 4.5:1 (проверено [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)) |
 
----
-
 ### Качество и валидность
 
 | Инструмент         | Результат |
@@ -75,8 +67,6 @@
 | **Lighthouse**     | Accessibility: **95**<br>Best Practices: **92** |
 | **W3C HTML Validator** | **0 ошибок** |
 | **W3C CSS Validator**  | **0 ошибок** |
-
----
 
 ### Бонусные улучшения (+10 баллов)
 
@@ -98,4 +88,25 @@
 - **CLS** — 0 (стабильная сетка, без сдвигов)  
 - **LCP** — оптимизировано (маленькие изображения, быстрый рендер)  
 - **INP** — мгновенный отклик (без JS)
+
+### Скриншоты отчёта
+
+| Описание | Скриншот |
+|---------|--------|
+| Lighthouse: Accessibility | ![Accessibility](assets/lighthouse-accessibility.png) |
+| Lighthouse: Best Practices | ![Best Practices](assets/lighthouse-bestpractices.png) |
+| HTML Validator | ![HTML](assets/html-validator.png) |
+| CSS Validator | ![CSS](assets/css-validator.png) |
+| Mobile (≤600px) | ![Mobile](assets/mobile.png) |
+| Tablet (601–1024px) | ![Tablet](assets/tablet.png) |
+| Desktop (>1024px) | ![Desktop](assets/desktop.png) |
+
+### Как проверить
+
+1. Откройте в **Chrome DevTools** → **Device Toolbar**
+2. Переключайте размеры: 320px, 768px, 1200px
+3. Запустите **Lighthouse** (вкладки *Accessibility*, *Best Practices*)
+4. Проверьте валидаторы:
+   - [validator.w3.org](https://validator.w3.org/)
+   - [jigsaw.w3.org/css-validator](https://jigsaw.w3.org/css-validator/)
 
