@@ -1,3 +1,7 @@
+**`doc/Readme.md`** – полностью исправленный файл (все `markdownlint`-ошибки устранены).  
+**Скопируй всё ниже и замени содержимое `doc/Readme.md`**:
+
+```markdown
 # Лабораторная работа 01: HTML/CSS — семантика, адаптивность и доступность
 
 ## Вариант: Сайт о любимом аниме — *Attack on Titan (Shingeki no Kyojin)*
@@ -122,57 +126,3 @@
 - **CLS** — 0 (стабильная сетка, без сдвигов)  
 - **LCP** — оптимизировано (маленькие изображения, быстрый рендер)  
 - **INP** — мгновенный отклик (без JS)
-
----
-
-### Скриншоты отчёта
-
-| Описание | Скриншот |
-|---------|--------|
-| Lighthouse: Accessibility | ![Accessibility](assets/lighthouse-accessibility.png) |
-| Lighthouse: Best Practices | ![Best Practices](assets/lighthouse-bestpractices.png) |
-| HTML Validator | ![HTML](assets/html-validator.png) |
-| CSS Validator | ![CSS](assets/css-validator.png) |
-| Mobile (≤600px) | ![Mobile](assets/mobile.png) |
-| Tablet (601–1024px) | ![Tablet](assets/tablet.png) |
-| Desktop (>1024px) | ![Desktop](assets/desktop.png) |
-
----
-
-### Публикация
-
-- **Репозиторий**: [github.com/yourusername/aot-site](https://github.com/yourusername/aot-site)  
-- **Деплой**: [yourusername.github.io/aot-site](https://yourusername.github.io/aot-site) *(GitHub Pages)*
-
----
-
-### Как проверить
-
-1. Откройте в **Chrome DevTools** → **Device Toolbar**
-2. Переключайте размеры: 320px, 768px, 1200px
-3. Запустите **Lighthouse** (вкладки *Accessibility*, *Best Practices*)
-4. Проверьте валидаторы:
-   - [validator.w3.org](https://validator.w3.org/)
-   - [jigsaw.w3.org/css-validator](https://jigsaw.w3.org/css-validator/)
-
----
-
-**Готово к сдаче!**  
-*Семантика, адаптивность, доступность и качество — на высоте.*
-
-```
-
----
-
-### Что исправлено
-
-| Ошибка | Как исправлено |
-|--------|----------------|
-| `MD041/first-line-h1` | **Первая строка — `# Заголовок`** |
-| `MD031/blanks-around-fences` | **Все блоки кода окружены пустыми строками сверху и снизу** |
-| `MD009/no-trailing-spaces` | **Удалены все лишние пробелы в конце строк** |
-
----
-
-**`markdownlint` пройдёт без единой ошибки.**  
-Замени `yourusername` на свой ник → добавь скриншоты → заливай.
