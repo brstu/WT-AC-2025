@@ -1,7 +1,3 @@
-**`doc/Readme.md`** – полностью исправленный файл (все `markdownlint`-ошибки устранены).  
-**Скопируй всё ниже и замени содержимое `doc/Readme.md`**:
-
-```markdown
 # Лабораторная работа 01: HTML/CSS — семантика, адаптивность и доступность
 
 ## Вариант: Сайт о любимом аниме — *Attack on Titan (Shingeki no Kyojin)*
@@ -19,30 +15,6 @@
 
 Реализована **семантическая разметка HTML5**, **адаптивная вёрстка (mobile-first)** и **доступность (a11y)**.  
 Проверено через **Lighthouse** и **W3C валидаторы**.
-
----
-
-### Структура проекта
-
-```
-/
-├── index.html
-├── styles.css
-├── assets/
-│   ├── eren.jpg
-│   ├── mikasa.jpg
-│   ├── armin.jpg
-│   ├── meme1.jpg
-│   ├── meme2.jpg
-│   ├── lighthouse-accessibility.png
-│   ├── lighthouse-bestpractices.png
-│   ├── html-validator.png
-│   ├── css-validator.png
-│   ├── mobile.png
-│   ├── tablet.png
-│   └── desktop.png
-└── README.md
-```
 
 ---
 
@@ -126,3 +98,4 @@
 - **CLS** — 0 (стабильная сетка, без сдвигов)  
 - **LCP** — оптимизировано (маленькие изображения, быстрый рендер)  
 - **INP** — мгновенный отклик (без JS)
+

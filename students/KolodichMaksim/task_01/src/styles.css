@@ -90,7 +90,7 @@ footer {
 /* Медиа-запросы для адаптивности */
 
 /* Tablet (601–1024px) */
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (601px <= width <= 1024px) {
     nav ul {
         flex-direction: row;
         justify-content: center;
@@ -107,7 +107,7 @@ footer {
 }
 
 /* Desktop (>1024px) */
-@media (min-width: 1025px) {
+@media (1025px <= width) {
     header {
         padding: 2rem;
     }
