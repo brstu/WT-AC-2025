@@ -1,89 +1,88 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    line-height: 1.6;
-    background-image: url('assets/PCsetup.jpg');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
-    min-height: 100vh;
-    position: relative;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #333;
+  line-height: 1.6;
+  background-image: url('assets/PCsetup.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
 }
 
 header {
-    background: #43d13b;
-    color: white;
-    padding: 10px 20px;
-    text-align: center;
+  background: #43d13b;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
 }
 
 nav {
-    display: flex;
-    justify-content: center;
-    background: #333;
+  display: flex;
+  justify-content: center;
+  background: #333;
 }
 
-nav a {
+  nav a {
     color: white;
     padding: 14px 20px;
     text-decoration: none;
     text-align: center;
-}
+  }
 
-nav a:hover {
-    background: #575757;
-}
+    nav a:hover {
+      background: #575757;
+    }
 
 main {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  padding: 20px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
 }
 
 section {
-    background: white;
-    margin: 10px 0;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 800px;
+  background: white;
+  margin: 10px 0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
 }
 
 footer {
-    text-align: center;
-    padding: 10px 0;
-    background: #333;
-    color: white;
+  text-align: center;
+  padding: 10px 0;
+  background: #333;
+  color: white;
 }
 
 /* Responsive styles */
 @media (max-width: 600px) {
-    nav {
-        flex-direction: column;
-    }
+  nav {
+    flex-direction: column;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 1024px) {
-    main {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
+  main {
+    flex-flow: row wrap;
+    justify-content: center;
+  }
 
-    section {
-        width: 45%;
-        margin: 10px;
-    }
+  section {
+    width: 45%;
+    margin: 10px;
+  }
 }
 
 @media (min-width: 1025px) {
-    section {
-        width: 30%;
-        margin: 10px;
-    }
+  section {
+    width: 30%;
+    margin: 10px;
+  }
 }
