@@ -5,11 +5,16 @@
 ### Описание проекта
 
 Одностраничный сайт, посвящённый аниме **"Атака титанов"**.  
-Содержит разделы:  
-- **Сюжет**  
-- **Персонажи**  
-- **Фан-теории**  
+Содержит разделы:
+
+- **Сюжет** 
+
+- **Персонажи** 
+
+- **Фан-теории** 
+
 - **Мемы**
+
 
 Реализована **семантическая разметка HTML5**, **адаптивная вёрстка (mobile-first)** и **доступность (a11y)**.  
 Проверено через **Lighthouse** и **W3C валидаторы**.
@@ -81,7 +86,9 @@
 #### Адаптивные изображения
 
 - `max-width: 100%`, `height: auto`
+
 - Готово к использованию `<picture>`, `srcset`, `sizes` (при наличии разных размеров)
+
 
 #### Web Vitals
 
@@ -100,13 +107,3 @@
 | Mobile (≤600px) | ![Mobile](assets/mobile.png) |
 | Tablet (601–1024px) | ![Tablet](assets/tablet.png) |
 | Desktop (>1024px) | ![Desktop](assets/desktop.png) |
-
-### Как проверить
-
-1. Откройте в **Chrome DevTools** → **Device Toolbar**
-2. Переключайте размеры: 320px, 768px, 1200px
-3. Запустите **Lighthouse** (вкладки *Accessibility*, *Best Practices*)
-4. Проверьте валидаторы:
-   - [validator.w3.org](https://validator.w3.org/)
-   - [jigsaw.w3.org/css-validator](https://jigsaw.w3.org/css-validator/)
-
