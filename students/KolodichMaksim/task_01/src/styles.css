@@ -39,6 +39,16 @@ nav a {
     font-weight: bold;
 }
 
+footer a {
+    color: white;
+}
+
+/* Доступность: видимый фокус */
+a:focus,
+button:focus {
+    outline: 2px solid #f90;
+}
+
 nav a:hover,
 nav a:focus {
     text-decoration: underline;
@@ -74,17 +84,6 @@ footer {
     padding: 1rem;
     margin-top: 2rem;
 }
-
-footer a {
-    color: white;
-}
-
-/* Доступность: видимый фокус */
-a:focus,
-button:focus {
-    outline: 2px solid #f90;
-}
-
 /* Контраст: проверено на >=4.5:1 */
 
 /* Медиа-запросы для адаптивности */
