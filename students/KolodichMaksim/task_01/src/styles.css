@@ -1,0 +1,151 @@
+/* styles.css */
+
+/* Базовые стили (mobile-first) */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+header {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+h1, h2, h3 {
+    margin: 0.5rem 0;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav ul li {
+    margin: 0.5rem 0;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover, nav a:focus {
+    text-decoration: underline;
+    outline: 2px solid white;
+}
+
+main {
+    padding: 1rem;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+.character-grid, .meme-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+footer {
+    background-color: #004080;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: white;
+}
+
+/* Доступность: видимый фокус */
+a:focus, button:focus {
+    outline: 2px solid #ff9900;
+}
+
+/* Контраст: проверено на >=4.5:1 */
+
+/* Медиа-запросы для адаптивности */
+
+/* Tablet (601-1024px) */
+@media (min-width: 601px) {
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0 1rem;
+    }
+
+    .character-grid, .meme-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    main {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+}
+
+/* Desktop (>1024px) */
+@media (min-width: 1025px) {
+    header {
+        padding: 2rem;
+    }
+
+    .character-grid, .meme-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    main {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+}
+
+/* Бонус: Тёмная тема */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #121212;
+        color: #e0e0e0;
+    }
+
+    header, footer {
+        background-color: #003366;
+    }
+
+    a {
+        color: #bbdefb;
+    }
+}
+
+/* Использование Flexbox в нав */
+nav ul {
+    display: flex;
+    gap: 1rem; /* Flex gaps */
+}
+
+/* Grid с minmax для персонажей */
+.character-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
