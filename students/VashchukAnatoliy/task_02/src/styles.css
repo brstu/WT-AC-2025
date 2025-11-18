@@ -347,31 +347,6 @@ nav a:focus {
   box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
 }
 
-/* --------- Responsive ---------- */
-@media (601px <= width <= 1024px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .categories-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (width >= 1025px) {
-  .cards {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .container {
-    padding: 0 2rem;
-  }
-
-  .categories-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
 /* --------- Dark mode ---------- */
 body.dark {
   --bg: #0b0f14;
@@ -384,6 +359,11 @@ body.dark {
  
   background-color: var(--bg);
   color: var(--text);
+}
+
+body.dark .form-group input,
+body.dark .form-group textarea {
+  border-color: rgb(238 242 247 / 20%);
 }
 
 /* ================================
@@ -439,7 +419,7 @@ body.dark {
 .accordion-panel {
   padding: 0 1.5rem;
   background: var(--panel);
-  animation: fadeIn 0.3s ease;
+  animation: fade-in 0.3s ease;
 }
 
 .accordion-panel p {
@@ -447,7 +427,7 @@ body.dark {
   line-height: 1.6;
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
@@ -499,7 +479,7 @@ body.dark {
 }
 
 .tab-panel {
-  animation: fadeIn 0.3s ease;
+  animation: fade-in 0.3s ease;
 }
 
 /* --------- Forms ---------- */
@@ -538,8 +518,8 @@ body.dark {
   box-shadow: 0 0 0 3px rgb(11 140 255 / 10%);
 }
 
-.form-group input:invalid:not(:focus):not(:placeholder-shown),
-.form-group textarea:invalid:not(:focus):not(:placeholder-shown) {
+.form-group input:invalid:not(:focus, :placeholder-shown),
+.form-group textarea:invalid:not(:focus, :placeholder-shown) {
   border-color: #dc2626;
 }
 
@@ -554,6 +534,17 @@ body.dark {
   color: var(--muted);
   font-size: 0.875rem;
   margin-top: 0.25rem;
+}
+
+.submit-button:focus {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+.submit-button:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  transform: none;
 }
 
 .submit-button {
@@ -572,17 +563,6 @@ body.dark {
 .submit-button:hover:not(:disabled) {
   background: var(--accent-2);
   transform: translateY(-2px);
-}
-
-.submit-button:focus {
-  outline: 3px solid var(--accent-2);
-  outline-offset: 2px;
-}
-
-.submit-button:disabled {
-  background: var(--muted);
-  cursor: not-allowed;
-  transform: none;
 }
 
 #form-result {
@@ -633,10 +613,10 @@ body.dark {
   overflow-y: auto;
   position: relative;
   box-shadow: 0 20px 60px rgb(0 0 0 / 30%);
-  animation: modalAppear 0.3s ease;
+  animation: modal-appear 0.3s ease;
 }
 
-@keyframes modalAppear {
+@keyframes modal-appear {
   from {
     opacity: 0;
     transform: scale(0.9) translateY(-20px);
@@ -646,6 +626,7 @@ body.dark {
     transform: scale(1) translateY(0);
   }
 }
+
 
 .modal-close {
   position: absolute;
@@ -716,6 +697,30 @@ body.dark {
 }
 
 /* --------- Responsive Enhancements ---------- */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1025px) {
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .container {
+    padding: 0 2rem;
+  }
+
+  .categories-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 @media (max-width: 600px) {
   .tabs {
     flex-direction: column;
@@ -741,11 +746,6 @@ body.dark {
 body.dark .like-button {
   background: rgb(15 23 32 / 90%);
   color: var(--text);
-}
-
-body.dark .form-group input,
-body.dark .form-group textarea {
-  border-color: rgb(238 242 247 / 20%);
 }
 
 /* Category groups для новой структуры */
