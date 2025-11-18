@@ -383,11 +383,6 @@ nav a:focus {
   box-shadow: 0 0 0 3px rgb(11 140 255 / 10%);
 }
 
-.form-group input:invalid:not(:focus, :placeholder-shown),
-.form-group textarea:invalid:not(:focus, :placeholder-shown) {
-  border-color: #dc2626;
-}
-
 .error-message {
   color: #dc2626;
   font-size: 0.875rem;
@@ -467,6 +462,11 @@ body.dark {
 body.dark .form-group input,
 body.dark .form-group textarea {
   border-color: rgb(238 242 247 / 20%);
+}
+
+.form-group input:invalid:not(:focus, :placeholder-shown),
+.form-group textarea:invalid:not(:focus, :placeholder-shown) {
+  border-color: #dc2626;
 }
 
 /* ================================
@@ -621,6 +621,7 @@ body.dark .form-group textarea {
     opacity: 0;
     transform: scale(0.9) translateY(-20px);
   }
+
   to {
     opacity: 1;
     transform: scale(1) translateY(0);
@@ -703,7 +704,7 @@ body.dark .like-button {
 }
 
 /* --------- Responsive Enhancements ---------- */
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (601px <= width <= 1024px) {
   .cards {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -713,7 +714,7 @@ body.dark .like-button {
   }
 }
 
-@media (min-width: 1025px) {
+@media (width >= 1025px) {
   .cards {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -727,7 +728,7 @@ body.dark .like-button {
   }
 }
 
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .tabs {
     flex-direction: column;
   }
