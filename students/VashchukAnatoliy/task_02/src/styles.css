@@ -347,6 +347,109 @@ nav a:focus {
   box-shadow: 0 12px 30px rgb(0 0 0 / 10%);
 }
 
+/* --------- Forms ---------- */
+.feedback-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid rgb(11 18 32 / 15%);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: var(--panel);
+  color: var(--text);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-2);
+  box-shadow: 0 0 0 3px rgb(11 140 255 / 10%);
+}
+
+.form-group input:invalid:not(:focus, :placeholder-shown),
+.form-group textarea:invalid:not(:focus, :placeholder-shown) {
+  border-color: #dc2626;
+}
+
+.error-message {
+  color: #dc2626;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  min-height: 1.25rem;
+}
+
+.help-text {
+  color: var(--muted);
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.submit-button {
+  width: 100%;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.submit-button:focus {
+  outline: 3px solid var(--accent-2);
+  outline-offset: 2px;
+}
+
+.submit-button:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  transform: none;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: var(--accent-2);
+  transform: translateY(-2px);
+}
+
+#form-result {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-weight: 600;
+}
+
+#form-result.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #a7f3d0;
+}
+
+#form-result.error {
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+}
+
 /* --------- Dark mode ---------- */
 body.dark {
   --bg: #0b0f14;
@@ -482,109 +585,6 @@ body.dark .form-group textarea {
   animation: fade-in 0.3s ease;
 }
 
-/* --------- Forms ---------- */
-.feedback-form {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-.form-group label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: var(--text);
-}
-
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 0.75rem 1rem;
-  border: 2px solid rgb(11 18 32 / 15%);
-  border-radius: var(--radius-md);
-  font-size: 1rem;
-  transition: all 0.2s ease;
-  background: var(--panel);
-  color: var(--text);
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--accent-2);
-  box-shadow: 0 0 0 3px rgb(11 140 255 / 10%);
-}
-
-.form-group input:invalid:not(:focus, :placeholder-shown),
-.form-group textarea:invalid:not(:focus, :placeholder-shown) {
-  border-color: #dc2626;
-}
-
-.error-message {
-  color: #dc2626;
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-  min-height: 1.25rem;
-}
-
-.help-text {
-  color: var(--muted);
-  font-size: 0.875rem;
-  margin-top: 0.25rem;
-}
-
-.submit-button:focus {
-  outline: 3px solid var(--accent-2);
-  outline-offset: 2px;
-}
-
-.submit-button:disabled {
-  background: var(--muted);
-  cursor: not-allowed;
-  transform: none;
-}
-
-.submit-button {
-  width: 100%;
-  background: var(--accent);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.submit-button:hover:not(:disabled) {
-  background: var(--accent-2);
-  transform: translateY(-2px);
-}
-
-#form-result {
-  margin-top: 1rem;
-  padding: 1rem;
-  border-radius: var(--radius-md);
-  text-align: center;
-  font-weight: 600;
-}
-
-#form-result.success {
-  background: #d1fae5;
-  color: #065f46;
-  border: 1px solid #a7f3d0;
-}
-
-#form-result.error {
-  background: #fee2e2;
-  color: #dc2626;
-  border: 1px solid #fecaca;
-}
-
 /* --------- Modal ---------- */
 .modal {
   position: fixed;
@@ -696,6 +696,12 @@ body.dark .form-group textarea {
   font-weight: 600;
 }
 
+/* Dark mode adjustments */
+body.dark .like-button {
+  background: rgb(15 23 32 / 90%);
+  color: var(--text);
+}
+
 /* --------- Responsive Enhancements ---------- */
 @media (min-width: 601px) and (max-width: 1024px) {
   .cards {
@@ -740,12 +746,6 @@ body.dark .form-group textarea {
     margin: 1rem;
     max-height: calc(100vh - 2rem);
   }
-}
-
-/* Dark mode adjustments */
-body.dark .like-button {
-  background: rgb(15 23 32 / 90%);
-  color: var(--text);
 }
 
 /* Category groups для новой структуры */
