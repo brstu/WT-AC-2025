@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Агрегатор новостей</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Агрегатор новостей</h1>
+            <p>Поиск новостей по ключевым словам</p>
+        </header>
+
+        <div class="search-container">
+            <input type="text" class="search-input" placeholder="Введите ключевое слово для поиска новостей..." id="searchInput">
+            <button class="search-button" id="searchButton">Поиск</button>
+            <button class="refresh-button" id="refreshButton">Обновить</button>
+        </div>
+
+        <div class="status-container" id="statusContainer"></div>
+
+        <div class="news-grid" id="newsGrid"></div>
+
+        <div class="pagination" id="pagination"></div>
+
+        <div class="cache-info" id="cacheInfo"></div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
