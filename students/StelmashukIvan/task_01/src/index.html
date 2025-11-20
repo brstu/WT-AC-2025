@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Путешествия по Беларуси</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <a href="#main" class="skip-link">Перейти к основному содержимому</a>
+        <h1>Путешествия по Беларуси</h1>
+        <p>Открой для себя скрытые жемчужины родной страны</p>
+    </header>
+
+    <nav class="navigation" aria-label="Основное меню">
+        <ul>
+            <li><a href="#places">Интересные места</a></li>
+            <li><a href="#routes">Маршруты</a></li>
+            <li><a href="#gallery">Фотогалерея</a></li>
+            <li><a href="#recomendations">Рекомендации</a></li>
+        </ul>
+    </nav>
+
+    <main id="main">
+        <section id="places" aria-labelledby="places-heading">
+            <h2 id="places-heading">Интересные места</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Мирский замок</h3>
+                    <p>Величественно возвышающийся над живописными пейзажами Гродненской области Беларуси, – 
+                        это не просто исторический памятник, а настоящая каменная летопись белорусской земли, 
+                        воплощение мощи, красоты и трагической судьбы одного из самых могущественных родов в истории – 
+                        Радзивиллов.</p>
+                </div>
+                <div class="card">
+                    <h3>Беловежская пуща</h3>
+                    <p>Один из самых известных и ценных природных комплексов Восточной Европы. Это уникальный 
+                        национальный парк и заповедник, расположенный на границе Беларуси и Польши. 
+                        Он славится своими вековыми лесами, редкими видами животных и богатой историей. </p>
+                </div>
+                <div class="card">
+                    <h3>Несвижский дворец</h3>
+                    <p>Один из самых значимых архитектурных памятников Беларуси, расположенный в одноимённом 
+                        городе Несвиж Минской области. Этот дворцово-замковый комплекс является ярким примером 
+                        архитектуры XVI—XVIII веков и служил резиденцией князей Радзивиллов, 
+                        одного из самых влиятельных и богатых родов Великого княжества Литовского.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="routes" aria-labelledby="routes-heading">
+            <h2 id="routes-heading">Готовые маршруты</h2>
+            <div class="gallery-grid">
+                <figure>
+                    <img src="images/Mir_castle_travell.jpg" 
+                        alt="Минск - Мирский замок" width="400" height="233">
+                    <figcaption>Минск - Мирский замок</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/Pusha_travell.jpg" 
+                        alt="Минск - Беловежская пуща" width="400" height="233">
+                    <figcaption>Минск - Беловежская пуща</figcaption>
+                </figure>
+                <figure>
+                    <img src="images/Nesvij_castle_travell.jpg" 
+                        alt="Минск - Несвижский замок" width="400" height="233">
+                    <figcaption>Минск - Несвижский замок</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section id="gallery" aria-labelledby="gallery-heading">
+            <h2 id="gallery-heading">Фотогалерея</h2>
+            <div class="gallery-grid">
+                <figure>
+                    <img src="images/Mir_castle.jpg" 
+                        alt="Мирский замок" width="400" height="233">
+                </figure>
+                <figure>
+                    <img src="images/Pusha.jpg" 
+                        alt="Беловежская пуща" width="400" height="233">
+                </figure>
+                <figure>
+                    <img src="images/Nesvij_castle.jpg" 
+                        alt="Несвижский замок" width="400" height="233">
+                </figure>
+            </div>
+        </section>
+
+        <section id="recomendations" aria-labelledby="recomendations-heading">
+            <h2 id="recomendations-heading">Рекомендации</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <h3>Браславские озера</h3>
+                    <p>Жемчужина белорусского Поозерья, известная своими кристально чистыми озерами, 
+                    живописными ландшафтами и богатым природным разнообразием. Этот национальный парк 
+                    предлагает идеальные условия для отдыха на природе, водного туризма и рыбалки.</p>
+                </div>
+                <div class="card">
+                    <h3>Брестская крепость</h3>
+                    <p>Легендарный мемориальный комплекс, символ мужества и героизма защитников Отечества. 
+                    Посещение крепости позволяет погрузиться в историю Великой Отечественной войны 
+                    и отдать дань памяти героям-защитникам.</p>
+                </div>
+                <div class="card">
+                    <h3>Город-герой Минск</h3>
+                    <p>Столица Беларуси сочетает в себе советское наследие с современной архитектурой. 
+                    Город поражает чистотой, широкими проспектами, уютными парками и богатой культурной жизнью. 
+                    Обязателен к посещению для понимания современной белорусской идентичности.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Путешествия по Беларуси</p>
+        <address>Контакты: <a href="mailto:belarus-travel@gmail.com">belarus-travel@gmail.com</a></address>
+    </footer>
+</body>
+</html>
