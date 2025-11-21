@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokémon Catalog - Лабораторная 03</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pokémon Catalog</h1>
+            <div class="controls">
+                <div class="search-container">
+                    <input type="text" id="searchInput" placeholder="Search Pokémon..." />
+                    <button id="refreshBtn">Refresh</button>
+                </div>
+                <div class="pagination-controls">
+                    <button id="prevBtn">Previous</button>
+                    <span id="pageInfo">Page 1</span>
+                    <button id="nextBtn">Next</button>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <div id="loadingState" class="state hidden">
+                <div class="skeleton-list">
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                    <div class="skeleton-item"></div>
+                </div>
+            </div>
+
+            <div id="errorState" class="state hidden">
+                <div class="error-message">
+                    <h3>Error Loading Data</h3>
+                    <p id="errorText"></p>
+                    <button id="retryBtn">Try Again</button>
+                </div>
+            </div>
+
+            <div id="emptyState" class="state hidden">
+                <div class="empty-message">
+                    <h3>No Pokémon Found</h3>
+                    <p>Try adjusting your search criteria</p>
+                </div>
+            </div>
+
+            <div id="contentState" class="state">
+                <div class="pokemon-grid" id="pokemonGrid"></div>
+            </div>
+
+            <div id="retryIndicator" class="retry-indicator hidden">
+                <span>Retrying...</span>
+                <div class="retry-dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>
