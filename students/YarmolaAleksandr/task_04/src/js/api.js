@@ -115,8 +115,33 @@ function delay() {
  * API класс для работы с IT-инструментами
  */
 export class ToolsAPI {
-    constructor() {
+    constructor(auth = null) {
+        this.auth = auth;
         initDatabase();
+    }
+
+    /**
+     * Получить заголовки с токеном авторизации
+     * @returns {Object} Объект заголовков
+     */
+    getHeaders() {
+        const headers = {
+            'Content-Type': 'application/json'
+        };
+
+        if (this.auth && this.auth.isAuthenticated()) {
+            headers['Authorization'] = `Bearer ${this.auth.getToken()}`;
+        }
+
+        return headers;
+    }
+
+    /**
+     * Логирование запроса с токеном (для демонстрации)
+     */
+    logRequest(method, endpoint) {
+        const headers = this.getHeaders();
+        console.log(`🌐 ${method} ${endpoint}`, headers);
     }
 
     /**
@@ -128,6 +153,7 @@ export class ToolsAPI {
      * @returns {Promise<Array>} Список инструментов
      */
     async getAll({ search = '', category = '', sort = 'name' } = {}) {
+        this.logRequest('GET', '/api/tools');
         await delay();
         
         let tools = getData();
@@ -168,6 +194,7 @@ export class ToolsAPI {
      * @returns {Promise<Object|null>} Инструмент или null
      */
     async getById(id) {
+        this.logRequest('GET', `/api/tools/${id}`);
         await delay();
         
         const tools = getData();
@@ -186,6 +213,7 @@ export class ToolsAPI {
      * @returns {Promise<Object>} Созданный инструмент
      */
     async create(toolData) {
+        this.logRequest('POST', '/api/tools');
         await delay();
         
         const tools = getData();
@@ -210,6 +238,7 @@ export class ToolsAPI {
      * @returns {Promise<Object>} Обновленный инструмент
      */
     async update(id, toolData) {
+        this.logRequest('PUT', `/api/tools/${id}`);
         await delay();
         
         const tools = getData();
@@ -236,6 +265,7 @@ export class ToolsAPI {
      * @returns {Promise<boolean>} true если удален успешно
      */
     async delete(id) {
+        this.logRequest('DELETE', `/api/tools/${id}`);
         await delay();
         
         const tools = getData();

@@ -32,17 +32,7 @@ SPA-приложение для управления справочником IT
 - ✅ Toast уведомления
 - ✅ Адаптивный дизайн
 
-## Технологии
-
-- **Frontend:** Vanilla JavaScript (ES6+), HTML5, CSS3
-- **Модули:** ES6 Modules
-- **Хранилище:** localStorage (эмуляция backend)
-- **Роутинг:** Hash-based routing (#/path)
-- **Архитектура:** Модульная (Router, API, Views, Components)
-
 ## Архитектура
-
-Проект организован по принципу разделения ответственности:
 
 ```
 task_04/
@@ -173,16 +163,6 @@ function delay() {
     return new Promise(resolve => setTimeout(resolve, 500));
 }
 ```
-
-### Демо-данные
-
-При первом запуске создаются 6 демо-инструментов:
-- Visual Studio Code (IDE)
-- Docker (DevOps)
-- Postman (API Testing)
-- Git (Version Control)
-- Figma (Design)
-- Jenkins (CI/CD)
 
 ## Компоненты
 
@@ -457,30 +437,83 @@ python -m http.server 8004
 | 7 | DELETE удаление | 10 | ✅ | `api.delete(id)` с подтверждением |
 | 8 | Валидация форм | 10 | ✅ | `validateData()` с 8 правилами валидации |
 
-### Дополнительные возможности (+баллы)
+### Бонусы из методички (+10 баллов)
 
-| № | Возможность | Баллы | Выполнение | Реализация |
-|---|------------|-------|------------|------------|
-| 1 | Поиск в реальном времени | +5 | ✅ | Debounce 300мс, поиск по 2 полям |
-| 2 | Фильтрация по категориям | +5 | ✅ | Динамические категории из данных |
-| 3 | Сортировка списка | +5 | ✅ | 3 варианта сортировки |
-| 4 | Loading состояния | +3 | ✅ | Spinner + текст во всех views |
-| 5 | Error состояния | +3 | ✅ | Компонент с retry функцией |
-| 6 | Empty состояния | +3 | ✅ | Информативное сообщение + CTA |
-| 7 | Toast уведомления | +5 | ✅ | 3 типа с автозакрытием |
-| 8 | Модальные окна | +3 | ✅ | Подтверждение удаления |
-| 9 | Адаптивный дизайн | +5 | ✅ | Полная адаптация под мобильные |
-| 10 | Анимации | +3 | ✅ | CSS transitions, keyframes |
+| № | Бонус | Баллы | Выполнение | Реализация |
+|---|-------|-------|------------|------------|
+| 1 | **Сохранение параметров в hash** | +3 | ✅ | `parseFiltersFromURL()` + `updateURL()` |
+| 2 | **Предзагрузка данных (prefetch)** | +3 | ✅ | `prefetchTool()` при hover/focus |
+| 3 | **Клиентская авторизация** | +4 | ✅ | JWT-токены + защита маршрутов |
 
-### Архитектурные преимущества (+баллы)
+#### Детали бонусных функций:
 
-| № | Преимущество | Баллы | Выполнение |
-|---|------------|-------|------------|
-| 1 | Модульная архитектура | +5 | ✅ |
-| 2 | ES6 Modules | +5 | ✅ |
-| 3 | Separation of Concerns | +5 | ✅ |
-| 4 | Переиспользуемые компоненты | +5 | ✅ |
-| 5 | Чистый код | +5 | ✅ |
+**1. Сохранение параметров поиска в hash (+3 балла)**
+
+При изменении фильтров URL автоматически обновляется:
+- `#/?search=docker` - поиск
+- `#/?category=IDE&sort=rating` - категория + сортировка  
+- `#/?search=code&category=IDE&sort=rating` - все вместе
+
+При перезагрузке страницы фильтры восстанавливаются из URL:
+
+```javascript
+parseFiltersFromURL() {
+    const hash = window.location.hash.slice(1);
+    const [path, query] = hash.split('?');
+    
+    if (query) {
+        const params = new URLSearchParams(query);
+        this.filters.search = params.get('search') || '';
+        this.filters.category = params.get('category') || 'all';
+        this.filters.sort = params.get('sort') || 'name';
+    }
+}
+
+updateURL() {
+    const params = new URLSearchParams();
+    if (this.filters.search) params.set('search', this.filters.search);
+    if (this.filters.category !== 'all') params.set('category', this.filters.category);
+    if (this.filters.sort !== 'name') params.set('sort', this.filters.sort);
+    
+    const newHash = params.toString() ? `/?${params.toString()}` : '/';
+    window.history.replaceState(null, '', `#${newHash}`);
+}
+```
+
+**2. Предзагрузка данных (prefetch) (+3 балла)**
+
+При наведении/фокусе на карточку инструмента данные загружаются в фоне:
+
+```javascript
+// Кэш для предзагруженных данных
+this.prefetchCache = new Map();
+
+async prefetchTool(toolId) {
+    if (this.prefetchCache.has(toolId)) return;
+    
+    this.prefetchCache.set(toolId, 'loading');
+    const data = await this.api.getById(toolId);
+    this.prefetchCache.set(toolId, data);
+    
+    console.log(`✅ Предзагружены данные для инструмента #${toolId}`);
+}
+
+// Привязка к событиям
+card.addEventListener('mouseenter', () => this.prefetchTool(toolId));
+card.addEventListener('focus', () => this.prefetchTool(toolId));
+```
+
+**3. Клиентская авторизация (+4 балла)**
+
+Система авторизации с JWT-токенами:
+- Форма входа с демо-аккаунтами (admin/admin123, user/user123)
+- Генерация JWT-токенов при входе
+- Добавление токена в Authorization header для всех запросов
+- Защита маршрутов `/new` и `/edit` (редирект на `/login`)
+- Кнопки "Войти"/"Выйти" в navbar с отображением пользователя
+- Регистрация новых пользователей
+
+Все запросы логируются в консоль с headers для демонстрации работы токенов.
 
 ## Выводы
 
@@ -488,26 +521,23 @@ python -m http.server 8004
 
 1. ✅ **Полноценный SPA** с хеш-роутингом и параметрами
 2. ✅ **CRUD операции** через localStorage API
-3. ✅ **Модульная архитектура** (Router, API, Views, Components)
+3. ✅ **Модульная архитектура** (Router, API, Views, Components, Auth)
 4. ✅ **Валидация форм** с inline отображением ошибок
-5. ✅ **Поиск и фильтрация** в реальном времени
+5. ✅ **Поиск и фильтрация** в реальном времени с сохранением в URL
 6. ✅ **Loading/Error/Empty** состояния
 7. ✅ **Toast уведомления** для обратной связи
 8. ✅ **Адаптивный дизайн** для мобильных устройств
 9. ✅ **Анимации** для улучшения UX
+10. ✅ **Prefetch** - предзагрузка данных при hover/focus
+11. ✅ **Авторизация** - JWT-токены с защитой маршрутов
 
 ### Технические решения:
 
-1. **Роутинг:** Regex с именованными группами для параметров
-2. **API:** localStorage с эмуляцией задержки сети
+1. **Роутинг:** Regex с именованными группами для параметров + защита маршрутов
+2. **API:** localStorage с эмуляцией задержки сети + Authorization headers
 3. **Валидация:** Централизованная с отображением ошибок
-4. **Состояния:** Отдельные компоненты для переиспользования
-5. **События:** Debounce для оптимизации поиска
-
-### Улучшения:
-
-- Все маршруты работают корректно
-- Валидация покрывает все поля
-- UI/UX на высоком уровне
-- Код модульный и чистый
-- Документация подробная
+4. **Авторизация:** JWT-токены в localStorage + middleware
+5. **URL:** Сохранение параметров поиска в hash с восстановлением
+6. **Prefetch:** Предзагрузка данных с кэшированием
+7. **Состояния:** Отдельные компоненты для переиспользования
+8. **События:** Debounce для оптимизации поиска

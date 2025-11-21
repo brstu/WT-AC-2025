@@ -10,6 +10,7 @@ export class DetailView {
         this.api = api;
         this.router = router;
         this.tool = null;
+        this.auth = api.auth; // Получаем auth из API
     }
 
     /**
@@ -44,8 +45,12 @@ export class DetailView {
                     <div class="btn-group" style="margin-bottom: 2rem;">
                         <button class="btn btn-secondary" id="backBtn">← Назад</button>
                         <div style="flex: 1;"></div>
-                        <a href="#/items/${this.tool.id}/edit" class="btn btn-primary">✏️ Редактировать</a>
-                        <button class="btn btn-danger" id="deleteBtn">🗑️ Удалить</button>
+                        ${this.auth && this.auth.isAuthenticated() ? `
+                            <a href="#/items/${this.tool.id}/edit" class="btn btn-primary">✏️ Редактировать</a>
+                            <button class="btn btn-danger" id="deleteBtn">🗑️ Удалить</button>
+                        ` : `
+                            <span style="color: var(--text-muted);">🔒 Войдите для редактирования</span>
+                        `}
                     </div>
 
                     <div class="detail-card">

@@ -15,6 +15,7 @@ export class ListView {
             category: 'all',
             sort: 'name'
         };
+        this.prefetchCache = new Map(); // Кэш для предзагрузки
     }
 
     /**
@@ -22,6 +23,10 @@ export class ListView {
      */
     async render() {
         const app = document.getElementById('app');
+        
+        // Восстановление фильтров из URL
+        this.parseFiltersFromURL();
+        
         app.innerHTML = Loading.render('Загрузка инструментов...');
 
         try {
@@ -35,11 +40,54 @@ export class ListView {
     }
 
     /**
+     * Парсинг фильтров из URL
+     */
+    parseFiltersFromURL() {
+        const hash = window.location.hash.slice(1);
+        const [path, query] = hash.split('?');
+        
+        if (query) {
+            const params = new URLSearchParams(query);
+            this.filters.search = params.get('search') || '';
+            this.filters.category = params.get('category') || 'all';
+            this.filters.sort = params.get('sort') || 'name';
+        }
+    }
+
+    /**
+     * Обновление URL с текущими фильтрами
+     */
+    updateURL() {
+        const params = new URLSearchParams();
+        
+        if (this.filters.search) {
+            params.set('search', this.filters.search);
+        }
+        if (this.filters.category !== 'all') {
+            params.set('category', this.filters.category);
+        }
+        if (this.filters.sort !== 'name') {
+            params.set('sort', this.filters.sort);
+        }
+        
+        const query = params.toString();
+        const newHash = query ? `/?${query}` : '/';
+        
+        // Обновляем URL без перезагрузки страницы
+        if (window.location.hash.slice(1) !== newHash) {
+            window.history.replaceState(null, '', `#${newHash}`);
+        }
+    }
+
+    /**
      * Загрузка данных
      */
     async loadData() {
         this.categories = await this.api.getCategories();
         this.tools = await this.api.getAll(this.filters);
+        
+        // Обновляем URL после загрузки
+        this.updateURL();
     }
 
     /**
@@ -50,8 +98,7 @@ export class ListView {
             <div class="main-content">
                 <div class="container">
                     <div class="page-header">
-                        <h1 class="page-title">🛠️ IT-инструменты</h1>
-                        <p class="page-subtitle">Справочник полезных инструментов для разработки</p>
+                        <h1 class="page-title">Справочник полезных инструментов для разработки</h1>
                     </div>
 
                     ${this.getSearchSection()}
@@ -161,10 +208,53 @@ export class ListView {
 
         // Клик по карточке
         document.querySelectorAll('.card').forEach(card => {
+            const toolId = card.dataset.toolId;
+            
+            // Предзагрузка данных при наведении
+            card.addEventListener('mouseenter', () => {
+                this.prefetchTool(toolId);
+            });
+            
+            // Фокус на карточке (для клавиатурной навигации)
+            card.addEventListener('focus', () => {
+                this.prefetchTool(toolId);
+            });
+            
+            // Клик для перехода
             card.addEventListener('click', () => {
-                const toolId = card.dataset.toolId;
                 window.location.hash = `/items/${toolId}`;
             });
+            
+            // Добавляем tabindex для клавиатурной доступности
+            card.setAttribute('tabindex', '0');
+            card.style.cursor = 'pointer';
         });
+    }
+
+    /**
+     * Предзагрузка данных инструмента
+     * @param {string} toolId - ID инструмента для предзагрузки
+     */
+    async prefetchTool(toolId) {
+        // Проверяем, не загружали ли мы уже эти данные
+        if (this.prefetchCache.has(toolId)) {
+            return;
+        }
+        
+        try {
+            // Помечаем как загружаемый
+            this.prefetchCache.set(toolId, 'loading');
+            
+            // Загружаем данные в фоне
+            const data = await this.api.getById(toolId);
+            
+            // Сохраняем в кэш
+            this.prefetchCache.set(toolId, data);
+            
+            console.log(`✅ Предзагружены данные для инструмента #${toolId}`);
+        } catch (error) {
+            console.warn(`⚠️ Ошибка предзагрузки для #${toolId}:`, error);
+            this.prefetchCache.delete(toolId);
+        }
     }
 }
