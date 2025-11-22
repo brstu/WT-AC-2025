@@ -6,7 +6,7 @@
     --bg-color: #f5f5f5;
     --card-bg: #fff;
     --border-radius: 8px;
-    --shadow: 0 4px 6px rgba(0, 0, 0, 10%); /* Изменено для соответствия современным стандартам */
+    --shadow: 0 4px 6px rgb(0 0 0 / 10%);
     --transition: all 0.3s ease;
 }
 
@@ -46,7 +46,7 @@ h1 {
     font-size: 2.5rem;
     margin-bottom: 10px;
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    background-clip: text;
+    background-clip: text; 
     color: transparent;
 }
 
@@ -77,7 +77,7 @@ h1 {
 
 .tabs-trigger:hover,
 .tabs-trigger:focus {
-    background-color: rgba(106, 17, 203, 10%); /* Изменено для соответствия современным стандартам */
+    background-color: rgb(106 17 203 / 10%);
 }
 
 .tabs-trigger[aria-selected="true"] {
@@ -110,7 +110,7 @@ h1 {
 
 .game-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 15%); /* Изменено для соответствия современным стандартам */
+    box-shadow: 0 10px 20px rgb(0 0 0 / 15%);
 }
 
 .game-card img {
@@ -185,7 +185,7 @@ h1 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 70%); /* Изменено для соответствия современным стандартам */
+    background-color: rgb(0 0 0 / 70%);
     z-index: 1000;
     align-items: center;
     justify-content: center;
@@ -204,7 +204,7 @@ h1 {
     overflow-y: auto;
     padding: 30px;
     position: relative;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 30%); /* Изменено для соответствия современным стандартам */
+    box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
 }
 
 .modal-close {
@@ -285,7 +285,7 @@ h1 {
 .form-control:focus {
     border-color: var(--primary-color);
     outline: none;
-    box-shadow: 0 0 0 2px rgba(106, 17, 203, 20%); /* Изменено для соответствия современным стандартам */
+    box-shadow: 0 0 0 2px rgb(106 17 203 / 20%);
 }
 
 .form-control.error {
@@ -354,7 +354,7 @@ h1 {
 }
 
 /* Адаптивность */
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .tabs-list {
         flex-direction: column;
     }
