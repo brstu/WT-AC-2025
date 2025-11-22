@@ -360,7 +360,6 @@ h1 {
     .tabs-list {
         flex-direction: column;
     }
-}
 
     .tabs-trigger {
         width: 100%;
@@ -375,7 +374,6 @@ h1 {
         width: 95%;
         padding: 20px;
     }
-}
 
 /* Утилиты для скрытия элементов */
 .sr-only {
