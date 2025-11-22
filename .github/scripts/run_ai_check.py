@@ -106,6 +106,12 @@ def int_env(name: str, default: int) -> int:
         return default
 
 
+def split_into_chunks(text: str, chunk_size: int) -> list[str]:
+    if chunk_size <= 0:
+        chunk_size = 1000
+    return [text[i:i + chunk_size] for i in range(0, len(text), chunk_size)] or ['']
+
+
 def call_github_file_completion(
     token: str,
     model: str,
@@ -257,6 +263,156 @@ def extract_response_text(data: dict) -> str | None:
     return None
 
 
+def handle_error_response(
+    *,
+    resp: requests.Response,
+    endpoint: str,
+    model: str,
+    files_count: int,
+    debug: bool,
+    used_file_upload: bool,
+    out_path: Path,
+) -> int:
+    detail = resp.text
+    try:
+        j = resp.json()
+        msg = j.get('error') or j.get('message') or j
+        detail = json.dumps(msg, ensure_ascii=False)
+    except Exception:
+        pass
+    latency = resp.elapsed.total_seconds() if hasattr(resp, 'elapsed') else None
+    remediation = ''
+    if resp.status_code in (401, 403):
+        remediation = (
+            'Remediation: The token used lacks the models permission. '
+            'Create a fine-grained PAT (or org secret) with "models:read" (and if required, "models:write") scope, '
+            'store it as GH_MODELS_TOKEN secret, and re-run. '
+            'Alternatively, if using the default GITHUB_TOKEN, ensure GitHub Models are enabled for this repository '
+            'and workflow permissions include models.'
+        )
+    diagnostic = {
+        'status': resp.status_code,
+        'detail': detail[:2000],
+        'endpoint': endpoint,
+        'model': model,
+        'files_count': files_count,
+        'latency_seconds': latency,
+        'debug': debug,
+        'used_file_upload': used_file_upload,
+    }
+    if remediation:
+        diagnostic['remediation'] = remediation
+    diagnostic_text = json.dumps(diagnostic, ensure_ascii=False, indent=2)
+    out_path.write_text('Error invoking model:\n' + diagnostic_text, encoding='utf-8')
+    print('Error invoking model (see ai_review.md for full details):', file=sys.stderr)
+    print(diagnostic_text, file=sys.stderr)
+    return 1
+
+
+def run_chunked_fallback(
+    *,
+    engine: str,
+    token: str,
+    model: str,
+    prompt_text: str,
+    student_files_section: str,
+    files_count: int,
+    max_tokens: int,
+    dbg: Callable[[str], None],
+    debug: bool,
+    out_path: Path,
+) -> int:
+    chunk_chars = int_env('AI_CHUNK_CHAR_LIMIT', 12000)
+    chunk_summary_instruction = os.environ.get(
+        'AI_CHUNK_SUMMARY_INSTRUCTION',
+        'You are reviewing a student submission. Read the provided chunk, note defects, missing requirements, and strengths, '
+        'and maintain a running summary focused on actionable feedback.',
+    ).strip()
+    final_instruction = os.environ.get(
+        'AI_CHUNK_FINAL_INSTRUCTION',
+        'Using the consolidated summary below, craft the final detailed AI review in Markdown with sections for positive findings, '
+        'issues/blockers, and recommendations.',
+    ).strip()
+    chunk_disable_upload = True  # always inline for fallback
+
+    chunks = split_into_chunks(student_files_section, chunk_chars)
+    total_chunks = len(chunks)
+    print(f'Chunked fallback engaged: {total_chunks} chunks (~{chunk_chars} chars each).')
+    summary = ''
+
+    for idx, chunk in enumerate(chunks, start=1):
+        chunk_prompt = (
+            f"{chunk_summary_instruction}\n\n"
+            f"Context instructions:\n{prompt_text.strip()}\n\n"
+            f"Existing cumulative summary:\n{summary or '(none yet)'}\n\n"
+            f"Submission chunk {idx}/{total_chunks}:\n{chunk.strip()}\n\n"
+            "Return ONLY the updated cumulative summary in Markdown."
+        )
+        resp, endpoint, payload, used_upload = send_models_request(
+            engine=engine,
+            token=token,
+            model=model,
+            inline_prompt=chunk_prompt,
+            attachment_payload=chunk,
+            prompt_text=prompt_text,
+            use_file_upload=not chunk_disable_upload,
+            max_tokens=max_tokens,
+            dbg=dbg,
+        )
+        if resp.status_code != 200:
+            if debug:
+                dbg(f'Chunk {idx} failed with status {resp.status_code}')
+            return handle_error_response(
+                resp=resp,
+                endpoint=endpoint,
+                model=model,
+                files_count=files_count,
+                debug=debug,
+                used_file_upload=used_upload,
+                out_path=out_path,
+            )
+        data = resp.json()
+        new_summary = extract_response_text(data)
+        if not new_summary:
+            print(f'Warning: chunk {idx} produced empty summary; retaining previous summary.', file=sys.stderr)
+        else:
+            summary = new_summary.strip()
+
+    final_prompt = (
+        f"{prompt_text.strip()}\n\n"
+        f"{final_instruction}\n\n"
+        f"Cumulative submission summary (from {total_chunks} chunks):\n{summary.strip()}"
+    )
+    resp, endpoint, payload, used_upload = send_models_request(
+        engine=engine,
+        token=token,
+        model=model,
+        inline_prompt=final_prompt,
+        attachment_payload=summary,
+        prompt_text=prompt_text,
+        use_file_upload=False,
+        max_tokens=max_tokens,
+        dbg=dbg,
+    )
+    if resp.status_code != 200:
+        if debug:
+            dbg('Final chunked synthesis failed with status ' + str(resp.status_code))
+        return handle_error_response(
+            resp=resp,
+            endpoint=endpoint,
+            model=model,
+            files_count=files_count,
+            debug=debug,
+            used_file_upload=used_upload,
+            out_path=out_path,
+        )
+
+    final_data = resp.json()
+    final_text = extract_response_text(final_data) or 'No response'
+    out_path.write_text(final_text, encoding='utf-8')
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     ap = argparse.ArgumentParser(description='Run AI check (GitHub Models or OpenAI)')
     ap.add_argument('--student', required=True)
@@ -337,6 +493,8 @@ def main(argv: list[str] | None = None) -> int:
         f'file_upload={use_file_upload}'
     )
 
+    out_path = Path(args.out)
+
     try:
         resp, endpoint, payload, used_upload = send_models_request(
             engine=engine,
@@ -351,55 +509,47 @@ def main(argv: list[str] | None = None) -> int:
         )
     except Exception as e:
         message = 'Error calling models API: ' + str(e)
-        Path(args.out).write_text(message, encoding='utf-8')
+        out_path.write_text(message, encoding='utf-8')
         print(message, file=sys.stderr)
         return 1
 
+    chunk_fallback_enabled = not env_flag('AI_DISABLE_CHUNK_FALLBACK', False)
+
+    if resp.status_code == 413 and chunk_fallback_enabled:
+        print('Inline prompt exceeded token limit; switching to chunked fallback mode.')
+        return run_chunked_fallback(
+            engine=engine,
+            token=token,
+            model=model,
+            prompt_text=prompt_text,
+            student_files_section=student_files_section,
+            files_count=len(files),
+            max_tokens=max_tokens,
+            dbg=dbg,
+            debug=debug,
+            out_path=out_path,
+        )
+
     if resp.status_code != 200:
-        detail = resp.text
-        # Try to extract message field if JSON
-        try:
-            j = resp.json()
-            msg = j.get('error') or j.get('message') or j
-            detail = json.dumps(msg, ensure_ascii=False)
-        except Exception:
-            pass
-        latency = resp.elapsed.total_seconds() if hasattr(resp, 'elapsed') else None
-        remediation = ''
-        if resp.status_code in (401, 403):
-            remediation = (
-                'Remediation: The token used lacks the models permission. '\
-                'Create a fine-grained PAT (or org secret) with "models:read" (and if required, "models:write") scope, '\
-                'store it as GH_MODELS_TOKEN secret, and re-run. ' \
-                'Alternatively, if using the default GITHUB_TOKEN, ensure GitHub Models are enabled for this repository and workflow permissions include models.'
-            )
-        diagnostic = {
-            'status': resp.status_code,
-            'detail': detail[:2000],
-            'endpoint': endpoint,
-            'model': model,
-            'files_count': len(files),
-            'latency_seconds': latency,
-            'debug': debug,
-            'used_file_upload': used_upload,
-        }
-        if remediation:
-            diagnostic['remediation'] = remediation
         if debug:
             dbg('Response status: ' + str(resp.status_code))
             dbg('Raw response (truncated 500 chars): ' + resp.text[:500])
-        diagnostic_text = json.dumps(diagnostic, ensure_ascii=False, indent=2)
-        Path(args.out).write_text('Error invoking model:\n' + diagnostic_text, encoding='utf-8')
-        print('Error invoking model (see ai_review.md for full details):', file=sys.stderr)
-        print(diagnostic_text, file=sys.stderr)
-        return 1
+        return handle_error_response(
+            resp=resp,
+            endpoint=endpoint,
+            model=model,
+            files_count=len(files),
+            debug=debug,
+            used_file_upload=used_upload,
+            out_path=out_path,
+        )
 
     data = resp.json()
     if debug:
         dbg('Parsed JSON keys: ' + ','.join(data.keys()))
         dbg('Choices length: ' + str(len(data.get('choices', []))))
     text = extract_response_text(data) or 'No response'
-    Path(args.out).write_text(text, encoding='utf-8')
+    out_path.write_text(text, encoding='utf-8')
     if debug:
         dbg('Wrote AI response with length ' + str(len(text)))
     return 0

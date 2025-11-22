@@ -20,7 +20,7 @@ permissions:
   contents: read
   issues: write
   pull-requests: write
-#   models: write
+  models: read
 
 concurrency:
   group: pr-ai-review-${{ inputs.pr_number }}
