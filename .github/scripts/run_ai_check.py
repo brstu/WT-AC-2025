@@ -5,7 +5,7 @@ Usage:
     python .github/scripts/run_ai_check.py --student NameLatin --task task_XX --prompt-file ai_prompt.txt --out ai_response.md --engine github
 
 Env (github engine):
-    GITHUB_TOKEN: GitHub token with access to Models API
+    AI_GITHUB_TOKEN: GitHub token with access to Models API (falls back to GITHUB_TOKEN if unset)
         MODEL: Optional, defaults to gpt5-mini
 
 Env (openai engine):
@@ -97,9 +97,9 @@ def main(argv: list[str] | None = None) -> int:
 
     # tokens / keys per engine
     if engine == 'github':
-        token = os.environ.get('GITHUB_TOKEN')
+        token = os.environ.get('AI_GITHUB_TOKEN') or os.environ.get('GITHUB_TOKEN')
         if not token:
-            print('GITHUB_TOKEN is required in env for github engine', file=sys.stderr)
+            print('AI_GITHUB_TOKEN (or legacy GITHUB_TOKEN) is required in env for github engine', file=sys.stderr)
             return 2
         model = os.environ.get('MODEL', 'gpt5-mini')
     else:  # openai
@@ -185,7 +185,9 @@ def main(argv: list[str] | None = None) -> int:
             dbg('Messages count: ' + str(len(payload.get('messages', []))))
         resp = requests.post(endpoint, headers=headers, data=json.dumps(payload), timeout=120)
     except Exception as e:
-        Path(args.out).write_text('Error calling models API: ' + str(e), encoding='utf-8')
+        message = 'Error calling models API: ' + str(e)
+        Path(args.out).write_text(message, encoding='utf-8')
+        print(message, file=sys.stderr)
         return 1
 
     if resp.status_code != 200:
@@ -220,7 +222,10 @@ def main(argv: list[str] | None = None) -> int:
         if debug:
             dbg('Response status: ' + str(resp.status_code))
             dbg('Raw response (truncated 500 chars): ' + resp.text[:500])
-        Path(args.out).write_text('Error invoking model:\n' + json.dumps(diagnostic, ensure_ascii=False, indent=2), encoding='utf-8')
+        diagnostic_text = json.dumps(diagnostic, ensure_ascii=False, indent=2)
+        Path(args.out).write_text('Error invoking model:\n' + diagnostic_text, encoding='utf-8')
+        print('Error invoking model (see ai_review.md for full details):', file=sys.stderr)
+        print(diagnostic_text, file=sys.stderr)
         return 1
 
     data = resp.json()
