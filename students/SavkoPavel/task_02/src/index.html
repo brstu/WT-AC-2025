@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог питомцев из приюта</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Приют "Добрые сердца"</h1>
+            <nav>
+                <ul>
+                    <li><a href="#pets">Наши питомцы</a></li>
+                    <li><a href="#adoption">Забрать домой</a></li>
+                    <li><a href="#about">О приюте</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <section id="pets">
+            <h2>Наши питомцы</h2>
+            <div class="tabs">
+                <ul class="tabs-list" role="tablist">
+                    <li>
+                        <button class="tab" role="tab" aria-selected="true" aria-controls="cats-panel" id="cats-tab">Кошки</button>
+                    </li>
+                    <li>
+                        <button class="tab" role="tab" aria-selected="false" aria-controls="dogs-panel" id="dogs-tab">Собаки</button>
+                    </li>
+                    <li>
+                        <button class="tab" role="tab" aria-selected="false" aria-controls="others-panel" id="others-tab">Другие животные</button>
+                    </li>
+                </ul>
+
+                <article class="tab-panel" role="tabpanel" id="cats-panel" aria-labelledby="cats-tab" aria-hidden="false">
+                    <div class="pets-grid" id="cats-container">
+                        <!-- Карточки кошек будут добавлены через JavaScript -->
+                    </div>
+                </article>
+
+                <article class="tab-panel" role="tabpanel" id="dogs-panel" aria-labelledby="dogs-tab" aria-hidden="true">
+                    <div class="pets-grid" id="dogs-container">
+                        <!-- Карточки собак будут добавлены через JavaScript -->
+                    </div>
+                </article>
+
+                <article class="tab-panel" role="tabpanel" id="others-panel" aria-labelledby="others-tab" aria-hidden="true">
+                    <div class="pets-grid" id="others-container">
+                        <!-- Карточки других животных будут добавлены через JavaScript -->
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="adoption">
+            <h2>Заявка на усыновление</h2>
+            <form class="adoption-form" id="adoption-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Ваше имя *</label>
+                    <input type="text" id="name" name="name" required>
+                    <div class="error-message" id="name-error">Пожалуйста, введите ваше имя</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email *</label>
+                    <input type="email" id="email" name="email" required>
+                    <div class="error-message" id="email-error">Пожалуйста, введите корректный email</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Телефон</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+
+                <div class="form-group">
+                    <label for="pet-select">Выберите питомца</label>
+                    <select id="pet-select" name="pet">
+                        <option value="">-- Выберите питомца --</option>
+                        <!-- Опции будут добавлены через JavaScript -->
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Расскажите о себе и условиях содержания *</label>
+                    <textarea id="message" name="message" rows="5" required minlength="20"></textarea>
+                    <div class="error-message" id="message-error">Сообщение должно содержать не менее 20 символов</div>
+                </div>
+
+                <button type="submit" class="submit-btn" id="submit-btn" disabled>Отправить заявку</button>
+
+                <div class="form-result" id="form-result"></div>
+            </form>
+        </section>
+
+        <section id="about">
+            <h2>О нашем приюте</h2>
+            <p>Приют "Добрые сердца" существует с 2010 года. За это время мы нашли дом для более чем 2000 животных. Наша миссия - дать второй шанс каждому питомцу, оказавшемуся в трудной ситуации.</p>
+            <p>Мы заботимся о здоровье наших подопечных, проводим вакцинацию, стерилизацию и оказываем необходимую ветеринарную помощь. Все животные проходят адаптацию и социализацию перед тем, как отправиться в новый дом.</p>
+        </section>
+
+        <section id="contacts">
+            <h2>Контакты</h2>
+            <p><strong>Адрес:</strong> г. Москва, ул. Добрая, д. 15</p>
+            <p><strong>Телефон:</strong> +375 (29) 123-45-67</p>
+            <p><strong>Email:</strong> info@dobrye-serdca.by</p>
+            <p><strong>Режим работы:</strong> ежедневно с 10:00 до 19:00</p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Приют "Добрые сердца". Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>
