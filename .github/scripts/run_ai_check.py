@@ -5,7 +5,7 @@ Usage:
     python .github/scripts/run_ai_check.py --student NameLatin --task task_XX --prompt-file ai_prompt.txt --out ai_response.md --engine github
 
 Env (github engine):
-    GITHUB_TOKEN: GitHub token with access to Models API
+    AI_GITHUB_TOKEN: GitHub token with access to Models API (falls back to GITHUB_TOKEN if unset)
         MODEL: Optional, defaults to gpt5-mini
 
 Env (openai engine):
@@ -97,9 +97,9 @@ def main(argv: list[str] | None = None) -> int:
 
     # tokens / keys per engine
     if engine == 'github':
-        token = os.environ.get('GITHUB_TOKEN')
+        token = os.environ.get('AI_GITHUB_TOKEN') or os.environ.get('GITHUB_TOKEN')
         if not token:
-            print('GITHUB_TOKEN is required in env for github engine', file=sys.stderr)
+            print('AI_GITHUB_TOKEN (or legacy GITHUB_TOKEN) is required in env for github engine', file=sys.stderr)
             return 2
         model = os.environ.get('MODEL', 'gpt5-mini')
     else:  # openai
