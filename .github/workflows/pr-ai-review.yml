@@ -31,7 +31,7 @@ jobs:
     if: ${{ inputs.pr_number != '' }}
     runs-on: ubuntu-latest
     env:
-      AI_REVIEW_MODEL: ${{ inputs.model || 'gpt-4o-mini' }}
+      AI_REVIEW_MODEL: ${{ inputs.model || 'gpt-4o' }}
       AI_REVIEW_LABEL: ${{ inputs.label || 'AI-reviewed' }}
       TARGET_PR: ${{ inputs.pr_number }}
     steps:
