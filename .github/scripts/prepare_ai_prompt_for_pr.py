@@ -4,6 +4,7 @@
 Optional: mark the PR with a comment and a label using --mark.
 """
 from __future__ import annotations
+import json
 import os
 import re
 import subprocess
@@ -165,6 +166,8 @@ def cli(
     mark: bool = typer.Option(False, "--mark", help="Only add a comment and a label to the PR"),
     message: Optional[str] = typer.Option(None, "--message", help="Comment body to post (used with --mark)"),
     label: Optional[str] = typer.Option(None, "--label", help="Label to apply: 'rated' or 'defend' (used with --mark)"),
+    prompt_file: Optional[Path] = typer.Option(None, "--prompt-file", help="Write the prepared prompt to this path"),
+    metadata_json: Optional[Path] = typer.Option(None, "--json-output", help="Write detected metadata (student/task/prompt path) to this JSON file"),
 ) -> None:
     """CLI entry using Typer. Matches prior argparse behavior, plus early-exit marking."""
     eff_token = token or os.environ.get("GITHUB_TOKEN") or os.environ.get("GH_TOKEN")
@@ -211,6 +214,31 @@ def cli(
     print("\n=== Prepared prompt ===\n")
     print(prompt_text)
     print("\n=== End prompt ===\n")
+
+    written_prompt: Optional[Path] = None
+    if prompt_file:
+        prompt_path = prompt_file
+        if not prompt_path.is_absolute():
+            prompt_path = Path.cwd() / prompt_path
+        prompt_path.parent.mkdir(parents=True, exist_ok=True)
+        prompt_path.write_text(prompt_text, encoding="utf-8")
+        written_prompt = prompt_path
+        print(f"Saved prompt to {prompt_path}")
+
+    if metadata_json:
+        meta_path = metadata_json
+        if not meta_path.is_absolute():
+            meta_path = Path.cwd() / meta_path
+        meta_path.parent.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "pr": pr,
+            "repo": repo,
+            "student": student,
+            "task": task,
+            "prompt_file": str(written_prompt) if written_prompt else None,
+        }
+        meta_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        print(f"Saved metadata to {meta_path}")
 
     if not skip_checkout:
         checkout_pr_branch(pr)
