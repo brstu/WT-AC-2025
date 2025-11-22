@@ -38,6 +38,12 @@ except Exception:
 
 ROOT = Path(__file__).resolve().parents[2]
 
+DEFAULT_GITHUB_CHAT_BASE = 'https://models.github.ai'
+DEFAULT_GITHUB_CHAT_ENDPOINT = f'{DEFAULT_GITHUB_CHAT_BASE}/inference/chat/completions'
+AZURE_GITHUB_CHAT_ENDPOINT = 'https://models.inference.ai.azure.com/v1/chat/completions'
+DEFAULT_GITHUB_ACCEPT = 'application/vnd.github+json'
+DEFAULT_GITHUB_API_VERSION = '2022-11-28'
+
 TEXT_EXTS = {
     '.txt', '.md', '.html', '.css', '.js', '.ts', '.tsx', '.jsx', '.json', '.yml', '.yaml', '.xml', '.ini', '.cfg', '.py', '.java', '.c', '.cpp', '.h', '.hpp', '.rs', '.go', '.sh', '.bat', '.ps1'
 }
@@ -172,7 +178,24 @@ def call_github_chat_completion(
     max_tokens: int,
     dbg: Callable[[str], None],
 ) -> tuple[requests.Response, str, dict]:
-    endpoint = 'https://models.inference.ai.azure.com/v1/chat/completions'
+    explicit_endpoint = os.environ.get('AI_GITHUB_CHAT_ENDPOINT')
+    base_url = os.environ.get('AI_GITHUB_BASE_URL', DEFAULT_GITHUB_CHAT_BASE).rstrip('/')
+    org = os.environ.get('AI_GITHUB_ORG')
+    primary_endpoint = explicit_endpoint or (
+        f'{base_url}/orgs/{org}/inference/chat/completions' if org else f'{base_url}/inference/chat/completions'
+    )
+    fallback_endpoint = os.environ.get('AI_GITHUB_CHAT_FALLBACK')
+    if fallback_endpoint == 'none':
+        fallback_endpoint = None
+    elif fallback_endpoint:
+        fallback_endpoint = fallback_endpoint.rstrip('/')
+    elif not explicit_endpoint:
+        fallback_endpoint = AZURE_GITHUB_CHAT_ENDPOINT
+
+    endpoints = [primary_endpoint]
+    if fallback_endpoint and fallback_endpoint not in endpoints:
+        endpoints.append(fallback_endpoint)
+
     payload = {
         'model': model,
         'messages': [
@@ -181,16 +204,39 @@ def call_github_chat_completion(
         'temperature': 0.3,
         'max_tokens': max_tokens,
     }
-    headers = {
-        'Authorization': f'Bearer {token}',
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-    }
-    if dbg:
-        redacted = {k: ('***' if k.lower() == 'authorization' else v) for k, v in headers.items()}
-        dbg('GitHub chat headers: ' + json.dumps(redacted))
-    resp = requests.post(endpoint, headers=headers, json=payload, timeout=120)
-    return resp, endpoint, payload
+
+    accept_header = os.environ.get('AI_GITHUB_ACCEPT_HEADER', DEFAULT_GITHUB_ACCEPT)
+    api_version = os.environ.get('AI_GITHUB_API_VERSION', DEFAULT_GITHUB_API_VERSION)
+
+    last_resp: requests.Response | None = None
+    last_endpoint = primary_endpoint
+
+    for idx, endpoint in enumerate(endpoints):
+        headers = {
+            'Authorization': f'Bearer {token}',
+            'Content-Type': 'application/json',
+            'Accept': accept_header,
+        }
+        if api_version:
+            headers['X-GitHub-Api-Version'] = api_version
+        if dbg:
+            redacted = {k: ('***' if k.lower() == 'authorization' else v) for k, v in headers.items()}
+            dbg(f'GitHub chat request to {endpoint}: ' + json.dumps(redacted))
+        resp = requests.post(endpoint, headers=headers, json=payload, timeout=120)
+        if resp.status_code == 404 and idx + 1 < len(endpoints):
+            print(
+                f'Primary GitHub Models endpoint {endpoint} returned 404; '
+                f'retrying alternate endpoint {endpoints[idx + 1]}',
+                file=sys.stderr,
+            )
+            last_resp = resp
+            last_endpoint = endpoint
+            continue
+        return resp, endpoint, payload
+
+    if last_resp is None:
+        raise RuntimeError('GitHub Models chat completion request failed before receiving a response')
+    return last_resp, last_endpoint, payload
 
 
 def call_openai_chat_completion(
@@ -322,7 +368,7 @@ def run_chunked_fallback(
     debug: bool,
     out_path: Path,
 ) -> int:
-    chunk_chars = int_env('AI_CHUNK_CHAR_LIMIT', 12000)
+    chunk_chars = int_env('AI_CHUNK_CHAR_LIMIT', 3000)
     chunk_summary_instruction = os.environ.get(
         'AI_CHUNK_SUMMARY_INSTRUCTION',
         'You are reviewing a student submission. Read the provided chunk, note defects, missing requirements, and strengths, '
