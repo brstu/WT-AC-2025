@@ -12,19 +12,19 @@
             <h1>Pokémon Catalog</h1>
             <div class="controls">
                 <div class="search-container">
-                    <input type="text" id="searchInput" placeholder="Search Pokémon..." />
-                    <button id="refreshBtn">Refresh</button>
+                    <input type="text" id="search-input" placeholder="Search Pokémon..." />
+                    <button id="refresh-btn">Refresh</button>
                 </div>
                 <div class="pagination-controls">
-                    <button id="prevBtn">Previous</button>
-                    <span id="pageInfo">Page 1</span>
-                    <button id="nextBtn">Next</button>
+                    <button id="prev-btn">Previous</button>
+                    <span id="page-info">Page 1</span>
+                    <button id="next-btn">Next</button>
                 </div>
             </div>
         </header>
 
         <main>
-            <div id="loadingState" class="state hidden">
+            <div id="loading-state" class="state hidden">
                 <div class="skeleton-list">
                     <div class="skeleton-item"></div>
                     <div class="skeleton-item"></div>
@@ -34,26 +34,26 @@
                 </div>
             </div>
 
-            <div id="errorState" class="state hidden">
+            <div id="error-state" class="state hidden">
                 <div class="error-message">
                     <h3>Error Loading Data</h3>
-                    <p id="errorText"></p>
-                    <button id="retryBtn">Try Again</button>
+                    <p id="error-text"></p>
+                    <button id="retry-btn">Try Again</button>
                 </div>
             </div>
 
-            <div id="emptyState" class="state hidden">
+            <div id="empty-state" class="state hidden">
                 <div class="empty-message">
                     <h3>No Pokémon Found</h3>
                     <p>Try adjusting your search criteria</p>
                 </div>
             </div>
 
-            <div id="contentState" class="state">
-                <div class="pokemon-grid" id="pokemonGrid"></div>
+            <div id="content-state" class="state">
+                <div class="pokemon-grid" id="pokemon-grid"></div>
             </div>
 
-            <div id="retryIndicator" class="retry-indicator hidden">
+            <div id="retry-indicator" class="retry-indicator hidden">
                 <span>Retrying...</span>
                 <div class="retry-dots">
                     <div class="dot"></div>

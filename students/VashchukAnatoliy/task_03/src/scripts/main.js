@@ -16,19 +16,19 @@ class PokemonCatalog {
     }
 
     initializeElements() {
-        this.searchInput = document.getElementById('searchInput');
-        this.refreshBtn = document.getElementById('refreshBtn');
-        this.prevBtn = document.getElementById('prevBtn');
-        this.nextBtn = document.getElementById('nextBtn');
-        this.pageInfo = document.getElementById('pageInfo');
-        this.pokemonGrid = document.getElementById('pokemonGrid');
-        this.loadingState = document.getElementById('loadingState');
-        this.errorState = document.getElementById('errorState');
-        this.emptyState = document.getElementById('emptyState');
-        this.contentState = document.getElementById('contentState');
-        this.retryBtn = document.getElementById('retryBtn');
-        this.retryIndicator = document.getElementById('retryIndicator');
-        this.errorText = document.getElementById('errorText');
+        this.searchInput = document.getElementById('search-input');
+        this.refreshBtn = document.getElementById('refresh-btn');
+        this.prevBtn = document.getElementById('prev-btn');
+        this.nextBtn = document.getElementById('next-btn');
+        this.pageInfo = document.getElementById('page-info');
+        this.pokemonGrid = document.getElementById('pokemon-grid');
+        this.loadingState = document.getElementById('loading-state');
+        this.errorState = document.getElementById('error-state');
+        this.emptyState = document.getElementById('empty-state');
+        this.contentState = document.getElementById('content-state');
+        this.retryBtn = document.getElementById('retry-btn');
+        this.retryIndicator = document.getElementById('retry-indicator');
+        this.errorText = document.getElementById('error-text');
     }
 
     bindEvents() {
