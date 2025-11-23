@@ -16,9 +16,10 @@ on:
         required: false
         type: string
       engine:
-        description: 'Override engine used for AI review (optional)'
+        description: 'Override engine (github|openai|codex|openrouter)'
         required: false
         type: string
+        default: openrouter
 
 permissions:
   contents: read
@@ -38,7 +39,8 @@ jobs:
       AI_REVIEW_MODEL: "${{ inputs.model || 'tngtech/deepseek-r1t2-chimera:free' }}"
       AI_REVIEW_LABEL: "${{ inputs.label || 'AI-reviewed' }}"
       TARGET_PR: "${{ inputs.pr_number }}"
-      AI_MODELS_TOKEN: "${{ (secrets['AI_GITHUB_TOKEN'] != '' && secrets['AI_GITHUB_TOKEN']) || github.token }}"
+      AI_REVIEW_ENGINE: ${{ inputs.engine || 'openrouter' }}
+      AI_MODELS_TOKEN: ${{ secrets.AI_GITHUB_TOKEN || github.token }}
     steps:
       - name: Checkout base ref (safe)
         uses: actions/checkout@v4
@@ -100,17 +102,19 @@ jobs:
           git fetch origin pull/$TARGET_PR/head:refs/remotes/origin/pr-ai-$TARGET_PR
           git checkout refs/remotes/origin/pr-ai-$TARGET_PR -- "students/$STUDENT"
 
-      - name: Run AI reviewer (GitHub Models)
+      - name: Run AI reviewer
         id: ai
         env:
           AI_GITHUB_TOKEN: ${{ env.AI_MODELS_TOKEN }}
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY || '' }}
         run: |
           set -euo pipefail
+          export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
+          export OPENROUTER_API_KEY="${{ secrets.OPENROUTER_API_KEY }}"
+          export OPENROUTER_TOKEN="${{ secrets.OPENROUTER_TOKEN }}"
           MODEL_NAME=${AI_REVIEW_MODEL:-tngtech/deepseek-r1t2-chimera:free}
           export MODEL="$MODEL_NAME"
           python .github/scripts/run_ai_check.py \
-            --engine ${{ inputs.engine || 'openrouter' }} \
+            --engine "$AI_REVIEW_ENGINE" \
             --student "${{ steps.meta.outputs.student }}" \
             --task "${{ steps.meta.outputs.task }}" \
             --prompt-file ai_prompt.txt \
