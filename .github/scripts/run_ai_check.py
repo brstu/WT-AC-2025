@@ -58,6 +58,9 @@ DEFAULT_OPENAI_MODEL = 'gpt-4o-mini'
 DEFAULT_CODEX_MODEL = 'copilot-codex'
 DEFAULT_OPENROUTER_MODEL = 'tngtech/deepseek-r1t2-chimera:free'
 
+# Allow overriding HTTP timeout for model API calls (seconds) via env.
+HTTP_TIMEOUT = int(os.getenv('AI_HTTP_TIMEOUT', '180'))
+
 TEXT_EXTS = {
     '.txt', '.md', '.html', '.css', '.js', '.ts', '.tsx', '.jsx', '.json', '.yml', '.yaml', '.xml', '.ini', '.cfg', '.py', '.java', '.c', '.cpp', '.h', '.hpp', '.rs', '.go', '.sh', '.bat', '.ps1'
 }
@@ -390,7 +393,7 @@ def main(argv: list[str] | None = None) -> int:
                 endpoint,
                 headers=headers,
                 json=payload,
-                timeout=180,
+                timeout=HTTP_TIMEOUT,
                 stream=stream_enabled,
             )
         except Exception as exc:

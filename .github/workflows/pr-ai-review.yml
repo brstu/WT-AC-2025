@@ -106,6 +106,7 @@ jobs:
         id: ai
         env:
           AI_GITHUB_TOKEN: ${{ env.AI_MODELS_TOKEN }}
+          AI_HTTP_TIMEOUT: 120  # seconds (2 minutes) for model API calls
         run: |
           set -euo pipefail
           export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
