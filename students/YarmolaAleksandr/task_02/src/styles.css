@@ -444,14 +444,14 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgb(31 111 235 / 8%);
 }
 
-[data-theme="dark"] input:focus,
-[data-theme="dark"] textarea:focus {
-  box-shadow: 0 0 0 3px rgb(59 130 246 / 15%);
-}
-
 textarea {
   min-height: 120px;
   resize: vertical;
+}
+
+[data-theme="dark"] input:focus,
+[data-theme="dark"] textarea:focus {
+  box-shadow: 0 0 0 3px rgb(59 130 246 / 15%);
 }
 
 .error {
