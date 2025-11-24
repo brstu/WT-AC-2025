@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Персональный сайт фотографа - портфолио работ, услуги фотосъёмки, отзывы клиентов и контактная информация">
+    <meta name="keywords" content="фотограф, фотосъёмка, портфолио, свадебная фотосъёмка, портретная фотосъёмка">
+    <meta name="author" content="Фотограф">
+    <title>Фотограф | Портфолио и услуги</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
+    
+    <header>
+        <div class="header-container">
+            <h1>Александр Фотограф</h1>
+            <p class="tagline">Запечатлеваю моменты жизни</p>
+        </div>
+        <nav aria-label="Основная навигация">
+            <ul class="nav-list">
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="hero" class="hero-section">
+            <div class="hero-content">
+                <h2>Добро пожаловать в мой мир фотографии</h2>
+                <p>Я профессиональный фотограф с более чем 5-летним опытом работы. Специализируюсь на свадебной, портретной и семейной фотосъёмке.</p>
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section">
+            <h2>Портфолио</h2>
+            <p class="section-description">Мои лучшие работы из разных жанров фотографии</p>
+            <div class="portfolio-grid">
+                <article class="portfolio-item">
+                    <picture>
+                        <source media="(min-width: 1024px)" srcset="assets/images/svadba.jpg">
+                        <source media="(min-width: 600px)" srcset="assets/images/svadba.jpg">
+                        <img src="assets/images/svadba.jpg" alt="Свадебная фотосъёмка - молодожёны в парке" loading="lazy">
+                    </picture>
+                    <div class="portfolio-overlay">
+                        <h3>Свадебная фотосъёмка</h3>
+                        <p>Романтические моменты вашего особенного дня</p>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <picture>
+                        <source media="(min-width: 1024px)" srcset="assets/images/portret.jpg">
+                        <source media="(min-width: 600px)" srcset="assets/images/portret.jpg">
+                        <img src="assets/images/portret.jpg" alt="Портретная фотосъёмка - женский портрет в студии" loading="lazy">
+                    </picture>
+                    <div class="portfolio-overlay">
+                        <h3>Портретная фотосъёмка</h3>
+                        <p>Индивидуальные и групповые портреты</p>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <picture>
+                        <source media="(min-width: 1024px)" srcset="assets/images/fam.jpg">
+                        <source media="(min-width: 600px)" srcset="assets/images/fam.jpg">
+                        <img src="assets/images/fam.jpg" alt="Семейная фотосъёмка - семья с детьми на природе" loading="lazy">
+                    </picture>
+                    <div class="portfolio-overlay">
+                        <h3>Семейная фотосъёмка</h3>
+                        <p>Тёплые моменты семейной жизни</p>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <picture>
+                        <source media="(min-width: 1024px)" srcset="assets/images/korporat.jpg">
+                        <source media="(min-width: 600px)" srcset="assets/images/korporat.jpg">
+                        <img src="assets/images/korporat.jpg" alt="Корпоративная фотосъёмка - команда в офисе" loading="lazy">
+                    </picture>
+                    <div class="portfolio-overlay">
+                        <h3>Корпоративная фотосъёмка</h3>
+                        <p>Профессиональные фото для бизнеса</p>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <picture>
+                        <source media="(min-width: 1024px)" srcset="assets/images/love.jpg">
+                        <source media="(min-width: 600px)" srcset="assets/images/love.jpg">
+                        <img src="assets/images/love.jpg" alt="Love Story фотосъёмка - пара в городской среде" loading="lazy">
+                    </picture>
+                    <div class="portfolio-overlay">
+                        <h3>Love Story</h3>
+                        <p>Романтические фотосессии для влюблённых</p>
+                    </div>
+                </article>
+                <article class="portfolio-item">
+                    <picture>
+                        <source media="(min-width: 1024px)" srcset="assets/images/baby.jpg">
+                        <source media="(min-width: 600px)" srcset="assets/images/baby.jpg">
+                        <img src="assets/images/baby.jpg" alt="Детская фотосъёмка - ребёнок играет в парке" loading="lazy">
+                    </picture>
+                    <div class="portfolio-overlay">
+                        <h3>Детская фотосъёмка</h3>
+                        <p>Яркие моменты детства</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="services" class="services-section">
+            <h2>Услуги</h2>
+            <p class="section-description">Выберите подходящий пакет фотосъёмки</p>
+            <div class="services-grid">
+                <article class="service-card">
+                    <h3>Свадебная фотосъёмка</h3>
+                    <p class="service-price">от 500 BYN</p>
+                    <ul class="service-features">
+                        <li>Съёмка до 8 часов</li>
+                        <li>Обработка всех фотографий</li>
+                        <li>50+ отредактированных фото</li>
+                        <li>Срок обработки: 2-3 недели</li>
+                    </ul>
+                    <button class="service-button" aria-label="Заказать свадебную фотосъёмку">Заказать</button>
+                </article>
+                <article class="service-card">
+                    <h3>Портретная фотосъёмка</h3>
+                    <p class="service-price">от 150 BYN</p>
+                    <ul class="service-features">
+                        <li>Съёмка до 2 часов</li>
+                        <li>Студийная или выездная съёмка</li>
+                        <li>20+ отредактированных фото</li>
+                        <li>Срок обработки: 1 неделя</li>
+                    </ul>
+                    <button class="service-button" aria-label="Заказать портретную фотосъёмку">Заказать</button>
+                </article>
+                <article class="service-card">
+                    <h3>Семейная фотосъёмка</h3>
+                    <p class="service-price">от 200 BYN</p>
+                    <ul class="service-features">
+                        <li>Съёмка до 3 часов</li>
+                        <li>На природе или в студии</li>
+                        <li>30+ отредактированных фото</li>
+                        <li>Срок обработки: 1-2 недели</li>
+                    </ul>
+                    <button class="service-button" aria-label="Заказать семейную фотосъёмку">Заказать</button>
+                </article>
+                <article class="service-card">
+                    <h3>Корпоративная фотосъёмка</h3>
+                    <p class="service-price">от 300 BYN</p>
+                    <ul class="service-features">
+                        <li>Съёмка до 4 часов</li>
+                        <li>Фото сотрудников и офиса</li>
+                        <li>40+ отредактированных фото</li>
+                        <li>Срок обработки: 1-2 недели</li>
+                    </ul>
+                    <button class="service-button" aria-label="Заказать корпоративную фотосъёмку">Заказать</button>
+                </article>
+            </div>
+        </section>
+
+        <section id="reviews" class="reviews-section">
+            <h2>Отзывы клиентов</h2>
+            <p class="section-description">Что говорят о моей работе</p>
+            <div class="reviews-grid">
+                <article class="review-card">
+                    <div class="review-header">
+                        <h3>Мария и Иван</h3>
+                        <p class="review-date">Свадебная фотосъёмка, 2024</p>
+                    </div>
+                    <div class="review-rating" aria-label="Оценка: 5 из 5 звёзд">
+                        <span aria-hidden="true">★★★★★</span>
+                    </div>
+                    <p class="review-text">"Александр создал незабываемые фотографии нашего свадебного дня! Каждый кадр передаёт эмоции и атмосферу праздника. Очень профессиональный подход и внимание к деталям. Рекомендуем!"</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <h3>Елена</h3>
+                        <p class="review-date">Портретная фотосъёмка, 2024</p>
+                    </div>
+                    <div class="review-rating" aria-label="Оценка: 5 из 5 звёзд">
+                        <span aria-hidden="true">★★★★★</span>
+                    </div>
+                    <p class="review-text">"Осталась в полном восторге от портретной фотосессии! Фотограф умеет найти правильный ракурс и создать комфортную атмосферу. Фотографии получились естественными и живыми."</p>
+                </article>
+                <article class="review-card">
+                    <div class="review-header">
+                        <h3>Семья Петровых</h3>
+                        <p class="review-date">Семейная фотосъёмка, 2024</p>
+                    </div>
+                    <div class="review-rating" aria-label="Оценка: 5 из 5 звёзд">
+                        <span aria-hidden="true">★★★★★</span>
+                    </div>
+                    <p class="review-text">"Спасибо за прекрасные семейные фотографии! Дети были в восторге, а мы получили замечательные воспоминания. Обработка фотографий выполнена на высшем уровне."</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="contacts" class="contacts-section">
+            <h2>Контакты</h2>
+            <p class="section-description">Свяжитесь со мной для обсуждения вашего проекта</p>
+            <div class="contacts-container">
+                <div class="contact-info">
+                    <h3>Способы связи</h3>
+                    <address>
+                        <p>
+                            <strong>Телефон:</strong>
+                            <a href="tel:+375291234567" aria-label="Позвонить по телефону">+375 (29) 123-45-67</a>
+                        </p>
+                        <p>
+                            <strong>Email:</strong>
+                            <a href="mailto:photographer@example.com" aria-label="Написать на email">photographer@example.com</a>
+                        </p>
+                        <p>
+                            <strong>Instagram:</strong>
+                            <a href="https://instagram.com/photographer" target="_blank" rel="noopener noreferrer" aria-label="Открыть профиль в Instagram">@photographer</a>
+                        </p>
+                        <p>
+                            <strong>Адрес студии:</strong>
+                            г. Минск, ул. Примерная, д. 10
+                        </p>
+                    </address>
+                </div>
+                <form class="contact-form" aria-label="Форма обратной связи">
+                    <div class="form-group">
+                        <label for="name">Ваше имя <span class="required" aria-label="обязательное поле">*</span></label>
+                        <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
+                        <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span class="required" aria-label="обязательное поле">*</span></label>
+                        <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
+                        <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон</label>
+                        <input type="tel" id="phone" name="phone" aria-describedby="phone-error">
+                        <span id="phone-error" class="error-message" role="alert" aria-live="polite"></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Сообщение <span class="required" aria-label="обязательное поле">*</span></label>
+                        <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="message-error"></textarea>
+                        <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
+                    </div>
+                    <button type="submit" class="submit-button">Отправить сообщение</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Александр Фотограф. Все права защищены.</p>
+            <nav aria-label="Дополнительная навигация">
+                <ul class="footer-nav">
+                    <li><a href="#portfolio">Портфолио</a></li>
+                    <li><a href="#services">Услуги</a></li>
+                    <li><a href="#reviews">Отзывы</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
+
