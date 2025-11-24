@@ -31,7 +31,7 @@
 
 | Вариант | Group | № | sub | Name | NameLatin | Directory | Github Username | #0 | #1 | #2 | #3 | #4 | #5 | #6 | #7 | #8 | Rating |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | АС-63 | 1 | 2 | Ващук Анатолий | VashchukAnatoliy | [dir](./students/VashchukAnatoliy) | [skevet-avramuk](https://github.com/skevet-avramuk) |  | 67+10 |  |  |  |  |  |  |  |  |
+| 1 | АС-63 | 1 | 2 | Ващук Анатолий | VashchukAnatoliy | [dir](./students/VashchukAnatoliy) | [skevet-avramuk](https://github.com/skevet-avramuk) |  | 67+10 | 90 |  |  |  |  |  |  |  |
 | 2 | АС-63 | 2 | 1 | Выржемковский Даниил | VyrzhemkovskiyDaniil | [dir](./students/VyrzhemkovskiyDaniil) | [r0mb123](https://github.com/r0mb123) |  |  |  |  |  |  |  |  |  |  |
 | 3 | АС-63 | 3 | 1 | Грицук Дмитрий | GritsukDmitriy | [dir](./students/GritsukDmitriy) | [llayyz](https://github.com/llayyz) |  |  |  |  |  |  |  |  |  |  |
 | 4 | АС-63 | 4 | 1 | Грицук Павел | GritsukPavel | [dir](./students/GritsukPavel) | [momo-kitsune](https://github.com/momo-kitsune) |  |  |  |  |  |  |  |  |  |  |
@@ -53,8 +53,8 @@
 | 20 | АС-63 | 20 | 2 | Стельмашук Иван | StelmashukIvan | [dir](./students/StelmashukIvan) | [KulibinI](https://github.com/KulibinI) |  | 76+10 | 86 |  |  |  |  |  |  |  |
 | 21 | АС-63 | 21 | 2 | Тунчик Антон | TunchikAnton | [dir](./students/TunchikAnton) | [Stis25](https://github.com/Stis25) |  |  |  |  |  |  |  |  |  |  |
 | 22 | АС-63 | 22 | 2 | Филипчук Дмитрий | FilipchukDmitriy | [dir](./students/FilipchukDmitriy) | [kuddel11](https://github.com/kuddel11) |  |  |  |  |  |  |  |  |  |  |
-| 23 | АС-63 | 23 | 2 | Ярмола Александр | YarmolaAleksandr | [dir](./students/YarmolaAleksandr) | [alexsandro007](https://github.com/alexsandro007) |  | 100 |  |  |  |  |  |  |  |  |
-| 24 | АС-63 | 24 | 2 | Ярмолович Александр | YarmolovichAleksandr | [dir](./students/YarmolovichAleksandr) | [yarmolov](https://github.com/yarmolov) |  | 86 | 80 |  |  |  |  |  |  |  |
+| 23 | АС-63 | 23 | 2 | Ярмола Александр | YarmolaAleksandr | [dir](./students/YarmolaAleksandr) | [alexsandro007](https://github.com/alexsandro007) |  | 100 | 87 |  |  |  |  |  |  |  |
+| 24 | АС-63 | 24 | 2 | Ярмолович Александр | YarmolovichAleksandr | [dir](./students/YarmolovichAleksandr) | [yarmolov](https://github.com/yarmolov) |  | 86 | 80 | 40 | 40 |  |  |  |  |  |
 | 25 | АС-64 | 1 | 1 | Белаш Александр | BelashAleksandr | [dir](./students/BelashAleksandr) | [went2smoke](https://github.com/went2smoke) |  |  |  |  |  |  |  |  |  |  |
 | 26 | АС-64 | 2 | 1 | Брызгалов Юрий | BryzgalovYuriy | [dir](./students/BryzgalovYuriy) | [Gena-Cidarmyan](https://github.com/Gena-Cidarmyan) |  |  |  |  |  |  |  |  |  |  |
 | 27 | АС-64 | 3 | 1 | Будник Анна | BudnikAnna | [dir](./students/BudnikAnna) | [annettebb](https://github.com/annettebb) |  |  |  |  |  |  |  |  |  |  |
