@@ -1,0 +1,145 @@
+name: PR AI review
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: 'Pull request number to review'
+        required: true
+        type: string
+      model:
+        description: 'Override default model (optional)'
+        required: false
+        type: string
+      label:
+        description: 'Override label applied to the PR (optional)'
+        required: false
+        type: string
+      engine:
+        description: 'Override engine (github|openai|codex|openrouter)'
+        required: false
+        type: string
+        default: openrouter
+
+permissions:
+  contents: read
+  issues: write
+  pull-requests: write
+  models: read
+
+concurrency:
+  group: pr-ai-review-${{ inputs.pr_number }}
+  cancel-in-progress: true
+
+jobs:
+  ai-review:
+    if: ${{ inputs.pr_number != '' }}
+    runs-on: ubuntu-latest
+    env:
+      AI_REVIEW_MODEL: "${{ inputs.model || 'tngtech/deepseek-r1t2-chimera:free' }}"
+      AI_REVIEW_LABEL: "${{ inputs.label || 'AI-reviewed' }}"
+      TARGET_PR: "${{ inputs.pr_number }}"
+      AI_REVIEW_ENGINE: ${{ inputs.engine || 'openrouter' }}
+      AI_MODELS_TOKEN: ${{ secrets.AI_GITHUB_TOKEN || github.token }}
+    steps:
+      - name: Checkout base ref (safe)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements-dev.txt
+
+      - name: Prepare AI prompt for this PR
+        id: prepare
+        env:
+          PR_GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python .github/scripts/prepare_ai_prompt_for_pr.py \
+            --pr "$TARGET_PR" \
+            --repo "${{ github.repository }}" \
+            --token "$PR_GITHUB_TOKEN" \
+            --skip-checkout \
+            --prompt-file ai_prompt.txt \
+            --json-output ai_prompt_meta.json
+
+      - name: Collect prompt metadata
+        id: meta
+        run: |
+          python - <<'PY'
+          import json, os, sys
+          meta_path = 'ai_prompt_meta.json'
+          try:
+            data = json.load(open(meta_path, encoding='utf-8'))
+          except FileNotFoundError:
+            sys.exit('Metadata file not found: ai_prompt_meta.json')
+          required = ('student', 'task')
+          missing = [key for key in required if not data.get(key)]
+          if missing:
+            sys.exit(f"Missing keys in metadata: {missing}")
+          gh_out = os.environ['GITHUB_OUTPUT']
+          with open(gh_out, 'a', encoding='utf-8') as fh:
+            fh.write(f"student={data['student']}\n")
+            fh.write(f"task={data['task']}\n")
+          PY
+
+      - name: Sync student folder from PR head
+        env:
+          STUDENT: ${{ steps.meta.outputs.student }}
+        run: |
+          set -euo pipefail
+          if [ -z "$STUDENT" ]; then
+            echo "Student directory is not detected" >&2
+            exit 1
+          fi
+          git fetch origin pull/$TARGET_PR/head:refs/remotes/origin/pr-ai-$TARGET_PR
+          git checkout refs/remotes/origin/pr-ai-$TARGET_PR -- "students/$STUDENT"
+
+      - name: Run AI reviewer
+        id: ai
+        env:
+          AI_GITHUB_TOKEN: ${{ env.AI_MODELS_TOKEN }}
+        run: |
+          set -euo pipefail
+          export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
+          export OPENROUTER_API_KEY="${{ secrets.OPENROUTER_API_KEY }}"
+          export OPENROUTER_TOKEN="${{ secrets.OPENROUTER_TOKEN }}"
+          MODEL_NAME=${AI_REVIEW_MODEL:-tngtech/deepseek-r1t2-chimera:free}
+          export MODEL="$MODEL_NAME"
+          python .github/scripts/run_ai_check.py \
+            --engine "$AI_REVIEW_ENGINE" \
+            --student "${{ steps.meta.outputs.student }}" \
+            --task "${{ steps.meta.outputs.task }}" \
+            --prompt-file ai_prompt.txt \
+            --stream \
+            --out ai_review.md
+          echo "model=$MODEL_NAME" >> "$GITHUB_OUTPUT"
+
+      - name: Upload AI review response
+        uses: actions/upload-artifact@v4
+        with:
+          name: ai-review-${{ env.TARGET_PR }}
+          path: ai_review.md
+          retention-days: 7
+
+      - name: Comment and label PR with AI feedback
+        env:
+          REPO: ${{ github.repository }}
+          PR_NUMBER: ${{ env.TARGET_PR }}
+          GITHUB_TOKEN: ${{ github.token }}
+          AI_RESPONSE_PATH: ai_review.md
+          AI_MODEL: ${{ steps.ai.outputs.model }}
+          AI_COMMENT_NOTICE: "Не применяйте автоматически предложения модели — дождитесь подтверждения преподавателя."
+          AI_LABEL_INPUT: ${{ env.AI_REVIEW_LABEL }}
+        run: |
+          if [ -n "$AI_LABEL_INPUT" ]; then
+            export AI_LABEL="$AI_LABEL_INPUT"
+          fi
+          python .github/scripts/comment_and_label.py
