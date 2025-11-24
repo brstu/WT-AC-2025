@@ -168,7 +168,7 @@
                         <h3>Мария и Иван</h3>
                         <p class="review-date">Свадебная фотосъёмка, 2024</p>
                     </div>
-                    <div class="review-rating" aria-label="Оценка: 5 из 5 звёзд">
+                    <div class="review-rating" role="img" aria-label="Оценка: 5 из 5 звёзд">
                         <span aria-hidden="true">★★★★★</span>
                     </div>
                     <p class="review-text">"Александр создал незабываемые фотографии нашего свадебного дня! Каждый кадр передаёт эмоции и атмосферу праздника. Очень профессиональный подход и внимание к деталям. Рекомендуем!"</p>
@@ -178,7 +178,7 @@
                         <h3>Елена</h3>
                         <p class="review-date">Портретная фотосъёмка, 2024</p>
                     </div>
-                    <div class="review-rating" aria-label="Оценка: 5 из 5 звёзд">
+                    <div class="review-rating" role="img" aria-label="Оценка: 5 из 5 звёзд">
                         <span aria-hidden="true">★★★★★</span>
                     </div>
                     <p class="review-text">"Осталась в полном восторге от портретной фотосессии! Фотограф умеет найти правильный ракурс и создать комфортную атмосферу. Фотографии получились естественными и живыми."</p>
@@ -188,7 +188,7 @@
                         <h3>Семья Петровых</h3>
                         <p class="review-date">Семейная фотосъёмка, 2024</p>
                     </div>
-                    <div class="review-rating" aria-label="Оценка: 5 из 5 звёзд">
+                    <div class="review-rating" role="img" aria-label="Оценка: 5 из 5 звёзд">
                         <span aria-hidden="true">★★★★★</span>
                     </div>
                     <p class="review-text">"Спасибо за прекрасные семейные фотографии! Дети были в восторге, а мы получили замечательные воспоминания. Обработка фотографий выполнена на высшем уровне."</p>
@@ -223,12 +223,12 @@
                 </div>
                 <form class="contact-form" aria-label="Форма обратной связи">
                     <div class="form-group">
-                        <label for="name">Ваше имя <span class="required" aria-label="обязательное поле">*</span></label>
+                        <label for="name">Ваше имя <span class="required" title="обязательное поле">*</span></label>
                         <input type="text" id="name" name="name" required aria-required="true" aria-describedby="name-error">
                         <span id="name-error" class="error-message" role="alert" aria-live="polite"></span>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email <span class="required" aria-label="обязательное поле">*</span></label>
+                        <label for="email">Email <span class="required" title="обязательное поле">*</span></label>
                         <input type="email" id="email" name="email" required aria-required="true" aria-describedby="email-error">
                         <span id="email-error" class="error-message" role="alert" aria-live="polite"></span>
                     </div>
@@ -238,7 +238,7 @@
                         <span id="phone-error" class="error-message" role="alert" aria-live="polite"></span>
                     </div>
                     <div class="form-group">
-                        <label for="message">Сообщение <span class="required" aria-label="обязательное поле">*</span></label>
+                        <label for="message">Сообщение <span class="required" title="обязательное поле">*</span></label>
                         <textarea id="message" name="message" rows="5" required aria-required="true" aria-describedby="message-error"></textarea>
                         <span id="message-error" class="error-message" role="alert" aria-live="polite"></span>
                     </div>
