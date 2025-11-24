@@ -18,21 +18,21 @@ class FilmFestivalManager {
     }
 
     initializeElements() {
-        this.searchInput = document.getElementById('searchInput');
+        this.searchInput = document.getElementById('search-input');
         this.searchInput.setAttribute('aria-label', 'Поиск по названию фильма');
-        this.genreFilter = document.getElementById('genreFilter');
-        this.refreshBtn = document.getElementById('refreshBtn');
-        this.clearCacheBtn = document.getElementById('clearCacheBtn');
-        this.retryBtn = document.getElementById('retryBtn');
+        this.genreFilter = document.getElementById('genre-filter');
+        this.refreshBtn = document.getElementById('refresh-btn');
+        this.clearCacheBtn = document.getElementById('clear-cache-btn');
+        this.retryBtn = document.getElementById('retry-btn');
 
-        this.loadingIndicator = document.getElementById('loadingIndicator');
-        this.errorIndicator = document.getElementById('errorIndicator');
-        this.errorMessage = document.getElementById('errorMessage');
-        this.moviesGrid = document.getElementById('moviesGrid');
-        this.emptyState = document.getElementById('emptyState');
-        this.requestCountElement = document.getElementById('requestCount');
-        this.cachedCountElement = document.getElementById('cachedCount');
-        this.canceledCountElement = document.getElementById('canceledCount');
+        this.loadingIndicator = document.getElementById('loading-indicator');
+        this.errorIndicator = document.getElementById('error-indicator');
+        this.errorMessage = document.getElementById('error-message');
+        this.moviesGrid = document.getElementById('movies-grid');
+        this.emptyState = document.getElementById('empty-state');
+        this.requestCountElement = document.getElementById('request-count');
+        this.cachedCountElement = document.getElementById('cached-count');
+        this.canceledCountElement = document.getElementById('canceled-count');
 
         this.paginationContainer = document.createElement('div');
         this.paginationContainer.className = 'pagination-controls';
