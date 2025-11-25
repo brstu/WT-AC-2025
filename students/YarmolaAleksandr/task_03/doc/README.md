@@ -1,6 +1,6 @@
 # Лабораторная работа 03. Асинхронность и HTTP-кэш
 
-**Вариант 23:** Рейтинги игр/фильмов с кэшированием и обновлением  
+**Вариант 23:** Рейтинги игр/фильмов с кэшированием и обновлением
 **Студент:** Ярмола Александр
 
 ---
@@ -33,7 +33,7 @@ task_03/
 
 **Функционал:**
 - Загрузка списка (12 элементов/страница)
-- Поиск по названию  
+- Поиск по названию
 - Пагинация
 - Состояния: loading (skeleton) / error / empty
 
@@ -44,11 +44,11 @@ task_03/
 ```javascript
 async function fetchWithRetry(url, options = {}) {
     const { retries = 3, backoffMs = 1000, timeoutMs = 10000, signal } = options;
-    
+
     for (let attempt = 0; attempt <= retries; attempt++) {
         const timeoutController = new AbortController();
         const timeoutId = setTimeout(() => timeoutController.abort(), timeoutMs);
-        
+
         try {
             const response = await fetch(url, { signal: signal || timeoutController.signal });
             clearTimeout(timeoutId);
@@ -82,7 +82,7 @@ class GamesAPI {
             this.abortController.abort();
         }
         this.abortController = new AbortController();
-        
+
         const data = await fetchWithRetry(url, {
             signal: this.abortController.signal
         });
@@ -103,15 +103,15 @@ class SimpleCache {
         this.cache = new Map();
         this.ttl = ttl;
     }
-    
+
     set(key, value) {
         this.cache.set(key, { value, timestamp: Date.now() });
     }
-    
+
     get(key) {
         const item = this.cache.get(key);
         if (!item) return null;
-        
+
         const age = Date.now() - item.timestamp;
         if (age > this.ttl) {
             this.cache.delete(key);
@@ -122,7 +122,7 @@ class SimpleCache {
 }
 ```
 
-**Ключ:** `shows_${query}_${page}`  
+**Ключ:** `shows_${query}_${page}`
 **Преимущества:** ускорение повторных запросов в 100-300 раз
 
 ### 5. UX-улучшения ✅
@@ -158,8 +158,8 @@ class SimpleCache {
 
 ![Кэш](./screenshots/cached-request.png)
 
-**Network:** запрос отсутствует  
-**Console:** `✅ Данные взяты из кэша: shows__1`  
+**Network:** запрос отсутствует
+**Console:** `✅ Данные взяты из кэша: shows__1`
 **Time:** ~2ms (в 300x быстрее!)
 
 ### Retry при ошибке
@@ -269,4 +269,4 @@ fetchWithRetry(url, options) { ... } // Retry + timeout
 
 ---
 
-**Автор:** Ярмола Александр | Группа: АС-63  
+**Автор:** Ярмола Александр | Группа: АС-63

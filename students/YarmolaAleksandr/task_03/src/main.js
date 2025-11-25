@@ -238,18 +238,18 @@ class GamesUI {
     }
 
     initElements() {
-        this.searchInput = document.getElementById('searchInput');
-        this.searchBtn = document.getElementById('searchBtn');
-        this.refreshBtn = document.getElementById('refreshBtn');
-        this.clearCacheBtn = document.getElementById('clearCacheBtn');
-        this.gamesList = document.getElementById('gamesList');
-        this.loadingIndicator = document.getElementById('loadingIndicator');
-        this.errorMessage = document.getElementById('errorMessage');
-        this.emptyState = document.getElementById('emptyState');
+        this.searchInput = document.getElementById('search-input');
+        this.searchBtn = document.getElementById('search-btn');
+        this.refreshBtn = document.getElementById('refresh-btn');
+        this.clearCacheBtn = document.getElementById('clear-cache-btn');
+        this.gamesList = document.getElementById('games-list');
+        this.loadingIndicator = document.getElementById('loading-indicator');
+        this.errorMessage = document.getElementById('error-message');
+        this.emptyState = document.getElementById('empty-state');
         this.pagination = document.getElementById('pagination');
-        this.prevBtn = document.getElementById('prevBtn');
-        this.nextBtn = document.getElementById('nextBtn');
-        this.pageInfo = document.getElementById('pageInfo');
+        this.prevBtn = document.getElementById('prev-btn');
+        this.nextBtn = document.getElementById('next-btn');
+        this.pageInfo = document.getElementById('page-info');
     }
 
     attachEventListeners() {
@@ -434,11 +434,11 @@ class GamesUI {
 // Вспомогательные функции для статистики
 // ============================================
 function updateCacheStats(size) {
-    document.getElementById('cacheStats').textContent = `Кэш: ${size} записей`;
+    document.getElementById('cache-stats').textContent = `Кэш: ${size} записей`;
 }
 
 function updateRequestStats(count) {
-    document.getElementById('requestStats').textContent = `Запросов: ${count}`;
+    document.getElementById('request-stats').textContent = `Запросов: ${count}`;
 }
 
 // ============================================
