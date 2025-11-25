@@ -17,6 +17,7 @@
 ![Preview](./screenshots/preview.png)
 
 **Структура:**
+
 ```
 task_03/
 ├── src/          # index.html, main.js, styles.css
