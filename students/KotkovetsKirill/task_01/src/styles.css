@@ -22,6 +22,10 @@ header h1 {
   margin-bottom: 1rem;
 }
 
+ul {
+  margin-left: 2rem;
+}
+
 nav ul {
   list-style: none;
   display: flex;
@@ -60,10 +64,6 @@ h2 {
 
 p {
   margin-bottom: 1rem;
-}
-
-ul {
-  margin-left: 2rem;
 }
 
 img {
