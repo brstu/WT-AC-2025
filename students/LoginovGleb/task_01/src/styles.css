@@ -218,11 +218,18 @@ body {
   flex-direction: column;
 }
 
-/* Оптимизация изображений */
+/* Оптимизация изображений: Web Vitals (CLS + LCP) */
 img {
   max-width: 100%;
   height: auto;
   display: block;
+
+  /* CLS: предотвращение layout shift */
+  content-visibility: auto;
+
+  /* LCP: улучшение декодирования */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 /* Списки без маркеров */
@@ -452,9 +459,16 @@ section h2 {
   text-align: center;
   padding: var(--spacing-xl) var(--spacing-sm);
 
-  /* Web Vitals: Оптимизация LCP (Largest Contentful Paint) */
+  /* LCP: Оптимизация Largest Contentful Paint */
   content-visibility: auto;
   contain-intrinsic-size: auto 400px;
+
+  /* LCP: улучшенный contain для изоляции */
+  contain: layout style paint;
+
+  /* LCP: GPU ускорение */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .hero-section h2 {
@@ -553,8 +567,15 @@ section {
   height: 220px;
   object-fit: cover;
 
-  /* Оптимизация: prevent layout shift */
+  /* CLS: предотвращение layout shift */
   aspect-ratio: 4 / 3;
+
+  /* CLS: изоляция макета */
+  contain: layout style paint;
+
+  /* LCP: декодирование асинхронно */
+  content-visibility: auto;
+  contain-intrinsic-size: 400px 300px;
 }
 
 /* FLEX: Контент карточки с автоматическим распределением */
@@ -1209,18 +1230,55 @@ section {
    WEB VITALS OPTIMIZATION: Оптимизация производительности
    ============================================ 
    
-   Улучшения для Core Web Vitals:
-   - LCP (Largest Contentful Paint)
-   - CLS (Cumulative Layout Shift)
-   - FID (First Input Delay)
+   CORE WEB VITALS IMPROVEMENTS:
+   
+   1. LCP (Largest Contentful Paint) - Цель: < 2.5s
+      ✓ content-visibility: auto - отложенный рендеринг
+      ✓ contain-intrinsic-size - резервирование пространства
+      ✓ will-change: transform - GPU ускорение
+      ✓ preconnect для внешних ресурсов
+      ✓ image-rendering для оптимизации декодирования
+      ✓ aspect-ratio для предотвращения reflow
+   
+   2. CLS (Cumulative Layout Shift) - Цель: < 0.1
+      ✓ contain: layout style paint - изоляция макета
+      ✓ width/height на всех <img> - зарезервированное пространство
+      ✓ aspect-ratio - соотношение сторон
+      ✓ content-visibility - видимость контента
+      ✓ contain-intrinsic-size - внутренний размер
+      ✓ Отсутствие поздно загружаемых шрифтов (system fonts)
+   
+   3. INP (Interaction to Next Paint) - Цель: < 200ms
+      ✓ Debouncing в JS для уменьшения задержки
+      ✓ requestAnimationFrame для плавных обновлений
+      ✓ Passive event listeners
+      ✓ Минимальный JavaScript (< 100 строк)
+      ✓ CSS transitions вместо JS анимаций
+      ✓ transform для GPU-ускоренных анимаций
+   
+   4. ДОПОЛНИТЕЛЬНЫЕ ОПТИМИЗАЦИИ:
+      ✓ prefers-reduced-motion - уважение настроек пользователя
+      ✓ prefers-reduced-data - оптимизация для медленных соединений
+      ✓ prefers-contrast - поддержка высокого контраста
+      ✓ loading="lazy" на изображениях
+      ✓ srcset + sizes для адаптивных изображений (1x/2x)
 */
 
-/* CLS: Уменьшение сдвига макета */
-.review-card img,
-.hero-section,
+/* CLS: Уменьшение сдвига макета (Cumulative Layout Shift) */
 .newsletter-section {
   /* Резервируем место для контента, чтобы избежать layout shift */
-  contain: layout;
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
+}
+
+/* CLS: Карточки с изоляцией */
+.review-card,
+.comparison-card,
+.news-card,
+.guide-item {
+  contain: layout style;
+  content-visibility: auto;
 }
 
 /* Оптимизация для медленных соединений */

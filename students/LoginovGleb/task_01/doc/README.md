@@ -51,6 +51,56 @@
   - Header, navigation, cards, forms, social links
   - Адаптивные направления: column → row
 
+### Адаптивные изображения
+
+**Используемые техники:**
+
+- `<picture>` элемент для множественных источников
+- `<source media>` для выбора по размеру экрана
+- `srcset` с дескрипторами `1x`/`2x` для Retina дисплеев
+- `sizes` атрибут для адаптивных размеров
+- `width`/`height` для предотвращения CLS
+- `loading="lazy"` для оптимизации LCP
+- `aspect-ratio` в CSS для сохранения пропорций
+
+**Логика sizes:**
+
+- Desktop (1024px+): `400px` фиксированная ширина
+- Tablet (600px+): `50vw` (половина viewport)
+- Mobile (<600px): `100vw` (полная ширина)
+
+### Web Vitals оптимизация
+
+#### **LCP (Largest Contentful Paint) < 2.5s**
+
+- `content-visibility: auto` - отложенный рендеринг
+- `contain-intrinsic-size` - резервирование пространства
+- `will-change: transform` - GPU ускорение
+- `preconnect` для внешних ресурсов
+- `image-rendering` для оптимизации декодирования
+- `aspect-ratio` для предотвращения reflow
+- `preload` для критического CSS
+
+#### **CLS (Cumulative Layout Shift) < 0.1**
+
+- `contain: layout style paint` - изоляция макета
+- `width`/`height` на всех `<img>` - зарезервированное пространство
+- `aspect-ratio` - соотношение сторон
+- `content-visibility` - видимость контента
+- `contain-intrinsic-size` - внутренний размер
+- System fonts (без поздней загрузки шрифтов)
+
+#### **INP (Interaction to Next Paint) < 200ms**
+
+- Debouncing (150ms) для уменьшения задержки
+- `requestAnimationFrame` для плавных обновлений
+- `requestIdleCallback` для асинхронных операций
+- Passive event listeners
+- Минимальный JavaScript (< 110 строк)
+- CSS transitions вместо JS анимаций
+- `transform` для GPU-ускоренных анимаций
+- Keyboard navigation (Enter/Space)
+
 ### Доступность
 
 - Контраст текста: 16.1:1 (AAA)
@@ -59,13 +109,12 @@
 - Alt-атрибуты для всех изображений
 - Адаптивные изображения через `<picture>`
 
-### Оптимизация производительности
+### Дополнительные оптимизации
 
-- `content-visibility: auto` (LCP)
-- `contain: layout` (CLS)
-- `aspect-ratio` для изображений
-- `lazy loading` для картинок
-- Поддержка `prefers-reduced-motion`, `prefers-contrast`, `prefers-reduced-data`
+- `prefers-reduced-motion` - уважение настроек анимации
+- `prefers-reduced-data` - оптимизация для медленных соединений
+- `prefers-contrast` - поддержка высокого контраста
+- Print styles - оптимизация для печати
 
 ### Дизайн системы
 
@@ -107,7 +156,7 @@
 
 ---
 
-## ✅ Качество
+## Качество
 
 ### Lighthouse результаты
 

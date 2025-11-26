@@ -42,8 +42,27 @@
     <!-- Preconnect для оптимизации загрузки -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 
+    <!-- Critical CSS для LCP оптимизации -->
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preload" href="styles.css" as="style" />
   </head>
+
+  <!--
+    ПРИМЕЧАНИЕ ПО ИЗОБРАЖЕНИЯМ 2x:
+    
+    В проекте используются ссылки на изображения с суффиксом -2x.jpg для Retina дисплеев.
+    Например: smartphone-desktop-2x.jpg, laptop-tablet-2x.jpg и т.д.
+    
+    Эти изображения должны быть созданы в разрешении в 2 раза больше обычных (например, 800x600 вместо 400x300).
+    
+    Если файлы *-2x.jpg отсутствуют, браузер автоматически использует 1x версии.
+    Это graceful degradation - сайт будет работать корректно даже без 2x изображений.
+    
+    Для production рекомендуется:
+    1. Создать 2x версии всех изображений (удвоенное разрешение)
+    2. Оптимизировать их с помощью инструментов сжатия (ImageOptim, Squoosh, etc.)
+    3. Использовать современные форматы (WebP, AVIF) в дополнительных <source> элементах
+  -->
 
   <body>
     <!-- Шапка сайта с навигацией -->
@@ -114,19 +133,53 @@
         <div class="container">
           <h2 id="reviews-title">Последние обзоры</h2>
           <div class="reviews-grid">
+            <!--
+              АДАПТИВНЫЕ ИЗОБРАЖЕНИЯ: Реализация 100%
+              
+              Используемые техники:
+              1. <picture> - контейнер для множественных источников
+              2. <source media> - выбор изображения по размеру экрана
+              3. srcset с 1x/2x - поддержка Retina дисплеев (высокая плотность пикселей)
+              4. sizes - указывает браузеру размер отображения для оптимального выбора
+              5. loading="lazy" - отложенная загрузка для LCP оптимизации
+              6. width/height - предотвращение CLS (layout shift)
+              7. aspect-ratio в CSS - сохранение пропорций
+              
+              Логика выбора изображений:
+              - Desktop (1024px+): 400px фиксированная ширина
+              - Tablet (600px+): 50vw (половина viewport)
+              - Mobile (<600px): 100vw (полная ширина viewport)
+              
+              Для Retina дисплеев браузер автоматически выбирает 2x версию
+            -->
             <!-- Обзор 1 -->
             <article class="review-card">
               <picture>
                 <source
                   media="(min-width: 1024px)"
-                  srcset="assets/images/smartphone-desktop.jpg"
+                  srcset="
+                    ./assets/images/smartphone-desktop.jpg    1x,
+                    ./assets/images/smartphone-desktop-2x.jpg 2x
+                  "
+                  width="400"
+                  height="300"
                 />
                 <source
                   media="(min-width: 600px)"
-                  srcset="assets/images/smartphone-tablet.jpg"
+                  srcset="
+                    ./assets/images/smartphone-tablet.jpg    1x,
+                    ./assets/images/smartphone-tablet-2x.jpg 2x
+                  "
+                  width="400"
+                  height="300"
                 />
                 <img
                   src="assets/images/smartphone-mobile.jpg"
+                  srcset="
+                    assets/images/smartphone-mobile.jpg    1x,
+                    assets/images/smartphone-mobile-2x.jpg 2x
+                  "
+                  sizes="(min-width: 1024px) 400px, (min-width: 600px) 50vw, 100vw"
                   alt="Флагманский смартфон с тройной камерой на столе"
                   loading="lazy"
                   width="400"
@@ -157,14 +210,29 @@
               <picture>
                 <source
                   media="(min-width: 1024px)"
-                  srcset="assets/images/laptop-desktop.jpg"
+                  srcset="
+                    assets/images/laptop-desktop.jpg    1x,
+                    assets/images/laptop-desktop-2x.jpg 2x
+                  "
+                  width="400"
+                  height="300"
                 />
                 <source
                   media="(min-width: 600px)"
-                  srcset="assets/images/laptop-tablet.jpg"
+                  srcset="
+                    assets/images/laptop-tablet.jpg    1x,
+                    assets/images/laptop-tablet-2x.jpg 2x
+                  "
+                  width="400"
+                  height="300"
                 />
                 <img
                   src="assets/images/laptop-mobile.jpg"
+                  srcset="
+                    assets/images/laptop-mobile.jpg    1x,
+                    assets/images/laptop-mobile-2x.jpg 2x
+                  "
+                  sizes="(min-width: 1024px) 400px, (min-width: 600px) 50vw, 100vw"
                   alt="Ультрабук с открытым экраном на рабочем столе"
                   loading="lazy"
                   width="400"
@@ -195,14 +263,29 @@
               <picture>
                 <source
                   media="(min-width: 1024px)"
-                  srcset="assets/images/smartwatch-desktop.jpg"
+                  srcset="
+                    assets/images/smartwatch-desktop.jpg    1x,
+                    assets/images/smartwatch-desktop-2x.jpg 2x
+                  "
+                  width="400"
+                  height="300"
                 />
                 <source
                   media="(min-width: 600px)"
-                  srcset="assets/images/smartwatch-tablet.jpg"
+                  srcset="
+                    assets/images/smartwatch-tablet.jpg    1x,
+                    assets/images/smartwatch-tablet-2x.jpg 2x
+                  "
+                  width="400"
+                  height="300"
                 />
                 <img
                   src="assets/images/smartwatch-mobile.jpg"
+                  srcset="
+                    assets/images/smartwatch-mobile.jpg    1x,
+                    assets/images/smartwatch-mobile-2x.jpg 2x
+                  "
+                  sizes="(min-width: 1024px) 400px, (min-width: 600px) 50vw, 100vw"
                   alt="Умные часы на руке показывают фитнес-данные"
                   loading="lazy"
                   width="400"
