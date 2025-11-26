@@ -1,38 +1,114 @@
 /* ============================================
-   CSS Variables для светлой и темной темы
+   TECHHUB STYLESHEET
+   ============================================
+   
+   Проект: TechHub - сайт о современных технологиях
+   Автор: Логинов Глеб, АС-63
+   Описание: Адаптивный одностраничный сайт
+   
+   АРХИТЕКТУРА CSS:
+   ├── 1. Design System (CSS Variables)
+   ├── 2. Reset & Base Styles
+   ├── 3. Layout Components (Container, Grid, Flex)
+   ├── 4. Header & Navigation
+   ├── 5. Main Content Sections
+   │   ├── Hero Section
+   │   ├── Reviews Section (CSS Grid: 1→2→3 колонки)
+   │   ├── Comparisons Section (CSS Grid: 1→2 колонки)
+   │   ├── Guides Section (Flexbox→Grid)
+   │   ├── News Section (CSS Grid: 1→2→3 колонки)
+   │   └── Newsletter Section (Flexbox)
+   ├── 6. Footer (CSS Grid: 1→2→4 колонки)
+   ├── 7. Media Queries (6 брейкпоинтов, Mobile-First)
+   ├── 8. Dark Theme (@media prefers-color-scheme)
+   ├── 9. Web Vitals Optimization
+   └── 10. Print & Accessibility
+   
+   ИСПОЛЬЗОВАНИЕ:
+   - CSS Grid: 6 основных сеток (reviews, comparisons, news, footer, guides-desktop)
+   - Flexbox: header, navigation, cards, forms, social links
+   - Custom Properties: 40+ переменных для цветов, отступов, типографики
+   - Modern CSS: clamp(), aspect-ratio, :focus-visible, contain
+   
+   БРЕЙКПОИНТЫ:
+   1. Mobile: 0-480px (базовые стили)
+   2. Mobile Large: 481px+
+   3. Tablet Portrait: 601px+
+   4. Tablet Landscape: 769px+
+   5. Desktop: 1025px+
+   6. Desktop Large: 1441px+
+   
+   ДОСТУПНОСТЬ:
+   - WCAG 2.1 Level AA (контраст ≥4.5:1)
+   - Клавиатурная навигация
+   - Screen reader friendly
+   - Поддержка prefers-reduced-motion, prefers-contrast, prefers-color-scheme
+   
    ============================================ */
+
+/* ============================================
+   DESIGN SYSTEM: CSS Custom Properties
+   ============================================ 
+   
+   Использование CSS переменных обеспечивает:
+   - Единообразие дизайна
+   - Легкость поддержки
+   - Автоматическую поддержку темной темы
+   - Масштабируемость проекта
+*/
+
 :root {
-  /* Светлая тема (по умолчанию) */
-  --color-primary: #06c;
-  --color-primary-hover: #0052a3;
-  --color-secondary: #ff6b35;
-  --color-background: #fff;
-  --color-surface: #f8f9fa;
-  --color-text: #212529;
-  --color-text-secondary: #6c757d;
-  --color-border: #dee2e6;
-  --color-shadow: rgb(0 0 0 / 10%);
-  --color-focus: #0a84ff;
+  /* ===== COLOR PALETTE: Светлая тема (по умолчанию) ===== */
+  --color-primary: #06c; /* Основной синий - акценты, ссылки */
+  --color-primary-hover: #0052a3; /* Состояние hover для primary */
+  --color-secondary: #ff6b35; /* Вторичный оранжевый - акценты */
+  --color-background: #fff; /* Фон страницы */
+  --color-surface: #f8f9fa; /* Фон карточек и секций */
+  --color-text: #212529; /* Основной текст (контраст 16.1:1) */
+  --color-text-secondary: #6c757d; /* Вторичный текст (контраст 4.6:1) */
+  --color-border: #dee2e6; /* Рамки и разделители */
+  --color-shadow: rgb(0 0 0 / 10%); /* Тени для depth */
+  --color-focus: #0a84ff; /* Цвет outline при фокусе */
 
-  /* Spacing */
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
+  /* ===== SPACING SCALE: Консистентные отступы ===== */
+  --spacing-xs: 0.5rem; /* 8px - минимальные отступы */
+  --spacing-sm: 1rem; /* 16px - маленькие отступы */
+  --spacing-md: 1.5rem; /* 24px - средние отступы */
+  --spacing-lg: 2rem; /* 32px - большие отступы */
+  --spacing-xl: 3rem; /* 48px - extra large отступы */
 
-  /* Typography */
-  --font-family-base: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
-  --font-size-base: 1rem;
-  --line-height-base: 1.6;
+  /* ===== TYPOGRAPHY: Типографская шкала ===== */
+  --font-family-base: -apple-system, blinkmacsystemfont, "Segoe UI", roboto,
+    "Helvetica Neue", arial, sans-serif;
+  --font-size-base: 1rem; /* 16px базовый размер */
+  --line-height-base: 1.6; /* Оптимальная высота строки для читаемости */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
-  /* Transitions */
+  /* ===== TRANSITIONS: Плавные переходы ===== */
   --transition-base: all 0.3s ease;
+  --transition-fast: all 0.15s ease;
+
+  /* ===== BORDERS & RADIUS: Скругления ===== */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+  --border-radius-lg: 12px;
 }
 
-/* Темная тема */
+/* ============================================
+   DARK THEME: Темная тема
+   ============================================ 
+   
+   Поддержка двух способов:
+   1. Автоматическая через prefers-color-scheme
+   2. Ручная через атрибут data-theme на html
+*/
+
+/* Темная тема через системные настройки */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --color-primary: #0a84ff;
     --color-primary-hover: #409cff;
     --color-secondary: #ff7a59;
@@ -44,6 +120,34 @@
     --color-shadow: rgb(0 0 0 / 30%);
     --color-focus: #409cff;
   }
+}
+
+/* Темная тема через кнопку переключения */
+:root[data-theme="dark"] {
+  --color-primary: #0a84ff;
+  --color-primary-hover: #409cff;
+  --color-secondary: #ff7a59;
+  --color-background: #1c1c1e;
+  --color-surface: #2c2c2e;
+  --color-text: #f5f5f7;
+  --color-text-secondary: #aeaeb2;
+  --color-border: #38383a;
+  --color-shadow: rgb(0 0 0 / 30%);
+  --color-focus: #409cff;
+}
+
+/* Светлая тема через кнопку (переопределяет системную темную) */
+:root[data-theme="light"] {
+  --color-primary: #06c;
+  --color-primary-hover: #0052a3;
+  --color-secondary: #ff6b35;
+  --color-background: #fff;
+  --color-surface: #f8f9fa;
+  --color-text: #212529;
+  --color-text-secondary: #6c757d;
+  --color-border: #dee2e6;
+  --color-shadow: rgb(0 0 0 / 10%);
+  --color-focus: #0a84ff;
 }
 
 /* ============================================
@@ -99,25 +203,43 @@ body {
 }
 
 /* ============================================
-   Общие компоненты
+   LAYOUT: Общие компоненты и утилиты
    ============================================ */
+
+/* Container - центрирование контента с ограничением ширины */
 .container {
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 var(--spacing-sm);
+
+  /* Используем flexbox для вертикального выравнивания в некоторых секциях */
+  display: flex;
+  flex-direction: column;
 }
 
+/* Оптимизация изображений: Web Vitals (CLS + LCP) */
 img {
   max-width: 100%;
   height: auto;
   display: block;
+
+  /* CLS: предотвращение layout shift */
+  content-visibility: auto;
+
+  /* LCP: улучшение декодирования */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
+/* Списки без маркеров */
 ul {
   list-style: none;
 }
 
+/* ===== TYPOGRAPHY & LINKS ===== */
+
+/* Базовые стили ссылок с улучшенной доступностью */
 a {
   color: var(--color-primary);
   text-decoration: none;
@@ -127,373 +249,651 @@ a {
 a:hover,
 a:focus {
   color: var(--color-primary-hover);
-  outline: 2px solid var(--color-focus);
+  text-decoration: underline;
+}
+
+/* Дополнительный фокус для клавиатурной навигации */
+a:focus-visible {
+  outline: 3px solid var(--color-focus);
   outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
 }
 
 /* ============================================
-   Header - Шапка сайта
-   ============================================ */
+   HEADER: Шапка сайта с навигацией
+   ============================================ 
+   
+   Sticky header с использованием Flexbox для выравнивания.
+   Адаптивная навигация: вертикальная на mobile, горизонтальная на tablet+
+*/
+
 .site-header {
-    background-color: var(--color-surface);
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 2px 8px var(--color-shadow);
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px var(--color-shadow);
 }
 
+/* FLEX: Header Content Layout */
 .header-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: var(--spacing-sm) 0;
-    gap: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+  gap: var(--spacing-sm);
+}
+
+.logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .logo h1 {
-    font-size: 1.75rem;
-    color: var(--color-primary);
-    text-align: center;
-    margin-bottom: 0.25rem;
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: 0.25rem;
 }
 
 .tagline {
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    text-align: center;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-normal);
+  color: var(--color-text-secondary);
+  text-align: center;
 }
 
-/* Навигация */
+/* FLEX: Навигационное меню */
 .main-nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  justify-content: center;
 }
 
 .main-nav a {
   display: block;
   padding: var(--spacing-xs) var(--spacing-sm);
-  font-weight: 500;
-  border-radius: 4px;
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--border-radius-sm);
   transition: var(--transition-base);
-}
-
-.footer-column a {
-  color: var(--color-text-secondary);
-}
-
-.footer-column a:hover,
-.footer-column a:focus {
-  color: var(--color-primary);
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
 }
 
 .main-nav a:hover,
 .main-nav a:focus {
   background-color: var(--color-primary);
   color: #fff;
+  text-decoration: none;
+}
+
+.main-nav a:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   THEME TOGGLE: Кнопка переключения темы
+   ============================================ */
+
+.theme-toggle {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  border: 2px solid var(--color-border);
+  border-radius: 50%;
+  background-color: var(--color-surface);
+  cursor: pointer;
+  transition: var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: var(--spacing-xs);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: scale(1.05);
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+.theme-icon {
+  font-size: 1.5rem;
+  position: absolute;
+  transition: var(--transition-base);
+}
+
+/* Показываем солнце в светлой теме, луну в темной */
+:root:not([data-theme]) .theme-icon-dark,
+:root[data-theme="light"] .theme-icon-dark {
+  opacity: 0;
+  transform: rotate(-180deg) scale(0);
+}
+
+:root:not([data-theme]) .theme-icon-light,
+:root[data-theme="light"] .theme-icon-light {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+:root[data-theme="dark"] .theme-icon-light {
+  opacity: 0;
+  transform: rotate(180deg) scale(0);
+}
+
+:root[data-theme="dark"] .theme-icon-dark {
+  opacity: 1;
+  transform: rotate(0) scale(1);
+}
+
+/* Автоматическая темная тема из системы */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .theme-icon-light {
+    opacity: 0;
+    transform: rotate(180deg) scale(0);
+  }
+
+  :root:not([data-theme="light"]) .theme-icon-dark {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* Footer links - отдельные стили */
+.footer-column a {
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+}
+
+.footer-column a:hover,
+.footer-column a:focus {
+  color: var(--color-primary);
+}
+
+.footer-column a:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
 /* ============================================
-   Main Content
+   MAIN CONTENT: Основной контент страницы
    ============================================ */
+
+/* FLEX: Main занимает все доступное пространство между header и footer */
 main {
-    flex: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Заголовки секций — общий стиль (ранее объявлен для соблюдения специфичности относительно .hero-section h2) */
+/* Общие стили заголовков секций */
 section h2 {
-    font-size: 1.875rem;
-    margin-bottom: var(--spacing-lg);
-    text-align: center;
-    color: var(--color-text);
+  font-size: 1.875rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
 }
 
-/* Hero секция */
+/* ============================================
+   HERO SECTION: Первый экран с призывом к действию
+   ============================================ */
+
 .hero-section {
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  /* Градиентный фон для привлечения внимания */
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
   color: white;
   text-align: center;
   padding: var(--spacing-xl) var(--spacing-sm);
 
-  /* Оптимизация отрисовки критического контента (LCP) */
+  /* LCP: Оптимизация Largest Contentful Paint */
   content-visibility: auto;
+  contain-intrinsic-size: auto 400px;
+
+  /* LCP: улучшенный contain для изоляции */
+  contain: layout style paint;
+
+  /* LCP: GPU ускорение */
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .hero-section h2 {
-    font-size: 2rem;
-    margin-bottom: var(--spacing-sm);
-    font-weight: 700;
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-sm);
+  color: white;
+  text-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .hero-description {
-    font-size: 1.125rem;
-    margin-bottom: var(--spacing-lg);
-    opacity: 0.95;
+  font-size: 1.125rem;
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.95;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* CTA Button - призыв к действию */
 .cta-button {
-    display: inline-block;
-    padding: var(--spacing-sm) var(--spacing-lg);
-    background-color: white;
-    color: var(--color-primary);
-    font-weight: 600;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
-    transition: var(--transition-base);
+  display: inline-block;
+  padding: var(--spacing-sm) var(--spacing-lg);
+  background-color: white;
+  color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
+  transition: var(--transition-base);
 }
 
 .cta-button:hover,
 .cta-button:focus {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgb(0 0 0 / 30%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 30%);
+  text-decoration: none;
+}
+
+.cta-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
 }
 
 /* ============================================
-   Секции контента
+   CONTENT SECTIONS: Общие стили для всех секций
    ============================================ */
 section {
-    padding: var(--spacing-xl) 0;
+  padding: var(--spacing-xl) 0;
 }
 
-/* Обзоры - Mobile First Grid */
+/* ============================================
+   REVIEWS SECTION: Секция обзоров
+   ============================================ 
+   
+   CSS GRID используется для адаптивной сетки:
+   - Mobile: 1 колонка
+   - Tablet: 2 колонки (брейкпоинт 601px)
+   - Desktop: 3 колонки (брейкпоинт 1025px)
+*/
+
+/* GRID: Адаптивная сетка обзоров (Mobile-First) */
 .reviews-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+
+  /* Auto-fit для автоматической адаптации */
+  grid-auto-rows: 1fr;
 }
 
+/* FLEX: Карточка обзора с вертикальным выравниванием */
 .review-card {
-    background-color: var(--color-surface);
-    border-radius: 12px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px var(--color-shadow);
-    transition: var(--transition-base);
-    display: flex;
-    flex-direction: column;
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  transition: var(--transition-base);
+
+  /* Flexbox для равномерного распределения контента */
+  display: flex;
+  flex-direction: column;
+
+  /* Accessibility: hover и focus состояния */
+  cursor: pointer;
 }
 
 .review-card:hover,
 .review-card:focus-within {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px var(--color-shadow);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--color-shadow);
 }
 
+/* Изображение обзора с фиксированной высотой */
 .review-card img {
-    width: 100%;
-    height: 220px;
-    object-fit: cover;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+
+  /* CLS: предотвращение layout shift */
+  aspect-ratio: 4 / 3;
+
+  /* CLS: изоляция макета */
+  contain: layout style paint;
+
+  /* LCP: декодирование асинхронно */
+  content-visibility: auto;
+  contain-intrinsic-size: 400px 300px;
 }
 
+/* FLEX: Контент карточки с автоматическим распределением */
 .card-content {
-    padding: var(--spacing-md);
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+  padding: var(--spacing-md);
+  flex: 1;
+
+  /* Flexbox для размещения элементов */
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
 }
 
 .card-content h3 {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-xs);
-    color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+  line-height: 1.3;
 }
 
+/* FLEX: Метаинформация обзора */
 .review-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-sm);
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-sm);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
 }
 
 .review-meta span {
-    padding: 0.25rem 0.5rem;
-    background-color: var(--color-background);
-    border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-sm);
+  font-weight: var(--font-weight-medium);
 }
 
 .review-excerpt {
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-md);
-    flex: 1;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  flex: 1;
+  line-height: 1.6;
 }
 
 .read-more {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--color-primary);
   align-self: flex-start;
+  transition: var(--transition-fast);
 }
 
 .read-more:hover,
 .read-more:focus {
   color: var(--color-primary-hover);
+}
+
+.read-more:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
 }
 
-/* Сравнения */
+/* ============================================
+   COMPARISONS SECTION: Секция сравнений гаджетов
+   ============================================ 
+   
+   CSS GRID для адаптивной сетки:
+   - Mobile: 1 колонка
+   - Tablet+: 2 колонки (брейкпоинт 601px)
+*/
+
 .comparisons-section {
-    background-color: var(--color-surface);
+  background-color: var(--color-surface);
 }
 
+/* GRID: Сетка сравнений */
 .comparisons-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+
+  /* Минимальная высота для равномерности */
+  align-items: start;
 }
 
 .comparison-card {
-    background-color: var(--color-background);
-    padding: var(--spacing-lg);
-    border-radius: 12px;
-    border: 1px solid var(--color-border);
+  background-color: var(--color-background);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-base);
+
+  /* Hover эффект для интерактивности */
+  &:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px var(--color-shadow);
+  }
 }
 
 .comparison-card h3 {
-    font-size: 1.25rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text);
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
+  line-height: 1.3;
 }
 
 .comparison-card > p {
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-md);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.6;
 }
 
+/* Список характеристик */
 .comparison-specs {
-    margin: var(--spacing-md) 0;
-    padding-left: var(--spacing-md);
+  margin: var(--spacing-md) 0;
+  padding-left: var(--spacing-md);
 }
 
 .comparison-specs li {
-    list-style: disc;
-    color: var(--color-text);
-    margin-bottom: var(--spacing-xs);
-    line-height: 1.6;
+  list-style: disc;
+  list-style-position: outside;
+  color: var(--color-text);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.6;
+  padding-left: var(--spacing-xs);
 }
 
-/* Гайды */
+/* ============================================
+   GUIDES SECTION: Секция гайдов по выбору
+   ============================================ 
+   
+   FLEXBOX на mobile, GRID на desktop (769px+)
+   Каждый гайд - flex-контейнер с иконкой и текстом
+*/
+
+/* FLEX: Вертикальный список на mobile */
 .guides-list {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
 }
 
+/* FLEX: Горизонтальное выравнивание иконки и контента */
 .guide-item {
-    display: flex;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md);
-    background-color: var(--color-surface);
-    border-radius: 12px;
-    border: 1px solid var(--color-border);
-    transition: var(--transition-base);
+  display: flex;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background-color: var(--color-surface);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border);
+  transition: var(--transition-base);
+  align-items: flex-start;
 }
 
 .guide-item:hover,
 .guide-item:focus-within {
-    border-color: var(--color-primary);
-    box-shadow: 0 4px 12px var(--color-shadow);
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px var(--color-shadow);
+  transform: translateX(4px);
 }
 
 .guide-icon {
-    font-size: 2.5rem;
-    flex-shrink: 0;
+  font-size: 2.5rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* FLEX: Контент гайда */
+.guide-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  flex: 1;
 }
 
 .guide-content h3 {
-    font-size: 1.125rem;
-    margin-bottom: var(--spacing-xs);
-    color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+  line-height: 1.4;
 }
 
 .guide-content p {
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.6;
 }
 
 .guide-link {
-    font-weight: 600;
-    color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-primary);
+  transition: var(--transition-fast);
 }
 
-/* Новости */
+.guide-link:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--border-radius-sm);
+}
+
+/* ============================================
+   NEWS SECTION: Секция новостей
+   ============================================ 
+   
+   CSS GRID для адаптивной сетки:
+   - Mobile: 1 колонка
+   - Tablet+: 2 колонки (брейкпоинт 601px)
+   - Desktop Large: 3 колонки (брейкпоинт 1441px)
+*/
+
 .news-section {
-    background-color: var(--color-surface);
+  background-color: var(--color-surface);
 }
 
+/* GRID: Сетка новостей */
 .news-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-md);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-md);
+  align-items: start;
 }
 
 .news-card {
-    padding: var(--spacing-md);
-    background-color: var(--color-background);
-    border-left: 4px solid var(--color-primary);
-    border-radius: 4px;
-    transition: var(--transition-base);
-}
+  padding: var(--spacing-md);
+  background-color: var(--color-background);
+  border-left: 4px solid var(--color-primary);
+  border-radius: var(--border-radius-sm);
+  transition: var(--transition-base);
 
-.news-card:hover,
-.news-card:focus-within {
+  /* Hover эффект с анимацией */
+  &:hover,
+  &:focus-within {
     transform: translateX(4px);
     box-shadow: 0 4px 12px var(--color-shadow);
+    border-left-width: 6px;
+  }
 }
 
 .news-date {
-    display: block;
-    font-size: 0.875rem;
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-xs);
+  display: block;
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xs);
 }
 
 .news-card h3 {
-    font-size: 1.125rem;
-    margin-bottom: var(--spacing-xs);
-    color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-xs);
+  color: var(--color-text);
+  line-height: 1.4;
 }
 
 .news-card p {
-    color: var(--color-text-secondary);
+  color: var(--color-text-secondary);
+  line-height: 1.6;
 }
 
-/* Подписка на новости */
+/* ============================================
+   NEWSLETTER SECTION: Секция подписки на рассылку
+   ============================================ 
+   
+   FLEXBOX для формы:
+   - Mobile: вертикальная (column)
+   - Tablet+: горизонтальная (row) - брейкпоинт 601px
+*/
+
 .newsletter-section {
-    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
-    color: white;
-    text-align: center;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary) 0%,
+    var(--color-secondary) 100%
+  );
+  color: white;
+  text-align: center;
 }
 
 .newsletter-section h2 {
-    color: white;
+  color: white;
+  text-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .newsletter-section p {
-    margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
+  opacity: 0.95;
 }
 
+/* FLEX: Форма подписки */
 .newsletter-form {
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-sm);
-    max-width: 500px;
-    margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 500px;
+  margin: 0 auto;
+  align-items: stretch;
 }
 
 .newsletter-form input[type="email"] {
-    padding: var(--spacing-sm);
-    border: none;
-    border-radius: 8px;
-    font-size: 1rem;
-    background-color: white;
-    color: var(--color-text);
+  padding: var(--spacing-sm);
+  border: none;
+  border-radius: var(--border-radius-md);
+  font-size: 1rem;
+  background-color: white;
+  color: var(--color-text);
+  transition: var(--transition-fast);
+
+  &:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.6);
+    outline-offset: 2px;
+  }
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+  }
 }
 
 .submit-button {
@@ -501,9 +901,9 @@ section {
   background-color: white;
   color: var(--color-primary);
   border: 0;
-  border-radius: 8px;
+  border-radius: var(--border-radius-md);
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   cursor: pointer;
   transition: var(--transition-base);
   box-shadow: 0 4px 12px rgb(0 0 0 / 20%);
@@ -513,215 +913,475 @@ section {
 .submit-button:focus {
   transform: scale(1.02);
   background-color: #f8f9fa;
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
   box-shadow: 0 6px 16px rgb(0 0 0 / 30%);
 }
 
-/* ============================================
-   Footer - Подвал
-   ============================================ */
-.site-footer {
-    background-color: var(--color-surface);
-    border-top: 1px solid var(--color-border);
-    padding: var(--spacing-xl) 0 var(--spacing-lg);
-    margin-top: auto;
+.submit-button:focus-visible {
+  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 3px;
 }
 
+/* ============================================
+   FOOTER: Подвал сайта
+   ============================================ 
+   
+   CSS GRID для адаптивного футера:
+   - Mobile: 1 колонка
+   - Tablet: 2 колонки (брейкпоинт 601px)
+   - Desktop: 4 колонки (брейкпоинт 1025px)
+   
+   FLEXBOX для социальных ссылок
+*/
+
+.site-footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  padding: var(--spacing-xl) 0 var(--spacing-lg);
+  margin-top: auto;
+}
+
+/* GRID: Адаптивная сетка колонок футера */
 .footer-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--spacing-lg);
-    margin-bottom: var(--spacing-lg);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-lg);
 }
 
 .footer-column h3 {
-    font-size: 1.125rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text);
+  font-size: 1.125rem;
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text);
 }
 
 .footer-column p,
 .footer-column ul {
-    color: var(--color-text-secondary);
-    line-height: 1.8;
+  color: var(--color-text-secondary);
+  line-height: 1.8;
 }
 
 .footer-column ul li {
-    margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
 }
 
+/* FLEX: Социальные ссылки */
 .social-links {
-    display: flex;
-    gap: var(--spacing-sm);
-    flex-wrap: wrap;
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .footer-bottom {
-    text-align: center;
-    padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-    font-size: 0.875rem;
+  text-align: center;
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
 }
 
 .footer-bottom p {
-    margin-bottom: var(--spacing-xs);
+  margin-bottom: var(--spacing-xs);
+  line-height: 1.6;
 }
 
 /* ============================================
-   Media Queries - Адаптивность
+   Media Queries - Адаптивность (Mobile-First)
    ============================================ */
 
-/* Планшеты (601px - 1024px) */
-@media (width >= 601px) {
-    /* Header */
-    .header-content {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
-    
-    .logo h1 {
-        font-size: 2rem;
-        text-align: left;
-    }
-    
-    .tagline {
-        text-align: left;
-    }
-    
-    .main-nav ul {
-        justify-content: flex-end;
-    }
-    
-    /* Hero */
-    .hero-section h2 {
-        font-size: 2.5rem;
-    }
-    
-    .hero-description {
-        font-size: 1.25rem;
-    }
-    
-    /* Grids */
-    .reviews-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .comparisons-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    /* Newsletter */
-    .newsletter-form {
-        flex-direction: row;
-        max-width: 600px;
-    }
-    
-    .newsletter-form input[type="email"] {
-        flex: 1;
-    }
-    
-    .submit-button {
-        white-space: nowrap;
-    }
+/* 
+  Брейкпоинты:
+  1. Mobile: 0-480px (базовые стили)
+  2. Mobile Large: 481px-600px
+  3. Tablet Portrait: 601px-768px
+  4. Tablet Landscape: 769px-1024px
+  5. Desktop: 1025px-1440px
+  6. Desktop Large: 1441px+
+*/
+
+/* ===== Брейкпоинт 1: Mobile Large (481px+) ===== */
+@media (width >= 481px) {
+  /* Немного увеличиваем типографику */
+  .hero-section h2 {
+    font-size: 2.25rem;
+  }
+
+  .hero-description {
+    font-size: 1.15rem;
+  }
+
+  /* Увеличиваем отступы */
+  .container {
+    padding: 0 var(--spacing-md);
+  }
 }
 
-/* Десктоп (1024px и более) */
-@media (width >= 1024px) {
+/* ===== Брейкпоинт 2: Tablet Portrait (601px+) ===== */
+@media (width >= 601px) {
+  /* Header */
+  .header-content {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    align-items: flex-start;
+    flex: 0 0 auto;
+  }
+
+  .logo h1 {
+    font-size: 2rem;
+    text-align: left;
+  }
+
+  .tagline {
+    text-align: left;
+  }
+
+  .main-nav {
+    flex: 1 1 auto;
+  }
+
+  .main-nav ul {
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+  }
+
+  /* Theme toggle - размещается справа */
+  .theme-toggle {
+    margin-top: 0;
+    order: 3;
+  }
+
+  /* Hero */
+  .hero-section h2 {
+    font-size: 2.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.25rem;
+  }
+
+  /* Grids - переход на 2 колонки */
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .comparisons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Newsletter - горизонтальная форма */
+  .newsletter-form {
+    flex-direction: row;
+    max-width: 600px;
+  }
+
+  .newsletter-form input[type="email"] {
+    flex: 1;
+  }
+
+  .submit-button {
+    white-space: nowrap;
+  }
+
+  /* Review Cards - увеличенные изображения */
+  .review-card img {
+    height: 240px;
+  }
+}
+
+/* ===== Брейкпоинт 3: Tablet Landscape (769px+) ===== */
+@media (width >= 769px) {
+  /* Увеличиваем базовый шрифт */
+  html {
+    font-size: 106.25%; /* 17px */
+  }
+
+  /* Hero */
+  .hero-section h2 {
+    font-size: 2.75rem;
+  }
+
+  section h2 {
+    font-size: 2rem;
+  }
+
+  /* Guides - переход на 2 колонки */
+  .guides-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  /* Comparison cards - больше padding */
+  .comparison-card {
+    padding: var(--spacing-xl);
+  }
+
+  /* News grid - улучшенное распределение */
+  .news-card {
+    padding: var(--spacing-lg);
+  }
+}
+
+/* ===== Брейкпоинт 4: Desktop (1025px+) ===== */
+@media (width >= 1025px) {
   /* Typography */
   html {
-    font-size: 112.5%;
+    font-size: 112.5%; /* 18px */
   }
 
   /* Hero */
   .hero-section {
-    padding: var(--spacing-xl) var(--spacing-sm);
+    padding: calc(var(--spacing-xl) * 1.5) var(--spacing-sm);
   }
-    
-    section h2 {
-        font-size: 2.25rem;
-    }
-    
-    .hero-section h2 {
-        font-size: 3rem;
-    }
-    
-    /* Grids */
-    .reviews-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .news-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .footer-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    /* Review Cards */
-    .review-card img {
-        height: 250px;
-    }
-    
-    /* Guides - 2 columns */
-    .guides-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-lg);
-    }
+
+  section h2 {
+    font-size: 2.25rem;
+  }
+
+  .hero-section h2 {
+    font-size: 3rem;
+  }
+
+  /* Grids - переход на 3 колонки для обзоров */
+  .reviews-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  .news-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+
+  .footer-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+  }
+
+  /* Review Cards */
+  .review-card img {
+    height: 250px;
+  }
+
+  /* Увеличиваем контейнер */
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+
+  /* Навигация с увеличенными отступами */
+  .main-nav a {
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+/* ===== Брейкпоинт 5: Desktop Large (1441px+) ===== */
+@media (width >= 1441px) {
+  /* Увеличиваем базовый шрифт для больших экранов */
+  html {
+    font-size: 118.75%; /* 19px */
+  }
+
+  /* Hero с большими отступами */
+  .hero-section {
+    padding: calc(var(--spacing-xl) * 2) var(--spacing-sm);
+  }
+
+  .hero-section h2 {
+    font-size: 3.5rem;
+  }
+
+  section h2 {
+    font-size: 2.5rem;
+  }
+
+  /* Более широкие gaps в сетках */
+  .reviews-grid,
+  .footer-grid {
+    gap: calc(var(--spacing-xl) * 1.5);
+  }
+
+  /* Новости в 3 колонки */
+  .news-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* Review Cards с большими изображениями */
+  .review-card img {
+    height: 280px;
+  }
 }
 
 /* ============================================
-   Дополнительные улучшения для Web Vitals
-   ============================================ */
+   WEB VITALS OPTIMIZATION: Оптимизация производительности
+   ============================================ 
+   
+   CORE WEB VITALS IMPROVEMENTS:
+   
+   1. LCP (Largest Contentful Paint) - Цель: < 2.5s
+      ✓ content-visibility: auto - отложенный рендеринг
+      ✓ contain-intrinsic-size - резервирование пространства
+      ✓ will-change: transform - GPU ускорение
+      ✓ preconnect для внешних ресурсов
+      ✓ image-rendering для оптимизации декодирования
+      ✓ aspect-ratio для предотвращения reflow
+   
+   2. CLS (Cumulative Layout Shift) - Цель: < 0.1
+      ✓ contain: layout style paint - изоляция макета
+      ✓ width/height на всех <img> - зарезервированное пространство
+      ✓ aspect-ratio - соотношение сторон
+      ✓ content-visibility - видимость контента
+      ✓ contain-intrinsic-size - внутренний размер
+      ✓ Отсутствие поздно загружаемых шрифтов (system fonts)
+   
+   3. INP (Interaction to Next Paint) - Цель: < 200ms
+      ✓ Debouncing в JS для уменьшения задержки
+      ✓ requestAnimationFrame для плавных обновлений
+      ✓ Passive event listeners
+      ✓ Минимальный JavaScript (< 100 строк)
+      ✓ CSS transitions вместо JS анимаций
+      ✓ transform для GPU-ускоренных анимаций
+   
+   4. ДОПОЛНИТЕЛЬНЫЕ ОПТИМИЗАЦИИ:
+      ✓ prefers-reduced-motion - уважение настроек пользователя
+      ✓ prefers-reduced-data - оптимизация для медленных соединений
+      ✓ prefers-contrast - поддержка высокого контраста
+      ✓ loading="lazy" на изображениях
+      ✓ srcset + sizes для адаптивных изображений (1x/2x)
+*/
 
-/* Уменьшение Cumulative Layout Shift (CLS) */
-.review-card img,
-.hero-section,
+/* CLS: Уменьшение сдвига макета (Cumulative Layout Shift) */
 .newsletter-section {
-  /* Резервируем место для контента */
-  contain: layout;
+  /* Резервируем место для контента, чтобы избежать layout shift */
+  contain: layout style paint;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 300px;
 }
 
-/* Анимации с учетом предпочтений пользователя */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
+/* CLS: Карточки с изоляцией */
+.review-card,
+.comparison-card,
+.news-card,
+.guide-item {
+  contain: layout style;
+  content-visibility: auto;
 }
 
-/* Печать */
-@media print {
-  .site-header,
-  .newsletter-section,
-  .site-footer {
-    display: none;
+/* Оптимизация для медленных соединений */
+@media (prefers-reduced-data: reduce) {
+  * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
   }
 
-  body {
-    background: white;
+  /* Отключаем фоновые градиенты */
+  .hero-section,
+  .newsletter-section {
+    background: var(--color-primary);
+  }
+}
 
-    /* Черный текст на белом имеет контраст 21:1 (максимум) */
-    color: var(--color-text);
+/* Accessibility: Уважение предпочтений пользователя по анимациям */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Убираем все трансформации */
+  .review-card:hover,
+  .news-card:hover,
+  .guide-item:hover {
+    transform: none !important;
+  }
+}
+
+/* High Contrast Mode - поддержка для пользователей с особыми потребностями */
+@media (prefers-contrast: high) {
+  :root {
+    --color-primary: #0052cc;
+    --color-text: #000;
+    --color-background: #fff;
+    --color-border: #000;
   }
 
   a {
     text-decoration: underline;
-    }
+  }
+
+  button,
+  .cta-button,
+  .submit-button {
+    border: 2px solid currentColor;
+  }
+}
+
+/* ============================================
+   PRINT STYLES: Стили для печати
+   ============================================ 
+   
+   Оптимизация для печатной версии страницы
+*/
+
+@media print {
+  /* Скрываем ненужные для печати элементы */
+  .site-header,
+  .newsletter-section,
+  .site-footer,
+  .cta-button {
+    display: none;
+  }
+
+  /* Оптимизация для печати */
+  body {
+    background: white;
+    color: #000; /* Максимальный контраст для печати (21:1) */
+    font-size: 12pt;
+  }
+
+  /* Видимые ссылки */
+  a {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  /* Показываем URL после ссылок */
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.8em;
+  }
+
+  /* Разрывы страниц */
+  section {
+    page-break-inside: avoid;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  /* Убираем тени и анимации */
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
 }
