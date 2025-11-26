@@ -321,18 +321,6 @@ a:focus-visible {
   transition: var(--transition-base);
 }
 
-.main-nav a:hover,
-.main-nav a:focus {
-  background-color: var(--color-primary);
-  color: #fff;
-  text-decoration: none;
-}
-
-.main-nav a:focus-visible {
-  outline: 3px solid var(--color-focus);
-  outline-offset: 2px;
-}
-
 /* Footer links - отдельные стили */
 .footer-column a {
   color: var(--color-text-secondary);
@@ -347,6 +335,13 @@ a:focus-visible {
 .footer-column a:focus-visible {
   outline: 2px solid var(--color-focus);
   outline-offset: 2px;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+  background-color: var(--color-primary);
+  color: #fff;
+  text-decoration: none;
 }
 
 /* ============================================
@@ -1214,12 +1209,13 @@ section {
   .hero-section {
     padding: calc(var(--spacing-xl) * 2) var(--spacing-sm);
   }
-  .hero-section h2 {
-    font-size: 3.5rem;
-  }
 
   section h2 {
     font-size: 2.5rem;
+  }
+
+  .hero-section h2 {
+    font-size: 3.5rem;
   }
 
   /* Более широкие gaps в сетках */
