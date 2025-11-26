@@ -333,6 +333,22 @@ a:focus-visible {
   outline-offset: 2px;
 }
 
+/* Footer links - отдельные стили */
+.footer-column a {
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+}
+
+.footer-column a:hover,
+.footer-column a:focus {
+  color: var(--color-primary);
+}
+
+.footer-column a:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
 /* ============================================
    THEME TOGGLE: Кнопка переключения темы
    ============================================ */
@@ -404,22 +420,6 @@ a:focus-visible {
     opacity: 1;
     transform: rotate(0) scale(1);
   }
-}
-
-/* Footer links - отдельные стили */
-.footer-column a {
-  color: var(--color-text-secondary);
-  transition: var(--transition-fast);
-}
-
-.footer-column a:hover,
-.footer-column a:focus {
-  color: var(--color-primary);
-}
-
-.footer-column a:focus-visible {
-  outline: 2px solid var(--color-focus);
-  outline-offset: 2px;
 }
 
 /* ============================================
@@ -552,6 +552,10 @@ section {
 
   /* Accessibility: hover и focus состояния */
   cursor: pointer;
+
+  /* CLS: Карточка с изоляцией */
+  contain: layout style;
+  content-visibility: auto;
 }
 
 /* Изображение обзора с фиксированной высотой */
@@ -673,6 +677,10 @@ section {
     border-color: var(--color-primary);
     box-shadow: 0 4px 12px var(--color-shadow);
   }
+
+  /* CLS: Карточка с изоляцией */
+  contain: layout style;
+  content-visibility: auto;
 }
 
 .comparison-card h3 {
@@ -729,6 +737,10 @@ section {
   border: 1px solid var(--color-border);
   transition: var(--transition-base);
   align-items: flex-start;
+
+  /* CLS: Карточка с изоляцией */
+  contain: layout style;
+  content-visibility: auto;
 }
 
 .guide-item:hover,
@@ -814,6 +826,10 @@ section {
     box-shadow: 0 4px 12px var(--color-shadow);
     border-left-width: 6px;
   }
+
+  /* CLS: Карточка с изоляцией */
+  contain: layout style;
+  content-visibility: auto;
 }
 
 .news-date {
@@ -1109,12 +1125,12 @@ section {
   }
 
   /* Hero */
-  .hero-section h2 {
-    font-size: 2.75rem;
-  }
-
   section h2 {
     font-size: 2rem;
+  }
+
+  .hero-section h2 {
+    font-size: 2.75rem;
   }
 
   /* Guides - переход на 2 колонки */
@@ -1198,7 +1214,6 @@ section {
   .hero-section {
     padding: calc(var(--spacing-xl) * 2) var(--spacing-sm);
   }
-
   .hero-section h2 {
     font-size: 3.5rem;
   }
@@ -1261,15 +1276,6 @@ section {
       ✓ loading="lazy" на изображениях
       ✓ srcset + sizes для адаптивных изображений (1x/2x)
 */
-
-/* CLS: Карточки с изоляцией */
-.review-card,
-.comparison-card,
-.news-card,
-.guide-item {
-  contain: layout style;
-  content-visibility: auto;
-}
 
 /* Оптимизация для медленных соединений */
 @media (prefers-reduced-data: reduce) {
