@@ -228,7 +228,6 @@ img {
   content-visibility: auto;
 
   /* LCP: улучшение декодирования */
-  image-rendering: -webkit-optimize-contrast;
   image-rendering: crisp-edges;
 }
 
@@ -508,7 +507,7 @@ section h2 {
 }
 
 .cta-button:focus-visible {
-  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline: 3px solid rgb(255 255 255 / 80%);
   outline-offset: 3px;
 }
 
@@ -553,12 +552,6 @@ section {
 
   /* Accessibility: hover и focus состояния */
   cursor: pointer;
-}
-
-.review-card:hover,
-.review-card:focus-within {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px var(--color-shadow);
 }
 
 /* Изображение обзора с фиксированной высотой */
@@ -619,6 +612,12 @@ section {
   margin-bottom: var(--spacing-md);
   flex: 1;
   line-height: 1.6;
+}
+
+.review-card:hover,
+.review-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px var(--color-shadow);
 }
 
 .read-more {
@@ -887,7 +886,7 @@ section {
   transition: var(--transition-fast);
 
   &:focus {
-    outline: 3px solid rgba(255, 255, 255, 0.6);
+    outline: 3px solid rgb(255 255 255 / 60%);
     outline-offset: 2px;
   }
 
@@ -917,7 +916,7 @@ section {
 }
 
 .submit-button:focus-visible {
-  outline: 3px solid rgba(255, 255, 255, 0.8);
+  outline: 3px solid rgb(255 255 255 / 80%);
   outline-offset: 3px;
 }
 
@@ -1021,11 +1020,10 @@ section {
 @media (width >= 601px) {
   /* Header */
   .header-content {
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
     gap: var(--spacing-lg);
-    flex-wrap: wrap;
   }
 
   .logo {
@@ -1264,14 +1262,6 @@ section {
       ✓ srcset + sizes для адаптивных изображений (1x/2x)
 */
 
-/* CLS: Уменьшение сдвига макета (Cumulative Layout Shift) */
-.newsletter-section {
-  /* Резервируем место для контента, чтобы избежать layout shift */
-  contain: layout style paint;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 300px;
-}
-
 /* CLS: Карточки с изоляцией */
 .review-card,
 .comparison-card,
@@ -1330,7 +1320,7 @@ section {
   button,
   .cta-button,
   .submit-button {
-    border: 2px solid currentColor;
+    border: 2px solid currentcolor;
   }
 }
 

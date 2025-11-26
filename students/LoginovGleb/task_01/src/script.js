@@ -11,7 +11,7 @@
 // ============================================
 
 (function () {
-  const themeToggle = document.getElementById("themeToggle");
+  const themeToggle = document.getElementById("theme-toggle");
   const html = document.documentElement;
 
   // Проверяем сохраненную тему или используем системную
