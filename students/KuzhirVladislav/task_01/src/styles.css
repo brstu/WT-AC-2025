@@ -5,8 +5,8 @@
 }
 
 :root {
-  --primary: hsl(28, 85%, 48%);
-  --primary-dark: hsl(28, 85%, 38%);
+  --primary: oklch(65% 0.22 48);
+  --primary-dark: oklch(58% 0.22 48);
   --bg: #fff;
   --text: #222;
   --muted: #f5f5f5;
@@ -15,7 +15,7 @@
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   line-height: 1.6;
   color: var(--text);
   background: var(--bg);
@@ -29,7 +29,7 @@ body {
 .header {
   position: sticky;
   top: 0;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgb(255 255 255 / 95%);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
   z-index: 1000;
@@ -90,10 +90,12 @@ body {
 #nav-toggle-checkbox:checked + .nav-toggle span {
   background: transparent;
 }
+
 #nav-toggle-checkbox:checked + .nav-toggle span::before {
   transform: rotate(45deg);
   top: 0;
 }
+
 #nav-toggle-checkbox:checked + .nav-toggle span::after {
   transform: rotate(-45deg);
   top: 0;
@@ -125,7 +127,7 @@ body {
 .hero {
   min-height: 100vh;
   background:
-    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.6)),
+    linear-gradient(rgb(0 0 0 / 50%), rgb(0 0 0 / 60%)),
     url('./assets/1.webp') center/cover no-repeat;
   display: grid;
   place-items: center;
@@ -157,14 +159,17 @@ body {
   background: var(--primary);
   color: white;
 }
+
 .btn-primary:hover {
   background: var(--primary-dark);
 }
+
 .btn-outline {
   border: 2px solid white;
   color: white;
   margin-left: 1rem;
 }
+
 .btn-outline:hover {
   background: white;
   color: #333;
@@ -173,6 +178,7 @@ body {
 .section {
   padding: 5rem 0;
 }
+
 .section-alt {
   background: #fafafa;
 }
@@ -181,6 +187,7 @@ body {
   text-align: center;
   margin-bottom: 4rem;
 }
+
 .section-header h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
@@ -191,12 +198,13 @@ body {
   gap: 2rem;
 }
 
-@media (min-width: 640px) {
+@media (width >= 640px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 1024px) {
+
+@media (width >= 1024px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -206,18 +214,20 @@ body {
   background: white;
   border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 15px rgb(0 0 0 / 8%);
   transition: transform 0.3s;
 }
 
 .card:hover {
   transform: translateY(-8px);
 }
+
 .card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
 }
+
 .card-content {
   padding: 1.5rem;
 }
@@ -258,26 +268,32 @@ body {
 .product-card {
   transition: all 0.4s;
 }
+
 #filter-all:checked ~ .products-grid .product-card {
   display: block;
   opacity: 1;
 }
+
 #filter-food:checked ~ .products-grid .product-card:not([data-category='food']) {
   display: none;
   opacity: 0;
 }
+
 #filter-toys:checked ~ .products-grid .product-card:not([data-category='toys']) {
   display: none;
   opacity: 0;
 }
+
 #filter-care:checked ~ .products-grid .product-card:not([data-category='care']) {
   display: none;
   opacity: 0;
 }
+
 #filter-accessories:checked ~ .products-grid .product-card:not([data-category='accessories']) {
   display: none;
   opacity: 0;
 }
+
 #filter-health:checked ~ .products-grid .product-card:not([data-category='health']) {
   display: none;
   opacity: 0;
@@ -293,7 +309,7 @@ body {
   max-width: 100%;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .clinic-grid {
     grid-template-columns: 1fr 1fr;
   }
@@ -303,6 +319,7 @@ form {
   display: grid;
   gap: 1rem;
 }
+
 input,
 textarea {
   width: 100%;
@@ -324,12 +341,13 @@ textarea {
   margin-bottom: 3rem;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-@media (min-width: 1024px) {
+
+@media (width >= 1024px) {
   .footer-grid {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -399,13 +417,14 @@ textarea {
 svg {
   width: 28px;
   height: 28px;
-  fill: currentColor;
+  fill: currentcolor;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .nav-toggle {
     display: block;
   }
+
   .nav-menu {
     position: fixed;
     top: 70px;
@@ -420,11 +439,13 @@ svg {
     visibility: hidden;
     transition: all 0.3s;
   }
+
   #nav-toggle-checkbox:checked ~ .nav-menu {
     transform: translateY(0);
     opacity: 1;
     visibility: visible;
   }
+
   .nav-menu a {
     padding: 0.75rem 0;
     width: 100%;
