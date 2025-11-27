@@ -1,0 +1,27 @@
+{
+  "name": "lab02-dom-events",
+  "version": "1.0.0",
+  "description": "Лабораторная работа 02: DOM и события, интерактивные компоненты",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "lint": "eslint src/**/*.js"
+  },
+  "keywords": [
+    "dom",
+    "events",
+    "tabs",
+    "modal",
+    "form-validation"
+  ],
+  "author": "Ярмола Александр",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitest/ui": "^4.0.13",
+    "eslint": "^8.55.0",
+    "jsdom": "^23.0.0",
+    "vitest": "^4.0.13"
+  }
+}
