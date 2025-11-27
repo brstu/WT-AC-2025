@@ -5,8 +5,8 @@
 }
 
 :root {
-  --primary: oklch(65% 0.22 48);
-  --primary-dark: oklch(58% 0.22 48);
+  --primary: oklch(65% 0.22 48deg);
+  --primary-dark: oklch(58% 0.22 48deg);
   --bg: #fff;
   --text: #222;
   --muted: #f5f5f5;
@@ -78,10 +78,12 @@ body {
 .nav-toggle span {
   top: 9px;
 }
+
 .nav-toggle span::before {
   content: '';
   top: -9px;
 }
+
 .nav-toggle span::after {
   content: '';
   top: 9px;
@@ -253,6 +255,7 @@ body {
 .filters input[type='radio'] {
   display: none;
 }
+
 .filters label {
   padding: 0.6rem 1.2rem;
   background: #f0f0f0;
@@ -260,6 +263,7 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
+
 .filters input[type='radio']:checked + label {
   background: var(--primary);
   color: white;
@@ -368,15 +372,6 @@ textarea {
 .footer-col a {
   text-decoration: none;
 }
-.footer-col a:hover {
-  color: var(--primary);
-}
-
-.footer-col ul {
-  list-style: none;
-  display: grid;
-  gap: 0.5rem;
-}
 
 .footer-social {
   display: flex;
@@ -392,6 +387,16 @@ textarea {
   display: grid;
   place-items: center;
   color: #333;
+}
+
+.footer-col a:hover {
+  color: var(--primary);
+}
+
+.footer-col ul {
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
 }
 
 .footer-bottom {
