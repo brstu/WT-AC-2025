@@ -98,17 +98,6 @@ nav {
     padding: 8px 16px;
 }
 
-
-
-.footer-section a {
-    color: #f5f5f5;
-    text-decoration: none;
-}
-
-.footer-section a:hover {
-    color: #fff;
-}
-
 .social-links a {
     display: inline-block;
     background-color: #2196F3;
@@ -118,10 +107,19 @@ nav {
     margin-right: 10px;
 }
 
+.footer-section a {
+    color: #f5f5f5;
+    text-decoration: none;
+}
+
 .social-links a:hover,
 .social-links a:focus {
     background-color: #1976D2;
     outline: 2px solid #2196F3;
+}
+
+.footer-section a:hover {
+    color: #fff;
 }
 
 .nav-links a:hover,
