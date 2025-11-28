@@ -433,7 +433,7 @@ input:focus, textarea:focus {
     outline: 2px solid #4CAF50;
 }
 
-/* Исправление порядка селекторов для no-descending-specificity */
+/* Социальные ссылки - перемещены перед .nav-links a:hover */
 .social-links a {
     display: inline-block;
     background-color: #2196F3;
@@ -447,6 +447,16 @@ input:focus, textarea:focus {
 .social-links a:focus {
     background-color: #1976D2;
     outline: 2px solid #2196F3;
+}
+
+/* Ссылки в футере - перемещены перед .nav-links a:hover */
+.footer-section a {
+    color: #f5f5f5;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: #fff;
 }
 
 footer {
@@ -482,16 +492,6 @@ footer {
 
 .footer-section li {
     margin-bottom: 8px;
-}
-
-/* Исправление порядка селекторов для no-descending-specificity */
-.footer-section a {
-    color: #f5f5f5;
-    text-decoration: none;
-}
-
-.footer-section a:hover {
-    color: #fff;
 }
 
 .footer-bottom {
