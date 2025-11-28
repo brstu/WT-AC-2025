@@ -270,10 +270,11 @@ body {
     height: 1.2em; 
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .burger { 
         display: none; 
     }
+    
     .nav { 
         display: block; 
     }
