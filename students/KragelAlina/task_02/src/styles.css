@@ -170,7 +170,7 @@ a:hover {
   transition: var(--transition);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .nav {
     position: absolute;
     top: 100%;
@@ -183,7 +183,7 @@ a:hover {
     transition: transform 0.4s ease-in-out;
   }
 
-  .nav--open {
+  .nav-open {
     transform: translateY(0);
   }
 
@@ -441,6 +441,7 @@ a:hover {
   bottom: -1.2rem;
 }
 
+/* Помогите */
 .feedback-form button[type="submit"] {
   width: 100%;
   padding: 1rem;
@@ -453,13 +454,13 @@ a:hover {
   transition: var(--transition);
 }
 
+.feedback-form button[type="submit"]:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
 .feedback-form button[type="submit"]:disabled {
   background: #9ca3af;
   cursor: not-allowed;
-}
-
-.feedback-form button[type="submit"]:hover:not(:disabled) {
-  opacity: 0.8;
 }
 
 .form-success {
@@ -480,7 +481,7 @@ a:hover {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.modal[aria-hidden="false"] {
+.modal-visible {
   opacity: 1;
   visibility: visible;
 }
@@ -550,7 +551,7 @@ a:hover {
   font-size: 0.9rem;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .modal-content {
     padding: 1.5rem;
     max-width: 95%;

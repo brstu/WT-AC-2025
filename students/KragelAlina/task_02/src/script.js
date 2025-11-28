@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             burgerBtn.setAttribute('aria-expanded', !isExpanded);
             
-            navMenu.classList.toggle('nav--open');
+            navMenu.classList.toggle('nav-open'); // <-- ИСПРАВЛЕНО
             
             navMenu.setAttribute('aria-hidden', isExpanded); 
         });
@@ -146,14 +146,14 @@ document.addEventListener('DOMContentLoaded', () => {
         tab.addEventListener('click', () => switchTab(tab.id));
     });
 
-    document.querySelectorAll('.place__trigger').forEach(trigger => {
+    document.querySelectorAll('.place-trigger').forEach(trigger => {
         trigger.addEventListener('click', (e) => {
             const button = e.currentTarget;
             const contentId = button.getAttribute('aria-controls');
             const content = document.getElementById(contentId);
             const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
-            document.querySelectorAll('.place__trigger[aria-expanded="true"]').forEach(openBtn => {
+            document.querySelectorAll('.place-trigger[aria-expanded="true"]').forEach(openBtn => {
                  if (openBtn !== button) {
                     openBtn.setAttribute('aria-expanded', 'false');
                     document.getElementById(openBtn.getAttribute('aria-controls'))?.setAttribute('aria-hidden', 'true');
@@ -172,13 +172,13 @@ document.addEventListener('DOMContentLoaded', () => {
         if (modal) {
             focusedElementBeforeModal = triggerElement || document.activeElement;
             modal.removeAttribute('aria-hidden');
-            modal.classList.add('modal--visible');
-            modal.querySelector('.modal__content')?.focus();
+            modal.classList.add('modal-visible'); // <-- ИСПРАВЛЕНО
+            modal.querySelector('.modal-content')?.focus();
         }
     };
     const closeModal = (modal) => {
         modal.setAttribute('aria-hidden', 'true');
-        modal.classList.remove('modal--visible');
+        modal.classList.remove('modal-visible'); // <-- ИСПРАВЛЕНО
         focusedElementBeforeModal?.focus(); 
     };
 
@@ -187,11 +187,11 @@ document.addEventListener('DOMContentLoaded', () => {
             openModal(e.target.dataset.modal, e.target);
         }
         
-        if (e.target.classList.contains('modal__close')) {
+        if (e.target.classList.contains('modal-close')) {
             closeModal(e.target.closest('.modal'));
         }
         
-        if (e.target.classList.contains('modal__overlay')) {
+        if (e.target.classList.contains('modal-overlay')) {
             closeModal(e.target.closest('.modal'));
         }
         
@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             modals.forEach(modal => {
-                if (modal.classList.contains('modal--visible')) {
+                if (modal.classList.contains('modal-visible')) {
                     closeModal(modal);
                 }
             });
