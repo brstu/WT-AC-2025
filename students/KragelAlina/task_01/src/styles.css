@@ -216,7 +216,6 @@ footer {
   max-width: 800px;
 }
 
-/* Правильный порядок: сначала более специфичные селекторы */
 #habits-table th,
 #habits-table td,
 #team table th,
