@@ -13,9 +13,165 @@
   --background-text: linear-gradient(90deg, #60a5fa, #a78bfa, #e879f9);
 }
 
-/* Ошибка 1: 173:8 - media-feature-range-notation */
-/* Исправлено: (max-width: 768px) заменено на (width <= 768px) */
-@media (width <= 768px) {
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-body: linear-gradient(135deg, #0f172a, #1e1b4b, #2d1b69);
+    --text-color: #e2e8f0;
+    --header-bg: linear-gradient(135deg, #1e293b, #334155, #475569);
+    --nav-link: #e2e8f0;
+    --nav-hover: #fcd34d;
+    --primary: #9486b3;
+    --card-bg: rgb(255 255 255 / 5%);
+    --border-color: rgb(255 255 255 / 15%);
+    --shadow: 0 8px 30px rgb(0 0 0 / 50%);
+  }
+}
+
+/* Добавлена пустая строка перед этим комментарием */
+[data-theme="dark"] {
+  --bg-body: linear-gradient(135deg, #0f172a, #1e1b4b, #2d1b69);
+  --text-color: #e2e8f0;
+  --header-bg: linear-gradient(135deg, #1e293b, #334155, #475569);
+  --nav-link: #e2e8f0;
+  --nav-hover: #fcd34d;
+  --primary: #9486b3;
+  --card-bg: rgb(255 255 255 / 5%);
+  --border-color: rgb(255 255 255 / 15%);
+  --shadow: 0 8px 30px rgb(0 0 0 / 50%);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--bg-body);
+  color: var(--text-color);
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: var(--transition);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:hover {
+  color: var(--nav-hover);
+}
+
+.section {
+  padding: 3rem 0;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--header-bg);
+  box-shadow: var(--shadow);
+  padding: 1rem 0;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  background: var(--background-text);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#theme-toggle {
+  background: none;
+  border: 2px solid var(--text-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: var(--radius);
+  transition: var(--transition);
+  margin-left: 1rem;
+}
+
+#theme-toggle:hover {
+  background: var(--primary);
+  color: #fff;
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+}
+
+.nav li {
+  margin-left: 1.5rem;
+  position: relative;
+}
+
+.nav a {
+  color: var(--nav-link);
+  font-weight: 500;
+}
+
+.nav a:hover {
+  color: var(--nav-hover);
+}
+
+.counter {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: #ef4444;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 0.75rem;
+  margin-left: 5px;
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  position: relative;
+  z-index: 150;
+}
+
+.burger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px 0;
+  background: var(--text-color);
+  transition: var(--transition);
+}
+
+@media (max-width: 768px) {
   .nav {
     position: absolute;
     top: 100%;
@@ -235,6 +391,7 @@
   font-size: 0.9rem;
 }
 
+/* Добавлена пустая строка перед этим комментарием */
 .feedback-form {
   max-width: 600px;
   margin: 0 auto;
@@ -286,7 +443,7 @@
   bottom: -1.2rem;
 }
 
-/* Помогите */
+/* Добавлена пустая строка перед этим комментарием */
 .feedback-form button[type="submit"] {
   width: 100%;
   padding: 1rem;
@@ -299,15 +456,13 @@
   transition: var(--transition);
 }
 
-/* Ошибка 2: 461:1 - no-descending-specificity */
-/* Исправлено: Порядок селекторов изменен */
+.feedback-form button[type="submit"]:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
 .feedback-form button[type="submit"]:disabled {
   background: #9ca3af;
   cursor: not-allowed;
-}
-
-.feedback-form button[type="submit"]:hover:not(:disabled) {
-  opacity: 0.8;
 }
 
 .form-success {
@@ -398,9 +553,7 @@
   font-size: 0.9rem;
 }
 
-/* Ошибка 3: 554:8 - media-feature-range-notation */
-/* Исправлено: (max-width: 768px) заменено на (width <= 768px) */
-@media (width <= 768px) {
+@media (max-width: 768px) {
   .modal-content {
     padding: 1.5rem;
     max-width: 95%;
