@@ -1,20 +1,21 @@
 # Лабораторная работа №4: Справочник IT-инструментов
 
-**Студент:** Ярмола Александр  
-**Вариант:** 23 - Справочник IT-инструментов  
+**Студент:** Ярмола Александр
+**Вариант:** 23 - Справочник IT-инструментов
 
 ## 🌐 Демо
 
 **Ссылка на проект:** [https://alexsandro007.github.io/all_tasks_v23/task_04/src/index.html](https://alexsandro007.github.io/all_tasks_v23/task_04/src/index.html)
 
-### Демо-аккаунты для входа:
+### Демо-аккаунты для входа
+
 - 👨‍💼 **Admin**: `admin / admin123`
 - 👤 **User**: `user / user123`
 
 ## 📋 Содержание
 
 1. [Описание проекта](#описание-проекта)
-2. [Технологии](#технологии)
+2. [Архитектура](#архитектура)
 3. [Архитектура](#архитектура)
 4. [Маршрутизация](#маршрутизация)
 5. [API](#api)
@@ -29,7 +30,8 @@
 
 SPA-приложение для управления справочником IT-инструментов с полным CRUD функционалом, хеш-роутингом и валидацией форм.
 
-### Основные возможности:
+### Основные возможности
+
 - ✅ Просмотр списка IT-инструментов с поиском и фильтрацией
 - ✅ Детальная информация об инструменте
 - ✅ Создание новых инструментов
@@ -111,24 +113,27 @@ pathToRegex(path) {
 
 API клиент для работы с данными через localStorage:
 
-#### Методы:
+#### Методы
 
-**GET - Получение списка**
+##### GET - Получение списка
+
 ```javascript
-await api.getAll({ 
+await api.getAll({
     search: 'vscode',      // Поиск по названию/описанию
     category: 'IDE',       // Фильтр по категории
     sort: 'rating'         // Сортировка (name, rating, date)
 });
 ```
 
-**GET - Получение по ID**
+##### GET - Получение по ID
+
 ```javascript
 await api.getById(1);
 // Возвращает объект инструмента или выбрасывает ошибку
 ```
 
-**POST - Создание**
+##### POST - Создание
+
 ```javascript
 await api.create({
     name: 'Visual Studio Code',
@@ -142,7 +147,8 @@ await api.create({
 });
 ```
 
-**PUT - Обновление**
+##### PUT - Обновление
+
 ```javascript
 await api.update(1, {
     name: 'VS Code',
@@ -150,12 +156,14 @@ await api.update(1, {
 });
 ```
 
-**DELETE - Удаление**
+##### DELETE - Удаление
+
 ```javascript
 await api.delete(1);
 ```
 
-**Дополнительно**
+##### Дополнительно
+
 ```javascript
 await api.getCategories();
 // Возвращает список уникальных категорий
@@ -174,19 +182,25 @@ function delay() {
 ## Компоненты
 
 ### Loading (`Loading.js`)
+
 Отображает спиннер загрузки:
+
 ```javascript
 Loading.render('Загрузка данных...');
 ```
 
 ### Error (`Error.js`)
+
 Отображает ошибку с возможностью повтора:
+
 ```javascript
 ErrorComponent.render('Ошибка загрузки', retryCallback);
 ```
 
 ### Empty (`Empty.js`)
+
 Отображает пустое состояние:
+
 ```javascript
 Empty.render(
     'Ничего не найдено',
@@ -197,7 +211,9 @@ Empty.render(
 ```
 
 ### Toast (`Toast.js`)
+
 Система уведомлений:
+
 ```javascript
 Toast.success('Успешно сохранено');
 Toast.error('Ошибка при удалении');
@@ -258,17 +274,17 @@ getToolCard(tool) {
 ```javascript
 validateData(data) {
     const errors = {};
-    
+
     if (!data.name || data.name.trim().length < 2) {
         errors.name = 'Название должно содержать минимум 2 символа';
     }
-    
+
     if (!data.description || data.description.trim().length < 20) {
         errors.description = 'Описание должно содержать минимум 20 символов';
     }
-    
+
     // ... другие проверки
-    
+
     return errors;
 }
 ```
@@ -343,7 +359,7 @@ showErrors(errors) {
     Object.keys(errors).forEach(field => {
         const errorEl = document.getElementById(`${field}Error`);
         const inputEl = document.getElementById(field);
-        
+
         errorEl.textContent = errors[field];
         inputEl.style.borderColor = 'var(--danger)';
     });
@@ -458,7 +474,7 @@ python -m http.server 8004
 
 При изменении фильтров URL автоматически обновляется:
 - `#/?search=docker` - поиск
-- `#/?category=IDE&sort=rating` - категория + сортировка  
+- `#/?category=IDE&sort=rating` - категория + сортировка
 - `#/?search=code&category=IDE&sort=rating` - все вместе
 
 При перезагрузке страницы фильтры восстанавливаются из URL:
@@ -467,7 +483,7 @@ python -m http.server 8004
 parseFiltersFromURL() {
     const hash = window.location.hash.slice(1);
     const [path, query] = hash.split('?');
-    
+
     if (query) {
         const params = new URLSearchParams(query);
         this.filters.search = params.get('search') || '';
@@ -481,7 +497,7 @@ updateURL() {
     if (this.filters.search) params.set('search', this.filters.search);
     if (this.filters.category !== 'all') params.set('category', this.filters.category);
     if (this.filters.sort !== 'name') params.set('sort', this.filters.sort);
-    
+
     const newHash = params.toString() ? `/?${params.toString()}` : '/';
     window.history.replaceState(null, '', `#${newHash}`);
 }
@@ -497,11 +513,11 @@ this.prefetchCache = new Map();
 
 async prefetchTool(toolId) {
     if (this.prefetchCache.has(toolId)) return;
-    
+
     this.prefetchCache.set(toolId, 'loading');
     const data = await this.api.getById(toolId);
     this.prefetchCache.set(toolId, data);
-    
+
     console.log(`✅ Предзагружены данные для инструмента #${toolId}`);
 }
 
