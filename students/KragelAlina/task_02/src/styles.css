@@ -480,7 +480,7 @@ a:hover {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.modal--visible {
+.modal[aria-hidden="false"] {
   opacity: 1;
   visibility: visible;
 }
