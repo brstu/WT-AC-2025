@@ -88,4 +88,3 @@
 | Mobile (≤600px) | [![Mobile](report/mobile.png)](report/mobile.png) |
 | Tablet (601–1024px) | [![Tablet](report/tablet.png)](report/tablet.png) |
 | Desktop (>1024px) | [![Desktop](report/desktop.png)](report/desktop.png) |
-
