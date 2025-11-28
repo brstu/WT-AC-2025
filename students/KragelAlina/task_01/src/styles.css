@@ -228,15 +228,6 @@ footer {
   max-width: 800px;
 }
 
-.habits-table th,
-.habits-table td,
-.team table th,
-.team table td {
-  border: 1px solid var(--table-border);
-  padding: 10px;
-  text-align: center;
-}
-
 .habits-table tbody tr:focus {
   outline: 2px solid var(--nav-hover);
   outline-offset: -1px;
