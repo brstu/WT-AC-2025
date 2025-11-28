@@ -7,8 +7,8 @@
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #333333;
-    background-color: #ffffff;
+    color: #333;
+    background-color: #fff;
     width: 100%; /* Добавлено */
     overflow-x: hidden; /* Добавлено для предотвращения горизонтального скролла */
 }
@@ -41,14 +41,14 @@ h3 {
 
 header {
     background: #4CAF50;
-    color: #ffffff;
+    color: #fff;
     padding: 48px 0;
     text-align: center;
     width: 100%; /* Добавлено */
 }
 
 header h1 {
-    color: #ffffff;
+    color: #fff;
     margin-bottom: 16px;
 }
 
@@ -72,7 +72,7 @@ nav {
 }
 
 .logo {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
     font-size: 24px;
@@ -92,15 +92,16 @@ nav {
 }
 
 .nav-links a {
-    color: #ffffff;
+    color: #fff;
     text-decoration: none;
     font-weight: bold;
     padding: 8px 16px;
 }
 
-.nav-links a:hover, .nav-links a:focus {
+.nav-links a:hover,
+.nav-links a:focus {
     background-color: #5fa063;
-    outline: 2px solid #ffffff;
+    outline: 2px solid #fff;
 }
 
 .mobile-menu {
@@ -155,7 +156,7 @@ section.even {
     margin-right: 2%;
     text-align: center;
     padding: 25px 15px;
-    background: #ffffff;
+    background: #fff;
     border: 1px solid #e0e0e0;
 }
 
@@ -185,7 +186,7 @@ section.even {
     float: left;
     width: 31.333%;
     margin: 0 1%;
-    background: #ffffff;
+    background: #fff;
     padding: 24px;
     border: 1px solid #e0e0e0;
     margin-bottom: 32px;
@@ -226,7 +227,7 @@ section.even {
     width: 50px;
     height: 50px;
     background-color: #4CAF50;
-    color: #ffffff;
+    color: #fff;
     font-size: 24px;
     font-weight: bold;
     margin: 0 auto 16px;
@@ -241,7 +242,7 @@ section.even {
 .btn {
     display: inline-block;
     background-color: #4CAF50;
-    color: #ffffff;
+    color: #fff;
     padding: 16px 32px;
     text-decoration: none;
     font-weight: bold;
@@ -249,7 +250,8 @@ section.even {
     cursor: pointer;
 }
 
-.btn:hover, .btn:focus {
+.btn:hover,
+.btn:focus {
     background-color: #388E3C;
     outline: 2px solid #4CAF50;
 }
@@ -258,7 +260,8 @@ section.even {
     background-color: #FF9800;
 }
 
-.btn-secondary:hover, .btn-secondary:focus {
+.btn-secondary:hover,
+.btn-secondary:focus {
     background-color: #F57C00;
     outline: 2px solid #FF9800;
 }
@@ -281,7 +284,7 @@ section.even {
     float: left;
     width: 31.333%;
     margin: 0 1%;
-    background: #ffffff;
+    background: #fff;
     padding: 24px;
     border: 1px solid #e0e0e0;
     margin-bottom: 32px;
@@ -303,7 +306,7 @@ section.even {
     height: 50px;
     background: #4CAF50;
     display: inline-block;
-    color: #ffffff;
+    color: #fff;
     font-weight: bold;
     text-align: center;
     line-height: 50px;
@@ -347,8 +350,8 @@ section.even {
     bottom: 0;
     left: 0;
     right: 0;
-    background: #000000;
-    color: #ffffff;
+    background: #000;
+    color: #fff;
     padding: 20px;
 }
 
@@ -365,7 +368,7 @@ section.even {
 .contact-form {
     float: left;
     width: 48%;
-    background: #ffffff;
+    background: #fff;
     padding: 32px;
     border: 1px solid #e0e0e0;
 }
@@ -417,40 +420,38 @@ input:focus, textarea:focus {
 
 .submit-button {
     background-color: #4CAF50;
-    color: #ffffff;
+    color: #fff;
     border: none;
     padding: 12px 24px;
     font-size: 16px;
     cursor: pointer;
 }
 
-.submit-button:hover, .submit-button:focus {
+.submit-button:hover,
+.submit-button:focus {
     background-color: #388E3C;
     outline: 2px solid #4CAF50;
 }
 
-.social-links {
-    text-align: left;
-    margin-top: 16px;
-}
-
+/* Исправление порядка селекторов для no-descending-specificity */
 .social-links a {
     display: inline-block;
     background-color: #2196F3;
-    color: #ffffff;
+    color: #fff;
     padding: 8px 16px;
     text-decoration: none;
     margin-right: 10px;
 }
 
-.social-links a:hover, .social-links a:focus {
+.social-links a:hover,
+.social-links a:focus {
     background-color: #1976D2;
     outline: 2px solid #2196F3;
 }
 
 footer {
-    background-color: #333333;
-    color: #ffffff;
+    background-color: #333;
+    color: #fff;
     padding: 48px 0 16px;
     width: 100%; /* Добавлено */
 }
@@ -471,7 +472,7 @@ footer {
 }
 
 .footer-section h3, .footer-section h4 {
-    color: #ffffff;
+    color: #fff;
     margin-bottom: 16px;
 }
 
@@ -483,13 +484,14 @@ footer {
     margin-bottom: 8px;
 }
 
+/* Исправление порядка селекторов для no-descending-specificity */
 .footer-section a {
     color: #f5f5f5;
     text-decoration: none;
 }
 
 .footer-section a:hover {
-    color: #ffffff;
+    color: #fff;
 }
 
 .footer-bottom {
@@ -498,7 +500,8 @@ footer {
     border-top: 1px solid #757575;
 }
 
-@media screen and (max-width: 1024px)  {
+/* Исправление media feature range notation */
+@media screen and (width <= 1024px) {
     .project-card {
         width: 48%;
     }
@@ -526,7 +529,8 @@ footer {
     }
 }
 
-  @media screen and (max-width: 600px) {
+/* Исправление media feature range notation */
+@media screen and (width <= 600px) {
     h1 {
         font-size: 32px;
     }
@@ -577,14 +581,14 @@ footer {
     }
 }
 
-.about-content:after,
-.about-stats:after,
-.projects-grid:after,
-.steps:after,
-.testimonials:after,
-.gallery-grid:after,
-.contact-container:after,
-.footer-content:after {
+.about-content::after,
+.about-stats::after,
+.projects-grid::after,
+.steps::after,
+.testimonials::after,
+.gallery-grid::after,
+.contact-container::after,
+.footer-content::after {
     content: "";
     display: block;
     clear: both;
