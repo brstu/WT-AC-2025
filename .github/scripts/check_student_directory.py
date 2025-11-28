@@ -6,6 +6,8 @@ Behavior:
  - Uses the GitHub event payload (environment variable GITHUB_EVENT_PATH) to get PR author and changed files.
  - If any changed file is outside the allowed directory for the author, exit with code 2.
  - If author cannot be mapped, exit with code 3 (manual check required).
+ - If any changed file inside the student's directory is not inside a `task_*` folder,
+     exit with code 5 (only task folders are permitted).
 
 This script is intentionally small and dependency-free.
 """
@@ -219,6 +221,31 @@ def collect_task_dirs(normalized_files, allowed_dir):
     return tasks
 
 
+def find_non_task_files(normalized_files, allowed_dir):
+    """Return a list of files that are inside the student's directory but not within a task_* folder.
+
+    Example:
+      allowed_dir = 'students/JohnDoe'
+      'students/JohnDoe/README.md' -> non-task (violation)
+      'students/JohnDoe/task_01/index.html' -> ok
+    """
+    if not allowed_dir:
+        return []
+    prefix = allowed_dir.rstrip('/') + '/'
+    violations = []
+    for nf in normalized_files:
+        if nf.startswith(prefix):
+            rel = nf[len(prefix):]
+            # skip empty rel (shouldn't happen for files)
+            if not rel:
+                continue
+            # if the first segment is not task_*, flag it
+            first_segment = rel.split('/', 1)[0]
+            if not first_segment.startswith('task_'):
+                violations.append(nf)
+    return violations
+
+
 def main():
     event_path = os.environ.get('GITHUB_EVENT_PATH')
     event = load_event(event_path)
@@ -319,6 +346,17 @@ def main():
         json.dump(result, open(CHECK_RESULT_PATH, 'w', encoding='utf-8'), ensure_ascii=False)
         LOG.error('Validation failed, violations: %s', violations)
         sys.exit(2)
+
+    # Enforce that any files within the student's directory are placed inside task_* folders
+    non_task = find_non_task_files(normalized_files, allowed)
+    if non_task:
+        print('Detected files in student directory that are not inside a task_* folder:')
+        for v in non_task:
+            print(' -', v)
+        result.update({'exit_code': 5, 'message': 'non-task files modified in student directory', 'non_task_files': non_task})
+        json.dump(result, open(CHECK_RESULT_PATH, 'w', encoding='utf-8'), ensure_ascii=False)
+        LOG.error('Validation failed, non-task files inside %s: %s', allowed, non_task)
+        sys.exit(5)
 
     tasks = collect_task_dirs(normalized_files, allowed)
     if len(tasks) > 1:

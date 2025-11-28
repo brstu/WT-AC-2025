@@ -38,23 +38,74 @@ def find_student_variant(students: list[dict], student_dir_name: str) -> str | N
     return None
 
 
-def extract_section_from_readme(readme_text: str, header: str) -> str:
-    # Find markdown header like '## Описание' and return the following paragraph(s) up to next header
-    pattern = rf"^##\s+{re.escape(header)}\s*$"
-    lines = readme_text.splitlines()
-    start = None
-    for i, line in enumerate(lines):
-        if re.match(pattern, line.strip()):
-            start = i + 1
-            break
-    if start is None:
+def _build_marker_regex(tag: str, keywords: tuple[str, ...]) -> re.Pattern[str]:
+    joined = "|".join(keywords)
+    return re.compile(
+        rf"<!--\s*(?:{joined})\s*(?:[:\-]\s*|\s+){re.escape(tag)}\s*-->",
+        re.IGNORECASE,
+    )
+
+
+def extract_section_by_markers(readme_text: str, tags: list[str] | None) -> str:
+    if not tags:
         return ""
-    collected = []
-    for line in lines[start:]:
-        if re.match(r"^##\s+", line):
+    for tag in tags:
+        start_pattern = _build_marker_regex(tag, ("START",))
+        end_pattern = _build_marker_regex(tag, ("END", "STOP"))
+        start_match = start_pattern.search(readme_text)
+        if not start_match:
+            continue
+        end_match = end_pattern.search(readme_text, pos=start_match.end())
+        if not end_match:
+            continue
+        return readme_text[start_match.end() : end_match.start()].strip()
+    return ""
+
+
+def extract_section_by_headers(readme_text: str, headers: list[str]) -> str:
+    lines = readme_text.splitlines()
+    for header in headers:
+        pattern = re.compile(rf"^##\s+{re.escape(header)}\s*$", re.IGNORECASE)
+        start = None
+        for i, line in enumerate(lines):
+            if pattern.match(line.strip()):
+                start = i + 1
+                break
+        if start is None:
+            continue
+        collected: list[str] = []
+        for line in lines[start:]:
+            if re.match(r"^##\s+", line):
+                break
+            collected.append(line)
+        return "\n".join(collected).strip()
+    return ""
+
+
+def strip_leading_header(text: str, headers: list[str]) -> str:
+    if not text:
+        return ""
+    lines = text.splitlines()
+    while lines and not lines[0].strip():
+        lines.pop(0)
+    if not lines:
+        return ""
+    first = lines[0].strip()
+    for header in headers:
+        pattern = re.compile(rf"^##\s+{re.escape(header)}\s*$", re.IGNORECASE)
+        if pattern.match(first):
+            lines.pop(0)
+            while lines and not lines[0].strip():
+                lines.pop(0)
             break
-        collected.append(line)
-    return "\n".join(collected).strip()
+    return "\n".join(lines).strip()
+
+
+def extract_section(readme_text: str, headers: list[str], marker_tags: list[str] | None = None) -> str:
+    marker_content = extract_section_by_markers(readme_text, marker_tags)
+    if marker_content:
+        return strip_leading_header(marker_content, headers)
+    return extract_section_by_headers(readme_text, headers)
 
 
 def load_file(path: Path) -> str:
@@ -64,14 +115,21 @@ def load_file(path: Path) -> str:
 
 
 def assemble_prompt(student: str, task: str, variant: str, readme_text: str, variants_text: str) -> str:
-    description = extract_section_from_readme(readme_text, 'Описание')
-    criteria = extract_section_from_readme(readme_text, 'Критерии оценивания (100 баллов)')
-    if not criteria:
-        # fallback to shorter header
-        criteria = extract_section_from_readme(readme_text, 'Критерии оценивания')
-    artifacts = extract_section_from_readme(readme_text, 'Артефакты (что сдаём)')
-    if not artifacts:
-        artifacts = extract_section_from_readme(readme_text, 'Артефакты')
+    description = extract_section(readme_text, ['Описание'], ['description'])
+    criteria = extract_section(
+        readme_text,
+        ['Критерии оценивания (100 баллов)', 'Критерии оценивания'],
+        ['criteria'],
+    )
+    artifacts = extract_section(readme_text, ['Артефакты (что сдаём)', 'Артефакты'], ['artifacts'])
+    bonuses = extract_section(readme_text, ['Бонусы (+ до 10)', 'Бонусы'], ['bonuses'])
+
+    criteria_parts: list[str] = []
+    if criteria:
+        criteria_parts.append(criteria)
+    if bonuses:
+        criteria_parts.append('Бонусы (+ до 10)\n' + bonuses)
+    criteria_text = '\n\n'.join(criteria_parts).strip()
 
     # Get variant description from variants_text
     variant_desc = ""
@@ -97,7 +155,7 @@ def assemble_prompt(student: str, task: str, variant: str, readme_text: str, var
         "",
         "Оцени лабораторную работу.",
         f"Смотреть файлы только в папке: (\"students\\{student}\\{task}\").",
-        f"Проверять только лабу в папке : \"{task}\".",
+        f"Проверять только лабораторную работу в папке : \"{task}\".",
         "Игнорируй все изображения(\".jpg\", \".jpeg\", \".png\", \".gif\", \".svg\", \".webp\", \".avif\").",
         "Игнорируй служебные и временные файлы(\".tmp\",\".bak\",\".zip\",\".rar\",\".7z\"),",
         "Описание работы:",
@@ -108,16 +166,21 @@ def assemble_prompt(student: str, task: str, variant: str, readme_text: str, var
         "Явно проверь, что тема работы соответствует описанию варианта.",
         "",
         "Оценить по критериям:",
-        criteria or "(Критерии не найдены в readme)",
+    criteria_text or "(Критерии не найдены в readme)",
         "",
         "лабораторная работа должна содержать:",
-        artifacts or "(Артефакты не найдены в readme)",
+    artifacts or "(Артефакты не найдены в readme)",
         "",
-        "Выводи строго в формате:",
-        "критерии: NNN / XXX",
-        "Итого: NNN / 100",
+        "Выведи сначала покритериальную таблицу (каждый критерий отдельной строкой с полученным баллом), затем строку:",
+        "критерии: TOTAL / 100",
+        "Если есть бонусы, прибавь их и выведи:",
+        "Итого: TOTAL_WITH_BONUS / 100",
         "",
-        "Предлагай фиксы по улучшению, максимум 2 и кратко(по 1 предложению каждый).",
+        "Требование по пояснениям:",
+        "- Для каждого критерия, если получено меньше максимума, кратко (1 предложение) укажи причину снижения балла в скобках после оценки.",
+        "- Формат примера: Доступность: 18/20 (альты и label есть; отсутствует caption у таблицы; контраст не подтверждён).",
+        "- Если критерий оценён на максимум, пояснение не требуется.",
+        "",
         "анализируй только файлы, которые есть в папке.",
         "Не описывай найденные файлы, только используй их для оценки.",
     ]
