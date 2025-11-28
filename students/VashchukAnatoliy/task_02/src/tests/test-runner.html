@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юнит-тесты - Мем-блог</title>
+    <style>
+        body { font-family: system-ui, sans-serif; max-width: 800px; margin: 0 auto; padding: 2rem; background: #f5f5f5; }
+        .test-container { background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        h1 { color: #004aad; text-align: center; }
+        button { background: #004aad; color: white; border: none; padding: 1rem 2rem; border-radius: 8px; cursor: pointer; font-size: 1.1rem; margin: 1rem 0; }
+        button:hover { background: #003a8c; }
+        #test-output { background: #1a1a1a; color: #00ff00; padding: 1rem; border-radius: 8px; font-family: 'Courier New', monospace; white-space: pre-wrap; margin-top: 1rem; max-height: 500px; overflow-y: auto; }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Юнит-тесты для мем-блога</h1>
+        <p>Проверка функций валидации и бизнес-логики</p>
+        
+        <button onclick="runTests()">▶️ Запустить тесты</button>
+        <button onclick="clearOutput()">🗑️ Очистить вывод</button>
+        
+        <div id="test-output">
+            Нажмите "Запустить тесты" для проверки...
+        </div>
+    </div>
+
+    <!-- Подключаем функции валидации -->
+    <script src="../scripts/validation.js"></script>
+    
+    <script>
+        // Тесты для validateEmail
+        function testValidateEmail() {
+            console.log('=== Тесты validateEmail ===');
+            
+            console.assert(Validation.validateEmail('test@example.com') === true, '✅ Валидный email');
+            console.assert(Validation.validateEmail('invalid') === false, '✅ Невалидный email без @');
+            console.assert(Validation.validateEmail('') === false, '✅ Пустой email');
+            
+            console.log('✅ Все тесты validateEmail пройдены\n');
+        }
+
+        // Тесты для validateMessage
+        function testValidateMessage() {
+            console.log('=== Тесты validateMessage ===');
+            
+            console.assert(Validation.validateMessage('Это сообщение содержит более 20 символов') === true, '✅ Сообщение ≥20 символов');
+            console.assert(Validation.validateMessage('Коротко') === false, '✅ Сообщение <20 символов');
+            
+            console.log('✅ Все тесты validateMessage пройдены\n');
+        }
+
+        // Тесты для validateName
+        function testValidateName() {
+            console.log('=== Тесты validateName ===');
+            
+            console.assert(Validation.validateName('Анатолий') === true, '✅ Валидное имя');
+            console.assert(Validation.validateName('') === false, '✅ Пустое имя');
+            
+            console.log('✅ Все тесты validateName пройдены\n');
+        }
+
+        // Тесты для validateForm
+        function testValidateForm() {
+            console.log('=== Тесты validateForm ===');
+            
+            const validFormData = {
+                name: 'Анатолий',
+                email: 'test@example.com',
+                message: 'Это сообщение содержит более чем 20 символов для теста',
+                url: 'https://example.com/meme.jpg'
+            };
+            
+            const validResult = Validation.validateForm(validFormData);
+            console.assert(validResult.isValid === true, '✅ Валидная форма');
+            
+            const invalidFormData = {
+                name: '',
+                email: 'invalid-email',
+                message: 'Коротко'
+            };
+            
+            const invalidResult = Validation.validateForm(invalidFormData);
+            console.assert(invalidResult.isValid === false, '✅ Невалидная форма');
+            
+            console.log('✅ Все тесты validateForm пройдены\n');
+        }
+
+        // Тесты для toggleLike
+        function testToggleLike() {
+            console.log('=== Тесты toggleLike ===');
+            
+            const likeResult = Validation.toggleLike(false, 10);
+            console.assert(likeResult.liked === true, '✅ Лайк добавляется');
+            console.assert(likeResult.likes === 11, '✅ Счётчик увеличивается');
+            
+            const unlikeResult = Validation.toggleLike(true, 15);
+            console.assert(unlikeResult.liked === false, '✅ Лайк удаляется');
+            console.assert(unlikeResult.likes === 14, '✅ Счётчик уменьшается');
+            
+            console.log('✅ Все тесты toggleLike пройдены\n');
+        }
+
+        // Запуск всех тестов
+        function runAllTests() {
+            console.clear();
+            console.log('🚀 Запуск юнит-тестов для мем-блога\n');
+            
+            try {
+                testValidateEmail();
+                testValidateMessage();
+                testValidateName();
+                testValidateForm();
+                testToggleLike();
+                
+                console.log('🎉 Все тесты успешно пройдены!');
+                
+            } catch (error) {
+                console.error('❌ Тесты провалились:', error);
+            }
+        }
+
+        // Функции для кнопок
+        window.runTests = function() {
+            const output = document.getElementById('test-output');
+            output.innerHTML = '🔄 Запуск тестов...\n\n';
+            
+            const originalConsoleLog = console.log;
+            console.log = function(...args) {
+                originalConsoleLog.apply(console, args);
+                output.textContent += args.join(' ') + '\n';
+                output.scrollTop = output.scrollHeight;
+            };
+            
+            runAllTests();
+            
+            setTimeout(() => {
+                console.log = originalConsoleLog;
+            }, 100);
+        };
+        
+        window.clearOutput = function() {
+            document.getElementById('test-output').textContent = 'Вывод очищен...';
+        };
+    </script>
+</body>
+</html>
