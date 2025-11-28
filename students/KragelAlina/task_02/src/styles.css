@@ -236,7 +236,7 @@ a:hover {
 
 .tabs button {
   background: none;
-   border: none;
+  border: none;
   color: var(--text-color);
   font-size: 1.1rem;
   padding: 1rem 1.5rem;
@@ -294,10 +294,6 @@ a:hover {
   color: #fff;
 }
 
-.place-trigger[aria-expanded="true"] .arrow::before {
-  content: "Up";
-}
-
 .arrow::before {
   content: "Down";
   margin-left: 0.5em;
@@ -305,7 +301,8 @@ a:hover {
   transition: transform 0.3s ease;
 }
 
-.place-trigger[aria-expanded="true"] .arrow {
+.place-trigger[aria-expanded="true"] .arrow::before {
+  content: "Up";
   transform: rotate(180deg);
 }
 
@@ -444,15 +441,6 @@ a:hover {
   bottom: -1.2rem;
 }
 
-.feedback-form button[type="submit"]:disabled {
-  background: #9ca3af;
-  cursor: not-allowed;
-}
-
-.feedback-form button[type="submit"]:hover:not(:disabled) {
-  opacity: 0.8;
-}
-
 .feedback-form button[type="submit"] {
   width: 100%;
   padding: 1rem;
@@ -463,6 +451,15 @@ a:hover {
   font-size: 1.1rem;
   cursor: pointer;
   transition: var(--transition);
+}
+
+.feedback-form button[type="submit"]:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.feedback-form button[type="submit"]:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
 }
 
 .form-success {
