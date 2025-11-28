@@ -53,14 +53,14 @@
 
 ### Установка
 
-1.  Клонируйте репозиторий\
-2.  Установите зависимости:
+* Клонируйте репозиторий\
+* Установите зависимости:
 
 ``` bash
 npm install
 ```
 
-3.  Настройте окружение:
+* Настройте окружение:
 
 ``` bash
 cp .env.example .env
@@ -68,14 +68,14 @@ cp .env.example .env
 
 Отредактируйте `.env` файл при необходимости.
 
-4.  Настройте базу данных:
+* Настройте базу данных:
 
 ``` bash
 npm run db:migrate
 npm run db:seed
 ```
 
-5.  Запустите сервер:
+* Запустите сервер:
 
 ``` bash
 # Development
@@ -103,6 +103,7 @@ API использует JWT токены для аутентификации.
 
 ### Регистрация пользователя
 
+``` bash
     POST /api/auth/signup
     Content-Type: application/json
 
@@ -111,9 +112,11 @@ API использует JWT токены для аутентификации.
       "password": "password123",
       "role": "customer"
     }
+```
 
 ### Вход в систему
 
+``` bash
     POST /api/auth/login
     Content-Type: application/json
 
@@ -121,6 +124,7 @@ API использует JWT токены для аутентификации.
       "email": "user@example.com",
       "password": "password123"
     }
+```
 
 Ответ содержит JWT токен:
 
@@ -134,7 +138,7 @@ API использует JWT токены для аутентификации.
 
 ### Использование токена
 
-    Authorization: Bearer наш-jwt-токен
+* Authorization: Bearer наш-jwt-токен
 
 ---
 
@@ -142,31 +146,31 @@ API использует JWT токены для аутентификации.
 
 ### Аутентификация
 
--   POST /api/auth/signup --- Регистрация\
--   POST /api/auth/login --- Вход\
--   GET /api/auth/profile --- Профиль пользователя (нужна авторизация)
+- `POST /api/auth/signup` --- Регистрация
+- `POST /api/auth/login` --- Вход
+- `GET /api/auth/profile` --- Профиль пользователя (нужна авторизация)
 
 ### Товары
 
--   GET /api/products --- Все товары\
--   GET /api/products/:id --- Товар по ID\
--   POST /api/products --- Создать товар (админ)\
--   PUT /api/products/:id --- Обновить товар (админ)\
--   DELETE /api/products/:id --- Удалить товар (админ)
-
+- `GET /api/products` --- Все товары
+- `GET /api/products/:id` --- Товар по ID
+- `POST /api/products` --- Создать товар (админ)
+- `PUT /api/products/:id` --- Обновить товар (админ)
+- `DELETE /api/products/:id --- Удалить товар (админ)
+`
 ### Корзина
 
--   GET /api/cart --- Получить корзину\
--   POST /api/cart/items --- Добавить товар\
--   PUT /api/cart/items/:id --- Обновить количество\
--   DELETE /api/cart/items/:id --- Удалить позицию\
--   DELETE /api/cart/clear --- Очистить корзину
+- `GET /api/cart` --- Получить корзину
+- `POST /api/cart/items` --- Добавить товар
+- `PUT /api/cart/items/:id` --- Обновить количество
+- `DELETE /api/cart/items/:id` --- Удалить позицию
+- `DELETE /api/cart/clear` --- Очистить корзину
 
 ### Заказы
 
--   POST /api/orders --- Создать заказ\
--   GET /api/orders --- Заказы пользователя\
--   GET /api/orders/:id --- Заказ по ID
+- `POST /api/orders` --- Создать заказ
+- `GET /api/orders` --- Заказы пользователя
+- `GET /api/orders/:id` --- Заказ по ID
 
 ---
 
@@ -174,6 +178,7 @@ API использует JWT токены для аутентификации.
 
 ### Создание товара (админ)
 
+```bash
     POST /api/products
     Authorization: Bearer ваш-токен
     Content-Type: application/json
@@ -184,9 +189,11 @@ API использует JWT токены для аутентификации.
       "price": 99.99,
       "stock": 10
     }
+```
 
 ### Добавление в корзину
 
+```bash
     POST /api/cart/items
     Authorization: Bearer ваш-токен
     Content-Type: application/json
@@ -195,11 +202,14 @@ API использует JWT токены для аутентификации.
       "productId": 1,
       "quantity": 2
     }
+```
 
 ### Создание заказа
 
+```bash
     POST /api/orders
     Authorization: Bearer ваш-токен
+```
 
 ---
 
