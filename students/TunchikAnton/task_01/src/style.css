@@ -45,41 +45,6 @@ h3 {
     font-size: 1.5rem;
 }
 
-a {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: var(--transition);
-}
-
-button {
-    color: var(--secondary-color);
-    text-decoration: none;
-    transition: var(--transition);
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: var(--border-radius);
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: bold;
-}
-
-a:focus, button:focus {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-}
-
-a:hover {
-    color: var(--accent-color);
-}
-
-button:hover {
-    background-color: #e74c3c;
-    color: white;
-    transform: translateY(-2px);
-}
-
 .sr-only {
     position: absolute;
     width: 1px;
@@ -105,6 +70,69 @@ button:hover {
 
 .skip-link:focus {
     top: 0;
+}
+
+a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: var(--transition);
+}
+
+a:focus, button:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+button:hover {
+    background-color: #e74c3c;
+    transform: translateY(-2px);
+}
+
+.social-links a {
+    color: var(--light-color);
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: rgb(255 255 255 / 10%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-links a:hover, .social-links a:focus {
+    background-color: #3498db;
+    transform: translateY(-2px);
+}
+
+nav a {
+    color: var(--light-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    display: block;
+}
+
+nav a:hover, nav a:focus {
+    background-color: var(--secondary-color);
+    color: white;
 }
 
 header {
@@ -154,18 +182,6 @@ nav ul {
 
 nav li {
     margin: 0 1rem;
-}
-
-nav a {
-    color: var(--light-color);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    display: block;
-}
-
-nav a:hover, nav a:focus {
-    background-color: var(--secondary-color);
-    color: white;
 }
 
 main {
@@ -344,31 +360,6 @@ footer {
 .footer-content {
     max-width: 1200px;
     margin: 0 auto;
-}
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    margin: 1rem 0;
-}
-
-.social-links a {
-    color: var(--light-color);
-    margin: 0 0.5rem;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    border-radius: 50%;
-    background-color: rgb(255 255 255 / 10%);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.social-links a:hover, .social-links a:focus {
-    background-color: #3498db;
-    transform: translateY(-2px);
 }
 
 @media (prefers-reduced-motion: no-preference) {
