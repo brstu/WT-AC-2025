@@ -1,0 +1,111 @@
+@import "normalize.css";
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 30px;
+}
+
+.mainTitle {
+  font-size: 50px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.memes {
+
+}
+
+.memes__list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.memes__item {
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 2rem;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.memes__img {
+  overflow: hidden;
+  border-radius: 15px;
+  transition: all ease 0.3s;
+  cursor: pointer;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all ease 0.3s;
+  }
+}
+
+.memes__inner-img {
+
+}
+
+.memes__img--open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0;
+
+  img {
+    width: auto;
+    height: auto;
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+  }
+}
+
+.memes__img:hover {
+  scale: 1.05;
+}
+
+.memes__like {
+  border: 2px solid #8eff8e;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 15px;
+  margin-inline: auto;
+  display: block;
+}
+
+.memes__like:hover {
+  border: 2px solid #09a609;
+  background-color: #09a609;
+}
+
+.memes__like--liked {
+  background-color: #8eff8e;
+}
+
+.closePhoto {
+  display: none;
+  aspect-ratio: 1;
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  height: 50px;
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.closePhoto.close-btn--visible {
+  display: block;
+}
