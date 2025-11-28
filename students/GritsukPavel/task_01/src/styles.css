@@ -125,11 +125,13 @@ input:focus-visible,
 .hero-text p {
   margin: 0 0 12px;
 }
+
 .hero-media img {
   width: 100%;
   height: auto;
   border-radius: 8px;
 }
+
 .hero-media figcaption {
   color: var(--muted);
   font-size: 0.95rem;
@@ -266,15 +268,12 @@ section > h2 {
 
 /* Мобильный ≤600px */
 @media (width <= 600px) {
-
   .hero {
     grid-template-columns: 1fr;
   }
-
   .card-grid {
     grid-template-columns: 1fr;
   }
-
   .site-nav ul {
     gap: 6px 10px;
   }
@@ -282,7 +281,6 @@ section > h2 {
 
 /* Планшет 601–1024px: заголовок на всю ширину, ниже две колонки */
 @media (601px <= width) and (width <= 1024px) {
-
   .hero {
     grid-template-columns: 1fr 1.2fr;   /* слева изображение, справа текст чуть шире */
     grid-template-areas:
@@ -298,7 +296,6 @@ section > h2 {
 
 /* Десктоп >1024px */
 @media (width >= 1025px) {
-
   .hero {
     grid-template-columns: 1fr 1.3fr;
     grid-template-areas:
@@ -307,7 +304,6 @@ section > h2 {
     align-items: start;
     padding: 24px;
   }
-
   .card-grid {
     grid-template-columns: repeat(3, 1fr);
   }
