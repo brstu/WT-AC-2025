@@ -216,17 +216,18 @@ footer {
   max-width: 800px;
 }
 
-#team table th,
-#team table td,
+/* Правильный порядок: сначала более специфичные селекторы */
 #habits-table th,
-#habits-table td {
+#habits-table td,
+#team table th,
+#team table td {
   border: 1px solid var(--table-border);
   padding: 10px;
   text-align: center;
 }
 
-#team table th,
-#habits-table th {
+#habits-table th,
+#team table th {
   background: var(--table-header-bg);
   color: var(--text-color);
 }
