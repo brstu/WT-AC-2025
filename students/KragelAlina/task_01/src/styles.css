@@ -225,7 +225,11 @@ footer {
   text-align: center;
 }
 
-.habits-table th,
+.habits-table th {
+  background: var(--table-header-bg);
+  color: var(--text-color);
+}
+
 .team table th {
   background: var(--table-header-bg);
   color: var(--text-color);
