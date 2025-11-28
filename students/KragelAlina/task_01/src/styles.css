@@ -207,6 +207,18 @@ footer {
   outline-offset: 2px;
 }
 
+/* Table header styles - moved before combined table styles */
+.habits-table th {
+  background: var(--table-header-bg);
+  color: var(--text-color);
+}
+
+.team table th {
+  background: var(--table-header-bg);
+  color: var(--text-color);
+}
+
+/* Combined table styles */
 .habits-table,
 .team table {
   border: 1px solid var(--table-border);
@@ -223,16 +235,6 @@ footer {
   border: 1px solid var(--table-border);
   padding: 10px;
   text-align: center;
-}
-
-.habits-table th {
-  background: var(--table-header-bg);
-  color: var(--text-color);
-}
-
-.team table th {
-  background: var(--table-header-bg);
-  color: var(--text-color);
 }
 
 .habits-table tbody tr:focus {

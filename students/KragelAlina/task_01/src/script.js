@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const habitForm = document.getElementById('habit-form');
-    const habitsTableBody = document.querySelector('#habits-table tbody');
+    const habitsTableBody = document.querySelector('.habits-table tbody');
 
     habitForm.addEventListener('submit', (event) => {
         event.preventDefault();

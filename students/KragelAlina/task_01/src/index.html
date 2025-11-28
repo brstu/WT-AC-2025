@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="wclassth=device-wclassth, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Твой путь к здоровому образу жизни</title>
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -14,14 +14,14 @@
             <a href="#eat">Питание</a>
             <a href="#workout">Тренировки</a>
             <a href="#tracker">Трекер</a>
-            <button class="theme-toggle" aria-label="Переключить тему">Тема</button>
+            <button id="theme-toggle" aria-label="Переключить тему">Тема</button>
         </nav>
     </header>
 
-    <main class="main-content" role="main">
-        <section class="general" aria-labelledby="home-heading">
-            <h2 class="home-heading">Начните свой путь к здоровью и гармонии уже сегодня!</h2>
-            <div class="grclass">
+    <main id="main-content" role="main">
+        <section id="general" aria-labelledby="home-heading">
+            <h2 id="home-heading">Начните свой путь к здоровью и гармонии уже сегодня!</h2>
+            <div class="grid">
                 <img src="4.jpeg" alt="Иллюстрация здорового образа жизни" loading="lazy">
                 <div> 
                     <p>- Занимайся спортом. Начать можно уже сейчас!</p>
@@ -31,20 +31,20 @@
             </div>
         </section>
 
-        <section class="eat" aria-labelledby="eat-heading">
-            <h2 class="eat-heading">Легкие и полезные блюда для вашего здоровья!</h2>   
+        <section id="eat" aria-labelledby="eat-heading">
+            <h2 id="eat-heading" class="eat-heading">Легкие и полезные блюда для вашего здоровья!</h2>   
         </section>
 
         <div class="container"> 
-            <section class="recipe-salad" aria-labelledby="recipe1-heading">
-                <h2 class="recipe1-heading">Салат с курицей и авокадо</h2>
+            <section id="recipe-salad" class="recipe-salad" aria-labelledby="recipe1-heading">
+                <h2 id="recipe1-heading">Салат с курицей и авокадо</h2>
                 <img src="3.jpeg" alt="Салат с курицей и авокадо" loading="lazy">
                 <div> 
                     <p><em>Состав: 200 г куриного филе (отварного или жареного), 1 авокадо, 1 стакан свежего шпината или салата, 10 помидоров черри, 1/2 красного лука, оливковое масло, сок лимона, соль и перец по вкусу</em></p>
                 </div>
             </section>
-            <section class="recipe-chicken" aria-labelledby="recipe2-heading">
-                <h2 class="recipe2-heading">Куриные грудки на гриле</h2>
+            <section id="recipe-chicken" aria-labelledby="recipe2-heading">
+                <h2 id="recipe2-heading">Куриные грудки на гриле</h2>
                 <img src="2.jpeg" alt="Куриные грудки на гриле" loading="lazy">
                 <div> 
                     <p><em>Состав: 2 куриные грудки, оливковое масло, соль и перец, специи (паприка, чеснок, розмарин) по вкусу</em></p> 
@@ -52,8 +52,8 @@
             </section>
         </div>
 
-        <section class="workout" aria-labelledby="workout-heading">
-            <h2 class="workout-heading">Тренировки</h2>
+        <section id="workout" class="workout" aria-labelledby="workout-heading">
+            <h2 id="workout-heading">Тренировки</h2>
             <article>
                 <h3>Зарядка для начинающих</h3>
                 <p>Простая утренняя зарядка: 10 приседаний, 10 отжиманий, 30 секунд планки. Повторяйте 3 раза.</p>
@@ -64,8 +64,8 @@
             </article>
         </section>
 
-        <section class="team" aria-labelledby="team-heading">
-            <h2 class="team-heading">График тренировок</h2>
+        <section id="team" class="team" aria-labelledby="team-heading">
+            <h2 id="team-heading">График тренировок</h2>
             <table> 
                 <caption>Еженедельный план тренировок</caption>
                 <thead>
@@ -87,20 +87,21 @@
             </table>
         </section>
 
-        <section class="tracker" aria-labelledby="tracker-heading">
-            <h2 class="tracker-heading">Трекер привычек</h2>
+        <section id="tracker" class="tracker" aria-labelledby="tracker-heading">
+            <h2 id="tracker-heading">Трекер привычек</h2>
             <p>Здесь вы можете отслеживать свои ежедневные привычки. Используйте форму ниже для записи.</p>
-            <form aria-label="Форма трекера привычек" class="habit-form">
+            <form aria-label="Форма трекера привычек" id="habit-form" class="habit-form">
                 <label for="habit">Привычка:</label>
-                <select class="habit" name="habit" required>
+                <select id="habit" name="habit" required>
+                    <required>
                     <option value="зарядка">Зарядка</option>
                     <option value="кардио">Кардио</option>
                 </select>
                 <label for="date">Дата:</label>
-                <input type="date" class="date" name="date" required>
+                <input type="date" id="date" name="date" required>
                 <button type="submit">Добавить</button>
             </form>
-            <table class="habits-table" aria-live="polite">
+            <table id="habits-table" class="habits-table" aria-live="polite">
                 <thead>
                     <tr>
                         <th>Дата</th>
