@@ -1,51 +1,51 @@
 :root {
-  --bg-body: linear-gradient(to right, .e6e6fa, .fffacd);
-  --text-color: .000;
-  --section-bg: .fffaf0;
-  --section-heading: .1e1e1e;
-  --header-bg: linear-gradient(120deg, .6f89ad, .9486b3, .ba82a7, .deb0a1, .e4e4ce);
-  --nav-link: .000;
-  --nav-hover: .ffad00;
-  --table-border: .ddd;
-  --footer-text: .000;
-  --footer-bg: .f5f5f5;
-  --background-section: linear-gradient(120deg, .6f89ad, .9486b3, .ba82a7, .deb0a1, .e4e4ce);
-  --table-header-bg: .c0c0c0;
-  --h2-border: .6f89ad;
+  --bg-body: linear-gradient(to right, #e6e6fa, #fffacd);
+  --text-color: #000;
+  --section-bg: #fffaf0;
+  --section-heading: #1e1e1e;
+  --header-bg: linear-gradient(120deg, #6f89ad, #9486b3, #ba82a7, #deb0a1, #e4e4ce);
+  --nav-link: #000;
+  --nav-hover: #ffad00;
+  --table-border: #ddd;
+  --footer-text: #000;
+  --footer-bg: #f5f5f5;
+  --background-section: linear-gradient(120deg, #6f89ad, #9486b3, #ba82a7, #deb0a1, #e4e4ce);
+  --table-header-bg: #c0c0c0;
+  --h2-border: #6f89ad;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-body: linear-gradient(to right, .1c1c1c, .3a2e24);
-    --text-color: .f0f0f0;
-    --section-bg: .3c2f2f;
-    --section-heading: .f0f0f0;
-    --header-bg: linear-gradient(to right, .054c76, .0c192a, .471c3a);
-    --nav-link: .f0f0f0;
-    --nav-hover: .ffad00;
-    --table-border: .777;
-    --footer-text: .f0f0f0;
-    --footer-bg: .1c1c1c;
-    --background-section: linear-gradient(to right, .054c76, .0c192a, .471c3a);
-    --table-header-bg: .333;
-    --h2-border: .471c3a;
+    --bg-body: linear-gradient(to right, #1c1c1c, #3a2e24);
+    --text-color: #f0f0f0;
+    --section-bg: #3c2f2f;
+    --section-heading: #f0f0f0;
+    --header-bg: linear-gradient(to right, #054c76, #0c192a, #471c3a);
+    --nav-link: #f0f0f0;
+    --nav-hover: #ffad00;
+    --table-border: #777;
+    --footer-text: #f0f0f0;
+    --footer-bg: #1c1c1c;
+    --background-section: linear-gradient(to right, #054c76, #0c192a, #471c3a);
+    --table-header-bg: #333;
+    --h2-border: #471c3a;
   }
 }
 
 [data-theme="dark"] {
-  --bg-body: linear-gradient(to right, .1c1c1c, .3a2e24);
-  --text-color: .f0f0f0;
-  --section-bg: .3c2f2f;
-  --section-heading: .f0f0f0;
-  --header-bg: linear-gradient(to right, .054c76, .0c192a, .471c3a);
-  --nav-link: .f0f0f0;
-  --nav-hover: .ffad00;
-  --table-border: .777;
-  --footer-text: .f0f0f0;
-  --footer-bg: .1c1c1c;
-  --background-section: linear-gradient(to right, .054c76, .0c192a, .471c3a);
-  --table-header-bg: .333;
-  --h2-border: .471c3a;
+  --bg-body: linear-gradient(to right, #1c1c1c, #3a2e24);
+  --text-color: #f0f0f0;
+  --section-bg: #3c2f2f;
+  --section-heading: #f0f0f0;
+  --header-bg: linear-gradient(to right, #054c76, #0c192a, #471c3a);
+  --nav-link: #f0f0f0;
+  --nav-hover: #ffad00;
+  --table-border: #777;
+  --footer-text: #f0f0f0;
+  --footer-bg: #1c1c1c;
+  --background-section: linear-gradient(to right, #054c76, #0c192a, #471c3a);
+  --table-header-bg: #333;
+  --h2-border: #471c3a;
 }
 
 body {
@@ -225,8 +225,8 @@ footer {
   text-align: center;
 }
 
-.team table th,
-.habits-table th {
+.habits-table th,
+.team table th {
   background: var(--table-header-bg);
   color: var(--text-color);
 }
