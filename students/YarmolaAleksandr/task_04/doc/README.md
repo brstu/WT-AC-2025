@@ -405,6 +405,7 @@ showErrors(errors) {
 cd task_04/src
 python -m http.server 8004
 ```
+
 Открыть: http://localhost:8004
 
 ### Вариант 2: Live Server (VS Code)
