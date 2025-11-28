@@ -454,13 +454,13 @@ a:hover {
   transition: var(--transition);
 }
 
-.feedback-form button[type="submit"]:hover:not(:disabled) {
-  opacity: 0.8;
-}
-
 .feedback-form button[type="submit"]:disabled {
   background: #9ca3af;
   cursor: not-allowed;
+}
+
+.feedback-form button[type="submit"]:hover:not(:disabled) {
+  opacity: 0.8;
 }
 
 .form-success {
