@@ -78,6 +78,27 @@ a {
     transition: var(--transition);
 }
 
+nav a {
+    color: var(--light-color);
+    padding: 0.5rem 1rem;
+    border-radius: var(--border-radius);
+    display: block;
+}
+
+.social-links a {
+    color: var(--light-color);
+    margin: 0 0.5rem;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: rgb(255 255 255 / 10%);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 button {
     background-color: #3498db;
     color: white;
@@ -99,23 +120,9 @@ a:hover {
     color: var(--accent-color);
 }
 
-button:hover {
-    background-color: #e74c3c;
-    transform: translateY(-2px);
-}
-
-.social-links a {
-    color: var(--light-color);
-    margin: 0 0.5rem;
-    font-size: 1.5rem;
-    padding: 0.5rem;
-    border-radius: 50%;
-    background-color: rgb(255 255 255 / 10%);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+nav a:hover, nav a:focus {
+    background-color: var(--secondary-color);
+    color: white;
 }
 
 .social-links a:hover, .social-links a:focus {
@@ -123,16 +130,9 @@ button:hover {
     transform: translateY(-2px);
 }
 
-nav a {
-    color: var(--light-color);
-    padding: 0.5rem 1rem;
-    border-radius: var(--border-radius);
-    display: block;
-}
-
-nav a:hover, nav a:focus {
-    background-color: var(--secondary-color);
-    color: white;
+button:hover {
+    background-color: #e74c3c;
+    transform: translateY(-2px);
 }
 
 header {
