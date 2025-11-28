@@ -27,7 +27,6 @@
   }
 }
 
-/* Добавлена пустая строка перед этим комментарием */
 [data-theme="dark"] {
   --bg-body: linear-gradient(135deg, #0f172a, #1e1b4b, #2d1b69);
   --text-color: #e2e8f0;
@@ -184,7 +183,7 @@ a:hover {
     transition: transform 0.4s ease-in-out;
   }
 
-  .nav-open {
+  .nav--open {
     transform: translateY(0);
   }
 
@@ -391,7 +390,6 @@ a:hover {
   font-size: 0.9rem;
 }
 
-/* Добавлена пустая строка перед этим комментарием */
 .feedback-form {
   max-width: 600px;
   margin: 0 auto;
@@ -443,7 +441,6 @@ a:hover {
   bottom: -1.2rem;
 }
 
-/* Добавлена пустая строка перед этим комментарием */
 .feedback-form button[type="submit"] {
   width: 100%;
   padding: 1rem;
@@ -456,13 +453,13 @@ a:hover {
   transition: var(--transition);
 }
 
-.feedback-form button[type="submit"]:hover:not(:disabled) {
-  opacity: 0.8;
-}
-
 .feedback-form button[type="submit"]:disabled {
   background: #9ca3af;
   cursor: not-allowed;
+}
+
+.feedback-form button[type="submit"]:hover:not(:disabled) {
+  opacity: 0.8;
 }
 
 .form-success {
@@ -483,7 +480,7 @@ a:hover {
   transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
-.modal-visible {
+.modal--visible {
   opacity: 1;
   visibility: visible;
 }
