@@ -12,7 +12,7 @@
     background: #fff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgb(0 0 0 / 10%);
     width: 100%;
     max-width: 600px;
 }
@@ -54,13 +54,13 @@ button {
     transition: background-color 0.2s;
 }
 
-button:hover:not(:disabled) {
-    background-color: #218838;
-}
-
 button:disabled {
     background-color: #6c757d;
     cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #218838;
 }
 
 .message {
@@ -110,11 +110,6 @@ button:disabled {
 
 .currency-list li:hover {
     background-color: #dee2e6;
-}
-
-.currency-code {
-    font-weight: bold;
-    color: #007bff;
 }
 
 .currency-value {
