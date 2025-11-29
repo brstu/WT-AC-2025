@@ -21,7 +21,7 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
     padding: 1rem 2rem;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
 }
 
 .header h1 {
@@ -43,7 +43,7 @@ body {
 }
 
 .nav-link:hover {
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgb(255 255 255 / 20%);
 }
 
 .main {
@@ -80,14 +80,14 @@ body {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
     transition: transform 0.3s, box-shadow 0.3s;
     cursor: pointer;
 }
 
 .item-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 15px rgb(0 0 0 / 20%);
 }
 
 .item-card img {
@@ -114,7 +114,7 @@ body {
     background: white;
     padding: 2rem;
     border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -206,7 +206,7 @@ body {
     background: white;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 .item-detail-image {
@@ -262,7 +262,7 @@ body {
     border-radius: 6px;
     color: white;
     z-index: 1000;
-    animation: slideIn 0.3s ease;
+    animation: slide-in 0.3s ease;
 }
 
 .notification.success {
@@ -277,18 +277,19 @@ body {
     display: none;
 }
 
-@keyframes slideIn {
+@keyframes slide-in {
     from {
         transform: translateX(100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
     }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .header {
         padding: 1rem;
     }
