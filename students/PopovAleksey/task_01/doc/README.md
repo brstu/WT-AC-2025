@@ -108,7 +108,7 @@ task_01/
 
 ## Ссылка на публикацию
 
-_Будет добавлена после деплоя на GitHub Pages_
+<https://lexusxdsd.github.io/WT-AC-2025/task_01/>
 
 ## Вывод
 
