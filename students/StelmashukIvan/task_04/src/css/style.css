@@ -140,15 +140,15 @@ body {
     transition: border-color 0.3s;
 }
 
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: #3498db;
-}
-
-.form-group textarea {
-    min-height: 120px;
-    resize: vertical;
 }
 
 .form-actions {
