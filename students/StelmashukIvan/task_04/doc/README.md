@@ -158,4 +158,4 @@ npx http-server
 
 ## Ссылка на проект
 
-[Ссылка на проект](https://kulibini.github.io/Lab4/)
+[Ссылка](https://kulibini.github.io/Lab4/)
