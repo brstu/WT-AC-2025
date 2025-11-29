@@ -1,4 +1,4 @@
-@keyframes slide-Down {
+@keyframes slide-down {
   from {
     transform: translateY(-100%);
     opacity: 0;
@@ -18,7 +18,7 @@
   z-index: 1000;
   backdrop-filter: blur(10px);
   width: 100%;
-  animation: slideDown 0.5s ease-out;
+  animation: slide-down 0.5s ease-out;
 }
 
 .header-container {

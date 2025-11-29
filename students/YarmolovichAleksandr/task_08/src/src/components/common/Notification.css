@@ -6,7 +6,7 @@
   min-width: 300px;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0 0 0 / 15%);
-  animation: slideIn 0.3s ease-out;
+  animation: slide-in 0.3s ease-out;
 }
 
 .notification-success {
@@ -52,7 +52,7 @@
   justify-content: center;
 }
 
-@keyframes slideIn {
+@keyframes slide-in {
   from {
     transform: translateX(100%);
     opacity: 0;
