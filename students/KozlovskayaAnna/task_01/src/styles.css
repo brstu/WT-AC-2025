@@ -2,9 +2,9 @@
 
 :root {
   --brand: #4caf50;
-  --bg: #ffffff;
-  --text: #111111;
-  --muted: #666666;
+  --bg: #fff;
+  --text: #111;
+  --muted: #666;
 }
 
 body {
@@ -58,11 +58,11 @@ nav a {
 }
 
 nav a:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgb(255 255 255 / 10%);
 }
 
 nav a:focus {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgb(255 255 255 / 10%);
   outline: 3px solid var(--brand);
   outline-offset: 2px;
 }
@@ -117,16 +117,16 @@ footer {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
   transition: all 0.3s ease;
 }
 
 .app-cards article:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 15%);
 }
 
 .app-icon img {
@@ -135,19 +135,19 @@ footer {
   height: 120px;
   border-radius: 24px;
   object-fit: cover;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 20%);
   margin: 0 auto;
   display: block;
 }
 
 .app-content h3 {
-  margin: 0 0 8px 0;
+  margin: 0 0 8px;
   font-size: 1.5rem;
   color: #1a1a1a;
 }
 
 .app-content p {
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
   color: #555;
   line-height: 1.5;
 }
@@ -162,7 +162,7 @@ footer {
 }
 
 /* Мобильные устройства (0-600px) */
-@media (max-width: 600px) {
+@media (width <= 600px) {
   nav ul {
     flex-direction: column;
     align-items: center;
@@ -170,7 +170,7 @@ footer {
 }
 
 /* Планшеты (601-1024px) */
-@media (min-width: 601px) {
+@media (width >= 601px) {
   main {
     padding: 28px 24px;
   }
@@ -186,7 +186,7 @@ footer {
 }
 
 /* Десктопы (1025px+) */
-@media (min-width: 1025px) {
+@media (width >= 1025px) {
   main {
     max-width: 1200px;
     margin: 0 auto;
@@ -221,7 +221,7 @@ footer {
 
   .app-cards article {
     background: #1e1e1e;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 40%);
   }
 
   .app-content h3 {
