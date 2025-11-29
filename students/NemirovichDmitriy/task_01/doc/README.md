@@ -101,7 +101,7 @@
 
 ## Ссылка на публикацию
 
-👉 Вставьте ссылку на GitHub Pages: _________________________
+👉 Вставьте ссылку на GitHub Pages: <https://goryachiy-ugolek.github.io/WT-AC-2025/task_01/>
 
 ## Вывод
 
