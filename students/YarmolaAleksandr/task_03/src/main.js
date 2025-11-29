@@ -171,7 +171,7 @@ function debounce(func, wait) {
 }
 
 function updateRetryInfo(attempt, maxRetries) {
-    const retryInfoEl = document.getElementById('retryInfo');
+    const retryInfoEl = document.getElementById('retry-info');
     if (retryInfoEl) {
         if (attempt > 0) {
             retryInfoEl.textContent = `Повторная попытка ${attempt}/${maxRetries}...`;

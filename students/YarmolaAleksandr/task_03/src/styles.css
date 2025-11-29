@@ -354,13 +354,13 @@ header h1 {
     cursor: not-allowed;
 }
 
-.btn-pagination:not(:disabled):hover {
-    background: var(--primary-color);
-}
-
 .btn-pagination:focus-visible {
     outline: 2px solid #fbbf24;
     outline-offset: 2px;
+}
+
+.btn-pagination:not(:disabled):hover {
+    background: var(--primary-color);
 }
 
 #page-info {
