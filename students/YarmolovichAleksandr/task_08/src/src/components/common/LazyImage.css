@@ -3,18 +3,18 @@
   overflow: hidden;
 }
 
-.lazy-image__img {
+.lazy-image-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: opacity 0.3s ease;
 }
 
-.lazy-image__img.loading {
+.lazy-image-img.loading {
   opacity: 0;
 }
 
-.lazy-image__img.loaded {
+.lazy-image-img.loaded {
   opacity: 1;
 }
 

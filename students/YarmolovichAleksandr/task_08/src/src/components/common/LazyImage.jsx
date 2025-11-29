@@ -13,7 +13,7 @@ const LazyImage = ({ src, alt, className = '' }) => {
       <img 
         src={src} 
         alt={alt}
-        className={`lazy-image__img ${loaded ? 'loaded' : 'loading'}`}
+        className={`lazy-image-img ${loaded ? 'loaded' : 'loading'}`}
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
         loading="lazy"
