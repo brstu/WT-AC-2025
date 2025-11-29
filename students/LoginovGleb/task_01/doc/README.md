@@ -12,9 +12,9 @@
 <p align="right"><strong>Выполнил:</strong></p>
 <p align="right">Студент 4 курса</p>
 <p align="right">Группы АС-63</p>
-<p align="right">Логинов Глеб Олегович</p>
+<p align="right">Логинов Г. О.</p>
 <p align="right"><strong>Проверил:</strong></p>
-<p align="right">Нестюк А.Н.</p>
+<p align="right">Нестюк А. Н.</p>
 <br><br><br><br><br>
 <p align="center"><strong>Брест 2025</strong></p>
 
@@ -227,7 +227,7 @@ task_01/
 
 ![Desktop версия сайта — тёмная тема](./screenshots/desktop-top.png)
 
-###### Автоматическая темная тема с сохранением контрастности ≥4.5:1
+#### Автоматическая темная тема с сохранением контрастности ≥4.5:1
 
 ---
 
