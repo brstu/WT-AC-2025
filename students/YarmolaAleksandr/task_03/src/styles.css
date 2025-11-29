@@ -4,6 +4,19 @@
     box-sizing: border-box;
 }
 
+/* Accessibility: скрывает элемент визуально, но оставляет для screen readers */
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
 :root {
     --primary-color: #6366f1;
     --secondary-color: #8b5cf6;
@@ -78,6 +91,11 @@ header h1 {
     border-color: var(--primary-color);
 }
 
+#search-input:focus-visible {
+    outline: 2px solid #fbbf24;
+    outline-offset: 2px;
+}
+
 .btn-primary, .btn-secondary, .btn-pagination {
     padding: 0.75rem 1.5rem;
     border: none;
@@ -98,6 +116,11 @@ header h1 {
     transform: translateY(-2px);
 }
 
+.btn-primary:focus-visible {
+    outline: 2px solid #fbbf24;
+    outline-offset: 2px;
+}
+
 .btn-secondary {
     background: var(--border-color);
     color: var(--text-color);
@@ -105,6 +128,11 @@ header h1 {
 
 .btn-secondary:hover {
     background: #475569;
+}
+
+.btn-secondary:focus-visible {
+    outline: 2px solid #fbbf24;
+    outline-offset: 2px;
 }
 
 .button-group {
@@ -191,6 +219,13 @@ header h1 {
 }
 
 .game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgb(99 102 241 / 30%);
+}
+
+.game-card:focus-visible {
+    outline: 3px solid #fbbf24;
+    outline-offset: 2px;
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgb(99 102 241 / 30%);
 }
@@ -321,6 +356,11 @@ header h1 {
 
 .btn-pagination:not(:disabled):hover {
     background: var(--primary-color);
+}
+
+.btn-pagination:focus-visible {
+    outline: 2px solid #fbbf24;
+    outline-offset: 2px;
 }
 
 #page-info {

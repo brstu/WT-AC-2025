@@ -270,4 +270,13 @@ fetchWithRetry(url, options) { ... } // Retry + timeout
 
 ---
 
+### Accessibility улучшения ✅
+
+- ✅ Semantic HTML (`<article>`, `<section>`, `role` атрибуты)
+- ✅ Focus management (видимые `focus-visible` стили)
+- ✅ Keyboard navigation (tabindex, ARIA labels)
+- ✅ Screen reader support (live regions, announcements)
+
+---
+
 **Автор:** Ярмола Александр | Группа: АС-63
