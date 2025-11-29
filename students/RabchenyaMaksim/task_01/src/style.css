@@ -1,0 +1,349 @@
+﻿/* ================================
+   styles.css — АДАПТИРОВАННАЯ ВЕРСИЯ
+   Mobile-first, адаптивность, доступность
+   Breakpoints:
+     - small: <=600px
+     - medium: 601–1024px
+     - large: >1024px
+   ================================= */
+
+/* --------- Root variables ---------- */
+:root {
+  --bg: #fff;
+  --panel: #fff;
+  --text: #0b1220;
+  --muted: #475569;
+  --accent: #004aad; /* Основной цвет: синий */
+  --accent-2: #e74c3c; /* Акцентный цвет: красный (для hover/фокуса) */
+  --shadow: 0 6px 18px rgb(11 18 32 / 8%);
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --gap-md: 1.5rem; /* Увеличил отступ между элементами */
+  --max-width: 1200px;
+  --font-sans: inter, system-ui, -apple-system, "segoe ui", roboto, arial, sans-serif;
+  --base-font-size: 16px;
+}
+
+/* --------- Dark mode variables (for body.dark) ---------- */
+body.dark {
+  --bg: #0b0f14;
+  --panel: #0f1720;
+  --text: #eef2f7;
+  --muted: #b8c2cc;
+  --accent: #3da2ff; /* Светлый синий */
+  --accent-2: #e74c3c; /* Красный остается ярким */
+  --shadow: 0 6px 20px rgb(0 0 0 / 60%);
+  
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+/* --------- Reset & typography ---------- */
+* {
+  box-sizing: border-box;
+}
+
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--font-sans);
+  font-size: var(--base-font-size);
+  scroll-behavior: smooth;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a, button, input, select, textarea {
+  font: inherit;
+  text-decoration: none;
+}
+
+/* --------- Focus & accessibility (требование ЛР) ---------- */
+:focus-visible {
+  outline: 3px solid var(--accent-2); /* Красная обводка фокуса */
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Skip link (оставлен для доступности, хотя его нет в index.html) */
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: -999px;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 0 0.25rem 0.25rem 0;
+  z-index: 999;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  box-shadow: var(--shadow);
+}
+
+/* --------- Layout & Structural elements ---------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+header.page-header { /* Используем класс из index.html */
+  display: block;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgb(11 18 32 / 4%);
+}
+
+main {
+  display: block;
+  padding: 1.5rem 0;
+}
+
+footer {
+  display: block;
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--muted);
+  padding: 1rem 0;
+  border-top: 1px solid rgb(11 18 32 / 4%);
+}
+
+section {
+  display: block;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+}
+
+/* --------- Hero header (Адаптировано под header.page-header) ---------- */
+.page-header {
+  position: relative;
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--panel);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  box-shadow: 0 8px 20px rgb(0 0 0 / 12%);
+}
+
+.page-header h1 {
+  margin: 0 auto 0.5rem;
+  font-size: clamp(1.8rem, 3vw + 1rem, 3rem);
+  color: var(--accent);
+}
+
+.page-header p {
+    color: var(--muted);
+}
+
+/* Theme toggle button */
+#theme-toggle {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  z-index: 10;
+  color: var(--text); /* Добавляем цвет */
+}
+
+/* --------- Navigation (.main-nav) ---------- */
+.main-nav {
+  padding: 0.5rem 0;
+}
+
+.main-nav ul {
+  display: flex;
+  gap: 0.5rem; /* Меньший gap для мобильных */
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-nav a {
+  color: var(--text);
+  font-weight: 600;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-md);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.main-nav a:hover,
+.main-nav a:focus {
+  background-color: rgb(231 76 60 / 15%); /* Легкий красный фон */
+  color: var(--accent-2);
+}
+
+/* --------- Section headers ---------- */
+section h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+section h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* --------- Cards: Hosts & Episodes (Адаптация) ---------- */
+
+/* Общие стили для карточек */
+.host-card, .episode-card {
+  background: var(--panel);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 1.5rem; /* Отступ для мобильных, в гриде он будет заменен gap */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgb(0 0 0 / 5%);
+}
+
+.host-card h3, .episode-card h4 {
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1.1rem;
+  color: var(--text);
+  text-align: center;
+}
+
+.host-card p, .episode-card p {
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+/* Стили для карточек ведущих */
+.host-card {
+    align-items: center; /* Центрируем содержимое */
+    padding: 1rem;
+}
+
+.host-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%; /* Круглое фото */
+    border: 3px solid var(--accent);
+    margin-bottom: 0.75rem;
+}
+
+/* Стили для карточек выпусков */
+.episode-card {
+    padding: 1rem;
+}
+
+.episode-cover {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    margin-bottom: 0.75rem;
+}
+
+.episode-link {
+    display: block;
+    text-align: center;
+    background-color: var(--accent);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+
+/* Hover эффекты должны идти ПОСЛЕ базовых стилей */
+.host-card:hover, .episode-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 12px 28px rgb(0 0 0 / 15%);
+}
+
+.episode-link:hover {
+    background-color: var(--accent-2);
+}
+
+/* --------- Responsive (Адаптация классов grid) ---------- */
+
+/* Mobile: Вся секция section-hosts и section-episodes - вертикальный стек по умолчанию */
+
+@media (601px <= width <= 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+    
+  /* GRID для Ведущих: 2 колонки */
+  .hosts-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-md);
+    margin-top: 2rem;
+  }
+  
+  /* GRID для Выпусков: 2 колонки */
+  .episodes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--gap-md);
+    margin-top: 2rem;
+  }
+
+  /* Убираем лишние отступы, которые заменяет gap */
+  .host-card, .episode-card {
+    margin-bottom: 0;
+  }
+}
+
+@media (width >= 1025px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  /* GRID для Ведущих: 2 колонки, но шире */
+  .hosts-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+
+  /* GRID для Выпусков: 2 колонки */
+  .episodes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+  }
+  
+  /* Навигация: делаем ссылки более широкими */
+  .main-nav a {
+    padding: 0.6rem 1.25rem;
+  }
+}
