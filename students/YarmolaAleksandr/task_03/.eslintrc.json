@@ -1,0 +1,47 @@
+{
+  "env": {
+    "browser": true,
+    "es2022": true
+  },
+  "extends": [
+    "eslint:recommended"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "rules": {
+    "indent": ["error", 4],
+    "linebreak-style": ["error", "unix"],
+    "quotes": ["error", "single"],
+    "semi": ["error", "always"],
+    "no-unused-vars": "error",
+    "no-console": "off",
+    "eqeqeq": "error",
+    "curly": "error",
+    "no-var": "error",
+    "prefer-const": "error",
+    "arrow-spacing": "error",
+    "no-trailing-spaces": "error",
+    "comma-dangle": ["error", "never"],
+    "object-curly-spacing": ["error", "always"],
+    "array-bracket-spacing": ["error", "never"],
+    "key-spacing": ["error", { "afterColon": true }],
+    "space-before-blocks": "error",
+    "keyword-spacing": "error",
+    "no-multiple-empty-lines": ["error", { "max": 2 }],
+    "eol-last": "error"
+  },
+  "globals": {
+    "CONFIG": "readonly",
+    "SimpleCache": "readonly",
+    "GamesAPI": "readonly",
+    "GamesUI": "readonly",
+    "fetchWithRetry": "readonly",
+    "debounce": "readonly",
+    "updateRetryInfo": "readonly",
+    "announceToScreenReader": "readonly",
+    "updateCacheStats": "readonly",
+    "updateRequestStats": "readonly"
+  }
+}
