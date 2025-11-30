@@ -53,10 +53,6 @@
 
 desktop:
 ![desktop](./img/desktop.png)
-tablet:
-![tablet](./img/tablet.png)
-mobile:
-![mobile](./img/mobile.png)
 
 ---
 
@@ -87,6 +83,5 @@ https://subtle-wisp-a428d.netlify.app/
 
 ## Вывод
 
-Освоил семантическую разметку HTML5 (landmarks, заголовки, alt/label/aria).
-Реализовал адаптивную вёрстку по схеме mobile-first с 2+ брейкпоинтами.
-Повысил качество интерфейса и доступности (Lighthouse/валидаторы).
+Закрепил работу с промисами и async/await, обработкой ошибок, таймаутами и отменой запросов.
+Понял основы HTTP‑кэширования и увидел эффект в DevTools.

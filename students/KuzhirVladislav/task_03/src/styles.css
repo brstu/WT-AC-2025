@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   background: #0f0f1a;
   color: #e0e0ff;
   line-height: 1.5;
@@ -65,7 +65,7 @@ h1 {
 .genre-filter {
   padding: 0.8rem 1rem;
   border-radius: 8px;
-  border: 1px solid #444444;
+  border: 1px solid #444;
   background: #1a1a2e;
   color: #fff;
   font-size: 1rem;
@@ -207,7 +207,7 @@ h1 {
   }
 }
 
-@media (max-width: 640px) {
+@media (width <= 640px) {
   .header {
     flex-direction: column;
     gap: 1rem;
