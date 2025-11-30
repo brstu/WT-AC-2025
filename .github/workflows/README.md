@@ -23,11 +23,11 @@ Workflow: `.github/workflows/pr-ai-review.yml`
 What it does:
 - Runs only when manually dispatched from the *Actions → PR AI review* page (you must provide the PR number and can optionally override the model/label).
 - Generates an AI grading prompt via `.github/scripts/prepare_ai_prompt_for_pr.py` and collects the student's files from the PR head.
-- Calls `.github/scripts/run_ai_check.py` against GitHub Models using the workflow `AI_GITHUB_TOKEN` environment variable (populated from the repository `GITHUB_TOKEN`, so models access must still be enabled in repo/org settings).
+- Calls `.github/scripts/run_ai_check.py` against GitHub Models using the workflow `GITHUB_TOKEN` (with `models: read` permission) and optionally honors an `AI_GITHUB_TOKEN` override if you export one before invocation.
 - Posts the AI response back to the PR using `.github/scripts/comment_and_label.py` in "AI review" mode and labels the PR (default label `AI-reviewed`).
 
 Requirements/Setup:
-1. Enable GitHub Models for this repository/organization and allow the default `GITHUB_TOKEN` to access Models in the workflow permissions screen (the workflow exports it as `AI_GITHUB_TOKEN` for the model call).
+1. Enable GitHub Models for this repository/organization, then grant the workflow `models: read` permission (already declared in the YAML) so the default `GITHUB_TOKEN` can call the API.
 2. (`Optional`) Adjust the default model/label by editing the `AI_REVIEW_MODEL` and `AI_REVIEW_LABEL` env values near the top of the job or override them per-run via the dispatch inputs.
 3. Ensure the workflow run permissions include `issues: write`/`pull-requests: write` (already configured in the YAML).
 4. To trigger the workflow: open **Actions → PR AI review → Run workflow**, enter the PR number, and (optionally) custom model/label values.
