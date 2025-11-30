@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   const addBtn = document.getElementById('add-bookmark');
   const modal = document.getElementById('modal');
-  const modalOverlay = modal.querySelector('.modal__overlay');
-  const modalClose = modal.querySelector('.modal__close');
+  const modalOverlay = modal.querySelector('.modal-overlay');
+  const modalClose = modal.querySelector('.modal-close');
   const cancelBtn = document.getElementById('cancel');
   const form = document.getElementById('bookmark-form');
   const saveBtn = document.getElementById('save');
@@ -293,7 +293,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const content = tooltip.querySelector('.tooltip__content');
+    const content = tooltip.querySelector('.tooltip-content');
     content.textContent = btn.dataset.tooltip;
     tooltip.hidden = false;
 
@@ -307,15 +307,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (top + tooltipRect.height > window.innerHeight) {
       top = rect.top + window.scrollY - tooltipRect.height - 8;
-      tooltip.querySelector('.tooltip__arrow').style.borderBottomColor = '#1e293b';
-      tooltip.querySelector('.tooltip__arrow').style.borderTopColor = 'transparent';
-      tooltip.querySelector('.tooltip__arrow').style.top = '100%';
-      tooltip.querySelector('.tooltip__arrow').style.bottom = 'auto';
+      tooltip.querySelector('.tooltip-arrow').style.borderBottomColor = '#1e293b';
+      tooltip.querySelector('.tooltip-arrow').style.borderTopColor = 'transparent';
+      tooltip.querySelector('.tooltip-arrow').style.top = '100%';
+      tooltip.querySelector('.tooltip-arrow').style.bottom = 'auto';
     } else {
-      tooltip.querySelector('.tooltip__arrow').style.borderTopColor = '#1e293b';
-      tooltip.querySelector('.tooltip__arrow').style.borderBottomColor = 'transparent';
-      tooltip.querySelector('.tooltip__arrow').style.top = 'auto';
-      tooltip.querySelector('.tooltip__arrow').style.bottom = '-6px';
+      tooltip.querySelector('.tooltip-arrow').style.borderTopColor = '#1e293b';
+      tooltip.querySelector('.tooltip-arrow').style.borderBottomColor = 'transparent';
+      tooltip.querySelector('.tooltip-arrow').style.top = 'auto';
+      tooltip.querySelector('.tooltip-arrow').style.bottom = '-6px';
     }
 
     tooltip.style.top = `${top}px`;
@@ -388,20 +388,20 @@ document.addEventListener('DOMContentLoaded', () => {
   renderBookmarks();
   const style = document.createElement('style');
   style.textContent = `
-    @keyframes fadeInOut {
+    @keyframes fade-in-out {
       0%, 100% { opacity: 0; transform: translate(-50%, 20px); }
       15%, 85% { opacity: 1; transform: translate(-50%, 0); }
     }
     .toast {
       position: fixed; bottom: 2rem; left: 50%; transform: translateX(-50%);
       background: #1e293b; color: white; padding: 1rem 1.5rem; border-radius: 12px;
-      z-index: 10000; animation: fadeInOut 3s forwards;
-      box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+      z-index: 10000; animation: fade-in-out 3s forwards;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%);
     }
     .bookmark-card.filtered {
-      animation: fadeInUp 0.3s ease-out;
+      animation: fade-in-up 0.3s ease-out;
     }
-    @keyframes fadeInUp {
+    @keyframes fade-in-up {
       from { opacity: 0; transform: translateY(10px); }
       to { opacity: 1; transform: translateY(0); }
     }

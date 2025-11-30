@@ -15,8 +15,8 @@
   <body>
     <header class="header">
       <div class="container">
-        <h1 class="header__title">Менеджер закладок</h1>
-        <button class="btn btn--primary" id="add-bookmark">
+        <h1 class="header-title">Менеджер закладок</h1>
+        <button class="btn btn-primary" id="add-bookmark">
           <svg
             width="20"
             height="20"
@@ -152,11 +152,11 @@
     </main>
 
     <div class="modal" id="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
-      <div class="modal__overlay" tabindex="-1"></div>
-      <div class="modal__content">
-        <div class="modal__header">
+      <div class="modal-overlay" tabindex="-1"></div>
+      <div class="modal-content">
+        <div class="modal-header">
           <h2 id="modal-title">Добавить закладку</h2>
-          <button class="modal__close" aria-label="Закрыть модальное окно">
+          <button class="modal-close" aria-label="Закрыть модальное окно">
             <svg
               width="24"
               height="24"
@@ -170,7 +170,7 @@
           </button>
         </div>
 
-        <form id="bookmark-form" class="modal__form" novalidate>
+        <form id="bookmark-form" class="modal-form" novalidate>
           <div class="field">
             <label for="name">Имя закладки *</label>
             <input type="text" id="name" required minlength="1" />
@@ -191,17 +191,17 @@
 
           <input type="hidden" id="bookmark-id" />
 
-          <div class="modal__actions">
-            <button type="button" class="btn btn--secondary" id="cancel">Отмена</button>
-            <button type="submit" class="btn btn--primary" id="save" disabled>Сохранить</button>
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancel">Отмена</button>
+            <button type="submit" class="btn btn-primary" id="save" disabled>Сохранить</button>
           </div>
         </form>
       </div>
     </div>
 
     <div class="tooltip" role="tooltip" id="tooltip" hidden>
-      <div class="tooltip__arrow"></div>
-      <div class="tooltip__content"></div>
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-content"></div>
     </div>
 
     <script src="scripts/main.js" type="module"></script>
