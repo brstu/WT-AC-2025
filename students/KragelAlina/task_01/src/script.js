@@ -12,20 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
     buttonToggle.addEventListener('click', () => {
         const currentTheme = rootElement.getAttribute('data-theme');
         const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
         rootElement.setAttribute('data-theme', nextTheme);
         buttonToggle.textContent = nextTheme === 'dark' ? '☀' : '🌙';
         localStorage.setItem('theme', nextTheme);
     });
 
-    buttonToggle.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            buttonToggle.click();
-        }
-    });
-
     const habitForm = document.getElementById('habit-form');
-    const habitsTableBody = document.querySelector('#habits-table tbody');
+    const habitsTableBody = document.querySelector('.habits-table tbody');
 
     habitForm.addEventListener('submit', (event) => {
         event.preventDefault();
@@ -37,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (habit && date) {
             const newRow = document.createElement('tr');
-            newRow.setAttribute('tabindex', '0');
+            
             const dateCell = document.createElement('td');
             const habitCell = document.createElement('td');
 
@@ -46,10 +40,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             newRow.appendChild(dateCell);
             newRow.appendChild(habitCell);
-            habitsTableBody.appendChild(newRow);
+            
+            habitsTableBody.prepend(newRow); 
 
             habitSelect.value = '';
             dateInput.value = '';
+            
+            habitSelect.focus();
         }
     });
 });
