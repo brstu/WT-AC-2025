@@ -27,11 +27,6 @@
   text-decoration: underline;
 }
 
-.game-actions {
-  display: flex;
-  gap: 10px;
-}
-
 .game-detail-content {
   display: grid;
   grid-template-columns: 300px 1fr;
