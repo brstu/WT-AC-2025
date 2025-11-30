@@ -75,10 +75,10 @@ document.addEventListener('DOMContentLoaded', () => {
       card.dataset.id = bookmark.id;
       card.style.transitionDelay = `${index * 0.05}s`;
       card.innerHTML = `
-        <h3 class="bookmark-card__title">${escapeHtml(bookmark.name)}</h3>
-        <a href="${bookmark.url}" target="_blank" class="bookmark-card__url">${bookmark.url}</a>
-        <p class="bookmark-card__description">${escapeHtml(bookmark.description || '')}</p>
-        <div class="bookmark-card__actions">
+        <h3 class="bookmark-card-title">${escapeHtml(bookmark.name)}</h3>
+        <a href="${bookmark.url}" target="_blank" class="bookmark-card-url">${bookmark.url}</a>
+        <p class="bookmark-card-description">${escapeHtml(bookmark.description || '')}</p>
+        <div class="bookmark-card-actions">
           <button class="action-btn edit-btn" data-tooltip="Редактировать" aria-label="Редактировать закладку ${bookmark.name}">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
