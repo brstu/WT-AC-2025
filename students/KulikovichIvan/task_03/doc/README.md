@@ -155,6 +155,5 @@ this.activeController = new AbortController();
 - Оптимизации пользовательского интерфейса
 
 Приложение готово к использованию по ссылке
-
----
-**GitHub репозиторий**: []
+https://teenage717.github.io/lab03/
+Скриншот доступности публикации: ![screen](./imgs/git.png)
