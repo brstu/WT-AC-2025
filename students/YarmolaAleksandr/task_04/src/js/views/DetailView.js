@@ -42,62 +42,63 @@ export class DetailView {
         return `
             <div class="main-content">
                 <div class="container detail-container">
-                    <div class="btn-group" style="margin-bottom: 2rem;">
-                        <button class="btn btn-secondary" id="backBtn">← Назад</button>
+                    <nav class="btn-group" style="margin-bottom: 2rem;" aria-label="Навигация и действия" role="navigation">
+                        <button class="btn btn-secondary" id="backBtn" aria-label="Вернуться к списку инструментов">← Назад</button>
                         <div style="flex: 1;"></div>
                         ${this.auth && this.auth.isAuthenticated() ? `
-                            <a href="#/items/${this.tool.id}/edit" class="btn btn-primary">✏️ Редактировать</a>
-                            <button class="btn btn-danger" id="deleteBtn">🗑️ Удалить</button>
+                            <a href="#/items/${this.tool.id}/edit" class="btn btn-primary" aria-label="Редактировать ${this.tool.name}">✏️ Редактировать</a>
+                            <button class="btn btn-danger" id="deleteBtn" aria-label="Удалить ${this.tool.name}">🗑️ Удалить</button>
                         ` : `
-                            <span style="color: var(--text-muted);">🔒 Войдите для редактирования</span>
+                            <span style="color: var(--text-muted);" role="status" aria-live="polite">🔒 Войдите для редактирования</span>
                         `}
-                    </div>
+                    </nav>
 
-                    <div class="detail-card">
-                        <div class="detail-header">
-                            <div class="detail-icon">${this.tool.icon}</div>
+                    <article class="detail-card" role="article" aria-label="Информация об инструменте ${this.tool.name}">
+                        <header class="detail-header">
+                            <div class="detail-icon" aria-hidden="true">${this.tool.icon}</div>
                             <div class="detail-info">
                                 <h1>${this.tool.name}</h1>
-                                <div class="detail-tags">
-                                    <span class="tag">${this.tool.category}</span>
-                                    <span class="tag">${this.tool.license}</span>
+                                <div class="detail-tags" role="group" aria-label="Метаданные">
+                                    <span class="tag" aria-label="Категория: ${this.tool.category}">${this.tool.category}</span>
+                                    <span class="tag" aria-label="Лицензия: ${this.tool.license}">${this.tool.license}</span>
                                 </div>
                             </div>
-                        </div>
+                        </header>
 
-                        <div class="detail-section">
-                            <h2>Описание</h2>
+                        <section class="detail-section" aria-labelledby="description-heading">
+                            <h2 id="description-heading">Описание</h2>
                             <p>${this.tool.description}</p>
-                        </div>
+                        </section>
 
-                        <div class="detail-grid">
+                        <div class="detail-grid" role="group" aria-label="Рейтинг и дата добавления">
                             <div class="detail-item">
                                 <div class="detail-item-label">Рейтинг</div>
-                                <div class="detail-item-value">${stars}${emptyStars}</div>
+                                <div class="detail-item-value" aria-label="Рейтинг ${this.tool.rating} из 5 звезд">${stars}${emptyStars}</div>
                             </div>
                             <div class="detail-item">
                                 <div class="detail-item-label">Дата добавления</div>
-                                <div class="detail-item-value">${date}</div>
+                                <div class="detail-item-value" aria-label="Добавлено ${date}">${date}</div>
                             </div>
                         </div>
 
-                        <div class="detail-section">
-                            <h2>Платформы</h2>
-                            <div class="detail-tags">
+                        <section class="detail-section" aria-labelledby="platforms-heading">
+                            <h2 id="platforms-heading">Платформы</h2>
+                            <div class="detail-tags" role="list" aria-label="Поддерживаемые платформы">
                                 ${this.tool.platforms.map(platform => 
-                                    `<span class="tag">${platform}</span>`
+                                    `<span class="tag" role="listitem" aria-label="Платформа: ${platform}">${platform}</span>`
                                 ).join('')}
                             </div>
-                        </div>
+                        </section>
 
-                        <div class="detail-section">
-                            <h2>Веб-сайт</h2>
+                        <section class="detail-section" aria-labelledby="website-heading">
+                            <h2 id="website-heading">Веб-сайт</h2>
                             <a href="${this.tool.website}" target="_blank" rel="noopener" 
-                               style="color: var(--primary); text-decoration: underline;">
+                               style="color: var(--primary); text-decoration: underline;"
+                               aria-label="Открыть официальный веб-сайт ${this.tool.name} в новой вкладке">
                                 ${this.tool.website}
                             </a>
-                        </div>
-                    </div>
+                        </section>
+                    </article>
                 </div>
             </div>
         `;

@@ -113,7 +113,7 @@ export class ListView {
      */
     getSearchSection() {
         return `
-            <div class="search-section">
+            <div class="search-section" role="search" aria-label="Поиск и фильтрация инструментов">
                 <div class="search-bar">
                     <input 
                         type="text" 
@@ -121,23 +121,42 @@ export class ListView {
                         placeholder="🔍 Поиск инструментов..."
                         value="${this.filters.search}"
                         id="searchInput"
+                        aria-label="Поиск по названию или описанию инструмента"
+                        role="searchbox"
                     >
-                    <select class="form-select" id="sortSelect" style="max-width: 200px;">
+                    <select 
+                        class="form-select" 
+                        id="sortSelect" 
+                        style="max-width: 200px;"
+                        aria-label="Сортировка инструментов"
+                    >
                         <option value="name" ${this.filters.sort === 'name' ? 'selected' : ''}>По названию</option>
                         <option value="rating" ${this.filters.sort === 'rating' ? 'selected' : ''}>По рейтингу</option>
                         <option value="date" ${this.filters.sort === 'date' ? 'selected' : ''}>По дате</option>
                     </select>
-                    <a href="#/new" class="btn btn-primary">➕ Добавить</a>
+                    <a href="#/new" class="btn btn-primary" aria-label="Добавить новый инструмент">➕ Добавить</a>
                 </div>
                 
-                <div class="filter-tags">
-                    <div class="filter-tag ${this.filters.category === 'all' ? 'active' : ''}" data-category="all">
+                <div class="filter-tags" role="group" aria-label="Фильтр по категориям">
+                    <button 
+                        class="filter-tag ${this.filters.category === 'all' ? 'active' : ''}" 
+                        data-category="all"
+                        role="button"
+                        aria-pressed="${this.filters.category === 'all'}"
+                        aria-label="Показать все категории"
+                    >
                         Все
-                    </div>
+                    </button>
                     ${this.categories.map(cat => `
-                        <div class="filter-tag ${this.filters.category === cat ? 'active' : ''}" data-category="${cat}">
+                        <button 
+                            class="filter-tag ${this.filters.category === cat ? 'active' : ''}" 
+                            data-category="${cat}"
+                            role="button"
+                            aria-pressed="${this.filters.category === cat}"
+                            aria-label="Фильтр по категории ${cat}"
+                        >
                             ${cat}
-                        </div>
+                        </button>
                     `).join('')}
                 </div>
             </div>
@@ -149,7 +168,7 @@ export class ListView {
      */
     getToolsGrid() {
         return `
-            <div class="cards-grid">
+            <div class="cards-grid" role="list" aria-label="Список инструментов">
                 ${this.tools.map(tool => this.getToolCard(tool)).join('')}
             </div>
         `;
@@ -161,18 +180,24 @@ export class ListView {
     getToolCard(tool) {
         const stars = '⭐'.repeat(tool.rating);
         return `
-            <div class="card" data-tool-id="${tool.id}">
+            <article 
+                class="card" 
+                data-tool-id="${tool.id}"
+                role="listitem"
+                aria-label="${tool.name} - ${tool.category}"
+                tabindex="0"
+            >
                 <div class="card-header">
-                    <div class="card-icon">${tool.icon}</div>
-                    <div class="card-category">${tool.category}</div>
+                    <div class="card-icon" aria-hidden="true">${tool.icon}</div>
+                    <div class="card-category" aria-label="Категория: ${tool.category}">${tool.category}</div>
                 </div>
                 <h3 class="card-title">${tool.name}</h3>
                 <p class="card-description">${tool.description}</p>
-                <div class="card-meta">
-                    <span>${stars}</span>
+                <div class="card-meta" aria-label="Рейтинг и платформы">
+                    <span aria-label="Рейтинг ${tool.rating} из 5">${stars}</span>
                     <span>${tool.platforms.length} платформ</span>
                 </div>
-            </div>
+            </article>
         `;
     }
 
