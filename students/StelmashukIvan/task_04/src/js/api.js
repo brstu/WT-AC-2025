@@ -16,26 +16,6 @@ if (mockMemes.length > 0) {
 }
 
 class MemesAPI {
-    async getItems(search = '') {
-        await delay(MOCK_DELAY);
-        
-        let filteredMemes = mockMemes;
-        
-        if (search) {
-            const searchLower = search.toLowerCase();
-            filteredMemes = mockMemes.filter(meme =>
-                meme.title.toLowerCase().includes(searchLower) ||
-                meme.description.toLowerCase().includes(searchLower) ||
-                meme.tags.some(tag => tag.toLowerCase().includes(searchLower))
-            );
-        }
-        
-        return {
-            data: filteredMemes,
-            total: filteredMemes.length
-        };
-    }
-
     async getItems(search = '', page = 1, limit = 6) {
         await delay(MOCK_DELAY);
 
@@ -57,6 +37,19 @@ class MemesAPI {
             data: filteredMemes.slice(start, end),
             total: filteredMemes.length
         };
+    }
+
+    async getItem(id) {
+        await delay(MOCK_DELAY);
+        
+        const itemId = parseInt(id);
+        const item = mockMemes.find(m => m.id === itemId);
+        
+        if (!item) {
+            throw new Error(`Мем с ID ${id} не найден`);
+        }
+        
+        return { data: item };
     }
 
     async createItem(itemData) {
@@ -86,7 +79,8 @@ class MemesAPI {
     async updateItem(id, itemData) {
         await delay(MOCK_DELAY);
         
-        const index = mockMemes.findIndex(m => m.id === parseInt(id));
+        const itemId = parseInt(id);
+        const index = mockMemes.findIndex(m => m.id === itemId);
         if (index === -1) {
             throw new Error('Мем не найден');
         }
@@ -114,7 +108,8 @@ class MemesAPI {
     async deleteItem(id) {
         await delay(MOCK_DELAY);
         
-        const index = mockMemes.findIndex(m => m.id === parseInt(id));
+        const itemId = parseInt(id);
+        const index = mockMemes.findIndex(m => m.id === itemId);
         if (index === -1) {
             throw new Error('Мем не найден');
         }
