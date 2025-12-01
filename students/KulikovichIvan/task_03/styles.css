@@ -47,10 +47,10 @@ header p {
 }
 
 .controls {
-    background: rgba(255, 255, 255, 0.95);
+    background: rgb(255 255 255 / 95%);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 10%);
     margin-bottom: 20px;
     display: flex;
     gap: 15px;
@@ -106,7 +106,7 @@ header p {
     background: white;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 10%);
     display: flex;
     align-items: center;
     gap: 15px;
@@ -164,14 +164,14 @@ header p {
     background: white;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 10%);
     transition: all 0.3s ease;
     cursor: pointer;
 }
 
 .recipe-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 12px 40px rgb(0 0 0 / 15%);
 }
 
 .recipe-image {
@@ -282,10 +282,10 @@ header p {
 }
 
 .debug-info {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgb(255 255 255 / 90%); 
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 10%); 
     margin-top: 30px;
 }
 
@@ -320,7 +320,7 @@ header p {
     padding: 30px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 32px rgb(0 0 0 / 10%); 
     margin: 20px 0;
     font-weight: 600;
     color: #2c3e50;
@@ -345,7 +345,7 @@ header p {
     margin: 20px 0;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .container {
         padding: 15px;
     }
