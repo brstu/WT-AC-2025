@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recipe Catalog TheMealDB</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍳 Recipe Catalog</h1>
+            <p>Find your perfect recipe!</p>
+        </header>
+
+        <div class="controls" role="search">
+            <label for="search-input" class="visually-hidden">Search by name</label>
+            <input
+                type="text"
+                id="search-input"
+                placeholder="Search by recipe name..."
+                class="search-input"
+                aria-label="Search recipes"
+            />
+
+            <label for="category-filter" class="visually-hidden">Filter by category</label>
+            <select id="category-filter" class="filter-select" aria-label="Filter by category">
+                <option value="">All Categories</option>
+            </select>
+
+            <button id="refresh-btn" class="btn btn-primary" aria-label="Refresh recipe list">🔄 Refresh</button>
+            <button id="clear-cache-btn" class="btn btn-secondary" aria-label="Clear cache">🧹 Clear Cache</button>
+        </div>
+
+        <div class="status-indicators">
+            <div id="loading-indicator" class="loading hidden" role="status" aria-live="polite">
+                <div class="spinner"></div>
+                <span>Loading recipes...</span>
+            </div>
+
+            <div id="error-indicator" class="error hidden" role="alert">
+                <span id="error-message"></span>
+                <button id="retry-btn" class="btn btn-secondary">🔄 Retry</button>
+            </div>
+        </div>
+
+        <div class="content">
+            <div id="recipes-grid" class="recipes-grid"></div>
+
+            <div id="empty-state" class="empty-state hidden">
+                <h3>No recipes found</h3>
+                <p>Try changing your search parameters</p>
+            </div>
+        </div>
+
+        <div class="debug-info">
+            <div class="request-stats">
+                <div class="stat-item">
+                    <span class="stat-label">API Requests:</span>
+                    <span id="request-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Cached Requests:</span>
+                    <span id="cached-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">Canceled Requests:</span>
+                    <span id="canceled-count" class="stat-value">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
