@@ -61,7 +61,7 @@
 ![Планшетная версия](screenshots/tablet.png)
 
 - Десктопная версия (>1024px):
-![Десктопная версия](screenshots/desktop.png)  
+![Десктопная версия](screenshots/desktop.png)
 
 ---
 
