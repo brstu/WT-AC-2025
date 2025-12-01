@@ -497,6 +497,7 @@ npm run preview
 ## Публикация
 
 ### Демо
+
 **Ссылка:** [https://your-app.vercel.app](https://your-app.vercel.app)
 
 ### Деплой на Vercel
@@ -586,7 +587,6 @@ vercel
 - ✅ CSS variables для всей палитры
 - ✅ Автоприменение при загрузке страницы
 
-
 **Структура проекта:**
 
 ````
@@ -606,4 +606,3 @@ vercel
 - Реальные изображения от Unsplash
 - Адаптивный дизайн с Tailwind CSS
 - Dark/Light темы с персистентностью
-
