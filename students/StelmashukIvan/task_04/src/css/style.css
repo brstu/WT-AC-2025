@@ -25,7 +25,7 @@ body {
     color: white;
     padding: 12px;
     text-decoration: none;
-    border-radius: 0 0 4px 0;
+    border-radius: 0 0 4px;
     z-index: 1000;
     font-weight: 500;
 }
@@ -160,10 +160,7 @@ body {
 .item-card::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     border: 2px solid transparent;
     border-radius: 12px;
     transition: border-color 0.3s;
@@ -290,8 +287,8 @@ body {
     transition: opacity 0.3s;
 }
 
-.form-group input:required + .form-hint ~ label::after,
-.form-group textarea:required + .form-hint ~ label::after {
+.form-group input:where(:required) + .form-hint ~ label::after,
+.form-group textarea:where(:required) + .form-hint ~ label::after {
     opacity: 1;
 }
 
@@ -318,8 +315,8 @@ body {
     box-shadow: 0 0 0 3px rgb(52 152 219 / 10%);
 }
 
-.form-group input:invalid:not(:focus):not(:placeholder-shown),
-.form-group textarea:invalid:not(:focus):not(:placeholder-shown) {
+.form-group input:where(:invalid:not(:focus):not(:placeholder-shown)),
+.form-group textarea:where(:invalid:not(:focus):not(:placeholder-shown)) {
     border-color: #e74c3c;
 }
 
@@ -419,7 +416,7 @@ body {
     padding: 2rem;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .item-detail-content {
         grid-template-columns: 1fr 1fr;
     }
@@ -770,15 +767,15 @@ body {
 
 @media (prefers-contrast: high) {
     .btn-primary {
-        background: #0066cc;
+        background: #06c;
     }
     
     .btn-danger {
-        background: #cc0000;
+        background: #c00;
     }
     
     .btn-secondary {
-        background: #666666;
+        background: #666;
     }
     
     .item-card {
@@ -791,6 +788,10 @@ body {
     }
 }
 
+.item-card {
+    animation: fade-in 0.4s ease-out;
+}
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -801,10 +802,6 @@ body {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-.item-card {
-    animation: fade-in 0.4s ease-out;
 }
 
 .item-card:nth-child(1) { animation-delay: 0.1s; }
