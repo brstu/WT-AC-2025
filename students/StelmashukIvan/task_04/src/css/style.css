@@ -327,17 +327,17 @@ body {
     border-color: #e74c3c;
 }
 
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: #3498db;
     box-shadow: 0 0 0 3px rgb(52 152 219 / 10%);
-}
-
-.form-group textarea {
-    min-height: 120px;
-    resize: vertical;
-    line-height: 1.5;
 }
 
 .form-hint {
