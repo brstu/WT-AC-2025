@@ -1,23 +1,23 @@
-@import "tailwindcss";
+@import url("tailwindcss");
 
 @layer base {
   :root {
-    --background: #ffffff;
+    --background: #fff;
     --foreground: #0f172a;
-    --card: #ffffff;
+    --card: #fff;
     --card-foreground: #0f172a;
-    --popover: #ffffff;
+    --popover: #fff;
     --popover-foreground: #0f172a;
     --primary: #3b82f6;
-    --primary-foreground: #ffffff;
+    --primary-foreground: #fff;
     --secondary: #64748b;
-    --secondary-foreground: #ffffff;
+    --secondary-foreground: #fff;
     --muted: #f1f5f9;
     --muted-foreground: #64748b;
     --accent: #f1f5f9;
     --accent-foreground: #0f172a;
     --destructive: #ef4444;
-    --destructive-foreground: #ffffff;
+    --destructive-foreground: #fff;
     --border: #e2e8f0;
     --input: #e2e8f0;
     --ring: #3b82f6;
@@ -61,59 +61,75 @@
   .bg-background {
     background-color: var(--background);
   }
+
   .bg-foreground {
     background-color: var(--foreground);
   }
+
   .bg-card {
     background-color: var(--card);
   }
+
   .bg-primary {
     background-color: var(--primary);
   }
+
   .bg-secondary {
     background-color: var(--secondary);
   }
+
   .bg-muted {
     background-color: var(--muted);
   }
+
   .bg-accent {
     background-color: var(--accent);
   }
+
   .bg-destructive {
     background-color: var(--destructive);
   }
-  
+
   .text-background {
     color: var(--background);
   }
+
   .text-foreground {
     color: var(--foreground);
   }
+
   .text-primary {
     color: var(--primary);
   }
+
   .text-primary-foreground {
     color: var(--primary-foreground);
   }
+
   .text-secondary {
     color: var(--secondary);
   }
+
   .text-muted-foreground {
     color: var(--muted-foreground);
   }
+
   .text-accent-foreground {
     color: var(--accent-foreground);
   }
+
   .text-destructive {
     color: var(--destructive);
   }
+
   .text-destructive-foreground {
     color: var(--destructive-foreground);
   }
-  
+
   .border-border {
     border-color: var(--border);
   }
+
   .border-input {
     border-color: var(--input);
   }
@@ -137,7 +153,7 @@
     display: flex;
     height: 2.5rem;
     width: 100%;
-    rounded: 0.375rem;
+    border-radius: 0.375rem;
     border-width: 1px;
     border-color: var(--input);
     background-color: var(--background);
@@ -147,10 +163,8 @@
   }
   
   .input:focus-visible {
-    outline: none;
-    ring-width: 2px;
-    ring-color: var(--primary);
-    ring-offset-width: 2px;
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
   }
   
   .input:disabled {
