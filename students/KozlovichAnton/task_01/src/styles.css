@@ -992,6 +992,7 @@ textarea:focus {
 /* ПУСТАЯ СТРОКА ЗДЕСЬ */
 
 /* Анимации */
+
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -1004,6 +1005,7 @@ textarea:focus {
 }
 
 /* Прогрессивное улучшение */
+
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
