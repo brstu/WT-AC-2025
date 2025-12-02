@@ -977,6 +977,13 @@ textarea:focus {
     outline-offset: 2px;
 }
 
+/* Контрастность для доступности */
+.contrast-check {
+    /* Все элементы проходят проверку контрастности с соотношением не менее 4.5:1 */
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
 /* ПУСТАЯ СТРОКА ПЕРЕД АНИМАЦИЯМИ */
 
 /* Анимации */
@@ -991,10 +998,22 @@ textarea:focus {
     }
 }
 
-.hero,
-.trend-card,
-.look-card,
-.advice-card,
+.hero {
+    animation: fade-in 0.6s ease-out;
+}
+
+.trend-card {
+    animation: fade-in 0.6s ease-out;
+}
+
+.look-card {
+    animation: fade-in 0.6s ease-out;
+}
+
+.advice-card {
+    animation: fade-in 0.6s ease-out;
+}
+
 .collection-card {
     animation: fade-in 0.6s ease-out;
 }
@@ -1006,11 +1025,4 @@ textarea:focus {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
     }
-}
-
-/* Контрастность для доступности */
-.contrast-check {
-    /* Все элементы проходят проверку контрастности с соотношением не менее 4.5:1 */
-    color: var(--text-color);
-    background-color: var(--bg-color);
 }
