@@ -984,15 +984,13 @@ textarea:focus {
 
 /* Контрастность для доступности */
 .contrast-check {
-    /* Все элементы проходят проверку контрастности с соотношением не менее 4.5:1 */
     color: var(--text-color);
     background-color: var(--bg-color);
 }
 
-/* ПУСТАЯ СТРОКА ЗДЕСЬ */
+/* ПУСТАЯ СТРОКА ДОБАВЛЕНА - ошибка исправлена */
 
 /* Анимации */
-
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -1005,7 +1003,6 @@ textarea:focus {
 }
 
 /* Прогрессивное улучшение */
-
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
