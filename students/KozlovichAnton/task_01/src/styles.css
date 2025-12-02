@@ -644,7 +644,7 @@ a:focus {
     color: var(--primary-color);
 }
 
-/* Футер - ПРАВИЛЬНЫЙ ПОРЯДОК СЕЛЕКТОРОВ */
+/* Футер - ПРАВИЛЬНЫЙ ПОРЯДОК: сначала все базовые, потом все :hover, потом все :focus */
 .site-footer {
     background-color: var(--bg-light);
     padding: 3rem 0 1.5rem;
@@ -669,56 +669,14 @@ a:focus {
     color: var(--text-color);
 }
 
-/* СНАЧАЛА .footer-nav */
-.footer-nav {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-nav li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-nav a {
-    color: var(--text-light);
-}
-
-.footer-nav a:hover {
-    color: var(--primary-color);
-}
-
-.footer-nav a:focus {
-    color: var(--primary-color);
-}
-
-/* ПОТОМ .footer-legal */
-.footer-legal {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    list-style: none;
-    padding: 0;
-}
-
+/* 1. Все базовые селекторы */
 .footer-legal a {
     color: var(--text-light);
     font-size: 0.9rem;
 }
 
-.footer-legal a:hover {
-    color: var(--primary-color);
-}
-
-.footer-legal a:focus {
-    color: var(--primary-color);
-}
-
-/* ПОТОМ .social-links */
-.social-links {
-    display: flex;
-    gap: 1rem;
-    margin-top: 1rem;
+.footer-nav a {
+    color: var(--text-light);
 }
 
 .social-links a {
@@ -734,16 +692,59 @@ a:focus {
     transition: var(--transition);
 }
 
+/* 2. Все :hover */
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+}
+
 .social-links a:hover {
     background-color: var(--primary-color);
     color: white;
     transform: translateY(-3px);
 }
 
+/* 3. Все :focus */
+.footer-legal a:focus {
+    color: var(--primary-color);
+}
+
+.footer-nav a:focus {
+    color: var(--primary-color);
+}
+
 .social-links a:focus {
     background-color: var(--primary-color);
     color: white;
     transform: translateY(-3px);
+}
+
+/* Остальные стили футера */
+.footer-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
 }
 
 .newsletter-form {
