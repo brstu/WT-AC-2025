@@ -929,13 +929,3 @@ body.dark-theme .main-header {
     grid-template-columns: 1fr !important;
   }
 }
-
-button:focus,
-input:focus,
-textarea:focus,
-select:focus,
-a:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
