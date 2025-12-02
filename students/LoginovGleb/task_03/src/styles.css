@@ -351,6 +351,7 @@ header .subtitle {
     0% {
         background-position: -200% 0;
     }
+
     100% {
         background-position: 200% 0;
     }
@@ -421,7 +422,8 @@ footer {
 }
 
 /* Анимации */
-@keyframes fadeIn {
+
+@keyframes fade-in {
     from {
         opacity: 0;
     }
@@ -430,7 +432,7 @@ footer {
     }
 }
 
-@keyframes fadeInDown {
+@keyframes fade-in-down {
     from {
         opacity: 0;
         transform: translateY(-20px);
@@ -441,7 +443,7 @@ footer {
     }
 }
 
-@keyframes fadeInUp {
+@keyframes fade-in-up {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -776,8 +778,5 @@ input:focus-visible,
     outline-offset: 2px;
 }
 
-button:focus:not(:focus-visible),
-input:focus:not(:focus-visible) {
-    outline: none;
-}
+/* Keep default focus styles for non-keyboard interactions to ensure accessibility */
 
