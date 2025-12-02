@@ -118,29 +118,29 @@ task_03/
 
 ![Network первый запрос](./screenshots/05_network_first.png)
 
-*Первый запрос: 200 OK, полный ответ с данными*
+#### Первый запрос: 200 OK, полный ответ с данными
 
 ![Network кэшированный](./screenshots/06_network_cached.png)
 
-*Повторный запрос: данные из in-memory кэша (без сетевого запроса)*
+#### Повторный запрос: данные из in-memory кэша (без сетевого запроса)
 
 #### Retry механизм в консоли
 
 ![Retry в консоли](./screenshots/02_retry_console.png)
 
-*Логирование попыток повтора с экспоненциальным backoff*
+#### Логирование попыток повтора с экспоненциальным backoff
 
 #### Отмена запросов (AbortController)
 
 ![Отмена запроса](./screenshots/08_abort_controller.png)
 
-*Консоль показывает отмену предыдущего запроса при новом поиске*
+#### Консоль показывает отмену предыдущего запроса при новом поиске
 
 #### Skeleton загрузка
 
 ![Skeleton loader](./screenshots/09_skeleton_loading.png)
 
-*Состояние загрузки с shimmer-анимацией*
+#### Состояние загрузки с shimmer-анимацией
 
 ---
 
@@ -169,7 +169,7 @@ task_03/
 
 ## Ссылки
 
-- **Публикация:** <https://gleb7499.github.io/WT-AC-2025/task_03/>
+- **Публикация:** <https://gleb7499.github.io/WT-AC-2025/task_03/src>
 - **Репозиторий:** <https://github.com/gleb7499/WT-AC-2025>
 - **OpenWeatherMap API:** <https://openweathermap.org/api>
 
