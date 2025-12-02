@@ -4,7 +4,7 @@
 
 import { getWeatherByCity, getCacheInfo, clearCache } from './weatherApi.js';
 import { getCitiesPaginated, clearETagCache } from './mockApi.js';
-import { debounce, formatDateTime, kelvinToCelsius, NetworkError, BusinessError } from './utils.js';
+import { debounce, formatDateTime, kelvinToCelsius } from './utils.js';
 
 // Состояние приложения
 const state = {
@@ -96,6 +96,7 @@ function initInfiniteScroll() {
             elements.citiesListContainer.classList.remove('hidden');
             elements.toggleInfiniteScroll.innerHTML =
                 '<span class="btn-text">📋 Скрыть список</span>';
+            elements.toggleInfiniteScroll.setAttribute('aria-expanded', 'true');
 
             // Загружаем первую страницу, если еще не загружали
             if (state.infiniteScroll.currentPage === 0) {
@@ -105,6 +106,7 @@ function initInfiniteScroll() {
             elements.citiesListContainer.classList.add('hidden');
             elements.toggleInfiniteScroll.innerHTML =
                 '<span class="btn-text">📋 Показать список</span>';
+            elements.toggleInfiniteScroll.setAttribute('aria-expanded', 'false');
         }
     });
 
@@ -216,6 +218,8 @@ async function loadMoreCities() {
 function createCityCard(city, fromCache = false) {
     const card = document.createElement('div');
     card.className = 'city-card';
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `${city.name}, ${city.country}. Население: ${(city.population / 1000000).toFixed(1)} миллионов`);
     card.innerHTML = `
         <div class="city-card-name">
             🌍 ${city.name}
@@ -227,8 +231,8 @@ function createCityCard(city, fromCache = false) {
         </div>
     `;
 
-    // Клик по карточке - поиск погоды
-    card.addEventListener('click', async () => {
+    // Обработчик для клика и Enter
+    const handleSelect = async () => {
         elements.citySearch.value = city.name;
 
         // Небольшая задержка перед запросом (100мс), чтобы не перегружать API
@@ -237,6 +241,17 @@ function createCityCard(city, fromCache = false) {
         handleSearch(false);
         // Прокручиваем к результатам
         elements.weatherCards.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    // Клик по карточке - поиск погоды
+    card.addEventListener('click', handleSelect);
+    
+    // Поддержка клавиатуры
+    card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            handleSelect();
+        }
     });
 
     return card;
@@ -317,6 +332,9 @@ async function handleSearch(ignoreCache = false) {
     } catch (error) {
         if (error.message.includes('отменен')) {
             console.log('Запрос был отменен');
+        } else if (error.code === 'CITY_NOT_FOUND' || error.message.includes('не найден')) {
+            // Город не найден - показываем пустое состояние
+            showEmpty(`Город "${cityName}" не найден. Проверьте правильность написания.`);
         } else {
             showError(error);
         }
@@ -396,11 +414,7 @@ function showError(error) {
             <div class="error-icon">⚠️</div>
             <h2>Ошибка</h2>
             <p>${message}</p>
-            ${
-                errorTypeLabel
-                    ? `<span class="error-type-badge ${errorTypeClass}">${errorTypeLabel}</span>`
-                    : ''
-            }
+            ${errorTypeLabel ? `<span class="error-type-badge ${errorTypeClass}">${errorTypeLabel}</span>` : ''}
             ${errorHint}
         </div>
     `;

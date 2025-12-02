@@ -200,7 +200,7 @@ export async function fetchWithRetry(
                         response.status
                     );
                 } else if (response.status === 404) {
-                    throw new BusinessError(`Ресурс не найден (404)`, 'NOT_FOUND');
+                    throw new BusinessError('Ресурс не найден (404)', 'NOT_FOUND');
                 } else if (response.status === 401 || response.status === 403) {
                     throw new BusinessError(
                         `Ошибка авторизации (${response.status})`,
@@ -208,7 +208,7 @@ export async function fetchWithRetry(
                     );
                 } else if (response.status === 429) {
                     throw new BusinessError(
-                        `Превышен лимит запросов (429)`,
+                        'Превышен лимит запросов (429)',
                         'RATE_LIMIT',
                         response.status
                     );

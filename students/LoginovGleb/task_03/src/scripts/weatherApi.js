@@ -68,7 +68,7 @@ export async function getWeatherByCity(cityName, { ignoreCache = false, signal =
         }
         if (error.statusCode === 429) {
             throw new BusinessError(
-                `Превышен лимит запросов к API. Попробуйте позже или используйте свой API ключ`,
+                'Превышен лимит запросов к API. Попробуйте позже или используйте свой API ключ',
                 'RATE_LIMIT_EXCEEDED'
             );
         }
