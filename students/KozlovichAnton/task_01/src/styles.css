@@ -669,6 +669,52 @@ a:focus {
     color: var(--text-color);
 }
 
+/* СНАЧАЛА .footer-nav */
+.footer-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav a {
+    color: var(--text-light);
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+}
+
+.footer-nav a:focus {
+    color: var(--primary-color);
+}
+
+/* ПОТОМ .footer-legal */
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-legal a {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
+.footer-legal a:focus {
+    color: var(--primary-color);
+}
+
+/* ПОТОМ .social-links */
 .social-links {
     display: flex;
     gap: 1rem;
@@ -698,50 +744,6 @@ a:focus {
     background-color: var(--primary-color);
     color: white;
     transform: translateY(-3px);
-}
-
-/* ПЕРЕМЕЩАЕМ ЭТИ СЕЛЕКТОРЫ ПЕРЕД .social-links a:focus */
-.footer-nav {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-nav li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-nav a {
-    color: var(--text-light);
-}
-
-.footer-nav a:hover {
-    color: var(--primary-color);
-}
-
-.footer-nav a:focus {
-    color: var(--primary-color);
-}
-
-.footer-legal {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    list-style: none;
-    padding: 0;
-}
-
-.footer-legal a {
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
-
-.footer-legal a:hover {
-    color: var(--primary-color);
-}
-
-.footer-legal a:focus {
-    color: var(--primary-color);
 }
 
 .newsletter-form {
@@ -974,6 +976,8 @@ textarea:focus {
     outline-offset: 2px;
 }
 
+/* ПУСТАЯ СТРОКА ПЕРЕД АНИМАЦИЯМИ */
+
 /* Анимации */
 @keyframes fade-in {
     from {
@@ -985,8 +989,6 @@ textarea:focus {
         transform: translateY(0);
     }
 }
-
-/* ПУСТАЯ СТРОКА ПЕРЕД АНИМАЦИЯМИ */
 
 .hero,
 .trend-card,
