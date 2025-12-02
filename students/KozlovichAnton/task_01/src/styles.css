@@ -119,16 +119,16 @@ a {
     transition: var(--transition);
 }
 
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
+}
+
 a:focus {
     color: var(--primary-dark);
     text-decoration: underline;
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
-}
-
-a:hover {
-    color: var(--primary-dark);
-    text-decoration: underline;
 }
 
 .highlight {
@@ -153,13 +153,13 @@ a:hover {
     color: white;
 }
 
-.btn-primary:focus {
+.btn-primary:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
 }
 
-.btn-primary:hover {
+.btn-primary:focus {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
@@ -171,12 +171,12 @@ a:hover {
     border: 2px solid var(--primary-color);
 }
 
-.btn-outline:focus {
+.btn-outline:hover {
     background-color: var(--primary-color);
     color: white;
 }
 
-.btn-outline:hover {
+.btn-outline:focus {
     background-color: var(--primary-color);
     color: white;
 }
@@ -267,12 +267,12 @@ a:hover {
     position: relative;
 }
 
-.nav-link:focus {
+.nav-link:hover {
     color: var(--primary-color);
     text-decoration: none;
 }
 
-.nav-link:hover {
+.nav-link:focus {
     color: var(--primary-color);
     text-decoration: none;
 }
@@ -317,13 +317,13 @@ a:hover {
     transition: var(--transition);
 }
 
+.theme-toggle:hover {
+    background-color: var(--bg-light);
+}
+
 .theme-toggle:focus {
     background-color: var(--bg-light);
     outline: 2px solid var(--primary-color);
-}
-
-.theme-toggle:hover {
-    background-color: var(--bg-light);
 }
 
 .theme-toggle .fa-sun {
@@ -403,12 +403,12 @@ a:hover {
     transition: var(--transition);
 }
 
-.trend-card:focus-within {
+.trend-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
 
-.trend-card:hover {
+.trend-card:focus-within {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
@@ -542,7 +542,7 @@ a:hover {
     color: var(--text-color);
 }
 
-.filter-btn.active {
+.filter-btn:hover {
     background-color: var(--primary-color);
     color: white;
 }
@@ -552,7 +552,7 @@ a:hover {
     color: white;
 }
 
-.filter-btn:hover {
+.filter-btn.active {
     background-color: var(--primary-color);
     color: white;
 }
@@ -644,50 +644,7 @@ a:hover {
     color: var(--primary-color);
 }
 
-/* Футер - ПЕРЕМЕЩАЕМ ВСЕ СЕЛЕКТОРЫ ДО .social-links */
-.footer-nav {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-nav li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-nav a {
-    color: var(--text-light);
-}
-
-.footer-nav a:focus {
-    color: var(--primary-color);
-}
-
-.footer-nav a:hover {
-    color: var(--primary-color);
-}
-
-.footer-legal {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    list-style: none;
-    padding: 0;
-}
-
-.footer-legal a {
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
-
-.footer-legal a:focus {
-    color: var(--primary-color);
-}
-
-.footer-legal a:hover {
-    color: var(--primary-color);
-}
-
+/* Футер - ПРАВИЛЬНЫЙ ПОРЯДОК СЕЛЕКТОРОВ */
 .site-footer {
     background-color: var(--bg-light);
     padding: 3rem 0 1.5rem;
@@ -731,16 +688,60 @@ a:hover {
     transition: var(--transition);
 }
 
+.social-links a:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
 .social-links a:focus {
     background-color: var(--primary-color);
     color: white;
     transform: translateY(-3px);
 }
 
-.social-links a:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-3px);
+/* ПЕРЕМЕЩАЕМ ЭТИ СЕЛЕКТОРЫ ПЕРЕД .social-links a:focus */
+.footer-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav a {
+    color: var(--text-light);
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+}
+
+.footer-nav a:focus {
+    color: var(--primary-color);
+}
+
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-legal a {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
+.footer-legal a:focus {
+    color: var(--primary-color);
 }
 
 .newsletter-form {
@@ -973,9 +974,7 @@ textarea:focus {
     outline-offset: 2px;
 }
 
-/* УДАЛЯЕМ ДУБЛИРУЮЩИЕСЯ СЕЛЕКТОРЫ И ФИКСИМ ПОРЯДОК */
-
-/* Анимации - ФИКСИМ БАГ С ДУБЛИРОВАНИЕМ */
+/* Анимации */
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -987,7 +986,8 @@ textarea:focus {
     }
 }
 
-/* ПЕРЕНЕСЕМ ВСЕ АНИМАЦИИ В ОДНО МЕСТО ПЕРЕД МЕДИАЗАПРОСАМИ */
+/* ПУСТАЯ СТРОКА ПЕРЕД АНИМАЦИЯМИ */
+
 .hero,
 .trend-card,
 .look-card,
@@ -996,7 +996,7 @@ textarea:focus {
     animation: fade-in 0.6s ease-out;
 }
 
-/* ПУСТАЯ СТРОКА ПЕРЕД ПРАВИЛОМ */
+/* Прогрессивное улучшение */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
