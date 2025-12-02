@@ -988,8 +988,6 @@ textarea:focus {
     background-color: var(--bg-color);
 }
 
-/* ПУСТАЯ СТРОКА ЗДЕСЬ */
-
 /* Прогрессивное улучшение */
 @media (prefers-reduced-motion: reduce) {
     * {
@@ -998,8 +996,6 @@ textarea:focus {
         transition-duration: 0.01ms !important;
     }
 }
-
-/* ПУСТАЯ СТРОКА ЗДЕСЬ */
 
 /* Анимации */
 @keyframes fade-in {
