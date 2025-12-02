@@ -354,13 +354,14 @@ a:focus {
     cursor: pointer;
 }
 
-/* Главная секция */
+/* Главная секция с анимацией */
 .hero {
     padding: 3rem 0;
     display: flex;
     flex-direction: column;
     gap: 2rem;
     align-items: center;
+    animation: fade-in 0.6s ease-out;
 }
 
 .hero-content {
@@ -387,7 +388,7 @@ a:focus {
     margin: 0 auto;
 }
 
-/* Карточки трендов */
+/* Карточки трендов с анимацией */
 .trends-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -401,6 +402,7 @@ a:focus {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    animation: fade-in 0.6s ease-out;
 }
 
 .trend-card:hover {
@@ -447,7 +449,7 @@ a:focus {
     font-weight: 500;
 }
 
-/* Карточки образов */
+/* Карточки образов с анимацией */
 .looks-container {
     display: grid;
     grid-template-columns: 1fr;
@@ -461,6 +463,7 @@ a:focus {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    animation: fade-in 0.6s ease-out;
 }
 
 .look-card:hover {
@@ -489,7 +492,7 @@ a:focus {
     color: var(--primary-color);
 }
 
-/* Карточки советов */
+/* Карточки советов с анимацией */
 .advice-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -504,6 +507,7 @@ a:focus {
     box-shadow: var(--shadow);
     transition: var(--transition);
     text-align: center;
+    animation: fade-in 0.6s ease-out;
 }
 
 .advice-card:hover {
@@ -523,7 +527,7 @@ a:focus {
     font-weight: 500;
 }
 
-/* Подборки */
+/* Подборки с анимацией */
 .collections-filter {
     display: flex;
     justify-content: center;
@@ -570,6 +574,7 @@ a:focus {
     overflow: hidden;
     box-shadow: var(--shadow);
     transition: var(--transition);
+    animation: fade-in 0.6s ease-out;
 }
 
 .collection-card:hover {
@@ -984,16 +989,7 @@ textarea:focus {
     background-color: var(--bg-color);
 }
 
-/* Прогрессивное улучшение */
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
-}
-
-/* ПУСТАЯ СТРОКА ПЕРЕД АНИМАЦИЯМИ */
+/* ПУСТАЯ СТРОКА ЗДЕСЬ */
 
 /* Анимации */
 @keyframes fade-in {
@@ -1007,80 +1003,11 @@ textarea:focus {
     }
 }
 
-/* Анимации для элементов - ВСТАВЛЯЕМ ПРЯМО В СЕЛЕКТОРЫ КАРТОЧЕК */
-
-/* Главная секция с анимацией */
-.hero {
-    padding: 3rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-    animation: fade-in 0.6s ease-out;
-}
-
-/* Карточки трендов с анимацией */
-.trend-card {
-    background-color: var(--bg-card);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    animation: fade-in 0.6s ease-out;
-}
-
-.trend-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-.trend-card:focus-within {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-/* Карточки образов с анимацией */
-.look-card {
-    background-color: var(--bg-card);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    animation: fade-in 0.6s ease-out;
-}
-
-.look-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-/* Карточки советов с анимацией */
-.advice-card {
-    background-color: var(--bg-card);
-    padding: 1.5rem;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    text-align: center;
-    animation: fade-in 0.6s ease-out;
-}
-
-.advice-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
-}
-
-/* Карточки подборок с анимацией */
-.collection-card {
-    position: relative;
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: var(--transition);
-    animation: fade-in 0.6s ease-out;
-}
-
-.collection-card:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-lg);
+/* Прогрессивное улучшение */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }
