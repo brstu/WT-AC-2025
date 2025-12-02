@@ -18,10 +18,11 @@ export class NetworkError extends Error {
 
 // Бизнес-ошибки (город не найден, невалидные данные, ошибки API)
 export class BusinessError extends Error {
-    constructor(message, code = null) {
+    constructor(message, code = null, statusCode = null) {
         super(message);
         this.name = 'BusinessError';
         this.code = code;
+        this.statusCode = statusCode;
         this.isBusinessError = true;
     }
 }
@@ -30,7 +31,8 @@ export class BusinessError extends Error {
  * Класс для управления кэшем с TTL (time-to-live)
  */
 export class CacheWithTTL {
-    constructor(ttlMs = 60000) { // По умолчанию 1 минута
+    constructor(ttlMs = 60000) {
+        // По умолчанию 1 минута
         this.cache = new Map();
         this.ttlMs = ttlMs;
     }
@@ -167,13 +169,10 @@ export class ETagCache {
  * @param {Object} options.headers - Дополнительные заголовки
  * @returns {Promise<any>} - Распарсенный JSON ответ
  */
-export async function fetchWithRetry(url, {
-    retries = 2,
-    backoffMs = 500,
-    timeoutMs = 5000,
-    signal = null,
-    headers = {}
-} = {}) {
+export async function fetchWithRetry(
+    url,
+    { retries = 2, backoffMs = 500, timeoutMs = 5000, signal = null, headers = {} } = {}
+) {
     let attempt = 0;
     let lastError;
 
@@ -182,12 +181,12 @@ export async function fetchWithRetry(url, {
         const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
 
         // Комбинируем сигналы: внешний и для таймаута
-        const combinedSignal = signal 
+        const combinedSignal = signal
             ? combineAbortSignals(signal, controller.signal)
             : controller.signal;
 
         try {
-            const response = await fetch(url, { 
+            const response = await fetch(url, {
                 signal: combinedSignal,
                 headers: headers
             });
@@ -196,13 +195,28 @@ export async function fetchWithRetry(url, {
             if (!response.ok) {
                 // Различаем типы ошибок
                 if (response.status >= 500) {
-                    throw new NetworkError(`Ошибка сервера ${response.status}: ${response.statusText}`, response.status);
+                    throw new NetworkError(
+                        `Ошибка сервера ${response.status}: ${response.statusText}`,
+                        response.status
+                    );
                 } else if (response.status === 404) {
                     throw new BusinessError(`Ресурс не найден (404)`, 'NOT_FOUND');
                 } else if (response.status === 401 || response.status === 403) {
-                    throw new BusinessError(`Ошибка авторизации (${response.status})`, 'AUTH_ERROR');
+                    throw new BusinessError(
+                        `Ошибка авторизации (${response.status})`,
+                        'AUTH_ERROR'
+                    );
+                } else if (response.status === 429) {
+                    throw new BusinessError(
+                        `Превышен лимит запросов (429)`,
+                        'RATE_LIMIT',
+                        response.status
+                    );
                 } else {
-                    throw new NetworkError(`HTTP ${response.status}: ${response.statusText}`, response.status);
+                    throw new NetworkError(
+                        `HTTP ${response.status}: ${response.statusText}`,
+                        response.status
+                    );
                 }
             }
 
@@ -244,7 +258,9 @@ export async function fetchWithRetry(url, {
         throw lastError;
     }
 
-    throw new NetworkError(`Не удалось выполнить запрос после ${retries + 1} попыток: ${lastError.message}`);
+    throw new NetworkError(
+        `Не удалось выполнить запрос после ${retries + 1} попыток: ${lastError.message}`
+    );
 }
 
 /**
@@ -252,7 +268,7 @@ export async function fetchWithRetry(url, {
  */
 function combineAbortSignals(...signals) {
     const controller = new AbortController();
-    
+
     for (const signal of signals) {
         if (signal.aborted) {
             controller.abort();
@@ -260,7 +276,7 @@ function combineAbortSignals(...signals) {
         }
         signal.addEventListener('abort', () => controller.abort());
     }
-    
+
     return controller.signal;
 }
 
@@ -272,7 +288,7 @@ function combineAbortSignals(...signals) {
  */
 export function debounce(fn, ms = 300) {
     let timeoutId;
-    return function(...args) {
+    return function (...args) {
         clearTimeout(timeoutId);
         timeoutId = setTimeout(() => fn.apply(this, args), ms);
     };
@@ -307,3 +323,4 @@ export function formatDateTime(timestamp) {
 export function kelvinToCelsius(kelvin) {
     return Math.round(kelvin - 273.15);
 }
+

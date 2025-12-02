@@ -17,18 +17,18 @@ const etagCache = new ETagCache();
  * @param {boolean} options.useETag - Использовать ETag кэширование
  * @returns {Promise<Object>} - Список городов и метаданные
  */
-export async function getCitiesPaginated({ 
-    page = 1, 
-    limit = 10, 
+export async function getCitiesPaginated({
+    page = 1,
+    limit = 10,
     signal = null,
     useETag = true
 } = {}) {
     const url = `${MOCK_API_URL}/cities?_page=${page}&_limit=${limit}`;
-    
+
     try {
         // Подготовка заголовков
         const headers = {};
-        
+
         // Добавляем If-None-Match если есть ETag в кэше
         if (useETag && etagCache.has(url)) {
             const etag = etagCache.getETag(url);
@@ -59,7 +59,7 @@ export async function getCitiesPaginated({
 
         // Извлекаем ETag из заголовков
         const etag = response.headers.get('ETag');
-        
+
         // Извлекаем информацию о пагинации из Link заголовка
         const linkHeader = response.headers.get('Link');
         const totalCount = response.headers.get('X-Total-Count');
@@ -81,7 +81,6 @@ export async function getCitiesPaginated({
         }
 
         return result;
-
     } catch (error) {
         if (error.isNetworkError) {
             console.error('❌ Сетевая ошибка:', error.message);
@@ -103,7 +102,7 @@ export async function getCitiesPaginated({
  */
 export async function searchCities(query, { signal = null } = {}) {
     const url = `${MOCK_API_URL}/cities?name_like=${encodeURIComponent(query)}`;
-    
+
     try {
         const response = await fetchWithRetry(url, {
             retries: 1,
@@ -130,7 +129,7 @@ export async function searchCities(query, { signal = null } = {}) {
  */
 export async function getCityById(id) {
     const url = `${MOCK_API_URL}/cities/${id}`;
-    
+
     try {
         const response = await fetchWithRetry(url, {
             retries: 1,
@@ -167,3 +166,4 @@ export function getETagCacheStats() {
         }))
     };
 }
+

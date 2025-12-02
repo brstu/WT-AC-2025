@@ -36,6 +36,7 @@ GET http://localhost:3001/cities?_page=1&_limit=10
 ```
 
 **Ответ:**
+
 - `X-Total-Count` заголовок с общим количеством
 - `Link` заголовок с ссылками на следующую/предыдущую страницы
 - `ETag` заголовок для кэширования
@@ -111,13 +112,13 @@ json-server автоматически:
 
 ### Просмотр всех городов
 
-Откройте в браузере: http://localhost:3001/cities
+Откройте в браузере: <http://localhost:3001/cities>
 
 ### Консоль с логами
 
 json-server показывает все запросы в консоли:
 
-```
+```text
 GET /cities?_page=1&_limit=10 200 15.123 ms - 1234
 GET /cities?_page=2&_limit=10 304 2.456 ms
 ```
@@ -163,4 +164,4 @@ if (response2.status === 304) {
 
 ## Документация json-server
 
-Полная документация: https://github.com/typicode/json-server
+Полная документация: <https://github.com/typicode/json-server>

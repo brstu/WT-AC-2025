@@ -348,8 +348,12 @@ header .subtitle {
 }
 
 @keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
 }
 
 /* Состояние ошибки */
@@ -449,7 +453,8 @@ footer {
 }
 
 @keyframes pulse {
-    0%, 100% {
+    0%,
+    100% {
         opacity: 1;
     }
     50% {
@@ -641,8 +646,12 @@ footer {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 .scroll-sentinel {
@@ -688,6 +697,30 @@ footer {
     border-radius: 8px;
     font-size: 0.9rem;
     color: var(--text-secondary);
+    text-align: left;
+}
+
+.error-hint p {
+    margin-bottom: 10px;
+}
+
+.error-hint ul {
+    margin-left: 20px;
+    line-height: 1.6;
+}
+
+.error-hint li {
+    margin-bottom: 5px;
+}
+
+.error-hint a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.error-hint a:hover {
+    text-decoration: underline;
 }
 
 .error-hint code {
@@ -745,3 +778,4 @@ button:focus:not(:focus-visible),
 input:focus:not(:focus-visible) {
     outline: none;
 }
+

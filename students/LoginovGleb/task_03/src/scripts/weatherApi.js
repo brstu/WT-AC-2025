@@ -8,8 +8,8 @@ import { fetchWithRetry, CacheWithTTL, NetworkError, BusinessError } from './uti
 const API_KEY = 'bd5e378503939ddaee76f12ad7a97608'; // Публичный демо-ключ
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
-// Кэш с TTL 1 минута (60000 мс)
-const weatherCache = new CacheWithTTL(60000);
+// Кэш с TTL 10 минут (600000 мс) - увеличено для снижения нагрузки на API
+const weatherCache = new CacheWithTTL(600000);
 
 /**
  * Получить погоду для города
@@ -36,7 +36,7 @@ export async function getWeatherByCity(cityName, { ignoreCache = false, signal =
 
     try {
         console.log(`🌐 Загрузка данных для "${cityName}" с сервера...`);
-        
+
         // Запрос с retry, timeout и возможностью отмены
         const response = await fetchWithRetry(url, {
             retries: 2,
@@ -61,7 +61,16 @@ export async function getWeatherByCity(cityName, { ignoreCache = false, signal =
             throw new BusinessError(`Город "${cityName}" не найден`, 'CITY_NOT_FOUND');
         }
         if (error.code === 'AUTH_ERROR' || error.statusCode === 401) {
-            throw new BusinessError('Ошибка API ключа. Используйте свой ключ OpenWeatherMap', 'API_KEY_ERROR');
+            throw new BusinessError(
+                'Ошибка API ключа. Используйте свой ключ OpenWeatherMap',
+                'API_KEY_ERROR'
+            );
+        }
+        if (error.statusCode === 429) {
+            throw new BusinessError(
+                `Превышен лимит запросов к API. Попробуйте позже или используйте свой API ключ`,
+                'RATE_LIMIT_EXCEEDED'
+            );
         }
 
         // Сетевые ошибки пробрасываем как есть
@@ -99,7 +108,7 @@ export function clearCache() {
  * @returns {Promise<Object[]>} - Массив результатов
  */
 export async function getWeatherForMultipleCities(cities, options = {}) {
-    const promises = cities.map(city => 
+    const promises = cities.map(city =>
         getWeatherByCity(city, options)
             .then(data => ({ success: true, city, data }))
             .catch(error => ({ success: false, city, error: error.message }))
@@ -107,3 +116,4 @@ export async function getWeatherForMultipleCities(cities, options = {}) {
 
     return Promise.all(promises);
 }
+
