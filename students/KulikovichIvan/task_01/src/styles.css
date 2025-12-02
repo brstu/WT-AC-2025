@@ -6,8 +6,8 @@
   --bg-color: #fff;
   --bg-secondary: #f8fafc;
   --border-color: #e5e7eb;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%);
   --radius: 8px;
   --transition: all 0.3s ease;
 }
@@ -38,8 +38,8 @@ body.dark-theme {
   --bg-color: #0f172a;
   --bg-secondary: #1e293b;
   --border-color: #334155;
-  --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+  --shadow: 0 4px 6px -1px rgb(0 0 0 / 30%);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 30%);
 }
 
 body.dark-theme .main-header {
@@ -615,16 +615,6 @@ body.dark-theme .main-header {
   outline-offset: 2px;
 }
 
-button:focus,
-input:focus,
-textarea:focus,
-select:focus,
-a:focus {
-  outline: 2px solid var(--primary-color);
-  outline-offset: 2px;
-  border-radius: 2px;
-}
-
 @media (width <= 480px) {
   .site-title {
     font-size: 2rem;
@@ -942,4 +932,14 @@ a:focus {
   .cards-grid {
     grid-template-columns: 1fr !important;
   }
+}
+
+button:focus,
+input:focus,
+textarea:focus,
+select:focus,
+a:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 2px;
 }
