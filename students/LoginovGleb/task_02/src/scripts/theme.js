@@ -14,13 +14,15 @@ const THEMES = {
  */
 export function initTheme() {
     const themeToggle = document.querySelector('.theme-toggle');
-    if (!themeToggle) return;
-    
+    if (!themeToggle) {
+        return;
+    }
+
     // Загрузить сохранённую тему или определить системную настройку
     const savedTheme = loadTheme();
     applyTheme(savedTheme);
     updateThemeButton(themeToggle, savedTheme);
-    
+
     // Добавить обработчик клика
     themeToggle.addEventListener('click', () => toggleTheme(themeToggle));
 }
@@ -32,7 +34,7 @@ export function initTheme() {
 function toggleTheme(button) {
     const currentTheme = document.documentElement.getAttribute('data-theme') || THEMES.LIGHT;
     const newTheme = currentTheme === THEMES.LIGHT ? THEMES.DARK : THEMES.LIGHT;
-    
+
     applyTheme(newTheme);
     saveTheme(newTheme);
     updateThemeButton(button, newTheme);
@@ -53,8 +55,10 @@ function applyTheme(theme) {
  */
 function updateThemeButton(button, theme) {
     const icon = button.querySelector('.theme-icon');
-    if (!icon) return;
-    
+    if (!icon) {
+        return;
+    }
+
     if (theme === THEMES.DARK) {
         icon.textContent = '☀️';
         button.setAttribute('aria-label', 'Переключить на светлую тему');
@@ -92,12 +96,12 @@ function loadTheme() {
     } catch (e) {
         console.warn('Failed to load theme from localStorage', e);
     }
-    
+
     // В противном случае — системная настройка
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
         return THEMES.DARK;
     }
-    
+
     return THEMES.LIGHT;
 }
 
@@ -105,10 +109,12 @@ function loadTheme() {
  * Отслеживать изменение системной темы
  */
 export function watchSystemTheme() {
-    if (!window.matchMedia) return;
-    
+    if (!window.matchMedia) {
+        return;
+    }
+
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
     mediaQuery.addEventListener('change', (e) => {
         // Применять только если пользователь не установил своё предпочтение
         try {
@@ -116,7 +122,7 @@ export function watchSystemTheme() {
             if (!savedTheme) {
                 const newTheme = e.matches ? THEMES.DARK : THEMES.LIGHT;
                 applyTheme(newTheme);
-                
+
                 const themeToggle = document.querySelector('.theme-toggle');
                 if (themeToggle) {
                     updateThemeButton(themeToggle, newTheme);

@@ -10,17 +10,19 @@ const STORAGE_KEY = 'accordion-state';
  */
 export function initAccordion() {
     const accordion = document.querySelector('.accordion');
-    if (!accordion) return;
+    if (!accordion) {
+        return;
+    }
 
     const buttons = accordion.querySelectorAll('.accordion-button');
-    
+
     // Загрузить сохранённое состояние из localStorage
     loadAccordionState(buttons);
-    
+
     // Добавить обработчики событий для всех кнопок аккордеона
     buttons.forEach((button, index) => {
         button.addEventListener('click', () => toggleAccordion(button));
-        
+
         // Клавиатурная навигация
         button.addEventListener('keydown', (e) => handleKeyboardNavigation(e, buttons, index));
     });
@@ -34,12 +36,14 @@ function toggleAccordion(button) {
     const isExpanded = button.getAttribute('aria-expanded') === 'true';
     const panelId = button.getAttribute('aria-controls');
     const panel = document.getElementById(panelId);
-    
-    if (!panel) return;
-    
+
+    if (!panel) {
+        return;
+    }
+
     // Переключить состояние
     button.setAttribute('aria-expanded', !isExpanded);
-    
+
     if (isExpanded) {
         // Закрыть панель
         panel.hidden = true;
@@ -47,7 +51,7 @@ function toggleAccordion(button) {
         // Открыть панель
         panel.hidden = false;
     }
-    
+
     // Сохранить состояние в localStorage
     saveAccordionState();
 }
@@ -60,37 +64,37 @@ function toggleAccordion(button) {
  */
 function handleKeyboardNavigation(e, buttons, currentIndex) {
     let newIndex = currentIndex;
-    
+
     switch (e.key) {
-        case 'ArrowDown':
-        case 'ArrowRight':
-            e.preventDefault();
-            newIndex = (currentIndex + 1) % buttons.length;
-            buttons[newIndex].focus();
-            break;
-            
-        case 'ArrowUp':
-        case 'ArrowLeft':
-            e.preventDefault();
-            newIndex = currentIndex === 0 ? buttons.length - 1 : currentIndex - 1;
-            buttons[newIndex].focus();
-            break;
-            
-        case 'Home':
-            e.preventDefault();
-            buttons[0].focus();
-            break;
-            
-        case 'End':
-            e.preventDefault();
-            buttons[buttons.length - 1].focus();
-            break;
-            
-        case 'Enter':
-        case ' ':
-            e.preventDefault();
-            toggleAccordion(buttons[currentIndex]);
-            break;
+    case 'ArrowDown':
+    case 'ArrowRight':
+        e.preventDefault();
+        newIndex = (currentIndex + 1) % buttons.length;
+        buttons[newIndex].focus();
+        break;
+
+    case 'ArrowUp':
+    case 'ArrowLeft':
+        e.preventDefault();
+        newIndex = currentIndex === 0 ? buttons.length - 1 : currentIndex - 1;
+        buttons[newIndex].focus();
+        break;
+
+    case 'Home':
+        e.preventDefault();
+        buttons[0].focus();
+        break;
+
+    case 'End':
+        e.preventDefault();
+        buttons[buttons.length - 1].focus();
+        break;
+
+    case 'Enter':
+    case ' ':
+        e.preventDefault();
+        toggleAccordion(buttons[currentIndex]);
+        break;
     }
 }
 
@@ -100,13 +104,13 @@ function handleKeyboardNavigation(e, buttons, currentIndex) {
 function saveAccordionState() {
     const buttons = document.querySelectorAll('.accordion-button');
     const state = {};
-    
+
     buttons.forEach(button => {
         const id = button.id;
         const isExpanded = button.getAttribute('aria-expanded') === 'true';
         state[id] = isExpanded;
     });
-    
+
     try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     } catch (e) {
@@ -121,16 +125,18 @@ function saveAccordionState() {
 function loadAccordionState(buttons) {
     try {
         const savedState = localStorage.getItem(STORAGE_KEY);
-        if (!savedState) return;
-        
+        if (!savedState) {
+            return;
+        }
+
         const state = JSON.parse(savedState);
-        
+
         buttons.forEach(button => {
             const id = button.id;
             if (state[id] === true) {
                 const panelId = button.getAttribute('aria-controls');
                 const panel = document.getElementById(panelId);
-                
+
                 if (panel) {
                     button.setAttribute('aria-expanded', 'true');
                     panel.hidden = false;

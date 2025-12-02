@@ -475,9 +475,51 @@
         </div>
     </div>
 
+    <!-- Модальное окно подтверждения удаления -->
+    <div 
+        class="modal confirm-modal" 
+        id="confirm-modal"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="confirm-modal-title"
+        aria-describedby="confirm-modal-description"
+        hidden>
+        <div class="modal-overlay" data-close-confirm></div>
+        <div class="modal-content modal-content-confirm">
+            <div class="modal-header">
+                <h2 class="modal-title" id="confirm-modal-title">Подтверждение удаления</h2>
+                <button 
+                    class="modal-close" 
+                    type="button"
+                    data-close-confirm
+                    aria-label="Отмена">
+                    ✕
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="confirm-modal-description">Вы уверены, что хотите удалить этот пост? Это действие нельзя отменить.</p>
+                <div class="confirm-actions">
+                    <button 
+                        type="button" 
+                        class="btn btn-cancel" 
+                        data-close-confirm>
+                        Отмена
+                    </button>
+                    <button 
+                        type="button" 
+                        class="btn btn-danger" 
+                        id="confirm-delete-btn">
+                        Удалить
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Скрипты -->
     <script src="scripts/accordion.js" type="module"></script>
     <script src="scripts/modal.js" type="module"></script>
+    <script src="scripts/confirmModal.js" type="module"></script>
     <script src="scripts/form.js" type="module"></script>
     <script src="scripts/posts.js" type="module"></script>
     <script src="scripts/theme.js" type="module"></script>

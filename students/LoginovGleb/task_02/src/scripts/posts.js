@@ -3,6 +3,8 @@
  * Обрабатывает посты фанатов с делегированием событий для действий лайк/удалить
  */
 
+import { showConfirmModal } from './confirmModal.js';
+
 const STORAGE_KEY = 'posts-data';
 
 /**
@@ -10,11 +12,13 @@ const STORAGE_KEY = 'posts-data';
  */
 export function initPosts() {
     const postsContainer = document.getElementById('posts-container');
-    if (!postsContainer) return;
-    
+    if (!postsContainer) {
+        return;
+    }
+
     // Загрузить сохранённое состояние из localStorage
     loadPostsState(postsContainer);
-    
+
     // Использовать делегирование событий на контейнере
     postsContainer.addEventListener('click', handlePostAction);
 }
@@ -25,37 +29,43 @@ export function initPosts() {
  */
 function handlePostAction(e) {
     const target = e.target.closest('[data-action]');
-    if (!target) return;
-    
+    if (!target) {
+        return;
+    }
+
     const action = target.getAttribute('data-action');
     const postCard = target.closest('.post-card');
-    
-    if (!postCard) return;
-    
+
+    if (!postCard) {
+        return;
+    }
+
     switch (action) {
-        case 'like':
-            handleLike(target, postCard);
-            break;
-        case 'delete':
-            handleDelete(postCard);
-            break;
+    case 'like':
+        handleLike(target, postCard);
+        break;
+    case 'delete':
+        handleDelete(postCard, target);
+        break;
     }
 }
 
 /**
  * Обработка нажатия кнопки лайка
  * @param {HTMLElement} button - Кнопка лайка
- * @param {HTMLElement} postCard - Элемент карточки поста
+ * @param {HTMLElement} _postCard - Элемент карточки поста (не используется, но передается для консистентности)
  */
-function handleLike(button, postCard) {
+function handleLike(button, _postCard) {
     const isLiked = button.getAttribute('aria-pressed') === 'true';
     const likeCountElement = button.querySelector('.like-count');
     const likeIcon = button.querySelector('.like-icon');
-    
-    if (!likeCountElement) return;
-    
+
+    if (!likeCountElement) {
+        return;
+    }
+
     let count = parseInt(likeCountElement.textContent) || 0;
-    
+
     if (isLiked) {
         // Снять лайк
         button.setAttribute('aria-pressed', 'false');
@@ -67,9 +77,9 @@ function handleLike(button, postCard) {
         likeIcon.textContent = '❤️';
         count++;
     }
-    
+
     likeCountElement.textContent = count;
-    
+
     // Сохранить состояние в localStorage
     savePostsState();
 }
@@ -77,15 +87,21 @@ function handleLike(button, postCard) {
 /**
  * Обработка нажатия кнопки удаления
  * @param {HTMLElement} postCard - Элемент карточки поста
+ * @param {HTMLElement} deleteButton - Кнопка удаления (для возврата фокуса)
  */
-function handleDelete(postCard) {
-    // Подтвердить удаление
-    const confirmed = confirm('Вы уверены, что хотите удалить этот пост?');
-    if (!confirmed) return;
-    
+async function handleDelete(postCard, deleteButton) {
+    // Подтвердить удаление через кастомную модалку
+    const confirmed = await showConfirmModal(
+        'Вы уверены, что хотите удалить этот пост? Это действие нельзя отменить.',
+        deleteButton
+    );
+    if (!confirmed) {
+        return;
+    }
+
     // Добавить класс анимации удаления
     postCard.classList.add('removing');
-    
+
     // Удалить элемент после анимации
     setTimeout(() => {
         postCard.remove();
@@ -98,16 +114,18 @@ function handleDelete(postCard) {
  */
 function savePostsState() {
     const postsContainer = document.getElementById('posts-container');
-    if (!postsContainer) return;
-    
+    if (!postsContainer) {
+        return;
+    }
+
     const posts = postsContainer.querySelectorAll('.post-card');
     const state = [];
-    
+
     posts.forEach(post => {
         const postId = post.getAttribute('data-post-id');
         const likeButton = post.querySelector('[data-action="like"]');
         const likeCount = post.querySelector('.like-count');
-        
+
         if (postId) {
             state.push({
                 id: postId,
@@ -116,7 +134,7 @@ function savePostsState() {
             });
         }
     });
-    
+
     try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     } catch (e) {
@@ -131,20 +149,22 @@ function savePostsState() {
 function loadPostsState(postsContainer) {
     try {
         const savedState = localStorage.getItem(STORAGE_KEY);
-        if (!savedState) return;
-        
+        if (!savedState) {
+            return;
+        }
+
         const state = JSON.parse(savedState);
         const stateMap = {};
-        
+
         // Создать карту для быстрого поиска
         state.forEach(item => {
             stateMap[item.id] = item;
         });
-        
+
         // Получить все текущие посты
         const posts = postsContainer.querySelectorAll('.post-card');
         const currentPostIds = Array.from(posts).map(p => p.getAttribute('data-post-id'));
-        
+
         // Удалить посты, которых нет в сохранённом состоянии (были удалены)
         posts.forEach(post => {
             const postId = post.getAttribute('data-post-id');
@@ -152,7 +172,7 @@ function loadPostsState(postsContainer) {
                 post.remove();
             }
         });
-        
+
         // Обновить оставшиеся посты
         state.forEach(savedPost => {
             if (currentPostIds.includes(savedPost.id)) {
@@ -161,15 +181,15 @@ function loadPostsState(postsContainer) {
                     const likeButton = post.querySelector('[data-action="like"]');
                     const likeCount = post.querySelector('.like-count');
                     const likeIcon = post.querySelector('.like-icon');
-                    
+
                     if (likeButton) {
                         likeButton.setAttribute('aria-pressed', savedPost.liked ? 'true' : 'false');
                     }
-                    
+
                     if (likeIcon) {
                         likeIcon.textContent = savedPost.liked ? '❤️' : '🤍';
                     }
-                    
+
                     if (likeCount) {
                         likeCount.textContent = savedPost.likeCount;
                     }

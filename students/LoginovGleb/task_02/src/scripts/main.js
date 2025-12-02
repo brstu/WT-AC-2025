@@ -5,6 +5,7 @@
 
 import { initAccordion } from './accordion.js';
 import { initModal } from './modal.js';
+import { initConfirmModal } from './confirmModal.js';
 import { initForm } from './form.js';
 import { initPosts } from './posts.js';
 import { initTheme, watchSystemTheme } from './theme.js';
@@ -14,17 +15,18 @@ import { initTheme, watchSystemTheme } from './theme.js';
  */
 function init() {
     console.log('🚀 StarBand Fan Club - Initializing...');
-    
+
     // Инициализировать тему в первую очередь для лучшего UX
     initTheme();
     watchSystemTheme();
-    
+
     // Инициализация компонентов
     initAccordion();
     initModal();
+    initConfirmModal();
     initForm();
     initPosts();
-    
+
     console.log('✅ All components initialized successfully');
 }
 
