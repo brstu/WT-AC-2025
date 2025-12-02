@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Обзор киноновинок недели</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>Киноновинки недели</h1>
+        <button id="refresh-btn" class="refresh-btn">Обновить</button>
+      </header>
+
+      <div class="controls">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Поиск по названию..."
+          class="search-input"
+        />
+        <select id="genre-filter" class="genre-filter">
+          <option value="">Все жанры</option>
+        </select>
+      </div>
+
+      <div id="status" class="status hidden"></div>
+
+      <div id="movies-grid" class="movies-grid"></div>
+
+      <div class="pagination">
+        <button id="prev-page" disabled>Назад</button>
+        <span id="page-info">Страница 1</span>
+        <button id="next-page">Вперёд</button>
+      </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
