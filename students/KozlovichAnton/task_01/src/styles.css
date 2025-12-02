@@ -16,8 +16,8 @@
     --bg-light: #f9fafb;
     --bg-card: #fff;
     --border-color: #e5e7eb;
-    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 10%);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 10%);
     --radius: 8px;
     --radius-lg: 12px;
     --transition: all 0.3s ease;
@@ -37,8 +37,8 @@
         --bg-light: #1f2937;
         --bg-card: #1f2937;
         --border-color: #374151;
-        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
-        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3);
+        --shadow: 0 4px 6px -1px rgb(0 0 0 / 30%);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 30%);
     }
 }
 
@@ -644,7 +644,50 @@ a:hover {
     color: var(--primary-color);
 }
 
-/* Футер */
+/* Футер - ПЕРЕМЕЩАЕМ ВСЕ СЕЛЕКТОРЫ ДО .social-links */
+.footer-nav {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-nav li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-nav a {
+    color: var(--text-light);
+}
+
+.footer-nav a:focus {
+    color: var(--primary-color);
+}
+
+.footer-nav a:hover {
+    color: var(--primary-color);
+}
+
+.footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.footer-legal a {
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.footer-legal a:focus {
+    color: var(--primary-color);
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
 .site-footer {
     background-color: var(--bg-light);
     padding: 3rem 0 1.5rem;
@@ -700,27 +743,6 @@ a:hover {
     transform: translateY(-3px);
 }
 
-.footer-nav {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-nav li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-nav a {
-    color: var(--text-light);
-}
-
-.footer-nav a:focus {
-    color: var(--primary-color);
-}
-
-.footer-nav a:hover {
-    color: var(--primary-color);
-}
-
 .newsletter-form {
     display: flex;
     flex-direction: column;
@@ -744,28 +766,6 @@ a:hover {
     align-items: center;
     gap: 1rem;
     text-align: center;
-}
-
-.footer-legal {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1rem;
-    list-style: none;
-    padding: 0;
-}
-
-.footer-legal a {
-    color: var(--text-light);
-    font-size: 0.9rem;
-}
-
-.footer-legal a:focus {
-    color: var(--primary-color);
-}
-
-.footer-legal a:hover {
-    color: var(--primary-color);
 }
 
 .accessibility-info {
@@ -973,7 +973,9 @@ textarea:focus {
     outline-offset: 2px;
 }
 
-/* Анимации */
+/* УДАЛЯЕМ ДУБЛИРУЮЩИЕСЯ СЕЛЕКТОРЫ И ФИКСИМ ПОРЯДОК */
+
+/* Анимации - ФИКСИМ БАГ С ДУБЛИРОВАНИЕМ */
 @keyframes fade-in {
     from {
         opacity: 0;
@@ -985,27 +987,16 @@ textarea:focus {
     }
 }
 
-.hero {
-    animation: fade-in 0.6s ease-out;
-}
-
-.trend-card {
-    animation: fade-in 0.6s ease-out;
-}
-
-.look-card {
-    animation: fade-in 0.6s ease-out;
-}
-
-.advice-card {
-    animation: fade-in 0.6s ease-out;
-}
-
+/* ПЕРЕНЕСЕМ ВСЕ АНИМАЦИИ В ОДНО МЕСТО ПЕРЕД МЕДИАЗАПРОСАМИ */
+.hero,
+.trend-card,
+.look-card,
+.advice-card,
 .collection-card {
     animation: fade-in 0.6s ease-out;
 }
 
-/* Прогрессивное улучшение */
+/* ПУСТАЯ СТРОКА ПЕРЕД ПРАВИЛОМ */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
