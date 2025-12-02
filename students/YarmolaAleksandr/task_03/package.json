@@ -1,0 +1,37 @@
+{
+  "name": "tv-shows-rating-app",
+  "version": "1.0.0",
+  "description": "ТВ-шоу рейтинги с кэшированием, retry механизмом и accessibility",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "python -m http.server 8000 --directory src",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix",
+    "serve": "npx serve src -p 8000",
+    "build": "echo 'Статический проект - сборка не требуется'",
+    "test": "echo 'Тесты не настроены'"
+  },
+  "keywords": [
+    "tv-shows",
+    "api",
+    "cache",
+    "accessibility",
+    "fetch",
+    "retry",
+    "abort-controller",
+    "debounce",
+    "etag"
+  ],
+  "author": "YarmolaAleksandr",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexsandro007/WT-AC-2025"
+  }
+}
