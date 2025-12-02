@@ -511,15 +511,15 @@ select {
   border-color: var(--color-danger);
 }
 
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
 .form-input.error:focus,
 .form-textarea.error:focus,
 .form-select.error:focus {
   box-shadow: 0 0 0 3px rgb(239 68 68 / 20%);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
 }
 
 .form-error {
@@ -925,6 +925,7 @@ select {
     opacity: 0;
     transform: translateX(100%);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
