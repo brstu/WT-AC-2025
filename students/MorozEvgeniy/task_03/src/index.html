@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Курсы валют (TTL-Кэш, Ретраи)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>💰 Список курсов валют</h1>
+
+        <h2 id="base-currency-info">Базовая валюта: загрузка...</h2> 
+        
+        <div class="controls">
+            <button id="refresh-button">
+                Обновить курсы (Игнор кэша)
+            </button>
+        </div>
+
+        <div id="status-message" class="message">
+            Нажмите "Обновить курсы" для загрузки...
+        </div>
+
+        <ul id="currency-list" class="currency-list">
+            </ul>
+    </div>
+
+    <script src="main.js" type="module"></script>
+</body>
+</html>
