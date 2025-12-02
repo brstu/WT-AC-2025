@@ -58,14 +58,61 @@ header p {
     flex-wrap: wrap;
 }
 
+.search-group {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 200px;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-type-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.search-type-btn {
+    padding: 10px 20px;
+    border: 2px solid #e74c3c;
+    background: white;
+    color: #e74c3c;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 600;
+}
+
+.search-type-btn.active {
+    background: #e74c3c;
+    color: white;
+}
+
+.search-type-btn:hover:not(.active) {
+    background: #ffe6e6;
+}
+
 .search-input,
 .filter-select {
     padding: 12px;
     border: 2px solid #e1e5e9;
     border-radius: 8px;
     font-size: 16px;
-    flex: 1;
-    min-width: 200px;
+    width: 100%;
+}
+
+.filter-select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
 }
 
 .btn {
@@ -76,6 +123,9 @@ header p {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 .btn-primary {
@@ -87,6 +137,11 @@ header p {
     background: #c0392b;
 }
 
+.btn-primary:focus {
+    outline: 3px solid #ffb8b8;
+    outline-offset: 2px;
+}
+
 .btn-secondary {
     background: #f8f9fa;
     color: #495057;
@@ -95,6 +150,11 @@ header p {
 
 .btn-secondary:hover {
     background: #e9ecef;
+}
+
+.btn-secondary:focus {
+    outline: 3px solid #dee2e6;
+    outline-offset: 2px;
 }
 
 .status-indicators {
@@ -167,11 +227,15 @@ header p {
     box-shadow: 0 8px 32px rgb(0 0 0 / 10%);
     transition: all 0.3s ease;
     cursor: pointer;
+    outline: none;
 }
 
-.recipe-card:hover {
+.recipe-card:hover,
+.recipe-card:focus {
     transform: translateY(-5px);
     box-shadow: 0 12px 40px rgb(0 0 0 / 15%);
+    outline: 3px solid #e74c3c;
+    outline-offset: 2px;
 }
 
 .recipe-image {
@@ -281,11 +345,33 @@ header p {
     color: #2c3e50;
 }
 
+.cache-controls {
+    background: rgb(255 255 255 / 90%);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.cache-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.cache-toggle input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+}
+
 .debug-info {
-    background: rgb(255 255 255 / 90%); 
+    background: rgb(255 255 255 / 90%);
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 8px 32px rgb(0 0 0 / 10%); 
+    box-shadow: 0 8px 32px rgb(0 0 0 / 10%);
     margin-top: 30px;
 }
 
@@ -320,7 +406,7 @@ header p {
     padding: 30px;
     background: white;
     border-radius: 10px;
-    box-shadow: 0 8px 32px rgb(0 0 0 / 10%); 
+    box-shadow: 0 8px 32px rgb(0 0 0 / 10%);
     margin: 20px 0;
     font-weight: 600;
     color: #2c3e50;
@@ -343,6 +429,22 @@ header p {
     background: #f8f9fa;
     border-radius: 10px;
     margin: 20px 0;
+    border: 2px dashed #dee2e6;
+}
+
+/* Focus styles for accessibility */
+:focus {
+    outline: 3px solid #e74c3c;
+    outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 3px solid #e74c3c;
+    outline-offset: 2px;
 }
 
 @media (width <= 768px) {
@@ -355,9 +457,18 @@ header p {
         align-items: stretch;
     }
     
-    .search-input,
-    .filter-select {
+    .search-group {
         min-width: auto;
+    }
+    
+    .button-group {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .btn {
+        flex: 1;
+        justify-content: center;
     }
     
     .recipes-grid {
@@ -367,5 +478,14 @@ header p {
     .request-stats {
         flex-direction: column;
         gap: 10px;
+    }
+    
+    .search-type-toggle {
+        flex-direction: column;
+    }
+    
+    .search-type-btn {
+        width: 100%;
+        text-align: center;
     }
 }
