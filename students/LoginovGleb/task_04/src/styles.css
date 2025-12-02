@@ -492,6 +492,16 @@ select {
     box-shadow var(--transition-fast);
 }
 
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--color-gray-400);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
 .form-input:focus,
 .form-textarea:focus,
 .form-select:focus {
@@ -500,20 +510,10 @@ select {
   box-shadow: 0 0 0 3px rgb(74 108 247 / 20%);
 }
 
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: var(--color-gray-400);
-}
-
 .form-input.error,
 .form-textarea.error,
 .form-select.error {
   border-color: var(--color-danger);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
 }
 
 .form-input.error:focus,
