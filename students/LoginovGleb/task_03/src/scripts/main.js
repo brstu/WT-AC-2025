@@ -22,18 +22,18 @@ const state = {
 
 // DOM элементы
 const elements = {
-    citySearch: document.getElementById('citySearch'),
-    searchBtn: document.getElementById('searchBtn'),
-    refreshBtn: document.getElementById('refreshBtn'),
-    weatherCards: document.getElementById('weatherCards'),
-    cacheInfo: document.getElementById('cacheInfo'),
+    citySearch: document.getElementById('city-search'),
+    searchBtn: document.getElementById('search-btn'),
+    refreshBtn: document.getElementById('refresh-btn'),
+    weatherCards: document.getElementById('weather-cards'),
+    cacheInfo: document.getElementById('cache-info'),
     cityButtons: document.querySelectorAll('.city-btn'),
     // Элементы для инфинит-скролла
-    toggleInfiniteScroll: document.getElementById('toggleInfiniteScroll'),
-    citiesListContainer: document.getElementById('citiesListContainer'),
-    citiesList: document.getElementById('citiesList'),
-    loadingIndicator: document.getElementById('loadingIndicator'),
-    scrollSentinel: document.getElementById('scrollSentinel')
+    toggleInfiniteScroll: document.getElementById('toggle-infinite-scroll'),
+    citiesListContainer: document.getElementById('cities-list-container'),
+    citiesList: document.getElementById('cities-list'),
+    loadingIndicator: document.getElementById('loading-indicator'),
+    scrollSentinel: document.getElementById('scroll-sentinel')
 };
 
 /**
@@ -219,7 +219,12 @@ function createCityCard(city, fromCache = false) {
     const card = document.createElement('div');
     card.className = 'city-card';
     card.setAttribute('tabindex', '0');
-    card.setAttribute('aria-label', `${city.name}, ${city.country}. Население: ${(city.population / 1000000).toFixed(1)} миллионов`);
+    card.setAttribute(
+        'aria-label',
+        `${city.name}, ${city.country}. Население: ${(city.population / 1000000).toFixed(
+            1
+        )} миллионов`
+    );
     card.innerHTML = `
         <div class="city-card-name">
             🌍 ${city.name}
@@ -245,9 +250,9 @@ function createCityCard(city, fromCache = false) {
 
     // Клик по карточке - поиск погоды
     card.addEventListener('click', handleSelect);
-    
+
     // Поддержка клавиатуры
-    card.addEventListener('keydown', (e) => {
+    card.addEventListener('keydown', e => {
         if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
             handleSelect();
@@ -414,7 +419,11 @@ function showError(error) {
             <div class="error-icon">⚠️</div>
             <h2>Ошибка</h2>
             <p>${message}</p>
-            ${errorTypeLabel ? `<span class="error-type-badge ${errorTypeClass}">${errorTypeLabel}</span>` : ''}
+            ${
+                errorTypeLabel
+                    ? `<span class="error-type-badge ${errorTypeClass}">${errorTypeLabel}</span>`
+                    : ''
+            }
             ${errorHint}
         </div>
     `;
