@@ -12,12 +12,12 @@
     --secondary-color: #f472b6;
     --text-color: #1f2937;
     --text-light: #6b7280;
-    --bg-color: #ffffff;
+    --bg-color: #fff;
     --bg-light: #f9fafb;
-    --bg-card: #ffffff;
+    --bg-card: #fff;
     --border-color: #e5e7eb;
-    --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
     --radius: 8px;
     --radius-lg: 12px;
     --transition: all 0.3s ease;
@@ -37,8 +37,8 @@
         --bg-light: #1f2937;
         --bg-card: #1f2937;
         --border-color: #374151;
-        --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.3);
+        --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.3);
     }
 }
 
@@ -119,11 +119,16 @@ a {
     transition: var(--transition);
 }
 
-a:hover, a:focus {
+a:focus {
     color: var(--primary-dark);
     text-decoration: underline;
     outline: 2px solid var(--primary-color);
     outline-offset: 2px;
+}
+
+a:hover {
+    color: var(--primary-dark);
+    text-decoration: underline;
 }
 
 .highlight {
@@ -148,7 +153,13 @@ a:hover, a:focus {
     color: white;
 }
 
-.btn-primary:hover, .btn-primary:focus {
+.btn-primary:focus {
+    background-color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.btn-primary:hover {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
@@ -160,7 +171,12 @@ a:hover, a:focus {
     border: 2px solid var(--primary-color);
 }
 
-.btn-outline:hover, .btn-outline:focus {
+.btn-outline:focus {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-outline:hover {
     background-color: var(--primary-color);
     color: white;
 }
@@ -251,7 +267,12 @@ a:hover, a:focus {
     position: relative;
 }
 
-.nav-link:hover, .nav-link:focus {
+.nav-link:focus {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-link:hover {
     color: var(--primary-color);
     text-decoration: none;
 }
@@ -296,9 +317,13 @@ a:hover, a:focus {
     transition: var(--transition);
 }
 
-.theme-toggle:hover, .theme-toggle:focus {
+.theme-toggle:focus {
     background-color: var(--bg-light);
     outline: 2px solid var(--primary-color);
+}
+
+.theme-toggle:hover {
+    background-color: var(--bg-light);
 }
 
 .theme-toggle .fa-sun {
@@ -378,7 +403,12 @@ a:hover, a:focus {
     transition: var(--transition);
 }
 
-.trend-card:hover, .trend-card:focus-within {
+.trend-card:focus-within {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+}
+
+.trend-card:hover {
     transform: translateY(-5px);
     box-shadow: var(--shadow-lg);
 }
@@ -512,7 +542,17 @@ a:hover, a:focus {
     color: var(--text-color);
 }
 
-.filter-btn.active, .filter-btn:hover, .filter-btn:focus {
+.filter-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.filter-btn:focus {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.filter-btn:hover {
     background-color: var(--primary-color);
     color: white;
 }
@@ -648,7 +688,13 @@ a:hover, a:focus {
     transition: var(--transition);
 }
 
-.social-links a:hover, .social-links a:focus {
+.social-links a:focus {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.social-links a:hover {
     background-color: var(--primary-color);
     color: white;
     transform: translateY(-3px);
@@ -667,7 +713,11 @@ a:hover, a:focus {
     color: var(--text-light);
 }
 
-.footer-nav a:hover, .footer-nav a:focus {
+.footer-nav a:focus {
+    color: var(--primary-color);
+}
+
+.footer-nav a:hover {
     color: var(--primary-color);
 }
 
@@ -710,6 +760,14 @@ a:hover, a:focus {
     font-size: 0.9rem;
 }
 
+.footer-legal a:focus {
+    color: var(--primary-color);
+}
+
+.footer-legal a:hover {
+    color: var(--primary-color);
+}
+
 .accessibility-info {
     margin-top: 1.5rem;
     text-align: center;
@@ -722,134 +780,15 @@ a:hover, a:focus {
     margin-right: 0.5rem;
 }
 
-/* Медиазапросы для планшетов */
-@media (min-width: 601px) and (max-width: 1024px) {
-    .header-content {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    
-    .header-actions {
-        width: auto;
-        justify-content: flex-end;
-    }
-    
-    .hero {
-        flex-direction: row;
-        text-align: left;
-    }
-    
-    .hero-content {
-        text-align: left;
-        flex: 1;
-    }
-    
-    .trends-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .looks-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .footer-content {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .footer-bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-    }
-    
-    .about-content {
-        flex-direction: row;
-        align-items: center;
-    }
-}
-
-/* Медиазапросы для десктопов */
-@media (min-width: 1025px) {
-    .container {
-        padding: 0 40px;
-    }
-    
-    .header-content {
-        flex-direction: row;
-        justify-content: space-between;
-    }
-    
-    .nav-toggle {
-        display: none;
-    }
-    
-    .nav-menu {
-        display: flex;
-    }
-    
-    .header-actions {
-        width: auto;
-        justify-content: flex-end;
-    }
-    
-    .hero {
-        flex-direction: row;
-        align-items: center;
-        text-align: left;
-        min-height: 70vh;
-    }
-    
-    .hero-content {
-        flex: 1;
-        text-align: left;
-    }
-    
-    .hero-image {
-        flex: 1;
-    }
-    
-    .trends-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .looks-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    
-    .advice-grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .collections-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    
-    .about-content {
-        flex-direction: row;
-        align-items: center;
-        gap: 4rem;
-    }
-    
-    .footer-content {
-        grid-template-columns: 2fr 1fr 1fr 2fr;
-    }
-    
-    .footer-bottom {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-    }
-}
-
 /* Мобильная навигация */
-@media (max-width: 600px) {
+@media (width <= 600px) {
     .nav-toggle {
         display: block;
         position: absolute;
         top: 1rem;
         right: 20px;
     }
-    
+
     .nav-menu {
         display: none;
         flex-direction: column;
@@ -862,54 +801,172 @@ a:hover, a:focus {
         padding: 1rem 0;
         border-radius: 0 0 var(--radius) var(--radius);
     }
-    
+
     .nav-menu.active {
         display: flex;
     }
-    
+
     .nav-menu li {
         width: 100%;
         text-align: center;
     }
-    
+
     .nav-link {
         display: block;
         padding: 12px 20px;
     }
-    
+
     .header-content {
         position: relative;
     }
-    
+
     .header-actions {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .search-form {
         max-width: 100%;
     }
-    
+
     .look-details {
         flex-direction: column;
         gap: 0.5rem;
     }
-    
+
     .collections-filter {
         justify-content: flex-start;
         overflow-x: auto;
         padding-bottom: 0.5rem;
     }
-    
+
     .filter-btn {
         white-space: nowrap;
+    }
+}
+
+/* Медиазапросы для планшетов */
+@media (width >= 601px) and (width <= 1024px) {
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .header-actions {
+        width: auto;
+        justify-content: flex-end;
+    }
+
+    .hero {
+        flex-direction: row;
+        text-align: left;
+    }
+
+    .hero-content {
+        text-align: left;
+        flex: 1;
+    }
+
+    .trends-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .looks-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    .about-content {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+/* Медиазапросы для десктопов */
+@media (width >= 1025px) {
+    .container {
+        padding: 0 40px;
+    }
+
+    .header-content {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .nav-toggle {
+        display: none;
+    }
+
+    .nav-menu {
+        display: flex;
+    }
+
+    .header-actions {
+        width: auto;
+        justify-content: flex-end;
+    }
+
+    .hero {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+        min-height: 70vh;
+    }
+
+    .hero-content {
+        flex: 1;
+        text-align: left;
+    }
+
+    .hero-image {
+        flex: 1;
+    }
+
+    .trends-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .looks-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .advice-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .collections-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .about-content {
+        flex-direction: row;
+        align-items: center;
+        gap: 4rem;
+    }
+
+    .footer-content {
+        grid-template-columns: 2fr 1fr 1fr 2fr;
+    }
+
+    .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
     }
 }
 
 /* Фокус для доступности */
 button:focus,
 input:focus,
-a:focus,
 select:focus,
 textarea:focus {
     outline: 2px solid var(--primary-color);
@@ -917,7 +974,7 @@ textarea:focus {
 }
 
 /* Анимации */
-@keyframes fadeIn {
+@keyframes fade-in {
     from {
         opacity: 0;
         transform: translateY(20px);
@@ -928,8 +985,24 @@ textarea:focus {
     }
 }
 
-.hero, .trend-card, .look-card, .advice-card, .collection-card {
-    animation: fadeIn 0.6s ease-out;
+.hero {
+    animation: fade-in 0.6s ease-out;
+}
+
+.trend-card {
+    animation: fade-in 0.6s ease-out;
+}
+
+.look-card {
+    animation: fade-in 0.6s ease-out;
+}
+
+.advice-card {
+    animation: fade-in 0.6s ease-out;
+}
+
+.collection-card {
+    animation: fade-in 0.6s ease-out;
 }
 
 /* Прогрессивное улучшение */
