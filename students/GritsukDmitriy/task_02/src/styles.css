@@ -12,7 +12,7 @@
     --danger-color: #dc3545;
     --warning-color: #ffc107;
     --border-radius: 8px;
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --box-shadow: 0 4px 6px rgba(0 0 0 / 10%);
     --transition: all 0.3s ease;
 }
 
@@ -24,7 +24,7 @@
     --dark-color: #f8f9fa;
     --gray-color: #adb5bd;
     --light-gray: #343a40;
-    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    --box-shadow: 0 4px 6px rgba(0 0 0 / 30%);
 }
 
 /* Сброс и базовые стили */
@@ -180,6 +180,14 @@ h2 {
     color: var(--dark-color);
 }
 
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgb(74 111 165 / 20%);
+}
+
 .form-group input,
 .form-group select,
 .form-group textarea {
@@ -191,14 +199,6 @@ h2 {
     transition: var(--transition);
     background-color: var(--light-color);
     color: var(--dark-color);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgba(74, 111, 165, 0.2);
 }
 
 .form-group textarea {
@@ -286,9 +286,15 @@ h2 {
     font-size: 1rem;
     margin-top: 15px;
     padding: 10px;
-    background-color: rgba(40, 167, 69, 0.1);
+    background-color: rgb(40 167 69 / 10%);
     border-radius: var(--border-radius);
     text-align: center;
+}
+
+.submit-btn:disabled {
+    background-color: var(--gray-color);
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .submit-btn {
@@ -311,12 +317,6 @@ h2 {
 .submit-btn:hover:not(:disabled) {
     background-color: var(--primary-dark);
     transform: translateY(-2px);
-}
-
-.submit-btn:disabled {
-    background-color: var(--gray-color);
-    cursor: not-allowed;
-    opacity: 0.6;
 }
 
 /* Секция привычек */
@@ -359,13 +359,13 @@ h2 {
     gap: 20px;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .habits-container {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
     .habits-container {
         grid-template-columns: repeat(3, 1fr);
     }
@@ -388,11 +388,12 @@ h2 {
     transition: var(--transition);
     border: 1px solid var(--light-gray);
     position: relative;
+    animation: fade-in 0.5s ease-out;
 }
 
 .habit-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgb(0 0 0 / 15%);
 }
 
 .habit-header {
@@ -438,17 +439,17 @@ h2 {
 }
 
 .difficulty-easy {
-    background-color: rgba(40, 167, 69, 0.2);
+    background-color: rgb(40 167 69 / 20%);
     color: var(--success-color);
 }
 
 .difficulty-medium {
-    background-color: rgba(255, 193, 7, 0.2);
+    background-color: rgb(255 193 7 / 20%);
     color: var(--warning-color);
 }
 
 .difficulty-hard {
-    background-color: rgba(220, 53, 69, 0.2);
+    background-color: rgb(220 53 69 / 20%);
     color: var(--danger-color);
 }
 
@@ -516,7 +517,7 @@ h2 {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgb(0 0 0 / 50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -536,7 +537,7 @@ h2 {
     width: 90%;
     max-width: 500px;
     border-radius: var(--border-radius);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
     overflow: hidden;
 }
 
@@ -570,7 +571,7 @@ h2 {
 }
 
 .close-modal:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+    background-color: rgb(255 255 255 / 20%);
 }
 
 .modal-body {
@@ -653,12 +654,27 @@ select:focus {
     outline-offset: 2px;
 }
 
-/* Анимации */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+.theme-toggle button:hover {
+    background-color: var(--primary-color);
+    color: var(--light-color);
 }
 
-.habit-card {
-    animation: fadeIn 0.5s ease-out;
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgb(74 111 165 / 20%);
+}
+
+/* Анимации */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
