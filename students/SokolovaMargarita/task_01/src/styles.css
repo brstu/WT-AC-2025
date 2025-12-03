@@ -317,7 +317,6 @@ button[type="submit"] {
 
 /* Responsive */
 @media (width >= 600px){
-
   .nav-toggle {
     display: none;
   }
@@ -336,7 +335,6 @@ button[type="submit"] {
 }
 
 @media (width >= 1024px){
-
   .tips-grid {
     grid-template-columns: repeat(3,1fr);
   }
@@ -348,7 +346,6 @@ button[type="submit"] {
 
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce){
-
   * {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
