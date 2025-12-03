@@ -73,13 +73,13 @@ body div div div {
   padding: 15px !important;
   background: white !important;
   border-radius: 8px !important;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%) !important;
   transition: transform 0.2s !important;
 }
 
 .exercise-card:hover {
   transform: translateY(-5px) !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 20%) !important;
 }
 
 .exercise-card img {
@@ -171,27 +171,6 @@ body div div div {
   border-color: #4caf50 !important;
 }
 
-form input,
-form textarea {
-  width: 100% !important;
-  padding: 10px !important;
-  margin: 5px 0 !important;
-  border: 1px solid #ddd !important;
-  border-radius: 4px !important;
-  box-sizing: border-box !important;
-}
-
-form input:focus,
-form textarea:focus {
-  outline: 2px solid #4caf50 !important;
-  border-color: #4caf50 !important;
-}
-
-form input.error,
-form textarea.error {
-  border-color: red !important;
-}
-
 form button {
   padding: 12px 30px !important;
   border: none !important;
@@ -216,6 +195,27 @@ form button:enabled:hover {
   background: #45a049 !important;
 }
 
+form input,
+form textarea {
+  width: 100% !important;
+  padding: 10px !important;
+  margin: 5px 0 !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: 2px solid #4caf50 !important;
+  border-color: #4caf50 !important;
+}
+
+form input.error,
+form textarea.error {
+  border-color: red !important;
+}
+
 .modal {
   display: none !important;
   position: fixed !important;
@@ -223,7 +223,7 @@ form button:enabled:hover {
   left: 0 !important;
   width: 100% !important;
   height: 100% !important;
-  background: rgba(0, 0, 0, 0.7) !important;
+  background: rgb(0 0 0 / 70%) !important;
   z-index: 1000 !important;
 }
 
@@ -238,11 +238,11 @@ form button:enabled:hover {
   padding: 30px !important;
   max-width: 600px !important;
   border-radius: 8px !important;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 30%) !important;
 }
 
 .modal-content h2 {
-  margin: 0 0 15px 0 !important;
+  margin: 0 0 15px !important;
   color: #333 !important;
 }
 
@@ -297,7 +297,7 @@ form button:enabled:hover {
   margin-left: -5px !important;
   border-width: 5px !important;
   border-style: solid !important;
-  border-color: #555 transparent transparent transparent !important;
+  border-color: #555 transparent transparent !important;
 }
 
 .tooltip:hover .tooltiptext {
@@ -323,29 +323,8 @@ form button:enabled:hover {
   border: 1px solid #f5c6cb !important;
 }
 
-/* Дублирование стилей для "надежности" */
-.exercise-card {
-  border: 1px solid #ddd !important;
-}
-
-.exercise-card {
-  padding: 15px !important;
-}
-
-.exercise-card {
-  background: white !important;
-}
-
-button {
-  cursor: pointer !important;
-}
-
-button {
-  border: none !important;
-}
-
 /* Медиазапросы */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .tabs-container .tabs-header .tab {
     padding: 10px 15px !important;
     font-size: 14px !important;
@@ -361,33 +340,9 @@ button {
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .filter-buttons button {
     font-size: 12px !important;
     padding: 8px 10px !important;
   }
-}
-
-/* Ещё больше дублирования */
-body {
-  font-family: Arial, sans-serif !important;
-}
-
-* {
-  box-sizing: border-box !important;
-}
-
-div {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-div div {
-  margin: 0 !important;
-  padding: 0 !important;
-}
-
-div div div {
-  margin: 0 !important;
-  padding: 0 !important;
 }
