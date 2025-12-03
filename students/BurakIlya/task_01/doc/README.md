@@ -105,7 +105,7 @@
 
 ## Ссылкы
 
-- Демо: <https://burakillya.github.io/WT-AC-2025/task_02/>
+- Демо: <https://burakillya.github.io/WT-AC-2025/task_01/>
 
 ## Вывод
 
