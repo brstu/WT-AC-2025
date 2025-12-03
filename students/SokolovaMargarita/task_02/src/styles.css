@@ -3,13 +3,13 @@
     --secondary-color: #7f58e6;
     --accent-color: #ff6b6b;
     --background-color: #f7f9fc;
-    --card-background: #ffffff;
+    --card-background: #fff;
     --text-color: #2d3436;
     --text-secondary: #636e72;
     --border-color: #dfe6e9;
     --success-color: #2ecc71;
     --error-color: #e74c3c;
-    --shadow-color: rgba(0, 0, 0, 0.08);
+    --shadow-color: rgb(0 0 0 / 8%);
     --gradient-start: #4a90e2;
     --gradient-end: #7f58e6;
 }
@@ -19,13 +19,13 @@ body[data-theme="dark"] {
     --secondary-color: #4a90e2;
     --accent-color: #ff6b6b;
     --background-color: #1a1b1e;
-    --card-background: #2d2e32;
+    --card-background: #fff;
     --text-color: #ffffff;
     --text-secondary: #a0a0a0;
     --border-color: #3d3d3d;
     --success-color: #2ecc71;
     --error-color: #e74c3c;
-    --shadow-color: rgba(0, 0, 0, 0.3);
+    --shadow-color: rgb(0 0 0 / 30%);
     --gradient-start: #7f58e6;
     --gradient-end: #4a90e2;
 }
@@ -160,16 +160,6 @@ main {
     background-color: var(--secondary-color);
 }
 
-/* Форма */
-.form-group {
-    margin-bottom: 1rem;
-}
-
-label {
-    display: block;
-    margin-bottom: 0.5rem;
-}
-
 .form-group {
     margin-bottom: 1.5rem;
 }
@@ -195,14 +185,8 @@ textarea {
 input:focus,
 textarea:focus {
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(127, 88, 230, 0.1);
+    box-shadow: 0 0 0 3px rgb(127 88 230 / 10%);
     outline: none;
-}
-
-input:focus,
-textarea:focus {
-    outline: none;
-    border-color: var(--secondary-color);
 }
 
 .error-message {
@@ -225,15 +209,15 @@ button[type="submit"] {
     margin-top: 1rem;
 }
 
-button[type="submit"]:not(:disabled):hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px var(--shadow-color);
-}
-
 button[type="submit"]:disabled {
     opacity: 0.7;
     cursor: not-allowed;
     background: linear-gradient(135deg, #a0a0a0, #808080);
+}
+
+button[type="submit"]:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px var(--shadow-color);
 }
 
 /* Карточки книг */
@@ -270,7 +254,7 @@ button[type="submit"]:disabled {
 
 .book-card.liked {
     border: 2px solid var(--accent-color);
-    box-shadow: 0 2px 4px rgba(255, 107, 107, 0.2);
+    box-shadow: 0 2px 4px rgb(255 107 107 / 20%);
 }
 
 .book-card h3 {
@@ -342,12 +326,6 @@ button[type="submit"]:disabled {
 
 .book-actions {
     display: flex;
-    gap: 0.5rem;
-    margin-top: 1rem;
-}
-
-.book-actions {
-    display: flex;
     gap: 0.75rem;
     margin-top: 1rem;
 }
@@ -383,11 +361,8 @@ button[type="submit"]:disabled {
 .modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+    inset: 0;
+    background-color: rgb(0 0 0 / 50%);
     z-index: 1000;
 }
 
@@ -628,7 +603,7 @@ button[type="submit"]:disabled {
 }
 
 /* Адаптивность */
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .tabs {
         flex-direction: column;
     }
