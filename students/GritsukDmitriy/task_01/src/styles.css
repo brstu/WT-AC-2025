@@ -22,14 +22,6 @@ body {
     background-color: var(--primary-color);
 }
 
-/* Общие стили для контейнеров */
-.container {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-}
-
 /* Стили для заголовков */
 h1, h2, h3 {
     margin-bottom: 1rem;
@@ -54,11 +46,29 @@ h3 {
     color: var(--highlight-color);
 }
 
+/* Общие стили для контейнеров */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
 /* Стили для Header */
 header {
     background-color: var(--secondary-color);
     padding: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 10px rgb(0 0 0 / 30%);
+}
+
+/* Стили для списков */
+ul {
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+li {
+    margin-bottom: 0.5rem;
 }
 
 /* Стили для навигации */
@@ -71,6 +81,15 @@ nav ul {
 
 nav li {
     margin: 0 1rem;
+}
+
+/* Стили для ссылок */
+a {
+    color: var(--highlight-color);
+}
+
+a:hover, a:focus {
+    text-decoration: underline;
 }
 
 nav a {
@@ -98,7 +117,7 @@ section {
     padding: 2rem;
     background-color: var(--secondary-color);
     border-radius: var(--border-radius);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 /* Стили для карточек с использованием Grid */
@@ -118,21 +137,11 @@ section {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
 }
 
 .card h3 {
     margin-bottom: 1rem;
-}
-
-/* Стили для списков */
-ul {
-    padding-left: 1.5rem;
-    margin-bottom: 1rem;
-}
-
-li {
-    margin-bottom: 0.5rem;
 }
 
 /* Стили для изображений */
@@ -173,10 +182,29 @@ footer p {
     outline: 2px solid var(--text-color);
 }
 
+/* Дополнительные стили для доступности */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Стили для фокуса */
+*:focus {
+    outline: 2px solid var(--highlight-color);
+    outline-offset: 2px;
+}
+
 /* Медиа-запросы для адаптивности */
 
 /* Мобильные устройства (≤600px) */
-@media (max-width: 600px) {
+@media (width <= 600px) {
     h1 {
         font-size: 2rem;
     }
@@ -208,7 +236,7 @@ footer p {
 }
 
 /* Планшеты (601–1024px) */
-@media (min-width: 601px) and (max-width: 1024px) {
+@media (601px <= width <= 1024px) {
     .cards-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -219,36 +247,8 @@ footer p {
 }
 
 /* Десктоп (>1024px) */
-@media (min-width: 1025px) {
+@media (width >= 1025px) {
     .cards-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-}
-
-/* Дополнительные стили для доступности */
-.sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
-}
-
-/* Стили для фокуса */
-*:focus {
-    outline: 2px solid var(--highlight-color);
-    outline-offset: 2px;
-}
-
-/* Стили для ссылок */
-a {
-    color: var(--highlight-color);
-}
-
-a:hover, a:focus {
-    text-decoration: underline;
 }
