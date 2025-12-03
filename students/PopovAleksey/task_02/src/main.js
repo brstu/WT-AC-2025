@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Бургер меню
 function initBurger() {
-  var btn = document.getElementById("burgerBtn");
-  var menu = document.getElementById("navMenu");
+  var btn = document.getElementById("burger-btn");
+  var menu = document.getElementById("nav-menu");
 
   btn.onclick = function () {
     if (menu.className == "nav-menu") {
@@ -114,11 +114,11 @@ function initTabs() {
 
 // Форма с валидацией
 function initForm() {
-  var form = document.getElementById("preferencesForm");
+  var form = document.getElementById("preferences-form");
   var nameInput = document.getElementById("name");
   var emailInput = document.getElementById("email");
   var messageInput = document.getElementById("message");
-  var submitBtn = document.getElementById("submitBtn");
+  var submitBtn = document.getElementById("submit-btn");
 
   // Проверка при вводе
   nameInput.oninput = function () {
@@ -133,9 +133,9 @@ function initForm() {
 
   function validateForm() {
     var isValid = true;
-    var nameError = document.getElementById("nameError");
-    var emailError = document.getElementById("emailError");
-    var messageError = document.getElementById("messageError");
+    var nameError = document.getElementById("name-error");
+    var emailError = document.getElementById("email-error");
+    var messageError = document.getElementById("message-error");
 
     // Проверка имени
     if (nameInput.value == "") {
@@ -183,7 +183,7 @@ function initForm() {
     e.preventDefault();
 
     if (validateForm() == true) {
-      var result = document.getElementById("formResult");
+      var result = document.getElementById("form-result");
       result.innerHTML =
         "Спасибо, " + nameInput.value + "! Ваши предпочтения сохранены.";
       result.className = "success";
@@ -199,7 +199,7 @@ function initForm() {
 
 // Делегирование событий для карточек рецептов
 function initRecipeActions() {
-  var container = document.getElementById("recipesContainer");
+  var container = document.getElementById("recipes-container");
 
   container.onclick = function (e) {
     var target = e.target;
@@ -237,8 +237,8 @@ function initRecipeActions() {
 
 // Модальное окно
 function initModal() {
-  var modal = document.getElementById("ingredientsModal");
-  var closeBtn = document.getElementById("modalClose");
+  var modal = document.getElementById("ingredients-modal");
+  var closeBtn = document.getElementById("modal-close");
 
   closeBtn.onclick = function () {
     modal.className = "modal";
@@ -260,9 +260,9 @@ function initModal() {
 }
 
 function openModal(recipeId) {
-  var modal = document.getElementById("ingredientsModal");
-  var title = document.getElementById("modalTitle");
-  var list = document.getElementById("ingredientsList");
+  var modal = document.getElementById("ingredients-modal");
+  var title = document.getElementById("modal-title");
+  var list = document.getElementById("ingredients-list");
 
   var recipe = recipesData[recipeId];
 

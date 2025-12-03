@@ -11,8 +11,8 @@
       <div class="header-content">
         <h1>Генератор рецептов недели</h1>
         <nav>
-          <button class="burger-btn" id="burgerBtn">☰</button>
-          <ul class="nav-menu" id="navMenu">
+          <button class="burger-btn" id="burger-btn">☰</button>
+          <ul class="nav-menu" id="nav-menu">
             <li><a href="#recipes">Рецепты</a></li>
             <li><a href="#form">Предпочтения</a></li>
             <li><a href="#about">О нас</a></li>
@@ -24,7 +24,7 @@
     <main>
       <section id="recipes">
         <h2>Рецепты на эту неделю</h2>
-        <div class="recipes-container" id="recipesContainer">
+        <div class="recipes-container" id="recipes-container">
           <div class="recipe-card" data-id="1">
             <img src="img/pasta.jpg" alt="Паста карбонара" />
             <div class="recipe-info">
@@ -120,27 +120,26 @@
 
       <section id="form">
         <h2>Ваши предпочтения</h2>
-        <form id="preferencesForm">
+        <form id="preferences-form">
           <div class="form-group">
             <label for="name">Имя *</label>
             <input type="text" id="name" name="name" required />
-            <span class="error-message" id="nameError"></span>
+            <span class="error-message" id="name-error"></span>
           </div>
           <div class="form-group">
             <label for="email">E-mail *</label>
             <input type="text" id="email" name="email" required />
-            <span class="error-message" id="emailError"></span>
+            <span class="error-message" id="email-error"></span>
           </div>
           <div class="form-group">
             <label for="message">Сообщение (мин. 20 символов) *</label>
             <textarea id="message" name="message" rows="4" required></textarea>
-            <span class="error-message" id="messageError"></span>
+            <span class="error-message" id="message-error"></span>
           </div>
-          <button type="submit" id="submitBtn" disabled>Отправить</button>
+          <button type="submit" id="submit-btn" disabled>Отправить</button>
         </form>
-        <div id="formResult"></div>
+        <div id="form-result"></div>
       </section>
-
       <section id="about">
         <h2>О проекте</h2>
         <p>
@@ -149,11 +148,11 @@
       </section>
     </main>
 
-    <div class="modal" id="ingredientsModal">
+    <div class="modal" id="ingredients-modal">
       <div class="modal-content">
-        <button class="modal-close" id="modalClose">×</button>
-        <h3 id="modalTitle">Ингредиенты</h3>
-        <ul id="ingredientsList"></ul>
+        <button class="modal-close" id="modal-close">×</button>
+        <h3 id="modal-title">Ингредиенты</h3>
+        <ul id="ingredients-list"></ul>
       </div>
     </div>
 

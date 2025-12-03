@@ -4,11 +4,10 @@
 }
 
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #f0f0f0;
   color: #333;
 }
-
 header {
   background: #2c3e50;
   color: white;
@@ -77,7 +76,7 @@ h2 {
   border-radius: 8px;
   overflow: hidden;
   width: 300px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
 }
 
 .recipe-card img {
@@ -175,7 +174,7 @@ h2 {
   background: white;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
 }
 
 .tab-buttons {
@@ -250,7 +249,7 @@ h2 {
   display: block;
 }
 
-#submitBtn {
+#submit-btn {
   background: #3498db;
   color: white;
   padding: 12px 30px;
@@ -260,18 +259,18 @@ h2 {
   font-size: 16px;
 }
 
-#submitBtn:disabled {
+#submit-btn:disabled {
   background: #bdc3c7;
   cursor: not-allowed;
 }
 
-#formResult {
+#form-result {
   margin-top: 20px;
   padding: 15px;
   border-radius: 4px;
 }
 
-#formResult.success {
+#form-result.success {
   background: #d4edda;
   color: #155724;
 }
@@ -283,7 +282,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0 0 0 / 50%);
   justify-content: center;
   align-items: center;
   z-index: 1000;
@@ -312,13 +311,13 @@ h2 {
   cursor: pointer;
 }
 
-#ingredientsList {
+#ingredients-list {
   list-style: disc;
   padding-left: 20px;
   margin-top: 15px;
 }
 
-#ingredientsList li {
+#ingredients-list li {
   margin-bottom: 5px;
 }
 
@@ -330,7 +329,7 @@ footer {
   margin-top: 40px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .burger-btn {
     display: block;
   }
