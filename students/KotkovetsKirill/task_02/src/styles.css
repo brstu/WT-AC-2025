@@ -112,51 +112,6 @@ body div div div {
   margin: 5px 5px 5px 0 !important;
 }
 
-form input,
-form textarea {
-  width: 100% !important;
-  padding: 10px !important;
-  margin: 5px 0 !important;
-  border: 1px solid #ddd !important;
-  border-radius: 4px !important;
-  box-sizing: border-box !important;
-}
-
-form input:focus,
-form textarea:focus {
-  outline: 2px solid #4caf50 !important;
-  border-color: #4caf50 !important;
-}
-
-form input.error,
-form textarea.error {
-  border-color: red !important;
-}
-
-form button {
-  padding: 12px 30px !important;
-  border: none !important;
-  border-radius: 4px !important;
-  font-size: 16px !important;
-  cursor: pointer !important;
-  transition: background 0.3s !important;
-}
-
-form button:disabled {
-  background: #ccc !important;
-  color: #666 !important;
-  cursor: not-allowed !important;
-}
-
-form button:enabled {
-  background: #4caf50 !important;
-  color: white !important;
-}
-
-form button:enabled:hover {
-  background: #45a049 !important;
-}
-
 .exercise-card button {
   margin: 5px 5px 5px 0 !important;
   padding: 8px 12px !important;
@@ -235,6 +190,30 @@ form textarea:focus {
 form input.error,
 form textarea.error {
   border-color: red !important;
+}
+
+form button {
+  padding: 12px 30px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  transition: background 0.3s !important;
+}
+
+form button:disabled {
+  background: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+}
+
+form button:enabled {
+  background: #4caf50 !important;
+  color: white !important;
+}
+
+form button:enabled:hover {
+  background: #45a049 !important;
 }
 
 .modal {
