@@ -654,7 +654,6 @@ h2 {
     outline-offset: 2px;
 }
 
-/* Анимации */
 @keyframes fade-in {
     from {
         opacity: 0;
