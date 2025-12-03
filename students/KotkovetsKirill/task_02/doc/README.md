@@ -138,8 +138,7 @@ task_02/
 
 ## Ссылки
 
-- Рабочая демонстрация: (добавить ссылку на GitHub Pages)
-- Репозиторий: <https://github.com/>...
+- Рабочая демонстрация: <https://kirill-kotkovets.github.io/WT-AC-2025/task_02/>
 
 ## Вывод
 
