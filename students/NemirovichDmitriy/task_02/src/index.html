@@ -50,7 +50,7 @@
 
       <section id="films">
         <h2>Список фильмов</h2>
-        <div class="films-container" id="filmsContainer">
+        <div class="films-container" id="films-container">
           <div class="film-card" data-id="1">
             <img src="img/film1.jpg" alt="Постер фильма Начало" />
             <div class="film-info">
@@ -110,7 +110,7 @@
 
       <section id="form">
         <h2>Добавить фильм</h2>
-        <form id="movieForm">
+        <form id="movie-form">
           <div class="form-group">
             <label for="name">Ваше имя *</label>
             <input type="text" id="name" name="name" required />
@@ -126,17 +126,17 @@
             <textarea id="message" name="message" rows="4" required></textarea>
             <span class="error-msg"></span>
           </div>
-          <button type="submit" id="submitBtn" disabled>Отправить</button>
+          <button type="submit" id="submit-btn" disabled>Отправить</button>
         </form>
-        <div id="formResult"></div>
+        <div id="form-result"></div>
       </section>
 
       <div id="modal" class="modal" aria-hidden="true" role="dialog">
         <div class="modal-content">
           <button class="modal-close" aria-label="Закрыть">×</button>
           <iframe
-            id="trailerFrame"
-            src=""
+            id="trailer-frame"
+            src="about:blank"
             frameborder="0"
             allowfullscreen
           ></iframe>

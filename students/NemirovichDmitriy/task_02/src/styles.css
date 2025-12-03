@@ -4,7 +4,7 @@
 }
 
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #f0f0f0;
   color: #333;
 }
@@ -102,7 +102,7 @@ h2 {
 .film-card {
   background: white;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 10%);
   width: 300px;
   overflow: hidden;
 }
@@ -181,7 +181,7 @@ h2 {
   color: white;
 }
 
-#movieForm {
+#movie-form {
   background: white;
   padding: 30px;
   border-radius: 10px;
@@ -225,7 +225,7 @@ h2 {
   display: block;
 }
 
-#submitBtn {
+#submit-btn {
   background: #667eea;
   color: white;
   padding: 12px 30px;
@@ -235,12 +235,12 @@ h2 {
   font-size: 16px;
 }
 
-#submitBtn:disabled {
+#submit-btn:disabled {
   background: #ccc;
   cursor: not-allowed;
 }
 
-#formResult {
+#form-result {
   margin-top: 20px;
   padding: 15px;
   background: #d4edda;
@@ -248,7 +248,7 @@ h2 {
   display: none;
 }
 
-#formResult.show {
+#form-result.show {
   display: block;
 }
 
@@ -259,7 +259,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgb(0 0 0 / 80%);
   z-index: 1000;
   justify-content: center;
   align-items: center;
@@ -289,7 +289,7 @@ h2 {
   cursor: pointer;
 }
 
-#trailerFrame {
+#trailer-frame {
   width: 100%;
   height: 450px;
 }
@@ -302,7 +302,7 @@ footer {
   margin-top: 40px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .header-content {
     flex-direction: column;
     text-align: center;
@@ -324,7 +324,7 @@ footer {
     width: 95%;
   }
 
-  #trailerFrame {
+  #trailer-frame {
     height: 250px;
   }
 }
