@@ -121,6 +121,26 @@ form button {
   transition: background 0.3s !important;
 }
 
+.exercise-card button {
+  margin: 5px 5px 5px 0 !important;
+  padding: 8px 12px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: background 0.3s !important;
+}
+
+.filter-buttons button {
+  margin: 5px !important;
+  padding: 10px 15px !important;
+  border: 1px solid #ddd !important;
+  background: white !important;
+  cursor: pointer !important;
+  border-radius: 4px !important;
+  transition: all 0.3s !important;
+}
+
 form button:disabled {
   background: #ccc !important;
   color: #666 !important;
@@ -132,18 +152,14 @@ form button:enabled {
   color: white !important;
 }
 
-form button:enabled:hover {
-  background: #45a049 !important;
+.filter-buttons button:hover {
+  background: #4caf50 !important;
+  color: white !important;
+  border-color: #4caf50 !important;
 }
 
-.exercise-card button {
-  margin: 5px 5px 5px 0 !important;
-  padding: 8px 12px !important;
-  border: none !important;
-  border-radius: 4px !important;
-  cursor: pointer !important;
-  font-size: 14px !important;
-  transition: background 0.3s !important;
+form button:enabled:hover {
+  background: #45a049 !important;
 }
 
 .exercise-card .btn-info {
@@ -171,22 +187,6 @@ form button:enabled:hover {
 
 .exercise-card .btn-delete:hover {
   background: #e68900 !important;
-}
-
-.filter-buttons button {
-  margin: 5px !important;
-  padding: 10px 15px !important;
-  border: 1px solid #ddd !important;
-  background: white !important;
-  cursor: pointer !important;
-  border-radius: 4px !important;
-  transition: all 0.3s !important;
-}
-
-.filter-buttons button:hover {
-  background: #4caf50 !important;
-  color: white !important;
-  border-color: #4caf50 !important;
 }
 
 .filter-buttons button.active {
