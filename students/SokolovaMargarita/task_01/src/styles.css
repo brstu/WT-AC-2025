@@ -1,5 +1,5 @@
 /* Clean, opinionated stylesheet for the project */
-:root {
+:root{
   --bg: #fff;
   --fg: #072024;
   --muted: #5f6b6a;
@@ -13,7 +13,7 @@
 }
 
 /* Dark theme */
-body[data-theme="dark"] {
+body[data-theme="dark"]{
   --bg: #07101a;
   --fg: #e6eef6;
   --muted: #9aa8bd;
@@ -32,7 +32,7 @@ html, body {
   height: 100%;
 }
 
-body {
+body{
   margin: 0;
   font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
   background-color: var(--bg);
@@ -47,8 +47,8 @@ body {
   padding: 0 1rem;
 }
 
-/* Background image area */
-body::before {
+/* Background image area: keep fixed and add subtle overlay for readability */
+body::before{
   content: "";
   position: fixed;
   inset: 0;
@@ -60,7 +60,7 @@ body::before {
   background-attachment: fixed;
 }
 
-body::after {
+body::after{
   content: "";
   position: fixed;
   inset: 0;
@@ -96,8 +96,7 @@ body[data-theme="dark"]::after {
 }
 
 /* Header */
-
-.site-header {
+.site-header{
   position: fixed;
   top: 0;
   left: 0;
@@ -109,7 +108,8 @@ body[data-theme="dark"]::after {
   backdrop-filter: blur(6px);
 }
 
-body[data-theme="dark"] .site-header {
+/* Dark header override */
+body[data-theme="dark"] .site-header{
   background-color: rgb(7 16 26 / 60%);
   border-bottom: 1px solid rgb(255 255 255 / 4%);
 }
@@ -173,7 +173,7 @@ body[data-theme="dark"] .site-header {
   cursor: pointer;
 }
 
-/* Reserve space */
+/* Reserve space for fixed header */
 .site-main {
   padding-top: var(--header-height);
 }
@@ -316,7 +316,7 @@ button[type="submit"] {
 }
 
 /* Responsive */
-@media (width >= 600px) {
+@media (width >= 600px){
 
   .nav-toggle {
     display: none;
@@ -327,7 +327,36 @@ button[type="submit"] {
   }
 
   .tips-grid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2,1fr);
   }
 
-  .
+  .tip {
+    flex-direction: column;
+  }
+}
+
+@media (width >= 1024px){
+
+  .tips-grid {
+    grid-template-columns: repeat(3,1fr);
+  }
+
+  .hero h1 {
+    font-size: 2.6rem;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+
+  * {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* small helper */
+.muted {
+  color: var(--muted);
+  font-size: .95rem;
+}
