@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IT-инструменты | Лабораторная работа 04</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Навигация -->
+        <nav class="navbar">
+            <div class="container">
+                <a href="#/" class="logo">🛠️ IT-инструменты</a>
+                <div class="nav-links">
+                    <a href="#/" class="nav-link">Список</a>
+                    <a href="#/new" class="nav-link btn-primary">+ Добавить</a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <div class="container">
+                <div id="app"></div>
+            </div>
+        </main>
+
+        <!-- Toast уведомления -->
+        <div id="toast-container" class="toast-container"></div>
+    </div>
+
+    <!-- Модули -->
+    <script type="module" src="./js/app.js"></script>
+</body>
+</html>
