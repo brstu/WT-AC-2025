@@ -654,11 +654,6 @@ h2 {
     outline-offset: 2px;
 }
 
-.theme-toggle button:hover {
-    background-color: var(--primary-color);
-    color: var(--light-color);
-}
-
 /* Анимации */
 @keyframes fade-in {
     from {
@@ -669,4 +664,4 @@ h2 {
         opacity: 1;
         transform: translateY(0);
     }
-}
+} 
