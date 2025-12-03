@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Генератор рецептов недели</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>Генератор рецептов недели</h1>
+        <nav>
+          <button class="burger-btn" id="burgerBtn">☰</button>
+          <ul class="nav-menu" id="navMenu">
+            <li><a href="#recipes">Рецепты</a></li>
+            <li><a href="#form">Предпочтения</a></li>
+            <li><a href="#about">О нас</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="recipes">
+        <h2>Рецепты на эту неделю</h2>
+        <div class="recipes-container" id="recipesContainer">
+          <div class="recipe-card" data-id="1">
+            <img src="img/pasta.jpg" alt="Паста карбонара" />
+            <div class="recipe-info">
+              <h3>Паста карбонара</h3>
+              <p>Классическое итальянское блюдо</p>
+              <div class="recipe-actions">
+                <button class="like-btn">❤ Лайк</button>
+                <button class="delete-btn">🗑 Удалить</button>
+                <button class="ingredients-btn">📋 Ингредиенты</button>
+              </div>
+            </div>
+          </div>
+          <div class="recipe-card" data-id="2">
+            <img src="img/salad.jpg" alt="Греческий салат" />
+            <div class="recipe-info">
+              <h3>Греческий салат</h3>
+              <p>Легкий и полезный</p>
+              <div class="recipe-actions">
+                <button class="like-btn">❤ Лайк</button>
+                <button class="delete-btn">🗑 Удалить</button>
+                <button class="ingredients-btn">📋 Ингредиенты</button>
+              </div>
+            </div>
+          </div>
+          <div class="recipe-card" data-id="3">
+            <img src="img/soup.jpg" alt="Борщ" />
+            <div class="recipe-info">
+              <h3>Борщ</h3>
+              <p>Традиционный славянский суп</p>
+              <div class="recipe-actions">
+                <button class="like-btn">❤ Лайк</button>
+                <button class="delete-btn">🗑 Удалить</button>
+                <button class="ingredients-btn">📋 Ингредиенты</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="accordion-section">
+        <h2>Категории блюд</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              Завтраки
+            </button>
+            <div class="accordion-content" aria-hidden="true">
+              <p>
+                Омлет, каша, блины, сырники и другие завтраки на каждый день.
+              </p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              Обеды
+            </button>
+            <div class="accordion-content" aria-hidden="true">
+              <p>Супы, основные блюда, гарниры для полноценного обеда.</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              Ужины
+            </button>
+            <div class="accordion-content" aria-hidden="true">
+              <p>Легкие блюда для вечера: салаты, закуски, рыба.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tabs-section">
+        <h2>Кухни мира</h2>
+        <div class="tabs">
+          <div class="tab-buttons">
+            <button class="tab-btn active" data-tab="italian">
+              Итальянская
+            </button>
+            <button class="tab-btn" data-tab="asian">Азиатская</button>
+            <button class="tab-btn" data-tab="russian">Русская</button>
+          </div>
+          <div class="tab-content active" id="italian">
+            <p>Пицца, паста, ризотто и другие блюда солнечной Италии.</p>
+          </div>
+          <div class="tab-content" id="asian">
+            <p>Суши, рамен, вок и восточные деликатесы.</p>
+          </div>
+          <div class="tab-content" id="russian">
+            <p>Борщ, пельмени, блины - классика русской кухни.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="form">
+        <h2>Ваши предпочтения</h2>
+        <form id="preferencesForm">
+          <div class="form-group">
+            <label for="name">Имя *</label>
+            <input type="text" id="name" name="name" required />
+            <span class="error-message" id="nameError"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="text" id="email" name="email" required />
+            <span class="error-message" id="emailError"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">Сообщение (мин. 20 символов) *</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <span class="error-message" id="messageError"></span>
+          </div>
+          <button type="submit" id="submitBtn" disabled>Отправить</button>
+        </form>
+        <div id="formResult"></div>
+      </section>
+
+      <section id="about">
+        <h2>О проекте</h2>
+        <p>
+          Генератор рецептов недели поможет вам планировать питание на неделю.
+        </p>
+      </section>
+    </main>
+
+    <div class="modal" id="ingredientsModal">
+      <div class="modal-content">
+        <button class="modal-close" id="modalClose">×</button>
+        <h3 id="modalTitle">Ингредиенты</h3>
+        <ul id="ingredientsList"></ul>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Генератор рецептов. Попов Алексей</p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
