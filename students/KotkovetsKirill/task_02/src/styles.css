@@ -1,0 +1,393 @@
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+body {
+  font-family: Arial, sans-serif !important;
+  background: white !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+body div {
+  margin: 0 !important;
+}
+
+body div div {
+  margin: 0 !important;
+}
+
+body div div div {
+  margin: 0 !important;
+}
+
+.accordion-container {
+  margin-bottom: 20px !important;
+}
+
+.accordion-container .accordion-header {
+  background: #f0f0f0 !important;
+  padding: 15px !important;
+  cursor: pointer !important;
+  border: 1px solid #ddd !important;
+}
+
+.accordion-container .accordion-header span {
+  font-weight: bold !important;
+}
+
+.tabs-container {
+  margin-bottom: 30px !important;
+}
+
+.tabs-container .tabs-header {
+  display: flex !important;
+  border-bottom: 2px solid #ddd !important;
+}
+
+.tabs-container .tabs-header .tab {
+  padding: 15px 30px !important;
+  cursor: pointer !important;
+  background: #e0e0e0 !important;
+  transition: background 0.3s !important;
+}
+
+.tabs-container .tabs-header .tab:hover {
+  background: #d0d0d0 !important;
+}
+
+.tabs-container .tabs-header .tab.active {
+  background: #4caf50 !important;
+  color: white !important;
+}
+
+.tab-content {
+  padding: 20px !important;
+  background: #fafafa !important;
+}
+
+.exercise-card {
+  border: 1px solid #ddd !important;
+  padding: 15px !important;
+  background: white !important;
+  border-radius: 8px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transition: transform 0.2s !important;
+}
+
+.exercise-card:hover {
+  transform: translateY(-5px) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+}
+
+.exercise-card img {
+  width: 100% !important;
+  height: 200px !important;
+  object-fit: cover !important;
+  border-radius: 4px !important;
+  margin-bottom: 10px !important;
+}
+
+.exercise-card h3 {
+  margin: 10px 0 !important;
+  font-size: 18px !important;
+  color: #333 !important;
+}
+
+.exercise-card p {
+  margin: 5px 0 !important;
+  color: #666 !important;
+  font-size: 14px !important;
+}
+
+.exercise-card .badge {
+  display: inline-block !important;
+  padding: 4px 8px !important;
+  background: #2196f3 !important;
+  color: white !important;
+  border-radius: 4px !important;
+  font-size: 12px !important;
+  margin: 5px 5px 5px 0 !important;
+}
+
+.exercise-card button {
+  margin: 5px 5px 5px 0 !important;
+  padding: 8px 12px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 14px !important;
+  transition: background 0.3s !important;
+}
+
+.exercise-card .btn-info {
+  background: #4caf50 !important;
+  color: white !important;
+}
+
+.exercise-card .btn-info:hover {
+  background: #45a049 !important;
+}
+
+.exercise-card .btn-like {
+  background: #f44336 !important;
+  color: white !important;
+}
+
+.exercise-card .btn-like:hover {
+  background: #da190b !important;
+}
+
+.exercise-card .btn-delete {
+  background: #ff9800 !important;
+  color: white !important;
+}
+
+.exercise-card .btn-delete:hover {
+  background: #e68900 !important;
+}
+
+.filter-buttons button {
+  margin: 5px !important;
+  padding: 10px 15px !important;
+  border: 1px solid #ddd !important;
+  background: white !important;
+  cursor: pointer !important;
+  border-radius: 4px !important;
+  transition: all 0.3s !important;
+}
+
+.filter-buttons button:hover {
+  background: #4caf50 !important;
+  color: white !important;
+  border-color: #4caf50 !important;
+}
+
+.filter-buttons button.active {
+  background: #4caf50 !important;
+  color: white !important;
+  border-color: #4caf50 !important;
+}
+
+form input,
+form textarea {
+  width: 100% !important;
+  padding: 10px !important;
+  margin: 5px 0 !important;
+  border: 1px solid #ddd !important;
+  border-radius: 4px !important;
+  box-sizing: border-box !important;
+}
+
+form input:focus,
+form textarea:focus {
+  outline: 2px solid #4caf50 !important;
+  border-color: #4caf50 !important;
+}
+
+form input.error,
+form textarea.error {
+  border-color: red !important;
+}
+
+form button {
+  padding: 12px 30px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  font-size: 16px !important;
+  cursor: pointer !important;
+  transition: background 0.3s !important;
+}
+
+form button:disabled {
+  background: #ccc !important;
+  color: #666 !important;
+  cursor: not-allowed !important;
+}
+
+form button:enabled {
+  background: #4caf50 !important;
+  color: white !important;
+}
+
+form button:enabled:hover {
+  background: #45a049 !important;
+}
+
+.modal {
+  display: none !important;
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  height: 100% !important;
+  background: rgba(0, 0, 0, 0.7) !important;
+  z-index: 1000 !important;
+}
+
+.modal.show {
+  display: block !important;
+}
+
+.modal-content {
+  position: relative !important;
+  background: white !important;
+  margin: 50px auto !important;
+  padding: 30px !important;
+  max-width: 600px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+}
+
+.modal-content h2 {
+  margin: 0 0 15px 0 !important;
+  color: #333 !important;
+}
+
+.modal-content p {
+  margin: 10px 0 !important;
+  line-height: 1.6 !important;
+}
+
+.modal-content .close-modal {
+  position: absolute !important;
+  top: 10px !important;
+  right: 20px !important;
+  font-size: 30px !important;
+  cursor: pointer !important;
+  color: #999 !important;
+  transition: color 0.3s !important;
+}
+
+.modal-content .close-modal:hover {
+  color: #333 !important;
+}
+
+.tooltip {
+  position: relative !important;
+  display: inline-block !important;
+  cursor: help !important;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden !important;
+  width: 200px !important;
+  background-color: #555 !important;
+  color: #fff !important;
+  text-align: center !important;
+  border-radius: 6px !important;
+  padding: 8px !important;
+  position: absolute !important;
+  z-index: 1 !important;
+  bottom: 125% !important;
+  left: 50% !important;
+  margin-left: -100px !important;
+  opacity: 0 !important;
+  transition: opacity 0.3s !important;
+  font-size: 12px !important;
+}
+
+.tooltip .tooltiptext::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 100% !important;
+  left: 50% !important;
+  margin-left: -5px !important;
+  border-width: 5px !important;
+  border-style: solid !important;
+  border-color: #555 transparent transparent transparent !important;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+#form-result {
+  padding: 15px !important;
+  border-radius: 4px !important;
+  margin-top: 15px !important;
+}
+
+#form-result.success {
+  background: #d4edda !important;
+  color: #155724 !important;
+  border: 1px solid #c3e6cb !important;
+}
+
+#form-result.error {
+  background: #f8d7da !important;
+  color: #721c24 !important;
+  border: 1px solid #f5c6cb !important;
+}
+
+/* Дублирование стилей для "надежности" */
+.exercise-card {
+  border: 1px solid #ddd !important;
+}
+
+.exercise-card {
+  padding: 15px !important;
+}
+
+.exercise-card {
+  background: white !important;
+}
+
+button {
+  cursor: pointer !important;
+}
+
+button {
+  border: none !important;
+}
+
+/* Медиазапросы */
+@media (max-width: 768px) {
+  .tabs-container .tabs-header .tab {
+    padding: 10px 15px !important;
+    font-size: 14px !important;
+  }
+
+  #exercises-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  .modal-content {
+    margin: 20px !important;
+    padding: 20px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .filter-buttons button {
+    font-size: 12px !important;
+    padding: 8px 10px !important;
+  }
+}
+
+/* Ещё больше дублирования */
+body {
+  font-family: Arial, sans-serif !important;
+}
+
+* {
+  box-sizing: border-box !important;
+}
+
+div {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+div div {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+div div div {
+  margin: 0 !important;
+  padding: 0 !important;
+}
