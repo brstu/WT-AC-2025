@@ -37,7 +37,7 @@
 .form-group textarea:focus {
   outline: none;
   border-color: var(--primary-color);
-  box-shadow: 0 0 0 3px rgba(255, 0, 0, 0.1);
+  box-shadow: 0 0 0 3px rgb(255 0 0 / 10%);
 }
 
 .form-group input.error {
@@ -84,9 +84,9 @@
 }
 
 .btn-primary:hover {
-  background: #cc0000;
+  background: #c00;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(255, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgb(255 0 0 / 30%);
 }
 
 .btn-secondary {

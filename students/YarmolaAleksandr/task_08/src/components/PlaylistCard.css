@@ -4,13 +4,13 @@
   padding: 1.5rem;
   border: 1px solid #333;
   transition: var(--transition);
-  animation: fadeIn 0.3s ease;
+  animation: fade-in 0.3s ease;
 }
 
 .playlist-card:hover {
   border-color: var(--primary-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.2);
+  box-shadow: 0 4px 12px rgb(255 0 0 / 20%);
 }
 
 .card-header {
@@ -36,12 +36,12 @@
 }
 
 .status.public {
-  background: rgba(0, 200, 83, 0.2);
+  background: rgb(0 200 83 / 20%);
   color: var(--success);
 }
 
 .status.private {
-  background: rgba(255, 152, 0, 0.2);
+  background: rgb(255 152 0 / 20%);
   color: #ffa726;
 }
 
@@ -92,18 +92,19 @@
 }
 
 .btn-edit:hover {
-  background: rgba(33, 150, 243, 0.2);
+  background: rgb(33 150 243 / 20%);
 }
 
 .btn-delete:hover {
-  background: rgba(255, 82, 82, 0.2);
+  background: rgb(255 82 82 / 20%);
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: scale(1);

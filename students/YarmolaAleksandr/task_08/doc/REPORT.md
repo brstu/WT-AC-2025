@@ -1,6 +1,6 @@
 # Task 08 - Testing and Deployment Report
 
-**Student**: Ярмола Александр  
+**Student**: Ярмола Александр
 **Variant**: 23 - YouTube Playlist Manager  
 
 ## 📋 Task Overview
@@ -89,15 +89,16 @@ Create a fully tested and deployable web application with:
 ### 3. CI/CD Pipeline (20/20 points)
 
 #### GitHub Actions Workflow (`.github/workflows/ci.yml`)
+
 - ✅ **Lint Job**: ESLint + Prettier checks
 - ✅ **Test Job**: Unit tests with coverage reporting
 - ✅ **E2E Job**: Playwright tests on 3 browsers
 - ✅ **Build Job**: Production build with artifacts
 - ✅ **Docker Job**: Build and test Docker image
 
-**Pipeline Flow**
+#### Pipeline Flow
 
-```
+```text
 Lint → Test → E2E → Build → Docker
 ```
 
@@ -237,46 +238,46 @@ Pipeline includes Docker image testing. Can be extended with:
 
 ### Testing Results
 
-5. **Unit & Integration Tests (22/22 passed)**
+1. **Unit & Integration Tests (22/22 passed)**
 
    ![Unit Tests](./screenshots/01-unit-integration-tests.png)
    *Vitest results: validation (8), storage (5), App (4), integration (5)*
 
-6. **E2E Tests (16/16 passed on Chromium + WebKit)**
+2. **E2E Tests (16/16 passed on Chromium + WebKit)**
 
    ![E2E Tests](./screenshots/02-e2e-tests.png)
    *Playwright results: 8 scenarios × 2 browsers*
 
-7. **ESLint Success**
+3. **ESLint Success**
 
    ![ESLint](./screenshots/04-eslint-success.png)
    *Zero errors, zero warnings - clean code*
 
-8. **Prettier Formatting**
+4. **Prettier Formatting**
 
     ![Prettier](./screenshots/05-prettier.png)
     *Code formatting applied successfully*
 
 ### Docker Deployment
 
-9. **Docker Multi-stage Build**
+1. **Docker Multi-stage Build**
 
     ![Docker Build](./screenshots/14-docker-build.png)
     *Three-stage build process: deps → builder → production*
 
-10. **Docker Compose Running**
+2. **Docker Compose Running**
 
     ![Docker Compose](./screenshots/15-docker-compose.png)
     *Container started with health checks on port 3000*
 
 ### Performance & Quality
 
-11. **Lighthouse Desktop Audit**
+1. **Lighthouse Desktop Audit**
 
     ![Lighthouse Desktop](./screenshots/11-lighthouse-desktop.png)
     *Performance: 98/100, Accessibility: 100, Best Practices: 100, SEO: 100*
 
-12. **Lighthouse Mobile Audit**
+2. **Lighthouse Mobile Audit**
 
     ![Lighthouse Mobile](./screenshots/12-lighthouse-mobile.png)
     *Performance: 92/100, Accessibility: 100, Best Practices: 100, SEO: 100*
@@ -330,14 +331,14 @@ npm run preview
 | ✅ Best Practices | 100 | 100 | 100 | ✅ Perfect |
 | 🔍 SEO | 100 | 100 | 100 | ✅ Perfect |
 
-**Core Web Vitals (Desktop)**
+#### Core Web Vitals (Desktop)
 
 - FCP (First Contentful Paint): 0.6s 🟢
 - LCP (Largest Contentful Paint): 1.2s 🟢
 - TBT (Total Blocking Time): 0ms 🟢
 - CLS (Cumulative Layout Shift): 0 🟢
 
-**Optimizations Applied**
+#### Optimizations Applied
 
 - ⚡ Vite optimized build with code splitting
 - 🗜️ Gzip compression via nginx
