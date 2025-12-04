@@ -4,18 +4,18 @@ var cartCount = 0;
 var total = 0;
 
 // DOM элементы
-var productsContainer = document.getElementById("productsContainer");
-var cartBtn = document.getElementById("cartBtn");
-var cartModal = document.getElementById("cartModal");
-var modalClose = document.getElementById("modalClose");
-var cartItems = document.getElementById("cartItems");
-var cartCountEl = document.getElementById("cartCount");
-var cartTotalEl = document.getElementById("cartTotal");
-var burgerBtn = document.getElementById("burgerBtn");
-var navMenu = document.getElementById("navMenu");
-var contactForm = document.getElementById("contactForm");
-var submitBtn = document.getElementById("submitBtn");
-var formResult = document.getElementById("formResult");
+var productsContainer = document.getElementById("products-container");
+var cartBtn = document.getElementById("cart-btn");
+var cartModal = document.getElementById("cart-modal");
+var modalClose = document.getElementById("modal-close");
+var cartItems = document.getElementById("cart-items");
+var cartCountEl = document.getElementById("cart-count");
+var cartTotalEl = document.getElementById("cart-total");
+var burgerBtn = document.getElementById("burger-btn");
+var navMenu = document.getElementById("nav-menu");
+var contactForm = document.getElementById("contact-form");
+var submitBtn = document.getElementById("submit-btn");
+var formResult = document.getElementById("form-result");
 var accordion = document.getElementById("accordion");
 
 // Делегирование событий на контейнере товаров
@@ -140,9 +140,9 @@ for (var i = 0; i < accordionHeaders.length; i++) {
 var nameInput = document.getElementById("name");
 var emailInput = document.getElementById("email");
 var messageInput = document.getElementById("message");
-var nameError = document.getElementById("nameError");
-var emailError = document.getElementById("emailError");
-var messageError = document.getElementById("messageError");
+var nameError = document.getElementById("name-error");
+var emailError = document.getElementById("email-error");
+var messageError = document.getElementById("message-error");
 
 function validateName() {
   if (nameInput.value == "") {

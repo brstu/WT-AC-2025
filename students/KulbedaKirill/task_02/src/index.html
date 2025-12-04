@@ -11,19 +11,19 @@
       <div class="header-container">
         <div class="logo">MerchStore</div>
         <nav>
-          <button class="burger-btn" id="burgerBtn">
+          <button class="burger-btn" id="burger-btn">
             <span></span>
             <span></span>
             <span></span>
           </button>
-          <ul class="nav-menu" id="navMenu">
+          <ul class="nav-menu" id="nav-menu">
             <li><a href="#products">Товары</a></li>
             <li><a href="#about">О нас</a></li>
             <li><a href="#contact">Контакты</a></li>
           </ul>
         </nav>
-        <button class="cart-btn" id="cartBtn">
-          Корзина (<span id="cartCount">0</span>)
+        <button class="cart-btn" id="cart-btn">
+          Корзина (<span id="cart-count">0</span>)
         </button>
       </div>
     </header>
@@ -31,7 +31,7 @@
     <main>
       <section id="products">
         <h1>Наш мерч</h1>
-        <div class="products-container" id="productsContainer">
+        <div class="products-container" id="products-container">
           <div
             class="product-card"
             data-id="1"
@@ -139,25 +139,25 @@
 
       <section id="contact">
         <h2>Связаться с нами</h2>
-        <form id="contactForm">
+        <form id="contact-form">
           <div class="form-group">
             <label for="name">Имя *</label>
             <input type="text" id="name" name="name" />
-            <span class="error-message" id="nameError"></span>
+            <span class="error-message" id="name-error"></span>
           </div>
           <div class="form-group">
             <label for="email">E-mail *</label>
             <input type="text" id="email" name="email" />
-            <span class="error-message" id="emailError"></span>
+            <span class="error-message" id="email-error"></span>
           </div>
           <div class="form-group">
             <label for="message">Сообщение (мин. 20 символов) *</label>
             <textarea id="message" name="message" rows="4"></textarea>
-            <span class="error-message" id="messageError"></span>
+            <span class="error-message" id="message-error"></span>
           </div>
-          <button type="submit" id="submitBtn" disabled>Отправить</button>
+          <button type="submit" id="submit-btn" disabled>Отправить</button>
         </form>
-        <div id="formResult"></div>
+        <div id="form-result"></div>
       </section>
     </main>
 
@@ -166,13 +166,13 @@
     </footer>
 
     <!-- Модальное окно корзины -->
-    <div class="modal" id="cartModal">
+    <div class="modal" id="cart-modal">
       <div class="modal-content">
-        <button class="modal-close" id="modalClose">×</button>
+        <button class="modal-close" id="modal-close">×</button>
         <h2>Корзина</h2>
-        <div id="cartItems"></div>
+        <div id="cart-items"></div>
         <div class="cart-total">
-          <strong>Итого: <span id="cartTotal">0</span> ₽</strong>
+          <strong>Итого: <span id="cart-total">0</span> ₽</strong>
         </div>
       </div>
     </div>

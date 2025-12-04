@@ -72,7 +72,7 @@ nav {
 }
 
 .cart-btn {
-  background: #ff6600;
+  background: #f60;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -117,7 +117,7 @@ h2 {
   padding: 15px;
   border-radius: 8px;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
 }
 
 .product-card img {
@@ -132,7 +132,7 @@ h2 {
 }
 
 .price {
-  color: #ff6600;
+  color: #f60;
   font-size: 20px;
   font-weight: bold;
   margin: 10px 0;
@@ -206,13 +206,13 @@ h2 {
 }
 
 /* Форма */
-#contactForm {
+#contact-form {
   max-width: 500px;
   margin: 0 auto;
   background: white;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
 }
 
 .form-group {
@@ -236,8 +236,8 @@ h2 {
 
 .form-group input:focus,
 .form-group textarea:focus {
-  outline: 2px solid #ff6600;
-  border-color: #ff6600;
+  outline: 2px solid #f60;
+  border-color: #f60;
 }
 
 .error-message {
@@ -252,8 +252,8 @@ h2 {
   border-color: red;
 }
 
-#submitBtn {
-  background: #ff6600;
+#submit-btn {
+  background: #f60;
   color: white;
   border: none;
   padding: 12px 25px;
@@ -263,23 +263,23 @@ h2 {
   width: 100%;
 }
 
-#submitBtn:disabled {
+#submit-btn:disabled {
   background: #ccc;
   cursor: not-allowed;
 }
 
-#submitBtn:not(:disabled):hover {
+#submit-btn:not(:disabled):hover {
   background: #e55a00;
 }
 
-#formResult {
+#form-result {
   max-width: 500px;
   margin: 20px auto;
   padding: 15px;
   text-align: center;
 }
 
-#formResult.success {
+#form-result.success {
   background: #d4edda;
   color: #155724;
   border-radius: 5px;
@@ -293,7 +293,7 @@ h2 {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgb(0 0 0 / 50%);
   z-index: 200;
   justify-content: center;
   align-items: center;
@@ -324,7 +324,7 @@ h2 {
   cursor: pointer;
 }
 
-#cartItems {
+#cart-items {
   margin: 20px 0;
 }
 
@@ -360,7 +360,7 @@ footer {
 }
 
 /* Адаптивность */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .products-container {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -389,7 +389,7 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .products-container {
     grid-template-columns: 1fr;
   }
