@@ -8,8 +8,8 @@ import { fetchWithRetry, CacheWithTTL, NetworkError, BusinessError } from './uti
 const API_KEY = 'bd5e378503939ddaee76f12ad7a97608'; // Публичный демо-ключ
 const BASE_URL = 'https://api.openweathermap.org/data/2.5';
 
-// Кэш с TTL 10 минут (600000 мс) - увеличено для снижения нагрузки на API
-const weatherCache = new CacheWithTTL(600000);
+// Кэш с TTL 60 секунд (60000 мс)
+const weatherCache = new CacheWithTTL(60000);
 
 /**
  * Получить погоду для города
