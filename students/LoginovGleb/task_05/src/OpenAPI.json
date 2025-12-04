@@ -1,0 +1,1195 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Esports API",
+    "version": "1.0.0",
+    "description": "\n# API для управления киберспортивными турнирами и командами\n\nЭтот REST API предоставляет полный набор эндпоинтов для управления:\n- **Турнирами** - создание, редактирование, удаление и поиск турниров\n- **Командами** - управление киберспортивными командами\n\n## Возможности\n- Полный CRUD для всех ресурсов\n- Поиск по тексту\n- Фильтрация по различным полям\n- Сортировка результатов\n- Пагинация с метаданными\n- Валидация входных данных\n- Централизованная обработка ошибок\n\n## Коды статусов\n- `200` - Успешный запрос\n- `201` - Ресурс успешно создан\n- `204` - Успешное удаление (без тела ответа)\n- `400` - Некорректный запрос\n- `404` - Ресурс не найден\n- `422` - Ошибка валидации\n- `500` - Внутренняя ошибка сервера\n      ",
+    "contact": {
+      "name": "Логинов Глеб Олегович",
+      "email": "loginov@example.com"
+    },
+    "license": {
+      "name": "ISC",
+      "url": "https://opensource.org/licenses/ISC"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Development server"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Tournaments",
+      "description": "Операции с турнирами"
+    },
+    {
+      "name": "Teams",
+      "description": "Операции с командами"
+    }
+  ],
+  "paths": {
+    "/api/v1/teams": {
+      "get": {
+        "summary": "Получить список команд",
+        "description": "Возвращает список команд с поддержкой поиска, фильтрации, сортировки и пагинации",
+        "tags": [
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Поисковый запрос по названию и описанию"
+          },
+          {
+            "in": "query",
+            "name": "game",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Фильтр по игре"
+          },
+          {
+            "in": "query",
+            "name": "country",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Фильтр по стране"
+          },
+          {
+            "in": "query",
+            "name": "isActive",
+            "schema": {
+              "type": "boolean"
+            },
+            "description": "Фильтр по активности команды"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            },
+            "description": "Количество элементов на странице"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            },
+            "description": "Смещение от начала списка"
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "name",
+                "rating",
+                "foundedDate",
+                "createdAt"
+              ],
+              "default": "createdAt"
+            },
+            "description": "Поле для сортировки"
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            },
+            "description": "Порядок сортировки"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список команд",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedTeams"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка валидации параметров",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Создать новую команду",
+        "description": "Создает новую команду с указанными данными",
+        "tags": [
+          "Teams"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTeam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Команда успешно создана",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка валидации",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/teams/{id}": {
+      "get": {
+        "summary": "Получить команду по ID",
+        "description": "Возвращает информацию о конкретной команде",
+        "tags": [
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID команды"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Информация о команде",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Команда не найдена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Полностью обновить команду",
+        "description": "Полностью заменяет данные команды",
+        "tags": [
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID команды"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTeam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Команда успешно обновлена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Команда не найдена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка валидации",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Частично обновить команду",
+        "description": "Обновляет только указанные поля команды",
+        "tags": [
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID команды"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTeam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Команда успешно обновлена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Team"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Команда не найдена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка валидации",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удалить команду",
+        "description": "Удаляет команду по ID",
+        "tags": [
+          "Teams"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID команды"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Команда успешно удалена"
+          },
+          "404": {
+            "description": "Команда не найдена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tournaments": {
+      "get": {
+        "summary": "Получить список турниров",
+        "description": "Возвращает список турниров с поддержкой поиска, фильтрации, сортировки и пагинации",
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Поисковый запрос по названию и описанию"
+          },
+          {
+            "in": "query",
+            "name": "game",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Фильтр по игре"
+          },
+          {
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "upcoming",
+                "ongoing",
+                "completed",
+                "cancelled"
+              ]
+            },
+            "description": "Фильтр по статусу"
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100,
+              "default": 10
+            },
+            "description": "Количество элементов на странице"
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "default": 0
+            },
+            "description": "Смещение от начала списка"
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "name",
+                "startDate",
+                "endDate",
+                "prizePool",
+                "createdAt"
+              ],
+              "default": "createdAt"
+            },
+            "description": "Поле для сортировки"
+          },
+          {
+            "in": "query",
+            "name": "order",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "asc",
+                "desc"
+              ],
+              "default": "desc"
+            },
+            "description": "Порядок сортировки"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список турниров",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedTournaments"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка валидации параметров",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Создать новый турнир",
+        "description": "Создает новый турнир с указанными данными",
+        "tags": [
+          "Tournaments"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTournament"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Турнир успешно создан",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tournament"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка валидации",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/tournaments/{id}": {
+      "get": {
+        "summary": "Получить турнир по ID",
+        "description": "Возвращает информацию о конкретном турнире",
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID турнира"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Информация о турнире",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tournament"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Турнир не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Полностью обновить турнир",
+        "description": "Полностью заменяет данные турнира",
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID турнира"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateTournament"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Турнир успешно обновлен",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tournament"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Турнир не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка валидации",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "patch": {
+        "summary": "Частично обновить турнир",
+        "description": "Обновляет только указанные поля турнира",
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID турнира"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateTournament"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Турнир успешно обновлен",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Tournament"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Турнир не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Ошибка валидации",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удалить турнир",
+        "description": "Удаляет турнир по ID",
+        "tags": [
+          "Tournaments"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "ID турнира"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Турнир успешно удален"
+          },
+          "404": {
+            "description": "Турнир не найден",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Team": {
+        "type": "object",
+        "required": [
+          "name",
+          "tag",
+          "country",
+          "game"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор команды",
+            "example": "tm1705312800000"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название команды (1-100 символов)",
+            "example": "Natus Vincere"
+          },
+          "tag": {
+            "type": "string",
+            "description": "Тег команды (2-10 символов, только буквы и цифры)",
+            "example": "NAVI"
+          },
+          "country": {
+            "type": "string",
+            "description": "Страна команды",
+            "example": "Ukraine"
+          },
+          "game": {
+            "type": "string",
+            "description": "Основная игра команды",
+            "example": "CS2"
+          },
+          "foundedDate": {
+            "type": "string",
+            "format": "date",
+            "description": "Дата основания команды",
+            "example": "2009-12-17"
+          },
+          "logoUrl": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL логотипа команды",
+            "example": "https://example.com/navi-logo.png"
+          },
+          "rating": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10000,
+            "description": "Рейтинг команды",
+            "example": 2850
+          },
+          "isActive": {
+            "type": "boolean",
+            "description": "Активна ли команда",
+            "example": true
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "description": "Описание команды",
+            "example": "Легендарная украинская киберспортивная организация"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Дата создания записи"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Дата последнего обновления"
+          }
+        }
+      },
+      "CreateTeam": {
+        "type": "object",
+        "required": [
+          "name",
+          "tag",
+          "country",
+          "game"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "example": "Natus Vincere"
+          },
+          "tag": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10,
+            "pattern": "^[A-Za-z0-9]+$",
+            "example": "NAVI"
+          },
+          "country": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50,
+            "example": "Ukraine"
+          },
+          "game": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "example": "CS2"
+          },
+          "foundedDate": {
+            "type": "string",
+            "format": "date",
+            "example": "2009-12-17"
+          },
+          "logoUrl": {
+            "type": "string",
+            "format": "uri",
+            "example": "https://example.com/navi-logo.png"
+          },
+          "rating": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10000,
+            "default": 1000,
+            "example": 2850
+          },
+          "isActive": {
+            "type": "boolean",
+            "default": true,
+            "example": true
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "example": "Легендарная киберспортивная организация"
+          }
+        }
+      },
+      "UpdateTeam": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "tag": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 10,
+            "pattern": "^[A-Za-z0-9]+$"
+          },
+          "country": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 50
+          },
+          "game": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "foundedDate": {
+            "type": "string",
+            "format": "date"
+          },
+          "logoUrl": {
+            "type": "string",
+            "format": "uri"
+          },
+          "rating": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 10000
+          },
+          "isActive": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        }
+      },
+      "PaginatedTeams": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Team"
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "description": "Общее количество команд"
+              },
+              "limit": {
+                "type": "integer",
+                "description": "Количество элементов на странице"
+              },
+              "offset": {
+                "type": "integer",
+                "description": "Смещение от начала"
+              },
+              "hasMore": {
+                "type": "boolean",
+                "description": "Есть ли еще элементы"
+              }
+            }
+          }
+        }
+      },
+      "Tournament": {
+        "type": "object",
+        "required": [
+          "name",
+          "game",
+          "startDate",
+          "endDate"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Уникальный идентификатор турнира",
+            "example": "t1705312800000"
+          },
+          "name": {
+            "type": "string",
+            "description": "Название турнира (1-100 символов)",
+            "example": "ESL Pro League Season 20"
+          },
+          "game": {
+            "type": "string",
+            "description": "Название игры (1-50 символов)",
+            "example": "CS2"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Дата начала турнира в формате ISO 8601",
+            "example": "2025-02-01T10:00:00Z"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Дата окончания турнира в формате ISO 8601",
+            "example": "2025-02-15T22:00:00Z"
+          },
+          "prizePool": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Призовой фонд в долларах США",
+            "example": 850000
+          },
+          "maxTeams": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 128,
+            "description": "Максимальное количество команд",
+            "example": 24
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "upcoming",
+              "ongoing",
+              "completed",
+              "cancelled"
+            ],
+            "description": "Статус турнира",
+            "example": "upcoming"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "description": "Описание турнира",
+            "example": "Международный турнир высшего уровня"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Дата создания записи"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Дата последнего обновления"
+          }
+        }
+      },
+      "CreateTournament": {
+        "type": "object",
+        "required": [
+          "name",
+          "game",
+          "startDate",
+          "endDate"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100,
+            "example": "ESL Pro League Season 20"
+          },
+          "game": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50,
+            "example": "CS2"
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-02-01T10:00:00Z"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-02-15T22:00:00Z"
+          },
+          "prizePool": {
+            "type": "number",
+            "minimum": 0,
+            "default": 0,
+            "example": 850000
+          },
+          "maxTeams": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 128,
+            "default": 16,
+            "example": 24
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "upcoming",
+              "ongoing",
+              "completed",
+              "cancelled"
+            ],
+            "default": "upcoming"
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000,
+            "example": "Международный турнир высшего уровня"
+          }
+        }
+      },
+      "UpdateTournament": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 100
+          },
+          "game": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 50
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "prizePool": {
+            "type": "number",
+            "minimum": 0
+          },
+          "maxTeams": {
+            "type": "integer",
+            "minimum": 2,
+            "maximum": 128
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "upcoming",
+              "ongoing",
+              "completed",
+              "cancelled"
+            ]
+          },
+          "description": {
+            "type": "string",
+            "maxLength": 1000
+          }
+        }
+      },
+      "PaginatedTournaments": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Tournament"
+            }
+          },
+          "pagination": {
+            "type": "object",
+            "properties": {
+              "total": {
+                "type": "integer",
+                "description": "Общее количество турниров"
+              },
+              "limit": {
+                "type": "integer",
+                "description": "Количество элементов на странице"
+              },
+              "offset": {
+                "type": "integer",
+                "description": "Смещение от начала"
+              },
+              "hasMore": {
+                "type": "boolean",
+                "description": "Есть ли еще элементы"
+              }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "enum": [
+              "fail",
+              "error"
+            ]
+          },
+          "message": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
