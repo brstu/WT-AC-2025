@@ -10,6 +10,10 @@ const ChannelsPage = lazy(() => import('../pages/ChannelsPage'));
 const ChannelDetailPage = lazy(() => import('../pages/ChannelDetailPage'));
 const CreateChannelPage = lazy(() => import('../pages/CreateChannelPage'));
 const EditChannelPage = lazy(() => import('../pages/EditChannelPage'));
+const PlaylistsPage = lazy(() => import('../pages/PlaylistsPage'));
+const PlaylistDetailPage = lazy(() => import('../pages/PlaylistDetailPage'));
+const CreatePlaylistPage = lazy(() => import('../pages/CreatePlaylistPage'));
+const EditPlaylistPage = lazy(() => import('../pages/EditPlaylistPage'));
 const LoginPage = lazy(() => import('../pages/LoginPage'));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage'));
 
@@ -89,12 +93,7 @@ export const router = createBrowserRouter([
             index: true,
             element: (
               <LazyWrapper>
-                <div className="container mx-auto px-4 py-8">
-                  <h1 className="text-3xl font-bold mb-4">Playlists</h1>
-                  <p className="text-muted-foreground">
-                    Playlists functionality coming soon! For now, you can view playlists on individual channel pages.
-                  </p>
-                </div>
+                <PlaylistsPage />
               </LazyWrapper>
             ),
           },
@@ -103,12 +102,25 @@ export const router = createBrowserRouter([
             element: (
               <LazyWrapper>
                 <ProtectedRoute>
-                  <div className="container mx-auto px-4 py-8">
-                    <h1 className="text-3xl font-bold mb-4">Create Playlist</h1>
-                    <p className="text-muted-foreground">
-                      Create playlist functionality coming soon!
-                    </p>
-                  </div>
+                  <CreatePlaylistPage />
+                </ProtectedRoute>
+              </LazyWrapper>
+            ),
+          },
+          {
+            path: ':id',
+            element: (
+              <LazyWrapper>
+                <PlaylistDetailPage />
+              </LazyWrapper>
+            ),
+          },
+          {
+            path: ':id/edit',
+            element: (
+              <LazyWrapper>
+                <ProtectedRoute>
+                  <EditPlaylistPage />
                 </ProtectedRoute>
               </LazyWrapper>
             ),

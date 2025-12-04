@@ -30,7 +30,8 @@ const CreateChannelPage = () => {
       }));
 
       navigate('/channels');
-    } catch (error: any) {
+    } catch (err) {
+      const error = err as { data?: { message?: string } };
       console.error('Error creating channel:', error);
       toast.error('Failed to create channel');
       dispatch(addNotification({

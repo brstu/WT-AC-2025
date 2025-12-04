@@ -3,8 +3,9 @@ import { X } from 'lucide-react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import { removeNotification } from '../../app/appSlice';
 import { cn } from '../lib/utils';
+import type { Notification } from '../types';
 
-const NotificationItem = ({ notification }: { notification: any }) => {
+const NotificationItem = ({ notification }: { notification: Notification }) => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {

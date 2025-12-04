@@ -20,7 +20,7 @@ if (savedUser) {
     const user = JSON.parse(savedUser);
     initialState.user = user;
     initialState.isAuthenticated = true;
-  } catch (error) {
+  } catch {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
   }

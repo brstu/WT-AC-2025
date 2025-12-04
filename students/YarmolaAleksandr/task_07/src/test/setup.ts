@@ -27,9 +27,13 @@ Object.defineProperty(window, 'localStorage', {
 });
 
 // Mock IntersectionObserver
-(globalThis as any).IntersectionObserver = class IntersectionObserver {
+(globalThis as { IntersectionObserver?: typeof IntersectionObserver }).IntersectionObserver = class IntersectionObserver {
   constructor() {}
   disconnect() {}
   observe() {}
   unobserve() {}
+  takeRecords() { return []; }
+  readonly root = null;
+  readonly rootMargin = '';
+  readonly thresholds = [];
 };

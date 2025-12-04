@@ -498,7 +498,7 @@ npm run preview
 
 ### Демо
 
-**Ссылка:** [https://your-app.vercel.app](https://your-app.vercel.app)
+**Ссылка:** [https://alexsandro007.github.io/all_tasks_v23/task_07/index.html](https://alexsandro007.github.io/all_tasks_v23/task_07/index.html)
 
 ### Деплой на Vercel
 
@@ -598,6 +598,7 @@ vercel
 ```
 
 **Технические достижения:**
+
 - Полностью типизированный TypeScript код
 - Оптимистичные обновления с откатом
 - Prefetch для улучшения UX

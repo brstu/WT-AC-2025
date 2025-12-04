@@ -50,7 +50,7 @@ const LoginPage = () => {
       }));
 
       navigate('/');
-    } catch (error) {
+    } catch {
       toast.error('Login failed');
       dispatch(addNotification({
         type: 'error',
