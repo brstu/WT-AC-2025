@@ -1,0 +1,12 @@
+{
+    "name": "weather-tracker-mock-api",
+    "version": "1.0.0",
+    "description": "Mock API server для трекера погоды с поддержкой ETag",
+    "scripts": {
+        "start": "json-server --watch db.json --port 3001 --delay 300"
+    },
+    "devDependencies": {
+        "json-server": "^0.17.4"
+    }
+}
+
