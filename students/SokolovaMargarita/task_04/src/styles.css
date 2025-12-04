@@ -130,14 +130,19 @@ button{
 	transition:transform .12s ease, opacity .12s ease;
 }
 
-button:active{ transform:translateY(1px) }
+button:active{
+	transform:translateY(1px);
+}
 
-button[disabled]{ opacity:.5; cursor:not-allowed }
+button[disabled]{
+	opacity:.5;
+	cursor:not-allowed;
+}
 
 ul{
 	list-style:none;
 	padding:0;
-	margin:18px 0 0 0;
+	margin:18px 0 0;
 	display:grid;
 	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 	gap:18px;
@@ -187,7 +192,8 @@ nav {
 	gap: 18px;
 }
 
-nav a[href="#/destinations"], nav a[href="#/login"] {
+nav a[href="#/destinations"],
+nav a[href="#/login"] {
 	background: transparent;
 	color: #fff;
 	padding: 6px 12px;
@@ -215,7 +221,8 @@ nav a[href="#/destinations"], nav a[href="#/login"] {
 }
 
 /* Ensure nav-actions are fixed in top-right and large enough */
-.nav-actions, .top-row .nav-actions{
+.nav-actions,
+.top-row .nav-actions{
 	position: fixed;
 	top: 18px;
 	right: 22px;
@@ -231,7 +238,8 @@ nav a[href="#/destinations"], nav a[href="#/login"] {
 	align-items:center;
 }
 
-nav a[href="#/destinations"]:hover, nav a[href="#/login"]:hover {
+nav a[href="#/destinations"]:hover,
+nav a[href="#/login"]:hover {
 	transform: scale(1.05);
 }
 
@@ -285,27 +293,62 @@ nav a[href="#/destinations"]:hover, nav a[href="#/login"]:hover {
 	}
 }
 
-a:focus, button:focus, input:focus{
+a:focus,
+button:focus,
+input:focus{
 	outline: 3px solid rgb(79 70 229 / 16%);
 	outline-offset:3px;
 }
 
 @media (width <=900px){
-	.top-row{ flex-direction:column; align-items:flex-start }
-	form{ width:100%; margin-left:0 }
-	input[type="search"]{ width:100% }
+	.top-row{
+		flex-direction:column;
+		align-items:flex-start;
+	}
+
+	form{
+		width:100%;
+		margin-left:0;
+	}
+
+	input[type="search"]{
+		width:100%;
+	}
 }
 
 @media (width <=600px){
-	ul{ grid-template-columns: 1fr }
-	#app{ padding:18px }
-	nav { top: 10px; right: 10px; gap: 10px; }
-	nav a[href="#/destinations"], nav a[href="#/login"] { padding: 6px 16px; font-size: 1rem; }
-	.brand { top: 10px; left: 10px; padding: 6px 12px; } /* Адаптив для хедера */
+	ul{
+		grid-template-columns: 1fr;
+	}
+
+	#app{
+		padding:18px;
+	}
+
+	nav {
+		top: 10px;
+		right: 10px;
+		gap: 10px;
+	}
+
+	nav a[href="#/destinations"],
+	nav a[href="#/login"] {
+		padding: 6px 16px;
+		font-size: 1rem;
+	}
+
+	.brand {
+		top: 10px;
+		left: 10px;
+		padding: 6px 12px;
+	} /* Адаптив для хедера */
 }
 
 @media (prefers-reduced-motion:reduce){
-	*{ transition:none!important; animation:none!important }
+	*{
+		transition:none!important;
+		animation:none!important;
+	}
 }
 
 .btn-login,
@@ -339,7 +382,8 @@ a:focus, button:focus, input:focus{
 	color:var(--muted);
 }
 
-.login-form input, .login-form button{
+.login-form input,
+.login-form button{
 	font-size:1.05rem;
 	padding:12px 14px;
 }
@@ -371,6 +415,15 @@ a:focus, button:focus, input:focus{
 	margin-bottom:14px;
 }
 
+.back-button,
+.list-button{
+	background: rgb(255 255 255 / 3%);
+	color:var(--muted);
+	padding:8px 12px;
+	border-radius:8px;
+	border:1px solid rgb(255 255 255 / 2%);
+}
+
 .detail-header .back-button{
 	order:0;
 }
@@ -379,15 +432,8 @@ a:focus, button:focus, input:focus{
 	order:1;
 }
 
-.back-button, .list-button{
-	background: rgb(255 255 255 / 3%);
-	color:var(--muted);
-	padding:8px 12px;
-	border-radius:8px;
-	border:1px solid rgb(255 255 255 / 2%);
-}
-
-.back-button:hover, .list-button:hover{
+.back-button:hover,
+.list-button:hover{
 	background: rgb(255 255 255 / 5%);
 	color:#e6eef8;
 }
