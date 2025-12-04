@@ -1,0 +1,41 @@
+const validate = (schema) => (req, res, next) => {
+  try {
+    if (schema) {
+      const result = schema.parse(req.body);
+      req.body = result;
+    }
+    next();
+  } catch (error) {
+    const details = error.errors.map(err => ({
+      field: err.path.join('.'),
+      message: err.message,
+    }));
+    
+    const validationError = new Error('Ошибка валидации данных');
+    validationError.status = 422;
+    validationError.details = details;
+    next(validationError);
+  }
+};
+
+const validateQuery = (schema) => (req, res, next) => {
+  try {
+    if (schema) {
+      const result = schema.parse(req.query);
+      req.query = result;
+    }
+    next();
+  } catch (error) {
+    const details = error.errors.map(err => ({
+      field: err.path.join('.'),
+      message: err.message,
+    }));
+    
+    const validationError = new Error('Ошибка валидации параметров запроса');
+    validationError.status = 422;
+    validationError.details = details;
+    next(validationError);
+  }
+};
+
+module.exports = { validate, validateQuery };
