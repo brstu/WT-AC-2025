@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Дневник тренировок</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <h1>Дневник тренировок</h1>
+        <nav>
+          <ul>
+            <li><a href="#exercises">Упражнения</a></li>
+            <li><a href="#info">Информация</a></li>
+            <li><a href="#add">Добавить</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="exercises">
+        <div class="container">
+          <h2>Мои упражнения</h2>
+
+          <!-- Табы -->
+          <div class="tabs">
+            <div class="tabs-header">
+              <button class="tab-btn active" data-tab="all">Все</button>
+              <button class="tab-btn" data-tab="cardio">Кардио</button>
+              <button class="tab-btn" data-tab="strength">Силовые</button>
+            </div>
+            <div class="tabs-content">
+              <div class="tab-pane active" id="all">
+                <div class="cards-container" id="cards-all">
+                  <div class="card" data-id="1">
+                    <img src="img/exercise1.jpg" alt="Упражнение приседания" />
+                    <div class="card-body">
+                      <h3>Приседания</h3>
+                      <p>3 подхода по 15 повторений</p>
+                      <div class="card-actions">
+                        <button class="like-btn">♥ <span>5</span></button>
+                        <button class="done-btn">✓ Выполнено</button>
+                        <button class="delete-btn">✕ Удалить</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" data-id="2">
+                    <img src="img/exercise2.jpg" alt="Упражнение отжимания" />
+                    <div class="card-body">
+                      <h3>Отжимания</h3>
+                      <p>4 подхода по 10 повторений</p>
+                      <div class="card-actions">
+                        <button class="like-btn">♥ <span>3</span></button>
+                        <button class="done-btn">✓ Выполнено</button>
+                        <button class="delete-btn">✕ Удалить</button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card" data-id="3">
+                    <img src="img/exercise3.jpg" alt="Упражнение планка" />
+                    <div class="card-body">
+                      <h3>Планка</h3>
+                      <p>3 подхода по 60 секунд</p>
+                      <div class="card-actions">
+                        <button class="like-btn">♥ <span>7</span></button>
+                        <button class="done-btn">✓ Выполнено</button>
+                        <button class="delete-btn">✕ Удалить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="cardio">
+                <div class="cards-container" id="cards-cardio">
+                  <div class="card" data-id="4">
+                    <img src="img/exercise4.jpg" alt="Упражнение бег" />
+                    <div class="card-body">
+                      <h3>Бег</h3>
+                      <p>30 минут в среднем темпе</p>
+                      <div class="card-actions">
+                        <button class="like-btn">♥ <span>2</span></button>
+                        <button class="done-btn">✓ Выполнено</button>
+                        <button class="delete-btn">✕ Удалить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane" id="strength">
+                <div class="cards-container" id="cards-strength">
+                  <div class="card" data-id="5">
+                    <img src="img/exercise5.jpg" alt="Упражнение жим лежа" />
+                    <div class="card-body">
+                      <h3>Жим лёжа</h3>
+                      <p>4 подхода по 8 повторений</p>
+                      <div class="card-actions">
+                        <button class="like-btn">♥ <span>4</span></button>
+                        <button class="done-btn">✓ Выполнено</button>
+                        <button class="delete-btn">✕ Удалить</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="info">
+        <div class="container">
+          <h2>Информация о тренировках</h2>
+
+          <!-- Аккордеон -->
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                Как правильно разминаться?
+              </button>
+              <div class="accordion-content" aria-hidden="true">
+                <p>
+                  Разминка должна длиться 10-15 минут. Начните с легкого кардио,
+                  затем выполните динамическую растяжку. Это поможет подготовить
+                  мышцы к нагрузке и снизить риск травм.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                Сколько раз в неделю тренироваться?
+              </button>
+              <div class="accordion-content" aria-hidden="true">
+                <p>
+                  Оптимально тренироваться 3-4 раза в неделю. Между тренировками
+                  должен быть день отдыха для восстановления мышц.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-header" aria-expanded="false">
+                Что есть до и после тренировки?
+              </button>
+              <div class="accordion-content" aria-hidden="true">
+                <p>
+                  До тренировки за 1-2 часа ешьте углеводы. После тренировки в
+                  течение 30 минут употребите белок для восстановления мышц.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="add">
+        <div class="container">
+          <h2>Добавить упражнение</h2>
+
+          <button class="open-modal-btn" id="openModal">
+            Добавить новое упражнение
+          </button>
+
+          <!-- Модальное окно -->
+          <div class="modal" id="modal" aria-hidden="true">
+            <div class="modal-overlay"></div>
+            <div class="modal-content" role="dialog" aria-modal="true">
+              <button class="modal-close" aria-label="Закрыть">&times;</button>
+              <h3>Новое упражнение</h3>
+
+              <form id="exerciseForm">
+                <div class="form-group">
+                  <label for="name">Название упражнения *</label>
+                  <input type="text" id="name" name="name" required />
+                  <span class="error-message" id="nameError"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Ваш e-mail *</label>
+                  <input type="email" id="email" name="email" required />
+                  <span class="error-message" id="emailError"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="description">Описание (мин. 20 символов) *</label>
+                  <textarea
+                    id="description"
+                    name="description"
+                    rows="4"
+                    required
+                  ></textarea>
+                  <span class="error-message" id="descriptionError"></span>
+                </div>
+
+                <div class="form-group">
+                  <label for="category">Категория</label>
+                  <select id="category" name="category">
+                    <option value="all">Все</option>
+                    <option value="cardio">Кардио</option>
+                    <option value="strength">Силовые</option>
+                  </select>
+                </div>
+
+                <button
+                  type="submit"
+                  class="submit-btn"
+                  id="submitBtn"
+                  disabled
+                >
+                  Добавить
+                </button>
+              </form>
+
+              <div class="form-result" id="formResult"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Дневник тренировок. Белаш Александр.</p>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>
