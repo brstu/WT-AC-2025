@@ -158,7 +158,7 @@
         <div class="container">
           <h2>Добавить упражнение</h2>
 
-          <button class="open-modal-btn" id="openModal">
+          <button class="open-modal-btn" id="open-modal">
             Добавить новое упражнение
           </button>
 
@@ -169,17 +169,17 @@
               <button class="modal-close" aria-label="Закрыть">&times;</button>
               <h3>Новое упражнение</h3>
 
-              <form id="exerciseForm">
+              <form id="exercise-form">
                 <div class="form-group">
                   <label for="name">Название упражнения *</label>
                   <input type="text" id="name" name="name" required />
-                  <span class="error-message" id="nameError"></span>
+                  <span class="error-message" id="name-error"></span>
                 </div>
 
                 <div class="form-group">
                   <label for="email">Ваш e-mail *</label>
                   <input type="email" id="email" name="email" required />
-                  <span class="error-message" id="emailError"></span>
+                  <span class="error-message" id="email-error"></span>
                 </div>
 
                 <div class="form-group">
@@ -190,7 +190,7 @@
                     rows="4"
                     required
                   ></textarea>
-                  <span class="error-message" id="descriptionError"></span>
+                  <span class="error-message" id="description-error"></span>
                 </div>
 
                 <div class="form-group">
@@ -205,14 +205,14 @@
                 <button
                   type="submit"
                   class="submit-btn"
-                  id="submitBtn"
+                  id="submit-btn"
                   disabled
                 >
                   Добавить
                 </button>
               </form>
 
-              <div class="form-result" id="formResult"></div>
+              <div class="form-result" id="form-result"></div>
             </div>
           </div>
         </div>

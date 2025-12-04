@@ -3,15 +3,15 @@ var tabButtons = document.querySelectorAll(".tab-btn");
 var tabPanes = document.querySelectorAll(".tab-pane");
 var accordionHeaders = document.querySelectorAll(".accordion-header");
 var modal = document.getElementById("modal");
-var openModalBtn = document.getElementById("openModal");
+var openModalBtn = document.getElementById("open-modal");
 var closeModalBtn = document.querySelector(".modal-close");
 var overlay = document.querySelector(".modal-overlay");
-var form = document.getElementById("exerciseForm");
-var submitBtn = document.getElementById("submitBtn");
+var form = document.getElementById("exercise-form");
+var submitBtn = document.getElementById("submit-btn");
 var nameInput = document.getElementById("name");
 var emailInput = document.getElementById("email");
 var descriptionInput = document.getElementById("description");
-var formResult = document.getElementById("formResult");
+var formResult = document.getElementById("form-result");
 var cardsContainerAll = document.getElementById("cards-all");
 var cardsContainerCardio = document.getElementById("cards-cardio");
 var cardsContainerStrength = document.getElementById("cards-strength");
@@ -97,9 +97,9 @@ function initModal() {
 
 // Очистка ошибок
 function clearErrors() {
-  document.getElementById("nameError").textContent = "";
-  document.getElementById("emailError").textContent = "";
-  document.getElementById("descriptionError").textContent = "";
+  document.getElementById("name-error").textContent = "";
+  document.getElementById("email-error").textContent = "";
+  document.getElementById("description-error").textContent = "";
   nameInput.classList.remove("error");
   emailInput.classList.remove("error");
   descriptionInput.classList.remove("error");
@@ -108,7 +108,7 @@ function clearErrors() {
 // Валидация имени
 function validateName() {
   var value = nameInput.value;
-  var error = document.getElementById("nameError");
+  var error = document.getElementById("name-error");
   if (value.trim() == "") {
     error.textContent = "Введите название упражнения";
     nameInput.classList.add("error");
@@ -123,7 +123,7 @@ function validateName() {
 // Валидация email
 function validateEmail() {
   var value = emailInput.value;
-  var error = document.getElementById("emailError");
+  var error = document.getElementById("email-error");
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (value.trim() == "") {
     error.textContent = "Введите e-mail";
@@ -143,7 +143,7 @@ function validateEmail() {
 // Валидация описания
 function validateDescription() {
   var value = descriptionInput.value;
-  var error = document.getElementById("descriptionError");
+  var error = document.getElementById("description-error");
   if (value.trim() == "") {
     error.textContent = "Введите описание";
     descriptionInput.classList.add("error");
