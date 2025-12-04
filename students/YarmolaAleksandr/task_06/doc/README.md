@@ -30,6 +30,8 @@
 - **POST /api/v1/auth/login** - вход
 - **POST /api/v1/auth/refresh** - обновление токена
 - **POST /api/v1/auth/logout** - выход
+- **POST /api/v1/auth/forgot-password** - запрос на сброс пароля
+- **POST /api/v1/auth/reset-password** - сброс пароля по токену
 - **Middleware:** `authenticate` в `src/middleware/auth.js`
 
 **Скриншот документации API:**
@@ -211,6 +213,56 @@ Response (200):
   "message": "Logout successful"
 }
 ```
+
+#### POST /api/v1/auth/forgot-password
+
+Запрос на сброс пароля (генерация токена и отправка email)
+
+```json
+Request:
+{
+  "email": "user@example.com"
+}
+
+Response (200):
+{
+  "success": true,
+  "message": "If that email exists, a password reset link has been sent",
+  "resetToken": "a1b2c3d4..." // Only in development mode
+}
+```
+
+**Примечание:** Email отправляется через заглушку (`emailStub.js`). В production следует использовать реальный email-сервис (Nodemailer, SendGrid).
+
+#### POST /api/v1/auth/reset-password
+
+Сброс пароля с использованием токена
+
+```json
+Request:
+{
+  "token": "a1b2c3d4...",
+  "newPassword": "newSecurePassword123"
+}
+
+Response (200):
+{
+  "success": true,
+  "message": "Password reset successful. Please login with your new password."
+}
+
+Error Response (400):
+{
+  "success": false,
+  "error": "Invalid or expired reset token"
+}
+```
+
+**Безопасность:**
+- Токен хешируется перед сохранением в БД (SHA-256)
+- Срок действия токена: 1 час
+- После смены пароля все refresh токены инвалидируются
+- Токен одноразовый (удаляется после использования)
 
 ---
 
@@ -444,9 +496,36 @@ Coverage:    85.49% statements
 |-------|--------|-----------|-------------|
 | Refresh токены | 4 | ✅ 4 | POST /auth/refresh, хранение в БД с expiresAt |
 | Роли/права (admin/user) | 3 | ✅ 3 | Role enum в User модели, проверка в middleware |
-| Swagger документация | 2 | ✅ 2 | Полная интерактивная документация на /docs |
-| Rate limiting | 1 | ✅ 1 | 100 запросов за 15 минут |
+| **Password reset flow** | **3** | **✅ 3** | **POST /auth/forgot-password + /reset-password, email-заглушка** |
 | **ИТОГО БОНУСОВ** | **10** | **✅ 10** | **Все бонусы реализованы** |
+
+#### Password Reset Flow (Email-заглушка)
+
+**Реализовано:**
+
+- ✅ POST /auth/forgot-password - генерация reset токена
+- ✅ POST /auth/reset-password - смена пароля по токену
+- ✅ Email-заглушка (`emailStub.js`) для имитации отправки писем
+- ✅ Хеширование токена (SHA-256) перед сохранением в БД
+- ✅ Срок действия токена: 1 час
+- ✅ Инвалидация всех refresh токенов после смены пароля
+- ✅ Одноразовые токены (удаляются после использования)
+
+**Email-заглушка выводит в консоль:**
+
+```
+=== EMAIL STUB ===
+To: user@example.com
+Subject: Password Reset Request - Food Diary
+Reset URL: http://localhost:3000/reset-password?token=a1b2c3d4...
+Reset Token: a1b2c3d4...
+==================
+```
+
+**Поля в User модели:**
+
+- `resetPasswordToken` (String?) - хешированный токен
+- `resetPasswordExpires` (DateTime?) - дата истечения
 
 ---
 
