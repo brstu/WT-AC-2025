@@ -357,7 +357,7 @@ footer {
     transition: all 0.3s ease;
 }
 
-@media (min-width: 768px) {
+@media (width >= 768px) {
     .menu-toggle {
         display: none;
     }
