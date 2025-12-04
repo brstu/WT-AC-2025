@@ -1,7 +1,7 @@
 # Task 08 - Testing and Deployment Report
 
 **Student**: Ярмола Александр
-**Variant**: 23 - YouTube Playlist Manager  
+**Variant**: 23 - YouTube Playlist Manager
 
 ## 📋 Task Overview
 
@@ -331,14 +331,14 @@ npm run preview
 | ✅ Best Practices | 100 | 100 | 100 | ✅ Perfect |
 | 🔍 SEO | 100 | 100 | 100 | ✅ Perfect |
 
-#### Core Web Vitals (Desktop)
+### Core Web Vitals (Desktop)
 
 - FCP (First Contentful Paint): 0.6s 🟢
 - LCP (Largest Contentful Paint): 1.2s 🟢
 - TBT (Total Blocking Time): 0ms 🟢
 - CLS (Cumulative Layout Shift): 0 🟢
 
-#### Optimizations Applied
+### Optimizations Applied
 
 - ⚡ Vite optimized build with code splitting
 - 🗜️ Gzip compression via nginx
