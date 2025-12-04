@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Галерея путешествий - Откройте мир</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Избыточные div, плохая семантика -->
+    <div class="wrapper">
+      <div class="header-container">
+        <div class="header">
+          <div class="logo">
+            <div class="logo-text">🌍 Галерея путешествий</div>
+          </div>
+          <div class="nav">
+            <div class="nav-item" onclick="scrollToSection('tabs')">Страны</div>
+            <div class="nav-item" onclick="scrollToSection('reviews')">
+              Отзывы
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-content">
+        <div class="hero-section">
+          <div class="hero-text">
+            <div class="hero-title">Откройте мир вместе с нами</div>
+            <div class="hero-subtitle">
+              Исследуйте красивейшие места планеты
+            </div>
+          </div>
+        </div>
+
+        <!-- Табы стран - минимальная accessibility -->
+        <div class="section" id="tabs">
+          <div class="section-title">Популярные направления</div>
+          <div class="tabs-container">
+            <div class="tab-buttons">
+              <div class="tab-btn active" data-tab="japan">Япония</div>
+              <div class="tab-btn" data-tab="italy">Италия</div>
+              <div class="tab-btn" data-tab="norway">Норвегия</div>
+            </div>
+
+            <div class="tab-content active" id="japan">
+              <div class="country-info">
+                <div class="info-text">
+                  <div class="country-name">Япония</div>
+                  <div class="country-desc">
+                    Страна восходящего солнца с уникальной культурой
+                  </div>
+                </div>
+                <div class="gallery-grid" id="gallery-japan">
+                  <div class="gallery-item" data-img="img/japan1.jpg">
+                    <img src="img/japan1.jpg" alt="Токио" />
+                    <div class="item-title">Токио</div>
+                    <div class="item-actions">
+                      <span class="like-btn"
+                        >❤️ <span class="like-count">0</span></span
+                      >
+                      <span class="delete-btn">🗑️</span>
+                    </div>
+                  </div>
+                  <div class="gallery-item" data-img="img/japan2.jpg">
+                    <img src="img/japan2.jpg" alt="Киото" />
+                    <div class="item-title">Киото</div>
+                    <div class="item-actions">
+                      <span class="like-btn"
+                        >❤️ <span class="like-count">0</span></span
+                      >
+                      <span class="delete-btn">🗑️</span>
+                    </div>
+                  </div>
+                  <div class="gallery-item" data-img="img/japan3.jpg">
+                    <img src="img/japan3.jpg" alt="Фудзияма" />
+                    <div class="item-title">Фудзияма</div>
+                    <div class="item-actions">
+                      <span class="like-btn"
+                        >❤️ <span class="like-count">0</span></span
+                      >
+                      <span class="delete-btn">🗑️</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="italy">
+              <div class="country-info">
+                <div class="info-text">
+                  <div class="country-name">Италия</div>
+                  <div class="country-desc">
+                    Колыбель искусства и родина пиццы
+                  </div>
+                </div>
+                <div class="gallery-grid" id="gallery-italy">
+                  <div class="gallery-item" data-img="img/italy1.jpg">
+                    <img src="img/italy1.jpg" alt="Рим" />
+                    <div class="item-title">Рим</div>
+                    <div class="item-actions">
+                      <span class="like-btn"
+                        >❤️ <span class="like-count">0</span></span
+                      >
+                      <span class="delete-btn">🗑️</span>
+                    </div>
+                  </div>
+                  <div class="gallery-item" data-img="img/italy2.jpg">
+                    <img src="img/italy2.jpg" alt="Венеция" />
+                    <div class="item-title">Венеция</div>
+                    <div class="item-actions">
+                      <span class="like-btn"
+                        >❤️ <span class="like-count">0</span></span
+                      >
+                      <span class="delete-btn">🗑️</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tab-content" id="norway">
+              <div class="country-info">
+                <div class="info-text">
+                  <div class="country-name">Норвегия</div>
+                  <div class="country-desc">Фьорды и северное сияние</div>
+                </div>
+                <div class="gallery-grid" id="gallery-norway">
+                  <div class="gallery-item" data-img="img/norway1.jpg">
+                    <img src="img/norway1.jpg" alt="Осло" />
+                    <div class="item-title">Осло</div>
+                    <div class="item-actions">
+                      <span class="like-btn"
+                        >❤️ <span class="like-count">0</span></span
+                      >
+                      <span class="delete-btn">🗑️</span>
+                    </div>
+                  </div>
+                  <div class="gallery-item" data-img="img/norway2.jpg">
+                    <img src="img/norway2.jpg" alt="Берген" />
+                    <div class="item-title">Берген</div>
+                    <div class="item-actions">
+                      <span class="like-btn"
+                        >❤️ <span class="like-count">0</span></span
+                      >
+                      <span class="delete-btn">🗑️</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Форма отзыва -->
+        <div class="section" id="reviews">
+          <div class="section-title">Оставьте отзыв</div>
+          <div class="form-container">
+            <form id="reviewForm">
+              <div class="form-group">
+                <div class="label">Имя:</div>
+                <input type="text" id="name" class="form-input" />
+                <div class="error-msg" id="name-error"></div>
+              </div>
+              <div class="form-group">
+                <div class="label">Email:</div>
+                <input type="text" id="email" class="form-input" />
+                <div class="error-msg" id="email-error"></div>
+              </div>
+              <div class="form-group">
+                <div class="label">Отзыв (минимум 20 символов):</div>
+                <textarea id="message" class="form-input" rows="5"></textarea>
+                <div class="error-msg" id="message-error"></div>
+                <div class="char-counter">
+                  Символов: <span id="char-count">0</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <button
+                  type="submit"
+                  id="submitBtn"
+                  class="submit-btn"
+                  disabled
+                >
+                  Отправить
+                </button>
+              </div>
+            </form>
+            <div id="success-message" class="success-msg"></div>
+          </div>
+        </div>
+
+        <!-- Аккордеон с FAQ -->
+        <div class="section">
+          <div class="section-title">Часто задаваемые вопросы</div>
+          <div class="accordion">
+            <div class="accordion-item">
+              <div class="accordion-header">Как забронировать тур?</div>
+              <div class="accordion-content">
+                <div class="accordion-text">
+                  Свяжитесь с нами через форму обратной связи или позвоните по
+                  телефону.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">Какие документы нужны?</div>
+              <div class="accordion-content">
+                <div class="accordion-text">
+                  Загранпаспорт, виза (при необходимости) и медицинская
+                  страховка.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <div class="accordion-header">Есть ли групповые скидки?</div>
+              <div class="accordion-content">
+                <div class="accordion-text">
+                  Да, при бронировании для группы от 5 человек предоставляется
+                  скидка 10%.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-container">
+        <div class="footer">
+          <div class="footer-text">
+            © 2025 Галерея путешествий. Все права защищены.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div id="modal" class="modal">
+      <div class="modal-overlay"></div>
+      <div class="modal-content">
+        <div class="modal-close">×</div>
+        <div class="modal-body">
+          <img id="modal-img" src="" alt="Увеличенное фото" />
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
