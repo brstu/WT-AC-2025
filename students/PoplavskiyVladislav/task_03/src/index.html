@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA APOD Gallery | Лабораторная работа 03</title>
+    <meta name="api-key" content="y6hXK61eTxSwPJMOuxVkrJArQpcynRbHif7Glu8A">
+    <meta name="description" content="Галерея NASA Astronomy Picture of the Day с личным API ключом, кэшированием и асинхронными запросами">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌌 NASA Astronomy Picture of the Day</h1>
+            <p class="subtitle">Лабораторная работа 03: Асинхронность и HTTP‑кэш | Личный API ключ</p>
+        </header>
+
+        <div class="api-status-bar" id="apiStatusBar">
+            <div class="status-item">
+                <span class="status-label">API:</span>
+                <span class="status-value" id="apiStatus">Проверка...</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Запросы:</span>
+                <span class="status-value" id="requestCount">0/1000</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Время ответа:</span>
+                <span class="status-value" id="responseTime">0 мс</span>
+            </div>
+            <div class="status-item">
+                <span class="status-label">Кэш:</span>
+                <span class="status-value" id="cacheStatusMini">Активен</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="startDate">Дата начала:</label>
+                <input type="date" id="startDate" aria-label="Дата начала">
+            </div>
+            
+            <div class="control-group">
+                <label for="endDate">Дата окончания:</label>
+                <input type="date" id="endDate" aria-label="Дата окончания">
+            </div>
+            
+            <div class="control-group">
+                <label for="countSelect">Количество:</label>
+                <select id="countSelect" aria-label="Количество изображений">
+                    <option value="5">5 изображений</option>
+                    <option value="10" selected>10 изображений</option>
+                    <option value="15">15 изображений</option>
+                    <option value="20">20 изображений</option>
+                    <option value="30">30 изображений</option>
+                </select>
+            </div>
+            
+            <div class="buttons-group">
+                <button id="loadBtn" class="btn-primary">
+                    <span class="btn-text">🚀 Загрузить</span>
+                    <span class="spinner" style="display: none;"></span>
+                </button>
+                
+                <button id="refreshBtn" class="btn-secondary" title="Обновить данные (игнорировать кэш)">
+                    🔄 Обновить
+                </button>
+                
+                <button id="clearCacheBtn" class="btn-secondary" title="Очистить весь кэш">
+                    🗑️ Очистить кэш
+                </button>
+                
+                <button id="toggleMockBtn" class="btn-secondary" title="Переключить режим работы API">
+                    🔧 Режим API
+                </button>
+            </div>
+        </div>
+
+        <div class="cache-controls">
+            <label class="cache-toggle">
+                <input type="checkbox" id="cacheToggle" checked>
+                <span>Использовать кэш</span>
+            </label>
+            <div class="cache-info-mini">
+                <span>Ключ: <span id="apiKeyStatus" class="key-status valid">✅ Активен</span></span>
+                <span>Режим: <span id="apiMode" class="mode-indicator real">🌐 Реальный API</span></span>
+            </div>
+        </div>
+
+        <div id="statusMessage" class="status-message" aria-live="polite"></div>
+
+        <main>
+            <div id="apodContainer" class="apod-grid">
+                <!-- Скелетоны будут добавлены через JS -->
+            </div>
+
+            <div class="pagination" id="pagination"></div>
+        </main>
+
+        <section class="cache-info" aria-labelledby="cacheStatsTitle">
+            <h3 id="cacheStatsTitle">📊 Статистика кэширования и производительности</h3>
+            <div class="stats-grid">
+                <div class="stat-card cache-hit">
+                    <div class="stat-value" id="cacheHits">0</div>
+                    <div class="stat-label">Попадания в кэш</div>
+                    <div class="stat-desc">Данные из памяти</div>
+                </div>
+                
+                <div class="stat-card cache-miss">
+                    <div class="stat-value" id="cacheMisses">0</div>
+                    <div class="stat-label">Сетевые запросы</div>
+                    <div class="stat-desc">К NASA API</div>
+                </div>
+                
+                <div class="stat-card cache-size">
+                    <div class="stat-value" id="cacheSize">0</div>
+                    <div class="stat-label">Записей в кэше</div>
+                    <div class="stat-desc">TTL: 24 часа</div>
+                </div>
+                
+                <div class="stat-card performance">
+                    <div class="stat-value" id="cacheEfficiency">0%</div>
+                    <div class="stat-label">Эффективность</div>
+                    <div class="stat-desc">Экономия трафика</div>
+                </div>
+            </div>
+            
+            <div class="api-stats">
+                <h4>📈 Статистика API запросов</h4>
+                <div class="stats-details">
+                    <div class="stat-row">
+                        <span>Всего запросов:</span>
+                        <span id="totalRequests">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Успешных:</span>
+                        <span id="successfulRequests">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>С ошибками:</span>
+                        <span id="failedRequests">0</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Среднее время:</span>
+                        <span id="avgResponseTime">0 мс</span>
+                    </div>
+                    <div class="stat-row">
+                        <span>Лимит в час:</span>
+                        <span>1000 запросов</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cache-details">
+                <details>
+                    <summary>🔍 Детальная информация о работе приложения</summary>
+                    <div class="details-content">
+                        <div class="detail-section">
+                            <h5>⚙️ Настройки API</h5>
+                            <p><strong>Ключ:</strong> <code id="maskedKey">y6hX...7Glu8A</code></p>
+                            <p><strong>Базовая ссылка:</strong> <code>https://api.nasa.gov/planetary/apod</code></p>
+                            <p><strong>Интервал запросов:</strong> 500 мс</p>
+                            <p><strong>Таймаут:</strong> 10 секунд</p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h5>💾 Кэширование</h5>
+                            <p><strong>Тип кэша:</strong> In-memory Map + Service Worker</p>
+                            <p><strong>Время жизни:</strong> 24 часа (автоочистка)</p>
+                            <p><strong>Максимальный размер:</strong> 50 записей</p>
+                            <p><strong>Стратегия:</strong> Cache First для статики, Network First для API</p>
+                        </div>
+                        
+                        <div class="detail-section">
+                            <h5>🔄 Ретраи и обработка ошибок</h5>
+                            <p><strong>Повторные попытки:</strong> 1 (при ошибках сети)</p>
+                            <p><strong>Задержка:</strong> Экспоненциальная (1000 мс, 2000 мс)</p>
+                            <p><strong>Обработка 429:</strong> Автоматическая пауза + уведомление</p>
+                            <p><strong>Fallback:</strong> Автопереключение на mock данные</p>
+                        </div>
+                        
+                        <div class="action-buttons">
+                            <button id="viewCacheBtn" class="btn-small">📁 Посмотреть кэш</button>
+                            <button id="resetStatsBtn" class="btn-small">🔄 Сбросить статистику</button>
+                            <button id="testApiBtn" class="btn-small">🧪 Тест API</button>
+                            <button id="exportStatsBtn" class="btn-small">📤 Экспорт данных</button>
+                        </div>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <footer>
+            <p>Лабораторная работа 03: Асинхронность и HTTP‑кэш | ФИО студента | Группа</p>
+            <p>Используется личный API ключ NASA (y6hX...7Glu8A) | Лимит: 1000 запросов/час</p>
+            <p class="tech-info">Технологии: JavaScript (ES6+), Fetch API, AbortController, Service Workers, CSS Grid, PWA</p>
+            <p class="timestamp" id="pageTimestamp">Загружено: <span id="currentTime"></span></p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно для изображений -->
+    <div id="imageModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">🌌 Просмотр изображения NASA</h2>
+                <button class="modal-close" aria-label="Закрыть" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="image-container">
+                    <img id="modalImage" alt="" class="modal-image">
+                    <div class="image-loading" id="imageLoading">Загрузка...</div>
+                </div>
+                <div class="image-info">
+                    <h3 id="modalImageTitle"></h3>
+                    <div class="image-meta">
+                        <span class="meta-item" id="modalImageDate"></span>
+                        <span class="meta-item" id="modalImageCopyright"></span>
+                        <span class="meta-item" id="modalImageType"></span>
+                    </div>
+                    <p id="modalImageExplanation"></p>
+                    <div class="image-actions">
+                        <button onclick="downloadImage()" class="btn-small">💾 Скачать</button>
+                        <button onclick="shareImage()" class="btn-small">📤 Поделиться</button>
+                        <a id="imageSourceLink" href="#" target="_blank" class="btn-small">🔗 Источник</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Диалог для просмотра кэша -->
+    <dialog id="cacheDialog">
+        <div class="dialog-content">
+            <h2>📂 Содержимое кэша</h2>
+            <div class="dialog-tabs">
+                <button class="tab-btn active" data-tab="memory">🧠 In-memory кэш</button>
+                <button class="tab-btn" data-tab="serviceWorker">⚙️ Service Worker</button>
+                <button class="tab-btn" data-tab="localStorage">💾 LocalStorage</button>
+            </div>
+            
+            <div class="tab-content active" id="memoryTab">
+                <div id="memoryCacheContents" class="cache-contents">
+                    <p class="empty-message">Загружаем данные кэша...</p>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="serviceWorkerTab">
+                <div id="swCacheContents" class="cache-contents">
+                    <p class="empty-message">Service Worker кэш пуст или неактивен</p>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="localStorageTab">
+                <div id="lsCacheContents" class="cache-contents">
+                    <p class="empty-message">Данные в LocalStorage отсутствуют</p>
+                </div>
+            </div>
+            
+            <div class="cache-summary">
+                <div class="summary-item">
+                    <span>Общий размер:</span>
+                    <span id="totalCacheSize">0 KB</span>
+                </div>
+                <div class="summary-item">
+                    <span>Записей:</span>
+                    <span id="totalCacheItems">0</span>
+                </div>
+                <div class="summary-item">
+                    <span>Экономия трафика:</span>
+                    <span id="trafficSaved">0 KB</span>
+                </div>
+            </div>
+            
+            <div class="dialog-actions">
+                <button onclick="clearSelectedCache()" class="btn-danger">🗑️ Очистить выбранный кэш</button>
+                <button onclick="document.getElementById('cacheDialog').close()">Закрыть</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Диалог тестирования API -->
+    <dialog id="apiTestDialog">
+        <div class="dialog-content">
+            <h2>🧪 Тестирование API NASA</h2>
+            <div class="test-controls">
+                <div class="test-group">
+                    <label for="testEndpoint">Эндпоинт:</label>
+                    <select id="testEndpoint">
+                        <option value="apod">APOD (Astronomy Picture of the Day)</option>
+                        <option value="count">APOD с количеством</option>
+                        <option value="date">APOD по конкретной дате</option>
+                        <option value="range">APOD по диапазону дат</option>
+                    </select>
+                </div>
+                
+                <div class="test-group" id="testParams">
+                    <!-- Параметры будут добавлены динамически -->
+                </div>
+                
+                <div class="test-group">
+                    <label for="testUseCache">Использовать кэш:</label>
+                    <input type="checkbox" id="testUseCache" checked>
+                </div>
+            </div>
+            
+            <div class="test-results">
+                <h3>Результаты теста:</h3>
+                <div id="testOutput" class="test-output">
+                    <p>Нажмите "Запустить тест" для проверки API</p>
+                </div>
+                
+                <div class="test-metrics">
+                    <div class="metric">
+                        <span>Статус:</span>
+                        <span id="testStatus">—</span>
+                    </div>
+                    <div class="metric">
+                        <span>Время:</span>
+                        <span id="testTime">—</span>
+                    </div>
+                    <div class="metric">
+                        <span>Размер:</span>
+                        <span id="testSize">—</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="dialog-actions">
+                <button onclick="runApiTest()" class="btn-primary">🚀 Запустить тест</button>
+                <button onclick="document.getElementById('apiTestDialog').close()">Закрыть</button>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Уведомления -->
+    <div id="notificationContainer" class="notification-container"></div>
+
+    <script src="config.js"></script>
+    <script src="api-status.js"></script>
+    <script src="mock-api.js"></script>
+    <script src="app.js"></script>
+    <script>
+        // Обновляем время загрузки страницы
+        document.getElementById('currentTime').textContent = new Date().toLocaleString('ru-RU');
+        
+        // Регистрация Service Worker
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('✅ Service Worker зарегистрирован:', registration.scope);
+                        updateSwStatus(true);
+                    })
+                    .catch(error => {
+                        console.log('❌ Ошибка регистрации ServiceWorker:', error);
+                        updateSwStatus(false);
+                    });
+            });
+        }
+        
+        function updateSwStatus(active) {
+            const status = document.getElementById('cacheStatusMini');
+            if (status) {
+                status.textContent = active ? 'SW Активен' : 'SW Неактивен';
+                status.style.color = active ? '#28a745' : '#dc3545';
+            }
+        }
+        
+        // Показываем маскированный ключ
+        document.getElementById('maskedKey').textContent = window.NASA_CONFIG 
+            ? window.NASA_CONFIG.maskKey(window.NASA_CONFIG.API_KEY) 
+            : 'y6hX...7Glu8A';
+    </script>
+</body>
+</html>

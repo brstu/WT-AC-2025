@@ -1,0 +1,1603 @@
+/* NASA APOD Gallery - Полные стили */
+:root {
+    /* Цветовая палитра NASA */
+    --nasa-blue: #0b3d91;
+    --nasa-red: #fc3d21;
+    --nasa-dark: #1a1a2e;
+    --nasa-space: #16213e;
+    --nasa-light: #8b9dc3;
+    --nasa-white: #f8f9fa;
+    
+    /* Статусные цвета */
+    --success: #28a745;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --info: #17a2b8;
+    --purple: #6f42c1;
+    
+    /* Отступы и размеры */
+    --border-radius: 12px;
+    --shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.35);
+    --transition: all 0.3s ease;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: var(--nasa-white);
+    background: linear-gradient(135deg, var(--nasa-dark) 0%, var(--nasa-space) 100%);
+    min-height: 100vh;
+    padding: 20px;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 50%, rgba(11, 61, 145, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(252, 61, 33, 0.05) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 30px;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+}
+
+.container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--nasa-blue), var(--nasa-red));
+}
+
+/* Заголовок */
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+h1 {
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, var(--nasa-blue), var(--nasa-red));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.subtitle {
+    color: var(--nasa-light);
+    font-size: 1.1rem;
+    opacity: 0.9;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.5;
+}
+
+/* Панель статуса API */
+.api-status-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.status-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+}
+
+.status-label {
+    color: var(--nasa-light);
+    font-weight: 600;
+    min-width: 70px;
+}
+
+.status-value {
+    font-weight: 600;
+    color: var(--nasa-white);
+    padding: 4px 10px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 6px;
+    min-width: 80px;
+    text-align: center;
+}
+
+#apiStatus[style*="color: #28a745"]::before {
+    content: '● ';
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Элементы управления */
+.controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+    padding: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.control-group label {
+    font-weight: 600;
+    color: var(--nasa-light);
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.control-group label::before {
+    font-size: 1.1em;
+}
+
+#startDate-label::before { content: '📅'; }
+#endDate-label::before { content: '📅'; }
+#countSelect-label::before { content: '🖼️'; }
+
+.buttons-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+button {
+    padding: 14px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 140px;
+    position: relative;
+    overflow: hidden;
+}
+
+button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+button:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--nasa-blue), #1e56d0);
+    color: white;
+    box-shadow: 0 4px 15px rgba(11, 61, 145, 0.4);
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(11, 61, 145, 0.6);
+}
+
+.btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.btn-secondary {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--nasa-white);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, var(--danger), #e35d6a);
+    color: white;
+}
+
+.btn-danger:hover {
+    background: linear-gradient(135deg, #c82333, #e35d6a);
+}
+
+.btn-small {
+    padding: 8px 16px;
+    font-size: 14px;
+    min-width: auto;
+    gap: 6px;
+}
+
+.spinner {
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Поля ввода */
+input, select {
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--nasa-white);
+    font-size: 16px;
+    transition: var(--transition);
+    font-family: inherit;
+}
+
+input:hover, select:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--nasa-blue);
+    box-shadow: 0 0 0 3px rgba(11, 61, 145, 0.3);
+    background: rgba(255, 255, 255, 0.12);
+}
+
+/* Управление кэшем */
+.cache-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.cache-toggle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    padding: 5px;
+    border-radius: 6px;
+    transition: background 0.3s;
+}
+
+.cache-toggle:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.cache-toggle input[type="checkbox"] {
+    width: 22px;
+    height: 22px;
+    cursor: pointer;
+    accent-color: var(--nasa-blue);
+}
+
+.cache-info-mini {
+    display: flex;
+    gap: 20px;
+    font-size: 0.9rem;
+    color: var(--nasa-light);
+    flex-wrap: wrap;
+}
+
+.cache-info-mini span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.key-status {
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+}
+
+.key-status.valid {
+    background: rgba(40, 167, 69, 0.2);
+    color: #28a745;
+}
+
+.key-status.invalid {
+    background: rgba(220, 53, 69, 0.2);
+    color: #dc3545;
+}
+
+.mode-indicator {
+    padding: 2px 10px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.mode-indicator.real {
+    background: rgba(11, 61, 145, 0.3);
+    color: #4dabf7;
+}
+
+.mode-indicator.mock {
+    background: rgba(255, 193, 7, 0.3);
+    color: #ffc107;
+}
+
+/* Сообщения статуса */
+.status-message {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 1.1rem;
+    display: none;
+    animation: slideDown 0.3s ease;
+    border-left: 4px solid;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.status-message.loading {
+    background: rgba(11, 61, 145, 0.15);
+    border-color: var(--nasa-blue);
+    display: block;
+    color: #a0c8ff;
+}
+
+.status-message.error {
+    background: rgba(220, 53, 69, 0.15);
+    border-color: var(--danger);
+    display: block;
+    color: #ffb8c6;
+}
+
+.status-message.warning {
+    background: rgba(255, 193, 7, 0.15);
+    border-color: var(--warning);
+    display: block;
+    color: #ffeaa7;
+}
+
+.status-message.success {
+    background: rgba(40, 167, 69, 0.15);
+    border-color: var(--success);
+    display: block;
+    color: #a3e9b6;
+}
+
+.status-message.empty {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+    display: block;
+    color: var(--nasa-light);
+}
+
+/* Галерея */
+.apod-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+.apod-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    position: relative;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.apod-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(11, 61, 145, 0.5);
+}
+
+.apod-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--nasa-blue), transparent);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.apod-card:hover::before {
+    opacity: 1;
+}
+
+.apod-media {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    background: linear-gradient(135deg, var(--nasa-dark), var(--nasa-space));
+    transition: transform 0.5s ease;
+}
+
+.apod-card:hover .apod-media {
+    transform: scale(1.05);
+}
+
+.apod-content {
+    padding: 20px;
+    position: relative;
+}
+
+.apod-title {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: white;
+    line-height: 1.4;
+    font-weight: 600;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.apod-date {
+    color: var(--nasa-light);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.apod-explanation {
+    color: #dfe3ee;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.apod-type {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    background: rgba(11, 61, 145, 0.3);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    color: #8bb9ff;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Скелетоны */
+.skeleton-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    animation: skeletonPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes skeletonPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.skeleton-media {
+    height: 250px;
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0.1) 25%, 
+        rgba(255, 255, 255, 0.05) 50%, 
+        rgba(255, 255, 255, 0.1) 75%);
+    background-size: 200% 100%;
+}
+
+.skeleton-content {
+    padding: 20px;
+}
+
+.skeleton-line {
+    height: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.skeleton-title {
+    height: 24px;
+    width: 70%;
+    margin-bottom: 15px;
+}
+
+.skeleton-short {
+    width: 50%;
+}
+
+/* Пагинация */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.pagination button {
+    min-width: 44px;
+    padding: 10px 15px;
+    font-size: 15px;
+}
+
+.pagination button.active {
+    background: var(--nasa-blue);
+    color: white;
+    box-shadow: 0 0 0 2px rgba(11, 61, 145, 0.3);
+}
+
+.page-info {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+    color: var(--nasa-light);
+    font-size: 0.9rem;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 8px;
+}
+
+/* Статистика кэша */
+.cache-info {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 30px;
+    margin-top: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cache-info h3 {
+    margin-bottom: 25px;
+    color: var(--nasa-white);
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cache-info h3::before {
+    font-size: 1.2em;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.stat-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    text-align: center;
+    border-top: 4px solid;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+}
+
+.stat-card:hover::before {
+    transform: translateX(100%);
+}
+
+.stat-card.cache-hit { border-color: var(--success); }
+.stat-card.cache-miss { border-color: var(--warning); }
+.stat-card.cache-size { border-color: var(--info); }
+.stat-card.performance { border-color: var(--purple); }
+
+.stat-value {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.stat-card.cache-hit .stat-value { 
+    color: var(--success);
+    text-shadow: 0 0 10px rgba(40, 167, 69, 0.3);
+}
+.stat-card.cache-miss .stat-value { 
+    color: var(--warning);
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+}
+.stat-card.cache-size .stat-value { 
+    color: var(--info);
+    text-shadow: 0 0 10px rgba(23, 162, 184, 0.3);
+}
+.stat-card.performance .stat-value { 
+    color: var(--purple);
+    text-shadow: 0 0 10px rgba(111, 66, 193, 0.3);
+}
+
+.stat-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--nasa-white);
+}
+
+.stat-desc {
+    font-size: 0.9rem;
+    color: var(--nasa-light);
+    opacity: 0.8;
+}
+
+/* API статистика */
+.api-stats {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.api-stats h4 {
+    margin-bottom: 15px;
+    color: var(--nasa-white);
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.stats-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--nasa-blue);
+}
+
+.stat-row span:first-child {
+    color: var(--nasa-light);
+    font-weight: 500;
+}
+
+.stat-row span:last-child {
+    color: var(--nasa-white);
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+/* Детали кэша */
+.cache-details {
+    margin-top: 25px;
+}
+
+details {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+summary {
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--nasa-white);
+    outline: none;
+    padding: 18px 25px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.3s;
+    list-style: none;
+}
+
+summary::-webkit-details-marker {
+    display: none;
+}
+
+summary::before {
+    content: '▶';
+    transition: transform 0.3s;
+    font-size: 0.8em;
+}
+
+details[open] summary::before {
+    transform: rotate(90deg);
+}
+
+summary:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.details-content {
+    padding: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.detail-section {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.detail-section:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.detail-section h5 {
+    margin-bottom: 15px;
+    color: var(--nasa-white);
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.detail-section p {
+    margin-bottom: 10px;
+    color: var(--nasa-light);
+    line-height: 1.5;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.detail-section strong {
+    color: var(--nasa-white);
+    min-width: 140px;
+}
+
+.detail-section code {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+    color: #8bb9ff;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* Модальные окна */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    z-index: 10000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal[aria-hidden="false"] {
+    display: flex;
+}
+
+.modal-content {
+    background: var(--nasa-dark);
+    border-radius: var(--border-radius);
+    max-width: 90%;
+    max-height: 90%;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: modalSlide 0.4s ease;
+}
+
+@keyframes modalSlide {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 25px;
+    background: rgba(11, 61, 145, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.modal-close {
+    background: rgba(0, 0, 0, 0.3);
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+}
+
+.modal-close:hover {
+    background: rgba(0, 0, 0, 0.5);
+    transform: rotate(90deg);
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.image-container {
+    position: relative;
+    background: var(--nasa-space);
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-image {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+}
+
+.image-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--nasa-light);
+    font-size: 1.1rem;
+}
+
+.image-info {
+    padding: 25px;
+}
+
+.image-info h3 {
+    margin-bottom: 15px;
+    color: white;
+    font-size: 1.6rem;
+    line-height: 1.3;
+}
+
+.image-meta {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-wrap: wrap;
+}
+
+.meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--nasa-light);
+    font-size: 0.95rem;
+}
+
+.image-info p {
+    margin-bottom: 25px;
+    line-height: 1.7;
+    color: #dfe3ee;
+    font-size: 1.05rem;
+}
+
+.image-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Диалоги */
+dialog {
+    background: var(--nasa-dark);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: var(--border-radius);
+    color: white;
+    max-width: 800px;
+    width: 90%;
+    padding: 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    animation: dialogFade 0.3s ease;
+}
+
+@keyframes dialogFade {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.dialog-content {
+    padding: 30px;
+}
+
+.dialog-content h2 {
+    margin-bottom: 25px;
+    color: white;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.dialog-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 10px;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background: transparent;
+    border: none;
+    color: var(--nasa-light);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.tab-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+}
+
+.tab-btn.active {
+    background: rgba(11, 61, 145, 0.3);
+    color: #4dabf7;
+}
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+.cache-contents {
+    max-height: 400px;
+    overflow-y: auto;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 15px;
+    margin: 20px 0;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.cache-contents .cache-item {
+    padding: 12px;
+    margin-bottom: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border-left: 3px solid var(--nasa-blue);
+    transition: var(--transition);
+}
+
+.cache-contents .cache-item:hover {
+    background: rgba(255, 255, 255, 0.06);
+    transform: translateX(5px);
+}
+
+.cache-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.cache-item-url {
+    color: #8bb9ff;
+    font-weight: 600;
+    word-break: break-all;
+}
+
+.cache-item-size {
+    color: var(--warning);
+    font-size: 0.85em;
+    background: rgba(255, 193, 7, 0.1);
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
+.cache-item-details {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    font-size: 0.85em;
+    color: var(--nasa-light);
+}
+
+.cache-item-details div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cache-item-details span:first-child {
+    color: #a0c8ff;
+}
+
+.empty-message {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--nasa-light);
+    font-style: italic;
+}
+
+.cache-summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+}
+
+.summary-item span:first-child {
+    color: var(--nasa-light);
+}
+
+.summary-item span:last-child {
+    color: white;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Тестирование API */
+.test-controls {
+    display: grid;
+    gap: 20px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+}
+
+.test-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.test-group label {
+    color: var(--nasa-light);
+    font-weight: 500;
+}
+
+.test-results {
+    margin-top: 25px;
+}
+
+.test-output {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-all;
+}
+
+.test-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+}
+
+.metric {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.metric span:first-child {
+    color: var(--nasa-light);
+}
+
+.metric span:last-child {
+    color: white;
+    font-weight: 600;
+    font-family: 'Courier New', monospace;
+}
+
+/* Уведомления */
+.notification-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 10001;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+}
+
+.notification {
+    padding: 16px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 8px;
+    border-left: 4px solid;
+    animation: notificationSlide 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+@keyframes notificationSlide {
+    from {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.notification.success {
+    border-color: var(--success);
+    background: rgba(40, 167, 69, 0.15);
+}
+
+.notification.error {
+    border-color: var(--danger);
+    background: rgba(220, 53, 69, 0.15);
+}
+
+.notification.warning {
+    border-color: var(--warning);
+    background: rgba(255, 193, 7, 0.15);
+}
+
+.notification.info {
+    border-color: var(--info);
+    background: rgba(23, 162, 184, 0.15);
+}
+
+.notification-icon {
+    font-size: 1.2em;
+    flex-shrink: 0;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: white;
+}
+
+.notification-message {
+    color: var(--nasa-light);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.notification-close {
+    background: none;
+    border: none;
+    color: var(--nasa-light);
+    cursor: pointer;
+    padding: 0;
+    font-size: 1.2em;
+    opacity: 0.7;
+    transition: opacity 0.3s;
+    flex-shrink: 0;
+}
+
+.notification-close:hover {
+    opacity: 1;
+}
+
+/* Футер */
+footer {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+    color: var(--nasa-light);
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.tech-info {
+    font-size: 0.85rem;
+    color: #8b9dc3;
+    opacity: 0.8;
+    margin-top: 15px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.timestamp {
+    font-size: 0.8rem;
+    color: #8b9dc3;
+    opacity: 0.7;
+    margin-top: 10px;
+    font-family: 'Courier New', monospace;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Адаптивность */
+@media (max-width: 1200px) {
+    .controls {
+        grid-template-columns: 1fr;
+    }
+    
+    .apod-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+    
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    .container {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .controls {
+        padding: 20px;
+    }
+    
+    .buttons-group {
+        flex-direction: column;
+    }
+    
+    button {
+        width: 100%;
+    }
+    
+    .apod-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .api-status-bar {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .cache-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .cache-info-mini {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .image-meta {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .dialog-content {
+        padding: 20px;
+    }
+    
+    .dialog-tabs {
+        flex-wrap: wrap;
+    }
+    
+    .tab-btn {
+        flex: 1;
+        min-width: 120px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+    
+    .stat-card {
+        padding: 20px;
+    }
+    
+    .stat-value {
+        font-size: 2.2rem;
+    }
+    
+    .modal-content {
+        max-width: 95%;
+        max-height: 95%;
+    }
+    
+    .modal-header {
+        padding: 15px 20px;
+    }
+    
+    .image-info {
+        padding: 20px;
+    }
+    
+    .image-actions {
+        flex-direction: column;
+    }
+    
+    .image-actions button,
+    .image-actions a {
+        width: 100%;
+    }
+}
+
+/* Скроллбар */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--nasa-blue);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--nasa-red);
+}
+
+/* Выделение текста */
+::selection {
+    background: rgba(11, 61, 145, 0.5);
+    color: white;
+}
+
+/* Фокус для доступности */
+:focus-visible {
+    outline: 2px solid var(--nasa-blue);
+    outline-offset: 2px;
+}
+
+/* Печать */
+@media print {
+    .controls,
+    .cache-controls,
+    .cache-info,
+    .api-status-bar,
+    button {
+        display: none !important;
+    }
+    
+    .apod-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    .apod-card {
+        break-inside: avoid;
+        border: 1px solid #ccc !important;
+        color: black !important;
+    }
+    
+    .apod-media {
+        max-height: 300px !important;
+    }
+}
