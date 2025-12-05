@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог Упражнений</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div style="background: #333; padding: 20px">
+      <div style="max-width: 1200px; margin: 0 auto">
+        <div style="color: white; font-size: 24px">💪 Каталог Упражнений</div>
+      </div>
+    </div>
+
+    <div style="max-width: 1200px; margin: 20px auto; padding: 0 15px">
+      <!-- Фильтры (Аккордеон) -->
+      <div class="accordion-container" style="margin-bottom: 30px">
+        <div
+          class="accordion-header"
+          onclick="toggleAccordion()"
+          style="
+            cursor: pointer;
+            background: #f0f0f0;
+            padding: 15px;
+            border: 1px solid #ddd;
+          "
+        >
+          <span style="font-weight: bold">🔍 Фильтры по мышечным группам</span>
+          <span id="accordion-icon" style="float: right">▼</span>
+        </div>
+        <div
+          id="accordion-content"
+          style="
+            display: none;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-top: none;
+          "
+        >
+          <div class="filter-buttons">
+            <button
+              onclick="filterExercises('all')"
+              style="margin: 5px; padding: 10px 15px; cursor: pointer"
+            >
+              Все
+            </button>
+            <button
+              onclick="filterExercises('chest')"
+              style="margin: 5px; padding: 10px 15px; cursor: pointer"
+            >
+              Грудь
+            </button>
+            <button
+              onclick="filterExercises('back')"
+              style="margin: 5px; padding: 10px 15px; cursor: pointer"
+            >
+              Спина
+            </button>
+            <button
+              onclick="filterExercises('legs')"
+              style="margin: 5px; padding: 10px 15px; cursor: pointer"
+            >
+              Ноги
+            </button>
+            <button
+              onclick="filterExercises('arms')"
+              style="margin: 5px; padding: 10px 15px; cursor: pointer"
+            >
+              Руки
+            </button>
+            <button
+              onclick="filterExercises('shoulders')"
+              style="margin: 5px; padding: 10px 15px; cursor: pointer"
+            >
+              Плечи
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Табы -->
+      <div class="tabs-container" style="margin-bottom: 30px">
+        <div
+          class="tabs-header"
+          style="display: flex; border-bottom: 2px solid #ddd"
+        >
+          <div
+            class="tab"
+            onclick="switchTab('beginner')"
+            id="tab-beginner"
+            style="
+              padding: 15px 30px;
+              cursor: pointer;
+              background: #4caf50;
+              color: white;
+            "
+          >
+            Начинающие
+          </div>
+          <div
+            class="tab"
+            onclick="switchTab('intermediate')"
+            id="tab-intermediate"
+            style="padding: 15px 30px; cursor: pointer; background: #e0e0e0"
+          >
+            Средний
+          </div>
+          <div
+            class="tab"
+            onclick="switchTab('advanced')"
+            id="tab-advanced"
+            style="padding: 15px 30px; cursor: pointer; background: #e0e0e0"
+          >
+            Продвинутый
+          </div>
+        </div>
+        <div class="tabs-content">
+          <div
+            id="content-beginner"
+            class="tab-content"
+            style="display: block; padding: 20px"
+          >
+            <p>Упражнения для начинающих: базовые движения, легкая техника</p>
+          </div>
+          <div
+            id="content-intermediate"
+            class="tab-content"
+            style="display: none; padding: 20px"
+          >
+            <p>Упражнения среднего уровня: более сложные техники</p>
+          </div>
+          <div
+            id="content-advanced"
+            class="tab-content"
+            style="display: none; padding: 20px"
+          >
+            <p>Упражнения для продвинутых: максимальная нагрузка</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Список упражнений с делегированием -->
+      <div
+        id="exercises-list"
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+          gap: 20px;
+          margin-bottom: 30px;
+        "
+      >
+        <!-- Карточки будут добавлены через JS -->
+      </div>
+
+      <!-- Форма обратной связи -->
+      <div
+        style="
+          background: #f9f9f9;
+          padding: 30px;
+          border-radius: 8px;
+          margin-bottom: 30px;
+        "
+      >
+        <div style="font-size: 22px; font-weight: bold; margin-bottom: 20px">
+          📝 Форма обратной связи
+        </div>
+        <form id="feedback-form" onsubmit="return false;">
+          <div style="margin-bottom: 15px">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold"
+              >Имя (обязательно):</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              style="
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                box-sizing: border-box;
+              "
+              onkeyup="validateForm()"
+            />
+            <span
+              id="name-error"
+              style="color: red; font-size: 12px; display: none"
+            ></span>
+          </div>
+          <div style="margin-bottom: 15px">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold"
+              >Email (обязательно):</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              style="
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                box-sizing: border-box;
+              "
+              onkeyup="validateForm()"
+            />
+            <span
+              id="email-error"
+              style="color: red; font-size: 12px; display: none"
+            ></span>
+          </div>
+          <div style="margin-bottom: 15px">
+            <label style="display: block; margin-bottom: 5px; font-weight: bold"
+              >Сообщение (минимум 20 символов):</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              style="
+                width: 100%;
+                padding: 10px;
+                border: 1px solid #ddd;
+                box-sizing: border-box;
+              "
+              onkeyup="validateForm()"
+            ></textarea>
+            <span
+              id="message-error"
+              style="color: red; font-size: 12px; display: none"
+            ></span>
+          </div>
+          <button
+            type="submit"
+            id="submit-btn"
+            onclick="submitForm()"
+            style="
+              padding: 12px 30px;
+              background: #ccc;
+              color: #666;
+              border: none;
+              cursor: not-allowed;
+              font-size: 16px;
+            "
+            disabled
+          >
+            Отправить
+          </button>
+        </form>
+        <div
+          id="form-result"
+          style="margin-top: 20px; padding: 15px; display: none"
+        ></div>
+      </div>
+    </div>
+
+    <!-- Модальное окно -->
+    <div
+      id="modal"
+      class="modal"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+      "
+    >
+      <div
+        class="modal-content"
+        style="
+          position: relative;
+          background: white;
+          margin: 50px auto;
+          padding: 30px;
+          max-width: 600px;
+          border-radius: 8px;
+        "
+      >
+        <span
+          class="close-modal"
+          onclick="closeModal()"
+          style="
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 30px;
+            cursor: pointer;
+            color: #999;
+          "
+          >&times;</span
+        >
+        <div id="modal-body">
+          <!-- Контент модалки -->
+        </div>
+      </div>
+    </div>
+
+    <div
+      style="
+        background: #333;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 50px;
+      "
+    >
+      <p>&copy; 2025 Каталог Упражнений</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
