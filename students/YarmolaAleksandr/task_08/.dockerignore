@@ -1,0 +1,15 @@
+node_modules
+dist
+.git
+.github
+tests
+*.md
+.gitignore
+.prettierrc
+eslint.config.js
+playwright.config.js
+vite.config.js
+coverage
+playwright-report
+test-results
+*.log
