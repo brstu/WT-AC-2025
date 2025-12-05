@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Мем-блог: свежие мемы, история и лучшие подборки интернет-шуток.">
+  <link rel="stylesheet" href="styles.css">
+  <title>Мой мемо-блог 😎</title>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
+
+  <header class="hero">
+    <h1>Мем-блог: Путешествие по мем-культуре</h1>
+    <button id="theme-toggle" aria-label="Переключить тему" aria-pressed="false">🌙</button>
+
+    <nav aria-label="Главное меню">
+      <ul class="nav-list">
+        <li><a href="#fresh-memes">Топ мемы</a></li>
+        <li><a href="#history">История</a></li>
+        <li><a href="#categories">Подборки</a></li>
+        <li><a href="#feedback">Обратная связь</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- FRESH MEMES -->
+    <section id="fresh-memes" aria-labelledby="fresh-memes-title">
+      <h2 id="fresh-memes-title">Топ мемы</h2>
+      <div class="cards" id="meme-cards-container">
+        <!-- Карточки будут добавляться через JS -->
+      </div>
+    </section>
+
+    <!-- HISTORY ACCORDION -->
+    <section id="history" aria-labelledby="history-title">
+      <h2 id="history-title">История мемов</h2>
+      <div class="accordion">
+        <div class="accordion-item">
+          <button class="accordion-button" id="accordion-header-1" aria-expanded="false" aria-controls="accordion-panel-1">
+            <span>Ранние годы (1990-е - 2000-е)</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-panel" id="accordion-panel-1" aria-labelledby="accordion-header-1" hidden>
+            <p>Мемы существуют в интернете почти столько же, сколько и сам интернет. Их история начинается с простых текстовых шуток и графических изображений, которые пользователи обменивались на форумах и в чатах в конце 1990-х и начале 2000-х годов. В то время популярными были «диафильмы» и демотиваторы — изображения с надписями, часто сатирическими или юмористическими.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-button" id="accordion-header-2" aria-expanded="false" aria-controls="accordion-panel-2">
+            <span>Эра социальных сетей (2000-е)</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-panel" id="accordion-panel-2" aria-labelledby="accordion-header-2" hidden>
+            <p>С распространением социальных сетей мемы приобрели новую жизнь: фотографии с забавными подписями стали мгновенно распространяться по всему миру. В середине 2000-х популярными стали мемы вроде «LOLcats» — фотографии кошек с комичными подписями на ломаном английском языке.</p>
+          </div>
+        </div>
+
+        <div class="accordion-item">
+          <button class="accordion-button" id="accordion-header-3" aria-expanded="false" aria-controls="accordion-panel-3">
+            <span>Современная эпоха (2010-е - сейчас)</span>
+            <span class="accordion-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="accordion-panel" id="accordion-panel-3" aria-labelledby="accordion-header-3" hidden>
+            <p>В 2010-е мемы эволюционировали и стали более динамичными: GIF-анимации, короткие видео и трендовые форматы для платформ вроде Vine и Instagram стали нормой. Мемы начали отражать актуальные события, политические явления, интернет-культуру и повседневную жизнь пользователей.</p>
+            <p>Сегодня мемы — это универсальный язык цифрового поколения. Они служат средством юмора, способом выразить эмоции и часто становятся культурными феноменами.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORIES TABS -->
+    <section id="categories" aria-labelledby="categories-title">
+      <h2 id="categories-title">Тематические подборки</h2>
+      
+      <div class="tabs" role="tablist" aria-label="Категории мемов">
+        <button class="tab-button active" role="tab" aria-selected="true" aria-controls="animals-panel" id="animals-tab">
+          Животные
+        </button>
+        <button class="tab-button" role="tab" aria-selected="false" aria-controls="office-panel" id="office-tab">
+          Офис
+        </button>
+      </div>
+
+      <div class="tab-panels">
+        <div class="tab-panel active" id="animals-panel" role="tabpanel" aria-labelledby="animals-tab">
+          <div class="categories-grid">
+            <div class="category" data-meme="bicycle">
+              <img src="assets/animal_mems/bicycle.webp" alt="Кот на велосипеде с надписью 'Заведи уже машину'" loading="lazy">
+            </div>
+            <div class="category" data-meme="dengi">
+              <img src="assets/animal_mems/dengi.webp" alt="Собака с деньгами в зубах и подписью 'Инвестируй в будущее'" loading="lazy">
+            </div>
+            <div class="category" data-meme="kot_anime">
+              <img src="assets/animal_mems/kot_anime.webp" alt="Кот в аниме-стиле с большими глазами" loading="lazy">
+            </div>
+            <div class="category" data-meme="kot_rabota">
+              <img src="assets/animal_mems/kot_rabota.webp" alt="Кот за компьютером с подписью 'Делаю вид, что работаю'" loading="lazy">
+            </div>
+            <div class="category" data-meme="sobachka">
+              <img src="assets/animal_mems/sobachka.webp" alt="Собака в очках с умным выражением" loading="lazy">
+            </div>
+          </div>
+        </div>
+
+        <div class="tab-panel" id="office-panel" role="tabpanel" aria-labelledby="office-tab" hidden>
+          <div class="categories-grid">
+            <div class="category" data-meme="cherniy_umor">
+              <img src="assets/office_mems/cherniy_umor.webp" alt="Чёрный юмор в офисе: коллеги смеются над багом" loading="lazy">
+            </div>
+            <div class="category" data-meme="family">
+              <img src="assets/office_mems/family.webp" alt="Мем 'Офисная семья' с разными типами сотрудников" loading="lazy">
+            </div>
+            <div class="category" data-meme="ieroglifi">
+              <img src="assets/office_mems/ieroglifi.webp" alt="Программист читает код как иероглифы" loading="lazy">
+            </div>
+            <div class="category" data-meme="nitworking">
+              <img src="assets/office_mems/nitworking.webp" alt="Сетевой администратор и паутина проводов" loading="lazy">
+            </div>
+            <div class="category" data-meme="tech_support">
+              <img src="assets/office_mems/tech_support.webp" alt="Техподдержка: 'Вы пробовали выключить и включить?'" loading="lazy">
+            </div>
+            <div class="category" data-meme="zakodirovaniy">
+              <img src="assets/office_mems/zakodirovaniy.webp" alt="Закодированное сообщение от разработчика" loading="lazy">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEEDBACK FORM -->
+    <section id="feedback" aria-labelledby="feedback-title">
+      <h2 id="feedback-title">Предложи свой мем!</h2>
+      <form id="meme-form" class="feedback-form" novalidate>
+        <div class="form-group">
+          <label for="name">Ваше имя *</label>
+          <input type="text" id="name" name="name" required aria-describedby="name-error">
+          <div class="error-message" id="name-error" aria-live="polite"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" name="email" required aria-describedby="email-error">
+          <div class="error-message" id="email-error" aria-live="polite"></div>
+        </div>
+
+        <div class="form-group">
+          <label for="meme-url">Ссылка на мем</label>
+          <input type="url" id="meme-url" name="meme-url" placeholder="https://example.com/meme.jpg">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Описание мема *</label>
+          <textarea id="message" name="message" rows="4" required minlength="20" 
+                    aria-describedby="message-error message-help"></textarea>
+          <div class="error-message" id="message-error" aria-live="polite"></div>
+          <div class="help-text" id="message-help">Минимум 20 символов</div>
+        </div>
+
+        <button type="submit" id="submit-btn" class="submit-button" disabled>
+          Отправить предложение
+        </button>
+
+        <div id="form-result" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <!-- MODAL -->
+  <div id="meme-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-modal="true" hidden>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close" aria-label="Закрыть модальное окно">×</button>
+      <h2 id="modal-title">Просмотр мема</h2>
+      <div class="modal-body">
+        <img id="modal-image" src="placeholder.jpg" alt="Увеличенное изображение мема">
+        <p id="modal-description"></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Мем-блог Ващука Анатолия</p>
+  </footer>
+
+  <script src="scripts/main.js" type="module"></script>
+</body>
+</html>
