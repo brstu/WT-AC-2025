@@ -1,0 +1,20 @@
+{
+    "name": "NASA APOD Gallery",
+    "short_name": "NASA APOD",
+    "description": "Галерея Astronomy Picture of the Day от NASA с клиентским кэшированием и асинхронными запросами",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1a1a2e",
+    "theme_color": "#0b3d91",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHZpZXdCb3g9IjAgMCA2NCA2NCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTMyIDZDMTcuNiA2IDYgMTcuNiA2IDMyYzAgMTQuNCAxMS42IDI2IDI2IDI2czI2LTExLjYgMjYtMjZDNTggMTcuNiA0Ni40IDYgMzIgNnptMTIgMzRIMjBjLTEuMSAwLTItLjktMi0ycy45LTIgMi0yaDI0YzEuMSAwIDIgLjkgMiAycy0uOSAyLTIgMnoiIGZpbGw9IiMwYjNkOTEiLz4KPHBhdGggZD0iTTI4IDI0aDguM2MuMyAwIC42LjIuOC41bDYuNCA5LjVjLjMuNS4xIDEuMS0uNCAxLjRzLTEuMS4xLTEuNC0uNGwtNS43LTguNUgyOGMtMS4xIDAtMi0uOS0yLTJzLjktMiAyLTJ6IiBmaWxsPSIjZmMzZDIxIi8+Cjwvc3ZnPgo=",
+            "sizes": "64x64",
+            "type": "image/svg+xml"
+        }
+    ],
+    "categories": ["education", "science"],
+    "lang": "ru",
+    "dir": "ltr"
+}
