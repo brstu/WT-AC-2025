@@ -1,0 +1,40 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "description": "A classic novel of the Jazz Age, exploring themes of decadence, idealism, and resistance to change.",
+      "publishedYear": 1925,
+      "genre": "Classic",
+      "coverImageUrl": "https://example.com/great-gatsby.jpg"
+    },
+    {
+      "id": 2,
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "description": "A gripping and compassionate novel about racial injustice and the loss of innocence.",
+      "publishedYear": 1960,
+      "genre": "Fiction",
+      "coverImageUrl": "https://example.com/mockingbird.jpg"
+    }
+  ],
+  "reviews": [
+    {
+      "id": 1,
+      "bookId": 1,
+      "author": "John Doe",
+      "rating": 5,
+      "text": "A masterpiece that captures the essence of the American Dream.",
+      "date": "2023-10-01T12:00:00Z"
+    },
+    {
+      "id": 2,
+      "bookId": 1,
+      "author": "Jane Smith",
+      "rating": 4,
+      "text": "Beautifully written, but the characters are deeply flawed.",
+      "date": "2023-10-05T14:30:00Z"
+    }
+  ]
+}
