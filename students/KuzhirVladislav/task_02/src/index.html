@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Лабораторная №2 — Менеджер закладок</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <h1 class="header-title">Менеджер закладок</h1>
+        <button class="btn btn-primary" id="add-bookmark">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          Добавить закладку
+        </button>
+      </div>
+    </header>
+
+    <main class="main container">
+      <nav class="tabs" role="tablist" aria-label="Группы закладок">
+        <button
+          role="tab"
+          aria-selected="true"
+          aria-controls="panel-personal"
+          id="tab-personal"
+          class="tab active"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          Личные
+        </button>
+        <button
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-work"
+          id="tab-work"
+          class="tab"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"
+            />
+            <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+            <line x1="12" y1="22.08" x2="12" y2="12" />
+          </svg>
+          Работа
+        </button>
+        <button
+          role="tab"
+          aria-selected="false"
+          aria-controls="panel-study"
+          id="tab-study"
+          class="tab"
+        >
+          <svg
+            width="18"
+            height="18"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          </svg>
+          Учеба
+        </button>
+      </nav>
+
+      <div class="search-wrapper">
+        <input
+          type="text"
+          id="search"
+          class="search-input"
+          placeholder="Поиск по имени, URL или описанию..."
+          aria-label="Поиск закладок"
+        />
+        <svg
+          class="search-icon"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
+        </svg>
+      </div>
+
+      <section
+        id="panel-personal"
+        role="tabpanel"
+        aria-labelledby="tab-personal"
+        class="bookmarks active"
+      >
+        <h2 class="visually-hidden">Личные</h2>
+        <div class="bookmarks-grid" id="bookmarks-container"></div>
+        <p class="no-results" hidden>Ничего не найдено</p>
+      </section>
+
+      <section id="panel-work" role="tabpanel" aria-labelledby="tab-work" class="bookmarks" hidden>
+        <h2 class="visually-hidden">Работа</h2>
+        <div class="bookmarks-grid"></div>
+        <p class="no-results" hidden>Ничего не найдено</p>
+      </section>
+
+      <section
+        id="panel-study"
+        role="tabpanel"
+        aria-labelledby="tab-study"
+        class="bookmarks"
+        hidden
+      >
+        <h2 class="visually-hidden">Учеба</h2>
+        <div class="bookmarks-grid"></div>
+        <p class="no-results" hidden>Ничего не найдено</p>
+      </section>
+    </main>
+
+    <div class="modal" id="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+      <div class="modal-overlay" tabindex="-1"></div>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 id="modal-title">Добавить закладку</h2>
+          <button class="modal-close" aria-label="Закрыть модальное окно">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M18 6L6 18M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+
+        <form id="bookmark-form" class="modal-form" novalidate>
+          <div class="field">
+            <label for="name">Имя закладки *</label>
+            <input type="text" id="name" required minlength="1" />
+            <span class="error"></span>
+          </div>
+
+          <div class="field">
+            <label for="url">URL *</label>
+            <input type="url" id="url" required />
+            <span class="error"></span>
+          </div>
+
+          <div class="field">
+            <label for="description">Описание (мин. 20 символов)</label>
+            <textarea id="description" rows="4" minlength="20"></textarea>
+            <span class="error"></span>
+          </div>
+
+          <input type="hidden" id="bookmark-id" />
+
+          <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancel">Отмена</button>
+            <button type="submit" class="btn btn-primary" id="save" disabled>Сохранить</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="tooltip" role="tooltip" id="tooltip" hidden>
+      <div class="tooltip-arrow"></div>
+      <div class="tooltip-content"></div>
+    </div>
+
+    <script src="scripts/main.js" type="module"></script>
+  </body>
+</html>
