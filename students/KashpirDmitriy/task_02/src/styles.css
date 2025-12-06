@@ -4,7 +4,7 @@
   --text: #212529;
   --card: white;
   --accent: #6c5ce7;
-  --shadow: rgba(0,0,0,.1);
+  --shadow: rgba(0 0 0 / 10%);
 }
 
 body.dark {
@@ -12,7 +12,7 @@ body.dark {
   --text: #e0e0e0;
   --card: #1e1e1e;
   --accent: #a29bfe;
-  --shadow: rgba(0,0,0,.4);
+  --shadow: rgba(0 0 0 / 40%);
 }
 
 body {
@@ -20,7 +20,7 @@ body {
   font-family: system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
-  transition: background .3s, color .3s;
+  transition: background 0.3s, color 0.3s;
 }
 
 .header {
@@ -53,14 +53,14 @@ body {
 }
 
 .tab-btn {
-  padding: .6rem 1.2rem;
+  padding: 0.6rem 1.2rem;
   background: none;
   border: none;
   border-bottom: 3px solid transparent;
   cursor: pointer;
   font-weight: 600;
   white-space: nowrap;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
 .tab-btn.active {
@@ -90,7 +90,7 @@ body {
   align-items: center;
   padding: 1rem;
   background: var(--card);
-  margin-bottom: .8rem;
+  margin-bottom: 0.8rem;
   border-radius: 12px;
   box-shadow: 0 2px 8px var(--shadow);
 }
@@ -118,7 +118,7 @@ body {
   border-radius: 50%;
   font-size: 1.5rem;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,.3);
+  box-shadow: 0 4px 15px rgba(0 0 0 / 30%);
   z-index: 100;
 }
 
@@ -131,7 +131,7 @@ body {
   justify-content: center;
   visibility: hidden;
   opacity: 0;
-  transition: all .3s;
+  transition: all 0.3s;
   z-index: 200;
 }
 
@@ -163,10 +163,10 @@ body {
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.6);
+  background: rgba(0 0 0 / 60%);
   opacity: 0;
   pointer-events: none;
-  transition: opacity .3s;
+  transition: opacity 0.3s;
   z-index: 150;
 }
 
@@ -182,13 +182,14 @@ body {
 
 label {
   display: block;
-  margin-bottom: .4rem;
+  margin-bottom: 0.4rem;
   font-weight: 600;
 }
 
-input, select {
+input,
+select {
   width: 100%;
-  padding: .8rem;
+  padding: 0.8rem;
   border: 1px solid #ccc;
   border-radius: 8px;
   background: var(--card);
@@ -197,17 +198,17 @@ input, select {
 
 .error {
   color: #e74c3c;
-  font-size: .9rem;
+  font-size: 0.9rem;
   display: block;
   min-height: 1.2em;
-  margin-top: .4rem;
+  margin-top: 0.4rem;
 }
 
 button[type="submit"] {
   background: var(--accent);
   color: white;
   border: none;
-  padding: .9rem 1.5rem;
+  padding: 0.9rem 1.5rem;
   border-radius: 8px;
   cursor: pointer;
   width: 100%;
@@ -220,15 +221,17 @@ button[type="submit"]:disabled {
 }
 
 /* Мобильная адаптация */
-@media (max-width: 600px) {
+@media (width <= 600px) {
   .track {
     grid-template-columns: 1fr auto auto;
-    gap: .8rem;
+    gap: 0.8rem;
   }
+  
   .track-title {
     grid-column: 1 / 4;
     font-weight: 600;
   }
+  
   .add-track-btn {
     bottom: 1rem;
     right: 1rem;
