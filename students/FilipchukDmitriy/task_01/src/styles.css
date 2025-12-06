@@ -236,8 +236,7 @@ table td {
   }
 
   .links-section {
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
   }
 
   .link-item {
