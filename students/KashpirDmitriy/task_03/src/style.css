@@ -22,9 +22,9 @@ body {
 .container {
   max-width: 1280px;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.95);
+  background: rgb(255 255 255 / 95%);
   border-radius: 16px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 8%);
   padding: 2.5rem;
   backdrop-filter: blur(10px);
 }
@@ -34,7 +34,6 @@ h1 {
   font-size: 2.8rem;
   margin-bottom: 2rem;
   background: linear-gradient(90deg, #2e8b57, #228b22);
-  -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
   font-weight: 700;
@@ -62,7 +61,7 @@ h1 {
 
 #search:focus {
   border-color: #2e8b57;
-  box-shadow: 0 0 0 4px rgba(46, 139, 87, 0.15);
+  box-shadow: 0 0 0 4px rgb(46 139 87 / 15%);
 }
 
 button {
@@ -125,14 +124,14 @@ button#refresh:active {
   background: white;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgb(0 0 0 / 8%);
   transition: all 0.3s ease;
   position: relative;
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 20px 40px rgb(0 0 0 / 15%);
 }
 
 .card img {
@@ -169,6 +168,12 @@ button#refresh:active {
   flex-wrap: wrap;
 }
 
+.pagination button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .pagination button {
   background: #2e8b57;
   color: white;
@@ -177,12 +182,6 @@ button#refresh:active {
 
 .pagination button:hover:not(:disabled) {
   background: #236e42;
-}
-
-.pagination button:disabled {
-  background: #95a5a6;
-  cursor: not-allowed;
-  transform: none;
 }
 
 #page-info {
@@ -216,6 +215,7 @@ button#refresh:active {
 }
 
 /* === Адаптивность === */
+
 @media (max-width: 768px) {
   .container {
     padding: 1.5rem;
@@ -247,7 +247,7 @@ button#refresh:active {
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   h1 {
     font-size: 2rem;
   }
