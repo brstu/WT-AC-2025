@@ -9,16 +9,16 @@
 </head>
 <body>
   <header class="header">
-    <div class="container header__container">
+    <div class="container header-container">
       <a href="#" class="logo">BookLib</a>
       <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav">
         <span></span><span></span><span></span>
       </button>
       <nav class="nav" id="nav" hidden>
-        <ul class="nav__list">
-          <li><a href="#" class="nav__link">Главная</a></li>
-          <li><a href="#" class="nav__link">О нас</a></li>
-          <li><a href="#" class="nav__link">Контакты</a></li>
+        <ul class="nav-list">
+          <li><a href="#" class="nav-link">Главная</a></li>
+          <li><a href="#" class="nav-link">О нас</a></li>
+          <li><a href="#" class="nav-link">Контакты</a></li>
         </ul>
         <label class="theme-switch">
           <input type="checkbox" id="theme-toggle">
@@ -36,7 +36,7 @@
 
     <section class="books container" id="books-container">
       <h2>Результаты поиска</h2>
-      <div class="books__grid" id="books-grid">
+      <div class="books-grid" id="books-grid">
         <!-- Карточки будут вставлены JS -->
       </div>
     </section>
@@ -44,12 +44,12 @@
     <!-- Табы -->
     <section class="tabs container">
       <h2>Категории</h2>
-      <div class="tabs__nav" role="tablist">
+      <div class="tabs-nav" role="tablist">
         <button role="tab" aria-selected="true" aria-controls="tab-fiction" id="tab1">Художественная</button>
         <button role="tab" aria-selected="false" aria-controls="tab-science" id="tab2">Научная</button>
         <button role="tab" aria-selected="false" aria-controls="tab-poetry" id="tab3">Поэзия</button>
       </div>
-      <div class="tabs__content">
+      <div class="tabs-content">
         <div role="tabpanel" id="tab-fiction" tabindex="0">Лучшие романы и фантастика...</div>
         <div role="tabpanel" id="tab-science" tabindex="0" hidden>Научпоп, физика, биология...</div>
         <div role="tabpanel" id="tab-poetry" tabindex="0" hidden>Классика и современные поэты...</div>
@@ -59,11 +59,11 @@
     <!-- Аккордеон FAQ -->
     <section class="accordion container">
       <h2>Часто задаваемые вопросы</h2>
-      <div class="accordion__item">
-        <button class="accordion__trigger" aria-expanded="false" aria-controls="panel1">
+      <div class="accordion-item">
+        <button class="accordion-trigger" aria-expanded="false" aria-controls="panel1">
           Как добавить книгу в избранное?
         </button>
-        <div class="accordion__panel" id="panel1" hidden>
+        <div class="accordion-panel" id="panel1" hidden>
           Нажмите на сердечко в карточке книги.
         </div>
       </div>
@@ -74,36 +74,36 @@
     <section class="contact container">
       <h2>Обратная связь</h2>
       <form class="form" novalidate>
-        <div class="form__group">
+        <div class="form-group">
           <label for="name">Имя <span class="required">*</span></label>
           <input type="text" id="name" required minlength="2">
           <span class="error"></span>
         </div>
-        <div class="form__group">
+        <div class="form-group">
           <label for="email">E-mail <span class="required">*</span></label>
           <input type="email" id="email" required>
           <span class="error"></span>
         </div>
-        <div class="form__group">
+        <div class="form-group">
           <label for="message">Сообщение <span class="required">*</span></label>
           <textarea id="message" required minlength="20"></textarea>
           <span class="error"></span>
         </div>
         <button type="submit" disabled>Отправить</button>
-        <div class="form__result" aria-live="polite"></div>
+        <div class="form-result" aria-live="polite"></div>
       </form>
     </section>
   </main>
 
   <!-- Модальное окно -->
   <div class="modal" id="book-modal" hidden aria-modal="true" role="dialog" aria-labelledby="modal-title">
-    <div class="modal__overlay" tabindex="-1"></div>
-    <div class="modal__content">
-      <button class="modal__close" aria-label="Закрыть">✕</button>
+    <div class="modal-overlay" tabindex="-1"></div>
+    <div class="modal-content">
+      <button class="modal-close" aria-label="Закрыть">✕</button>
       <h3 id="modal-title"></h3>
       <p id="modal-author"></p>
       <p id="modal-desc"></p>
-      <button class="like-btn modal__like" aria-label="Лайкнуть книгу">
+      <button class="like-btn modal-like" aria-label="Лайкнуть книгу">
         <span class="like-count">0</span> ❤️
       </button>
     </div>
