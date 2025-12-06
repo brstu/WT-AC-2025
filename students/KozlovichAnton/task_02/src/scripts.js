@@ -7,7 +7,7 @@ var isFormValid = false;
 
 // Функция для бургер-меню
 function toggleMenu() {
-  var nav = document.getElementById("mainNav");
+  var nav = document.getElementById("main-nav");
   if (nav.classList.contains("active")) {
     nav.classList.remove("active");
   } else {
@@ -56,7 +56,7 @@ function toggleAccordion(index) {
 
 // Делегирование событий для списка задач
 document.addEventListener("DOMContentLoaded", function () {
-  var taskList = document.getElementById("taskList");
+  var taskList = document.getElementById("task-list");
 
   taskList.addEventListener("click", function (e) {
     var target = e.target;
@@ -90,8 +90,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // Валидация формы
 function validateName() {
-  var nameInput = document.getElementById("taskName");
-  var nameError = document.getElementById("nameError");
+  var nameInput = document.getElementById("task-name");
+  var nameError = document.getElementById("name-error");
   var value = nameInput.value;
 
   if (value.trim() === "") {
@@ -106,8 +106,8 @@ function validateName() {
 }
 
 function validateEmail() {
-  var emailInput = document.getElementById("taskEmail");
-  var emailError = document.getElementById("emailError");
+  var emailInput = document.getElementById("task-email");
+  var emailError = document.getElementById("email-error");
   var value = emailInput.value;
   var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -123,8 +123,8 @@ function validateEmail() {
 }
 
 function validateDescription() {
-  var descInput = document.getElementById("taskDescription");
-  var descError = document.getElementById("descError");
+  var descInput = document.getElementById("task-description");
+  var descError = document.getElementById("desc-error");
   var value = descInput.value;
 
   if (value.length < 20) {
@@ -143,7 +143,7 @@ function checkFormValidity() {
   var emailValid = validateEmail();
   var descValid = validateDescription();
 
-  var submitBtn = document.getElementById("submitBtn");
+  var submitBtn = document.getElementById("submit-btn");
   if (nameValid && emailValid && descValid) {
     submitBtn.disabled = false;
     isFormValid = true;
@@ -155,9 +155,9 @@ function checkFormValidity() {
 
 // Обработчики событий для полей формы
 document.addEventListener("DOMContentLoaded", function () {
-  var nameInput = document.getElementById("taskName");
-  var emailInput = document.getElementById("taskEmail");
-  var descInput = document.getElementById("taskDescription");
+  var nameInput = document.getElementById("task-name");
+  var emailInput = document.getElementById("task-email");
+  var descInput = document.getElementById("task-description");
 
   nameInput.addEventListener("input", function () {
     validateName();
@@ -185,12 +185,12 @@ function submitForm() {
     return false;
   }
 
-  var nameValue = document.getElementById("taskName").value;
-  var emailValue = document.getElementById("taskEmail").value;
-  var descValue = document.getElementById("taskDescription").value;
+  var nameValue = document.getElementById("task-name").value;
+  var emailValue = document.getElementById("task-email").value;
+  var descValue = document.getElementById("task-description").value;
 
   // Создание новой задачи
-  var taskList = document.getElementById("taskList");
+  var taskList = document.getElementById("task-list");
   var newTask = document.createElement("div");
   newTask.className = "task-item";
   newTask.setAttribute("data-id", taskIdCounter);
@@ -211,24 +211,24 @@ function submitForm() {
   taskIdCounter++;
 
   // Показать результат
-  var resultDiv = document.getElementById("formResult");
+  var resultDiv = document.getElementById("form-result");
   resultDiv.className = "form-result success";
   resultDiv.textContent = 'Задача "' + nameValue + '" успешно создана!';
 
   // Очистка формы
-  document.getElementById("taskName").value = "";
-  document.getElementById("taskEmail").value = "";
-  document.getElementById("taskDescription").value = "";
+  document.getElementById("task-name").value = "";
+  document.getElementById("task-email").value = "";
+  document.getElementById("task-description").value = "";
 
-  document.getElementById("nameError").textContent = "";
-  document.getElementById("emailError").textContent = "";
-  document.getElementById("descError").textContent = "";
+  document.getElementById("name-error").textContent = "";
+  document.getElementById("email-error").textContent = "";
+  document.getElementById("desc-error").textContent = "";
 
-  document.getElementById("taskName").classList.remove("error");
-  document.getElementById("taskEmail").classList.remove("error");
-  document.getElementById("taskDescription").classList.remove("error");
+  document.getElementById("task-name").classList.remove("error");
+  document.getElementById("task-email").classList.remove("error");
+  document.getElementById("task-description").classList.remove("error");
 
-  document.getElementById("submitBtn").disabled = true;
+  document.getElementById("submit-btn").disabled = true;
 
   setTimeout(function () {
     resultDiv.style.display = "none";
@@ -239,12 +239,12 @@ function submitForm() {
 
 // Модальное окно
 function openModal() {
-  var modal = document.getElementById("helpModal");
+  var modal = document.getElementById("help-modal");
   modal.classList.add("active");
 }
 
 function closeModal() {
-  var modal = document.getElementById("helpModal");
+  var modal = document.getElementById("help-modal");
   modal.classList.remove("active");
 }
 
@@ -269,7 +269,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // Обработка табуляции в модальном окне
-  var modal = document.getElementById("helpModal");
+  var modal = document.getElementById("help-modal");
   modal.addEventListener("keydown", function (e) {
     if (e.key === "Tab") {
       var focusableElements = modal.querySelectorAll(

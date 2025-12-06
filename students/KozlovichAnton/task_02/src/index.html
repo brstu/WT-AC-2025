@@ -26,7 +26,7 @@
                 </div>
               </div>
             </div>
-            <nav id="mainNav" class="nav-menu">
+            <nav id="main-nav" class="nav-menu">
               <div class="nav-items">
                 <a href="#tasks">Задачи</a>
                 <a href="#form">Создать</a>
@@ -64,7 +64,7 @@
                   </div>
                   <div class="tab-content">
                     <div id="tab-all" class="tab-panel active">
-                      <div id="taskList" class="task-list">
+                      <div id="task-list" class="task-list">
                         <div class="task-item" data-id="1">
                           <div class="task-content">
                             <input type="checkbox" class="task-checkbox" />
@@ -161,41 +161,41 @@
                 <h2>Создать новую задачу</h2>
               </div>
               <div class="form-container">
-                <form id="taskForm" onsubmit="return false;">
+                <form id="task-form" onsubmit="return false;">
                   <div class="form-group">
-                    <label for="taskName">Название задачи:</label>
+                    <label for="task-name">Название задачи:</label>
                     <input
                       type="text"
-                      id="taskName"
+                      id="task-name"
                       name="taskName"
                       placeholder="Введите название"
                     />
-                    <span class="error-message" id="nameError"></span>
+                    <span class="error-message" id="name-error"></span>
                   </div>
                   <div class="form-group">
-                    <label for="taskEmail">Email для уведомлений:</label>
+                    <label for="task-email">Email для уведомлений:</label>
                     <input
                       type="text"
-                      id="taskEmail"
+                      id="task-email"
                       name="taskEmail"
                       placeholder="example@mail.com"
                     />
-                    <span class="error-message" id="emailError"></span>
+                    <span class="error-message" id="email-error"></span>
                   </div>
                   <div class="form-group">
-                    <label for="taskDescription">Описание задачи:</label>
+                    <label for="task-description">Описание задачи:</label>
                     <textarea
-                      id="taskDescription"
+                      id="task-description"
                       name="taskDescription"
                       rows="4"
                       placeholder="Опишите задачу подробно (минимум 20 символов)"
                     ></textarea>
-                    <span class="error-message" id="descError"></span>
+                    <span class="error-message" id="desc-error"></span>
                   </div>
                   <div class="form-actions">
                     <button
                       type="button"
-                      id="submitBtn"
+                      id="submit-btn"
                       class="btn-submit"
                       disabled
                       onclick="submitForm()"
@@ -210,7 +210,7 @@
                       Справка
                     </button>
                   </div>
-                  <div id="formResult" class="form-result"></div>
+                  <div id="form-result" class="form-result"></div>
                 </form>
               </div>
             </section>
@@ -252,7 +252,7 @@
     </div>
 
     <!-- Modal -->
-    <div id="helpModal" class="modal">
+    <div id="help-modal" class="modal">
       <div class="modal-overlay" onclick="closeModal()"></div>
       <div class="modal-content">
         <div class="modal-header">
