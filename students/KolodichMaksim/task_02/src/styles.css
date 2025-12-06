@@ -15,8 +15,9 @@ html {
 
 body {
   min-height: 100dvh;
-  background: #f9fafb;
-  color: #1f2937;
+  background: var(--clr-bg);
+  color: var(--clr-text);
+  transition: background 0.4s, color 0.4s;
 }
 
 img,
@@ -78,12 +79,6 @@ html[data-theme="dark"] {
     --clr-text: #f3f4f6;
     --clr-muted: #9ca3af;
   }
-}
-
-body {
-  background: var(--clr-bg);
-  color: var(--clr-text);
-  transition: background 0.4s, color 0.4s;
 }
 
 /* ==================== LAYOUT ==================== */
@@ -159,7 +154,7 @@ body {
 }
 
 /* Desktop */
-@media (min-width: 768px) {
+@media (width >= 768px) {
   .burger {
     display: none;
   }
@@ -180,21 +175,19 @@ body {
     gap: 2rem;
     font-size: 1rem;
   }
+
+  .theme-switch {
+    margin-top: 0;
+  }
 }
 
-/* Тёмная тема переключатель */
+/* Тёмная тема переключатель (мобильная версия остаётся с margin-top) */
 .theme-switch {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   margin-top: 2rem;
   cursor: pointer;
-}
-
-@media (min-width: 768px) {
-  .theme-switch {
-    margin-top: 0;
-  }
 }
 
 /* ==================== TYPOGRAPHY ==================== */
@@ -459,7 +452,7 @@ button[type="submit"]:disabled {
 }
 
 /* ==================== RESPONSIVE ==================== */
-@media (min-width: 640px) {
+@media (width >= 640px) {
   h1 {
     font-size: 2.5rem;
   }
