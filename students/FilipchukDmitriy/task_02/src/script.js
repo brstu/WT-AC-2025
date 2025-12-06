@@ -68,7 +68,7 @@ window.onclick = function (event) {
 
 // Делегирование событий для карточек
 document.addEventListener("DOMContentLoaded", function () {
-  var container = document.getElementById("cardsContainer");
+  var container = document.getElementById("cards-container");
 
   container.addEventListener("click", function (e) {
     if (e.target.classList.contains("like-btn")) {
@@ -88,12 +88,12 @@ document.addEventListener("DOMContentLoaded", function () {
   var nameInput = document.getElementById("name");
   var emailInput = document.getElementById("email");
   var messageInput = document.getElementById("message");
-  var submitBtn = document.getElementById("submitBtn");
-  var form = document.getElementById("contactForm");
+  var submitBtn = document.getElementById("submit-btn");
+  var form = document.getElementById("contact-form");
 
   function validateName() {
     var name = nameInput.value;
-    var error = document.getElementById("nameError");
+    var error = document.getElementById("name-error");
     if (name.length == 0) {
       error.textContent = "Имя обязательно";
       return false;
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function validateEmail() {
     var email = emailInput.value;
-    var error = document.getElementById("emailError");
+    var error = document.getElementById("email-error");
     var re = /\S+@\S+\.\S+/;
     if (!re.test(email)) {
       error.textContent = "Введите корректный email";
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function validateMessage() {
     var message = messageInput.value;
-    var error = document.getElementById("messageError");
+    var error = document.getElementById("message-error");
     if (message.length < 20) {
       error.textContent = "Сообщение должно содержать минимум 20 символов";
       return false;

@@ -173,7 +173,7 @@
 
         <section id="cards">
           <h2>Популярные спортсмены</h2>
-          <div class="cards-container" id="cardsContainer">
+          <div class="cards-container" id="cards-container">
             <div class="card" data-id="1">
               <img src="img/athlete1.jpg" alt="Спортсмен 1" />
               <h4>Криштиану Роналду</h4>
@@ -215,26 +215,26 @@
             <div class="modal-content">
               <span class="close" onclick="closeModal()">&times;</span>
               <h3>Форма обратной связи</h3>
-              <form id="contactForm">
+              <form id="contact-form">
                 <div class="form-group">
                   <label>Имя:</label>
                   <input type="text" id="name" name="name" />
-                  <span class="error" id="nameError"></span>
+                  <span class="error" id="name-error"></span>
                 </div>
 
                 <div class="form-group">
                   <label>Email:</label>
                   <input type="text" id="email" name="email" />
-                  <span class="error" id="emailError"></span>
+                  <span class="error" id="email-error"></span>
                 </div>
 
                 <div class="form-group">
                   <label>Сообщение:</label>
                   <textarea id="message" name="message" rows="5"></textarea>
-                  <span class="error" id="messageError"></span>
+                  <span class="error" id="message-error"></span>
                 </div>
 
-                <button type="submit" id="submitBtn" disabled>Отправить</button>
+                <button type="submit" id="submit-btn" disabled>Отправить</button>
               </form>
               <div id="result"></div>
             </div>

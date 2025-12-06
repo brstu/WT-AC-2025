@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #f5f5f5;
   color: #222;
   line-height: 1.4;
@@ -79,7 +79,7 @@ section {
   background: white;
   padding: 30px;
   margin-bottom: 25px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
 }
 
 h2 {
@@ -114,13 +114,14 @@ h2 {
 
 .tab-content {
   display: none;
-  animation: fadeIn 0.3s;
+  animation: fade-in 0.3s;
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -274,7 +275,7 @@ h2 {
   top: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgb(0 0 0 / 50%);
 }
 
 .modal-content {
@@ -324,7 +325,7 @@ h2 {
   margin-top: 5px;
 }
 
-#submitBtn {
+#submit-btn {
   background: #667eea;
   color: white;
   border: none;
@@ -334,13 +335,13 @@ h2 {
   width: 100%;
 }
 
-#submitBtn:hover:not(:disabled) {
-  background: #764ba2;
-}
-
-#submitBtn:disabled {
+#submit-btn:disabled {
   background: #95a5a6;
   cursor: not-allowed;
+}
+
+#submit-btn:hover:not(:disabled) {
+  background: #764ba2;
 }
 
 #result {
@@ -360,7 +361,7 @@ footer {
   margin-top: 30px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   header h1 {
     font-size: 2em;
   }
@@ -382,7 +383,7 @@ footer {
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   header h1 {
     font-size: 1.5em;
   }
