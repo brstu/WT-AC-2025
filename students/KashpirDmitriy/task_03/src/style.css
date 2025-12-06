@@ -168,12 +168,6 @@ button#refresh:active {
   flex-wrap: wrap;
 }
 
-.pagination button:disabled {
-  background: #95a5a6;
-  cursor: not-allowed;
-  transform: none;
-}
-
 .pagination button {
   background: #2e8b57;
   color: white;
@@ -182,6 +176,12 @@ button#refresh:active {
 
 .pagination button:hover:not(:disabled) {
   background: #236e42;
+}
+
+.pagination button:disabled {
+  background: #95a5a6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 #page-info {
