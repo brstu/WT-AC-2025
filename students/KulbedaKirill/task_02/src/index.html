@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MerchStore - Магазин мерча</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="logo">MerchStore</div>
+        <nav>
+          <button class="burger-btn" id="burger-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+          <ul class="nav-menu" id="nav-menu">
+            <li><a href="#products">Товары</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#contact">Контакты</a></li>
+          </ul>
+        </nav>
+        <button class="cart-btn" id="cart-btn">
+          Корзина (<span id="cart-count">0</span>)
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <section id="products">
+        <h1>Наш мерч</h1>
+        <div class="products-container" id="products-container">
+          <div
+            class="product-card"
+            data-id="1"
+            data-name="Футболка Classic"
+            data-price="1500"
+          >
+            <img src="img/tshirt.jpg" alt="Футболка Classic" />
+            <h2>Футболка Classic</h2>
+            <p class="price">1500 ₽</p>
+            <button class="add-to-cart-btn">В корзину</button>
+            <button class="like-btn">♡</button>
+          </div>
+          <div
+            class="product-card"
+            data-id="2"
+            data-name="Худи Premium"
+            data-price="3500"
+          >
+            <img src="img/hoodie.jpg" alt="Худи Premium" />
+            <h2>Худи Premium</h2>
+            <p class="price">3500 ₽</p>
+            <button class="add-to-cart-btn">В корзину</button>
+            <button class="like-btn">♡</button>
+          </div>
+          <div
+            class="product-card"
+            data-id="3"
+            data-name="Кепка Logo"
+            data-price="900"
+          >
+            <img src="img/cap.jpg" alt="Кепка Logo" />
+            <h2>Кепка Logo</h2>
+            <p class="price">900 ₽</p>
+            <button class="add-to-cart-btn">В корзину</button>
+            <button class="like-btn">♡</button>
+          </div>
+          <div
+            class="product-card"
+            data-id="4"
+            data-name="Шоппер Eco"
+            data-price="600"
+          >
+            <img src="img/shopper.jpg" alt="Шоппер Eco" />
+            <h2>Шоппер Eco</h2>
+            <p class="price">600 ₽</p>
+            <button class="add-to-cart-btn">В корзину</button>
+            <button class="like-btn">♡</button>
+          </div>
+          <div
+            class="product-card"
+            data-id="5"
+            data-name="Стикерпак"
+            data-price="250"
+          >
+            <img src="img/stickers.jpg" alt="Стикерпак" />
+            <h2>Стикерпак</h2>
+            <p class="price">250 ₽</p>
+            <button class="add-to-cart-btn">В корзину</button>
+            <button class="like-btn">♡</button>
+          </div>
+          <div
+            class="product-card"
+            data-id="6"
+            data-name="Кружка Cozy"
+            data-price="450"
+          >
+            <img src="img/mug.jpg" alt="Кружка Cozy" />
+            <h2>Кружка Cozy</h2>
+            <p class="price">450 ₽</p>
+            <button class="add-to-cart-btn">В корзину</button>
+            <button class="like-btn">♡</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <h2>О нас</h2>
+        <div class="accordion" id="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header">История компании</button>
+            <div class="accordion-content">
+              <p>
+                Мы начали в 2020 году как небольшой проект по созданию
+                качественного мерча.
+              </p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Наша команда</button>
+            <div class="accordion-content">
+              <p>
+                В нашей команде работают дизайнеры и специалисты по качеству
+                продукции.
+              </p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header">Доставка</button>
+            <div class="accordion-content">
+              <p>Доставляем по всей России. Срок доставки от 3 до 14 дней.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Связаться с нами</h2>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Имя *</label>
+            <input type="text" id="name" name="name" />
+            <span class="error-message" id="name-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail *</label>
+            <input type="text" id="email" name="email" />
+            <span class="error-message" id="email-error"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">Сообщение (мин. 20 символов) *</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+            <span class="error-message" id="message-error"></span>
+          </div>
+          <button type="submit" id="submit-btn" disabled>Отправить</button>
+        </form>
+        <div id="form-result"></div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2025 MerchStore. Все права защищены.</p>
+    </footer>
+
+    <!-- Модальное окно корзины -->
+    <div class="modal" id="cart-modal">
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close">×</button>
+        <h2>Корзина</h2>
+        <div id="cart-items"></div>
+        <div class="cart-total">
+          <strong>Итого: <span id="cart-total">0</span> ₽</strong>
+        </div>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
