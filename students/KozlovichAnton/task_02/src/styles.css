@@ -72,6 +72,11 @@ header {
   transition: 0.3s;
 }
 
+.footer-links a {
+  color: white;
+  text-decoration: none;
+}
+
 .nav-menu {
   background-color: #3a7bc8;
   padding: 10px;
@@ -478,11 +483,6 @@ footer {
   display: flex;
   gap: 20px;
   justify-content: center;
-}
-
-.footer-links a {
-  color: white;
-  text-decoration: none;
 }
 
 .footer-links a:hover {
