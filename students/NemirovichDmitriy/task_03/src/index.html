@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Библиотека аудиокниг</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Библиотека аудиокниг</h1>
+      </div>
+
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="Поиск аудиокниг..." />
+        <select id="genreFilter">
+          <option value="">Все жанры</option>
+          <option value="fiction">Художественная литература</option>
+          <option value="detective">Детективы</option>
+          <option value="fantasy">Фантастика</option>
+          <option value="biography">Биографии</option>
+          <option value="science">Научпоп</option>
+        </select>
+        <button id="refreshBtn" onclick="refreshData()">Обновить</button>
+      </div>
+
+      <div id="loading" style="display: none">
+        <div class="spinner"></div>
+        <p>Загрузка...</p>
+      </div>
+
+      <div id="error" style="display: none">
+        <p class="error-message"></p>
+        <button onclick="loadBooks()">Попробовать снова</button>
+      </div>
+
+      <div id="empty" style="display: none">
+        <p>Ничего не найдено</p>
+      </div>
+
+      <div id="booksList"></div>
+
+      <div class="pagination">
+        <button id="prevBtn" onclick="previousPage()" disabled>Назад</button>
+        <span id="pageInfo">Страница 1</span>
+        <button id="nextBtn" onclick="nextPage()">Вперёд</button>
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
