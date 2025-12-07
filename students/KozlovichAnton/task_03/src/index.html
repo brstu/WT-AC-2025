@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог аниме</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="header">
+        <h1>Каталог аниме</h1>
+      </div>
+
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="Поиск аниме..." />
+        <select id="typeFilter">
+          <option value="">Все типы</option>
+          <option value="tv">TV</option>
+          <option value="movie">Movie</option>
+          <option value="ova">OVA</option>
+        </select>
+        <button id="refreshBtn">Обновить</button>
+      </div>
+
+      <div id="loading" style="display: none">
+        <div class="spinner"></div>
+        <p>Загрузка...</p>
+      </div>
+
+      <div id="error" style="display: none">
+        <p class="error-msg"></p>
+      </div>
+
+      <div id="content">
+        <div id="animeList"></div>
+      </div>
+
+      <div class="pagination">
+        <button id="prevBtn" disabled>Назад</button>
+        <span id="pageInfo"></span>
+        <button id="nextBtn">Вперед</button>
+      </div>
+    </div>
+
+    <script>
+      // Глобальные переменные
+      var currentPage = 1;
+      var currentSearch = "";
+      var currentType = "";
+      var cache = {};
+      var abortController = null;
+      var isLoading = false;
+
+      // Функция для получения данных
+      async function fetchWithRetry(url, options) {
+        var retries = 3;
+        var backoffMs = 1000;
+        var timeoutMs = 10000;
+
+        for (var i = 0; i < retries; i++) {
+          try {
+            abortController = new AbortController();
+            var signal = abortController.signal;
+
+            var timeoutId = setTimeout(function () {
+              abortController.abort();
+            }, timeoutMs);
+
+            var response = await fetch(url, { signal: signal });
+            clearTimeout(timeoutId);
+
+            if (!response.ok) {
+              throw new Error("HTTP error! status: " + response.status);
+            }
+
+            var data = await response.json();
+            return data;
+          } catch (error) {
+            if (i === retries - 1) {
+              throw error;
+            }
+            await new Promise((resolve) =>
+              setTimeout(resolve, backoffMs * (i + 1))
+            );
+          }
+        }
+      }
+
+      // Функция загрузки аниме
+      async function loadAnime() {
+        if (isLoading) {
+          if (abortController) {
+            abortController.abort();
+          }
+        }
+
+        isLoading = true;
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("error").style.display = "none";
+        document.getElementById("content").style.display = "none";
+
+        try {
+          var cacheKey = currentPage + "_" + currentSearch + "_" + currentType;
+
+          // Проверка кэша
+          if (cache[cacheKey]) {
+            var cachedData = cache[cacheKey];
+            if (Date.now() - cachedData.timestamp < 300000) {
+              renderAnime(cachedData.data);
+              return;
+            }
+          }
+
+          var url =
+            "https://api.jikan.moe/v4/anime?page=" + currentPage + "&limit=10";
+
+          if (currentSearch) {
+            url += "&q=" + currentSearch;
+          }
+
+          if (currentType) {
+            url += "&type=" + currentType;
+          }
+
+          var data = await fetchWithRetry(url);
+
+          // Сохранение в кэш
+          cache[cacheKey] = {
+            data: data,
+            timestamp: Date.now(),
+          };
+
+          renderAnime(data);
+        } catch (error) {
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("error").style.display = "block";
+          document.querySelector(".error-msg").textContent =
+            "Ошибка загрузки: " + error.message;
+        } finally {
+          isLoading = false;
+        }
+      }
+
+      // Функция отрисовки
+      function renderAnime(data) {
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("error").style.display = "none";
+        document.getElementById("content").style.display = "block";
+
+        var animeList = document.getElementById("animeList");
+        animeList.innerHTML = "";
+
+        if (!data.data || data.data.length === 0) {
+          animeList.innerHTML = "<p>Ничего не найдено</p>";
+          return;
+        }
+
+        for (var i = 0; i < data.data.length; i++) {
+          var anime = data.data[i];
+          var card = document.createElement("div");
+          card.className = "anime-card";
+
+          var img = document.createElement("img");
+          img.src = anime.images.jpg.image_url || "img/placeholder.png";
+          img.alt = anime.title || "Anime image";
+
+          var title = document.createElement("h3");
+          title.textContent = anime.title;
+
+          var type = document.createElement("p");
+          type.textContent = "Тип: " + (anime.type || "N/A");
+
+          var score = document.createElement("p");
+          score.textContent = "Рейтинг: " + (anime.score || "N/A");
+
+          card.appendChild(img);
+          card.appendChild(title);
+          card.appendChild(type);
+          card.appendChild(score);
+
+          animeList.appendChild(card);
+        }
+
+        // Обновление пагинации
+        document.getElementById("pageInfo").textContent =
+          "Страница " + currentPage;
+        document.getElementById("prevBtn").disabled = currentPage === 1;
+        document.getElementById("nextBtn").disabled =
+          !data.pagination.has_next_page;
+      }
+
+      // Обработчики событий
+      document
+        .getElementById("searchInput")
+        .addEventListener("input", function (e) {
+          currentSearch = e.target.value;
+          currentPage = 1;
+          setTimeout(function () {
+            loadAnime();
+          }, 500);
+        });
+
+      document
+        .getElementById("typeFilter")
+        .addEventListener("change", function (e) {
+          currentType = e.target.value;
+          currentPage = 1;
+          loadAnime();
+        });
+
+      document
+        .getElementById("refreshBtn")
+        .addEventListener("click", function () {
+          cache = {};
+          loadAnime();
+        });
+
+      document.getElementById("prevBtn").addEventListener("click", function () {
+        currentPage--;
+        loadAnime();
+      });
+
+      document.getElementById("nextBtn").addEventListener("click", function () {
+        currentPage++;
+        loadAnime();
+      });
+
+      // Загрузка при старте
+      loadAnime();
+    </script>
+  </body>
+</html>
