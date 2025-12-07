@@ -71,16 +71,24 @@ this.abortController = new AbortController();
 
 ### 4. In-memory кэширование с TTL (5 минут)
 
-```javascript
-class CacheWithTTL {
-    constructor(ttl = 5*60*1000) {
-        this.cache = new Map();
-        this.ttl = ttl;
+    class CacheWithTTL {
+        constructor(ttl = 5 * 60 * 1000) {
+            this.cache = new Map();
+            this.ttl = ttl;
+        }
+        get(key) {
+            const item = this.cache.get(key);
+            if (!item) return null;
+            if (Date.now() - item.timestamp > this.ttl) {
+                this.cache.delete(key);
+                return null;
+            }
+            return item.value;
+        }
+        set(key, value) {
+            this.cache.set(key, { value, timestamp: Date.now() });
+        }
     }
-    get(key) { /*проверка возраста*/ }
-    set(key, value) { /*с timestamp*/ }
-}
-```
 
 **Ключи:**
 
@@ -158,7 +166,7 @@ class CacheWithTTL {
 3. Отмена запросов через AbortController
 4. Таймауты запросов
 5. In-memory кэширование с TTL
-6. Управление состояниями UI (loading/error/empty/skeleton) 
+6. Управление состояниями UI (loading/error/empty/skeleton)
 7. Оптимизация UX при асинхронных операциях
 
 **Результат:** быстрое, надёжное и красивое приложение, готовое к реальному использованию.
