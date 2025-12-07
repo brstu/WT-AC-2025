@@ -143,6 +143,12 @@ select {
     margin-bottom: 15px;
 }
 
+h1,
+h2,
+h3 {
+    font-weight: bold;
+}
+
 .card h3 {
     color: #667eea;
     margin-bottom: 10px;
@@ -205,6 +211,7 @@ select {
         transform: translateY(-100px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -245,6 +252,10 @@ select {
     text-decoration: underline;
 }
 
+div div div {
+    line-height: 1.5;
+}
+
 .contributors {
     display: flex;
     gap: 15px;
@@ -257,18 +268,8 @@ select {
     font-size: 12px;
 }
 
-h1,
-h2,
-h3 {
-    font-weight: bold;
-}
-
 #search-input::placeholder {
     color: #bbb;
-}
-
-div div div {
-    line-height: 1.5;
 }
 
 * + * {
