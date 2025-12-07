@@ -216,15 +216,19 @@
           loadAnime();
         });
 
-      document.getElementById("prev-btn").addEventListener("click", function () {
-        currentPage--;
-        loadAnime();
-      });
+      document
+        .getElementById("prev-btn")
+        .addEventListener("click", function () {
+          currentPage--;
+          loadAnime();
+        });
 
-      document.getElementById("next-btn").addEventListener("click", function () {
-        currentPage++;
-        loadAnime();
-      });
+      document
+        .getElementById("next-btn")
+        .addEventListener("click", function () {
+          currentPage++;
+          loadAnime();
+        });
 
       // Загрузка при старте
       loadAnime();

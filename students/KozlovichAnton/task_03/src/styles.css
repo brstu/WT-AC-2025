@@ -68,7 +68,6 @@ body {
 
 #refresh-btn {
   padding: 12px 25px !important;
-  padding: 12px 25px !important;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   color: white !important;
   border: none !important;
@@ -197,15 +196,15 @@ body {
   transition: all 0.3s ease !important;
 }
 
-.pagination button:hover:not(:disabled) {
-  transform: scale(1.1) !important;
-  box-shadow: 0 5px 15px rgb(102 126 234 / 40%) !important;
-}
-
 .pagination button:disabled {
   background: #ccc !important;
   cursor: not-allowed !important;
   opacity: 0.6 !important;
+}
+
+.pagination button:hover:not(:disabled) {
+  transform: scale(1.1) !important;
+  box-shadow: 0 5px 15px rgb(102 126 234 / 40%) !important;
 }
 
 #page-info {
