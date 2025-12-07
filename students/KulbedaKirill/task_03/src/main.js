@@ -179,7 +179,7 @@ function displayArticles() {
 // Показать детальную информацию о статье
 function showArticleDetail(articleId) {
     var modal = document.getElementById('modal');
-    var modalBody = document.getElementById('modalBody');
+    var modalBody = document.getElementById('modal-body');
     
     modal.style.display = 'block';
     modalBody.innerHTML = '<p>Загрузка...</p>';
@@ -219,7 +219,7 @@ function showArticleDetail(articleId) {
 
 // Отображение деталей статьи в модальном окне
 function displayArticleDetail(article) {
-    var modalBody = document.getElementById('modalBody');
+    var modalBody = document.getElementById('modal-body');
     
     var html = '<h2>' + article.title + '</h2>';
     html += '<img src="' + article.image + '" alt="Article detail image">';
@@ -238,7 +238,7 @@ function closeModal() {
 
 // Поиск
 function search() {
-    var searchInput = document.getElementById('searchInput');
+    var searchInput = document.getElementById('search-input');
     var query = searchInput.value.toLowerCase();
     
     currentPage = 1;
@@ -258,7 +258,7 @@ function search() {
 // Обновление данных
 function refreshData() {
     currentPage = 1;
-    document.getElementById('searchInput').value = '';
+    document.getElementById('search-input').value = '';
     loadArticles(true);
 }
 
@@ -282,7 +282,7 @@ function prevPage() {
 
 function updatePagination() {
     var totalPages = Math.ceil(filteredArticles.length / itemsPerPage);
-    var pageInfo = document.getElementById('pageInfo');
+    var pageInfo = document.getElementById('page-info');
     pageInfo.textContent = 'Страница ' + currentPage + ' из ' + (totalPages || 1);
 }
 
@@ -296,7 +296,7 @@ window.onclick = function(event) {
 
 // Поиск по нажатию Enter
 document.addEventListener('DOMContentLoaded', function() {
-    var searchInput = document.getElementById('searchInput');
+    var searchInput = document.getElementById('search-input');
     if (searchInput) {
         searchInput.addEventListener('keypress', function(event) {
             if (event.key === 'Enter') {

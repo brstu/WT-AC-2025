@@ -11,7 +11,7 @@
         <h1>Статьи и гайды</h1>
         
         <div class="controls">
-            <input type="text" id="searchInput" placeholder="Поиск статей...">
+            <input type="text" id="search-input" placeholder="Поиск статей...">
             <button onclick="search()">Поиск</button>
             <button onclick="refreshData()">Обновить</button>
         </div>
@@ -28,14 +28,14 @@
 
         <div class="pagination">
             <button onclick="prevPage()">Назад</button>
-            <span id="pageInfo"></span>
+            <span id="page-info"></span>
             <button onclick="nextPage()">Вперед</button>
         </div>
 
         <div id="modal" style="display:none;">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <div id="modalBody"></div>
+                <div id="modal-body"></div>
             </div>
         </div>
     </div>
