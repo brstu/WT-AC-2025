@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер вакансий</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Поиск вакансий</h1>
+        
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Поиск по названию...">
+            <select id="filterSelect">
+                <option value="">Все типы</option>
+                <option value="Full Time">Full Time</option>
+                <option value="Part Time">Part Time</option>
+                <option value="Contract">Contract</option>
+            </select>
+            <button id="refreshBtn">Обновить</button>
+        </div>
+
+        <div id="loadingState" style="display: none;">
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+        </div>
+
+        <div id="errorState" style="display: none;">
+            <p>Ошибка загрузки данных</p>
+        </div>
+
+        <div id="emptyState" style="display: none;">
+            <p>Ничего не найдено</p>
+        </div>
+
+        <div id="jobsList"></div>
+
+        <div class="pagination">
+            <button id="prevBtn" disabled>Назад</button>
+            <span id="pageInfo">Страница 1</span>
+            <button id="nextBtn">Далее</button>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
