@@ -11,7 +11,7 @@
       <h1>Каталог подкастов</h1>
 
       <div class="controls">
-        <input type="text" id="searchInput" placeholder="Поиск подкастов..." />
+        <input type="text" id="search-input" placeholder="Поиск подкастов..." />
         <button onclick="refreshData()">Обновить</button>
       </div>
 
@@ -25,15 +25,15 @@
       <div id="content"></div>
 
       <div class="pagination">
-        <button onclick="prevPage()" id="prevBtn">Назад</button>
-        <span id="pageInfo"></span>
-        <button onclick="nextPage()" id="nextBtn">Вперед</button>
+        <button onclick="prevPage()" id="prev-btn">Назад</button>
+        <span id="page-info"></span>
+        <button onclick="nextPage()" id="next-btn">Вперед</button>
       </div>
 
       <div id="modal" class="modal" style="display: none">
         <div class="modal-content">
           <span class="close" onclick="closeModal()">&times;</span>
-          <div id="modalBody"></div>
+          <div id="modal-body"></div>
         </div>
       </div>
     </div>
@@ -380,7 +380,7 @@
 
         if (!podcast) return;
 
-        var modalBody = document.getElementById("modalBody");
+        var modalBody = document.getElementById("modal-body");
         modalBody.innerHTML =
           '<img src="' +
           podcast.image +
@@ -424,10 +424,10 @@
       }
 
       function updatePagination() {
-        document.getElementById("pageInfo").innerHTML =
+        document.getElementById("page-info").innerHTML =
           "Страница " + currentPage + " из " + totalPages;
-        document.getElementById("prevBtn").disabled = currentPage == 1;
-        document.getElementById("nextBtn").disabled = currentPage == totalPages;
+        document.getElementById("prev-btn").disabled = currentPage == 1;
+        document.getElementById("next-btn").disabled = currentPage == totalPages;
       }
 
       // Обновление с очисткой кэша
@@ -439,7 +439,7 @@
       // Поиск без debounce (будет делать запрос на каждый ввод)
       document.addEventListener("DOMContentLoaded", function () {
         document
-          .getElementById("searchInput")
+          .getElementById("search-input")
           .addEventListener("input", function (e) {
             searchTerm = e.target.value;
             currentPage = 1;
