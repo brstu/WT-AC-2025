@@ -11,13 +11,13 @@
         <h1>Поиск Open-Source проектов GitHub</h1>
         
         <div class="search-box">
-            <input type="text" id="searchInput" placeholder="Введите ключевое слово для поиска...">
+            <input type="text" id="search-input" placeholder="Введите ключевое слово для поиска...">
             <button onclick="search()">Искать</button>
             <button onclick="refreshData()">Обновить</button>
         </div>
 
         <div class="filters">
-            <select id="languageFilter" onchange="applyFilter()">
+            <select id="language-filter" onchange="applyFilter()">
                 <option value="">Все языки</option>
                 <option value="JavaScript">JavaScript</option>
                 <option value="Python">Python</option>
@@ -26,7 +26,7 @@
                 <option value="Go">Go</option>
             </select>
             
-            <select id="sortFilter" onchange="applyFilter()">
+            <select id="sort-filter" onchange="applyFilter()">
                 <option value="stars">По звёздам</option>
                 <option value="forks">По форкам</option>
                 <option value="updated">По обновлению</option>
@@ -50,15 +50,15 @@
         <div id="results"></div>
 
         <div class="pagination" id="pagination" style="display: none;">
-            <button id="prevBtn" onclick="prevPage()">Предыдущая</button>
-            <span id="pageInfo"></span>
-            <button id="nextBtn" onclick="nextPage()">Следующая</button>
+            <button id="prev-btn" onclick="prevPage()">Предыдущая</button>
+            <span id="page-info"></span>
+            <button id="next-btn" onclick="nextPage()">Следующая</button>
         </div>
 
         <div id="modal" class="modal" style="display: none;">
             <div class="modal-content">
                 <span class="close" onclick="closeModal()">&times;</span>
-                <div id="modalBody"></div>
+                <div id="modal-body"></div>
             </div>
         </div>
     </div>
@@ -75,7 +75,7 @@
 
         // Функция поиска
         function search() {
-            var input = document.getElementById('searchInput');
+            var input = document.getElementById('search-input');
             currentQuery = input.value;
             currentPage = 1;
             
@@ -243,9 +243,9 @@
             // Пагинация
             if (totalPages > 1) {
                 pagination.style.display = 'flex';
-                document.getElementById('pageInfo').textContent = 'Страница ' + currentPage + ' из ' + totalPages;
-                document.getElementById('prevBtn').disabled = currentPage === 1;
-                document.getElementById('nextBtn').disabled = currentPage === totalPages;
+                document.getElementById('page-info').textContent = 'Страница ' + currentPage + ' из ' + totalPages;
+                document.getElementById('prev-btn').disabled = currentPage === 1;
+                document.getElementById('next-btn').disabled = currentPage === totalPages;
             } else {
                 pagination.style.display = 'none';
             }
@@ -257,7 +257,7 @@
             if (!repo) return;
             
             var modal = document.getElementById('modal');
-            var modalBody = document.getElementById('modalBody');
+            var modalBody = document.getElementById('modal-body');
             
             modalBody.innerHTML = '<div class="loader"></div>';
             modal.style.display = 'block';
@@ -331,8 +331,8 @@
 
         // Применить фильтр
         function applyFilter() {
-            var language = document.getElementById('languageFilter').value;
-            var sort = document.getElementById('sortFilter').value;
+            var language = document.getElementById('language-filter').value;
+            var sort = document.getElementById('sort-filter').value;
             
             var query = currentQuery;
             if (language) {
@@ -346,7 +346,7 @@
 
         // Enter для поиска
         document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            document.getElementById('search-input').addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     search();
                 }

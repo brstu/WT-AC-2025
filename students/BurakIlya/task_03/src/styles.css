@@ -17,7 +17,7 @@ body {
     background: white;
     padding: 30px;
     border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgb(0 0 0 / 30%);
 }
 
 h1 {
@@ -33,7 +33,7 @@ h1 {
     margin-bottom: 20px;
 }
 
-#searchInput {
+#search-input {
     flex: 1;
     padding: 12px 20px;
     border: 2px solid #667eea;
@@ -133,7 +133,7 @@ select {
 
 .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
 }
 
 .card img {
@@ -173,7 +173,7 @@ select {
     margin-top: 30px;
 }
 
-#pageInfo {
+#page-info {
     font-size: 16px;
     color: #666;
 }
@@ -186,7 +186,7 @@ select {
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgb(0 0 0 / 50%);
 }
 
 .modal-content {
@@ -197,10 +197,10 @@ select {
     width: 80%;
     max-width: 700px;
     position: relative;
-    animation: slideDown 0.3s;
+    animation: slide-down 0.3s;
 }
 
-@keyframes slideDown {
+@keyframes slide-down {
     from {
         transform: translateY(-100px);
         opacity: 0;
@@ -225,23 +225,23 @@ select {
     color: #000;
 }
 
-#modalBody h2 {
+#modal-body h2 {
     color: #667eea;
     margin-bottom: 20px;
 }
 
-#modalBody p {
+#modal-body p {
     margin-bottom: 10px;
     line-height: 1.6;
 }
 
-#modalBody a {
+#modal-body a {
     color: #667eea;
     text-decoration: none;
     font-weight: bold;
 }
 
-#modalBody a:hover {
+#modal-body a:hover {
     text-decoration: underline;
 }
 
@@ -257,17 +257,15 @@ select {
     font-size: 12px;
 }
 
-/* Плохие практики для снижения Lighthouse */
-#searchInput::placeholder {
-    color: #bbb;
-}
-
-h1, h2, h3 {
+h1,
+h2,
+h3 {
     font-weight: bold;
 }
 
-.card {
-    min-height: 200px;
+/* Плохие практики для снижения Lighthouse */
+#search-input::placeholder {
+    color: #bbb;
 }
 
 /* Неэффективные селекторы */
@@ -279,12 +277,16 @@ div div div {
     margin-top: 0;
 }
 
+.card {
+    min-height: 200px;
+}
+
 /* Излишне сложные стили */
-.container > div:not(#loading):not(#error):not(#empty):not(#results):not(.pagination):not(#modal) {
+.container > div:not(#loading, #error, #empty, #results, .pagination, #modal) {
     margin-bottom: 15px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     #results {
         grid-template-columns: 1fr;
     }
@@ -306,7 +308,7 @@ div div div {
     }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     body {
         padding: 10px;
     }
