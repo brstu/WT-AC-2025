@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   background: #f0f0f0;
   color: #666;
 }
@@ -29,14 +29,14 @@ body {
   margin-bottom: 20px;
 }
 
-#searchInput {
+#search-input {
   flex: 1;
   padding: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
 }
 
-#genreFilter {
+#genre-filter {
   padding: 8px;
   border: 1px solid #ccc;
   font-size: 14px;
@@ -87,7 +87,7 @@ button:hover {
   margin-bottom: 15px;
 }
 
-#booksList {
+#books-list {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
@@ -146,7 +146,7 @@ button:hover {
   margin-top: 20px;
 }
 
-#pageInfo {
+#page-info {
   color: #888;
   font-size: 14px;
 }
@@ -156,12 +156,12 @@ button:disabled {
   cursor: not-allowed;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .container {
     width: 100%;
   }
 
-  #booksList {
+  #books-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }

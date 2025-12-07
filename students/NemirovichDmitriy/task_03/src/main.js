@@ -251,7 +251,7 @@ function loadBooks(ignoreCache = false) {
 
 function showLoading() {
   document.getElementById("loading").style.display = "block";
-  document.getElementById("booksList").innerHTML = "";
+  document.getElementById("books-list").innerHTML = "";
 }
 
 function hideLoading() {
@@ -277,8 +277,8 @@ function hideEmpty() {
 
 // Фильтрация
 function applyFilters() {
-  var searchValue = document.getElementById("searchInput").value.toLowerCase();
-  var genreValue = document.getElementById("genreFilter").value;
+  var searchValue = document.getElementById("search-input").value.toLowerCase();
+  var genreValue = document.getElementById("genre-filter").value;
 
   filteredBooks = allBooks.filter((book) => {
     var matchSearch =
@@ -300,7 +300,7 @@ function displayBooks() {
 
   if (filteredBooks.length === 0) {
     showEmpty();
-    document.getElementById("booksList").innerHTML = "";
+    document.getElementById("books-list").innerHTML = "";
     return;
   }
 
@@ -322,7 +322,7 @@ function displayBooks() {
         `;
   }
 
-  document.getElementById("booksList").innerHTML = html;
+  document.getElementById("books-list").innerHTML = html;
   updatePagination();
 }
 
@@ -340,10 +340,10 @@ function getGenreName(genre) {
 function updatePagination() {
   var totalPages = Math.ceil(filteredBooks.length / itemsPerPage);
   document.getElementById(
-    "pageInfo"
+    "page-info"
   ).textContent = `Страница ${currentPage} из ${totalPages}`;
-  document.getElementById("prevBtn").disabled = currentPage === 1;
-  document.getElementById("nextBtn").disabled = currentPage >= totalPages;
+  document.getElementById("prev-btn").disabled = currentPage === 1;
+  document.getElementById("next-btn").disabled = currentPage >= totalPages;
 }
 
 function nextPage() {
@@ -384,12 +384,12 @@ window.onload = function () {
   loadBooks();
 
   // Обработчики событий
-  document.getElementById("searchInput").addEventListener("input", function () {
+  document.getElementById("search-input").addEventListener("input", function () {
     applyFilters();
   });
 
   document
-    .getElementById("genreFilter")
+    .getElementById("genre-filter")
     .addEventListener("change", function () {
       applyFilters();
     });
