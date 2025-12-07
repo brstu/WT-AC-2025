@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Статьи и гайды</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Статьи и гайды</h1>
+        
+        <div class="controls">
+            <input type="text" id="searchInput" placeholder="Поиск статей...">
+            <button onclick="search()">Поиск</button>
+            <button onclick="refreshData()">Обновить</button>
+        </div>
+
+        <div id="loading" style="display:none;">
+            <p>Загрузка...</p>
+        </div>
+
+        <div id="error" style="display:none;"></div>
+
+        <div id="content">
+            <div id="articles"></div>
+        </div>
+
+        <div class="pagination">
+            <button onclick="prevPage()">Назад</button>
+            <span id="pageInfo"></span>
+            <button onclick="nextPage()">Вперед</button>
+        </div>
+
+        <div id="modal" style="display:none;">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal()">&times;</span>
+                <div id="modalBody"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
