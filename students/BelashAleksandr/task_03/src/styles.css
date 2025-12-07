@@ -5,7 +5,7 @@
 }
 
 body {
-    font-family: Arial;
+    font-family: Arial, sans-serif;
     background: white;
     padding: 20px;
 }
@@ -27,18 +27,18 @@ h1 {
     margin-bottom: 20px;
 }
 
-#searchInput {
+#search-input {
     flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
 }
 
-#filterSelect {
+#filter-select {
     padding: 10px;
     border: 1px solid #ccc;
 }
 
-#refreshBtn {
+#refresh-btn {
     padding: 10px 20px;
     background: blue;
     color: white;
@@ -59,14 +59,14 @@ h1 {
     100% { background-position: -200% 0; }
 }
 
-#errorState {
+#error-state {
     padding: 20px;
     background: red;
     color: white;
     text-align: center;
 }
 
-#emptyState {
+#empty-state {
     padding: 20px;
     text-align: center;
     color: gray;
@@ -110,7 +110,7 @@ h1 {
     cursor: not-allowed;
 }
 
-#pageInfo {
+#page-info {
     font-weight: bold;
 }
 

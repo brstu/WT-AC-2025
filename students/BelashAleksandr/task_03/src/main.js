@@ -13,28 +13,28 @@ const ITEMS_PER_PAGE = 10;
 window.onload = function() {
     loadJobs();
     
-    document.getElementById('searchInput').addEventListener('input', function() {
+    document.getElementById('search-input').addEventListener('input', function() {
         
         filterJobs();
     });
     
-    document.getElementById('filterSelect').addEventListener('change', function() {
+    document.getElementById('filter-select').addEventListener('change', function() {
         filterJobs();
     });
     
-    document.getElementById('refreshBtn').addEventListener('click', function() {
+    document.getElementById('refresh-btn').addEventListener('click', function() {
         cache = {}; // Очистка кэша
         loadJobs();
     });
     
-    document.getElementById('prevBtn').addEventListener('click', function() {
+    document.getElementById('prev-btn').addEventListener('click', function() {
         if (currentPage > 1) {
             currentPage--;
             renderPage();
         }
     });
     
-    document.getElementById('nextBtn').addEventListener('click', function() {
+    document.getElementById('next-btn').addEventListener('click', function() {
         if (currentPage < totalPages) {
             currentPage++;
             renderPage();
@@ -125,8 +125,8 @@ function loadJobs() {
 }
 
 function filterJobs() {
-    var searchTerm = document.getElementById('searchInput').value.toLowerCase();
-    var filterType = document.getElementById('filterSelect').value;
+    var searchTerm = document.getElementById('search-input').value.toLowerCase();
+    var filterType = document.getElementById('filter-select').value;
     
     var filtered = allJobs;
     
@@ -166,7 +166,7 @@ function renderPage() {
     var end = start + ITEMS_PER_PAGE;
     var pageJobs = filtered.slice(start, end);
     
-    var jobsList = document.getElementById('jobsList');
+    var jobsList = document.getElementById('jobs-list');
     jobsList.innerHTML = ''; // Очищаем напрямую
     
     // Рендерим через innerHTML
@@ -190,37 +190,37 @@ function renderPage() {
 }
 
 function updatePagination() {
-    document.getElementById('pageInfo').textContent = 'Страница ' + currentPage + ' из ' + totalPages;
-    document.getElementById('prevBtn').disabled = currentPage === 1;
-    document.getElementById('nextBtn').disabled = currentPage === totalPages;
+    document.getElementById('page-info').textContent = 'Страница ' + currentPage + ' из ' + totalPages;
+    document.getElementById('prev-btn').disabled = currentPage === 1;
+    document.getElementById('next-btn').disabled = currentPage === totalPages;
 }
 
 function showLoading() {
-    document.getElementById('loadingState').style.display = 'block';
-    document.getElementById('jobsList').style.display = 'none';
-    document.getElementById('errorState').style.display = 'none';
-    document.getElementById('emptyState').style.display = 'none';
+    document.getElementById('loading-state').style.display = 'block';
+    document.getElementById('jobs-list').style.display = 'none';
+    document.getElementById('error-state').style.display = 'none';
+    document.getElementById('empty-state').style.display = 'none';
 }
 
 function hideLoading() {
-    document.getElementById('loadingState').style.display = 'none';
-    document.getElementById('jobsList').style.display = 'block';
+    document.getElementById('loading-state').style.display = 'none';
+    document.getElementById('jobs-list').style.display = 'block';
 }
 
 function showError() {
-    document.getElementById('errorState').style.display = 'block';
-    document.getElementById('jobsList').style.display = 'none';
-    document.getElementById('emptyState').style.display = 'none';
+    document.getElementById('error-state').style.display = 'block';
+    document.getElementById('jobs-list').style.display = 'none';
+    document.getElementById('empty-state').style.display = 'none';
 }
 
 function showEmpty() {
-    document.getElementById('emptyState').style.display = 'block';
-    document.getElementById('jobsList').style.display = 'none';
-    document.getElementById('errorState').style.display = 'none';
+    document.getElementById('empty-state').style.display = 'block';
+    document.getElementById('jobs-list').style.display = 'none';
+    document.getElementById('error-state').style.display = 'none';
 }
 
 function hideEmpty() {
-    document.getElementById('emptyState').style.display = 'none';
+    document.getElementById('empty-state').style.display = 'none';
 }
 
 console.log('Script loaded');
