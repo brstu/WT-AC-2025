@@ -11,8 +11,8 @@
       <h1>Каталог вакансий</h1>
 
       <div class="controls">
-        <input type="text" id="searchInput" placeholder="Поиск вакансий..." />
-        <select id="cityFilter">
+        <input type="text" id="search-input" placeholder="Поиск вакансий..." />
+        <select id="city-filter">
           <option value="">Все города</option>
           <option value="Москва">Москва</option>
           <option value="Санкт-Петербург">Санкт-Петербург</option>
@@ -20,22 +20,22 @@
           <option value="Киев">Киев</option>
           <option value="Брест">Брест</option>
         </select>
-        <button id="refreshBtn">Обновить</button>
+        <button id="refresh-btn">Обновить</button>
       </div>
 
-      <div id="loadingIndicator" style="display: none">
+      <div id="loading-indicator" style="display: none">
         <img src="img/loading.gif" alt="Загрузка данных" />
         Загрузка...
       </div>
 
-      <div id="errorMessage" style="display: none"></div>
+      <div id="error-message" style="display: none"></div>
 
-      <div id="vacancyList"></div>
+      <div id="vacancy-list"></div>
 
       <div class="pagination">
-        <button id="prevBtn" disabled>Назад</button>
-        <span id="pageInfo"></span>
-        <button id="nextBtn">Вперед</button>
+        <button id="prev-btn" disabled>Назад</button>
+        <span id="page-info"></span>
+        <button id="next-btn">Вперед</button>
       </div>
     </div>
 
@@ -191,22 +191,22 @@
       }
 
       function showLoading() {
-        document.getElementById("loadingIndicator").style.display = "block";
-        document.getElementById("vacancyList").style.display = "none";
-        document.getElementById("errorMessage").style.display = "none";
+        document.getElementById("loading-indicator").style.display = "block";
+        document.getElementById("vacancy-list").style.display = "none";
+        document.getElementById("error-message").style.display = "none";
       }
 
       function hideLoading() {
-        document.getElementById("loadingIndicator").style.display = "none";
-        document.getElementById("vacancyList").style.display = "block";
+        document.getElementById("loading-indicator").style.display = "none";
+        document.getElementById("vacancy-list").style.display = "block";
       }
 
       function showError(message) {
-        var errorDiv = document.getElementById("errorMessage");
+        var errorDiv = document.getElementById("error-message");
         errorDiv.textContent = "Ошибка: " + message;
         errorDiv.style.display = "block";
-        document.getElementById("vacancyList").style.display = "none";
-        document.getElementById("loadingIndicator").style.display = "none";
+        document.getElementById("vacancy-list").style.display = "none";
+        document.getElementById("loading-indicator").style.display = "none";
       }
 
       async function loadVacancies(ignoreCache) {
@@ -252,9 +252,9 @@
 
       function filterAndDisplay() {
         var searchTerm = document
-          .getElementById("searchInput")
+          .getElementById("search-input")
           .value.toLowerCase();
-        var cityFilter = document.getElementById("cityFilter").value;
+        var cityFilter = document.getElementById("city-filter").value;
 
         var filtered = allVacancies.filter(function (v) {
           var matchSearch =
@@ -280,7 +280,7 @@
       }
 
       function displayVacancies(vacancies) {
-        var container = document.getElementById("vacancyList");
+        var container = document.getElementById("vacancy-list");
 
         if (vacancies.length === 0) {
           container.innerHTML = '<div class="empty">Вакансии не найдены</div>';
@@ -305,14 +305,14 @@
       }
 
       function updatePagination() {
-        document.getElementById("pageInfo").textContent =
+        document.getElementById("page-info").textContent =
           "Страница " + currentPage + " из " + totalPages;
-        document.getElementById("prevBtn").disabled = currentPage <= 1;
-        document.getElementById("nextBtn").disabled = currentPage >= totalPages;
+        document.getElementById("prev-btn").disabled = currentPage <= 1;
+        document.getElementById("next-btn").disabled = currentPage >= totalPages;
       }
 
       document
-        .getElementById("searchInput")
+        .getElementById("search-input")
         .addEventListener("input", function () {
           clearTimeout(searchTimeout);
           searchTimeout = setTimeout(function () {
@@ -322,7 +322,7 @@
         });
 
       document
-        .getElementById("cityFilter")
+        .getElementById("city-filter")
         .addEventListener("change", function () {
           if (controller) {
             controller.abort();
@@ -332,12 +332,12 @@
         });
 
       document
-        .getElementById("refreshBtn")
+        .getElementById("refresh-btn")
         .addEventListener("click", function () {
           loadVacancies(true);
         });
 
-      document.getElementById("prevBtn").addEventListener("click", function () {
+      document.getElementById("prev-btn").addEventListener("click", function () {
         if (currentPage > 1) {
           currentPage--;
           filterAndDisplay();
@@ -345,7 +345,7 @@
         }
       });
 
-      document.getElementById("nextBtn").addEventListener("click", function () {
+      document.getElementById("next-btn").addEventListener("click", function () {
         if (currentPage < totalPages) {
           currentPage++;
           filterAndDisplay();

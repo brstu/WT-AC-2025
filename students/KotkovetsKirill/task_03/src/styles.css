@@ -1,5 +1,5 @@
 body {
-  font-family: Arial;
+  font-family: Arial, sans-serif;
   margin: 0;
   padding: 20px;
   background: #f5f5f5;
@@ -10,7 +10,7 @@ body {
   margin: 0 auto;
   background: white;
   padding: 30px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgb(0 0 0 / 10%);
 }
 
 h1 {
@@ -27,14 +27,14 @@ h1 {
   flex-wrap: wrap;
 }
 
-#searchInput {
+#search-input {
   flex: 2;
   padding: 12px;
   border: 1px solid #ddd;
   font-size: 16px;
 }
 
-#cityFilter {
+#city-filter {
   flex: 1;
   padding: 12px;
   border: 1px solid #ddd;
@@ -42,7 +42,7 @@ h1 {
   background: white;
 }
 
-#refreshBtn {
+#refresh-btn {
   padding: 12px 25px;
   background: #007bff;
   color: white;
@@ -51,25 +51,25 @@ h1 {
   font-size: 16px;
 }
 
-#refreshBtn:hover {
+#refresh-btn:hover {
   background: #0056b3;
 }
 
-#loadingIndicator {
+#loading-indicator {
   text-align: center;
   padding: 50px;
   font-size: 20px;
   color: #666;
 }
 
-#loadingIndicator img {
+#loading-indicator img {
   display: block;
   margin: 0 auto 20px;
   width: 50px;
   height: 50px;
 }
 
-#errorMessage {
+#error-message {
   padding: 20px;
   background: #f8d7da;
   color: #721c24;
@@ -86,7 +86,7 @@ h1 {
 }
 
 .vacancy-card h3 {
-  margin: 0 0 12px 0;
+  margin: 0 0 12px;
   color: #2c3e50;
   font-size: 22px;
 }
@@ -155,7 +155,7 @@ h1 {
   background: #218838;
 }
 
-#pageInfo {
+#page-info {
   font-size: 16px;
   color: #666;
   min-width: 150px;
@@ -169,7 +169,7 @@ h1 {
   color: #999;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .container {
     padding: 15px;
   }
@@ -178,8 +178,8 @@ h1 {
     flex-direction: column;
   }
 
-  #searchInput,
-  #cityFilter {
+  #search-input,
+  #city-filter {
     width: 100%;
   }
 
@@ -189,7 +189,7 @@ h1 {
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   h1 {
     font-size: 24px;
   }
