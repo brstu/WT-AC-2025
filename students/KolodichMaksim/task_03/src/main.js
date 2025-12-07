@@ -1,6 +1,4 @@
-// main.js
-
-const API_BASE = 'https://fakestoreapi.com'; // Используем Fake Store API как mock для маркетплейса
+const API_BASE = 'https://fakestoreapi.com';
 const ITEMS_PER_PAGE = 10;
 const CACHE_TTL = 5 * 60 * 1000; // 5 минут
 
@@ -9,216 +7,206 @@ let totalPages = 1;
 let searchQuery = '';
 let category = '';
 let abortController = null;
-let cache = new Map(); // In-memory cache
 
-// Функция для fetch с ретраями и таймаутом
-async function fetchWithRetry(url, options = {}) {
-    const { retries = 3, backoffMs = 1000, timeoutMs = 5000 } = options;
-    let attempt = 0;
-
-    while (attempt < retries) {
-        abortController = new AbortController();
-        const signal = abortController.signal;
-
-        const timeoutId = setTimeout(() => abortController.abort(), timeoutMs);
-
-        try {
-            const response = await fetch(url, { signal });
-            clearTimeout(timeoutId);
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-
-            return await response.json();
-        } catch (error) {
-            clearTimeout(timeoutId);
-            if (error.name === 'AbortError') {
-                throw new Error('Request timed out or aborted');
-            }
-            attempt++;
-            if (attempt >= retries) {
-                throw error;
-            }
-            await new Promise(resolve => setTimeout(resolve, backoffMs * Math.pow(2, attempt)));
+class CacheWithTTL {
+    constructor(ttl = CACHE_TTL) {
+        this.cache = new Map();
+        this.ttl = ttl;
+    }
+    get(key) {
+        const item = this.cache.get(key);
+        if (!item) return null;
+        if (Date.now() - item.timestamp > this.ttl) {
+            this.cache.delete(key);
+            return null;
         }
+        return item.value;
+    }
+    set(key, value) {
+        this.cache.set(key, { value, timestamp: Date.now() });
     }
 }
 
-// Функция для получения данных с кэшем
+const cache = new CacheWithTTL();
+
+async function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+async function fetchWithRetry(url, options = {}) {
+    const { retries = 3, backoffMs = 1000, timeoutMs = 8000 } = options;
+    let attempt = 0;
+
+    while (attempt <= retries) {
+        abortController = new AbortController();
+        const timeoutId = setTimeout(() => abortController.abort(), timeoutMs);
+
+        try {
+            const response = await fetch(url, { signal: abortController.signal });
+            clearTimeout(timeoutId);
+
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            return await response.json();
+        } catch (err) {
+            clearTimeout(timeoutId);
+            if (err.name === 'AbortError') throw err;
+
+            attempt++;
+            if (attempt <= retries) {
+                showRetryIndicator(attempt, retries);
+                await sleep(backoffMs * Math.pow(2, attempt - 1));
+            }
+        }
+    }
+    throw new Error('Превышено количество попыток подключения');
+}
+
+function showRetryIndicator(attempt, total) {
+    const errorEl = document.getElementById('error');
+    errorEl.textContent = `Повторная попытка ${attempt}/${total}...`;
+    errorEl.hidden = false;
+}
+
 async function getData(url, ignoreCache = false) {
-    const cacheKey = url;
-    const cached = cache.get(cacheKey);
-
-    if (!ignoreCache && cached && Date.now() - cached.timestamp < CACHE_TTL) {
-        console.log('Using cache for:', url);
-        return cached.data;
+    const key = url;
+    if (!ignoreCache) {
+        const cached = cache.get(key);
+        if (cached) {
+            console.log('Из кэша:', key);
+            return cached;
+        }
     }
 
-    try {
-        const data = await fetchWithRetry(url);
-        cache.set(cacheKey, { data, timestamp: Date.now() });
-        return data;
-    } catch (error) {
-        throw error;
-    }
+    const data = await fetchWithRetry(url);
+    cache.set(key, data);
+    return data;
 }
 
 // Загрузка категорий
 async function loadCategories() {
     try {
         const categories = await getData(`${API_BASE}/products/categories`);
-        const select = document.getElementById('categoryFilter');
+        const select = document.getElementById('category-filter');
         categories.forEach(cat => {
-            const option = document.createElement('option');
-            option.value = cat;
-            option.textContent = cat;
-            select.appendChild(option);
+            const opt = document.createElement('option');
+            opt.value = cat;
+            opt.textContent = cat.charAt(0).toUpperCase() + cat.slice(1);
+            select.appendChild(opt);
         });
-    } catch (error) {
-        console.error('Error loading categories:', error);
+    } catch (err) {
+        console.error('Не удалось загрузить категории:', err);
     }
 }
 
-// Загрузка продуктов
+// Загрузка товаров
 async function loadProducts(page = 1, ignoreCache = false) {
     showLoading(true);
-    hideError();
-    hideEmpty();
-    document.getElementById('products').style.display = 'none';
+    document.getElementById('error').hidden = true;
+    document.getElementById('empty').hidden = true;
+    document.getElementById('products').hidden = true;
 
-    // Отменяем предыдущий запрос
-    if (abortController) {
-        abortController.abort();
-    }
+    // Отмена предыдущего запроса
+    if (abortController) abortController.abort();
 
-    let url = `${API_BASE}/products?limit=${ITEMS_PER_PAGE}&_page=${page}`;
-    if (searchQuery) {
-        url = `${API_BASE}/products`; // Fake API не поддерживает поиск, симулируем фильтр позже
-    }
+    let url = `${API_BASE}/products?limit=${ITEMS_PER_PAGE * 10}`;
     if (category) {
-        url = `${API_BASE}/products/category/${category}?limit=${ITEMS_PER_PAGE}&_page=${page}`;
+        url = `${API_BASE}/products/category/${category}`;
     }
 
     try {
         let products = await getData(url, ignoreCache);
 
-        // Симуляция поиска (поскольку API не поддерживает)
+        // Поиск (клиентская фильтрация)
         if (searchQuery) {
-            const allProducts = await getData(`${API_BASE}/products`);
-            products = allProducts.filter(p => p.title.toLowerCase().includes(searchQuery.toLowerCase()));
-            const start = (page - 1) * ITEMS_PER_PAGE;
-            products = products.slice(start, start + ITEMS_PER_PAGE);
-            totalPages = Math.ceil(products.length / ITEMS_PER_PAGE); // Для поиска totalPages динамический
-        } else {
-            const totalProducts = category ? await getData(`${API_BASE}/products/category/${category}`) : await getData(`${API_BASE}/products`);
-            totalPages = Math.ceil(totalProducts.length / ITEMS_PER_PAGE);
+            products = products.filter(p =>
+                p.title.toLowerCase().includes(searchQuery.toLowerCase())
+            );
         }
 
-        if (products.length === 0) {
-            showEmpty();
+        totalPages = Math.ceil(products.length / ITEMS_PER_PAGE);
+        const start = (page - 1) * ITEMS_PER_PAGE;
+        const pageItems = products.slice(start, start + ITEMS_PER_PAGE);
+
+        if (pageItems.length === 0) {
+            document.getElementById('empty').hidden = false;
         } else {
-            renderProducts(products);
+            renderProducts(pageItems);
         }
 
         updatePagination(page);
-    } catch (error) {
-        if (error.name !== 'AbortError') {
-            showError(error.message);
+    } catch (err) {
+        if (err.name !== 'AbortError') {
+            document.getElementById('error').textContent = `Ошибка: ${err.message}`;
+            document.getElementById('error').hidden = false;
         }
     } finally {
         showLoading(false);
     }
 }
 
-// Рендеринг продуктов
 function renderProducts(products) {
     const container = document.getElementById('products');
     container.innerHTML = '';
-    products.forEach(product => {
+    products.forEach(p => {
         const card = document.createElement('div');
-        card.classList.add('product-card');
+        card.className = 'product-card';
         card.innerHTML = `
-            <img src="${product.image}" alt="${product.title}">
-            <h3>${product.title}</h3>
-            <p>$${product.price}</p>
+            <img src="${p.image}" alt="${p.title}" loading="lazy">
+            <h3>${p.title}</h3>
+            <p>$${p.price}</p>
         `;
         container.appendChild(card);
     });
-    container.style.display = 'grid';
+    container.hidden = false;
 }
 
-// Управление состояниями
 function showLoading(show) {
     document.getElementById('loading').style.display = show ? 'grid' : 'none';
 }
 
-function showError(message) {
-    const errorDiv = document.getElementById('error');
-    errorDiv.textContent = `Ошибка: ${message}. Попробуйте обновить.`;
-    errorDiv.style.display = 'block';
-}
-
-function hideError() {
-    document.getElementById('error').style.display = 'none';
-}
-
-function showEmpty() {
-    document.getElementById('empty').style.display = 'block';
-}
-
-function hideEmpty() {
-    document.getElementById('empty').style.display = 'none';
-}
-
 function updatePagination(page) {
-    document.getElementById('pageInfo').textContent = `Страница ${page} из ${totalPages}`;
-    document.getElementById('prevPage').disabled = page <= 1;
-    document.getElementById('nextPage').disabled = page >= totalPages;
+    document.getElementById('page-info').textContent = `Страница ${page} из ${totalPages}`;
+    document.getElementById('prev-page').disabled = page <= 1;
+    document.getElementById('next-page').disabled = page >= totalPages;
+    currentPage = page;
 }
 
-// Дебаунс для поиска
-function debounce(func, delay) {
-    let timeout;
+// Дебаунс
+function debounce(fn, delay) {
+    let timer;
     return (...args) => {
-        clearTimeout(timeout);
-        timeout = setTimeout(() => func(...args), delay);
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
     };
 }
 
 const debouncedSearch = debounce(() => {
-    searchQuery = document.getElementById('searchInput').value;
+    searchQuery = document.getElementById('search-input').value.trim();
     currentPage = 1;
     loadProducts(currentPage);
 }, 500);
 
 // События
-document.getElementById('searchInput').addEventListener('input', debouncedSearch);
+document.getElementById('search-input').addEventListener('input', debouncedSearch);
 
-document.getElementById('categoryFilter').addEventListener('change', (e) => {
+document.getElementById('category-filter').addEventListener('change', e => {
     category = e.target.value;
     currentPage = 1;
     loadProducts(currentPage);
 });
 
-document.getElementById('refreshButton').addEventListener('click', () => {
-    loadProducts(currentPage, true); // Игнор кэша
+document.getElementById('refresh-button').addEventListener('click', () => {
+    loadProducts(currentPage, true);
 });
 
-document.getElementById('prevPage').addEventListener('click', () => {
-    if (currentPage > 1) {
-        currentPage--;
-        loadProducts(currentPage);
-    }
+document.getElementById('prev-page').addEventListener('click', () => {
+    if (currentPage > 1) loadProducts(currentPage - 1);
 });
 
-document.getElementById('nextPage').addEventListener('click', () => {
-    if (currentPage < totalPages) {
-        currentPage++;
-        loadProducts(currentPage);
-    }
+document.getElementById('next-page').addEventListener('click', () => {
+    if (currentPage < totalPages) loadProducts(currentPage + 1);
 });
 
-// Инициализация
+// Старт
 loadCategories();
 loadProducts();
