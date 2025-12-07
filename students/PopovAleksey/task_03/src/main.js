@@ -13,33 +13,33 @@ const API_URL = 'https://ll.thespacedevs.com/2.2.0/launch/';
 window.onload = function() {
     loadLaunches();
     
-    document.getElementById('searchInput').addEventListener('input', function() {
+    document.getElementById('search-input').addEventListener('input', function() {
         handleSearch();
     });
     
-    document.getElementById('agencyFilter').addEventListener('change', function() {
+    document.getElementById('agency-filter').addEventListener('change', function() {
         handleFilter();
     });
     
-    document.getElementById('refreshBtn').addEventListener('click', function() {
+    document.getElementById('refresh-btn').addEventListener('click', function() {
         cache = {};
         localStorage.clear();
         loadLaunches();
     });
     
-    document.getElementById('loadMoreBtn').addEventListener('click', function() {
+    document.getElementById('load-more-btn').addEventListener('click', function() {
         currentPage++;
         loadLaunches(true);
     });
     
-    document.getElementById('prevBtn').addEventListener('click', function() {
+    document.getElementById('prev-btn').addEventListener('click', function() {
         if(currentPage > 1) {
             currentPage--;
             loadLaunches();
         }
     });
     
-    document.getElementById('nextBtn').addEventListener('click', function() {
+    document.getElementById('next-btn').addEventListener('click', function() {
         currentPage++;
         loadLaunches();
     });
@@ -184,7 +184,7 @@ function setCachedData(key, data) {
 
 // Рендеринг карточек
 function renderLaunches() {
-    var container = document.getElementById('launchesContainer');
+    var container = document.getElementById('launches-container');
     container.innerHTML = '';
     
     if(filteredLaunches.length === 0) {
@@ -223,7 +223,7 @@ function renderLaunches() {
 
 // Поиск
 function handleSearch() {
-    var searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    var searchTerm = document.getElementById('search-input').value.toLowerCase();
     
     if(searchTerm === '') {
         filteredLaunches = allLaunches;
@@ -245,7 +245,7 @@ function handleSearch() {
 
 // Фильтр
 function handleFilter() {
-    var filterValue = document.getElementById('agencyFilter').value;
+    var filterValue = document.getElementById('agency-filter').value;
     
     if(filterValue === '') {
         filteredLaunches = allLaunches;
@@ -266,29 +266,29 @@ function handleFilter() {
 
 // UI функции
 function showLoading() {
-    document.getElementById('loadingIndicator').style.display = 'block';
+    document.getElementById('loading-indicator').style.display = 'block';
 }
 
 function hideLoading() {
-    document.getElementById('loadingIndicator').style.display = 'none';
+    document.getElementById('loading-indicator').style.display = 'none';
 }
 
 function showError(message) {
-    var errorEl = document.getElementById('errorMessage');
+    var errorEl = document.getElementById('error-message');
     errorEl.textContent = message;
     errorEl.style.display = 'block';
 }
 
 function hideError() {
-    document.getElementById('errorMessage').style.display = 'none';
+    document.getElementById('error-message').style.display = 'none';
 }
 
 function updatePagination() {
-    document.getElementById('pageInfo').textContent = 'Страница ' + currentPage;
+    document.getElementById('page-info').textContent = 'Страница ' + currentPage;
     
     if(currentPage === 1) {
-        document.getElementById('prevBtn').disabled = true;
+        document.getElementById('prev-btn').disabled = true;
     } else {
-        document.getElementById('prevBtn').disabled = false;
+        document.getElementById('prev-btn').disabled = false;
     }
 }

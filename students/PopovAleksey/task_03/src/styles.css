@@ -24,13 +24,13 @@ body {
     padding: 30px;
     border-radius: 10px;
     margin-bottom: 30px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 .header h1 {
     color: #667eea;
     font-size: 2.5em;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    text-shadow: 2px 2px 4px rgb(0 0 0 / 10%);
 }
 
 .controls {
@@ -41,7 +41,7 @@ body {
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 .search-box input {
@@ -76,7 +76,7 @@ body {
 .buttons button:hover {
     background-color: #764ba2;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
 }
 
 .loading {
@@ -104,7 +104,7 @@ body {
     display: none;
     text-align: center;
     font-size: 18px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 .launches {
@@ -118,13 +118,13 @@ body {
     background-color: white;
     border-radius: 10px;
     padding: 20px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
     transition: all 0.3s;
 }
 
 .launch-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 12px rgb(0 0 0 / 20%);
 }
 
 .launch-card img {
@@ -170,14 +170,6 @@ body {
     color: white;
 }
 
-.pagination {
-    text-align: center;
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-}
-
 .pagination button {
     padding: 10px 20px;
     background-color: #667eea;
@@ -187,6 +179,14 @@ body {
     cursor: pointer;
     margin: 0 10px;
     font-size: 16px;
+}
+
+.pagination {
+    text-align: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 .pagination button:disabled {
@@ -200,7 +200,7 @@ body {
     font-weight: bold;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .launches {
         grid-template-columns: 1fr;
     }
