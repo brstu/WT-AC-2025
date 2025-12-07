@@ -15,7 +15,7 @@ body {
   margin: 0 auto !important;
   background-color: white !important;
   padding: 30px !important;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 0 20px rgb(0 0 0 / 10%) !important;
 }
 
 .header {
@@ -29,7 +29,7 @@ body {
 
 .header h1 {
   font-size: 36px !important;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 2px 2px 4px rgb(0 0 0 / 30%) !important;
 }
 
 .controls {
@@ -42,7 +42,7 @@ body {
   border-radius: 8px !important;
 }
 
-#searchInput {
+#search-input {
   flex: 1 !important;
   padding: 12px !important;
   border: 2px solid #667eea !important;
@@ -51,13 +51,13 @@ body {
   min-width: 200px !important;
 }
 
-#searchInput:focus {
+#search-input:focus {
   outline: none !important;
   border-color: #764ba2 !important;
-  box-shadow: 0 0 5px rgba(102, 126, 234, 0.5) !important;
+  box-shadow: 0 0 5px rgb(102 126 234 / 50%) !important;
 }
 
-#typeFilter {
+#type-filter {
   padding: 12px !important;
   border: 2px solid #667eea !important;
   border-radius: 5px !important;
@@ -66,7 +66,8 @@ body {
   cursor: pointer !important;
 }
 
-#refreshBtn {
+#refresh-btn {
+  padding: 12px 25px !important;
   padding: 12px 25px !important;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
   color: white !important;
@@ -78,9 +79,9 @@ body {
   transition: all 0.3s ease !important;
 }
 
-#refreshBtn:hover {
+#refresh-btn:hover {
   transform: scale(1.05) !important;
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4) !important;
+  box-shadow: 0 5px 15px rgb(102 126 234 / 40%) !important;
 }
 
 #loading {
@@ -99,12 +100,19 @@ body {
   margin-bottom: 20px !important;
 }
 
+.anime-card p {
+  font-size: 14px !important;
+  color: #666 !important;
+  margin-bottom: 5px !important;
+}
+
 @keyframes spin {
   0% {
-    transform: rotate(0deg) !important;
+    transform: rotate(0deg);
   }
+
   100% {
-    transform: rotate(360deg) !important;
+    transform: rotate(360deg);
   }
 }
 
@@ -119,7 +127,7 @@ body {
   padding: 30px !important;
   background-color: #ffe0e0 !important;
   border-radius: 8px !important;
-  border: 2px solid #ff0000 !important;
+  border: 2px solid #f00 !important;
 }
 
 .error-msg {
@@ -128,7 +136,7 @@ body {
   font-weight: bold !important;
 }
 
-#animeList {
+#anime-list {
   display: grid !important;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)) !important;
   gap: 20px !important;
@@ -139,14 +147,14 @@ body {
   border: 2px solid #e0e0e0 !important;
   border-radius: 10px !important;
   padding: 15px !important;
-  background: linear-gradient(180deg, #ffffff 0%, #f9f9f9 100%) !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1) !important;
+  background: linear-gradient(180deg, #fff 0%, #f9f9f9 100%) !important;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%) !important;
   transition: all 0.3s ease !important;
 }
 
 .anime-card:hover {
   transform: translateY(-10px) !important;
-  box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3) !important;
+  box-shadow: 0 8px 16px rgb(102 126 234 / 30%) !important;
   border-color: #667eea !important;
 }
 
@@ -164,12 +172,6 @@ body {
   color: #333 !important;
   min-height: 40px !important;
   line-height: 1.3 !important;
-}
-
-.anime-card p {
-  font-size: 14px !important;
-  color: #666 !important;
-  margin-bottom: 5px !important;
 }
 
 .pagination {
@@ -197,22 +199,22 @@ body {
 
 .pagination button:hover:not(:disabled) {
   transform: scale(1.1) !important;
-  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4) !important;
+  box-shadow: 0 5px 15px rgb(102 126 234 / 40%) !important;
 }
 
 .pagination button:disabled {
-  background: #cccccc !important;
+  background: #ccc !important;
   cursor: not-allowed !important;
   opacity: 0.6 !important;
 }
 
-#pageInfo {
+#page-info {
   font-size: 18px !important;
   font-weight: bold !important;
   color: #667eea !important;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .wrapper {
     padding: 15px !important;
   }
@@ -225,7 +227,7 @@ body {
     flex-direction: column !important;
   }
 
-  #animeList {
+  #anime-list {
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important;
     gap: 15px !important;
   }
@@ -235,8 +237,8 @@ body {
   }
 }
 
-@media (max-width: 480px) {
-  #animeList {
+@media (width <= 480px) {
+  #anime-list {
     grid-template-columns: 1fr !important;
   }
 }

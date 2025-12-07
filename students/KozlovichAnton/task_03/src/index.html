@@ -13,14 +13,14 @@
       </div>
 
       <div class="controls">
-        <input type="text" id="searchInput" placeholder="Поиск аниме..." />
-        <select id="typeFilter">
+        <input type="text" id="search-input" placeholder="Поиск аниме..." />
+        <select id="type-filter">
           <option value="">Все типы</option>
           <option value="tv">TV</option>
           <option value="movie">Movie</option>
           <option value="ova">OVA</option>
         </select>
-        <button id="refreshBtn">Обновить</button>
+        <button id="refresh-btn">Обновить</button>
       </div>
 
       <div id="loading" style="display: none">
@@ -33,13 +33,13 @@
       </div>
 
       <div id="content">
-        <div id="animeList"></div>
+        <div id="anime-list"></div>
       </div>
 
       <div class="pagination">
-        <button id="prevBtn" disabled>Назад</button>
-        <span id="pageInfo"></span>
-        <button id="nextBtn">Вперед</button>
+        <button id="prev-btn" disabled>Назад</button>
+        <span id="page-info"></span>
+        <button id="next-btn">Вперед</button>
       </div>
     </div>
 
@@ -148,7 +148,7 @@
         document.getElementById("error").style.display = "none";
         document.getElementById("content").style.display = "block";
 
-        var animeList = document.getElementById("animeList");
+        var animeList = document.getElementById("anime-list");
         animeList.innerHTML = "";
 
         if (!data.data || data.data.length === 0) {
@@ -183,16 +183,16 @@
         }
 
         // Обновление пагинации
-        document.getElementById("pageInfo").textContent =
+        document.getElementById("page-info").textContent =
           "Страница " + currentPage;
-        document.getElementById("prevBtn").disabled = currentPage === 1;
-        document.getElementById("nextBtn").disabled =
+        document.getElementById("prev-btn").disabled = currentPage === 1;
+        document.getElementById("next-btn").disabled =
           !data.pagination.has_next_page;
       }
 
       // Обработчики событий
       document
-        .getElementById("searchInput")
+        .getElementById("search-input")
         .addEventListener("input", function (e) {
           currentSearch = e.target.value;
           currentPage = 1;
@@ -202,7 +202,7 @@
         });
 
       document
-        .getElementById("typeFilter")
+        .getElementById("type-filter")
         .addEventListener("change", function (e) {
           currentType = e.target.value;
           currentPage = 1;
@@ -210,18 +210,18 @@
         });
 
       document
-        .getElementById("refreshBtn")
+        .getElementById("refresh-btn")
         .addEventListener("click", function () {
           cache = {};
           loadAnime();
         });
 
-      document.getElementById("prevBtn").addEventListener("click", function () {
+      document.getElementById("prev-btn").addEventListener("click", function () {
         currentPage--;
         loadAnime();
       });
 
-      document.getElementById("nextBtn").addEventListener("click", function () {
+      document.getElementById("next-btn").addEventListener("click", function () {
         currentPage++;
         loadAnime();
       });
