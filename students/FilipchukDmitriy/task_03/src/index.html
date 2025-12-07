@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог подкастов</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Каталог подкастов</h1>
+
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="Поиск подкастов..." />
+        <button onclick="refreshData()">Обновить</button>
+      </div>
+
+      <div id="loading" style="display: none">
+        <div class="spinner"></div>
+        <p>Загрузка...</p>
+      </div>
+
+      <div id="error" style="display: none"></div>
+
+      <div id="content"></div>
+
+      <div class="pagination">
+        <button onclick="prevPage()" id="prevBtn">Назад</button>
+        <span id="pageInfo"></span>
+        <button onclick="nextPage()" id="nextBtn">Вперед</button>
+      </div>
+
+      <div id="modal" class="modal" style="display: none">
+        <div class="modal-content">
+          <span class="close" onclick="closeModal()">&times;</span>
+          <div id="modalBody"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Глобальные переменные (антипаттерн - все в глобальной области)
+      var currentPage = 1;
+      var totalPages = 5;
+      var podcasts = [];
+      var allPodcasts = [];
+      var searchTerm = "";
+      var cache = {};
+      var abortController;
+
+      // Моковые данные подкастов
+      const mockPodcasts = [
+        {
+          id: 1,
+          title: "Технологии и наука",
+          description: "Подкаст о современных технологиях",
+          category: "Технологии",
+          image: "https://picsum.photos/400/300?random=1",
+          duration: "45 мин",
+          author: "Иван Иванов",
+        },
+        {
+          id: 2,
+          title: "История России",
+          description: "Интересные факты из истории",
+          category: "История",
+          image: "https://picsum.photos/400/300?random=2",
+          duration: "60 мин",
+          author: "Петр Петров",
+        },
+        {
+          id: 3,
+          title: "Космос и астрономия",
+          description: "Путешествие по вселенной",
+          category: "Наука",
+          image: "https://picsum.photos/400/300?random=3",
+          duration: "50 мин",
+          author: "Мария Сидорова",
+        },
+        {
+          id: 4,
+          title: "Программирование",
+          description: "Обучение программированию",
+          category: "Технологии",
+          image: "https://picsum.photos/400/300?random=4",
+          duration: "40 мин",
+          author: "Алексей Алексеев",
+        },
+        {
+          id: 5,
+          title: "Философия жизни",
+          description: "Размышления о смысле жизни",
+          category: "Философия",
+          image: "https://picsum.photos/400/300?random=5",
+          duration: "55 мин",
+          author: "Ольга Смирнова",
+        },
+        {
+          id: 6,
+          title: "Музыка и культура",
+          description: "Обзор музыкальных новинок",
+          category: "Культура",
+          image: "https://picsum.photos/400/300?random=6",
+          duration: "35 мин",
+          author: "Дмитрий Козлов",
+        },
+        {
+          id: 7,
+          title: "Спорт и здоровье",
+          description: "Советы по здоровому образу жизни",
+          category: "Спорт",
+          image: "https://picsum.photos/400/300?random=7",
+          duration: "30 мин",
+          author: "Анна Волкова",
+        },
+        {
+          id: 8,
+          title: "Бизнес и финансы",
+          description: "Как начать свой бизнес",
+          category: "Бизнес",
+          image: "https://picsum.photos/400/300?random=8",
+          duration: "65 мин",
+          author: "Сергей Новиков",
+        },
+        {
+          id: 9,
+          title: "Психология отношений",
+          description: "Как построить крепкие отношения",
+          category: "Психология",
+          image: "https://picsum.photos/400/300?random=9",
+          duration: "48 мин",
+          author: "Елена Морозова",
+        },
+        {
+          id: 10,
+          title: "Путешествия по миру",
+          description: "Интересные места планеты",
+          category: "Путешествия",
+          image: "https://picsum.photos/400/300?random=10",
+          duration: "52 мин",
+          author: "Николай Соколов",
+        },
+        {
+          id: 11,
+          title: "Кулинария для всех",
+          description: "Простые и вкусные рецепты",
+          category: "Кулинария",
+          image: "https://picsum.photos/400/300?random=11",
+          duration: "25 мин",
+          author: "Татьяна Белова",
+        },
+        {
+          id: 12,
+          title: "Искусство и дизайн",
+          description: "Современное искусство",
+          category: "Искусство",
+          image: "https://picsum.photos/400/300?random=12",
+          duration: "42 мин",
+          author: "Игорь Федоров",
+        },
+        {
+          id: 13,
+          title: "Экология планеты",
+          description: "Проблемы экологии",
+          category: "Экология",
+          image: "https://picsum.photos/400/300?random=13",
+          duration: "38 мин",
+          author: "Виктория Павлова",
+        },
+        {
+          id: 14,
+          title: "Литература и книги",
+          description: "Обзор новинок литературы",
+          category: "Литература",
+          image: "https://picsum.photos/400/300?random=14",
+          duration: "44 мин",
+          author: "Андрей Михайлов",
+        },
+        {
+          id: 15,
+          title: "Кино и сериалы",
+          description: "Рецензии на фильмы",
+          category: "Кино",
+          image: "https://picsum.photos/400/300?random=15",
+          duration: "58 мин",
+          author: "Максим Орлов",
+        },
+        {
+          id: 16,
+          title: "Образование будущего",
+          description: "Новые методы обучения",
+          category: "Образование",
+          image: "https://picsum.photos/400/300?random=16",
+          duration: "47 мин",
+          author: "Светлана Васильева",
+        },
+        {
+          id: 17,
+          title: "Автомобили и техника",
+          description: "Обзор новинок авто",
+          category: "Автомобили",
+          image: "https://picsum.photos/400/300?random=17",
+          duration: "33 мин",
+          author: "Владимир Попов",
+        },
+        {
+          id: 18,
+          title: "Медицина сегодня",
+          description: "Современная медицина",
+          category: "Медицина",
+          image: "https://picsum.photos/400/300?random=18",
+          duration: "53 мин",
+          author: "Наталья Егорова",
+        },
+        {
+          id: 19,
+          title: "Мода и стиль",
+          description: "Тренды моды",
+          category: "Мода",
+          image: "https://picsum.photos/400/300?random=19",
+          duration: "28 мин",
+          author: "Юлия Романова",
+        },
+        {
+          id: 20,
+          title: "Игры и геймдев",
+          description: "Разработка компьютерных игр",
+          category: "Игры",
+          image: "https://picsum.photos/400/300?random=20",
+          duration: "62 мин",
+          author: "Артем Захаров",
+        },
+      ];
+
+      // Функция с плохим неймингом и без обработки ошибок
+      function doStuff() {
+        loadPodcasts();
+      }
+
+      // Fetch с retry (плохая реализация с setTimeout в цикле)
+      function fetchWithRetry(url, options) {
+        var retries = options.retries || 3;
+        var backoffMs = options.backoffMs || 1000;
+        var timeoutMs = options.timeoutMs || 5000;
+
+        return new Promise((resolve, reject) => {
+          var attempt = 0;
+
+          function tryFetch() {
+            attempt++;
+
+            // Создаем новый AbortController для каждой попытки
+            var controller = new AbortController();
+            var timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+            // Имитация fetch (т.к. используем моковые данные)
+            setTimeout(() => {
+              clearTimeout(timeoutId);
+
+              // Случайная ошибка для демонстрации retry (20% вероятность)
+              if (Math.random() < 0.2 && attempt < retries) {
+                console.log("Попытка " + attempt + " неудачна, повтор...");
+                setTimeout(tryFetch, backoffMs * attempt);
+              } else {
+                resolve({ ok: true, data: mockPodcasts });
+              }
+            }, 500);
+          }
+
+          tryFetch();
+        });
+      }
+
+      // Плохая функция загрузки без async/await
+      function loadPodcasts() {
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("error").style.display = "none";
+        document.getElementById("content").innerHTML = "";
+
+        // Отмена предыдущего запроса (но реализовано неправильно)
+        if (abortController) {
+          abortController.abort();
+        }
+        abortController = new AbortController();
+
+        var cacheKey = "podcasts_" + currentPage + "_" + searchTerm;
+
+        // Проверка кэша (примитивная, без TTL)
+        if (cache[cacheKey]) {
+          console.log("Данные из кэша");
+          setTimeout(() => {
+            displayPodcasts(cache[cacheKey]);
+            document.getElementById("loading").style.display = "none";
+          }, 100);
+          return;
+        }
+
+        fetchWithRetry("https://api.example.com/podcasts", {
+          retries: 3,
+          backoffMs: 1000,
+          timeoutMs: 5000,
+          signal: abortController.signal,
+        })
+          .then((response) => {
+            allPodcasts = response.data;
+
+            // Фильтрация по поиску (неэффективный алгоритм)
+            var filtered = [];
+            for (var i = 0; i < allPodcasts.length; i++) {
+              if (
+                searchTerm == "" ||
+                allPodcasts[i].title
+                  .toLowerCase()
+                  .indexOf(searchTerm.toLowerCase()) > -1 ||
+                allPodcasts[i].category
+                  .toLowerCase()
+                  .indexOf(searchTerm.toLowerCase()) > -1
+              ) {
+                filtered.push(allPodcasts[i]);
+              }
+            }
+
+            // Пагинация (плохая реализация)
+            var itemsPerPage = 6;
+            totalPages = Math.ceil(filtered.length / itemsPerPage);
+            var start = (currentPage - 1) * itemsPerPage;
+            var end = start + itemsPerPage;
+            podcasts = filtered.slice(start, end);
+
+            cache[cacheKey] = podcasts;
+
+            displayPodcasts(podcasts);
+            document.getElementById("loading").style.display = "none";
+          })
+          .catch((error) => {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("error").style.display = "block";
+            document.getElementById("error").innerHTML =
+              "Ошибка загрузки данных: " + error.message;
+          });
+      }
+
+      // Функция отображения без оптимизации
+      function displayPodcasts(data) {
+        var content = document.getElementById("content");
+        content.innerHTML = "";
+
+        if (data.length == 0) {
+          content.innerHTML = '<p class="empty">Подкасты не найдены</p>';
+          return;
+        }
+
+        // Создание элементов через innerHTML (плохая практика)
+        var html = '<div class="grid">';
+        for (var i = 0; i < data.length; i++) {
+          html +=
+            '<div class="card" onclick="showDetails(' + data[i].id + ')">';
+          html +=
+            '<img src="' + data[i].image + '" alt="' + data[i].title + '">';
+          html += "<h3>" + data[i].title + "</h3>";
+          html += "<p>" + data[i].description + "</p>";
+          html += '<span class="category">' + data[i].category + "</span>";
+          html += "</div>";
+        }
+        html += "</div>";
+        content.innerHTML = html;
+
+        updatePagination();
+      }
+
+      // Функция показа деталей (плохо структурирована)
+      function showDetails(id) {
+        var podcast = null;
+        for (var i = 0; i < mockPodcasts.length; i++) {
+          if (mockPodcasts[i].id == id) {
+            podcast = mockPodcasts[i];
+            break;
+          }
+        }
+
+        if (!podcast) return;
+
+        var modalBody = document.getElementById("modalBody");
+        modalBody.innerHTML =
+          '<img src="' +
+          podcast.image +
+          '" alt="' +
+          podcast.title +
+          '" style="width:100%">' +
+          "<h2>" +
+          podcast.title +
+          "</h2>" +
+          "<p><strong>Категория:</strong> " +
+          podcast.category +
+          "</p>" +
+          "<p><strong>Автор:</strong> " +
+          podcast.author +
+          "</p>" +
+          "<p><strong>Длительность:</strong> " +
+          podcast.duration +
+          "</p>" +
+          "<p>" +
+          podcast.description +
+          "</p>";
+
+        document.getElementById("modal").style.display = "block";
+      }
+
+      function closeModal() {
+        document.getElementById("modal").style.display = "none";
+      }
+
+      // Pagination без проверок
+      function nextPage() {
+        currentPage++;
+        if (currentPage > totalPages) currentPage = totalPages;
+        loadPodcasts();
+      }
+
+      function prevPage() {
+        currentPage--;
+        if (currentPage < 1) currentPage = 1;
+        loadPodcasts();
+      }
+
+      function updatePagination() {
+        document.getElementById("pageInfo").innerHTML =
+          "Страница " + currentPage + " из " + totalPages;
+        document.getElementById("prevBtn").disabled = currentPage == 1;
+        document.getElementById("nextBtn").disabled = currentPage == totalPages;
+      }
+
+      // Обновление с очисткой кэша
+      function refreshData() {
+        cache = {};
+        loadPodcasts();
+      }
+
+      // Поиск без debounce (будет делать запрос на каждый ввод)
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .getElementById("searchInput")
+          .addEventListener("input", function (e) {
+            searchTerm = e.target.value;
+            currentPage = 1;
+            loadPodcasts();
+          });
+
+        doStuff();
+      });
+
+      // Закрытие модального окна по клику вне его
+      window.onclick = function (event) {
+        var modal = document.getElementById("modal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
