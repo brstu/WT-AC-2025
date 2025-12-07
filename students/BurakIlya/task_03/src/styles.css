@@ -263,12 +263,10 @@ h3 {
     font-weight: bold;
 }
 
-/* Плохие практики для снижения Lighthouse */
 #search-input::placeholder {
     color: #bbb;
 }
 
-/* Неэффективные селекторы */
 div div div {
     line-height: 1.5;
 }
@@ -277,11 +275,6 @@ div div div {
     margin-top: 0;
 }
 
-.card {
-    min-height: 200px;
-}
-
-/* Излишне сложные стили */
 .container > div:not(#loading, #error, #empty, #results, .pagination, #modal) {
     margin-bottom: 15px;
 }
