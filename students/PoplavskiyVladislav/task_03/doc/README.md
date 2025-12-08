@@ -33,9 +33,9 @@
 
 ## Описание проекта
 
-Приложение — галерея NASA Astronomy Picture of the Day (APOD) с поиском по датам, 
+Приложение — галерея NASA Astronomy Picture of the Day (APOD) с поиском по датам,
 клиентским кэшированием, ретраями, таймаутами и отменами запросов.\
-Клиент обращается к NASA API (`api.nasa.gov/planetary/apod`) и отображает 
+Клиент обращается к NASA API (`api.nasa.gov/planetary/apod`) и отображает
 астрономические изображения дня по выбранному диапазону дат.\
 Реализованы состояния:
 
@@ -68,16 +68,16 @@
 Использован гибридный кэш (in-memory + localStorage):
 
 const apodCache = new Map();
-const CACHE_TTL = 24 * 60 * 60 * 1000; // 24 часа
+const CACHE_TTL = 24*60*60*1000; // 24 часа
 
-### Структура записи:
+### Структура записи
 
 apodCache.set(cacheKey, {
   data: images,
   timestamp: Date.now()
 });
 
-### Логика работы кэша:
+### Логика работы кэша
 
 1. **Ключ кэша** формируется как `nasa_${full_url_with_params}`
 2. **Проверка актуальности**: если запись есть и не истек TTL (24 часа) → данные берутся из кэша
@@ -100,7 +100,7 @@ apodCache.set(cacheKey, {
 ## Скриншоты DevTools
 
  ![Запрос](./screen/network-first.png)
- ![ВторойЗапрос](./scren/network-cached.png)
+ ![ВторойЗапрос](./screen/network-cached.png)
 
 ---
 
