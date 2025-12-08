@@ -37,7 +37,7 @@
 | 4 | АС-63 | 4 | 1 | Грицук Павел | GritsukPavel | [dir](./students/GritsukPavel) | [momo-kitsune](https://github.com/momo-kitsune) |  | 83 |  |  |  |  |  |  |  |  |
 | 5 | АС-63 | 5 | 1 | Казаренко Павел | KazarenkoPavel | [dir](./students/KazarenkoPavel) | [Catsker](https://github.com/Catsker) |  | 80 | 53 |  |  |  |  |  |  |  |
 | 6 | АС-63 | 6 | 1 | Карпеш Никита | KarpeshNikita | [dir](./students/KarpeshNikita) | [Frosyka](https://github.com/Frosyka) |  | 100+10 |  |  |  |  |  |  |  |  |
-| 7 | АС-63 | 7 | 1 | Козлович Антон | KozlovichAnton | [dir](./students/KozlovichAnton) | [Anton777kozlovich](https://github.com/Anton777kozlovich) |  | 91 |  |  |  |  |  |  |  |  |
+| 7 | АС-63 | 7 | 1 | Козлович Антон | KozlovichAnton | [dir](./students/KozlovichAnton) | [Anton777kozlovich](https://github.com/Anton777kozlovich) |  | 91 | 76 |  |  |  |  |  |  |  |
 | 8 | АС-63 | 8 | 1 | Козловская Анна | KozlovskayaAnna | [dir](./students/KozlovskayaAnna) | [annkrq](https://github.com/annkrq) |  | 105 |  |  |  |  |  |  |  |  |
 | 9 | АС-63 | 9 | 1 | Колодич Максим | KolodichMaksim | [dir](./students/KolodichMaksim) | [proxladno](https://github.com/proxladno) |  | 71 | 77 |  |  |  |  |  |  |  |
 | 10 | АС-63 | 10 | 1 | Крагель Алина | KragelAlina | [dir](./students/KragelAlina) | [Alina529](https://github.com/Alina529) |  | 111 | 98 |  |  |  |  |  |  |  |
@@ -52,7 +52,7 @@
 | 19 | АС-63 | 19 | 1 | Соколова Маргарита | SokolovaMargarita | [dir](./students/SokolovaMargarita) | [Ritkas33395553](https://github.com/Ritkas33395553) |  | 91 | 95 |  |  |  |  |  |  |  |
 | 20 | АС-63 | 20 | 2 | Стельмашук Иван | StelmashukIvan | [dir](./students/StelmashukIvan) | [KulibinI](https://github.com/KulibinI) |  | 76+10 | 86 | 114 | 95 | 89 |  |  |  |  |
 | 21 | АС-63 | 21 | 2 | Тунчик Антон | TunchikAnton | [dir](./students/TunchikAnton) | [Stis25](https://github.com/Stis25) |  | 96 |  |  |  |  |  |  |  |  |
-| 22 | АС-63 | 22 | 2 | Филипчук Дмитрий | FilipchukDmitriy | [dir](./students/FilipchukDmitriy) | [kuddel11](https://github.com/kuddel11) |  |  |  |  |  |  |  |  |  |  |
+| 22 | АС-63 | 22 | 2 | Филипчук Дмитрий | FilipchukDmitriy | [dir](./students/FilipchukDmitriy) | [kuddel11](https://github.com/kuddel11) |  | 58 | 82 |  |  |  |  |  |  |  |
 | 23 | АС-63 | 23 | 2 | Ярмола Александр | YarmolaAleksandr | [dir](./students/YarmolaAleksandr) | [alexsandro007](https://github.com/alexsandro007) |  | 100 | 110 | 110 | 107 | 110 |  |  |  |  |
 | 24 | АС-63 | 24 | 2 | Ярмолович Александр | YarmolovichAleksandr | [dir](./students/YarmolovichAleksandr) | [yarmolov](https://github.com/yarmolov) |  | 86 | 80 | 40 | 40 | 40 | 40 | 40 | 40 |  |
 | 25 | АС-64 | 1 | 1 | Белаш Александр | BelashAleksandr | [dir](./students/BelashAleksandr) | [went2smoke](https://github.com/went2smoke) |  | 68 | 76 |  |  |  |  |  |  |  |
