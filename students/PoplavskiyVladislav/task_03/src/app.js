@@ -442,28 +442,29 @@ class NASAAPODClient {
             if (el) el.textContent = value;
         };
 
-        updateElement('cacheHits', this.cacheHits);
-        updateElement('cacheMisses', this.cacheMisses);
-        updateElement('cacheSize', this.cache.size);
-        updateElement('cacheSizeMini', this.cache.size);
+        // ИСПРАВЛЕННЫЕ ID:
+        updateElement('cache-hits', this.cacheHits);
+        updateElement('cache-misses', this.cacheMisses);
+        updateElement('cache-size', this.cache.size);
         
         // Расчет эффективности
         const total = this.cacheHits + this.cacheMisses;
         const efficiency = total > 0 ? Math.round((this.cacheHits / total) * 100) : 0;
-        updateElement('cacheEfficiency', `${efficiency}%`);
+        updateElement('cache-efficiency', `${efficiency}%`);
         
-        // Обновление статуса кэша
-        const cacheStatus = document.getElementById('cacheStatus');
+        // Обновление статуса кэша (исправленный ID)
+        const cacheStatus = document.getElementById('cache-status-mini');
         if (cacheStatus) {
-            cacheStatus.textContent = document.getElementById('cacheToggle').checked ? 'активен' : 'отключен';
-            cacheStatus.style.color = document.getElementById('cacheToggle').checked ? '#28a745' : '#dc3545';
+            const cacheToggle = document.getElementById('cache-toggle');
+            cacheStatus.textContent = cacheToggle && cacheToggle.checked ? 'активен' : 'отключен';
+            cacheStatus.style.color = cacheToggle && cacheToggle.checked ? '#28a745' : '#dc3545';
         }
         
-        // Обновление режима API
-        const apiMode = document.getElementById('apiMode');
+        // Обновление режима API (исправленный ID)
+        const apiMode = document.getElementById('api-mode');
         if (apiMode) {
             apiMode.textContent = this.useMockAPI ? 'MOCK' : 'DEMO';
-            apiMode.style.background = this.useMockAPI ? '#ffc107' : '#28a745';
+            apiMode.className = this.useMockAPI ? 'mode-indicator mock' : 'mode-indicator real';
         }
         
         this.saveCacheStats();
@@ -519,38 +520,39 @@ class APODGalleryApp {
         this.loadImages();
         
         console.log('🚀 NASA APOD Gallery initialized');
-        console.log('📊 Cache stats:', this.client.getCacheStats());
     }
 
     initializeEventListeners() {
-        // Основная кнопка загрузки
-        document.getElementById('loadBtn').addEventListener('click', () => {
+        // Основная кнопка загрузки (исправленный ID)
+        document.getElementById('load-btn').addEventListener('click', () => {
             this.loadImages();
         });
 
-        // Кнопка обновления
-        document.getElementById('refreshBtn').addEventListener('click', () => {
+        // Кнопка обновления (исправленный ID)
+        document.getElementById('refresh-btn').addEventListener('click', () => {
             this.loadImages(true);
         });
 
-        // Очистка кэша
-        document.getElementById('clearCacheBtn').addEventListener('click', () => {
+        // Очистка кэша (исправленный ID)
+        document.getElementById('clear-cache-btn').addEventListener('click', () => {
             this.client.clearCache();
             this.showStatus('Кэш очищен', 'success');
             setTimeout(() => this.hideStatus(), 2000);
         });
 
-        // Переключение кэша
-        document.getElementById('cacheToggle').addEventListener('change', (e) => {
+        // Переключение кэша (исправленный ID)
+        document.getElementById('cache-toggle').addEventListener('change', (e) => {
             const useCache = e.target.checked;
             this.showStatus(`Кэш ${useCache ? 'включен' : 'отключен'}`, 'info');
             setTimeout(() => this.hideStatus(), 2000);
         });
 
-        // Переключение режима API
-        document.getElementById('toggleMockBtn').addEventListener('click', () => {
+        // Переключение режима API (исправленный ID)
+        document.getElementById('toggle-mock-btn').addEventListener('click', () => {
             const isMock = this.client.toggleMockAPI();
-            document.getElementById('toggleMockBtn').textContent = isMock ? '🔧 Real API' : '🔧 Mock API';
+            const btn = document.getElementById('toggle-mock-btn');
+            btn.textContent = isMock ? '🔧 Реальный API' : '🔧 Mock API';
+            btn.title = isMock ? 'Переключить на реальный API' : 'Переключить на Mock API';
             this.showStatus(`Режим API: ${isMock ? 'MOCK' : 'DEMO'}`, 'info');
             setTimeout(() => {
                 this.hideStatus();
@@ -558,9 +560,24 @@ class APODGalleryApp {
             }, 1000);
         });
 
-        // Просмотр содержимого кэша
-        document.getElementById('viewCacheBtn').addEventListener('click', () => {
+        // Просмотр содержимого кэша (исправленный ID)
+        document.getElementById('view-cache-btn').addEventListener('click', () => {
             this.showCacheContents();
+        });
+
+        // Сброс статистики (исправленный ID)
+        document.getElementById('reset-stats-btn').addEventListener('click', () => {
+            this.resetStats();
+        });
+
+        // Тест API (исправленный ID)
+        document.getElementById('test-api-btn').addEventListener('click', () => {
+            this.showTestDialog();
+        });
+
+        // Экспорт данных (исправленный ID)
+        document.getElementById('export-stats-btn').addEventListener('click', () => {
+            this.exportStats();
         });
 
         // Дебаунс для полей ввода
@@ -573,12 +590,13 @@ class APODGalleryApp {
             }, 800);
         };
 
-        document.getElementById('startDate').addEventListener('change', debouncedLoad);
-        document.getElementById('endDate').addEventListener('change', debouncedLoad);
-        document.getElementById('countSelect').addEventListener('change', debouncedLoad);
+        // Исправленные ID для полей ввода
+        document.getElementById('start-date').addEventListener('change', debouncedLoad);
+        document.getElementById('end-date').addEventListener('change', debouncedLoad);
+        document.getElementById('count-select').addEventListener('change', debouncedLoad);
 
         // Закрытие модального окна
-        document.getElementById('imageModal').addEventListener('click', (e) => {
+        document.getElementById('image-modal').addEventListener('click', (e) => {
             if (e.target === e.currentTarget) {
                 this.closeModal();
             }
@@ -588,9 +606,48 @@ class APODGalleryApp {
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 this.closeModal();
-                document.getElementById('cacheDialog').close();
+                const cacheDialog = document.getElementById('cache-dialog');
+                if (cacheDialog) cacheDialog.close();
+                const apiTestDialog = document.getElementById('api-test-dialog');
+                if (apiTestDialog) apiTestDialog.close();
             }
         });
+    }
+
+    resetStats() {
+        this.client.clearCache();
+        this.showStatus('Статистика сброшена', 'success');
+        setTimeout(() => this.hideStatus(), 2000);
+    }
+
+    showTestDialog() {
+        const dialog = document.getElementById('api-test-dialog');
+        if (dialog) {
+            dialog.showModal();
+        }
+    }
+
+    exportStats() {
+        const stats = {
+            cacheHits: this.client.cacheHits,
+            cacheMisses: this.client.cacheMisses,
+            cacheSize: this.client.cache.size,
+            totalRequests: this.client.stats.totalRequests,
+            timestamp: new Date().toISOString()
+        };
+        
+        const dataStr = JSON.stringify(stats, null, 2);
+        const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(dataStr);
+        
+        const exportFileDefaultName = `nasa-apod-stats-${new Date().toISOString().split('T')[0]}.json`;
+        
+        const linkElement = document.createElement('a');
+        linkElement.setAttribute('href', dataUri);
+        linkElement.setAttribute('download', exportFileDefaultName);
+        linkElement.click();
+        
+        this.showStatus('Данные экспортированы', 'success');
+        setTimeout(() => this.hideStatus(), 2000);
     }
 
     setDefaultDates() {
@@ -598,8 +655,9 @@ class APODGalleryApp {
         const startDate = new Date();
         startDate.setDate(startDate.getDate() - 9);
 
-        document.getElementById('startDate').value = this.formatDate(startDate);
-        document.getElementById('endDate').value = this.formatDate(endDate);
+        // Исправленные ID
+        document.getElementById('start-date').value = this.formatDate(startDate);
+        document.getElementById('end-date').value = this.formatDate(endDate);
     }
 
     formatDate(date) {
@@ -627,10 +685,11 @@ class APODGalleryApp {
         this.updateButtonState(true);
 
         try {
-            const startDate = document.getElementById('startDate').value;
-            const endDate = document.getElementById('endDate').value;
-            const count = parseInt(document.getElementById('countSelect').value);
-            const useCache = document.getElementById('cacheToggle').checked;
+            // Исправленные ID
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            const count = parseInt(document.getElementById('count-select').value);
+            const useCache = document.getElementById('cache-toggle').checked;
 
             console.log('📡 Loading images with params:', {
                 startDate, endDate, count, forceRefresh, useCache, page: this.currentPage
@@ -677,7 +736,8 @@ class APODGalleryApp {
     }
 
     updateButtonState(loading) {
-        const btn = document.getElementById('loadBtn');
+        // Исправленный ID
+        const btn = document.getElementById('load-btn');
         const text = btn.querySelector('.btn-text');
         const spinner = btn.querySelector('.spinner');
         
@@ -687,7 +747,7 @@ class APODGalleryApp {
     }
 
     displayImages(images) {
-        const container = document.getElementById('apodContainer');
+        const container = document.getElementById('apod-container');
         
         if (!images || images.length === 0) {
             this.showEmpty();
@@ -814,18 +874,24 @@ class APODGalleryApp {
         this.loadImages();
         
         // Прокрутка к началу галереи
-        document.querySelector('.apod-grid').scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
-        });
+        const apodGrid = document.querySelector('.apod-grid');
+        if (apodGrid) {
+            apodGrid.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
     }
 
     openImageModal(index, imageData) {
-        const modal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalTitle = document.getElementById('modalImageTitle');
-        const modalDate = document.getElementById('modalImageDate');
-        const modalExplanation = document.getElementById('modalImageExplanation');
+        const modal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        const modalTitle = document.getElementById('modal-image-title');
+        const modalDate = document.getElementById('modal-image-date');
+        const modalCopyright = document.getElementById('modal-image-copyright');
+        const modalType = document.getElementById('modal-image-type');
+        const modalExplanation = document.getElementById('modal-image-explanation');
+        const imageSourceLink = document.getElementById('image-source-link');
         
         const mediaUrl = imageData.media_type === 'video' 
             ? (imageData.thumbnail_url || imageData.url) 
@@ -834,46 +900,60 @@ class APODGalleryApp {
         modalImage.src = mediaUrl;
         modalImage.alt = imageData.title;
         modalTitle.textContent = imageData.title;
-        modalDate.textContent = new Date(imageData.date).toLocaleDateString('ru-RU', {
+        
+        modalDate.innerHTML = `<span>📅</span> ${new Date(imageData.date).toLocaleDateString('ru-RU', {
             year: 'numeric',
             month: 'long',
             day: 'numeric',
             weekday: 'long'
-        });
+        })}`;
+        
+        modalCopyright.innerHTML = imageData.copyright ? `<span>©</span> ${imageData.copyright}` : '';
+        modalType.innerHTML = `<span>${imageData.media_type === 'video' ? '🎥' : '🖼️'}</span> ${imageData.media_type === 'video' ? 'Видео' : 'Изображение'}`;
         modalExplanation.textContent = imageData.explanation;
+        
+        if (imageSourceLink) {
+            imageSourceLink.href = imageData.url;
+            imageSourceLink.title = `Источник: ${imageData.title}`;
+        }
         
         modal.setAttribute('aria-hidden', 'false');
         modal.style.display = 'flex';
         
         setTimeout(() => {
-            modal.querySelector('.modal-close').focus();
+            const modalClose = modal.querySelector('.modal-close');
+            if (modalClose) modalClose.focus();
         }, 100);
     }
 
     closeModal() {
-        const modal = document.getElementById('imageModal');
+        const modal = document.getElementById('image-modal');
         modal.setAttribute('aria-hidden', 'true');
         modal.style.display = 'none';
     }
 
     showCacheContents() {
         const contents = this.client.getCacheContents();
-        const dialog = document.getElementById('cacheDialog');
-        const contentEl = document.getElementById('cacheContents');
+        const dialog = document.getElementById('cache-dialog');
+        const memoryContent = document.getElementById('memory-cache-contents');
         
         if (contents.length === 0) {
-            contentEl.innerHTML = '<p style="text-align: center; padding: 20px;">Кэш пуст</p>';
+            memoryContent.innerHTML = '<p class="empty-message">In-memory кэш пуст</p>';
         } else {
             const html = contents.map(item => `
-                <div style="padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                    <div><strong>URL:</strong> ${item.key}</div>
-                    <div><strong>Возраст:</strong> ${item.age}</div>
-                    <div><strong>Размер:</strong> ${item.size}</div>
-                    <div><strong>Использований:</strong> ${item.hits}</div>
+                <div class="cache-item">
+                    <div class="cache-item-header">
+                        <span class="cache-item-url">${item.key}</span>
+                        <span class="cache-item-size">${item.size}</span>
+                    </div>
+                    <div class="cache-item-details">
+                        <div><span>Возраст:</span><span>${item.age}</span></div>
+                        <div><span>Использований:</span><span>${item.hits}</span></div>
+                    </div>
                 </div>
             `).join('');
             
-            contentEl.innerHTML = html;
+            memoryContent.innerHTML = html;
         }
         
         dialog.showModal();
@@ -882,7 +962,7 @@ class APODGalleryApp {
     showLoading() {
         this.showStatus('Загрузка изображений NASA...', 'loading');
         
-        const container = document.getElementById('apodContainer');
+        const container = document.getElementById('apod-container');
         const count = this.pageSize;
         
         let skeletonHTML = '';
@@ -903,7 +983,7 @@ class APODGalleryApp {
     }
 
     showError(message) {
-        const statusEl = document.getElementById('statusMessage');
+        const statusEl = document.getElementById('status-message');
         statusEl.innerHTML = `
             <div style="margin-bottom: 15px; font-size: 1.1rem;">${message}</div>
             <button onclick="apodApp.retryLoad()" 
@@ -917,7 +997,7 @@ class APODGalleryApp {
     }
 
     showEmpty() {
-        const statusEl = document.getElementById('statusMessage');
+        const statusEl = document.getElementById('status-message');
         statusEl.innerHTML = `
             <div style="margin-bottom: 10px;">🛸 Изображения не найдены для выбранного диапазона дат</div>
             <div style="font-size: 0.9rem; opacity: 0.8;">
@@ -929,14 +1009,14 @@ class APODGalleryApp {
     }
 
     showStatus(message, type = 'info') {
-        const statusEl = document.getElementById('statusMessage');
+        const statusEl = document.getElementById('status-message');
         statusEl.textContent = message;
         statusEl.className = `status-message ${type}`;
         statusEl.style.display = 'block';
     }
 
     hideStatus() {
-        const statusEl = document.getElementById('statusMessage');
+        const statusEl = document.getElementById('status-message');
         statusEl.style.display = 'none';
     }
 

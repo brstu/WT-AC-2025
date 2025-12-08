@@ -16,39 +16,39 @@
             <p class="subtitle">Лабораторная работа 03: Асинхронность и HTTP‑кэш | Личный API ключ</p>
         </header>
 
-        <div class="api-status-bar" id="apiStatusBar">
+        <div class="api-status-bar" id="api-status-bar">
             <div class="status-item">
                 <span class="status-label">API:</span>
-                <span class="status-value" id="apiStatus">Проверка...</span>
+                <span class="status-value" id="api-status">Проверка...</span>
             </div>
             <div class="status-item">
                 <span class="status-label">Запросы:</span>
-                <span class="status-value" id="requestCount">0/1000</span>
+                <span class="status-value" id="request-count">0/1000</span>
             </div>
             <div class="status-item">
                 <span class="status-label">Время ответа:</span>
-                <span class="status-value" id="responseTime">0 мс</span>
+               <span class="status-value" id="response-time">0 мс</span>
             </div>
             <div class="status-item">
                 <span class="status-label">Кэш:</span>
-                <span class="status-value" id="cacheStatusMini">Активен</span>
+                <span class="status-value" id="cache-status-mini">Активен</span>
             </div>
         </div>
 
         <div class="controls">
             <div class="control-group">
                 <label for="startDate">Дата начала:</label>
-                <input type="date" id="startDate" aria-label="Дата начала">
+                <input type="date" id="start-date" aria-label="Дата начала">
             </div>
             
             <div class="control-group">
                 <label for="endDate">Дата окончания:</label>
-                <input type="date" id="endDate" aria-label="Дата окончания">
+                <input type="date" id="end-date" aria-label="Дата окончания">
             </div>
             
             <div class="control-group">
                 <label for="countSelect">Количество:</label>
-                <select id="countSelect" aria-label="Количество изображений">
+                <select id="count-select" aria-label="Количество изображений">
                     <option value="5">5 изображений</option>
                     <option value="10" selected>10 изображений</option>
                     <option value="15">15 изображений</option>
@@ -58,12 +58,12 @@
             </div>
             
             <div class="buttons-group">
-                <button id="loadBtn" class="btn-primary">
+                <button id="load-btn" class="btn-primary">
                     <span class="btn-text">🚀 Загрузить</span>
                     <span class="spinner" style="display: none;"></span>
                 </button>
                 
-                <button id="refreshBtn" class="btn-secondary" title="Обновить данные (игнорировать кэш)">
+                <button id="refresh-btn" class="btn-secondary" title="Обновить данные (игнорировать кэш)">
                     🔄 Обновить
                 </button>
                 
@@ -71,7 +71,7 @@
                     🗑️ Очистить кэш
                 </button>
                 
-                <button id="toggleMockBtn" class="btn-secondary" title="Переключить режим работы API">
+                <button id="toggle-mock-btn" class="btn-secondary" title="Переключить режим работы API">
                     🔧 Режим API
                 </button>
             </div>
@@ -79,19 +79,19 @@
 
         <div class="cache-controls">
             <label class="cache-toggle">
-                <input type="checkbox" id="cacheToggle" checked>
+                <input type="checkbox" id="cache-toggle" checked>
                 <span>Использовать кэш</span>
             </label>
             <div class="cache-info-mini">
-                <span>Ключ: <span id="apiKeyStatus" class="key-status valid">✅ Активен</span></span>
-                <span>Режим: <span id="apiMode" class="mode-indicator real">🌐 Реальный API</span></span>
+                <span>Ключ: <span id="api-key-status" class="key-status valid">✅ Активен</span></span>
+                <span>Режим: <span id="api-mode" class="mode-indicator real">🌐 Реальный API</span></span>
             </div>
         </div>
 
-        <div id="statusMessage" class="status-message" aria-live="polite"></div>
+        <div id="status-message" class="status-message" aria-live="polite"></div>
 
         <main>
-            <div id="apodContainer" class="apod-grid">
+            <div id="apod-container" class="apod-grid">
                 <!-- Скелетоны будут добавлены через JS -->
             </div>
 
@@ -99,28 +99,28 @@
         </main>
 
         <section class="cache-info" aria-labelledby="cacheStatsTitle">
-            <h3 id="cacheStatsTitle">📊 Статистика кэширования и производительности</h3>
+            <h3 id="cache-stats-title">📊 Статистика кэширования и производительности</h3>
             <div class="stats-grid">
                 <div class="stat-card cache-hit">
-                    <div class="stat-value" id="cacheHits">0</div>
+                    <div class="stat-value" id="cache-hits">0</div>
                     <div class="stat-label">Попадания в кэш</div>
                     <div class="stat-desc">Данные из памяти</div>
                 </div>
                 
                 <div class="stat-card cache-miss">
-                    <div class="stat-value" id="cacheMisses">0</div>
+                    <div class="stat-value" id="cache-misses">0</div>
                     <div class="stat-label">Сетевые запросы</div>
                     <div class="stat-desc">К NASA API</div>
                 </div>
                 
                 <div class="stat-card cache-size">
-                    <div class="stat-value" id="cacheSize">0</div>
+                    <div class="stat-value" id="cache-size">0</div>
                     <div class="stat-label">Записей в кэше</div>
                     <div class="stat-desc">TTL: 24 часа</div>
                 </div>
                 
                 <div class="stat-card performance">
-                    <div class="stat-value" id="cacheEfficiency">0%</div>
+                    <div class="stat-value" id="cache-efficiency">0%</div>
                     <div class="stat-label">Эффективность</div>
                     <div class="stat-desc">Экономия трафика</div>
                 </div>
@@ -131,19 +131,19 @@
                 <div class="stats-details">
                     <div class="stat-row">
                         <span>Всего запросов:</span>
-                        <span id="totalRequests">0</span>
+                        <span id="total-requests">0</span>
                     </div>
                     <div class="stat-row">
                         <span>Успешных:</span>
-                        <span id="successfulRequests">0</span>
+                        <span id="successful-requests">0</span>
                     </div>
                     <div class="stat-row">
                         <span>С ошибками:</span>
-                        <span id="failedRequests">0</span>
+                        <span id="failed-requests">0</span>
                     </div>
                     <div class="stat-row">
                         <span>Среднее время:</span>
-                        <span id="avgResponseTime">0 мс</span>
+                        <span id="avg-response-time">0 мс</span>
                     </div>
                     <div class="stat-row">
                         <span>Лимит в час:</span>
@@ -158,7 +158,7 @@
                     <div class="details-content">
                         <div class="detail-section">
                             <h5>⚙️ Настройки API</h5>
-                            <p><strong>Ключ:</strong> <code id="maskedKey">y6hX...7Glu8A</code></p>
+                            <p><strong>Ключ:</strong> <code id="masked-key">y6hX...7Glu8A</code></p>
                             <p><strong>Базовая ссылка:</strong> <code>https://api.nasa.gov/planetary/apod</code></p>
                             <p><strong>Интервал запросов:</strong> 500 мс</p>
                             <p><strong>Таймаут:</strong> 10 секунд</p>
@@ -181,10 +181,10 @@
                         </div>
                         
                         <div class="action-buttons">
-                            <button id="viewCacheBtn" class="btn-small">📁 Посмотреть кэш</button>
-                            <button id="resetStatsBtn" class="btn-small">🔄 Сбросить статистику</button>
-                            <button id="testApiBtn" class="btn-small">🧪 Тест API</button>
-                            <button id="exportStatsBtn" class="btn-small">📤 Экспорт данных</button>
+                            <button id="view-cache-btn" class="btn-small">📁 Посмотреть кэш</button>
+                            <button id="reset-stats-btn" class="btn-small">🔄 Сбросить статистику</button>
+                            <button id="test-api-btn" class="btn-small">🧪 Тест API</button>
+                            <button id="export-stats-btn" class="btn-small">📤 Экспорт данных</button>
                         </div>
                     </div>
                 </details>
@@ -195,34 +195,34 @@
             <p>Лабораторная работа 03: Асинхронность и HTTP‑кэш | ФИО студента | Группа</p>
             <p>Используется личный API ключ NASA (y6hX...7Glu8A) | Лимит: 1000 запросов/час</p>
             <p class="tech-info">Технологии: JavaScript (ES6+), Fetch API, AbortController, Service Workers, CSS Grid, PWA</p>
-            <p class="timestamp" id="pageTimestamp">Загружено: <span id="currentTime"></span></p>
+            <p class="timestamp" id="page-timestamp">Загружено: <span id="current-time"></span></p>
         </footer>
     </div>
 
     <!-- Модальное окно для изображений -->
-    <div id="imageModal" class="modal" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+    <div id="image-modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">🌌 Просмотр изображения NASA</h2>
+                <h2 id="modal-title">🌌 Просмотр изображения NASA</h2>
                 <button class="modal-close" aria-label="Закрыть" onclick="closeModal()">×</button>
             </div>
             <div class="modal-body">
                 <div class="image-container">
-                    <img id="modalImage" alt="" class="modal-image">
-                    <div class="image-loading" id="imageLoading">Загрузка...</div>
+                    <img id="modal-image" alt="" class="modal-image">
+                    <div class="image-loading" id="image-loading">Загрузка...</div>
                 </div>
                 <div class="image-info">
-                    <h3 id="modalImageTitle"></h3>
+                    <h3 id="modal-image-title"></h3>
                     <div class="image-meta">
-                        <span class="meta-item" id="modalImageDate"></span>
-                        <span class="meta-item" id="modalImageCopyright"></span>
-                        <span class="meta-item" id="modalImageType"></span>
+                        <span class="meta-item" id="modal-image-date"></span>
+                        <span class="meta-item" id="modal-image-copyright"></span>
+                        <span class="meta-item" id="modal-image-type"></span>
                     </div>
-                    <p id="modalImageExplanation"></p>
+                    <p id="modal-image-explanation"></p>
                     <div class="image-actions">
                         <button onclick="downloadImage()" class="btn-small">💾 Скачать</button>
                         <button onclick="shareImage()" class="btn-small">📤 Поделиться</button>
-                        <a id="imageSourceLink" href="#" target="_blank" class="btn-small">🔗 Источник</a>
+                        <a id="image-source-link" href="#" target="_blank" class="btn-small">🔗 Источник</a>
                     </div>
                 </div>
             </div>
@@ -230,7 +230,7 @@
     </div>
 
     <!-- Диалог для просмотра кэша -->
-    <dialog id="cacheDialog">
+    <dialog id="cache-dialog">
         <div class="dialog-content">
             <h2>📂 Содержимое кэша</h2>
             <div class="dialog-tabs">
@@ -239,20 +239,20 @@
                 <button class="tab-btn" data-tab="localStorage">💾 LocalStorage</button>
             </div>
             
-            <div class="tab-content active" id="memoryTab">
-                <div id="memoryCacheContents" class="cache-contents">
+            <div class="tab-content active" id="memory-tab">
+                <div id="memory-cache-contents" class="cache-contents">
                     <p class="empty-message">Загружаем данные кэша...</p>
                 </div>
             </div>
             
-            <div class="tab-content" id="serviceWorkerTab">
-                <div id="swCacheContents" class="cache-contents">
+            <div class="tab-content" id="service-worker-tab">
+                <div id="sw-cache-contents" class="cache-contents">
                     <p class="empty-message">Service Worker кэш пуст или неактивен</p>
                 </div>
             </div>
             
-            <div class="tab-content" id="localStorageTab">
-                <div id="lsCacheContents" class="cache-contents">
+            <div class="tab-content" id="local-storage-tab">
+                <div id="ls-cache-contents" class="cache-contents">
                     <p class="empty-message">Данные в LocalStorage отсутствуют</p>
                 </div>
             </div>
@@ -260,15 +260,15 @@
             <div class="cache-summary">
                 <div class="summary-item">
                     <span>Общий размер:</span>
-                    <span id="totalCacheSize">0 KB</span>
+                    <span id="total-cache-size">0 KB</span>
                 </div>
                 <div class="summary-item">
                     <span>Записей:</span>
-                    <span id="totalCacheItems">0</span>
+                    <span id="total-cache-items">0</span>
                 </div>
                 <div class="summary-item">
                     <span>Экономия трафика:</span>
-                    <span id="trafficSaved">0 KB</span>
+                    <span id="traffic-saved">0 KB</span>
                 </div>
             </div>
             
@@ -280,13 +280,13 @@
     </dialog>
 
     <!-- Диалог тестирования API -->
-    <dialog id="apiTestDialog">
+    <dialog id="api-test-dialog">
         <div class="dialog-content">
             <h2>🧪 Тестирование API NASA</h2>
             <div class="test-controls">
                 <div class="test-group">
                     <label for="testEndpoint">Эндпоинт:</label>
-                    <select id="testEndpoint">
+                    <select id="test-endpoint">
                         <option value="apod">APOD (Astronomy Picture of the Day)</option>
                         <option value="count">APOD с количеством</option>
                         <option value="date">APOD по конкретной дате</option>
@@ -294,34 +294,34 @@
                     </select>
                 </div>
                 
-                <div class="test-group" id="testParams">
+                <div class="test-group" id="test-params">
                     <!-- Параметры будут добавлены динамически -->
                 </div>
                 
                 <div class="test-group">
                     <label for="testUseCache">Использовать кэш:</label>
-                    <input type="checkbox" id="testUseCache" checked>
+                    <input type="checkbox" id="test-use-cache" checked>
                 </div>
             </div>
             
             <div class="test-results">
                 <h3>Результаты теста:</h3>
-                <div id="testOutput" class="test-output">
+                <div id="test-output" class="test-output">
                     <p>Нажмите "Запустить тест" для проверки API</p>
                 </div>
                 
                 <div class="test-metrics">
                     <div class="metric">
                         <span>Статус:</span>
-                        <span id="testStatus">—</span>
+                        <span id="test-status">—</span>
                     </div>
                     <div class="metric">
                         <span>Время:</span>
-                        <span id="testTime">—</span>
+                        <span id="test-time">—</span>
                     </div>
                     <div class="metric">
                         <span>Размер:</span>
-                        <span id="testSize">—</span>
+                        <span id="test-size">—</span>
                     </div>
                 </div>
             </div>
@@ -334,7 +334,7 @@
     </dialog>
 
     <!-- Уведомления -->
-    <div id="notificationContainer" class="notification-container"></div>
+    <div id="notification-container" class="notification-container"></div>
 
     <script src="config.js"></script>
     <script src="api-status.js"></script>
