@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог игр</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Каталог игр</h1>
+            <p>Поиск по названию и жанру, пагинация, кэширование</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-section">
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Название игры..." 
+                />
+                <select id="genreSelect">
+                    <option value="">Все жанры</option>
+                    <option value="action">Экшн</option>
+                    <option value="rpg">RPG</option>
+                    <option value="strategy">Стратегия</option>
+                    <option value="sports">Спорт</option>
+                    <option value="indie">Инди</option>
+                </select>
+                <button id="searchBtn">Поиск</button>
+                <button id="refreshBtn">Обновить (игнор кэша)</button>
+            </div>
+
+            <div class="status-indicators">
+                <span id="loadingIndicator" class="hidden">🔄 Загрузка...</span>
+                <span id="retryIndicator" class="hidden">🔁 Повторная попытка...</span>
+                <span id="errorIndicator" class="hidden">❌ Ошибка</span>
+                <span id="cacheIndicator" class="hidden">💾 Из кэша</span>
+            </div>
+        </div>
+
+        <div id="gamesContainer">
+            <div class="skeleton-list">
+                <!-- Скелетоны загрузки -->
+                <div class="skeleton"></div>
+                <div class="skeleton"></div>
+                <div class="skeleton"></div>
+                <div class="skeleton"></div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button id="prevPage" disabled>← Назад</button>
+            <span id="pageInfo">Страница 1</span>
+            <button id="nextPage">Вперёд →</button>
+        </div>
+
+        <footer>
+            <p>Лабораторная работа 03. Асинхронность и HTTP‑кэш</p>
+            <p>Кэш TTL: 30 сек. Ретраи: 3 попытки. Таймаут: 5 сек.</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
