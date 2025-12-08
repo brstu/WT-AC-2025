@@ -13,6 +13,12 @@ on:
     paths:
       - 'students/students.csv'
       - 'README.md'
+  workflow_dispatch:
+    inputs:
+      allowed_repo:
+        description: 'Optional: owner/repo to restrict runs to (e.g. "brstu/WT-AC-2025"). Leave empty to allow any repo.'
+        required: false
+        default: 'brstu/WT-AC-2025'
 
 jobs:
   update:
