@@ -6,13 +6,13 @@
 
 ## 📋 Содержание
 
-1. [Локальная разработка](#локальная-разработка)
-2. [Docker Development](#docker-development)
-3. [Production Build](#production-build)
-4. [Docker Production](#docker-production)
-5. [GitHub Pages Deployment](#github-pages-deployment)
-6. [CI/CD Pipeline](#cicd-pipeline)
-7. [Troubleshooting](#troubleshooting)
+1. [Локальная разработка](#-локальная-разработка)
+2. [Docker Development](#-docker-development)
+3. [Production Build](#-production-build)
+4. [Docker Production](#-docker-production)
+5. [GitHub Pages Deployment](#-github-pages-deployment)
+6. [CI/CD Pipeline](#-cicd-pipeline)
+7. [Troubleshooting](#-troubleshooting)
 
 ---
 
@@ -69,7 +69,7 @@ npm run test:e2e:ui      # Playwright UI для E2E тестов
 
 ## 🐳 Docker Development
 
-### Требования
+### Системные требования
 
 - Docker >= 24.0
 - Docker Compose >= 2.20
