@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Справочник персонажей</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Навигация -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#/characters" class="logo">
+                    <i class="fas fa-book"></i>
+                    <span>Справочник персонажей</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#/characters" class="nav-link" id="nav-characters">
+                        <i class="fas fa-list"></i>
+                        <span>Персонажи</span>
+                    </a>
+                    <a href="#/new" class="nav-link" id="nav-new">
+                        <i class="fas fa-plus"></i>
+                        <span>Добавить</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Уведомления -->
+        <div id="notification" class="notification hidden"></div>
+
+        <!-- Основной контент -->
+        <main class="main-content">
+            <div id="app-content">
+                <!-- Контент загружается динамически -->
+                <div class="loading-container">
+                    <div class="spinner"></div>
+                    <p>Загрузка...</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <p>Лабораторная работа 04. REST‑клиент SPA • Справочник персонажей</p>
+            <p>Используется локальное хранилище (localStorage)</p>
+        </footer>
+    </div>
+
+    <!-- Скрипты -->
+    <script type="module" src="modules/utils.js"></script>
+    <script type="module" src="modules/api.js"></script>
+    <script type="module" src="modules/views.js"></script>
+    <script type="module" src="modules/router.js"></script>
+    <script type="module" src="main.js"></script>
+</body>
+</html>
