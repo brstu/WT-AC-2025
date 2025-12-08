@@ -1,0 +1,240 @@
+/* styles.css — полностью исправленная версия с рабочей темой */
+:root {
+  --bg: #f8f9fa;
+  --text: #212529;
+  --card: white;
+  --accent: #6c5ce7;
+  --shadow: rgba(0 0 0 / 10%);
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #e0e0e0;
+  --card: #1e1e1e;
+  --accent: #a29bfe;
+  --shadow: rgba(0 0 0 / 40%);
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--card);
+  box-shadow: 0 2px 10px var(--shadow);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.tabs {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  overflow-x: auto;
+  background: var(--card);
+  border-bottom: 1px solid var(--shadow);
+}
+
+.tab-btn {
+  padding: 0.6rem 1.2rem;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: all 0.2s;
+}
+
+.tab-btn.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.playlist {
+  display: none;
+  padding: 1.5rem;
+}
+
+.playlist.active {
+  display: block;
+}
+
+.tracklist {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.track {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem;
+  background: var(--card);
+  margin-bottom: 0.8rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+}
+
+.track button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.like-btn[aria-pressed="true"] {
+  color: #e74c3c;
+}
+
+.add-track-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 50%;
+  font-size: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0 0 0 / 30%);
+  z-index: 100;
+}
+
+/* Модальные окна */
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.3s;
+  z-index: 200;
+}
+
+.modal[aria-hidden="false"] {
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-content {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 16px;
+  max-width: 90%;
+  width: 400px;
+  position: relative;
+  box-shadow: 0 10px 30px var(--shadow);
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0 0 0 / 60%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  z-index: 150;
+}
+
+.overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Форма */
+.field {
+  margin-bottom: 1.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: var(--card);
+  color: var(--text);
+}
+
+.error {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  display: block;
+  min-height: 1.2em;
+  margin-top: 0.4rem;
+}
+
+button[type="submit"] {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.1rem;
+}
+
+button[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Мобильная адаптация */
+@media (width <= 600px) {
+  .track {
+    grid-template-columns: 1fr auto auto;
+    gap: 0.8rem;
+  }
+  
+  .track-title {
+    grid-column: 1 / 4;
+    font-weight: 600;
+  }
+  
+  .add-track-btn {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 1rem;
+  }
+}
