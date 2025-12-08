@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой город — интерактивный гид по достопримечательностям</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>Г</text></svg>">
+</head>
+<body>
+  <header class="header container">
+    <div class="header-inner">
+      <span></span>
+      <a href="#" class="logo" aria-label="Главная страница">Мой город</a>
+      <button id="theme-toggle" aria-label="Переключить тёмную тему">
+        Темная тема
+      </button>
+
+      <button id="burger" class="burger" aria-label="Открыть меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav" aria-label="Основное меню">
+        <ul>
+          <li><a href="#districts">Районы</a></li>
+          <li><a href="#favorites">Избранное <span id="fav-counter" class="counter">0</span></a></li>
+          <li><a href="#feedback">Обратная связь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <h1>Исследуйте город вместе с нами</h1>
+      <p>Выберите район, узнайте о лучших местах и сохраняйте понравившиеся в избранное</p>
+    </section>
+
+    <section id="districts" class="section">
+      <h2 class="section-title">Районы города</h2>
+
+      <div class="tabs" role="tablist" aria-label="Районы города">
+        <button role="tab" aria-selected="true" aria-controls="center" id="tab-center">Центр</button>
+        <button role="tab" aria-selected="false" aria-controls="oldtown" id="tab-oldtown">Мемориальный комплекс</button>
+        <button role="tab" aria-selected="false" aria-controls="river" id="tab-river">Набережная</button>
+      </div>
+
+      <section id="center" role="tabpanel" aria-labelledby="tab-center" class="district">
+        <h3>Центр — деловая и культурная жизнь</h3>
+        <div class="places accordion">
+
+          <article class="place">
+            <button class="place-trigger" aria-expanded="false" aria-controls="place-square">
+              Главная площадь <span class="arrow"></span>
+            </button>
+            <div id="place-square" class="place-content" aria-hidden="true">
+              <p>Сердце города с фонтанами и уличными музыкантами.</p>
+              <img src="img/ploshad.jpeg" alt="Главная площадь вечером с подсветкой">
+              <div class="actions">
+                <button data-modal="modal-square" class="btn-photo" aria-label="Открыть большую фотографию и карту Главной площади">
+                  Фото и карта
+                </button>
+                <button class="btn-favorite" data-name="Главная площадь" data-district="Центр" aria-pressed="false">
+                  В избранное
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article class="place">
+            <button class="place-trigger" aria-expanded="false" aria-controls="place-theatre">
+              Городской театр <span class="arrow"></span>
+            </button>
+            <div id="place-theatre" class="place-content" aria-hidden="true">
+              <p>Здание городского театра.</p>
+              <img src="img/theatre.png" alt="Фасад Городского театра">
+              <div class="actions">
+                <button data-modal="modal-theatre" class="btn-photo">Фото и карта</button>
+                <button class="btn-favorite" data-name="Городской театр" data-district="Центр" aria-pressed="false">В избранное</button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </section>
+
+      <section id="oldtown" role="tabpanel" aria-labelledby="tab-oldtown" hidden class="district">
+        <h3>Брестская крепость - Герой</h3>
+        <div class="places accordion">
+          <article class="place">
+            <button class="place-trigger" aria-expanded="false" aria-controls="place-castle">
+              Крепость <span class="arrow"></span>
+            </button>
+            <div id="place-castle" class="place-content" aria-hidden="true">
+              <p>Брестская крепость</p>
+              <img src="img/krepost.png" alt="Крепость">
+              <div class="actions">
+                <button data-modal="modal-castle" class="btn-photo">Фото и карта</button>
+                <button class="btn-favorite" data-name="Крепость" data-district="Мемориальный комплекс" aria-pressed="false">В избранное</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="river" role="tabpanel" aria-labelledby="tab-river" hidden class="district">
+        <h3>Набережная — прогулки у воды</h3>
+        <div class="places accordion">
+          <article class="place">
+            <button class="place-trigger" aria-expanded="false" aria-controls="place-bridge">
+              Мост влюблённых <span class="arrow"></span>
+            </button>
+            <div id="place-bridge" class="place-content" aria-hidden="true">
+              <p>Пешеходный мост с тысячами замочков от пар.</p>
+              <img src="img/nabereznay.png" alt="Мост влюблённых">
+              <div class="actions">
+                <button data-modal="modal-bridge" class="btn-photo">Фото и карта</button>
+                <button class="btn-favorite" data-name="Мост влюблённых" data-district="Набережная" aria-pressed="false">В избранное</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <section id="favorites" class="section">
+      <h2 class="section-title">Ваше избранное</h2>
+      <div id="favorites-list" class="cards" aria-live="polite"></div>
+    </section>
+
+    <section id="feedback" class="section">
+      <h2 class="section-title">Оставьте отзыв о гиде</h2>
+      <form class="feedback-form" novalidate>
+        <label>
+          <span>Ваше имя *</span>
+          <input type="text" required minlength="2" aria-label="Имя">
+          <span class="error" aria-live="assertive"></span>
+        </label>
+
+        <label>
+          <span>E-mail *</span>
+          <input type="email" required aria-label="E-mail">
+          <span class="error" aria-live="assertive"></span>
+        </label>
+
+        <label>
+          <span>Сообщение * (минимум 20 символов)</span>
+          <textarea required minlength="20" rows="5" aria-label="Сообщение"></textarea>
+          <span class="error" aria-live="assertive"></span>
+        </label>
+
+        <button type="submit" disabled>Отправить отзыв</button>
+      </form>
+
+      <div class="form-success" role="alert" hidden>
+        Спасибо! Ваш отзыв отправлен.
+      </div>
+    </section>
+
+  </main>
+
+  <div id="modal-square" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-square-title">
+    <div class="modal-overlay" tabindex="-1">
+      <div class="modal-content" tabindex="-1">
+        <button class="modal-close" aria-label="Закрыть модальное окно">x</button>
+        <h2 id="modal-square-title">Главная площадь</h2>
+        <img src="img/ploshad.jpeg" alt="Панорама Главной площади в Бресте вечером с подсветкой">
+        <p>Координаты: 
+          <a href="https://yandex.by/maps/153/brest/geo/1520636201/?ll=23.684761%2C52.094033&z=17" 
+             target="_blank" 
+             rel="noopener">
+            Открыть в Яндекс.Картах
+          </a>
+        </p>
+        <p>Лучшее время для посещения — вечерняя подсветка фонтанов.</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-theatre" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-theatre-title">
+    <div class="modal-overlay" tabindex="-1">
+      <div class="modal-content" tabindex="-1">
+        <button class="modal-close" aria-label="Закрыть">x</button>
+        <h2 id="modal-theatre-title">Городской театр</h2>
+        <img src="img/theatre.png" alt="Городской театр">
+        <p>Координаты: <a href="https://yandex.by/maps/org/gosudarstvennoye_uchrezhdeniye_zasluzhenny_kollektiv_respubliki_belarus_brestskiy_akademicheskiy_teatr_dramy_imeni_leninskogo_komsomola_belarusi/1093851249/?ll=23.703653%2C52.085310&mode=search&text=%D0%B3%D0%BE%D1%80%D0%BE%D0%B4%D1%81%D0%BA%D0%BE%D0%B9%20%D1%82%D0%B5%D0%B0%D1%82%D1%80&z=16" target="_blank" rel="noopener">Открыть в Яндекс.Картах</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-castle" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-castle-title">
+    <div class="modal-overlay" tabindex="-1">
+      <div class="modal-content" tabindex="-1">
+        <button class="modal-close" aria-label="Закрыть">x</button>
+        <h2 id="modal-castle-title">Брестская крепость</h2>
+        <img src="img/krepost.png" alt="Брестская крепость">
+        <p>Координаты: <a href="https://yandex.by/maps/153/brest/geo/1570352672/?ll=23.654550%2C52.082005&z=14.31" target="_blank" rel="noopener">Открыть в Яндекс.Картах</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div id="modal-bridge" class="modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-bridge-title">
+    <div class="modal-overlay" tabindex="-1">
+      <div class="modal-content" tabindex="-1">
+        <button class="modal-close" aria-label="Закрыть">x</button>
+        <h2 id="modal-bridge-title">Мост влюблённых</h2>
+        <img src="img/nabereznay.png" alt="Мост влюблённых на набережной">
+        <p>Координаты: <a href="https://yandex.by/maps/153/brest/geo/2085732168/?ll=23.684000%2C52.083000&z=15" target="_blank" rel="noopener">Открыть в Яндекс.Картах</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <p>© 2025 Мой город — интерактивный гид.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>

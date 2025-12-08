@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Современные тренды в моде и стиле - актуальные образы, советы по стилю, подборки и фото">
+    <meta name="keywords" content="мода, стиль, тренды, fashion, образы, советы по стилю">
+    <title>Modern Fashion Trends | Актуальные тренды в моде</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <!-- Skip link для доступности -->
+    <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
+
+    <!-- Шапка сайта -->
+    <header class="site-header" role="banner">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <a href="/" aria-label="На главную страницу Modern Fashion Trends">
+                        <h1><i class="fas fa-crown"></i> Fashion<span class="highlight">Trends</span></h1>
+                    </a>
+                    <p class="tagline">Актуальные тренды в моде и стиле</p>
+                </div>
+                
+                <!-- Основная навигация -->
+                <nav class="main-nav" aria-label="Основная навигация">
+                    <button class="nav-toggle" aria-label="Открыть меню" aria-expanded="false">
+                        <span class="hamburger"></span>
+                    </button>
+                    <ul class="nav-menu">
+                        <li><a href="#trends" class="nav-link">Тренды 2024</a></li>
+                        <li><a href="#looks" class="nav-link">Образы</a></li>
+                        <li><a href="#advice" class="nav-link">Советы</a></li>
+                        <li><a href="#collections" class="nav-link">Подборки</a></li>
+                        <li><a href="#about" class="nav-link">О проекте</a></li>
+                    </ul>
+                </nav>
+                
+                <!-- Поиск и темы -->
+                <div class="header-actions">
+                    <button class="theme-toggle" aria-label="Переключить тему">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                    
+                    <form class="search-form" role="search" aria-label="Поиск по сайту">
+                        <label for="search-input" class="visually-hidden">Поиск по сайту</label>
+                        <input type="search" id="search-input" placeholder="Поиск..." aria-label="Введите поисковый запрос">
+                        <button type="submit" aria-label="Выполнить поиск">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основное содержимое -->
+    <main id="main-content" class="main-content">
+        <div class="container">
+            <!-- Приветственная секция -->
+            <section class="hero" aria-labelledby="hero-heading">
+                <div class="hero-content">
+                    <h2 id="hero-heading">Современная мода: где индивидуальность встречается с трендами</h2>
+                    <p>Откройте для себя актуальные тренды 2024 года, создавайте уникальные образы и находите вдохновение для своего стиля.</p>
+                    <a href="#trends" class="btn btn-primary">Исследовать тренды</a>
+                </div>
+                <div class="hero-image">
+                    <!-- Декоративное изображение с семантическим описанием -->
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                         alt="Стильная женщина в современном образе с актуальными аксессуарами"
+                         loading="lazy">
+                </div>
+            </section>
+
+            <!-- Секция основных трендов -->
+            <section id="trends" class="trends-section" aria-labelledby="trends-heading">
+                <header class="section-header">
+                    <h2 id="trends-heading">Главные тренды 2024 года</h2>
+                    <p>Актуальные направления в моде, которые определяют стиль этого сезона</p>
+                </header>
+                
+                <div class="trends-grid">
+                    <article class="trend-card" aria-labelledby="trend1-heading">
+                        <div class="trend-image">
+                            <img src="https://images.unsplash.com/photo-1552374196-1ab2a1c593e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 alt="Минималистичный образ в бежевых и белых тонах"
+                                 loading="lazy">
+                        </div>
+                        <div class="trend-content">
+                            <h3 id="trend1-heading">Новая элегантность</h3>
+                            <p>Возвращение к классическим силуэтам с современными деталями. Акцент на качественных тканях и идеальном крое.</p>
+                            <ul class="trend-keywords">
+                                <li>Кашемир</li>
+                                <li>Прямые брюки</li>
+                                <li>Бежевая палитра</li>
+                            </ul>
+                            <a href="#" class="read-more" aria-label="Читать подробнее о тренде Новая элегантность">Подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="trend-card" aria-labelledby="trend2-heading">
+                        <div class="trend-image">
+                            <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 alt="Яркий уличный стиль с неоновыми акцентами"
+                                 loading="lazy">
+                        </div>
+                        <div class="trend-content">
+                            <h3 id="trend2-heading">Урбан-шик</h3>
+                            <p>Смешение уличного стиля с элементами высокой моды. Неоновые акценты, oversize-силуэты и технологичные ткани.</p>
+                            <ul class="trend-keywords">
+                                <li>Неоновые цвета</li>
+                                <li>Объемные силуэты</li>
+                                <li>Технологичные ткани</li>
+                            </ul>
+                            <a href="#" class="read-more" aria-label="Читать подробнее о тренде Урбан-шик">Подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                    
+                    <article class="trend-card" aria-labelledby="trend3-heading">
+                        <div class="trend-image">
+                            <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 alt="Экологичная одежда из натуральных материалов"
+                                 loading="lazy">
+                        </div>
+                        <div class="trend-content">
+                            <h3 id="trend3-heading">Эко-мода</h3>
+                            <p>Устойчивая мода становится must-have. Переработанные материалы, натуральные ткани и этичное производство.</p>
+                            <ul class="trend-keywords">
+                                <li>Переработанные материалы</li>
+                                <li>Органический хлопок</li>
+                                <li>Этичное производство</li>
+                            </ul>
+                            <a href="#" class="read-more" aria-label="Читать подробнее о тренде Эко-мода">Подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Секция образов -->
+            <section id="looks" class="looks-section" aria-labelledby="looks-heading">
+                <header class="section-header">
+                    <h2 id="looks-heading">Готовые образы</h2>
+                    <p>Полные комплекты для разных случаев и настроений</p>
+                </header>
+                
+                <div class="looks-container">
+                    <article class="look-card" aria-labelledby="look1-heading">
+                        <div class="look-image">
+                            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 alt="Деловой образ для офиса: пиджак, блуза и брюки"
+                                 loading="lazy">
+                        </div>
+                        <div class="look-content">
+                            <h3 id="look1-heading">Офисная элегантность</h3>
+                            <p>Идеальный образ для деловой встречи или рабочего дня. Сочетание классического пиджака с современными деталями.</p>
+                            <div class="look-details">
+                                <div class="look-occasion">
+                                    <span class="detail-label">Повод:</span>
+                                    <span>Работа, деловые встречи</span>
+                                </div>
+                                <div class="look-season">
+                                    <span class="detail-label">Сезон:</span>
+                                    <span>Весна-осень</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" aria-label="Добавить образ Офисная элегантность в избранное">
+                                <i class="far fa-heart"></i> В избранное
+                            </button>
+                        </div>
+                    </article>
+                    
+                    <article class="look-card" aria-labelledby="look2-heading">
+                        <div class="look-image">
+                            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                                 alt="Вечерний образ: платье с оригинальным кроем и аксессуарами"
+                                 loading="lazy">
+                        </div>
+                        <div class="look-content">
+                            <h3 id="look2-heading">Вечерний выход</h3>
+                            <p>Драматичное платье с асимметричным кроем и минималистичными аксессуарами для особого случая.</p>
+                            <div class="look-details">
+                                <div class="look-occasion">
+                                    <span class="detail-label">Повод:</span>
+                                    <span>Вечеринка, торжество</span>
+                                </div>
+                                <div class="look-season">
+                                    <span class="detail-label">Сезон:</span>
+                                    <span>Круглый год</span>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline" aria-label="Добавить образ Вечерний выход в избранное">
+                                <i class="far fa-heart"></i> В избранное
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Секция советов -->
+            <section id="advice" class="advice-section" aria-labelledby="advice-heading">
+                <header class="section-header">
+                    <h2 id="advice-heading">Советы по стилю</h2>
+                    <p>Практические рекомендации от стилистов и экспертов</p>
+                </header>
+                
+                <div class="advice-grid">
+                    <article class="advice-card" aria-labelledby="advice1-heading">
+                        <div class="advice-icon">
+                            <i class="fas fa-tshirt" aria-hidden="true"></i>
+                        </div>
+                        <h3 id="advice1-heading">Капсульный гардероб</h3>
+                        <p>Создайте базовый гардероб из 30 вещей, которые можно комбинировать между собой для создания 50+ разных образов.</p>
+                        <a href="#" class="advice-link" aria-label="Читать подробнее о создании капсульного гардероба">Узнать больше</a>
+                    </article>
+                    
+                    <article class="advice-card" aria-labelledby="advice2-heading">
+                        <div class="advice-icon">
+                            <i class="fas fa-palette" aria-hidden="true"></i>
+                        </div>
+                        <h3 id="advice2-heading">Цветовые сочетания</h3>
+                        <p>Изучите правила сочетания цветов и научитесь создавать гармоничные образы с помощью цветового круга.</p>
+                        <a href="#" class="advice-link" aria-label="Читать подробнее о цветовых сочетаниях в одежде">Узнать больше</a>
+                    </article>
+                    
+                    <article class="advice-card" aria-labelledby="advice3-heading">
+                        <div class="advice-icon">
+                            <i class="fas fa-user-check" aria-hidden="true"></i>
+                        </div>
+                        <h3 id="advice3-heading">Подбор по типажу</h3>
+                        <p>Определите свой цветотип и тип фигуры, чтобы подбирать одежду, которая подчеркивает ваши достоинства.</p>
+                        <a href="#" class="advice-link" aria-label="Читать подробнее о подборе одежды по типажу">Узнать больше</a>
+                    </article>
+                    
+                    <article class="advice-card" aria-labelledby="advice4-heading">
+                        <div class="advice-icon">
+                            <i class="fas fa-recycle" aria-hidden="true"></i>
+                        </div>
+                        <h3 id="advice4-heading">Устойчивая мода</h3>
+                        <p>Как сделать свой гардероб более экологичным: от выбора материалов до ухода за одеждой.</p>
+                        <a href="#" class="advice-link" aria-label="Читать подробнее об устойчивой моде">Узнать больше</a>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Секция подборок -->
+            <section id="collections" class="collections-section" aria-labelledby="collections-heading">
+                <header class="section-header">
+                    <h2 id="collections-heading">Подборки</h2>
+                    <p>Тематические коллекции одежды и аксессуаров</p>
+                </header>
+                
+                <div class="collections-filter" role="group" aria-label="Фильтр подборок">
+                    <button class="filter-btn active" data-filter="all" aria-label="Показать все подборки">Все</button>
+                    <button class="filter-btn" data-filter="season" aria-label="Показать сезонные подборки">По сезону</button>
+                    <button class="filter-btn" data-filter="budget" aria-label="Показать подборки по бюджету">По бюджету</button>
+                    <button class="filter-btn" data-filter="style" aria-label="Показать подборки по стилю">По стилю</button>
+                </div>
+                
+                <div class="collections-grid">
+                    <article class="collection-card" aria-labelledby="collection1-heading">
+                        <div class="collection-badge">Весна 2024</div>
+                        <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Весенняя коллекция: пастельные тона и легкие ткани"
+                             loading="lazy">
+                        <div class="collection-content">
+                            <h3 id="collection1-heading">Весеннее обновление</h3>
+                            <p>Легкие ткани, пастельные тона и актуальные фасоны для теплого сезона.</p>
+                            <span class="collection-count">24 предмета</span>
+                        </div>
+                    </article>
+                    
+                    <article class="collection-card" aria-labelledby="collection2-heading">
+                        <div class="collection-badge">Бюджетно</div>
+                        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Бюджетная подборка: стильные вещи по доступным ценам"
+                             loading="lazy">
+                        <div class="collection-content">
+                            <h3 id="collection2-heading">Стиль без переплат</h3>
+                            <p>Актуальные вещи от масс-маркета, которые выглядят дорого.</p>
+                            <span class="collection-count">18 предметов</span>
+                        </div>
+                    </article>
+                    
+                    <article class="collection-card" aria-labelledby="collection3-heading">
+                        <div class="collection-badge">Минимализм</div>
+                        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Минималистичная подборка: базовые вещи нейтральных тонов"
+                             loading="lazy">
+                        <div class="collection-content">
+                            <h3 id="collection3-heading">Искусство минимализма</h3>
+                            <p>Базовый гардероб в нейтральной палитре для создания лаконичных образов.</p>
+                            <span class="collection-count">15 предметов</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Секция о проекте -->
+            <section id="about" class="about-section" aria-labelledby="about-heading">
+                <header class="section-header">
+                    <h2 id="about-heading">О проекте</h2>
+                    <p>Наша миссия - делать моду доступной и понятной для каждого</p>
+                </header>
+                
+                <div class="about-content">
+                    <div class="about-text">
+                        <p>Modern Fashion Trends - это проект, созданный энтузиастами моды и профессиональными стилистами. Мы следим за актуальными трендами, анализируем коллекции ведущих дизайнеров и делимся практическими советами по созданию стильных образов.</p>
+                        
+                        <p>Наша цель - помочь каждому найти свой уникальный стиль, сочетающий личные предпочтения с современными модными направлениями.</p>
+                        
+                        <div class="about-features">
+                            <div class="feature">
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span>Актуальная информация о трендах</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span>Практические советы от стилистов</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span>Подборки для разных случаев и бюджетов</span>
+                            </div>
+                            <div class="feature">
+                                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                <span>Фокус на устойчивой и этичной моде</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-image">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" 
+                             alt="Команда стилистов работает над созданием контента"
+                             loading="lazy">
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Modern Fashion Trends</h3>
+                    <p>Актуальные тренды, практические советы и вдохновение для вашего стиля.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Мы в Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Мы в Pinterest"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#" aria-label="Мы в YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Мы в TikTok"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-subheading">Разделы</h4>
+                    <nav aria-label="Дополнительная навигация">
+                        <ul class="footer-nav">
+                            <li><a href="#trends">Тренды</a></li>
+                            <li><a href="#looks">Образы</a></li>
+                            <li><a href="#advice">Советы</a></li>
+                            <li><a href="#collections">Подборки</a></li>
+                            <li><a href="#about">О нас</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-subheading">Ресурсы</h4>
+                    <ul class="footer-nav">
+                        <li><a href="#">Глоссарий терминов</a></li>
+                        <li><a href="#">Полезные ссылки</a></li>
+                        <li><a href="#">Бренды-партнеры</a></li>
+                        <li><a href="#">Карьера</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-subheading">Подписаться на новости</h4>
+                    <p>Получайте еженедельную подборку трендов и советов</p>
+                    <form class="newsletter-form" aria-label="Форма подписки на рассылку">
+                        <label for="email-input" class="visually-hidden">Ваш email</label>
+                        <input type="email" id="email-input" placeholder="Ваш email" aria-label="Введите email для подписки" required>
+                        <button type="submit" class="btn btn-primary" aria-label="Подписаться на рассылку">Подписаться</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Modern Fashion Trends. Все права защищены.</p>
+                <nav aria-label="Юридическая информация">
+                    <ul class="footer-legal">
+                        <li><a href="#" aria-label="Политика конфиденциальности">Политика конфиденциальности</a></li>
+                        <li><a href="#" aria-label="Условия использования">Условия использования</a></li>
+                        <li><a href="#" aria-label="Карта сайта">Карта сайта</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <div class="accessibility-info">
+                <p><i class="fas fa-universal-access"></i> Мы стремимся создавать доступный контент для всех пользователей.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

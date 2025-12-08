@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коллекция мемов - SPA приложение</title>
+    <meta name="description" content="Одностраничное приложение для управления коллекцией мемов">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app">
+        <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
+        
+        <header class="header" role="banner">
+            <h1>🎭 Коллекция мемов</h1>
+            <nav class="nav" aria-label="Основная навигация">
+                <ul class="nav-list">
+                    <li><a href="#/items" class="nav-link">Все мемы</a></li>
+                    <li><a href="#/new" class="nav-link">Добавить мем</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main id="main-content" class="main" role="main">
+            <div id="app">
+                <div class="loading" aria-live="polite">Загрузка...</div>
+            </div>
+        </main>
+
+        <div id="notification" class="notification hidden" aria-live="polite" role="alert"></div>
+    </div>
+
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>

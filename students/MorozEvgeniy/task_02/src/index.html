@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛР02. Kanban Board (Вариант 15)</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-container">
+            <h1 class="logo">KanbanStudy</h1>
+            
+            <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+                <span class="burger-line"></span>
+            </button>
+
+            <nav id="main-nav" class="nav" hidden>
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link">О проекте</a></li>
+                    <li><a href="#" class="nav-link">Помощь</a></li>
+                    <li><button id="open-modal-btn" class="btn btn-primary">Новая задача</button></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="tabs">
+            <div role="tablist" class="tabs-controls">
+                <button role="tab" aria-selected="true" aria-controls="panel-todo" id="tab-todo" class="tab-btn active">Надо сделать</button>
+                <button role="tab" aria-selected="false" aria-controls="panel-progress" id="tab-progress" class="tab-btn">В процессе</button>
+                <button role="tab" aria-selected="false" aria-controls="panel-done" id="tab-done" class="tab-btn">Готово</button>
+            </div>
+        </div>
+
+        <div id="board" class="board">
+            
+            <section id="panel-todo" role="tabpanel" aria-labelledby="tab-todo" class="column">
+                <h2 class="column-title">Надо сделать</h2>
+                <div class="column-list" data-status="todo">
+                    </div>
+            </section>
+
+            <section id="panel-progress" role="tabpanel" aria-labelledby="tab-progress" class="column" hidden>
+                <h2 class="column-title">В процессе</h2>
+                <div class="column-list" data-status="progress"></div>
+            </section>
+
+            <section id="panel-done" role="tabpanel" aria-labelledby="tab-done" class="column" hidden>
+                <h2 class="column-title">Готово</h2>
+                <div class="column-list" data-status="done"></div>
+            </section>
+        </div>
+    </main>
+
+    <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal-overlay" tabindex="-1" data-close></div>
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 id="modal-title">Новая задача</h2>
+                <button class="modal-close" aria-label="Закрыть модальное окно" data-close>&times;</button>
+            </header>
+            
+            <form id="task-form" class="form" novalidate>
+                <div class="form-group">
+                    <label for="task-name" class="form-label">Название задачи *</label>
+                    <input type="text" id="task-name" name="name" class="form-input" placeholder="Исправить баги..." required>
+                    <span class="form-error" id="error-name"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-email" class="form-label">Email исполнителя *</label>
+                    <input type="email" id="task-email" name="email" class="form-input" placeholder="dev@example.com" required>
+                    <span class="form-error" id="error-email"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="task-desc" class="form-label">Описание (мин. 20 символов) *</label>
+                    <textarea id="task-desc" name="message" class="form-input" rows="4" minlength="20" required></textarea>
+                    <span class="form-error" id="error-desc"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" disabled id="submit-btn">Создать задачу</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js" type="module"></script>
+</body>
+</html>

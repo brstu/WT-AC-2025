@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой музыкальный плейлист</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="data:,">
+</head>
+<body>
+  <header class="header">
+    <h1>Мой музыкальный плейлист</h1>
+    <button class="theme-toggle" aria-label="Переключить тему">
+      🌙
+    </button>
+  </header>
+
+  <main>
+    <!-- Табы -->
+    <section class="tabs" role="tablist" aria-label="Плейлисты">
+      <button role="tab" aria-selected="true" aria-controls="playlist-chill" id="tab-chill" class="tab-btn active">
+        Chill
+      </button>
+      <button role="tab" aria-selected="false" aria-controls="playlist-rock" id="tab-rock" class="tab-btn">
+        Rock
+      </button>
+      <button role="tab" aria-selected="false" aria-controls="playlist-pop" id="tab-pop" class="tab-btn">
+        Pop
+      </button>
+    </section>
+
+    <div class="playlists-container">
+      <!-- Chill плейлист -->
+      <section id="playlist-chill" role="tabpanel" aria-labelledby="tab-chill" class="playlist active">
+        <h2>Chill Vibes</h2>
+        <ol class="tracklist">
+          <li class="track" data-id="1">
+            <span class="track-title">Lo-Fi Beats to Study/Relax</span>
+            <span class="track-artist">Chillhop Music</span>
+            <button class="play-btn" aria-label="Воспроизвести Lo-Fi Beats to Study/Relax">▶️</button>
+            <button class="like-btn" aria-pressed="false" aria-label="Лайк Lo-Fi Beats to Study/Relax">♡</button>
+          </li>
+          <li class="track" data-id="2">
+            <span class="track-title">Midnight Stroll</span>
+            <span class="track-artist">Unknown Artist</span>
+            <button class="play-btn" aria-label="Воспроизвести Midnight Stroll">▶️</button>
+            <button class="like-btn" aria-pressed="false" aria-label="Лайк Midnight Stroll">♡</button>
+          </li>
+          <li class="track" data-id="3">
+            <span class="track-title">Rainy Days</span>
+            <span class="track-artist">Lofi Girl</span>
+            <button class="play-btn" aria-label="Воспроизвести Rainy Days">▶️</button>
+            <button class="like-btn" aria-pressed="false" aria-label="Лайк Rainy Days">♡</button>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Rock плейлист -->
+      <section id="playlist-rock" role="tabpanel" aria-labelledby="tab-rock" class="playlist">
+        <h2>Rock Classics</h2>
+        <ol class="tracklist">
+          <li class="track" data-id="4">
+            <span class="track-title">Sweet Child O' Mine</span>
+            <span class="track-artist">Guns N' Roses</span>
+            <button class="play-btn" aria-label="Воспроизвести Sweet Child O' Mine">▶️</button>
+            <button class="like-btn" aria-pressed="false" aria-label="Лайк Sweet Child O' Mine">♡</button>
+          </li>
+          <li class="track" data-id="5">
+            <span class="track-title">Smells Like Teen Spirit</span>
+            <span class="track-artist">Nirvana</span>
+            <button class="play-btn" aria-label="Воспроизвести Smells Like Teen Spirit">▶️</button>
+            <button class="like-btn" aria-pressed="false" aria-label="Лайк Smells Like Teen Spirit">♡</button>
+          </li>
+          <li class="track" data-id="6">
+            <span class="track-title">Stairway to Heaven</span>
+            <span class="track-artist">Led Zeppelin</span>
+            <button class="play-btn" aria-label="Воспроизвести Stairway to Heaven">▶️</button>
+            <button class="like-btn" aria-pressed="false" aria-label="Лайк Stairway to Heaven">♡</button>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Pop плейлист -->
+      <section id="playlist-pop" role="tabpanel" aria-labelledby="tab-pop" class="playlist">
+        <h2>Pop Hits</h2>
+        <ol class="tracklist">
+          <li class="track" data-id="7">
+            <span class="track-title">Blinding Lights</span>
+            <span class="track-artist">The Weeknd</span>
+            <button class="play-btn" aria-label="Воспроизвести Blinding Lights">▶️</button>
+            <button class="like-btn" aria-pressed="false" aria-label="Лайк Blinding Lights">♡</button>
+          </li>
+          <li class="track" data-id="8">
+            <span class="track-title">Levitating</span>
+            <span class="track-artist">Dua Lipa</span>
+            <button class="play-btn" aria-label="Воспроизвести Levitating">▶️</button>
+            <button class="like-btn" aria-pressed="false" aria-label="Лайк Levitating">♡</button>
+          </li>
+          <li class="track" data-id="9">
+            <span class="track-title">Watermelon Sugar</span>
+            <span class="track-artist">Harry Styles</span>
+            <button class="play-btn" aria-label="Воспроизвести Watermelon Sugar">▶️</button>
+            <button class="like-btn" aria-pressed="false" aria-label="Лайк Watermelon Sugar">♡</button>
+          </li>
+        </ol>
+      </section>
+    </div>
+
+    <!-- Кнопка добавления трека -->
+    <button class="add-track-btn" aria-haspopup="dialog">
+      ➕ Добавить трек
+    </button>
+
+    <!-- Модальное окно "Сейчас играет" -->
+    <div class="modal" id="now-playing-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Закрыть">✕</button>
+        <h2 id="modal-title">Сейчас играет</h2>
+        <div class="now-playing-info">
+          <p class="current-track">—</p>
+          <p class="current-artist"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Форма добавления трека -->
+    <div class="modal" id="add-track-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="add-modal-title">
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Закрыть">✕</button>
+        <h2 id="add-modal-title">Добавить новый трек</h2>
+        <form class="add-track-form" novalidate>
+          <div class="field">
+            <label for="title">Название трека <span class="required">*</span></label>
+            <input type="text" id="title" required minlength="2">
+            <span class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="artist">Исполнитель <span class="required">*</span></label>
+            <input type="text" id="artist" required minlength="2">
+            <span class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="playlist">Плейлист</label>
+            <select id="playlist">
+              <option value="playlist-chill">Chill</option>
+              <option value="playlist-rock">Rock</option>
+              <option value="playlist-pop">Pop</option>
+            </select>
+          </div>
+          <button type="submit" disabled>Добавить в плейлист</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="overlay" aria-hidden="true"></div>
+  </main>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
