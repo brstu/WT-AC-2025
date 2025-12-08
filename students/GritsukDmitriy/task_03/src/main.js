@@ -20,18 +20,18 @@ let state = {
 const cache = new Map();
 
 // Элементы DOM
-const gamesContainer = document.getElementById('gamesContainer');
-const searchInput = document.getElementById('searchInput');
-const genreSelect = document.getElementById('genreSelect');
-const searchBtn = document.getElementById('searchBtn');
-const refreshBtn = document.getElementById('refreshBtn');
-const prevPageBtn = document.getElementById('prevPage');
-const nextPageBtn = document.getElementById('nextPage');
-const pageInfo = document.getElementById('pageInfo');
-const loadingIndicator = document.getElementById('loadingIndicator');
-const retryIndicator = document.getElementById('retryIndicator');
-const errorIndicator = document.getElementById('errorIndicator');
-const cacheIndicator = document.getElementById('cacheIndicator');
+const gamesContainer = document.getElementById('games-container');
+const searchInput = document.getElementById('search-input');
+const genreSelect = document.getElementById('genre-select');
+const searchBtn = document.getElementById('search-btn');
+const refreshBtn = document.getElementById('refresh-btn');
+const prevPageBtn = document.getElementById('prev-page');
+const nextPageBtn = document.getElementById('next-page');
+const pageInfo = document.getElementById('page-info');
+const loadingIndicator = document.getElementById('loading-indicator');
+const retryIndicator = document.getElementById('retry-indicator');
+const errorIndicator = document.getElementById('error-indicator');
+const cacheIndicator = document.getElementById('cache-indicator');
 
 // 1. Функция fetchWithRetry с таймаутом и ретраями
 async function fetchWithRetry(url, options = {}) {
