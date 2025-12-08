@@ -20,7 +20,7 @@ except Exception as exc:  # pragma: no cover - dependency error is fatal
     sys.exit(2)
 
 ROOT = Path(__file__).resolve().parents[2]
-DEFAULT_REPO = "brstu/RSiOT-2025"
+DEFAULT_REPO = "brstu/WT-AC-2025"
 PREPARE_SCRIPT = ROOT / ".github" / "scripts" / "prepare_AI_prompt.py"
 
 
