@@ -15,11 +15,11 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    background: rgba(255 255 255 / 0.05);
+    background: rgba(255 255 255 / 5%);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 15px 35px rgb(0 0 0 / 0.5);
+    box-shadow: 0 15px 35px rgb(0 0 0 / 50%);
 }
 
 header {
@@ -41,7 +41,7 @@ header p {
 }
 
 .controls {
-    background: rgba(255 255 255 / 0.08);
+    background: rgba(255 255 255 / 8%);
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 30px;
@@ -63,7 +63,7 @@ input, select, button {
 }
 
 input, select {
-    background: rgba(255 255 255 / 0.15);
+    background: rgba(255 255 255 / 15%);
     color: white;
     flex: 1;
     min-width: 200px;
@@ -83,7 +83,7 @@ button {
 
 button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
+    box-shadow: 0 5px 15px rgb(0 0 0 / 30%);
 }
 
 button:disabled {
@@ -102,7 +102,7 @@ button:disabled {
     padding: 10px 15px;
     border-radius: 8px;
     font-size: 0.9rem;
-    background: rgba(255 255 255 / 0.1);
+    background: rgba(255 255 255 / 10%);
 }
 
 .hidden {
@@ -117,7 +117,7 @@ button:disabled {
 }
 
 .game-card {
-    background: rgba(255 255 255 / 0.1);
+    background: rgba(255 255 255 / 10%);
     border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -126,7 +126,7 @@ button:disabled {
 
 .game-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgb(0 0 0 / 0.4);
+    box-shadow: 0 10px 25px rgb(0 0 0 / 40%);
 }
 
 .game-card h3 {
@@ -137,7 +137,7 @@ button:disabled {
 
 .game-card .genre {
     display: inline-block;
-    background: rgba(252 0 255 / 0.3);
+    background: rgba(252 0 255 / 30%);
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -194,7 +194,7 @@ button:disabled {
 footer {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid rgb(255 255 255 / 0.1);
+    border-top: 1px solid rgb(255 255 255 / 10%);
     color: #aaa;
     font-size: 0.9rem;
 }
