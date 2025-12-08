@@ -15,11 +15,11 @@ body {
 .container {
     max-width: 1200px;
     margin: 0 auto;
-    background: rgba(255 255 255 / 5%);
+    background: rgba(255 255 255 / 0.05);
     backdrop-filter: blur(10px);
     border-radius: 20px;
     padding: 30px;
-    box-shadow: 0 15px 35px rgb(0 0 0 / 50%);
+    box-shadow: 0 15px 35px rgb(0 0 0 / 0.5);
 }
 
 header {
@@ -41,7 +41,7 @@ header p {
 }
 
 .controls {
-    background: rgba(255 255 255 / 8%);
+    background: rgba(255 255 255 / 0.08);
     padding: 20px;
     border-radius: 15px;
     margin-bottom: 30px;
@@ -63,7 +63,7 @@ input, select, button {
 }
 
 input, select {
-    background: rgba(255 255 255 / 15%);
+    background: rgba(255 255 255 / 0.15);
     color: white;
     flex: 1;
     min-width: 200px;
@@ -83,7 +83,7 @@ button {
 
 button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgb(0 0 0 / 30%);
+    box-shadow: 0 5px 15px rgb(0 0 0 / 0.3);
 }
 
 button:disabled {
@@ -102,7 +102,7 @@ button:disabled {
     padding: 10px 15px;
     border-radius: 8px;
     font-size: 0.9rem;
-    background: rgba(255 255 255 / 10%);
+    background: rgba(255 255 255 / 0.1);
 }
 
 .hidden {
@@ -117,7 +117,7 @@ button:disabled {
 }
 
 .game-card {
-    background: rgba(255 255 255 / 10%);
+    background: rgba(255 255 255 / 0.1);
     border-radius: 15px;
     overflow: hidden;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -126,7 +126,7 @@ button:disabled {
 
 .game-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 10px 25px rgb(0 0 0 / 40%);
+    box-shadow: 0 10px 25px rgb(0 0 0 / 0.4);
 }
 
 .game-card h3 {
@@ -137,7 +137,7 @@ button:disabled {
 
 .game-card .genre {
     display: inline-block;
-    background: rgba(252 0 255 / 30%);
+    background: rgba(252 0 255 / 0.3);
     padding: 5px 12px;
     border-radius: 20px;
     font-size: 0.85rem;
@@ -194,7 +194,7 @@ button:disabled {
 footer {
     text-align: center;
     padding-top: 20px;
-    border-top: 1px solid rgb(255 255 255 / 10%);
+    border-top: 1px solid rgb(255 255 255 / 0.1);
     color: #aaa;
     font-size: 0.9rem;
 }
@@ -203,7 +203,7 @@ footer p {
     margin-bottom: 5px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .search-section {
         flex-direction: column;
     }
@@ -218,9 +218,8 @@ footer p {
 }
 
 /* Исправление для правильной работы с -webkit-text-fill-color */
-@supports (-webkit-text-fill-color: transparent) or (text-fill-color: transparent) {
+@supports (-webkit-text-fill-color: transparent) {
     header h1 {
         -webkit-text-fill-color: transparent;
-        text-fill-color: transparent;
     }
 }
