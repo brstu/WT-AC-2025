@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  boardgames-app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    container_name: boardgames-app

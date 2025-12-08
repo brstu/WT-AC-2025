@@ -5,29 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CitySpots | Гид по молодежным местам города</title>
     <meta name="description" content="Открой лучшие кафе, парки и коворкинги для молодежи в нашем городе">
-    <link rel="stylesheet" href="style.css">
+    <meta property="og:title" content="CitySpots | Гид по молодежным местам города">
+    <meta property="og:description" content="Открой лучшие кафе, парки и коворкинги для молодежи">
+    <meta property="og:type" content="website">
+    
+    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48dGV4dCB5PSIuOWVtIiBmb250LXNpemU9IjkwIj7wn5GpPC90ZXh0Pjwvc3ZnPg==">
+    
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.documentElement.classList.add('js-enabled');
+        });
+    </script>
+    
     <a href="#main-content" class="skip-link">Перейти к основному содержимому</a>
+    
+    <div aria-live="polite" aria-atomic="true" class="visually-hidden" id="a11y-announcements"></div>
     
     <header class="main-header">
         <div class="container">
             <div class="header-content">
                 <h1 class="site-title">CitySpots</h1>
                 <p class="site-subtitle">Лучшие места для молодежи в городе</p>
+                <button class="theme-toggle" aria-label="Переключить тему" id="theme-toggle">
+                    <span class="theme-icon">🌙</span>
+                </button>
             </div>
         </div>
     </header>
 
     <nav class="main-nav" aria-label="Основная навигация">
         <div class="container">
-            <ul class="nav-list">
+            <ul class="nav-list" id="nav-list">
                 <li><a href="#cafes" class="nav-link">Кафе</a></li>
                 <li><a href="#parks" class="nav-link">Парки</a></li>
                 <li><a href="#coworking" class="nav-link">Коворкинги</a></li>
                 <li><a href="#events" class="nav-link">События</a></li>
                 <li><a href="#gallery" class="nav-link">Галерея</a></li>
+                <li><a href="#contact" class="nav-link">Контакты</a></li>
             </ul>
+            
+            <button class="mobile-menu-toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="nav-list">
+                <span class="menu-icon">☰</span>
+            </button>
         </div>
     </nav>
 
@@ -36,7 +59,7 @@
             <section id="cafes" class="category-section" aria-labelledby="cafes-heading">
                 <header class="section-header">
                     <h2 id="cafes-heading" class="section-title">Топовые кафе</h2>
-                    <p class="section-description">Места с атмосферой, вкусным кофе и хорошим Wi-Fi</p>
+                    <p class="section-description">Места с атмосферой, вкусным кофе и хорошим <span lang="en">Wi-Fi</span></p>
                 </header>
                 
                 <div class="cards-grid">
@@ -46,7 +69,7 @@
                             <p class="card-description">Современное пространство с авторским кофе и уютной атмосферой для работы и встреч. Идеально для студентов и фрилансеров.</p>
                             <ul class="card-features">
                                 <li>☕ Авторский кофе</li>
-                                <li>📶 Быстрый Wi-Fi</li>
+                                <li>📶 Быстрый <span lang="en">Wi-Fi</span></li>
                                 <li>💻 Розетки у каждого стола</li>
                             </ul>
                         </div>
@@ -242,47 +265,182 @@
                 
                 <div class="gallery-grid">
                     <figure class="gallery-item">
-                        <img src="images/urban-coffee.jpg" 
-                             alt="Интерьер кафе Urban Coffee с современным дизайном и посетителями за ноутбуками" 
-                             width="400" height="300">
+                        <picture>
+                            <source type="image/webp" 
+                                    srcset="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop&auto=format&fm=webp 400w,
+                                            https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=600&fit=crop&auto=format&fm=webp 800w,
+                                            https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&h=900&fit=crop&auto=format&fm=webp 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <source srcset="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400&h=300&fit=crop&auto=format 400w,
+                                            https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=600&fit=crop&auto=format 800w,
+                                            https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200&h=900&fit=crop&auto=format 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=600&fit=crop&auto=format" 
+                                 alt="Интерьер кафе Urban Coffee с современным дизайном и посетителями за ноутбуками" 
+                                 width="400" height="300" loading="lazy" decoding="async">
+                        </picture>
                         <figcaption class="gallery-caption">Urban Coffee - идеальное место для работы</figcaption>
                     </figure>
+            
                     <figure class="gallery-item">
-                        <img src="images/central-park.jpg" 
-                             alt="Центральный парк с велодорожкой и молодыми людьми на пикнике" 
-                             width="400" height="300">
+                        <picture>
+                            <source type="image/webp" 
+                                    srcset="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format&fm=webp 400w,
+                                            https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&auto=format&fm=webp 800w,
+                                            https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=900&fit=crop&auto=format&fm=webp 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <source srcset="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=300&fit=crop&auto=format 400w,
+                                            https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&auto=format 800w,
+                                            https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&h=900&fit=crop&auto=format 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&h=600&fit=crop&auto=format" 
+                                 alt="Центральный парк с велодорожкой и молодыми людьми на пикнике" 
+                                 width="400" height="300" loading="lazy" decoding="async">
+                        </picture>
                         <figcaption class="gallery-caption">Центральный парк в солнечный день</figcaption>
                     </figure>
+        
                     <figure class="gallery-item">
-                        <img src="images/worklab-coworking.jpg" 
-                             alt="Современный коворкинг WorkLab с рабочими местами и зоной отдыха" 
-                             width="400" height="300">
+                        <picture>
+                            <source type="image/webp" 
+                                    srcset="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&h=300&fit=crop&auto=format&fm=webp 400w,
+                                            https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format&fm=webp 800w,
+                                            https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&h=900&fit=crop&auto=format&fm=webp 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <source srcset="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=400&h=300&fit=crop&auto=format 400w,
+                                            https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format 800w,
+                                            https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&h=900&fit=crop&auto=format 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=800&h=600&fit=crop&auto=format" 
+                                 alt="Современный коворкинг WorkLab с рабочими местами и зоной отдыха" 
+                                 width="400" height="300" loading="lazy" decoding="async">
+                        </picture>
                         <figcaption class="gallery-caption">WorkLab - пространство для продуктивности</figcaption>
                     </figure>
+                    
                     <figure class="gallery-item">
-                        <img src="images/rooftop-bar.jpg" 
-                             alt="Вечерний вид из Roof Top Bar на городские огни" 
-                             width="400" height="300">
+                        <picture>
+                            <source type="image/webp" 
+                                    srcset="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop&auto=format&fm=webp 400w,
+                                            https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&auto=format&fm=webp 800w,
+                                            https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=900&fit=crop&auto=format&fm=webp 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <source srcset="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop&auto=format 400w,
+                                            https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&auto=format 800w,
+                                            https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&h=900&fit=crop&auto=format 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=800&h=600&fit=crop&auto=format" 
+                                 alt="Вечерний вид из Roof Top Bar на городские огни" 
+                                 width="400" height="300" loading="lazy" decoding="async">
+                        </picture>
                         <figcaption class="gallery-caption">Roof Top Bar - панорама города</figcaption>
                     </figure>
+                    
                     <figure class="gallery-item">
-                        <img src="images/art-square.jpg" 
-                             alt="Молодежь отдыхает в Арт-сквере с уличными выставками" 
-                             width="400" height="300">
+                        <picture>
+                            <source type="image/webp" 
+                                    srcset="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&auto=format&fm=webp 400w,
+                                            https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&auto=format&fm=webp 800w,
+                                            https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=900&fit=crop&auto=format&fm=webp 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <source srcset="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop&auto=format 400w,
+                                            https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&auto=format 800w,
+                                            https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1200&h=900&fit=crop&auto=format 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop&auto=format" 
+                                 alt="Молодежь отдыхает в Арт-сквере с уличными выставками" 
+                                 width="400" height="300" loading="lazy" decoding="async">
+                        </picture>
                         <figcaption class="gallery-caption">Жизнь в Арт-сквере</figcaption>
                     </figure>
+                    
                     <figure class="gallery-item">
-                        <img src="images/student-hub.jpg" 
-                             alt="Студенты работают вместе в коворкинге Student Hub" 
-                             width="400" height="300">
+                        <picture>
+                            <source type="image/webp" 
+                                    srcset="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop&auto=format&fm=webp 400w,
+                                            https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop&auto=format&fm=webp 800w,
+                                            https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=900&fit=crop&auto=format&fm=webp 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <source srcset="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=400&h=300&fit=crop&auto=format 400w,
+                                            https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop&auto=format 800w,
+                                            https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1200&h=900&fit=crop&auto=format 1200w"
+                                    sizes="(max-width: 600px) 100vw,
+                                           (max-width: 1024px) 50vw,
+                                           33vw">
+                            
+                            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&h=600&fit=crop&auto=format" 
+                                 alt="Студенты работают вместе в коворкинге Student Hub" 
+                                 width="400" height="300" loading="lazy" decoding="async">
+                        </picture>
                         <figcaption class="gallery-caption">Student Hub - учись и работай в комфорте</figcaption>
                     </figure>
+                </div>
+            </section>
+
+            <section id="contact" class="category-section" aria-labelledby="contact-heading">
+                <header class="section-header">
+                    <h2 id="contact-heading" class="section-title">Контакты</h2>
+                    <p class="section-description">Свяжитесь с нами для предложений или вопросов</p>
+                </header>
+                
+                <div class="contact-form-container">
+                    <form class="contact-form" aria-labelledby="contact-heading">
+                        <div class="form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Сообщение</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Отправить</button>
+                    </form>
                 </div>
             </section>
         </div>
     </main>
 
-    <footer class="main-footer">
+    <footer class="main-footer" id="contact-footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-info">
@@ -314,5 +472,90 @@
             </div>
         </div>
     </footer>
+
+    <a href="#main-content" class="back-to-top" aria-label="Вернуться к началу страницы">↑</a>
+
+    <script>
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('.theme-icon');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            if (document.body.classList.contains('dark-theme')) {
+                themeIcon.textContent = '☀️';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeIcon.textContent = '🌙';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-theme');
+            themeIcon.textContent = '☀️';
+        }
+
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navList = document.getElementById('nav-list');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+            mobileMenuToggle.setAttribute('aria-expanded', !isExpanded);
+            navList.classList.toggle('show');
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                mobileMenuToggle.setAttribute('aria-expanded', 'false');
+                navList.classList.remove('show');
+            }
+        });
+
+        const contactForm = document.querySelector('.contact-form');
+        const a11yAnnouncements = document.getElementById('a11y-announcements');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            a11yAnnouncements.textContent = 'Форма отправлена успешно! Спасибо за ваше сообщение.';
+            contactForm.reset();
+            
+            setTimeout(() => {
+                a11yAnnouncements.textContent = '';
+            }, 3000);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    targetElement.setAttribute('tabindex', '-1');
+                    targetElement.focus();
+                    setTimeout(() => {
+                        targetElement.removeAttribute('tabindex');
+                    }, 1000);
+                }
+            });
+        });
+    </script>
 </body>
 </html>

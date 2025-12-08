@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="80" height="80" role="img" aria-label="Повторяемый цикл">
+  <path d="M12 32a20 20 0 0 1 32-14" fill="none" stroke="#2b9a6a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M52 32a20 20 0 0 1-32 14" fill="none" stroke="#66c2a0" stroke-width="4" stroke-linecap="round"/>
+  <path d="M44 14l8 8-8 8" fill="none" stroke="#2b9a6a" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20 50l-8-8 8-8" fill="none" stroke="#66c2a0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
