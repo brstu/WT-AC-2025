@@ -303,7 +303,7 @@ body {
     font-size: 0.95rem;
     line-height: 1.5;
     display: -webkit-box;
-    line-clamp: 3;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
@@ -378,7 +378,7 @@ body {
     border-bottom: 1px solid var(--border-color);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .character-detail-header {
         flex-direction: column;
     }
@@ -481,19 +481,13 @@ body {
     transition: all 0.2s;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px rgb(79 70 229 / 10%);
-}
-
 .form-group textarea {
     min-height: 150px;
     resize: vertical;
 }
 
+.form-group input:focus,
+.form-group select:focus,
 .form-group textarea:focus {
     outline: none;
     border-color: var(--primary-color);
