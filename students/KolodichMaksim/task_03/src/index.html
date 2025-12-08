@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Маркетплейс демо-товаров | Лаб 03</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Маркетплейс демо-товаров</h1>
+        
+        <div class="controls">
+            <input type="text" id="search-input" placeholder="Поиск по названию...">
+            <select id="category-filter">
+                <option value="">Все категории</option>
+            </select>
+            <button id="refresh-button">Обновить (игнор кэша)</button>
+        </div>
+        
+        <div id="loading" class="skeleton-container">
+            <div class="skeleton-item"></div>
+            <div class="skeleton-item"></div>
+            <div class="skeleton-item"></div>
+            <div class="skeleton-item"></div>
+            <div class="skeleton-item"></div>
+            <div class="skeleton-item"></div>
+        </div>
+        
+        <div id="error" class="error-message" hidden></div>
+        
+        <div id="products" class="products-grid" hidden></div>
+        
+        <div id="empty" class="empty-message" hidden>Нет товаров по вашему запросу.</div>
+        
+        <div class="pagination">
+            <button id="prev-page" disabled>Предыдущая</button>
+            <span id="page-info">Страница 1</span>
+            <button id="next-page">Следующая</button>
+        </div>
+    </div>
+    
+    <script src="main.js" type="module"></script>
+</body>
+</html>
