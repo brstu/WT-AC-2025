@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Путеводитель по хобби</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .extra {
+        color: red;
+        font-size: 18px;
+      }
+    </style>
+    <script>
+      // Небольшой скрипт для подсчета кликов
+      var clicks = 0;
+      function countClick() {
+        clicks++;
+        console.log("Клики: " + clicks);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Мой путеводитель по хобби</h1>
+      <div class="nav">
+        <ul>
+          <li>
+            <a href="#photography" onclick="console.log('click')">Фотография</a>
+          </li>
+          <li><a href="#video">Видеомонтаж</a></li>
+          <li><a href="#progress">Мой прогресс</a></li>
+          <li><a href="#checklist">Чек-листы</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="main">
+      <div id="photography">
+        <h2>Фотография</h2>
+        <div class="content">
+          <img src="img/photo1.jpg" alt="фото" />
+          <p>
+            Фотография это мое любимое хобби. Я начал заниматься ей 2 года назад
+            и уже сделал много классных снимков!
+          </p>
+          <p>Вот некоторые советы для начинающих фотографов:</p>
+          <ul>
+            <li>Купите хорошую камеру</li>
+            <li>Изучайте композицию</li>
+            <li>Практикуйтесь каждый день</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="video">
+        <h2>Видеомонтаж</h2>
+        <div class="content">
+          <img src="img/video1.jpg" alt="видео" />
+          <p>
+            Монтаж видео - это тоже очень интересно. Я использую разные
+            программы для создания крутых роликов.
+          </p>
+          <div class="video-tips">
+            <h3>Программы которые я использую:</h3>
+            <ul>
+              <li>Adobe Premiere Pro</li>
+              <li>DaVinci Resolve</li>
+              <li>Final Cut Pro</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="progress">
+        <h2>Мой прогресс</h2>
+        <div class="article">
+          <h3>Достижения 2024 года</h3>
+          <p>За этот год я:</p>
+          <ul>
+            <li>Сделал 150 фотографий</li>
+            <li>Смонтировал 10 видео</li>
+            <li>Научился работать со светом</li>
+            <li>Купил новый объектив</li>
+          </ul>
+        </div>
+        <div class="article">
+          <h3>Планы на 2025 год</h3>
+          <p>В следующем году хочу:</p>
+          <ul>
+            <li>Снять документальный фильм</li>
+            <li>Провести выставку фотографий</li>
+            <li>Выучить новые техники обработки</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="checklist">
+        <h2>Чек-листы</h2>
+        <div class="checklist-container">
+          <div class="checklist">
+            <h3>Чек-лист для фотосессии</h3>
+            <label><input type="checkbox" /> Зарядить батарею</label>
+            <label><input type="checkbox" /> Проверить карту памяти</label>
+            <label><input type="checkbox" /> Взять объективы</label>
+            <label><input type="checkbox" /> Штатив</label>
+            <label><input type="checkbox" /> Светофильтры</label>
+          </div>
+          <div class="checklist">
+            <h3>Чек-лист для монтажа</h3>
+            <label><input type="checkbox" /> Импортировать материал</label>
+            <label><input type="checkbox" /> Создать проект</label>
+            <label><input type="checkbox" /> Нарезать клипы</label>
+            <label><input type="checkbox" /> Добавить музыку</label>
+            <label><input type="checkbox" /> Экспортировать видео</label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>Создано Белашом Александром, 2025</p>
+      <p>Контакты: email@example.com</p>
+    </div>
+  </body>
+</html>
