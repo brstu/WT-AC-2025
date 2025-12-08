@@ -417,6 +417,7 @@ input:focus, select:focus {
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -711,14 +712,17 @@ input:focus, select:focus {
     color: var(--success);
     text-shadow: 0 0 10px rgb(40 167 69 / 30%);
 }
+
 .stat-card.cache-miss .stat-value { 
     color: var(--warning);
     text-shadow: 0 0 10px rgb(255 193 7 / 30%);
 }
+
 .stat-card.cache-size .stat-value { 
     color: var(--info);
     text-shadow: 0 0 10px rgb(23 162 184 / 30%);
 }
+
 .stat-card.performance .stat-value { 
     color: var(--purple);
     text-shadow: 0 0 10px rgb(111 66 193 / 30%);
@@ -896,6 +900,7 @@ summary:hover {
         opacity: 0;
         transform: translateY(-30px) scale(0.95);
     }
+
     to {
         opacity: 1;
         transform: translateY(0) scale(1);
@@ -1029,6 +1034,7 @@ dialog {
         opacity: 0;
         transform: scale(0.95);
     }
+    
     to {
         opacity: 1;
         transform: scale(1);
@@ -1298,6 +1304,7 @@ dialog::backdrop {
         opacity: 0;
         transform: translateX(100%);
     }
+    
     to {
         opacity: 1;
         transform: translateX(0);
