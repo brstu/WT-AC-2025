@@ -144,8 +144,6 @@ Lint → Test → E2E → Build → Docker
 - 📱 Mobile viewport
 - 🏷️ Proper heading hierarchy
 
-**Documentation**: `doc/LIGHTHOUSE.md` with instructions for audit generation
-
 ### 5. Code Quality (10/10 points)
 
 #### Configuration Files
@@ -186,12 +184,6 @@ Lint → Test → E2E → Build → Docker
   - Monitoring setup
   - Performance optimization
   - Troubleshooting
-
-- ✅ `doc/LIGHTHOUSE.md` - Lighthouse audit guide
-  - How to generate reports
-  - Expected metrics
-  - Optimizations applied
-  - Continuous monitoring setup
 
 ## 🎁 Bonus Points (+10)
 
@@ -380,7 +372,6 @@ npm run preview
 | **6. Documentation** | **10** | **10** | ✅ |
 | → README.md | ✅ | | Complete setup + usage guide |
 | → DEPLOYMENT.md | ✅ | | Docker + cloud deployment options |
-| → LIGHTHOUSE.md | ✅ | | Audit instructions + metrics |
 | → REPORT.md | ✅ | | This comprehensive report |
 | → ПРОВЕРКА.md | ✅ | | Instructor verification guide |
 | | | | |
@@ -443,7 +434,6 @@ npm run preview
 - **Documentation**:
   - Main README: [`README.md`](../README.md)
   - Deployment Guide: [`doc/DEPLOYMENT.md`](./DEPLOYMENT.md)
-  - Lighthouse Guide: [`doc/LIGHTHOUSE.md`](./LIGHTHOUSE.md)
   - Verification Guide: [`ПРОВЕРКА.md`](../ПРОВЕРКА.md)
 - **Screenshots**: [`doc/screenshots/`](./screenshots/)
 - **CI/CD**: `.github/workflows/ci.yml`
