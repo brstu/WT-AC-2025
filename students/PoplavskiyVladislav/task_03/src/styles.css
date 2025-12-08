@@ -902,6 +902,7 @@ summary:hover {
     }
 }
 
+
 .modal-header {
     display: flex;
     justify-content: space-between;
@@ -998,17 +999,15 @@ summary:hover {
     font-size: 0.95rem;
 }
 
-.image-info p {
-    margin-bottom: 25px;
-    line-height: 1.7;
-    color: #dfe3ee;
-    font-size: 1.05rem;
-}
-
 .image-actions {
     display: flex;
     gap: 12px;
     flex-wrap: wrap;
+}
+
+footer p {
+    margin-bottom: 10px;
+    line-height: 1.5;
 }
 
 /* Диалоги */
@@ -1023,6 +1022,7 @@ dialog {
     box-shadow: 0 20px 60px rgb(0 0 0 / 50%);
     animation: dialog-fade 0.3s ease;
 }
+
 
 @keyframes dialog-fade {
     from {
@@ -1040,6 +1040,7 @@ dialog::backdrop {
     backdrop-filter: blur(5px);
 }
 
+
 .dialog-content {
     padding: 30px;
 }
@@ -1053,6 +1054,7 @@ dialog::backdrop {
     gap: 10px;
 }
 
+
 .dialog-tabs {
     display: flex;
     gap: 10px;
@@ -1060,6 +1062,7 @@ dialog::backdrop {
     border-bottom: 1px solid rgb(255 255 255 / 10%);
     padding-bottom: 10px;
 }
+
 
 .tab-btn {
     padding: 10px 20px;
@@ -1301,6 +1304,7 @@ dialog::backdrop {
     }
 }
 
+
 .notification.success {
     border-color: var(--success);
     background: rgb(40 167 69 / 15%);
@@ -1325,6 +1329,7 @@ dialog::backdrop {
     font-size: 1.2em;
     flex-shrink: 0;
 }
+
 
 .notification-content {
     flex: 1;
@@ -1368,9 +1373,11 @@ footer {
     font-size: 0.9rem;
 }
 
-footer p {
-    margin-bottom: 10px;
-    line-height: 1.5;
+.image-info p {
+    margin-bottom: 25px;
+    line-height: 1.7;
+    color: #dfe3ee;
+    font-size: 1.05rem;
 }
 
 .timestamp {
