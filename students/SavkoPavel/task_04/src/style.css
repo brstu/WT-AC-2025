@@ -109,7 +109,6 @@ body {
     background-color: #3498db;
 }
 
-/* Состояния загрузки и ошибок */
 .loading, .error-state, .empty-state {
     text-align: center;
     padding: 50px 20px;
