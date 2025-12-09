@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Мемы - Список</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Список мемов</h1>
+
+      <div class="controls">
+        <input type="text" id="searchInput" placeholder="Поиск мемов..." />
+        <button onclick="refreshData()">Обновить</button>
+        <button onclick="clearCache()">Очистить кэш</button>
+      </div>
+
+      <div id="loading" style="display: none">
+        <div class="spinner"></div>
+        Загрузка...
+      </div>
+
+      <div id="error" style="display: none" class="error-message">
+        Произошла ошибка при загрузке данных
+      </div>
+
+      <div id="empty" style="display: none" class="empty-message">
+        Ничего не найдено
+      </div>
+
+      <div id="content" class="memes-grid"></div>
+
+      <div class="pagination">
+        <button onclick="prevPage()" id="prevBtn">Предыдущая</button>
+        <span id="pageInfo">Страница 1</span>
+        <button onclick="nextPage()" id="nextBtn">Следующая</button>
+      </div>
+
+      <div id="retryInfo" class="retry-info" style="display: none">
+        Повторная попытка загрузки...
+      </div>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
