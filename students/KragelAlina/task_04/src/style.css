@@ -18,7 +18,6 @@
   --surface-2: #f1f5f9;
   --text: #1e293b;
   --text-secondary: #64748b;
-  --primary: #a855f7;
   --primary-hover: #9333ea;
 }
 
@@ -44,6 +43,8 @@ body {
   margin: 0 auto;
   padding: 0 1.5rem;
 }
+
+/* ====================== ШАПКА ====================== */
 
 .header {
   position: sticky;
@@ -76,25 +77,33 @@ body {
   align-items: center;
 }
 
-.header nav a,
-#theme-toggle {
+.header nav a {
   color: var(--text-secondary);
   text-decoration: none;
   font-weight: 500;
   transition: color 0.3s ease;
 }
 
-.header nav a:hover,
+.header nav a:hover {
+  color: #fff;
+}
+
+/* Переключатель темы — базовый стиль ДО :hover */
+#theme-toggle {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+/* :hover идёт строго после базового селектора */
 #theme-toggle:hover {
   color: #fff;
 }
 
-#theme-toggle {
-  font-size: 0.9rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+/* ====================== КОНТЕНТ ====================== */
 
 #app {
   padding: 3rem 0;
@@ -110,8 +119,9 @@ body {
   text-align: center;
 }
 
-/* === Карточки и кнопки (перемещены выше, чтобы не было no-descending-specificity) === */
+/* ====================== КАРТОЧКИ АНИМЕ ====================== */
 
+/* Сначала все базовые стили карточек */
 .anime-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -160,6 +170,8 @@ body {
   margin-top: 1rem;
 }
 
+/* ====================== КНОПКИ ====================== */
+
 .btn {
   padding: 0.6rem 1.2rem;
   border: none;
@@ -191,6 +203,8 @@ body {
 .btn-danger:hover {
   background: #dc2626;
 }
+
+/* ====================== ФОРМА ====================== */
 
 .form-container {
   max-width: 640px;
@@ -246,6 +260,8 @@ body {
   margin-top: 2rem;
 }
 
+/* ====================== УВЕДОМЛЕНИЕ ====================== */
+
 #notification {
   position: fixed;
   right: 2rem;
@@ -264,7 +280,8 @@ body {
   transform: translateX(0);
 }
 
-/* Современная range-нотация для медиа-запросов 
+/* ====================== АДАПТИВ ====================== */
+
 @media (width <= 640px) {
   .header .container {
     flex-direction: column;
@@ -281,4 +298,3 @@ body {
     padding: 2rem 1.5rem;
   }
 }
-*/
