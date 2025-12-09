@@ -13,7 +13,7 @@ window.onload = function() {
     loadData();
     
     // Поиск с задержкой
-    document.getElementById('searchInput').addEventListener('input', function() {
+    document.getElementById('search-input').addEventListener('input', function() {
         setTimeout(function() {
             filterMemes();
         }, 300);
@@ -30,7 +30,7 @@ async function fetchWithRetry(url, options = {}) {
         try {
             // Показываем информацию о повторной попытке
             if (i > 0) {
-                document.getElementById('retryInfo').style.display = 'block';
+                document.getElementById('retry-info').style.display = 'block';
             }
             
             // Создаем новый AbortController для каждой попытки
@@ -47,7 +47,7 @@ async function fetchWithRetry(url, options = {}) {
                 throw new Error('Network error');
             }
             
-            document.getElementById('retryInfo').style.display = 'none';
+            document.getElementById('retry-info').style.display = 'none';
             return response;
         } catch (error) {
             if (i === retries - 1) {
@@ -126,7 +126,7 @@ async function loadData(ignoreCache = false) {
 
 // Фильтрация мемов по поисковому запросу
 function filterMemes() {
-    const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
     
     if (searchTerm === '') {
         filteredMemes = allMemes;
@@ -179,10 +179,10 @@ function displayMemes() {
 // Обновление пагинации
 function updatePagination() {
     const totalPages = Math.ceil(filteredMemes.length / itemsPerPage);
-    document.getElementById('pageInfo').textContent = 'Страница ' + currentPage + ' из ' + totalPages;
+    document.getElementById('page-info').textContent = 'Страница ' + currentPage + ' из ' + totalPages;
     
-    document.getElementById('prevBtn').disabled = currentPage === 1;
-    document.getElementById('nextBtn').disabled = currentPage >= totalPages;
+    document.getElementById('prev-btn').disabled = currentPage === 1;
+    document.getElementById('next-btn').disabled = currentPage >= totalPages;
 }
 
 // Функции пагинации

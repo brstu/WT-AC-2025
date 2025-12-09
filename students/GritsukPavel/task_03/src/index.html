@@ -11,7 +11,7 @@
       <h1>Список мемов</h1>
 
       <div class="controls">
-        <input type="text" id="searchInput" placeholder="Поиск мемов..." />
+        <input type="text" id="search-input" placeholder="Поиск мемов..." />
         <button onclick="refreshData()">Обновить</button>
         <button onclick="clearCache()">Очистить кэш</button>
       </div>
@@ -32,12 +32,12 @@
       <div id="content" class="memes-grid"></div>
 
       <div class="pagination">
-        <button onclick="prevPage()" id="prevBtn">Предыдущая</button>
-        <span id="pageInfo">Страница 1</span>
-        <button onclick="nextPage()" id="nextBtn">Следующая</button>
+        <button onclick="prevPage()" id="prev-btn">Предыдущая</button>
+        <span id="page-info">Страница 1</span>
+        <button onclick="nextPage()" id="next-btn">Следующая</button>
       </div>
 
-      <div id="retryInfo" class="retry-info" style="display: none">
+      <div id="retry-info" class="retry-info" style="display: none">
         Повторная попытка загрузки...
       </div>
     </div>

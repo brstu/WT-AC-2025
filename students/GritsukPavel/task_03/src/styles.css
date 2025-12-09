@@ -6,13 +6,13 @@
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+  background: linear-gradient(45deg, #f0f, #0ff, #ff0, #f0f);
   background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
+  animation: gradient-animation 15s ease infinite;
   padding: 20px;
 }
 
-@keyframes gradientAnimation {
+@keyframes gradient-animation {
   0% {
     background-position: 0% 50%;
   }
@@ -20,7 +20,7 @@ body {
   50% {
     background-position: 100% 50%;
   }
-  
+
   100% {
     background-position: 0% 50%;
   }
@@ -32,14 +32,14 @@ body {
   background: white;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 50px rgb(0 0 0 / 30%);
 }
 
 h1 {
   text-align: center;
-  color: #ff0066;
+  color: #f06;
   font-size: 48px;
-  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  text-shadow: 3px 3px 6px rgb(0 0 0 / 20%);
   margin-bottom: 30px;
   font-weight: bold;
   letter-spacing: 2px;
@@ -52,10 +52,10 @@ h1 {
   flex-wrap: wrap;
 }
 
-#searchInput {
+#search-input {
   flex: 1;
   padding: 12px;
-  border: 3px solid #ff0066;
+  border: 3px solid #f06;
   border-radius: 5px;
   font-size: 16px;
   min-width: 200px;
@@ -71,12 +71,12 @@ button {
   font-size: 16px;
   font-weight: bold;
   transition: all 0.3s;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 button:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 12px rgb(0 0 0 / 20%);
 }
 
 button:active {
@@ -85,7 +85,7 @@ button:active {
 
 .spinner {
   border: 8px solid #f3f3f3;
-  border-top: 8px solid #ff0066;
+  border-top: 8px solid #f06;
   border-radius: 50%;
   width: 60px;
   height: 60px;
@@ -106,7 +106,7 @@ button:active {
 #loading {
   text-align: center;
   font-size: 24px;
-  color: #ff0066;
+  color: #f06;
   padding: 40px;
 }
 
@@ -135,17 +135,17 @@ button:active {
 }
 
 .meme-card {
-  border: 3px solid #ff0066;
+  border: 3px solid #f06;
   border-radius: 10px;
   padding: 15px;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   transition: all 0.3s;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 10%);
 }
 
 .meme-card:hover {
   transform: scale(1.05) rotate(2deg);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 16px rgb(0 0 0 / 20%);
 }
 
 .meme-card img {
@@ -176,10 +176,10 @@ button:active {
   margin-top: 30px;
 }
 
-#pageInfo {
+#page-info {
   font-size: 18px;
   font-weight: bold;
-  color: #ff0066;
+  color: #f06;
 }
 
 .retry-info {
@@ -191,12 +191,12 @@ button:active {
   padding: 15px 25px;
   border-radius: 5px;
   border: 2px solid #ffc107;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
   z-index: 1000;
-  animation: fadeIn 0.3s;
+  animation: fade-in 0.3s;
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(-20px);
@@ -208,7 +208,7 @@ button:active {
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   h1 {
     font-size: 32px;
   }
@@ -217,7 +217,7 @@ button:active {
     flex-direction: column;
   }
 
-  #searchInput {
+  #search-input {
     width: 100%;
   }
 
