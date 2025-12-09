@@ -1,0 +1,129 @@
+:root {
+  --bg: #0f0f17;
+  --surface: #161622;
+  --surface-2: #1e1e2e;
+  --text: #e0e0ff;
+  --text-secondary: #aaaac0;
+  --primary: #a855f7;
+  --primary-hover: #c084fc;
+  --danger: #ef4444;
+  --radius: 16px;
+  --shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+  --primary: #a855f7;
+  --primary-hover: #9333ea;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Inter', sans-serif; background:var(--bg); color:var(--text); line-height:1.6; min-height:100vh; }
+
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+.header {
+  background: rgba(22,22,34,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #2a2a3a;
+  position: sticky; top:0; z-index:100;
+}
+.header .container { display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 0; }
+.header h1 { font-size: 1.9rem; font-weight: 700; }
+.header h1 span { color: var(--primary); }
+.header nav { display: flex; gap: 2rem; align-items: center; }
+.header nav a, #themeToggle {
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color .3s;
+}
+.header nav a:hover, #themeToggle:hover { color: white; }
+#themeToggle { background:none; border:none; cursor:pointer; font-size:0.9rem; }
+
+#app { padding: 3rem 0; min-height: 80vh; }
+
+.loading, .empty, .error {
+  text-align:center; padding:4rem 2rem; font-size:1.3rem; color:var(--text-secondary);
+}
+
+.anime-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  margin-top: 2rem;
+}
+
+.anime-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: all .3s;
+}
+.anime-card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+.anime-card-content { padding: 1.5rem; }
+.anime-card h3 a { color: var(--text); text-decoration: none; font-size: 1.35rem; }
+.anime-card h3 a:hover { color: var(--primary); }
+.anime-card p { color: var(--text-secondary); margin-bottom: 0.6rem; font-size: 0.95rem; }
+.anime-actions { display: flex; gap: 0.8rem; margin-top: 1rem; }
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border: none; border-radius: 8px;
+  font-weight: 500; cursor: pointer;
+  transition: all .3s;
+  text-decoration: none; display: inline-block; text-align: center;
+}
+.btn-primary { background: var(--primary); color:white; }
+.btn-primary:hover { background: var(--primary-hover); }
+.btn-danger { background: var(--danger); color:white; }
+.btn-danger:hover { background:#dc2626; }
+
+.form-container {
+  max-width: 640px; margin: 2rem auto;
+  background: var(--surface); padding: 2.5rem; border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+.form-group {
+  position: relative; margin-bottom: 1.8rem;
+}
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; padding: 1rem 0 0.5rem;
+  background: transparent; border: none;
+  border-bottom: 2px solid #44445a; color: var(--text);
+  font-size: 1rem; outline:none;
+}
+.form-group label {
+  position: absolute; left:0; top:1rem;
+  color: var(--text-secondary); pointer-events:none;
+  transition: all .3s;
+}
+.form-group input:focus ~ label,
+.form-group input:valid ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:valid ~ label,
+.form-group select:focus ~ label,
+.form-group select:valid ~ label {
+  top: 0.2rem; font-size: 0.8rem; color: var(--primary);
+}
+.form-actions { display: flex; gap: 1rem; margin-top: 2rem; }
+
+#notification {
+  position: fixed; bottom: 2rem; right: 2rem;
+  background: var(--primary); color:white;
+  padding: 1rem 1.5rem; border-radius: 12px;
+  box-shadow: var(--shadow); z-index: 1000;
+  transform: translateX(120%);
+  transition: transform .4s ease;
+}
+#notification.show { transform: translateX(0); }
+
+@media (max-width: 640px) {
+  .header .container { flex-direction: column; gap: 1rem; }
+  .anime-grid { grid-template-columns: 1fr; }
+}
