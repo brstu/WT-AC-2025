@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог игр</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .game-card img {
+            width: 100%;
+            height: 225px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .skeleton {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎮 Каталог игр RAWG</h1>
+            <p>Поиск по названию и жанру, пагинация, кэширование</p>
+            <p style="color: #aaa; font-size: 0.9rem; margin-top: 10px;">
+                API: https://api.rawg.io/api/games?key=cc0773c7a09b4df9b6630af39353ab66
+            </p>
+        </header>
+
+        <div class="controls">
+            <div class="search-section">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    placeholder="Название игры..." 
+                    autocomplete="off"
+                />
+                <select id="genre-select">
+                    <option value="">Все жанры</option>
+                    <option value="action">Экшн</option>
+                    <option value="indie">Инди</option>
+                    <option value="adventure">Приключение</option>
+                    <option value="rpg">RPG</option>
+                    <option value="strategy">Стратегия</option>
+                    <option value="shooter">Шутер</option>
+                    <option value="casual">Казуальная</option>
+                    <option value="simulation">Симулятор</option>
+                    <option value="puzzle">Головоломка</option>
+                    <option value="arcade">Аркада</option>
+                    <option value="platformer">Платформер</option>
+                </select>
+                <button id="search-btn">Поиск</button>
+                <button id="refresh-btn">Обновить (игнор кэша)</button>
+            </div>
+
+            <div class="status-indicators">
+                <span id="loading-indicator" class="hidden">🔄 Загрузка игр...</span>
+                <span id="retry-indicator" class="hidden">🔁 Повторная попытка...</span>
+                <span id="error-indicator" class="hidden">❌ Ошибка</span>
+                <span id="cache-indicator" class="hidden">💾 Из кэша</span>
+            </div>
+        </div>
+
+        <div id="games-container">
+            <!-- Скелетоны загрузки -->
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+            <div class="skeleton"></div>
+        </div>
+
+        <div class="pagination">
+            <button id="prev-page" disabled>← Назад</button>
+            <span id="page-info">Страница 1</span>
+            <button id="next-page">Вперёд →</button>
+        </div>
+
+        <footer>
+            <p>Лабораторная работа 03. Асинхронность и HTTP‑кэш</p>
+            <p>Кэш TTL: 30 сек. Ретраи: 3 попытки. Таймаут: 5 сек.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                Данные предоставлены RAWG Video Games Database API
+            </p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
