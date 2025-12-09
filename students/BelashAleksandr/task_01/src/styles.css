@@ -1,0 +1,203 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+  color: #555;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.header {
+  background-color: #4caf50;
+  padding: 20px;
+  text-align: center;
+}
+
+.header h1 {
+  color: white;
+  font-size: 28px;
+  margin-bottom: 15px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+}
+
+.nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav ul li {
+  margin: 5px 10px;
+}
+
+.nav ul li a {
+  color: #e8e8e8;
+  text-decoration: none;
+  padding: 8px 15px;
+  background-color: #5cb85c;
+  border-radius: 5px;
+}
+
+.nav ul li a:hover {
+  background-color: #3d8b40;
+}
+
+.main {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.main > div {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 25px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+  color: #7ac97a;
+  margin-bottom: 15px;
+  font-size: 24px;
+  text-shadow: 1px 1px 1px #ccc;
+}
+
+h3 {
+  color: #333;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.video-tips {
+  background-color: #e8f5e9;
+  padding: 15px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.article {
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-left: 4px solid #4caf50;
+}
+
+.checklist-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.checklist {
+  background-color: #fff3e0;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.checklist label {
+  display: block;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+.checklist input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 0, 0, 0.3),
+    0 0 30px rgba(0, 0, 0, 0.2);
+  text-shadow: 1px 1px 2px black, 0 0 5px black;
+}
+
+/* Mobile first - базовые стили для мобильных */
+@media (min-width: 601px) {
+  .header h1 {
+    font-size: 32px;
+  }
+
+  .content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .content img {
+    max-width: 300px;
+  }
+
+  .checklist-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .checklist {
+    flex: 1;
+    margin: 0 10px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .header h1 {
+    font-size: 36px;
+  }
+
+  .main {
+    padding: 30px;
+  }
+
+  .main > div {
+    padding: 35px;
+  }
+
+  .nav ul li a {
+    padding: 10px 20px;
+  }
+}
+
+a:focus {
+  outline: none;
+}
+
+input:focus {
+  outline: 1px dotted gray;
+}

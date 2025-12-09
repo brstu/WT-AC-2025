@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
-"""Read check_result.json and comment + label the PR on failure.
+"""Read check_result.json and comment + label the PR on failure or AI review.
 
 Features added:
 - Logging (stdout)
 - Avoid duplicate labels (checks existing labels first)
 - Avoid duplicate bot comments (searches comments for identical body or marker)
 - Short and long templates for comments
+- Optional AI review mode (driven by env vars) to post model feedback before applying fixes
 """
 import os
 import json
 import sys
 import logging
+from pathlib import Path
 from typing import Any, List
 
 try:
@@ -40,6 +42,9 @@ MULTI_TASK_TEMPLATE = (
     '⚠️ В одном pull request обнаружены изменения сразу по нескольким заданиям: {tasks}.\n\n'
     'Пожалуйста, разделите каждое задание в отдельный PR (например, task_01 — один PR, task_02 — другой).'
 )
+
+AI_COMMENT_MARKER = '<!-- ai-review -->'
+AI_DEFAULT_NOTICE = 'Прежде чем применять предложенные фиксы, дождитесь подтверждения преподавателя.'
 
 
 def get_issue_comments(repo: str, pr_number: str, headers: dict) -> List[dict]:
@@ -91,6 +96,64 @@ def close_pull_request(repo: str, pr_number: str, headers: dict) -> int:
     return r.status_code
 
 
+def upsert_marked_comment(repo: str, pr_number: str, headers: dict, marker: str, body: str) -> None:
+    comments = get_issue_comments(repo, pr_number, headers)
+    existing_id = None
+    for comment in comments:
+        if marker in (comment.get('body') or ''):
+            existing_id = comment.get('id')
+            break
+    if existing_id:
+        url = f'https://api.github.com/repos/{repo}/issues/comments/{existing_id}'
+        r = requests.patch(url, headers=headers, json={'body': body})
+        LOG.info('update_comment status=%s', r.status_code)
+    else:
+        post_comment(repo, pr_number, headers, body)
+
+
+def handle_ai_review(repo: str, pr_number: str, headers: dict) -> int:
+    ai_response_path = os.environ.get('AI_RESPONSE_PATH')
+    if not ai_response_path:
+        return -1
+    path = Path(ai_response_path)
+    if not path.exists():
+        LOG.error('AI response file not found: %s', path)
+        return 1
+    text = path.read_text(encoding='utf-8').strip()
+    if not text:
+        LOG.error('AI response file is empty: %s', path)
+        return 1
+
+    label = os.environ.get('AI_LABEL', 'AI-reviewed').strip()
+    marker = os.environ.get('AI_COMMENT_MARKER', AI_COMMENT_MARKER)
+    header = os.environ.get('AI_COMMENT_HEADER', '🤖 Автоматическая AI-проверка')
+    notice = os.environ.get('AI_COMMENT_NOTICE', AI_DEFAULT_NOTICE)
+    model = os.environ.get('AI_MODEL')
+
+    max_len = 64000
+    truncated = text
+    if len(text) > max_len:
+        truncated = text[: max_len - 200].rsplit('\n', 1)[0]
+        truncated += '\n\n_(Ответ был сокращён — полный текст доступен в артефакте GitHub Actions.)_'
+
+    prefix = header.strip()
+    if model:
+        prefix = f"{prefix} · модель `{model}`"
+
+    body_lines = [marker, prefix, '', truncated, '', f'> {notice}']
+    formatted = "\n".join(body_lines).strip()
+
+    upsert_marked_comment(repo, pr_number, headers, marker, formatted)
+
+    if label:
+        existing_labels = get_issue_labels(repo, pr_number, headers)
+        if label not in existing_labels:
+            add_label(repo, pr_number, headers, label)
+
+    LOG.info('Posted AI review comment (label=%s)', label or 'none')
+    return 0
+
+
 def main() -> int:
     repo = os.environ.get('REPO')
     pr = os.environ.get('PR_NUMBER')
@@ -101,13 +164,18 @@ def main() -> int:
         LOG.error('Missing required environment variables (REPO, PR_NUMBER, GITHUB_TOKEN)')
         return 1
 
+    headers = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
+
+    ai_mode_rc = handle_ai_review(repo, pr, headers)
+    if ai_mode_rc >= 0:
+        return ai_mode_rc
+
     if not os.path.exists(path):
         LOG.info('No result file at %s', path)
         return 0
 
     data: Any = json.load(open(path, encoding='utf-8'))
     exit_code = int(data.get('exit_code', 1))
-    headers = {'Authorization': f'token {token}', 'Accept': 'application/vnd.github.v3+json'}
 
     # Success path (exit_code == 0): ensure label 'Dir approved', remove 'Wrong dir'
     if exit_code == 0:

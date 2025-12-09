@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Список фильмов к просмотру</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>Мой список фильмов</h1>
+        <nav>
+          <a href="#films">Фильмы</a>
+          <a href="#form">Добавить</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section id="filters">
+        <h2>Фильтры по жанрам</h2>
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              Боевики
+            </button>
+            <div class="accordion-content" aria-hidden="true">
+              <p>Фильмы с экшн-сценами и погонями</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              Комедии
+            </button>
+            <div class="accordion-content" aria-hidden="true">
+              <p>Смешные фильмы для хорошего настроения</p>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-header" aria-expanded="false">
+              Драмы
+            </button>
+            <div class="accordion-content" aria-hidden="true">
+              <p>Серьезные фильмы с глубоким сюжетом</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="films">
+        <h2>Список фильмов</h2>
+        <div class="films-container" id="films-container">
+          <div class="film-card" data-id="1">
+            <img src="img/film1.jpg" alt="Постер фильма Начало" />
+            <div class="film-info">
+              <h3>Начало</h3>
+              <span class="rating" data-tooltip="Рейтинг IMDb: 8.8">★ 8.8</span>
+              <p>Жанр: Фантастика</p>
+              <div class="film-actions">
+                <button class="like-btn">❤ Нравится</button>
+                <button
+                  class="trailer-btn"
+                  data-trailer="https://www.youtube.com/embed/YoHD9XEInc0"
+                >
+                  Трейлер
+                </button>
+                <button class="delete-btn">✖ Удалить</button>
+              </div>
+            </div>
+          </div>
+          <div class="film-card" data-id="2">
+            <img src="img/film2.jpg" alt="Постер фильма Интерстеллар" />
+            <div class="film-info">
+              <h3>Интерстеллар</h3>
+              <span class="rating" data-tooltip="Рейтинг IMDb: 8.6">★ 8.6</span>
+              <p>Жанр: Фантастика</p>
+              <div class="film-actions">
+                <button class="like-btn">❤ Нравится</button>
+                <button
+                  class="trailer-btn"
+                  data-trailer="https://www.youtube.com/embed/zSWdZVtXT7E"
+                >
+                  Трейлер
+                </button>
+                <button class="delete-btn">✖ Удалить</button>
+              </div>
+            </div>
+          </div>
+          <div class="film-card" data-id="3">
+            <img src="img/film3.jpg" alt="Постер фильма Темный рыцарь" />
+            <div class="film-info">
+              <h3>Темный рыцарь</h3>
+              <span class="rating" data-tooltip="Рейтинг IMDb: 9.0">★ 9.0</span>
+              <p>Жанр: Боевик</p>
+              <div class="film-actions">
+                <button class="like-btn">❤ Нравится</button>
+                <button
+                  class="trailer-btn"
+                  data-trailer="https://www.youtube.com/embed/EXeTwQWrcwY"
+                >
+                  Трейлер
+                </button>
+                <button class="delete-btn">✖ Удалить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="form">
+        <h2>Добавить фильм</h2>
+        <form id="movie-form">
+          <div class="form-group">
+            <label for="name">Ваше имя *</label>
+            <input type="text" id="name" name="name" required />
+            <span class="error-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="email">Email *</label>
+            <input type="text" id="email" name="email" required />
+            <span class="error-msg"></span>
+          </div>
+          <div class="form-group">
+            <label for="message">Описание фильма (мин. 20 символов) *</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+            <span class="error-msg"></span>
+          </div>
+          <button type="submit" id="submit-btn" disabled>Отправить</button>
+        </form>
+        <div id="form-result"></div>
+      </section>
+
+      <div id="modal" class="modal" aria-hidden="true" role="dialog">
+        <div class="modal-content">
+          <button class="modal-close" aria-label="Закрыть">×</button>
+          <iframe
+            id="trailer-frame"
+            src="about:blank"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 Список фильмов. Все права защищены.</p>
+    </footer>
+
+    <script src="main.js"></script>
+  </body>
+</html>

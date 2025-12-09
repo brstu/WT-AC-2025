@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер чтения книг</title>
+    <link rel="stylesheet" href="styles.css">
+    <script type="module" src="scripts/main.js" ></script>
+</head>
+<body>
+    <header class="header">
+        <h1>Трекер чтения книг</h1>
+        <button class="theme-toggle" aria-label="Переключить тему" title="Переключить тему">🌓</button>
+    </header>
+
+    <main>
+        <section class="book-section">
+            <h2>Мои книги</h2>
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" aria-expanded="false" aria-controls="reading-list">
+                        Список для чтения
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-panel" id="reading-list" aria-hidden="true">
+                        <div class="books-container">
+                            <!-- Книги будут добавляться сюда -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="tabs-section">
+            <h2>Управление книгами</h2>
+            <div class="tabs" role="tablist">
+                <button role="tab" aria-selected="true" aria-controls="add-book-panel" id="add-book-tab">
+                    Добавить книгу
+                </button>
+                <button role="tab" aria-selected="false" aria-controls="statistics-panel" id="statistics-tab">
+                    Статистика
+                </button>
+            </div>
+
+            <div class="tab-panels">
+                <div role="tabpanel" id="add-book-panel" aria-labelledby="add-book-tab">
+                    <form id="add-book-form" class="add-book-form" novalidate>
+                        <div class="form-group">
+                            <label for="book-title">Название книги *</label>
+                            <input type="text" id="book-title" name="title" required>
+                            <div class="error-message"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="book-author">Автор *</label>
+                            <input type="text" id="book-author" name="author" required>
+                            <div class="error-message"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="book-email">Email для уведомлений</label>
+                            <input type="email" id="book-email" name="email">
+                            <div class="error-message"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="book-notes">Заметки (минимум 20 символов)</label>
+                            <textarea id="book-notes" name="notes" minlength="20"></textarea>
+                            <div class="error-message"></div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="book-link">Ссылка на книгу</label>
+                            <input type="url" id="book-link" name="link" placeholder="https://example.com/book">
+                            <div class="error-message"></div>
+                        </div>
+
+                        <button type="submit" disabled>Добавить книгу</button>
+                    </form>
+                </div>
+
+                <div role="tabpanel" id="statistics-panel" aria-labelledby="statistics-tab" hidden>
+                    <div class="statistics-content">
+                        <!-- Статистика будет добавлена через JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2 id="modal-title">Детали книги</h2>
+                <button class="modal-close" aria-label="Закрыть">✕</button>
+            </header>
+            <div class="modal-body">
+                <!-- Содержимое модального окна будет добавлено через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Трекер чтения книг</p>
+    </footer>
+</body>
+</html>
