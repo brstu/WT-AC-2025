@@ -44,7 +44,7 @@ body {
   padding: 0 1.5rem;
 }
 
-/* ====================== ШАПКА ====================== */
+/* ====================== ШАПКА — БАЗОВЫЕ СЕЛЕКТОРЫ ====================== */
 
 .header {
   position: sticky;
@@ -84,11 +84,6 @@ body {
   transition: color 0.3s ease;
 }
 
-.header nav a:hover {
-  color: #fff;
-}
-
-/* Переключатель темы — базовый стиль ДО :hover */
 #theme-toggle {
   font-size: 0.9rem;
   color: var(--text-secondary);
@@ -98,12 +93,7 @@ body {
   transition: color 0.3s ease;
 }
 
-/* :hover идёт строго после базового селектора */
-#theme-toggle:hover {
-  color: #fff;
-}
-
-/* ====================== КОНТЕНТ ====================== */
+/* ====================== ВСЁ ОСТАЛЬНОЕ — ДО :hover ====================== */
 
 #app {
   padding: 3rem 0;
@@ -119,9 +109,6 @@ body {
   text-align: center;
 }
 
-/* ====================== КАРТОЧКИ АНИМЕ ====================== */
-
-/* Сначала все базовые стили карточек */
 .anime-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -137,11 +124,6 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.anime-card:hover {
-  transform: translateY(-8px);
-  box-shadow: var(--shadow-lg);
-}
-
 .anime-card-content {
   padding: 1.5rem;
 }
@@ -152,10 +134,6 @@ body {
   font-size: 1.35rem;
   font-weight: 600;
   transition: color 0.3s ease;
-}
-
-.anime-card h3 a:hover {
-  color: var(--primary);
 }
 
 .anime-card p {
@@ -169,8 +147,6 @@ body {
   gap: 0.8rem;
   margin-top: 1rem;
 }
-
-/* ====================== КНОПКИ ====================== */
 
 .btn {
   padding: 0.6rem 1.2rem;
@@ -190,21 +166,10 @@ body {
   color: #fff;
 }
 
-.btn-primary:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-}
-
 .btn-danger {
   background: var(--danger);
   color: #fff;
 }
-
-.btn-danger:hover {
-  background: #dc2626;
-}
-
-/* ====================== ФОРМА ====================== */
 
 .form-container {
   max-width: 640px;
@@ -260,8 +225,6 @@ body {
   margin-top: 2rem;
 }
 
-/* ====================== УВЕДОМЛЕНИЕ ====================== */
-
 #notification {
   position: fixed;
   right: 2rem;
@@ -278,6 +241,34 @@ body {
 
 #notification.show {
   transform: translateX(0);
+}
+
+/* ====================== ТЕПЕРЬ ТОЛЬКО :hover и псевдоклассы ====================== */
+
+.header nav a:hover {
+  color: #fff;
+}
+
+#theme-toggle:hover {
+  color: #fff;
+}
+
+.anime-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.anime-card h3 a:hover {
+  color: var(--primary);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+.btn-danger:hover {
+  background: #dc2626;
 }
 
 /* ====================== АДАПТИВ ====================== */
