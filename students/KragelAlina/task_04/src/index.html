@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AnimeVerse — Энциклопедия аниме</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <h1><span>Anime</span>Verse</h1>
+      <nav>
+        <a href="#/items">Энциклопедия</a>
+        <a href="#/new">+ Добавить тайтл</a>
+        <button id="theme-toggle" aria-label="Переключить тему">Свет</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="app" class="container"></main>
+
+  <div id="notification" class="hidden" role="alert"></div>
+
+  <script type="module" src="main.js"></script>
+</body>
+</html>
