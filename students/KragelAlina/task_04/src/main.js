@@ -2,7 +2,7 @@ import { route } from './router.js';
 import { listView, detailView, formView } from './views.js';
 
 const html = document.documentElement;
-const toggle = document.getElementById('themeToggle');
+const toggle = document.getElementById('theme-toggle');
 
 if (localStorage.getItem('theme') === 'light') html.dataset.theme = 'light';
 toggle.textContent = html.dataset.theme === 'light' ? 'Тьма' : 'Свет';
