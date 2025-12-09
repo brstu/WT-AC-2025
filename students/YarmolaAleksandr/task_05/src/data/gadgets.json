@@ -1,0 +1,67 @@
+[
+  {
+    "id": "26fa9e7c-6175-4cf6-8b97-9016c92dcd7b",
+    "name": "iPhone 15 Pro",
+    "brand": "Apple",
+    "category": "smartphone",
+    "price": 999.99,
+    "rating": 4.8,
+    "description": "Latest flagship smartphone from Apple with titanium design and advanced A17 Pro chip.",
+    "releaseDate": "2023-09-22",
+    "inStock": true,
+    "createdAt": "2025-12-02T06:26:06.635Z",
+    "updatedAt": "2025-12-02T06:26:06.638Z"
+  },
+  {
+    "id": "4defbc55-8827-4994-bcb3-2f46844dd812",
+    "name": "MacBook Pro M3",
+    "brand": "Apple",
+    "category": "laptop",
+    "price": 1599.99,
+    "rating": 4.9,
+    "description": "Powerful laptop with M3 chip, perfect for professional work and creative tasks.",
+    "releaseDate": "2023-10-30",
+    "inStock": true,
+    "createdAt": "2025-12-02T06:26:06.638Z",
+    "updatedAt": "2025-12-02T06:26:06.638Z"
+  },
+  {
+    "id": "de3829d5-6905-404f-8826-ba4e801a8b55",
+    "name": "Sony WH-1000XM5",
+    "brand": "Sony",
+    "category": "headphones",
+    "price": 399.99,
+    "rating": 4.7,
+    "description": "Industry-leading noise canceling headphones with exceptional sound quality.",
+    "releaseDate": "2022-05-12",
+    "inStock": false,
+    "createdAt": "2025-12-02T06:26:06.638Z",
+    "updatedAt": "2025-12-02T06:26:06.638Z"
+  },
+  {
+    "id": "2479a016-6e1d-4462-9205-1b30cb821cab",
+    "name": "Samsung Galaxy S24 Ultra",
+    "brand": "Samsung",
+    "category": "smartphone",
+    "price": 1199.99,
+    "rating": 4.6,
+    "description": "Premium Android flagship with S Pen and advanced camera system.",
+    "releaseDate": "2024-01-17",
+    "inStock": true,
+    "createdAt": "2025-12-02T06:26:06.638Z",
+    "updatedAt": "2025-12-02T06:26:06.638Z"
+  },
+  {
+    "id": "d49a9def-475c-4941-9d83-ba1beb9fdebc",
+    "name": "iPad Pro 12.9-inch",
+    "brand": "Apple",
+    "category": "tablet",
+    "price": 1099.99,
+    "rating": 4.8,
+    "description": "Professional tablet with M2 chip, perfect for creative professionals.",
+    "releaseDate": "2022-10-18",
+    "inStock": true,
+    "createdAt": "2025-12-02T06:26:06.638Z",
+    "updatedAt": "2025-12-02T06:26:06.638Z"
+  }
+]
