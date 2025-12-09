@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа 02: Галерея Артов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">Art Gallery</a>
+        <nav class="nav" id="main-nav">
+            <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-list">
+                Меню
+            </button>
+            <ul class="nav-list" id="nav-list" hidden>
+                <li><a href="#about">О галерее</a></li>
+                <li><a href="#gallery">Галерея</a></li>
+                <li><a href="#contacts">Контакты</a></li>
+                <li><a href="#contact-form">Обратная связь</a></li>
+            </ul>
+        </nav>
+         <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+            <span class="theme-icon">🌙</span>
+        </button>
+    </header>
+
+    <main>
+        <section class="about-section" id="about">
+            <div class="about-content">
+                <h1>Добро пожаловать в Art Gallery</h1>
+                <div class="about-text">
+                    <p>Мы - современная онлайн-галерея, посвященная демонстрации работ талантливых художников со всего мира. Наша миссия - сделать искусство доступным для каждого.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <h3>🎨 Разнообразие стилей</h3>
+                            <p>От классической живописи до цифрового искусства</p>
+                        </div>
+                        <div class="feature">
+                            <h3>🌟 Поддержка художников</h3>
+                            <p>Мы помогаем молодым талантам найти свою аудиторию</p>
+                        </div>
+                        <div class="feature">
+                            <h3>💫 Обновления</h3>
+                            <p>Новые работы добавляются еженедельно</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section" id="gallery">
+            <h2>Галерея Артов</h2>
+            <p class="section-description">Откройте для себя уникальные работы наших художников. Нажмите на изображение для просмотра в полном размере.</p>
+            
+            <div class="gallery-container" id="art-gallery-container">
+                
+                <article class="art-card" data-id="art-1" tabindex="0">
+                    <div class="image-wrapper">
+                        <img src="../assets/art1.png" alt="Закат над городом" 
+                             class="art-image" 
+                             data-action="open-modal"
+                             tabindex="0">
+                        
+                        <div class="art-tooltip" role="tooltip">
+                            Художник: Nothing Else Matters, Дата: 2019
+                        </div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Закат над городом</h3>
+                        <button class="like-btn" data-action="like" aria-label="Нравится">🤍</button>
+                    </div>
+                </article>
+
+                <article class="art-card" data-id="art-2" tabindex="0">
+                    <div class="image-wrapper">
+                        <img src="../assets/art2.jpg" alt="Портрет девушки в стиле поп-арт" 
+                             class="art-image" 
+                             data-action="open-modal"
+                             tabindex="0">
+                        
+                        <div class="art-tooltip" role="tooltip">
+                            Художник: Неизвестен, Стиль: Поп-арт
+                        </div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Девушка-соул с лаком</h3>
+                        <button class="like-btn" data-action="like" aria-label="Нравится">🤍</button>
+                    </div>
+                </article>
+
+                <article class="art-card" data-id="art-3" tabindex="0">
+                    <div class="image-wrapper">
+                        <img src="../assets/art3.jpg" alt="Абстрактная композиция" 
+                             class="art-image" 
+                             data-action="open-modal"
+                             tabindex="0">
+                        
+                        <div class="art-tooltip" role="tooltip">
+                            Художник: Парфенова Татьяна, Стиль: Импрессионизм
+                        </div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Исаакиевский собор</h3>
+                        <button class="like-btn" data-action="like" aria-label="Нравится">🤍</button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="contacts-section" id="contacts">
+            <h2>Наши контакты</h2>
+            <div class="contacts-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <h3>📍 Адрес</h3>
+                        <p>г. Москва, ул. Тверская, д. 10</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📞 Телефон</h3>
+                        <p>+7 (495) 123-45-67</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>✉️ Email</h3>
+                        <p>info@artgallery.ru</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🕒 Часы работы</h3>
+                        <p>Пн-Пт: 10:00 - 20:00<br>Сб-Вс: 11:00 - 18:00</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <h3>Мы в соцсетях</h3>
+                    <div class="social-icons">
+                        <a href="#" aria-label="ВКонтакте">📘</a>
+                        <a href="#" aria-label="Instagram">📷</a>
+                        <a href="#" aria-label="Telegram">✈️</a>
+                        <a href="#" aria-label="YouTube">📺</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact-form">
+            <h2>Форма Обратной Связи</h2>
+            <p class="section-description">Есть вопросы или предложения? Напишите нам, и мы обязательно ответим!</p>
+            
+            <form class="contact-form" id="main-contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Имя (обязательно):</label>
+                    <input type="text" id="name" name="name" required data-min-length="1">
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail (валидный):</label>
+                    <input type="email" id="email" name="email" required>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Сообщение (мин. 20 символов):</label>
+                    <textarea id="message" name="message" required data-min-length="20" placeholder="Расскажите нам о ваших идеях или задайте вопрос..."></textarea>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <button type="submit" id="submit-btn" disabled>Отправить сообщение</button>
+            </form>
+            <p id="submission-result" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2025 Art Gallery Lab. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="art-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal-content">
+            <h3 id="modal-title">Полноэкранный просмотр</h3>
+            <img src="../assets/art1.png" alt="Детальный просмотр арта" id="modal-image">
+            <p id="modal-description">Описание арта.</p>
+            <button id="modal-close-btn" aria-label="Закрыть окно">✖</button>
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

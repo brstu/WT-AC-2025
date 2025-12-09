@@ -1,0 +1,259 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial;
+  background: #f5f5f5;
+  color: #888;
+}
+
+.top {
+  background: #4a9d5f;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+}
+
+.logo h3 {
+  color: #b8e6c3;
+  font-size: 22px;
+}
+
+.menu {
+  display: flex;
+  gap: 15px;
+}
+
+.menu a {
+  color: #d0f0d8;
+  text-decoration: none;
+  padding: 8px 12px;
+}
+
+.menu a:hover {
+  background: #3d8a4f;
+}
+
+.banner {
+  background: linear-gradient(180deg, #5daa72 0%, #4a9d5f 100%);
+  padding: 120px 20px 60px 20px;
+  text-align: center;
+  margin-top: 52px;
+}
+
+.banner h1 {
+  color: #e8f5eb;
+  font-size: 32px;
+  margin: 5px 0;
+}
+
+.subtitle {
+  color: #c5e8ce;
+  font-size: 16px;
+  margin-top: 15px;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 30px 20px;
+}
+
+.routes h4,
+.map-section h4,
+.tips h4,
+.points h4 {
+  color: #555;
+  font-size: 24px;
+  margin-bottom: 25px;
+}
+
+.route-item {
+  background: white;
+  margin-bottom: 25px;
+  padding: 15px;
+  display: flex;
+  gap: 15px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.route-item img {
+  width: 180px;
+  height: 130px;
+  object-fit: cover;
+}
+
+.route-info h2 {
+  color: #666;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.text {
+  color: #999;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.difficulty {
+  color: #aaa;
+  font-size: 13px;
+}
+
+.map-section {
+  margin-top: 50px;
+}
+
+.map-placeholder {
+  width: 100%;
+  height: 350px;
+  background: #ddd;
+  margin-bottom: 15px;
+}
+
+.map-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.map-info {
+  color: #999;
+  font-size: 14px;
+}
+
+.tips {
+  margin-top: 50px;
+}
+
+.tip-box {
+  background: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-left: 4px solid #6bb583;
+}
+
+.tip-box h5 {
+  color: #666;
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.tip-box div {
+  color: #aaa;
+  margin-bottom: 6px;
+  padding-left: 15px;
+}
+
+.points {
+  margin-top: 50px;
+}
+
+.point-list {
+  display: flex;
+  gap: 20px;
+}
+
+.point {
+  background: white;
+  padding: 15px;
+  flex: 1;
+  text-align: center;
+}
+
+.point img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.point h5 {
+  color: #777;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.point span {
+  color: #aaa;
+  font-size: 13px;
+}
+
+.footer {
+  background: #3d8a4f;
+  color: #c5e8ce;
+  padding: 40px 20px 20px 20px;
+  margin-top: 60px;
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.footer-section h3 {
+  color: #e8f5eb;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+.footer-section div {
+  margin-bottom: 8px;
+}
+
+.copyright {
+  text-align: center;
+  font-size: 13px;
+  color: #b8e6c3;
+  padding-top: 20px;
+  border-top: 1px solid #5daa72;
+}
+
+@media (max-width: 600px) {
+  .menu {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .route-item {
+    flex-direction: column;
+  }
+
+  .route-item img {
+    width: 100%;
+    height: 200px;
+  }
+
+  .point-list {
+    flex-direction: column;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .banner h1 {
+    font-size: 24px;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+  .point-list {
+    flex-wrap: wrap;
+  }
+
+  .point {
+    flex: 0 0 calc(50% - 10px);
+  }
+}

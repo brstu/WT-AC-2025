@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="48" height="48" role="img" aria-label="Планета Земля">
+  <circle cx="32" cy="32" r="30" fill="#2b9a6a"/>
+  <path d="M12 28c4-6 12-8 20-8s16 2 20 8c-2 2-6 3-8 4s-4 4-6 6-6 2-10 2-10-6-16-12z" fill="#1b6f4a"/>
+  <path d="M16 40c6 6 14 8 24 8s18-2 22-8c-4 2-10 3-14 3s-8-1-12-3-12-6-22 0z" fill="#66c2a0"/>
+</svg>
