@@ -43,9 +43,9 @@
 
 ```javascript
 {
-    data: any,              // Кэшированные данные
-    expiresAt: number,      // Время истечения (timestamp)
-    createdAt: number       // Время создания (timestamp)
+    data: responseData,     // Кэшированные данные
+    expiresAt: timestamp,   // Время истечения (timestamp)
+    createdAt: timestamp    // Время создания (timestamp)
 }
 ```
 
