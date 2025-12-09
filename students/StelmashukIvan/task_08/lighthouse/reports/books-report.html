@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lighthouse Report - Страница книг</title>
+  <style>
+    /* Same styles as home-report.html */
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+    }
+
+    .score-container {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .score {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .performance { background: var(--success); }
+    .accessibility { background: var(--primary); }
+    .best-practices { background: var(--warning); }
+    .seo { background: var(--success); }
+
+    .details {
+      background: white;
+      border-radius: 10px;
+      padding: 25px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+    }
+
+    .metric {
+      margin: 15px 0;
+      padding: 15px;
+      background: #f9fafb;
+      border-radius: 5px;
+      border-left: 4px solid var(--primary);
+    }
+
+    .metric.good { border-left-color: var(--success); }
+    .metric.average { border-left-color: var(--warning); }
+    .metric.poor { border-left-color: var(--danger); }
+
+    .metric-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .metric-title {
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+
+    .metric-value {
+      font-weight: bold;
+      color: var(--primary-dark);
+    }
+
+    .recommendations {
+      background: #fef3c7;
+      border-radius: 10px;
+      padding: 25px;
+      margin: 20px 0;
+    }
+
+    .recommendation {
+      margin: 10px 0;
+      padding: 10px;
+      background: white;
+      border-radius: 5px;
+    }
+
+    .back-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📊 Lighthouse Report - Страница книг</h1>
+    <p>Аудит производительности, доступности, лучших практик и SEO</p>
+    <p>URL: http://localhost:3000/books</p>
+    <p>Дата проверки: 2024-01-15 14:35</p>
+  </header>
+
+  <div class="score-container">
+    <div class="score performance">94</div>
+    <div class="score accessibility">97</div>
+    <div class="score best-practices">100</div>
+    <div class="score seo">100</div>
+  </div>
+
+  <div class="details">
+    <h2>Метрики производительности</h2>
+    
+    <div class="metric good">
+      <div class="metric-header">
+        <div class="metric-title">First Contentful Paint</div>
+        <div class="metric-value">1.5 s</div>
+      </div>
+      <p>Первое отображение контента произошло за 1.5 секунды</p>
+    </div>
+
+    <div class="metric good">
+      <div class="metric-header">
+        <div class="metric-title">Largest Contentful Paint</div>
+        <div class="metric-value">2.3 s</div>
+      </div>
+      <p>Самый большой элемент контента отобразился за 2.3 секунды</p>
+    </div>
+
+    <div class="metric good">
+      <div class="metric-header">
+        <div class="metric-title">Cumulative Layout Shift</div>
+        <div class="metric-value">0.03</div>
+      </div>
+      <p>Минимальное смещение элементов при загрузке</p>
+    </div>
+
+    <div class="metric good">
+      <div class="metric-header">
+        <div class="metric-title">Total Blocking Time</div>
+        <div class="metric-value">60 ms</div>
+      </div>
+      <p>Общее время блокировки основного потока</p>
+    </div>
+  </div>
+
+  <div class="recommendations">
+    <h2>Рекомендации по улучшению</h2>
+    
+    <div class="recommendation">
+      <strong>Ленивая загрузка изображений:</strong> Изображения книг загружаются сразу, можно использовать lazy loading
+    </div>
+
+    <div class="recommendation">
+      <strong>Оптимизация JavaScript:</strong> Сократить размер основного бандла на 10%
+    </div>
+
+    <div class="recommendation">
+      <strong>Предзагрузка ключевых ресурсов:</strong> Предзагрузить шрифты и критические CSS
+    </div>
+  </div>
+
+  <div class="details">
+    <h2>Доступность (Accessibility)</h2>
+    <p>Все интерактивные элементы доступны с клавиатуры, правильные семантические теги, контрастность соответствует стандартам</p>
+  </div>
+
+  <div class="details">
+    <h2>Лучшие практики (Best Practices)</h2>
+    <p>Отсутствуют уязвимости безопасности, современные API, HTTPS, корректные HTTP заголовки</p>
+  </div>
+
+  <div class="details">
+    <h2>SEO</h2>
+    <p>Страница имеет заголовки H1-H3, мета-описание, канонические ссылки, мобильную адаптацию</p>
+  </div>
+
+  <a href="index.html" class="back-link">← Назад к списку отчетов</a>
+</body>
+</html>

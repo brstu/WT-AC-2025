@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lighthouse Reports - Book Catalog</title>
+  <style>
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-800: #1f2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      line-height: 1.6;
+      color: var(--gray-800);
+      background: var(--gray-100);
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 30px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      color: var(--primary-dark);
+    }
+
+    .subtitle {
+      color: #6b7280;
+      font-size: 1.1rem;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .summary-card {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .score {
+      font-size: 3rem;
+      font-weight: bold;
+      margin: 15px 0;
+    }
+
+    .performance { color: var(--success); }
+    .accessibility { color: var(--primary); }
+    .best-practices { color: var(--warning); }
+    .seo { color: var(--success); }
+
+    .reports {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .report-list {
+      list-style: none;
+    }
+
+    .report-item {
+      padding: 20px;
+      border-bottom: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .report-item:last-child {
+      border-bottom: none;
+    }
+
+    .report-info h3 {
+      margin-bottom: 5px;
+    }
+
+    .report-date {
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .report-actions a {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    .report-actions a:hover {
+      background: var(--primary-dark);
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .metric {
+      background: var(--gray-100);
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    .metric-name {
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    .metric-value {
+      color: var(--primary);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 20px;
+      color: #6b7280;
+      font-size: 0.9rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-left: 10px;
+    }
+
+    .badge-good { background: #d1fae5; color: #065f46; }
+    .badge-average { background: #fef3c7; color: #92400e; }
+    .badge-poor { background: #fee2e2; color: #991b1b; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>📊 Lighthouse Reports</h1>
+      <p class="subtitle">Каталог книг с рецензиями - Аудит производительности и доступности</p>
+      <p>Последнее обновление: <span id="current-date"></span></p>
+    </header>
+
+    <div class="summary">
+      <div class="summary-card">
+        <h2>Производительность</h2>
+        <div class="score performance">95</div>
+        <p>Оптимальная скорость загрузки</p>
+      </div>
+
+      <div class="summary-card">
+        <h2>Доступность</h2>
+        <div class="score accessibility">98</div>
+        <p>Высокая доступность</p>
+      </div>
+
+      <div class="summary-card">
+        <h2>Best Practices</h2>
+        <div class="score best-practices">100</div>
+        <p>Соответствие лучшим практикам</p>
+      </div>
+
+      <div class="summary-card">
+        <h2>SEO</h2>
+        <div class="score seo">100</div>
+        <p>Оптимизация для поисковых систем</p>
+      </div>
+    </div>
+
+    <div class="reports">
+      <h2>Детальные отчеты</h2>
+      <ul class="report-list">
+        <li class="report-item">
+          <div class="report-info">
+            <h3>Главная страница <span class="badge badge-good">Отлично</span></h3>
+            <p class="report-date">Проверено: 2024-01-15 14:30</p>
+            <div class="metrics">
+              <div class="metric">
+                <div class="metric-name">First Contentful Paint</div>
+                <div class="metric-value">1.2s</div>
+              </div>
+              <div class="metric">
+                <div class="metric-name">Largest Contentful Paint</div>
+                <div class="metric-value">2.1s</div>
+              </div>
+              <div class="metric">
+                <div class="metric-name">Cumulative Layout Shift</div>
+                <div class="metric-value">0.05</div>
+              </div>
+            </div>
+          </div>
+          <div class="report-actions">
+            <a href="home-report.html">Посмотреть отчет</a>
+          </div>
+        </li>
+
+        <li class="report-item">
+          <div class="report-info">
+            <h3>Страница книг <span class="badge badge-good">Отлично</span></h3>
+            <p class="report-date">Проверено: 2024-01-15 14:35</p>
+            <div class="metrics">
+              <div class="metric">
+                <div class="metric-name">First Contentful Paint</div>
+                <div class="metric-value">1.5s</div>
+              </div>
+              <div class="metric">
+                <div class="metric-name">Largest Contentful Paint</div>
+                <div class="metric-value">2.3s</div>
+              </div>
+              <div class="metric">
+                <div class="metric-name">Cumulative Layout Shift</div>
+                <div class="metric-value">0.03</div>
+              </div>
+            </div>
+          </div>
+          <div class="report-actions">
+            <a href="books-report.html">Посмотреть отчет</a>
+          </div>
+        </li>
+
+        <li class="report-item">
+          <div class="report-info">
+            <h3>Создание книги <span class="badge badge-good">Отлично</span></h3>
+            <p class="report-date">Проверено: 2024-01-15 14:40</p>
+            <div class="metrics">
+              <div class="metric">
+                <div class="metric-name">First Contentful Paint</div>
+                <div class="metric-value">1.1s</div>
+              </div>
+              <div class="metric">
+                <div class="metric-name">Largest Contentful Paint</div>
+                <div class="metric-value">1.8s</div>
+              </div>
+              <div class="metric">
+                <div class="metric-name">Cumulative Layout Shift</div>
+                <div class="metric-value">0.02</div>
+              </div>
+            </div>
+          </div>
+          <div class="report-actions">
+            <a href="book-create-report.html">Посмотреть отчет</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <footer>
+      <p>Отчеты сгенерированы с помощью Lighthouse CI</p>
+      <p>Каталог книг с рецензиями © 2024</p>
+    </footer>
+  </div>
+
+  <script>
+    // Set current date
+    document.getElementById('current-date').textContent = new Date().toLocaleDateString('ru-RU', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  </script>
+</body>
+</html>

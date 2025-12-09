@@ -1,0 +1,114 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "1984",
+      "author": "George Orwell",
+      "description": "A dystopian social science fiction novel and cautionary tale about totalitarian regimes.",
+      "publishedYear": 1949,
+      "genre": "Dystopian",
+      "coverImageUrl": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+      "rating": 4.5,
+      "createdAt": "2024-01-15T10:30:00Z",
+      "updatedAt": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "2",
+      "title": "To Kill a Mockingbird",
+      "author": "Harper Lee",
+      "description": "A novel about the serious issues of rape and racial inequality in the American South.",
+      "publishedYear": 1960,
+      "genre": "Fiction",
+      "coverImageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=600&fit=crop",
+      "rating": 4.8,
+      "createdAt": "2024-01-14T14:20:00Z",
+      "updatedAt": "2024-01-14T14:20:00Z"
+    },
+    {
+      "id": "3",
+      "title": "The Great Gatsby",
+      "author": "F. Scott Fitzgerald",
+      "description": "A novel about the American dream and the roaring twenties.",
+      "publishedYear": 1925,
+      "genre": "Classic",
+      "coverImageUrl": "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400&h=600&fit=crop",
+      "rating": 4.3,
+      "createdAt": "2024-01-13T09:15:00Z",
+      "updatedAt": "2024-01-13T09:15:00Z"
+    },
+    {
+      "id": "4",
+      "title": "Pride and Prejudice",
+      "author": "Jane Austen",
+      "description": "A romantic novel of manners that depicts the emotional development of protagonist Elizabeth Bennet.",
+      "publishedYear": 1813,
+      "genre": "Romance",
+      "coverImageUrl": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?w=400&h=600&fit=crop",
+      "rating": 4.7,
+      "createdAt": "2024-01-12T16:45:00Z",
+      "updatedAt": "2024-01-12T16:45:00Z"
+    },
+    {
+      "id": "5",
+      "title": "The Hobbit",
+      "author": "J.R.R. Tolkien",
+      "description": "A fantasy novel about the adventures of hobbit Bilbo Baggins.",
+      "publishedYear": 1937,
+      "genre": "Fantasy",
+      "coverImageUrl": "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400&h=600&fit=crop",
+      "rating": 4.9,
+      "createdAt": "2024-01-11T11:20:00Z",
+      "updatedAt": "2024-01-11T11:20:00Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "bookId": "1",
+      "author": "John Doe",
+      "content": "A timeless classic that remains relevant today. Orwell's vision of totalitarianism is both chilling and thought-provoking.",
+      "rating": 5,
+      "createdAt": "2024-01-16T09:15:00Z"
+    },
+    {
+      "id": "2",
+      "bookId": "1",
+      "author": "Jane Smith",
+      "content": "While the concepts are important, I found the writing style to be a bit dry at times. Still worth reading.",
+      "rating": 4,
+      "createdAt": "2024-01-17T11:45:00Z"
+    },
+    {
+      "id": "3",
+      "bookId": "2",
+      "author": "Robert Johnson",
+      "content": "An essential read for understanding American history and racial issues. The characters are beautifully developed.",
+      "rating": 5,
+      "createdAt": "2024-01-18T14:30:00Z"
+    },
+    {
+      "id": "4",
+      "bookId": "3",
+      "author": "Emily Wilson",
+      "content": "Fitzgerald's prose is absolutely beautiful. The portrayal of the Jazz Age is both glamorous and tragic.",
+      "rating": 5,
+      "createdAt": "2024-01-19T10:20:00Z"
+    },
+    {
+      "id": "5",
+      "bookId": "4",
+      "author": "Michael Brown",
+      "content": "Jane Austen's wit and social commentary are as sharp today as they were 200 years ago. Elizabeth Bennet is a fantastic character.",
+      "rating": 5,
+      "createdAt": "2024-01-20T13:15:00Z"
+    },
+    {
+      "id": "6",
+      "bookId": "5",
+      "author": "Sarah Davis",
+      "content": "A wonderful introduction to Middle-earth. Perfect for both children and adults. The adventure is thrilling from start to finish.",
+      "rating": 5,
+      "createdAt": "2024-01-21T16:40:00Z"
+    }
+  ]
+}

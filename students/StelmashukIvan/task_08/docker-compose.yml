@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  # Frontend приложение
+  frontend:
+    build: .
+    ports:
+      - "3000:80"
+    environment:
+      - VITE_API_URL=http://localhost:3001
+    depends_on:
+      - backend
+    networks:
+      - book-network
+
+  # Backend (JSON Server для разработки)
+  backend:
+    image: node:20-alpine
+    working_dir: /app
+    volumes:
+      - ./db.json:/app/db.json
+    command: >
+      sh -c "npm install -g json-server &&
+             json-server --host 0.0.0.0 --port 3001 --watch db.json"
+    ports:
+      - "3001:3001"
+    networks:
+      - book-network
+
+  # База данных (PostgreSQL для production)
+  # postgres:
+  #   image: postgres:15-alpine
+  #   environment:
+  #     POSTGRES_DB: bookcatalog
+  #     POSTGRES_USER: admin
+  #     POSTGRES_PASSWORD: password
+  #   volumes:
+  #     - postgres-data:/var/lib/postgresql/data
+  #   ports:
+  #     - "5432:5432"
+  #   networks:
+  #     - book-network
+
+  # Для тестов Playwright в CI
+  playwright:
+    build:
+      context: .
+      dockerfile: Dockerfile.playwright
+    depends_on:
+      - frontend
+    networks:
+      - book-network
+
+networks:
+  book-network:
+    driver: bridge
+
+volumes:
+  postgres-data:
