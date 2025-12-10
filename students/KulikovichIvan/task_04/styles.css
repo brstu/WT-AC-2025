@@ -224,6 +224,7 @@ a:hover {
   }
 }
 
+
 .btn-primary {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
@@ -249,6 +250,7 @@ a:hover {
   background: var(--bg);
   border-color: var(--primary);
 }
+
 
 .btn-danger {
   background: linear-gradient(135deg, var(--danger) 0%, #c0392b 100%);
@@ -301,6 +303,7 @@ a:hover {
   box-shadow: var(--shadow-lg);
   border-color: var(--primary);
 }
+
 
 .place-preview {
   position: absolute;
@@ -437,12 +440,6 @@ a:hover {
   line-height: 1.5;
 }
 
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgb(67 97 238 / 10%);
-}
-
 .form-actions {
   display: flex;
   gap: 1rem;
@@ -573,6 +570,7 @@ a:hover {
   }
 }
 
+
 .toast-success {
   border-left-color: var(--success);
 }
@@ -624,6 +622,7 @@ a:hover {
   opacity: 1;
 }
 
+
 .skeleton {
   background: linear-gradient(
     90deg,
@@ -662,6 +661,7 @@ a:hover {
 .smooth-scroll {
   scroll-behavior: smooth;
 }
+
 
 .fade-in {
   animation: fade-in-up 0.5s ease backwards;
@@ -752,6 +752,7 @@ a:hover {
     transform: scale(1.02);
   }
 }
+
 
 .progress-bar {
   height: 4px;
