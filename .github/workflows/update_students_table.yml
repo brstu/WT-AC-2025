@@ -1,28 +1,16 @@
 name: Update students table
 
-env:
-  # Set a repo restriction. Default is the current repo owner/name.
-  # You can override when using "workflow_dispatch" by passing an input named
-  # `allowed_repo` (format: owner/repo). Leave empty to disable the restriction.
-  ALLOWED_REPO: ${{ github.event.inputs.allowed_repo || 'brstu/WT-AC-2025' }}
-
 on:
   push:
-    branches:
-      - 'main'
     paths:
       - 'students/students.csv'
+      - 'scripts/**'
       - 'README.md'
-  workflow_dispatch:
-    inputs:
-      allowed_repo:
-        description: 'Optional: owner/repo to restrict runs to (e.g. "brstu/WT-AC-2025"). Leave empty to allow any repo.'
-        required: false
-        default: 'brstu/WT-AC-2025'
+  schedule:
+    - cron: '0 6 * * *' # daily at 06:00 UTC
 
 jobs:
   update:
-    if: ${{ github.ref == 'refs/heads/main' && (env.ALLOWED_REPO == '' || github.repository == env.ALLOWED_REPO) }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
