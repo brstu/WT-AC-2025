@@ -225,6 +225,7 @@ a:hover {
 }
 
 
+
 .btn-primary {
   background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
@@ -250,6 +251,7 @@ a:hover {
   background: var(--bg);
   border-color: var(--primary);
 }
+
 
 
 .btn-danger {
@@ -303,6 +305,7 @@ a:hover {
   box-shadow: var(--shadow-lg);
   border-color: var(--primary);
 }
+
 
 
 .place-preview {
@@ -420,6 +423,12 @@ a:hover {
   color: var(--text);
 }
 
+.form-textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
 .form-input:focus,
 .form-select:focus,
 .form-textarea:focus {
@@ -432,12 +441,6 @@ a:hover {
 .form-select:disabled {
   background: var(--bg);
   cursor: not-allowed;
-}
-
-.form-textarea {
-  min-height: 120px;
-  resize: vertical;
-  line-height: 1.5;
 }
 
 .form-actions {
@@ -571,6 +574,7 @@ a:hover {
 }
 
 
+
 .toast-success {
   border-left-color: var(--success);
 }
@@ -623,6 +627,7 @@ a:hover {
 }
 
 
+
 .skeleton {
   background: linear-gradient(
     90deg,
@@ -661,6 +666,7 @@ a:hover {
 .smooth-scroll {
   scroll-behavior: smooth;
 }
+
 
 
 .fade-in {
@@ -752,6 +758,7 @@ a:hover {
     transform: scale(1.02);
   }
 }
+
 
 
 .progress-bar {
