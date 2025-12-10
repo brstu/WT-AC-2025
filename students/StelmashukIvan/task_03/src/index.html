@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Кинофестиваль "Золотой кадр"</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Кинофестиваль "Золотой кадр"</h1>
+        </header>
+
+    <div class="controls" role="search">
+        <label for="search-input" class="visually-hidden">Поиск по названию</label>
+        <input
+            type="text"
+            id="search-input"
+            placeholder="Поиск по названию..."
+            class="search-input"
+            aria-label="Поиск фильмов"
+        />
+
+        <label for="genre-filter" class="visually-hidden">Фильтр по жанру</label>
+        <select id="genre-filter" class="filter-select" aria-label="Фильтр по жанру">
+            <option value="">Все жанры</option>
+            <option value="драма">Драма</option>
+            <option value="комедия">Комедия</option>
+            <option value="фантастика">Фантастика</option>
+            <option value="триллер">Триллер</option>
+        </select>
+
+        <button id="refresh-btn" class="btn btn-primary" aria-label="Обновить список фильмов">🔄 Обновить</button>
+        <button id="clear-cache-btn" class="btn btn-secondary" aria-label="Очистить кэш">🧹 Очистить кэш</button>
+    </div>
+
+    <div class="status-indicators">
+        <div id="loading-indicator" class="loading hidden" role="status" aria-live="polite">
+            <div class="spinner"></div>
+            <span>Загрузка фильмов...</span>
+        </div>
+
+        <div id="error-indicator" class="error hidden" role="alert">
+            <span id="error-message"></span>
+            <button id="retry-btn" class="btn btn-secondary">🔄 Повторить</button>
+        </div>
+    </div>
+
+    <div class="content">
+        <div id="movies-grid" class="movies-grid"></div>
+
+        <div id="empty-state" class="empty-state hidden">
+            <h3>Фильмы не найдены</h3>
+            <p>Попробуйте изменить параметры поиска</p>
+        </div>
+    </div>
+
+    <div class="pagination" id="pagination"></div>
+
+    <div class="debug-info">
+        <div class="request-stats">
+            <div class="stat-item">
+                <span class="stat-label">Запросов к API:</span>
+                <span id="request-count" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Кэшировано запросов:</span>
+                <span id="cached-count" class="stat-value">0</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Отменено запросов:</span>
+                <span id="canceled-count" class="stat-value">0</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>
