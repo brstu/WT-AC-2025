@@ -1,0 +1,40 @@
+:root{
+  --maxw: 1000px;
+  --accent:#2b8aef;
+  --muted:#666;
+  --bg:#f7f8fb;
+}
+*{box-sizing:border-box}
+body{font-family:Inter, system-ui, Arial; margin:0; background:var(--bg); color:#111; line-height:1.4}
+.site-header{background:#fff; padding:12px 16px; box-shadow:0 1px 6px rgba(11,13,18,.06); display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap}
+.site-header h1{margin:0; font-size:1.1rem}
+.site-header a{color:var(--accent); text-decoration:none}
+.site-header nav a{margin-left:12px; color:#333; text-decoration:none}
+main#app{max-width:var(--maxw); margin:18px auto; padding:0 16px}
+
+/* common */
+.container{background:#fff; padding:16px; border-radius:10px; box-shadow:0 6px 18px rgba(20,20,30,.04)}
+.controls{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px}
+input[type="search"], input[type="text"], textarea, select{padding:8px; border:1px solid #ddd; border-radius:8px; min-width:0}
+button{padding:8px 12px; border-radius:8px; border:0; background:var(--accent); color:#fff; cursor:pointer}
+button.secondary{background:#eee; color:#111}
+.btn-danger{background:#ef4f4f}
+.form-row{display:flex; gap:12px; flex-wrap:wrap}
+.form-field{flex:1; min-width:180px}
+
+/* list */
+.teams-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px}
+.team-card{padding:12px; border-radius:8px; border:1px solid #eee; background:#fff}
+.meta{color:var(--muted); font-size:.9rem; margin-top:8px}
+
+/* responsive */
+@media (max-width:600px){
+  .form-row{flex-direction:column}
+}
+
+/* loading / empty / error */
+.state{padding:32px; text-align:center; color:var(--muted)}
+
+/* toast */
+.toast{position:fixed; right:16px; bottom:16px; background:#111; color:#fff; padding:10px 14px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,.2)}
+.hidden{display:none}
