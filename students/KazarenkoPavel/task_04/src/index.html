@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍳 Справочник рецептов</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+<!-- Уведомления -->
+<div id="notification-container" class="notification-container"></div>
+
+<!-- Основная навигация -->
+<nav class="navbar">
+  <div class="container">
+    <div class="navbar-brand">
+      <a href="#/recipes" class="navbar-logo">
+        <i class="fas fa-utensils"></i>
+        <span>Кулинарная книга</span>
+      </a>
+    </div>
+
+    <div class="navbar-menu">
+      <a href="#/recipes" class="navbar-link" data-route="recipes">
+        <i class="fas fa-list"></i>
+        <span>Все рецепты</span>
+      </a>
+      <a href="#/recipes/new" class="navbar-link btn btn-primary" data-route="new">
+        <i class="fas fa-plus"></i>
+        <span>Новый рецепт</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- Поиск и фильтры -->
+<div class="filters-bar">
+  <div class="container">
+    <div class="filters-content">
+      <div class="search-box">
+        <i class="fas fa-search"></i>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Поиск рецептов..."
+          class="search-input"
+        >
+        <button id="clear-search" class="btn btn-text" title="Очистить">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div class="filters">
+        <select id="category-filter" class="filter-select">
+          <option value="">Все категории</option>
+          <option value="завтрак">Завтрак</option>
+          <option value="обед">Обед</option>
+          <option value="ужин">Ужин</option>
+          <option value="десерт">Десерт</option>
+          <option value="вегетарианское">Вегетарианское</option>
+        </select>
+
+        <select id="difficulty-filter" class="filter-select">
+          <option value="">Любая сложность</option>
+          <option value="легко">Легко</option>
+          <option value="средне">Средне</option>
+          <option value="сложно">Сложно</option>
+        </select>
+
+        <select id="time-filter" class="filter-select">
+          <option value="">Любое время</option>
+          <option value="15">До 15 мин</option>
+          <option value="30">До 30 мин</option>
+          <option value="60">До 60 мин</option>
+          <option value="120">До 120 мин</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Основной контейнер для SPA -->
+<main id="app" class="container">
+  <!-- Контент будет заменяться роутером -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="spinner"></div>
+    <p>Загрузка...</p>
+  </div>
+</main>
+
+<!-- Футер -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3>🍳 Кулинарная книга</h3>
+        <p>Справочник рецептов с возможностью добавления и редактирования</p>
+      </div>
+      <div class="footer-stats">
+        <div class="stat-item">
+          <i class="fas fa-utensils"></i>
+          <span id="total-recipes">0</span>
+          <span>рецептов</span>
+        </div>
+        <div class="stat-item">
+          <i class="fas fa-clock"></i>
+          <span id="total-time">0</span>
+          <span>минут готовки</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Лабораторная работа №4 — REST-клиент SPA</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Модальные окна -->
+<div id="modal-overlay" class="modal-overlay hidden"></div>
+
+<div id="confirm-modal" class="modal hidden">
+  <div class="modal-content">
+    <h3 id="confirm-title">Подтвердите действие</h3>
+    <p id="confirm-message">Вы уверены, что хотите выполнить это действие?</p>
+    <div class="modal-actions">
+      <button id="confirm-cancel" class="btn btn-secondary">Отмена</button>
+      <button id="confirm-ok" class="btn btn-danger">Подтвердить</button>
+    </div>
+  </div>
+</div>
+
+<!-- Скрипты -->
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
