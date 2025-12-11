@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Библиотека книг</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="container">
+  <header class="header">
+    <h1 class="title">📚 Библиотека книг</h1>
+    <div class="controls">
+      <div class="search-container">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Поиск книг..."
+          class="search-input"
+        >
+        <button id="clearSearch" class="btn btn-secondary">×</button>
+      </div>
+      <div class="filter-container">
+        <select id="genreFilter" class="filter-select">
+          <option value="">Все жанры</option>
+          <option value="Фантастика">Фантастика</option>
+          <option value="Детектив">Детектив</option>
+          <option value="Роман">Роман</option>
+          <option value="Научная">Научная</option>
+          <option value="История">История</option>
+        </select>
+      </div>
+      <div class="actions">
+        <button id="refreshBtn" class="btn btn-primary">
+          🔄 Обновить
+        </button>
+        <button id="cancelBtn" class="btn btn-danger">
+          ⏹️ Отменить
+        </button>
+      </div>
+    </div>
+
+    <div class="status-indicators">
+      <div class="cache-status">
+        <span id="cacheIndicator" class="cache-indicator">Кэш: пуст</span>
+        <span id="retryIndicator" class="retry-indicator"></span>
+      </div>
+      <div class="request-timer">
+        <span id="timer">0.0s</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- Состояние загрузки -->
+    <div id="loadingState" class="state hidden">
+      <div class="skeleton-container">
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+      </div>
+    </div>
+
+    <!-- Состояние ошибки -->
+    <div id="errorState" class="state hidden">
+      <div class="error-message">
+        <h2>😕 Ошибка загрузки</h2>
+        <p id="errorText"></p>
+        <button id="retryBtn" class="btn btn-primary">Повторить попытку</button>
+      </div>
+    </div>
+
+    <!-- Состояние пусто -->
+    <div id="emptyState" class="state hidden">
+      <div class="empty-message">
+        <h2>📖 Книги не найдены</h2>
+        <p>Попробуйте изменить поисковый запрос</p>
+      </div>
+    </div>
+
+    <!-- Основной контент -->
+    <div id="contentState" class="state">
+      <div class="books-grid" id="booksContainer">
+        <!-- Книги будут добавляться динамически -->
+      </div>
+
+      <div class="pagination">
+        <button id="prevBtn" class="btn btn-secondary">← Назад</button>
+        <span class="page-info">Страница <span id="currentPage">1</span></span>
+        <button id="nextBtn" class="btn btn-secondary">Вперед →</button>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="debug-info">
+      <h3>Информация о запросах</h3>
+      <div id="debugLog" class="debug-log"></div>
+    </div>
+  </footer>
+</div>
+
+<!-- Модальное окно для деталей книги -->
+<div id="bookModal" class="modal hidden">
+  <div class="modal-content">
+    <button class="modal-close">&times;</button>
+    <div id="bookDetails"></div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
