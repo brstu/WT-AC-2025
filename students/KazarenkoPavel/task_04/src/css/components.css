@@ -369,7 +369,7 @@
   margin-bottom: 10px;
 }
 
-.steps-list li:before {
+.steps-list li::before {
   counter-increment: step-counter;
   content: counter(step-counter);
   position: absolute;
