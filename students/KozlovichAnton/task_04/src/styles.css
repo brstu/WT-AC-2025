@@ -130,6 +130,29 @@ body {
     color: #777;
 }
 
+.btn {
+    padding: 10px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s;
+    font-size: 14px;
+    text-align: center;
+}
+
+.btn:hover {
+    background: #5568d3;
+}
+
+.btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
 .course-card .btn {
     display: block;
     margin: 15px;
@@ -140,6 +163,10 @@ body {
     text-decoration: none;
     border-radius: 4px;
     transition: background 0.3s;
+}
+
+.form-container .btn {
+    margin-top: 10px;
 }
 
 .course-card .btn:hover {
@@ -190,35 +217,12 @@ body {
     margin-top: 20px;
 }
 
-.btn {
-    padding: 10px 20px;
-    background: #667eea;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.3s;
-    font-size: 14px;
-    text-align: center;
-}
-
-.btn:hover {
-    background: #5568d3;
-}
-
 .btn-delete {
     background: #f44336;
 }
 
 .btn-delete:hover {
     background: #d32f2f;
-}
-
-.btn:disabled {
-    background: #ccc;
-    cursor: not-allowed;
 }
 
 .form-container {
@@ -265,10 +269,6 @@ body {
 .form-container form {
     display: flex;
     flex-direction: column;
-}
-
-.form-container .btn {
-    margin-top: 10px;
 }
 
 @media (width <= 768px) {
