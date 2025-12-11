@@ -42,7 +42,7 @@ nav a {
     background: white;
     padding: 15px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
     cursor: pointer;
 }
 
@@ -158,7 +158,7 @@ textarea {
     margin-top: 20px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .items-grid {
         grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     }
