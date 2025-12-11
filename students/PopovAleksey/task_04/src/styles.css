@@ -243,6 +243,14 @@ main {
     resize: vertical;
 }
 
+.search-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
@@ -340,14 +348,6 @@ main {
 
 .back-link:hover {
     text-decoration: underline;
-}
-
-.search-box input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
 }
 
 footer {
