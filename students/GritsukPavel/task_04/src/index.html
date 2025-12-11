@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои заметки - Приложение для заметок</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header style="background-color: #4CAF50; padding: 20px; color: white; margin-bottom: 20px;">
+            <h1 style="margin: 0; font-size: 28px;">📝 Мои Заметки</h1>
+            <nav style="margin-top: 10px;">
+                <a href="#/items" style="color: white; margin-right: 15px; text-decoration: none;">Все заметки</a>
+                <a href="#/new" style="color: white; text-decoration: none;">Создать новую</a>
+            </nav>
+        </header>
+        
+        <main id="content" style="padding: 20px; min-height: 500px;">
+            <div id="loading" style="display: none; text-align: center; padding: 50px;">
+                <img src="https://raw.githubusercontent.com/Codelessly/FlutterLoadingGIFs/master/packages/circular_progress_indicator.gif" alt="Загрузка..." style="width: 50px; height: 50px;">
+                <p>Загрузка...</p>
+            </div>
+            
+            <div id="error" style="display: none; background-color: #ffebee; padding: 15px; border-radius: 4px; color: #c62828;">
+                <h3>Ошибка!</h3>
+                <p id="error-message"></p>
+            </div>
+            
+            <div id="view-container"></div>
+        </main>
+        
+        <footer style="background-color: #333; color: white; text-align: center; padding: 15px; margin-top: 30px;">
+            <p style="margin: 0;">&copy; 2025 Приложение для заметок. Все права защищены.</p>
+        </footer>
+    </div>
+    
+    <div id="notification" style="display: none; position: fixed; top: 20px; right: 20px; background-color: #4CAF50; color: white; padding: 15px 20px; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.3); z-index: 1000;">
+        <span id="notification-message"></span>
+    </div>
+    
+    <script src="data.js"></script>
+    <script src="api.js"></script>
+    <script src="router.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
