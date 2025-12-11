@@ -294,6 +294,10 @@ main {
 }
 
 @media (width <= 768px) {
+  .container {
+    padding: 0 15px;
+  }
+
   .navbar .container {
     flex-direction: column;
     gap: 15px;
@@ -306,9 +310,5 @@ main {
 
   .filter-select {
     min-width: 100%;
-  }
-
-  .container {
-    padding: 0 15px;
   }
 }
