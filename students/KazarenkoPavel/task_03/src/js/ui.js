@@ -4,26 +4,26 @@
 export class BooksUI {
   constructor() {
     this.elements = {
-      loadingState: document.getElementById('loadingState'),
-      errorState: document.getElementById('errorState'),
-      emptyState: document.getElementById('emptyState'),
-      contentState: document.getElementById('contentState'),
-      booksContainer: document.getElementById('booksContainer'),
-      searchInput: document.getElementById('searchInput'),
-      genreFilter: document.getElementById('genreFilter'),
-      refreshBtn: document.getElementById('refreshBtn'),
-      cancelBtn: document.getElementById('cancelBtn'),
-      retryBtn: document.getElementById('retryBtn'),
-      prevBtn: document.getElementById('prevBtn'),
-      nextBtn: document.getElementById('nextBtn'),
-      currentPage: document.getElementById('currentPage'),
-      cacheIndicator: document.getElementById('cacheIndicator'),
-      retryIndicator: document.getElementById('retryIndicator'),
+      loadingState: document.getElementById('loading-state'),
+      errorState: document.getElementById('error-state'),
+      emptyState: document.getElementById('empty-state'),
+      contentState: document.getElementById('content-state'),
+      booksContainer: document.getElementById('books-container'),
+      searchInput: document.getElementById('search-input'),
+      genreFilter: document.getElementById('genre-filter'),
+      refreshBtn: document.getElementById('refresh-btn'),
+      cancelBtn: document.getElementById('cancel-btn'),
+      retryBtn: document.getElementById('retry-btn'),
+      prevBtn: document.getElementById('prev-btn'),
+      nextBtn: document.getElementById('next-btn'),
+      currentPage: document.getElementById('current-page'),
+      cacheIndicator: document.getElementById('cache-indicator'),
+      retryIndicator: document.getElementById('retry-indicator'),
       timer: document.getElementById('timer'),
-      errorText: document.getElementById('errorText'),
-      debugLog: document.getElementById('debugLog'),
-      bookModal: document.getElementById('bookModal'),
-      bookDetails: document.getElementById('bookDetails')
+      errorText: document.getElementById('error-text'),
+      debugLog: document.getElementById('debug-log'),
+      bookModal: document.getElementById('book-modal'),
+      bookDetails: document.getElementById('book-details')
     };
 
     this.currentPage = 1;
