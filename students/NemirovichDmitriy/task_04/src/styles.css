@@ -34,12 +34,12 @@ nav a {
     text-decoration: none;
     margin-right: 15px;
     padding: 5px 10px;
-    background: rgba(255,255,255,0.2);
+    background: rgb(255 255 255 / 20%);
     border-radius: 3px;
 }
 
 nav a:hover {
-    background: rgba(255,255,255,0.3);
+    background: rgb(255 255 255 / 30%);
 }
 
 main {
@@ -47,7 +47,7 @@ main {
     background: white;
     padding: 20px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgb(0 0 0 / 10%);
 }
 
 footer {
@@ -99,7 +99,7 @@ footer {
 }
 
 .plant-card:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
 }
 
 .plant-card img {
@@ -235,13 +235,13 @@ footer {
     text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .plant-card {
         width: calc(50% - 10px);
     }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     .plant-card {
         width: 100%;
     }
