@@ -38,11 +38,11 @@ nav a {
     margin-left: 20px;
     padding: 8px 16px;
     border-radius: 4px;
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgb(255 255 255 / 20%);
 }
 
 nav a:hover {
-    background-color: rgba(255,255,255,0.3);
+    background-color: rgb(255 255 255 / 30%);
 }
 
 main {
@@ -86,7 +86,7 @@ main {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
     cursor: pointer;
     transition: transform 0.2s;
 }
@@ -125,7 +125,7 @@ main {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
 }
 
 .coffee-detail img {
@@ -207,7 +207,7 @@ main {
     background: white;
     border-radius: 8px;
     padding: 25px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -215,6 +215,15 @@ main {
 .form-container h2 {
     color: #6f4e37;
     margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    max-width: 400px;
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
 }
 
 .form-group {
@@ -259,7 +268,7 @@ main {
     color: white;
     font-weight: bold;
     z-index: 1000;
-    animation: slideIn 0.3s ease;
+    animation: slide-in 0.3s ease;
 }
 
 .notification.success {
@@ -270,11 +279,12 @@ main {
     background-color: #dc3545;
 }
 
-@keyframes slideIn {
+@keyframes slide-in {
     from {
         transform: translateX(100%);
         opacity: 0;
     }
+
     to {
         transform: translateX(0);
         opacity: 1;
@@ -324,15 +334,6 @@ main {
     margin-bottom: 20px;
 }
 
-.search-bar input {
-    width: 100%;
-    max-width: 400px;
-    padding: 10px 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
 footer {
     background-color: #333;
     color: white;
@@ -341,7 +342,7 @@ footer {
     margin-top: auto;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .header-container {
         flex-direction: column;
         text-align: center;
