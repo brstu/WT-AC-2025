@@ -1,0 +1,268 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial;
+    background: #f5f5f5;
+    color: #222;
+    line-height: 1.4;
+}
+
+.container {
+    width: 90%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+header {
+    background: #4a90e2;
+    color: white;
+    padding: 15px 0;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-right: 15px;
+    padding: 5px 10px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 3px;
+}
+
+nav a:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.loading {
+    text-align: center;
+    padding: 50px;
+    font-size: 18px;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+    padding: 15px;
+    border-radius: 4px;
+    margin: 20px 0;
+}
+
+.task-list {
+    display: grid;
+    gap: 15px;
+}
+
+.task-item {
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-item h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.task-item p {
+    color: #666;
+    font-size: 14px;
+}
+
+.task-item .priority {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.priority.low {
+    background: #d1ecf1;
+    color: #0c5460;
+}
+
+.priority.medium {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.priority.high {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.task-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.btn {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: #4a90e2;
+    color: white;
+}
+
+.btn-danger {
+    background: #dc3545;
+    color: white;
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+form {
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.form-group textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.task-detail {
+    background: white;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.task-detail h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.task-detail .meta {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.task-detail .description {
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.task-detail .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.empty {
+    text-align: center;
+    padding: 50px;
+    color: #666;
+}
+
+footer {
+    margin-top: 50px;
+    padding: 20px 0;
+    background: #333;
+    color: white;
+    text-align: center;
+}
+
+.search-box {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: white;
+    border-radius: 5px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+    }
+    
+    .task-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .task-actions {
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 20px;
+    }
+    
+    nav a {
+        display: block;
+        margin-bottom: 5px;
+    }
+}
