@@ -21,7 +21,7 @@ body {
 /* ����� � ��������� */
 header {
     background-color: #fff;
-    box-shadow: 0 2px 10px rgba(0 0 0 / 0.1);
+    box-shadow: 0 2px 10px rgba(0 0 0 / 10%);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -77,7 +77,7 @@ header {
 /* �����-������ */
 .hero {
     height: 70vh;
-    background: linear-gradient(rgba(0 0 0 / 0.5), rgba(0 0 0 / 0.5)), url('assets/photoman.jpg') no-repeat center center/cover;
+    background: linear-gradient(rgba(0 0 0 / 50%), rgba(0 0 0 / 50%)), url('assets/photoman.jpg') no-repeat center center/cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -273,13 +273,13 @@ header {
     transition: background-color 0.3s;
 }
 
-    .submit-btn:hover:not(:disabled) {
-        background-color: #555;
-    }
-
     .submit-btn:disabled {
         background-color: #999;
         cursor: not-allowed;
+    }
+
+    .submit-btn:hover:not(:disabled) {
+        background-color: #555;
     }
 
 .form-result {
@@ -309,7 +309,7 @@ header {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0 0 0 / 0.9);
+    background-color: rgba(0 0 0 / 90%);
     z-index: 1000;
     align-items: center;
     justify-content: center;
@@ -369,7 +369,7 @@ header {
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(0 0 0 / 0.7);
+    background-color: rgba(0 0 0 / 70%);
     color: white;
     padding: 10px;
     display: flex;
@@ -424,7 +424,7 @@ footer {
         background-color: white;
         flex-direction: column;
         padding: 20px 0;
-        box-shadow: 0 5px 10px rgba(0 0 0 / 0.1);
+        box-shadow: 0 5px 10px rgba(0 0 0 / 10%);
     }
 
         .nav-menu.active {

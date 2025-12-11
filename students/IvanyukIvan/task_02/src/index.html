@@ -118,7 +118,7 @@
         <button class="modal-nav modal-prev" id="modal-prev" aria-label="Предыдущее изображение">&#10094;</button>
         <button class="modal-nav modal-next" id="modal-next" aria-label="Следующее изображение">&#10095;</button>
         <div class="modal-content">
-            <img class="modal-image" id="modal-image" src="" alt="">
+            <img class="modal-image" id="modal-image" src="#" alt="Изображение слайд-шоу">
             <div class="modal-info">
                 <div class="image-title" id="modal-title"></div>
                 <div class="tooltip">
