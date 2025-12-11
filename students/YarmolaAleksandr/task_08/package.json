@@ -9,6 +9,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "test": "vitest run",
+    "test:unit": "vitest run",
     "test:watch": "vitest",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
@@ -16,7 +17,8 @@
     "test:e2e:ui": "playwright test --ui",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\""
+    "format": "prettier --write \"src/**/*.{js,jsx,css,html}\"",
+    "format:check": "prettier --check \"src/**/*.{js,jsx,css,html}\""
   },
   "keywords": [
     "youtube",
@@ -28,6 +30,7 @@
   "author": "YarmolaAleksandr",
   "license": "MIT",
   "dependencies": {
+    "@sentry/react": "^10.30.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -39,6 +42,7 @@
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
+    "@vitest/coverage-v8": "^1.0.4",
     "@vitest/ui": "^1.0.4",
     "eslint": "^8.55.0",
     "eslint-config-prettier": "^9.1.0",
@@ -50,8 +54,7 @@
     "lint-staged": "^15.2.0",
     "prettier": "^3.1.1",
     "vite": "^5.0.8",
-    "vitest": "^1.0.4",
-    "@vitest/coverage-v8": "^1.0.4"
+    "vitest": "^1.0.4"
   },
   "lint-staged": {
     "*.{js,jsx}": [

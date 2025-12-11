@@ -181,13 +181,24 @@ Lint → Test → E2E → Build → Docker
   - Docker deployment (manual + compose)
   - Cloud deployment options (Vercel, Netlify, Railway, GitHub Pages)
   - Production checklist
-  - Monitoring setup
+  - Monitoring setup (Sentry integration)
   - Performance optimization
   - Troubleshooting
 
-## 🎁 Bonus Points (+10)
+## 🎁 Bonus Points (+7/10)
 
 ### Additional Features Implemented
+
+- ✅ **CD Pipeline** - Automated deployment to GitHub Pages (+4 points)
+  - Configured in `.github/workflows/ci.yml`
+  - Deploys on push to main branch
+  - Uses GitHub Actions pages deployment
+  
+- ✅ **Error Monitoring** - Sentry integration (+3 points)
+  - Real-time error tracking
+  - Performance monitoring
+  - Session replay
+  - Configured in `src/main.jsx`
 
 - ✅ **TypeScript-ready** - Can be migrated with minimal changes
 - ✅ **Husky + lint-staged** - Pre-commit hooks for code quality
@@ -195,14 +206,6 @@ Lint → Test → E2E → Build → Docker
 - ✅ **Multi-browser testing** - Playwright on 3 browsers
 - ✅ **Comprehensive documentation** - Deployment + Lighthouse guides
 - ✅ **Production-ready nginx** - Security headers, caching, compression
-
-### CD Ready
-
-Pipeline includes Docker image testing. Can be extended with:
-- Docker Hub push
-- Cloud deployment (Vercel/Netlify/Railway)
-- Kubernetes deployment
-- Environment-based deployments (staging/production)
 
 ## 📸 Screenshots
 

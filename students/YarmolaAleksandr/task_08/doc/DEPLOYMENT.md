@@ -469,6 +469,42 @@ location / {
 
 ## 📊 Мониторинг и логирование
 
+### Sentry Error Monitoring
+
+Приложение интегрировано с Sentry для отслеживания ошибок в production:
+
+```javascript
+// src/main.jsx
+import * as Sentry from '@sentry/react';
+
+Sentry.init({
+  dsn: 'YOUR_SENTRY_DSN',
+  integrations: [
+    Sentry.browserTracingIntegration(),
+    Sentry.replayIntegration(),
+  ],
+  tracesSampleRate: 1.0,
+  replaysSessionSampleRate: 0.1,
+  replaysOnErrorSampleRate: 1.0,
+  environment: import.meta.env.MODE,
+});
+```
+
+**Настройка Sentry:**
+
+1. Создайте аккаунт на [sentry.io](https://sentry.io)
+2. Создайте новый проект (React)
+3. Скопируйте DSN из настроек проекта
+4. Замените `YOUR_SENTRY_DSN` в `src/main.jsx`
+5. Установите переменные окружения для production
+
+**Возможности:**
+- Отслеживание ошибок в реальном времени
+- Performance monitoring
+- Session replay для воспроизведения багов
+- Source maps для отладки минифицированного кода
+- Уведомления в Slack/Email
+
 ### Production Logs
 
 ```bash
