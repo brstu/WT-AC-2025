@@ -1,0 +1,18 @@
+{
+  "name": "city-places-spa",
+  "version": "1.0.0",
+  "description": "SPA приложение для справочника городских мест",
+  "main": "index.html",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3000 --middlewares ./middleware.js",
+    "dev": "live-server --port=8080 --open=index.html",
+    "build": "echo 'Build completed'"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "json-server": "^0.17.0",
+    "live-server": "^1.2.2"
+  },
+  "author": "",
+  "license": "MIT"
+}
