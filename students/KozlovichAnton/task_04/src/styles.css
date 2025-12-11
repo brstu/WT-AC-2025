@@ -21,7 +21,7 @@ body {
     padding: 30px;
     border-radius: 8px;
     margin-bottom: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .header h1 {
@@ -39,13 +39,13 @@ body {
     color: white;
     text-decoration: none;
     padding: 8px 16px;
-    background: rgba(255,255,255,0.2);
+    background: rgb(255 255 255 / 20%);
     border-radius: 4px;
     transition: background 0.3s;
 }
 
 .header nav a:hover {
-    background: rgba(255,255,255,0.3);
+    background: rgb(255 255 255 / 30%);
 }
 
 .loading {
@@ -78,7 +78,7 @@ body {
     color: white;
     padding: 15px 25px;
     border-radius: 4px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 6px rgb(0 0 0 / 20%);
     z-index: 1000;
 }
 
@@ -93,13 +93,13 @@ body {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
     transition: transform 0.2s;
 }
 
 .course-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
 }
 
 .course-card img {
@@ -150,7 +150,7 @@ body {
     background: white;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
 }
 
 .detail img {
@@ -225,7 +225,7 @@ body {
     background: white;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 8px rgb(0 0 0 / 10%);
     max-width: 600px;
     margin: 0 auto;
 }
@@ -271,7 +271,7 @@ body {
     margin-top: 10px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .courses-grid {
         grid-template-columns: 1fr;
     }
@@ -289,7 +289,7 @@ body {
     }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
     #app {
         padding: 10px;
     }
