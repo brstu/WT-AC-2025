@@ -193,7 +193,7 @@ Lint → Test → E2E → Build → Docker
   - Configured in `.github/workflows/ci.yml`
   - Deploys on push to main branch
   - Uses GitHub Actions pages deployment
-  
+
 - ✅ **Error Monitoring** - Sentry integration (+3 points)
   - Real-time error tracking
   - Performance monitoring
