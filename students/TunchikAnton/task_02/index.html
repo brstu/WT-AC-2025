@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Коллекция гаджетов | Табы, Модалки, Tooltip</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
+</head>
+<body>
+    <div class="theme-toggle-container">
+        <button id="theme-toggle" class="theme-toggle" aria-label="Переключить тему">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+
+    <header class="header" role="banner">
+        <div class="container">
+            <h1 class="main-title">
+                <i class="fas fa-mobile-alt"></i> Коллекция гаджетов
+            </h1>
+            <p class="subtitle">Современные устройства от ведущих брендов</p>
+        </div>
+    </header>
+
+    <nav class="navigation" role="navigation" aria-label="Основная навигация">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="#brands" class="nav-link active">Бренды</a></li>
+                <li><a href="#gadgets" class="nav-link">Гаджеты</a></li>
+                <li><a href="#feedback" class="nav-link">Обратная связь</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content" id="main-content" role="main">
+        <div class="container">
+            <!-- Блок табов -->
+            <section class="brands-section" id="brands" aria-labelledby="brands-heading">
+                <h2 id="brands-heading" class="section-title">Бренды гаджетов</h2>
+                <p class="section-description">
+                    Выберите бренд, чтобы увидеть его устройства. 
+                    <button class="help-btn" aria-describedby="tabs-help" data-tooltip-target="tabs-help">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                </p>
+                
+                <div class="tooltip" role="tooltip" id="tabs-help" hidden>
+                    Используйте Tab для переключения между брендами, стрелки ← → для навигации
+                </div>
+
+                <div class="tabs" role="tablist" aria-label="Выбор бренда">
+                    <button class="tab active" role="tab" aria-selected="true" aria-controls="apple-panel" id="apple-tab" data-brand="apple">
+                        <i class="fab fa-apple"></i> Apple
+                    </button>
+                    <button class="tab" role="tab" aria-selected="false" aria-controls="samsung-panel" id="samsung-tab" data-brand="samsung">
+                        <i class="fas fa-mobile-alt"></i> Samsung
+                    </button>
+                    <button class="tab" role="tab" aria-selected="false" aria-controls="sony-panel" id="sony-tab" data-brand="sony">
+                        <i class="fas fa-headphones"></i> Sony
+                    </button>
+                    <button class="tab" role="tab" aria-selected="false" aria-controls="google-panel" id="google-tab" data-brand="google">
+                        <i class="fab fa-google"></i> Google
+                    </button>
+                </div>
+
+                <!-- Панели табов -->
+                <div class="tab-panels">
+                    <!-- Apple -->
+                    <div class="panel active" role="tabpanel" id="apple-panel" aria-labelledby="apple-tab" tabindex="0">
+                        <div class="gadgets-grid" id="gadgets">
+                            <article class="gadget-card" data-id="1" data-brand="apple">
+                                <div class="card-header">
+                                    <h3 class="gadget-title">iPhone 15 Pro</h3>
+                                    <button class="like-btn" aria-label="Добавить iPhone 15 Pro в избранное" data-action="like">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&h=300&fit=crop" 
+                                         alt="iPhone 15 Pro" class="gadget-image" loading="lazy">
+                                    <p class="gadget-description">Флагманский смартфон с титановым корпусом и процессором A17 Pro.</p>
+                                    <div class="card-actions">
+                                        <button class="specs-btn" aria-label="Спецификации iPhone 15 Pro" data-modal="iphone15-pro">
+                                            <i class="fas fa-info-circle"></i> Характеристики
+                                        </button>
+                                        <button class="delete-btn" aria-label="Удалить iPhone 15 Pro из коллекции" data-action="delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+
+                            <article class="gadget-card" data-id="2" data-brand="apple">
+                                <div class="card-header">
+                                    <h3 class="gadget-title">MacBook Air M2</h3>
+                                    <button class="like-btn" aria-label="Добавить MacBook Air M2 в избранное" data-action="like">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w-400&h=300&fit=crop" 
+                                         alt="MacBook Air M2" class="gadget-image" loading="lazy">
+                                    <p class="gadget-description">Ультратонкий ноутбук с чипом Apple M2 и дисплеем Liquid Retina.</p>
+                                    <div class="card-actions">
+                                        <button class="specs-btn" aria-label="Спецификации MacBook Air M2" data-modal="macbook-air-m2">
+                                            <i class="fas fa-info-circle"></i> Характеристики
+                                        </button>
+                                        <button class="delete-btn" aria-label="Удалить MacBook Air M2 из коллекции" data-action="delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Samsung -->
+                    <div class="panel" role="tabpanel" id="samsung-panel" aria-labelledby="samsung-tab" tabindex="0" hidden>
+                        <div class="gadgets-grid">
+                            <article class="gadget-card" data-id="3" data-brand="samsung">
+                                <div class="card-header">
+                                    <h3 class="gadget-title">Samsung Galaxy S23 Ultra</h3>
+                                    <button class="like-btn" aria-label="Добавить Samsung Galaxy S23 Ultra в избранное" data-action="like">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1678541891248-2c899ab5c6e0?w=400&h=300&fit=crop" 
+                                         alt="Samsung Galaxy S23 Ultra" class="gadget-image" loading="lazy">
+                                    <p class="gadget-description">Смартфон с камерой 200 МП и стилусом S Pen.</p>
+                                    <div class="card-actions">
+                                        <button class="specs-btn" aria-label="Спецификации Samsung Galaxy S23 Ultra" data-modal="s23-ultra">
+                                            <i class="fas fa-info-circle"></i> Характеристики
+                                        </button>
+                                        <button class="delete-btn" aria-label="Удалить Samsung Galaxy S23 Ultra из коллекции" data-action="delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Sony -->
+                    <div class="panel" role="tabpanel" id="sony-panel" aria-labelledby="sony-tab" tabindex="0" hidden>
+                        <div class="gadgets-grid">
+                            <article class="gadget-card" data-id="4" data-brand="sony">
+                                <div class="card-header">
+                                    <h3 class="gadget-title">Sony WH-1000XM5</h3>
+                                    <button class="like-btn" aria-label="Добавить Sony WH-1000XM5 в избранное" data-action="like">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400&h=300&fit=crop" 
+                                         alt="Sony WH-1000XM5" class="gadget-image" loading="lazy">
+                                    <p class="gadget-description">Наушники с шумоподавлением и автономностью до 30 часов.</p>
+                                    <div class="card-actions">
+                                        <button class="specs-btn" aria-label="Спецификации Sony WH-1000XM5" data-modal="sony-xm5">
+                                            <i class="fas fa-info-circle"></i> Характеристики
+                                        </button>
+                                        <button class="delete-btn" aria-label="Удалить Sony WH-1000XM5 из коллекции" data-action="delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+
+                    <!-- Google -->
+                    <div class="panel" role="tabpanel" id="google-panel" aria-labelledby="google-tab" tabindex="0" hidden>
+                        <div class="gadgets-grid">
+                            <article class="gadget-card" data-id="5" data-brand="google">
+                                <div class="card-header">
+                                    <h3 class="gadget-title">Google Pixel 8 Pro</h3>
+                                    <button class="like-btn" aria-label="Добавить Google Pixel 8 Pro в избранное" data-action="like">
+                                        <i class="far fa-heart"></i>
+                                    </button>
+                                </div>
+                                <div class="card-content">
+                                    <img src="https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=400&h=300&fit=crop" 
+                                         alt="Google Pixel 8 Pro" class="gadget-image" loading="lazy">
+                                    <p class="gadget-description">Смартфон с ИИ-камерой и чипом Tensor G3.</p>
+                                    <div class="card-actions">
+                                        <button class="specs-btn" aria-label="Спецификации Google Pixel 8 Pro" data-modal="pixel8-pro">
+                                            <i class="fas fa-info-circle"></i> Характеристики
+                                        </button>
+                                        <button class="delete-btn" aria-label="Удалить Google Pixel 8 Pro из коллекции" data-action="delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Форма обратной связи -->
+            <section class="feedback-section" id="feedback" aria-labelledby="feedback-heading">
+                <h2 id="feedback-heading" class="section-title">Обратная связь</h2>
+                <p class="section-description">
+                    Расскажите о вашем опыте или предложите новый гаджет для коллекции.
+                    <button class="help-btn" aria-describedby="form-help" data-tooltip-target="form-help">
+                        <i class="fas fa-question-circle"></i>
+                    </button>
+                </p>
+                
+                <div class="tooltip" role="tooltip" id="form-help" hidden>
+                    Все поля обязательны для заполнения. Кнопка отправки станет активной после корректного заполнения формы.
+                </div>
+
+                <form id="feedback-form" class="feedback-form" novalidate>
+                    <div class="form-group">
+                        <label for="name" class="form-label">
+                            Имя <span class="required">*</span>
+                        </label>
+                        <input type="text" id="name" name="name" class="form-input" 
+                               required minlength="2" maxlength="50"
+                               placeholder="Введите ваше имя">
+                        <div class="error-message" id="name-error" aria-live="polite"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">
+                            Email <span class="required">*</span>
+                        </label>
+                        <input type="email" id="email" name="email" class="form-input"
+                               required placeholder="example@mail.com">
+                        <div class="error-message" id="email-error" aria-live="polite"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">
+                            Сообщение <span class="required">*</span>
+                        </label>
+                        <textarea id="message" name="message" class="form-textarea"
+                                  required minlength="20" maxlength="500"
+                                  placeholder="Минимум 20 символов..."></textarea>
+                        <div class="char-counter">
+                            <span id="char-count">0</span> / 500
+                        </div>
+                        <div class="error-message" id="message-error" aria-live="polite"></div>
+                    </div>
+
+                    <button type="submit" class="submit-btn" disabled>
+                        <i class="fas fa-paper-plane"></i> Отправить сообщение
+                    </button>
+                </form>
+
+                <div id="form-result" class="form-result" aria-live="polite" role="status"></div>
+            </section>
+        </div>
+    </main>
+
+
+
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <p>© 2024 Коллекция гаджетов. Все права защищены.</p>
+            <p>Проект демонстрирует использование JavaScript, доступности и современных веб-технологий.</p>
+            <div class="footer-info">
+                <p><i class="fas fa-keyboard"></i> Управление: Tab, Enter, Escape, Стрелки</p>
+                <p><i class="fas fa-save"></i> Состояние сохраняется автоматически</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Подключение скриптов -->
+    <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
