@@ -83,7 +83,7 @@ main {
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
     cursor: pointer;
     transition: transform 0.2s;
 }
@@ -127,7 +127,7 @@ main {
     background: white;
     border-radius: 8px;
     padding: 30px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .podcast-detail img {
@@ -209,7 +209,7 @@ main {
     padding: 30px;
     max-width: 600px;
     margin: 0 auto;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
 }
 
 .form-container h2 {
@@ -238,16 +238,16 @@ main {
     font-size: 14px;
 }
 
+.form-group textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
     outline: none;
     border-color: #1976d2;
-}
-
-.form-group textarea {
-    min-height: 120px;
-    resize: vertical;
 }
 
 .form-group .error-text {
@@ -331,14 +331,6 @@ main {
     margin-bottom: 20px;
 }
 
-.search-box input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 14px;
-}
-
 .back-link {
     display: inline-block;
     margin-bottom: 20px;
@@ -350,6 +342,14 @@ main {
     text-decoration: underline;
 }
 
+.search-box input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
 footer {
     background: #333;
     color: white;
@@ -358,7 +358,7 @@ footer {
     margin-top: auto;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .header-content {
         flex-direction: column;
         text-align: center;
