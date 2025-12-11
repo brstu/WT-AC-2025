@@ -52,6 +52,13 @@ nav a:hover {
     background-color: white;
 }
 
+.note-detail img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 20px 0;
+}
+
 #loading {
     display: none;
     text-align: center;
@@ -74,6 +81,10 @@ nav a:hover {
 
 #view-container {
     width: 100%;
+}
+
+footer p {
+    margin: 0;
 }
 
 .note-list {
@@ -125,13 +136,6 @@ nav a:hover {
 .note-detail h2 {
     color: #4CAF50;
     margin-bottom: 15px;
-}
-
-.note-detail img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    margin: 20px 0;
 }
 
 .note-detail .note-content {
@@ -240,10 +244,6 @@ footer {
     text-align: center;
     padding: 15px;
     margin-top: 30px;
-}
-
-footer p {
-    margin: 0;
 }
 
 #notification {
