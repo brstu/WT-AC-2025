@@ -1,27 +1,20 @@
-# Лабораторная работа №5
+# Министерство образования Республики Беларусь
 
-<p align="center">Министерство образования Республики Беларусь</p>
 <p align="center">Учреждение образования</p>
-<p align="center">"Брестский Государственный технический университет"</p>
+<p align="center">“Брестский Государственный технический университет”</p>
 <p align="center">Кафедра ИИТ</p>
-
 <br><br><br><br><br><br>
-
 <p align="center"><strong>Лабораторная работа №5</strong></p>
-<p align="center"><strong>По дисциплине:</strong> "Веб-технологии"</p>
-<p align="center"><strong>Тема:</strong> Серверное REST API на Node.js + Express</p>
-
+<p align="center"><strong>По дисциплине:</strong> “Веб-технологии”</p>
+<p align="center"><strong>Тема:</strong> “Серверное REST API на Node.js + Express”</p>
 <br><br><br><br><br><br>
-
-<p align="right"><strong>Выполнил:</strong></p>
-<p align="right">Студент 4 курса</p>
+<p align="right"><strong>Выполнила:</strong></p>
+<p align="right">Студентка 4 курса</p>
 <p align="right">Группы АС-64</p>
-<p align="right">Булавский А.С.</p>
+<p align="right">Смердина А.В.</p>
 <p align="right"><strong>Проверил:</strong></p>
 <p align="right">Несюк А.Н.</p>
-
 <br><br><br><br><br>
-
 <p align="center"><strong>Брест 2025</strong></p>
 
 ---
