@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Справочник спортивных турниров</title>
+    <meta name="description" content="Справочник спортивных турниров">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <header>
+            <h1>Справочник турниров</h1>
+            <nav>
+                <a href="#/items">Все турниры</a>
+                <a href="#/new">Добавить турнир</a>
+            </nav>
+        </header>
+        
+        <main id="content">
+            <div class="loading">Загрузка...</div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Справочник турниров</p>
+        </footer>
+    </div>
+    
+    <script type="module" src="js/router.js"></script>
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/views.js"></script>
+    <script type="module">
+        import { router } from './js/router.js';
+        
+        window.addEventListener('load', () => {
+            router.init();
+        });
+        
+        window.addEventListener('hashchange', () => {
+            router.handleRoute();
+        });
+    </script>
+</body>
+</html>
