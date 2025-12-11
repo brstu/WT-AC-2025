@@ -1,0 +1,151 @@
+/* Общие стили */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    color: #333;
+}
+
+header {
+    background: #1e1e2f;
+    color: #fff;
+    padding: 16px 24px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+    box-shadow: 0 2px 6px rgb(0 0 0 / 20%);
+}
+
+#app {
+    padding: 20px;
+    max-width: 900px;
+    margin: 20px auto;
+}
+
+/* Состояния Loading / Error / Empty */
+.loading, .error, .empty {
+    text-align: center;
+    padding: 60px 20px;
+    font-size: 20px;
+    color: #555;
+}
+
+/* Ссылки */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Кнопки */
+button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+form button {
+    align-self: flex-start;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #a0c5f7;
+    cursor: not-allowed;
+}
+
+/* Карточки статей */
+.article-card {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 8%);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.article-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+
+.article-card h3 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.article-card p {
+    margin: 0;
+    color: #555;
+}
+
+/* Форма создания/редактирования */
+form {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 500;
+    color: #333;
+}
+
+form input, form textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+    margin-top: 6px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+/* Кнопки действий в карточках */
+.article-actions {
+    margin-top: 12px;
+    display: flex;
+    gap: 8px;
+}
+
+/* Адаптивность */
+@media (width <= 600px) {
+    #app {
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    header {
+        font-size: 20px;
+        padding: 12px;
+    }
+
+    form {
+        gap: 12px;
+        padding: 16px;
+    }
+
+    .article-card h3 {
+        font-size: 18px;
+    }
+}
