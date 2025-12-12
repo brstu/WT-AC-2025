@@ -1,0 +1,427 @@
+{
+  "gifs": [
+    {
+      "id": 1,
+      "title": "Funny Monkey Dance ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyZHZlbmJwZXJxMWJvMjUzYmd6MWI0ZTluNG50dDA0N2dibWo4MXp4NCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26tPo9rksWnfPo4HS/200w.gif"
+        }
+      }
+    },
+    {
+      "id": 2,
+      "title": "Crazy Monkey Jump ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyZHRrcjU5eGpkaGxsdjZzZTh5MHBkZHNkYTV0ZTNrdnhzNm1lN3k5OSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/36qnm6xRzruzm/200w.gif"
+        }
+      }
+    },
+    {
+      "id": 3,
+      "title": "Coconut Monkey Fun ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUybDhzcWlzOXV3eGg4M3FsZjBycDBwZTQ0NGVmYjJ5NWl4eXp1cGU2NSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/jAhQUPJwoFVK/200w.gif"
+        }
+      }
+    },
+    {
+      "id": 4,
+      "title": "Monkey in Shirt Style ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyMTR0MXllYW5tY2IwM3dpbDcwNThnaDR0anFrdmRtaWh1anByM3M1ciZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l1KVboXQeiaX7FHgI/source.gif"
+        }
+      }
+    },
+    {
+      "id": 5,
+      "title": "Monkey on Phone Call ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUydjZzeWhzZm44ang1c2o2d3dmd21xMTExdzRvaGd5eWJlc25vODl1dCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/l41lVsYDBC0UVQJCE/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 6,
+      "title": "Beautiful Nature Landscape ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUybjh3azFpdWdzcmd3dXdoNDJlajJrMXltdjFzNmppdTM0YWJzNDZvYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5PGOG2uWtJikU/source.gif"
+        }
+      }
+    },
+    {
+      "id": 7,
+      "title": "Serene Forest Scene ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUybjh3azFpdWdzcmd3dXdoNDJlajJrMXltdjFzNmppdTM0YWJzNDZvYSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/RoFXqXWN639Qs/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 8,
+      "title": "Winter Landscape Snow ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUybTNtN3BianNnZ21uaGNveGM4NzdrdDRnb2E4YXJ3czZwYWh1NnBhdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/cVnMMJvROF5D2/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 9,
+      "title": "Blue Ocean Waves ",
+      "images": {
+        "fixed_height": {
+          "url": "https://i.pinimg.com/originals/ea/50/16/ea5016f4b06302ed61d8d0d8f4f594d4.gif"
+        }
+      }
+    },
+    {
+      "id": 10,
+      "title": "Majestic Waterfall Cascade ",
+      "images": {
+        "fixed_height": {
+          "url": "https://i.pinimg.com/originals/39/25/e3/3925e31cdd0b8f583cab882a39c88fc2.gif"
+        }
+      }
+    },
+    {
+      "id": 11,
+      "title": "Delicious Pizza Melt ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUycjRnNmc4dWJsanhuaXN4ZHR0cGt1am55N21kMnZxYThhamd0bXc0aSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/GHt5LfDKu8S8o/200w.gif"
+        }
+      }
+    },
+    {
+      "id": 12,
+      "title": "Yummy Burger Bite ",
+      "images": {
+        "fixed_height": {
+          "url": "https://64.media.tumblr.com/fc0c76983eed4130611733accd7e6e77/tumblr_mvrc300bSy1s5e5bko1_500.gif"
+        }
+      }
+    },
+    {
+      "id": 13,
+      "title": "Fresh Sushi Roll ",
+      "images": {
+        "fixed_height": {
+          "url": "https://i.pinimg.com/originals/0d/a0/e6/0da0e657f385f62f0ea12ee5828413e3.gif"
+        }
+      }
+    },
+    {
+      "id": 14,
+      "title": "Ice Cream Scoop Delight ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media.tenor.com/VWAZosGBC6AAAAAM/hellmo-pizza.gif"
+        }
+      }
+    },
+    {
+      "id": 15,
+      "title": "Chocolate Cake Heaven ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media.tenor.com/xgems_k3rikAAAAM/food-foodie.gif"
+        }
+      }
+    },
+    {
+      "id": 16,
+      "title": "Soccer Goal Celebration ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyYWl6dmt6YzNtb2ZkY2l4YnAxcXpjbGZucDM2a2FtNGV3aW9zYzY4NCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/3o7bu2D938PkrKrcYw/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 17,
+      "title": "Free Kick Score ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyOWMzM3ZlNXczdTgxZG45enViaGkwZGcwMXh6NDhnMHFpY3YydnA1OSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/26FL4BhNXmo8PNLYk/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 18,
+      "title": "Goooooal Shout ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyMXFqdTRmdHZvaXE0aXpqMTd4ZXFrdjVsbXN4YmQyODNocTVkc2lubyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/SKAQ4kWov6tdC/200w.gif"
+        }
+      }
+    },
+    {
+      "id": 19,
+      "title": "Haaland Epic Goal ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyZmFicjVrMjRtcmFhZGRuemo1YWRyMjlkMjVpbDQ5bG5lMXB1YnI3YiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/6Rf3qQXh8avvv7NRiU/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 20,
+      "title": "Lo Labonta Victory ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyM2JxeTc0cjZjdHVkOXlvcXI3ZjQ1eHNmcm4zdmhtOGs0Mjc2M3VlMyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/iGd5BxWcT6TreN6GNX/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 21,
+      "title": "Distracted Boyfriend Meme ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUya3BrMnQxaWx1bmphejR1ZXJiMndqdjJocTFkNWkweTFoY3pvYmtscCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/6gSFHyU1mb1LAVw5aT/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 25,
+      "title": "Distracted Boyfriend Reversed ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUya3BrMnQxaWx1bmphejR1ZXJiMndqdjJocTFkNWkweTFoY3pvYmtscCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/6gSFHyU1mb1LAVw5aT/200_d.gif"
+        }
+      }
+    },
+    {
+      "id": 26,
+      "title": "Taylor Swift Dance Move ",
+      "images": {
+        "fixed_height": {
+          "url": "https://assets.teenvogue.com/photos/55b271aa74dfbc51751ef258/master/w_1600%2Cc_limit/taydance7.gif"
+        }
+      }
+    },
+    {
+      "id": 27,
+      "title": "Taylor Swift Happy Vibes ",
+      "images": {
+        "fixed_height": {
+          "url": "https://cdn.mos.cms.futurecdn.net/pVFbEYFyHdrsEBL3eeetWM.gif"
+        }
+      }
+    },
+    {
+      "id": 28,
+      "title": "Taylor Swift Excited Jump ",
+      "images": {
+        "fixed_height": {
+          "url": "https://i.pinimg.com/originals/86/6f/f9/866ff9931f72336787f46071ae77cc6c.gif"
+        }
+      }
+    },
+    {
+      "id": 29,
+      "title": "Taylor's Version Celebration  ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUya3cwaXNhcWtteTdhNm9ra25wcDBnYzMxdWR5N29mdnZlYzhxejFwbSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/E21750tEE96PkCcAPD/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 30,
+      "title": "Taylor Swift Audience Dance ",
+      "images": {
+        "fixed_height": {
+          "url": "https://www.sheknows.com/wp-content/uploads/2018/12/happy-taylor_mx4q9k.gif"
+        }
+      }
+    },
+    {
+      "id": 31,
+      "title": "AI Robot Future Tech ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyaTZwbTl3OWR6NjBnZ2s0aXJwMGZjNnI5czMyY29ocnhhbjdoaGFqaSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/5k5vZwRFZR5aZeniqb/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 32,
+      "title": "Robotics Innovation Gear ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUydzlteDh1enY3YXF4NDFwemJ5amsyd2sycnptd29lcmY5c20xNmYyZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/CjIYBczW2FeuHs8Yuj/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 33,
+      "title": "Robot Eye Tech Vision ",
+      "images": {
+        "fixed_height": {
+          "url": "https://cdn.pixabay.com/animation/2024/05/07/06/57/06-57-07-12_512.gif"
+        }
+      }
+    },
+    {
+      "id": 34,
+      "title": "Robot Bye Wave ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUydGZqNmJ5bGIwc3VkY28wbnd5NGhpeTl0ajEyOHF3bHo2Mng0MWNnNyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ofDxerBo45UWhvg0ri/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 35,
+      "title": "Future Robot Walk ",
+      "images": {
+        "fixed_height": {
+          "url": "https://i0.wp.com/media1.giphy.com/media/11A1ZpmhgeE7kI/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 36,
+      "title": "Christmas Lights Twinkle",
+      "images": {
+        "fixed_height": {
+          "url": "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyamk3YTYzb3hkbGFvbW9zamw1M200dmkycTdha3U5cTl4NWQ3YzZjdyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/h5dc7nZVelw2I/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 37,
+      "title": "Holiday Lights Glow ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyeDE2N201eDY2YWR0ZWljbzk4Y3JrMm1kamV5bm9rcG1zOTFnNnFoYiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/bHSCxaHfjZYwE/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 38,
+      "title": "Christmas Atmosphere Magic ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyODZyYzA1cTJrMXo2Y3l5djFkcjI2a3V5MDAyazdkZzBjaTdmNGxndSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/oJAmKamRrsHL5Esj1S/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 39,
+      "title": "Christmas Tree Lights Shine ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyMjhsOTJ0cGp0YjYxMXR1NWk5cjRucDFnZHVid2l1bHc3bXVuZ2VleiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Nz6WNQZiYB5dK/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 40,
+      "title": "Festive Tree Glow ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyMjhsOTJ0cGp0YjYxMXR1NWk5cjRucDFnZHVid2l1bHc3bXVuZ2VleiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/kiXLfqncf42kg/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 41,
+      "title": "Fast Car Speed Rush ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media2.giphy.com/media/v1.Y2lkPTZjMDliOTUyd2xsbDVvbHZubHYzZTNtZHg4ZHpzbzB0cmpqdG9jc3h5em8zMWlkZiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/VIfE4DE7vY49i/200_d.gif"
+        }
+      }
+    },
+    {
+      "id": 42,
+      "title": "Car Racing Thrill ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media3.giphy.com/media/v1.Y2lkPTZjMDliOTUyZzFoMmNmaHYzN3N4aWs1NXAydjg4N2twNXRrZmRyNGdkY3N6YTNicSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/idqBjf5wngkDJMtlIg/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 43,
+      "title": "F1 Drift Action ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media4.giphy.com/media/v1.Y2lkPTZjMDliOTUyNjlnZ2Y2a3AycGJ0bjBhcWxkMDYwNHFydG4yaHVwN3czejN3d2J4cCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/oxZAB3eXcpggbINFsZ/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 44,
+      "title": "Girl Racer Speed Queen ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUyOTdxc3ZvcmY3MHhlaG96Y3N1ZDBvcXY0amE2emVmeG93a2kyODEyNSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ksaO2FlAq79r6e7h8o/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 45,
+      "title": "Cars Racing Battle ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media1.giphy.com/media/v1.Y2lkPTZjMDliOTUyb2Y4cmg2Zm92d255MHFvM3d0ZDc3Z3pvcmdta3VibnloeGhvMjRkZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/FTOunjMOpQLVUreR2S/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 46,
+      "title": "Happy Celebration Dance ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media.giphy.com/media/26tPplGWjN0xLybiU/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 47,
+      "title": "Excited Jump Joy ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 48,
+      "title": "Surprised Reaction Wow ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media.giphy.com/media/3o6ZtaO9BZHcOjmErm/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 49,
+      "title": "Sad Emotion Tear ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media.giphy.com/media/26FL4BhNXmo8PNLYk/giphy.gif"
+        }
+      }
+    },
+    {
+      "id": 50,
+      "title": "Angry Face Rage ",
+      "images": {
+        "fixed_height": {
+          "url": "https://media.giphy.com/media/l2JhL7S4VB4wC6bTi/giphy.gif"
+        }
+      }
+    }
+  ]
+}
