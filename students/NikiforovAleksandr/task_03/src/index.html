@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty Characters</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-atom"></i> Rick and Morty Characters</h1>
+            <p class="subtitle">Асинхронность, кэширование и управление запросами</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-container">
+                <input type="text" id="search-input" placeholder="Поиск персонажей..." autocomplete="off">
+                <button id="search-btn"><i class="fas fa-search"></i> Найти</button>
+                <button id="clear-btn"><i class="fas fa-times"></i> Очистить</button>
+            </div>
+            
+            <div class="controls-right">
+                <div class="cache-controls">
+                    <button id="refresh-btn" class="btn-primary">
+                        <i class="fas fa-sync-alt"></i> Обновить (игнорировать кэш)
+                    </button>
+                    <div class="cache-info">
+                        <span id="cache-status">Кэш: активен</span>
+                    </div>
+                </div>
+                
+                <div class="retry-controls">
+                    <label for="retry-count" title="Количество повторных попыток при ошибке запроса">Повторы:</label>
+                    <select id="retry-count" title="Количество повторных попыток при ошибке запроса">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                    </select>
+                    
+                    <label for="timeout" title="Максимальное время ожидания ответа от сервера в секундах">Таймаут (сек):</label>
+                    <select id="timeout" title="Максимальное время ожидания ответа от сервера в секундах">
+                        <option value="2">2</option>
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-panel">
+            <div class="status-indicators">
+                <div id="loading-indicator" class="hidden">
+                    <div class="spinner"></div>
+                    <span>Загрузка...</span>
+                </div>
+                <div id="retry-indicator" class="hidden">
+                    <div class="spinner small"></div>
+                    <span>Повторная попытка...</span>
+                </div>
+            </div>
+            <div id="request-info">
+                Время запроса: <span id="request-time">-</span> | 
+                Статус: <span id="request-status">-</span> |
+                Источник: <span id="request-source">-</span>
+            </div>
+        </div>
+
+        <div id="content">
+            <!-- Скелетоны при первой загрузке -->
+            <div id="skeleton-container" class="characters-grid">
+                <div class="character-card skeleton"></div>
+                <div class="character-card skeleton"></div>
+                <div class="character-card skeleton"></div>
+                <div class="character-card skeleton"></div>
+                <div class="character-card skeleton"></div>
+                <div class="character-card skeleton"></div>
+                <div class="character-card skeleton"></div>
+                <div class="character-card skeleton"></div>
+                <div class="character-card skeleton"></div>
+                <div class="character-card skeleton"></div>
+            </div>
+
+            <!-- Результаты поиска -->
+            <div id="results-container" class="hidden">
+                <h2 id="results-title">Персонажи</h2>
+                <div id="characters-container" class="characters-grid"></div>
+                
+                <div class="pagination">
+                    <button id="prev-btn" class="btn-pagination" disabled>
+                        <i class="fas fa-chevron-left"></i> Назад
+                    </button>
+                    <span id="page-info">Страница 1 из 1</span>
+                    <button id="next-btn" class="btn-pagination">
+                        Вперед <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Сообщение об ошибке -->
+            <div id="error-container" class="hidden">
+                <div class="error-message">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3>Ошибка загрузки</h3>
+                    <p id="error-message"></p>
+                    <button id="retry-btn" class="btn-primary">
+                        <i class="fas fa-redo"></i> Повторить
+                    </button>
+                </div>
+            </div>
+
+            <!-- Сообщение "ничего не найдено" -->
+            <div id="empty-container" class="hidden">
+                <div class="empty-message">
+                    <i class="fas fa-search"></i>
+                    <h3>Ничего не найдено</h3>
+                    <p>Попробуйте изменить критерии поиска</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-controls">
+            <h3><i class="fas fa-vial"></i> Демонстрация функций</h3>
+            <div class="demo-buttons">
+                <button id="demo-timeout" class="btn-demo">
+                    <i class="fas fa-clock"></i> Таймаут запроса
+                </button>
+                <button id="demo-retry" class="btn-demo">
+                    <i class="fas fa-redo"></i> Ретраи при ошибке
+                </button>
+                <button id="demo-abort" class="btn-demo">
+                    <i class="fas fa-ban"></i> Отмена запроса
+                </button>
+                <button id="demo-cache" class="btn-demo">
+                    <i class="fas fa-database"></i> Показать кэш
+                </button>
+                <button id="demo-clear-cache" class="btn-demo">
+                    <i class="fas fa-trash"></i> Очистить кэш
+                </button>
+            </div>
+        </div>
+
+        <footer>
+            <p>Используется API: <a href="https://rickandmortyapi.com" target="_blank">Rick and Morty API</a></p>
+        </footer>
+    </div>
+
+    <div id="character-modal" class="modal hidden">
+        <div class="modal-content">
+            <button id="close-modal" class="close-modal">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
