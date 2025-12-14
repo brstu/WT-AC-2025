@@ -128,8 +128,8 @@ form label {
   color: var(--muted);
 }
 
-input[type='text'],
-input[type='password'],
+input[type="text"],
+input[type="password"],
 input {
   width: 100%;
   padding: 10px 12px;
@@ -215,6 +215,11 @@ input {
   border: 2px solid rgb(255 255 255 / 30%);
 }
 
+.action-buttons .btn {
+  width: 100%;
+  text-align: center;
+}
+
 .filter-buttons .btn:hover {
   background: rgb(255 255 255 / 30%);
   box-shadow: none;
@@ -222,7 +227,7 @@ input {
 }
 
 .filter-buttons .btn.btn-primary,
-.filter-buttons button[variant='primary'] {
+.filter-buttons button[variant="primary"] {
   background: rgb(255 255 255 / 25%);
   border: 2px solid white;
 }
@@ -239,11 +244,6 @@ input {
   color: var(--muted);
   cursor: pointer;
   margin-left: 6px;
-}
-
-.action-buttons .btn {
-  width: 100%;
-  text-align: center;
 }
 
 ul li {
