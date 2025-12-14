@@ -117,31 +117,37 @@ src/
 ## Инструкция по запуску
 
 1. Перейти в папку `src/`:
+
    ```bash
    cd src
    ```
 
 2. Установить зависимости:
+
    ```bash
    npm install
    ```
 
 3. Запустить сервер в режиме разработки:
+
    ```bash
    npm run dev
    ```
-   
+
    Или в обычном режиме:
+
    ```bash
    npm start
    ```
 
 4. Открыть документацию API:
+
    ```
    http://localhost:3000/docs
    ```
 
 5. API доступен по адресу:
+
    ```
    http://localhost:3000
    ```
@@ -151,11 +157,13 @@ src/
 ## Примеры запросов
 
 ### Получить все курсы
+
 ```bash
 GET http://localhost:3000/courses
 ```
 
 ### Создать курс
+
 ```bash
 POST http://localhost:3000/courses
 Content-Type: application/json
@@ -170,11 +178,13 @@ Content-Type: application/json
 ```
 
 ### Получить курс по ID
+
 ```bash
 GET http://localhost:3000/courses/1
 ```
 
 ### Обновить курс
+
 ```bash
 PUT http://localhost:3000/courses/1
 Content-Type: application/json
@@ -186,6 +196,7 @@ Content-Type: application/json
 ```
 
 ### Удалить курс
+
 ```bash
 DELETE http://localhost:3000/courses/1
 ```
