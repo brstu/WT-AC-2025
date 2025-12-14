@@ -278,13 +278,6 @@ form textarea:focus {
   box-shadow: 0 0 0 4px rgb(99 88 255 / 10%);
 }
 
-form .btn {
-  margin-top: 2rem;
-  width: 100%;
-  padding: 1.1rem;
-  font-size: 1.1rem;
-}
-
 /* Кнопки общего вида */
 .btn,
 .btn-new {
@@ -314,6 +307,13 @@ form .btn {
 
 .btn.danger:hover {
   background: var(--danger-hover);
+}
+
+form .btn {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 1.1rem;
+  font-size: 1.1rem;
 }
 
 /* Тост */
