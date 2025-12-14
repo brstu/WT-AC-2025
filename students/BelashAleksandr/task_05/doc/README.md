@@ -122,6 +122,7 @@ npm run dev
 ```
 
 **Обычный запуск:**
+
 ```bash
 npm start
 ```
@@ -131,23 +132,27 @@ npm start
 ### Доступ к документации
 
 После запуска сервера документация Swagger доступна по адресу:
-```
+
+```text
 http://localhost:3000/docs
 ```
 
 ### Примеры запросов
 
 **Получить все опросы:**
+
 ```bash
 GET http://localhost:3000/polls
 ```
 
 **Получить опрос по ID:**
+
 ```bash
 GET http://localhost:3000/polls/1
 ```
 
 **Создать новый опрос:**
+
 ```bash
 POST http://localhost:3000/polls
 Content-Type: application/json
