@@ -28,7 +28,7 @@
 
 ### Вариант №38
 
-**API фитнес-трекера: тренировки, планы, прогресс**
+#### API фитнес-трекера: тренировки, планы, прогресс
 
 ## Ход выполнения работы
 
@@ -53,7 +53,7 @@
   - `express.json()` для парсинга JSON
   - `cors` для поддержки CORS
   - `morgan` для логирования запросов
-  
+
 - **CRUD эндпоинты для тренировок** (`/workouts`):
   - `GET /workouts` — получение списка тренировок (с параметрами `q`, `limit`, `offset`)
   - `GET /workouts/:id` — получение тренировки по ID
@@ -133,21 +133,25 @@
 ## Инструкция по запуску
 
 1. Перейти в директорию `src/`:
+
    ```bash
    cd src
    ```
 
 2. Установить зависимости:
+
    ```bash
    npm install
    ```
 
 3. Запустить сервер:
+
    ```bash
    npm start
    ```
-   
+
    Или для разработки:
+
    ```bash
    npm run dev
    ```
@@ -157,6 +161,7 @@
 ## Примеры запросов
 
 ### Создание тренировки
+
 ```bash
 POST http://localhost:3000/workouts
 Content-Type: application/json
@@ -171,16 +176,19 @@ Content-Type: application/json
 ```
 
 ### Получение всех тренировок
+
 ```bash
 GET http://localhost:3000/workouts
 ```
 
 ### Получение тренировки по ID
+
 ```bash
 GET http://localhost:3000/workouts/1
 ```
 
 ### Обновление тренировки
+
 ```bash
 PUT http://localhost:3000/workouts/1
 Content-Type: application/json
@@ -192,6 +200,7 @@ Content-Type: application/json
 ```
 
 ### Удаление тренировки
+
 ```bash
 DELETE http://localhost:3000/workouts/1
 ```
