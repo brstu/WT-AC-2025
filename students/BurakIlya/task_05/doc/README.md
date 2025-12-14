@@ -79,7 +79,7 @@ cd src
 npm install
 ```
 
-2. Запустить сервер:
+1. Запустить сервер:
 
 ```bash
 npm start
@@ -91,8 +91,8 @@ npm start
 npm run dev
 ```
 
-3. API доступно на `http://localhost:3000`
-4. Документация Swagger: `http://localhost:3000/docs`
+1. API доступно на `http://localhost:3000`
+1. Документация Swagger: `http://localhost:3000/docs`
 
 ### 5. Скриншоты выполненной лабораторной работы
 
