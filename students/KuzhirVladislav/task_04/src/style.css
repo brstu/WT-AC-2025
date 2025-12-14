@@ -6,7 +6,7 @@
 
 :root {
   --bg: #fdfdff;
-  --card: #ffffff;
+  --card: #fff;
   --text: #0f172a;
   --muted: #64748b;
   --primary: #635bff;
@@ -14,28 +14,31 @@
   --danger: #ef4444;
   --danger-hover: #dc2626;
   --border: #e2e8f0;
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.06);
-  --shadow-md: 0 12px 32px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 4px 16px rgb(0 0 0 / 6%);
+  --shadow-md: 0 12px 32px rgb(0 0 0 / 10%);
   --radius: 18px;
   --radius-sm: 14px;
   --transition: all 0.26s ease;
 }
 
 body {
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: Inter, system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   min-height: 100dvh;
   background-attachment: fixed;
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(99, 88, 255, 0.04) 0%, transparent 20%),
-    radial-gradient(circle at 90% 80%, rgba(99, 88, 255, 0.03) 0%, transparent 20%);
+  background-image: radial-gradient(
+      circle at 10% 20%,
+      rgb(99 88 255 / 4%) 0%,
+      transparent 20%
+    ),
+    radial-gradient(circle at 90% 80%, rgb(99 88 255 / 3%) 0%, transparent 20%);
 }
 
 /* Header */
 header {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgb(255 255 255 / 92%);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border);
   position: sticky;
@@ -83,7 +86,7 @@ header {
 #search-input:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 5px rgba(99, 88, 255, 0.14);
+  box-shadow: 0 0 0 5px rgb(99 88 255 / 14%);
 }
 
 .search-icon {
@@ -124,37 +127,6 @@ header {
 .trainer-suggestions div:hover {
   background: #f8faff;
   color: var(--primary);
-}
-
-/* Кнопки общего вида */
-.btn,
-.btn-new {
-  padding: 0.8rem 1.6rem;
-  background: var(--primary);
-  color: white;
-  font-weight: 600;
-  border-radius: var(--radius-sm);
-  text-decoration: none;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
-  white-space: nowrap;
-  border: none;
-  cursor: pointer;
-}
-
-.btn:hover,
-.btn-new:hover {
-  background: var(--primary-hover);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-.btn.danger {
-  background: var(--danger);
-}
-
-.btn.danger:hover {
-  background: var(--danger-hover);
 }
 
 /* Main */
@@ -294,16 +266,16 @@ form textarea {
   transition: var(--transition);
 }
 
+form textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
 form input:focus,
 form textarea:focus {
   outline: none;
   border-color: var(--primary);
-  box-shadow: 0 0 0 4px rgba(99, 88, 255, 0.1);
-}
-
-form textarea {
-  min-height: 150px;
-  resize: vertical;
+  box-shadow: 0 0 0 4px rgb(99 88 255 / 10%);
 }
 
 form .btn {
@@ -311,6 +283,37 @@ form .btn {
   width: 100%;
   padding: 1.1rem;
   font-size: 1.1rem;
+}
+
+/* Кнопки общего вида */
+.btn,
+.btn-new {
+  padding: 0.8rem 1.6rem;
+  background: var(--primary);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  white-space: nowrap;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover,
+.btn-new:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn.danger {
+  background: var(--danger);
+}
+
+.btn.danger:hover {
+  background: var(--danger-hover);
 }
 
 /* Тост */
@@ -322,7 +325,7 @@ form .btn {
   padding: 1rem 2rem;
   border-radius: 16px;
   font-weight: 700;
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 16px 40px rgb(0 0 0 / 18%);
   opacity: 0;
   transition: all 0.4s ease;
   z-index: 1000;
@@ -340,19 +343,23 @@ form .btn {
 }
 
 /* Адаптив */
-@media (max-width: 860px) {
+
+@media (width <= 860px) {
   .header-inner {
     flex-direction: column;
     gap: 1.2rem;
   }
+
   .search-container {
     order: 3;
     width: 100%;
     max-width: none;
   }
+
   .grid {
     grid-template-columns: 1fr;
   }
+
   form {
     padding: 2rem 1.5rem;
   }
