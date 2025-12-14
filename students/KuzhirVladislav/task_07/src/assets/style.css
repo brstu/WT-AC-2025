@@ -96,7 +96,7 @@ ul {
 }
 
 .filter-buttons .btn.btn-primary,
-.filter-buttons button[variant='primary'] {
+.filter-buttons button[variant="primary"] {
   background: rgb(255 255 255 / 25%);
   border: 2px solid white;
 }
@@ -152,8 +152,8 @@ form label {
   color: var(--muted);
 }
 
-input[type='text'],
-input[type='password'],
+input[type="text"],
+input[type="password"],
 input {
   width: 100%;
   padding: 10px 12px;
@@ -403,7 +403,6 @@ ul li {
 }
 
 /* additional helpers */
-
 .card-list {
   display: flex;
   flex-direction: column;
