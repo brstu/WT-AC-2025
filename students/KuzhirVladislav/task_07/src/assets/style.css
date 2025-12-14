@@ -158,6 +158,11 @@ ul {
   border: 2px solid rgb(255 255 255 / 30%);
 }
 
+.action-buttons .btn {
+  width: 100%;
+  text-align: center;
+}
+
 .filter-buttons .btn:hover {
   background: rgb(255 255 255 / 30%);
   box-shadow: none;
@@ -183,11 +188,6 @@ ul {
   color: var(--muted);
   cursor: pointer;
   margin-left: 6px;
-}
-
-.action-buttons .btn {
-  width: 100%;
-  text-align: center;
 }
 
 /* Остальные блоки */
