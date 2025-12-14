@@ -62,18 +62,23 @@
 ### 3. Скриншоты выполненной лабораторной работы
 
 #### Получение списка опросов (GET /polls)
+
 ![Список опросов](https://via.placeholder.com/800x400/4A90E2/FFFFFF?text=GET+/polls+-+Список+опросов)
 
 #### Получение опроса по ID (GET /polls/:id)
+
 ![Опрос по ID](https://via.placeholder.com/800x400/7B68EE/FFFFFF?text=GET+/polls/1+-+Опрос+по+ID)
 
 #### Создание нового опроса (POST /polls)
+
 ![Создание опроса](https://via.placeholder.com/800x400/50C878/FFFFFF?text=POST+/polls+-+Создание+опроса)
 
 #### Swagger документация
+
 ![Swagger UI](https://via.placeholder.com/800x400/FF6347/FFFFFF?text=Swagger+UI+документация)
 
 #### Голосование в опросе (POST /polls/:id/vote)
+
 ![Голосование](https://via.placeholder.com/800x400/FFD700/000000?text=POST+/polls/1/vote+-+Голосование)
 
 ---
@@ -111,6 +116,7 @@ npm install
 ### Запуск сервера
 
 **Режим разработки:**
+
 ```bash
 npm run dev
 ```
@@ -154,6 +160,7 @@ Content-Type: application/json
 ```
 
 **Проголосовать:**
+
 ```bash
 POST http://localhost:3000/polls/1/vote
 Content-Type: application/json
@@ -164,6 +171,7 @@ Content-Type: application/json
 ```
 
 **Удалить опрос:**
+
 ```bash
 DELETE http://localhost:3000/polls/1
 ```
