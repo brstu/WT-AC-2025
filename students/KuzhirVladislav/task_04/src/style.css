@@ -294,6 +294,13 @@ form textarea:focus {
   cursor: pointer;
 }
 
+form .btn {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 1.1rem;
+  font-size: 1.1rem;
+}
+
 .btn:hover,
 .btn-new:hover {
   background: var(--primary-hover);
@@ -307,13 +314,6 @@ form textarea:focus {
 
 .btn.danger:hover {
   background: var(--danger-hover);
-}
-
-form .btn {
-  margin-top: 2rem;
-  width: 100%;
-  padding: 1.1rem;
-  font-size: 1.1rem;
 }
 
 /* Тост */
@@ -343,7 +343,6 @@ form .btn {
 }
 
 /* Адаптив */
-
 @media (width <= 860px) {
   .header-inner {
     flex-direction: column;
