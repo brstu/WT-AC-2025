@@ -32,35 +32,19 @@
 
 ### 1. Структура проекта
 
-src
-| controllers/ — содержит контроллеры приложения (обработчики HTTP-запросов).
-| | grades.js
-| | groups.js
-| | tasks.js
-| middlewares/ — middleware-функции (например, для обработки ошибок, валидации).
-| | errorHandler.js
-| | validate.js
-| routes/ — определение маршрутов.
-| | grades.js
-| | groups.js
-| | index.js
-| | tasks.js
-| schemas/ — схемы данных.
-| | grades.js
-| | groups.js
-| | tasks.js
-| services/ — бизнес-логика приложения.
-| | dataService.js
-| test/ — тесты.
-| | groups.test.js
-| tools/ — вспомогательные инструменты/скрипты.
-| | generate_openapi.js (скрипт для генерации OpenAPI-спецификации)
-| .env.example (пример файла с переменными окружения)
-| app.js (главный файл приложения, entry point)
-| data.json (тестовые или начальные данные)
-| package-lock.json
-| package.json (зависимости и скрипты)
-| Readme.md (документация проекта)
+controllers — содержит контроллеры приложения (обработчики HTTP-запросов).<br>
+middlewares — middleware-функции (например, для обработки ошибок, валидации).<br>
+routes — определение маршрутов.<br>
+schemas — схемы данных.<br>
+services — бизнес-логика приложения.<br>
+test — тесты.<br>
+tools — вспомогательные инструменты/скрипты.<br>
+ generate_openapi.js (скрипт для генерации OpenAPI-спецификации)<br>
+.env.example (пример файла с переменными окружения)<br>
+app.js (главный файл приложения, entry point)<br>
+data.json (тестовые или начальные данные)<br>
+package.json (зависимости и скрипты)<br>
+Readme.md (документация проекта)
 
 ### 2. Реализованные элементы
 
