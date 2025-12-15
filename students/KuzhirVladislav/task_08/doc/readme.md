@@ -33,7 +33,50 @@
 
 ### 1. Структура проекта
 
-
+.<br>
+├── .github<br>
+│ └── workflows<br>
+│ └── ci.yml<br>
+├── assets<br>
+│ └── style.css<br>
+├── components<br>
+│ ├── Button.jsx<br>
+│ ├── ErrorMessage.jsx<br>
+│ ├── FormInput.jsx<br>
+│ ├── Loader.jsx<br>
+│ └── Nav.jsx<br>
+├── e2e<br>
+│ ├── add-museum.spec.js<br>
+│ └── login.spec.js<br>
+├── node_modules<br>
+├── pages<br>
+│ ├── Login.jsx<br>
+│ ├── MuseumDetail.jsx<br>
+│ ├── MuseumForm.jsx<br>
+│ ├── MuseumsList.jsx<br>
+│ ├── NotFound.jsx<br>
+│ └── Register.jsx<br>
+├── store<br>
+│ ├── apiSlice.js<br>
+│ ├── favoritesSlice.js<br>
+│ └── store.js<br>
+├── tests<br>
+│ ├── Button.test.jsx<br>
+│ ├── favoritesSlice.test.js<br>
+│ └── MuseumsList.test.js<br>
+├── .env<br>
+├── .env.example<br>
+├── App.jsx<br>
+├── db.json<br>
+├── docker-compose.yml<br>
+├── Dockerfile<br>
+├── index.html<br>
+├── main.jsx<br>
+├── package-lock.json<br>
+├── package.json<br>
+├── README.md<br>
+├── router.jsx<br>
+└── vite.config.js<br>
 
 ### 2. Реализованные элементы
 
@@ -45,37 +88,33 @@
 
 ### 3. Скриншоты выполненой лабораторной работы
 
-
+![alt text](image.png)
 
 ---
 
 ## Таблица критериев
-
-CD: автодеплой в Pages/Netlify/Vercel/Render/Fly.io.
-Мониторинг ошибок (Sentry) или логирование запросов.
-Проверка типов (TypeScript, strict).
 
 👉 Для удобства проверки и выполнения вашей лабораторной работы составьте таблицу критериев опираясь на задание (обычно task_xx/readme.md)
 
 <strong>Пример таблицы критериев:<br></strong>
 _(можно использовать для Лабораторной работы №1)_
 
-| Критерий                                             | Выполнено |
-| ---------------------------------------------------- | --------- |
-| Тесты                      | ✅        |
-| Контейнеризация                 | ✅        |
-| CI (сборка/тесты) | ✅        |
-| Качество интерфейса/показатели Lighthouse   | ✅        |
-| Качество кода/конфигураций                    | ✅        |
-| Документация/инструкции                                   | ✅        |
+| Критерий                                  | Выполнено |
+| ----------------------------------------- | --------- |
+| Тесты                                     | ✅        |
+| Контейнеризация                           | ✅        |
+| CI (сборка/тесты)                         | ✅        |
+| Качество интерфейса/показатели Lighthouse | ✅        |
+| Качество кода/конфигураций                | ✅        |
+| Документация/инструкции                   | ✅        |
 
 ### Дополнительные бонусы
 
-| Бонус                                                                 | Выполнено |
-| --------------------------------------------------------------------- | --------- |
-| CD: автодеплой в Pages/Netlify/Vercel/Render/Fly.io.                                    | ❌        |
+| Бонус                                                | Выполнено |
+| ---------------------------------------------------- | --------- |
+| CD: автодеплой в Pages/Netlify/Vercel/Render/Fly.io. | ❌        |
 | Мониторинг ошибок (Sentry) или логирование запросов. | ❌        |
-| Проверка типов (TypeScript, strict).                  | ❌        |
+| Проверка типов (TypeScript, strict).                 | ❌        |
 
 ---
 

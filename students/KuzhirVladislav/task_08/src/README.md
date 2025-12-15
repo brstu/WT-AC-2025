@@ -5,7 +5,7 @@ A React SPA for browsing museums/exhibitions with favorites.
 ## Setup
 
 1. `npm install`
-2. `npm run dev`
+2. `npm run start`
 
 ### Run with Docker
 
