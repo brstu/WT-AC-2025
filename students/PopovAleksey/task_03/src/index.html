@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Календарь запусков ракет</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Календарь запусков ракет</h1>
+        </div>
+        
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="search-input" placeholder="Поиск запусков...">
+            </div>
+            
+            <div class="filter-box">
+                <select id="agency-filter">
+                    <option value="">Все агентства</option>
+                    <option value="NASA">NASA</option>
+                    <option value="SpaceX">SpaceX</option>
+                    <option value="Roscosmos">Roscosmos</option>
+                    <option value="ESA">ESA</option>
+                </select>
+            </div>
+            
+            <div class="buttons">
+                <button id="refresh-btn">Обновить</button>
+                <button id="load-more-btn">Загрузить ещё</button>
+            </div>
+        </div>
+        
+        <div id="loading-indicator" class="loading">Загрузка...</div>
+        <div id="error-message" class="error"></div>
+        
+        <div id="launches-container" class="launches">
+        </div>
+        
+        <div class="pagination">
+            <button id="prev-btn">Назад</button>
+            <span id="page-info">Страница 1</span>
+            <button id="next-btn">Вперед</button>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+</body>
+</html>
