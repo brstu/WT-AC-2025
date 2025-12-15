@@ -28,7 +28,7 @@
 
 ### Вариант №14
 
-**Учёт инвентаря/оборудования с ролями**
+#### Учёт инвентаря/оборудования с ролями
 
 ---
 
@@ -81,7 +81,7 @@ task_06/
   - id (UUID), email (unique), password (hashed)
   - firstName, lastName, role (USER/ADMIN)
   - isActive, createdAt, updatedAt
-  
+
 - **Equipment** - Оборудование/инвентарь
   - id (UUID), name, type, serialNumber (unique)
   - manufacturer, model, purchaseDate, warrantyEnd
@@ -304,7 +304,7 @@ curl -X POST http://localhost:3000/api/v1/auth/refresh \
 
 #### 3.6. Сброс пароля
 
-**Шаг 1: Запрос токена сброса**
+##### Шаг 1: Запрос токена сброса
 
 ```bash
 curl -X POST http://localhost:3000/api/v1/auth/forgot-password \
@@ -314,7 +314,7 @@ curl -X POST http://localhost:3000/api/v1/auth/forgot-password \
   }'
 ```
 
-**Шаг 2: Сброс пароля с токеном**
+##### Шаг 2: Сброс пароля с токеном
 
 ```bash
 curl -X POST http://localhost:3000/api/v1/auth/reset-password \
