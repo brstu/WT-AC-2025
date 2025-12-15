@@ -10,11 +10,11 @@
   --warning-color: #f59e0b;
   --info-color: #3b82f6;
   --bg-color: #f9fafb;
-  --card-bg: #ffffff;
+  --card-bg: #fff;
   --text-color: #111827;
   --text-secondary: #6b7280;
   --border-color: #e5e7eb;
-  --input-bg: #ffffff;
+  --input-bg: #fff;
 }
 
 :root[data-theme="dark"] {
@@ -43,8 +43,8 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -58,11 +58,6 @@ body {
   min-height: 100vh;
 }
 
-* {
-  scrollbar-width: thin;
-  scrollbar-color: var(--primary-color) var(--border-color);
-}
-
 *::-webkit-scrollbar {
   width: 8px;
 }
@@ -72,6 +67,10 @@ body {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--primary-color);
+  background: var(--primary-color);
   border-radius: 4px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
 }

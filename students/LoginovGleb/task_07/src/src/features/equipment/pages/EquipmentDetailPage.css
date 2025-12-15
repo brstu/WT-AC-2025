@@ -22,7 +22,7 @@
 }
 
 .detail-content h1 {
-  margin: 0 0 2rem 0;
+  margin: 0 0 2rem;
   color: var(--text-color);
 }
 
@@ -63,7 +63,7 @@
   border-top: 1px solid var(--border-color);
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .detail-grid {
     grid-template-columns: 1fr;
   }

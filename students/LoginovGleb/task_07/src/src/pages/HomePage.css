@@ -53,7 +53,7 @@
   line-height: 1.6;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .hero-section h1 {
     font-size: 2rem;
   }
