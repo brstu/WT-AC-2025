@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <title>Коллекция гаджетов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<header class="header">
+  <nav class="nav container">
+    <div class="logo">Gadgets</div>
+
+    <ul class="nav-list">
+      <li><a href="#catalog">Каталог</a></li>
+      <li><a href="#feedback">Форма</a></li>
+      <li>
+        <button class="theme-toggle" aria-label="Переключить тему">🌙</button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<section id="catalog" class="section container">
+  <h1 class="section-title">Коллекция гаджетов</h1>
+  <p class="section-subtitle">Выберите бренд и изучите устройства</p>
+
+  <!-- Табы -->
+  <div class="tabs" role="tablist" aria-label="Бренды">
+    <button role="tab" aria-selected="true" data-brand="apple">Apple</button>
+    <button role="tab" aria-selected="false" data-brand="samsung">Samsung</button>
+    <button role="tab" aria-selected="false" data-brand="xiaomi">Xiaomi</button>
+  </div>
+
+  <!-- Карточки -->
+  <div class="cards" id="cards">
+    <article class="card" data-brand="apple" data-id="iphone15">
+      <header class="card-header">
+        <h2>iPhone 15</h2>
+
+        <button class="tooltip-trigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+          data-tooltip="Флагман Apple 2024 года">
+          ?
+        </button>
+      </header>
+
+      <p class="card-text">
+        Процессор A17, OLED-дисплей, экосистема iOS.
+      </p>
+
+      <div class="card-actions">
+        <button data-action="specs">Характеристики</button>
+        <button data-action="like">❤️ <span class="like-count">0</span></button>
+        <button data-action="delete">Удалить</button>
+      </div>
+    </article>
+
+    <article class="card" data-brand="samsung" data-id="galaxys24" hidden>
+      <header class="card-header">
+        <h2>Galaxy S24</h2>
+        <button class="tooltip-trigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+          data-tooltip="Флагман Samsung с AMOLED">
+          ?
+        </button>
+      </header>
+
+      <p class="card-text">
+        Яркий AMOLED-дисплей и возможности Android.
+      </p>
+
+      <div class="card-actions">
+        <button data-action="specs">Характеристики</button>
+        <button data-action="like">❤️ <span class="like-count">0</span></button>
+        <button data-action="delete">Удалить</button>
+      </div>
+    </article>
+
+    <article class="card" data-brand="xiaomi" data-id="xiaomi14" hidden>
+      <header class="card-header">
+        <h2>Xiaomi 14</h2>
+        <button class="tooltip-trigger"
+          aria-haspopup="true"
+          aria-expanded="false"
+          data-tooltip="Лучшее соотношение цена/качество">
+          ?
+        </button>
+      </header>
+
+      <p class="card-text">
+        Snapdragon, высокая автономность, быстрая зарядка.
+      </p>
+
+      <div class="card-actions">
+        <button data-action="specs">Характеристики</button>
+        <button data-action="like">❤️ <span class="like-count">0</span></button>
+        <button data-action="delete">Удалить</button>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ФОРМА -->
+<section id="feedback" class="section section-muted">
+  <div class="container">
+    <h2 class="section-title">Обратная связь</h2>
+    <p class="section-subtitle">
+      Оставьте сообщение — мы обязательно ответим
+    </p>
+
+    <form novalidate class="feedback-form">
+      <div class="field">
+        <label>Имя</label>
+        <input name="name" placeholder="Введите имя" required>
+        <small></small>
+      </div>
+
+      <div class="field">
+        <label>Email</label>
+        <input name="email" type="email" placeholder="example@mail.com" required>
+        <small></small>
+      </div>
+
+      <div class="field">
+        <label>Сообщение</label>
+        <textarea name="message" rows="5"
+          placeholder="Минимум 20 символов"
+          minlength="20" required></textarea>
+        <small></small>
+      </div>
+
+      <button disabled>Отправить сообщение</button>
+    </form>
+
+    <p class="form-result"></p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">© 2025 Коллекция гаджетов</div>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
