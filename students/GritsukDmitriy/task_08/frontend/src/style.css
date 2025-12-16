@@ -30,7 +30,7 @@ header h1 {
   background: #fff;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
   transition: transform 0.2s;
   padding: 15px;
 }
@@ -40,7 +40,7 @@ header h1 {
 }
 
 .card-body h3 {
-  margin: 0 0 10px 0;
+  margin: 0 0 10px;
   font-size: 1.2em;
   color: #333;
 }
