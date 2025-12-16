@@ -9,16 +9,19 @@ body {
   color: #2f3640;
 }
 
+
 a {
   text-decoration: none;
   color: inherit;
 }
+
 
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
 }
+
 
 nav {
   background: #273c75;
@@ -40,7 +43,7 @@ h1, h2 {
   padding: 15px;
   border-radius: 8px;
   margin-bottom: 15px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
 }
 
 .card-actions {
