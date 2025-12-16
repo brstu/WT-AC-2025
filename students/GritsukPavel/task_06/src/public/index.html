@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный дневник</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .auth-form, .entry-form, .entries-list {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #5568d3;
+        }
+        
+        .entry {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .entry h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .entry-actions {
+            margin-top: 10px;
+        }
+        
+        .entry-actions button {
+            width: auto;
+            padding: 5px 15px;
+            margin-right: 5px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .logout-btn {
+            background: #e74c3c;
+            margin-bottom: 10px;
+        }
+        
+        .mood {
+            font-style: italic;
+            color: #666;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📔 Личный дневник</h1>
+        
+        <div id="auth-section" class="auth-form">
+            <h2>Вход / Регистрация</h2>
+            <input type="text" id="username" placeholder="Имя пользователя">
+            <input type="password" id="password" placeholder="Пароль">
+            <input type="email" id="email" placeholder="Email (необязательно)">
+            <button onclick="register()">Зарегистрироваться</button>
+            <button onclick="login()">Войти</button>
+        </div>
+        
+        <div id="main-section" class="hidden">
+            <button class="logout-btn" onclick="logout()">Выйти</button>
+            
+            <div class="entry-form">
+                <h2>Новая запись</h2>
+                <input type="text" id="entry-title" placeholder="Заголовок">
+                <textarea id="entry-content" rows="5" placeholder="Содержание записи"></textarea>
+                <input type="text" id="entry-mood" placeholder="Настроение (необязательно)">
+                <button onclick="createEntry()">Добавить запись</button>
+            </div>
+            
+            <div class="entries-list">
+                <h2>Мои записи</h2>
+                <div id="entries-list"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        let token = localStorage.getItem('token');
+        
+        if (token) {
+            showMain();
+        }
+        
+        function showAuth() {
+            document.getElementById('auth-section').classList.remove('hidden');
+            document.getElementById('main-section').classList.add('hidden');
+        }
+        
+        function showMain() {
+            document.getElementById('auth-section').classList.add('hidden');
+            document.getElementById('main-section').classList.remove('hidden');
+            loadEntries();
+        }
+        
+        async function register() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            
+            const response = await fetch('/api/auth/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password, email })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                alert('Регистрация успешна! Теперь войдите.');
+            } else {
+                alert('Ошибка: ' + data.error);
+            }
+        }
+        
+        async function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            
+            const response = await fetch('/api/auth/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+            
+            const data = await response.json();
+            
+            if (response.ok) {
+                token = data.token;
+                localStorage.setItem('token', token);
+                showMain();
+            } else {
+                alert('Ошибка: ' + data.error);
+            }
+        }
+        
+        function logout() {
+            localStorage.removeItem('token');
+            token = null;
+            showAuth();
+        }
+        
+        async function loadEntries() {
+            const response = await fetch('/api/entries', {
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            
+            const entries = await response.json();
+            
+            const list = document.getElementById('entries-list');
+            list.innerHTML = '';
+            
+            entries.forEach(entry => {
+                const div = document.createElement('div');
+                div.className = 'entry';
+                div.innerHTML = `
+                    <h3>${entry.title}</h3>
+                    <p>${entry.content}</p>
+                    ${entry.mood ? '<div class="mood">Настроение: ' + entry.mood + '</div>' : ''}
+                    <div class="entry-actions">
+                        <button onclick="deleteEntry(${entry.id})">Удалить</button>
+                    </div>
+                `;
+                list.appendChild(div);
+            });
+        }
+        
+        async function createEntry() {
+            const title = document.getElementById('entry-title').value;
+            const content = document.getElementById('entry-content').value;
+            const mood = document.getElementById('entry-mood').value;
+            
+            if (!title || !content) {
+                alert('Заполните заголовок и содержание');
+                return;
+            }
+            
+            const response = await fetch('/api/entries', {
+                method: 'POST',
+                headers: { 
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + token
+                },
+                body: JSON.stringify({ title, content, mood })
+            });
+            
+            if (response.ok) {
+                document.getElementById('entry-title').value = '';
+                document.getElementById('entry-content').value = '';
+                document.getElementById('entry-mood').value = '';
+                loadEntries();
+            }
+        }
+        
+        async function deleteEntry(id) {
+            if (!confirm('Удалить эту запись?')) return;
+            
+            const response = await fetch('/api/entries/' + id, {
+                method: 'DELETE',
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            
+            if (response.ok) {
+                loadEntries();
+            }
+        }
+    </script>
+</body>
+</html>
