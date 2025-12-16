@@ -1,0 +1,23 @@
+# Procfile for Heroku/Render deployment
+
+web: npm run start
+release: npm run build
+worker: npm run worker
+
+# Alternatively, for Docker deployment:
+# web: docker run -p $PORT:80 book-catalog:latest
+
+# Health check endpoint
+health: curl -f http://localhost:$PORT/health || exit 1
+
+# Database migration (if using real database)
+# migrate: npm run migrate
+
+# Seed database (development only)
+# seed: npm run seed
+
+# Cron jobs (if needed)
+# cron: npm run cron
+
+# Background workers (if needed)
+# worker: npm run worker
