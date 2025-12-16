@@ -9,19 +9,16 @@ body {
   color: #2f3640;
 }
 
-
 a {
   text-decoration: none;
   color: inherit;
 }
-
 
 .container {
   max-width: 900px;
   margin: 0 auto;
   padding: 20px;
 }
-
 
 nav {
   background: #273c75;
