@@ -1,0 +1,26 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Sample Book Title",
+      "author": "Sample Author",
+      "description": "This is a sample book description. Replace this with actual book information in your db.json file.",
+      "publishedYear": 2024,
+      "genre": "Sample Genre",
+      "coverImageUrl": "https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=400&h=600&fit=crop",
+      "rating": 4.5,
+      "createdAt": "2024-01-01T00:00:00Z",
+      "updatedAt": "2024-01-01T00:00:00Z"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "1",
+      "bookId": "1",
+      "author": "Sample Reviewer",
+      "content": "This is a sample review. Replace this with actual review content in your db.json file.",
+      "rating": 5,
+      "createdAt": "2024-01-01T00:00:00Z"
+    }
+  ]
+}

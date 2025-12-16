@@ -1,0 +1,15 @@
+{
+  "name": "task-04",
+  "version": "1.0.0",
+  "description": "Trainings app with json-server",
+  "scripts": {
+    "start": "json-server --watch ./db.json --port 3000",
+    "dev": "concurrently \"npm run start\" \"open http://localhost:3000\""
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
