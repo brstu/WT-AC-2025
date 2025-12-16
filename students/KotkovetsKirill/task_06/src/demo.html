@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дневник Здоровья - Демо</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        input, textarea, button {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .response {
+            background: #f9f9f9;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+        .token-display {
+            background: #fff3cd;
+            padding: 10px;
+            border-radius: 4px;
+            word-break: break-all;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Дневник Здоровья</h1>
+        
+        <div class="section">
+            <h2>1. Регистрация</h2>
+            <input type="email" id="reg-email" placeholder="Email">
+            <input type="password" id="reg-password" placeholder="Пароль">
+            <input type="text" id="reg-name" placeholder="Имя">
+            <button onclick="signup()">Зарегистрироваться</button>
+            <div id="signup-response" class="response"></div>
+        </div>
+
+        <div class="section">
+            <h2>2. Вход</h2>
+            <input type="email" id="login-email" placeholder="Email">
+            <input type="password" id="login-password" placeholder="Пароль">
+            <button onclick="login()">Войти</button>
+            <div id="login-response" class="response"></div>
+            <div id="token-display" class="token-display" style="display:none;"></div>
+        </div>
+
+        <div class="section">
+            <h2>3. Создать запись о здоровье</h2>
+            <input type="text" id="record-type" placeholder="Тип (например: Давление, Вес)">
+            <input type="text" id="record-value" placeholder="Значение (например: 120/80)">
+            <input type="date" id="record-date">
+            <input type="text" id="record-goal" placeholder="Цель (опционально)">
+            <textarea id="record-notes" placeholder="Заметки (опционально)"></textarea>
+            <button onclick="createRecord()">Создать запись</button>
+            <div id="create-response" class="response"></div>
+        </div>
+
+        <div class="section">
+            <h2>4. Получить все записи</h2>
+            <button onclick="getRecords()">Получить мои записи</button>
+            <div id="records-response" class="response"></div>
+        </div>
+
+        <div class="section">
+            <h2>5. Получить запись по ID</h2>
+            <input type="number" id="get-record-id" placeholder="ID записи">
+            <button onclick="getRecord()">Получить</button>
+            <div id="get-record-response" class="response"></div>
+        </div>
+
+        <div class="section">
+            <h2>6. Обновить запись</h2>
+            <input type="number" id="update-record-id" placeholder="ID записи">
+            <input type="text" id="update-value" placeholder="Новое значение">
+            <button onclick="updateRecord()">Обновить</button>
+            <div id="update-response" class="response"></div>
+        </div>
+
+        <div class="section">
+            <h2>7. Удалить запись</h2>
+            <input type="number" id="delete-record-id" placeholder="ID записи">
+            <button onclick="deleteRecord()">Удалить</button>
+            <div id="delete-response" class="response"></div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000';
+        let token = '';
+
+        async function signup() {
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+            const name = document.getElementById('reg-name').value;
+
+            try {
+                const response = await fetch(`${API_URL}/api/auth/signup`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password, name })
+                });
+                const data = await response.json();
+                document.getElementById('signup-response').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('signup-response').className = 'response success';
+            } catch (error) {
+                document.getElementById('signup-response').innerHTML = error.message;
+                document.getElementById('signup-response').className = 'response error';
+            }
+        }
+
+        async function login() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            try {
+                const response = await fetch(`${API_URL}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await response.json();
+                
+                if (data.token) {
+                    token = data.token;
+                    document.getElementById('token-display').style.display = 'block';
+                    document.getElementById('token-display').innerHTML = `Токен сохранен: ${token.substring(0, 50)}...`;
+                }
+                
+                document.getElementById('login-response').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('login-response').className = 'response success';
+            } catch (error) {
+                document.getElementById('login-response').innerHTML = error.message;
+                document.getElementById('login-response').className = 'response error';
+            }
+        }
+
+        async function createRecord() {
+            if (!token) {
+                alert('Сначала войдите в систему!');
+                return;
+            }
+
+            const type = document.getElementById('record-type').value;
+            const value = document.getElementById('record-value').value;
+            const date = document.getElementById('record-date').value;
+            const goal = document.getElementById('record-goal').value;
+            const notes = document.getElementById('record-notes').value;
+
+            try {
+                const response = await fetch(`${API_URL}/api/records`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ type, value, date, goal, notes })
+                });
+                const data = await response.json();
+                document.getElementById('create-response').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('create-response').className = 'response success';
+            } catch (error) {
+                document.getElementById('create-response').innerHTML = error.message;
+                document.getElementById('create-response').className = 'response error';
+            }
+        }
+
+        async function getRecords() {
+            if (!token) {
+                alert('Сначала войдите в систему!');
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/records`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await response.json();
+                document.getElementById('records-response').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('records-response').className = 'response success';
+            } catch (error) {
+                document.getElementById('records-response').innerHTML = error.message;
+                document.getElementById('records-response').className = 'response error';
+            }
+        }
+
+        async function getRecord() {
+            if (!token) {
+                alert('Сначала войдите в систему!');
+                return;
+            }
+
+            const id = document.getElementById('get-record-id').value;
+
+            try {
+                const response = await fetch(`${API_URL}/api/records/${id}`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await response.json();
+                document.getElementById('get-record-response').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('get-record-response').className = 'response success';
+            } catch (error) {
+                document.getElementById('get-record-response').innerHTML = error.message;
+                document.getElementById('get-record-response').className = 'response error';
+            }
+        }
+
+        async function updateRecord() {
+            if (!token) {
+                alert('Сначала войдите в систему!');
+                return;
+            }
+
+            const id = document.getElementById('update-record-id').value;
+            const value = document.getElementById('update-value').value;
+
+            try {
+                const response = await fetch(`${API_URL}/api/records/${id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ value })
+                });
+                const data = await response.json();
+                document.getElementById('update-response').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('update-response').className = 'response success';
+            } catch (error) {
+                document.getElementById('update-response').innerHTML = error.message;
+                document.getElementById('update-response').className = 'response error';
+            }
+        }
+
+        async function deleteRecord() {
+            if (!token) {
+                alert('Сначала войдите в систему!');
+                return;
+            }
+
+            const id = document.getElementById('delete-record-id').value;
+
+            try {
+                const response = await fetch(`${API_URL}/api/records/${id}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await response.json();
+                document.getElementById('delete-response').innerHTML = JSON.stringify(data, null, 2);
+                document.getElementById('delete-response').className = 'response success';
+            } catch (error) {
+                document.getElementById('delete-response').innerHTML = error.message;
+                document.getElementById('delete-response').className = 'response error';
+            }
+        }
+
+        // Установить текущую дату по умолчанию
+        document.getElementById('record-date').valueAsDate = new Date();
+    </script>
+</body>
+</html>
