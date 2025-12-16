@@ -430,3 +430,98 @@ export function debounce(fn, delay = 300) {
     timeoutId = setTimeout(() => fn.apply(this, args), delay);
   };
 }
+
+// ===== Accessibility: Color Contrast Checker =====
+
+/**
+ * Convert hex color to RGB
+ * @param {string} hex - Hex color (e.g., '#ffffff' or 'ffffff')
+ * @returns {Object} - { r, g, b } values (0-255)
+ */
+function hexToRgb(hex) {
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
+/**
+ * Calculate relative luminance of a color (WCAG 2.0 formula)
+ * @param {Object} rgb - { r, g, b } values (0-255)
+ * @returns {number} - Relative luminance (0-1)
+ */
+function getRelativeLuminance(rgb) {
+  const { r, g, b } = rgb;
+  const [rs, gs, bs] = [r, g, b].map(c => {
+    c = c / 255;
+    return c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+  });
+  return 0.2126 * rs + 0.7152 * gs + 0.0722 * bs;
+}
+
+/**
+ * Calculate contrast ratio between two colors (WCAG 2.0)
+ * @param {string} color1 - First color (hex)
+ * @param {string} color2 - Second color (hex)
+ * @returns {number} - Contrast ratio (1-21)
+ */
+export function getContrastRatio(color1, color2) {
+  const rgb1 = hexToRgb(color1);
+  const rgb2 = hexToRgb(color2);
+  
+  if (!rgb1 || !rgb2) {
+    console.warn('Invalid color format for contrast calculation');
+    return 0;
+  }
+  
+  const lum1 = getRelativeLuminance(rgb1);
+  const lum2 = getRelativeLuminance(rgb2);
+  
+  const lighter = Math.max(lum1, lum2);
+  const darker = Math.min(lum1, lum2);
+  
+  return (lighter + 0.05) / (darker + 0.05);
+}
+
+/**
+ * Check if contrast ratio meets WCAG standards
+ * @param {number} ratio - Contrast ratio
+ * @param {string} level - 'AA' or 'AAA'
+ * @param {boolean} largeText - Is text large (18pt+ or 14pt+ bold)?
+ * @returns {boolean} - true if meets standard
+ */
+export function meetsContrastStandard(ratio, level = 'AA', largeText = false) {
+  if (level === 'AAA') {
+    return largeText ? ratio >= 4.5 : ratio >= 7;
+  }
+  // AA level (default)
+  return largeText ? ratio >= 3 : ratio >= 4.5;
+}
+
+/**
+ * Verify color contrast for accessibility
+ * Checks if foreground and background colors meet WCAG AA standards
+ * 
+ * IMPLEMENTATION NOTE:
+ * This function provides programmatic verification of the color contrast
+ * mentioned in README.md. Used during development to ensure accessibility.
+ * 
+ * @param {string} foreground - Foreground color (hex)
+ * @param {string} background - Background color (hex)
+ * @param {boolean} largeText - Is text large (18pt+ or 14pt+ bold)?
+ * @returns {Object} - { ratio, passes, level }
+ */
+export function verifyColorContrast(foreground, background, largeText = false) {
+  const ratio = getContrastRatio(foreground, background);
+  const passesAA = meetsContrastStandard(ratio, 'AA', largeText);
+  const passesAAA = meetsContrastStandard(ratio, 'AAA', largeText);
+  
+  return {
+    ratio: ratio.toFixed(2),
+    passes: passesAA,
+    level: passesAAA ? 'AAA' : (passesAA ? 'AA' : 'Fail'),
+    details: `Contrast ratio: ${ratio.toFixed(2)}:1 (${passesAA ? '✓' : '✗'} WCAG AA, ${passesAAA ? '✓' : '✗'} WCAG AAA)`
+  };
+}

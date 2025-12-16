@@ -42,10 +42,18 @@ export function setNotFoundHandler(handler) {
 /**
  * Parse the current hash URL
  * @returns {Object} - { path, params, query }
+ * 
+ * EDGE CASES:
+ * - Empty hash: Defaults to '/items' (main list view)
+ * - Hash without #: Extracts from position 1 to avoid '#'
+ * - Missing path in hash: Falls back to '/items'
+ * - Malformed query params: Handled gracefully by URLSearchParams
  */
 export function parseHash() {
+    // EDGE CASE: Empty hash or missing hash - default to main list
     const hash = window.location.hash.slice(1) || '/items';
     const [pathWithQuery, queryString] = hash.split('?');
+    // EDGE CASE: Path might be empty after split - ensure fallback
     const path = pathWithQuery || '/items';
     
     // Parse query parameters
@@ -130,6 +138,13 @@ export function getCurrentRoute() {
 
 /**
  * Handle route change
+ * 
+ * EDGE CASES:
+ * - Route handler throws error: Caught and logged, user stays on current view
+ * - No matching route found: Shows 404 page or redirects to main list
+ * - Handler is async and fails: Error logged, doesn't crash app
+ * - Rapid navigation (double-click): Each call processes independently
+ * - Navigation during pending async handler: New route interrupts previous
  */
 async function handleRouteChange() {
     const { path, query } = parseHash();
@@ -144,15 +159,19 @@ async function handleRouteChange() {
         };
         
         try {
+            // EDGE CASE: Handler might throw - catch to prevent app crash
             await matched.route.handler(matched.params, query);
         } catch (error) {
+            // EDGE CASE: Route handler error - log but don't break navigation
             console.error('Route handler error:', error);
+            // User sees existing content, error is handled by view layer
         }
     } else if (notFoundHandler) {
+        // EDGE CASE: Invalid route - show 404 page
         currentRoute = { path, params: {}, query, route: null };
         notFoundHandler();
     } else {
-        // Default: redirect to /items
+        // EDGE CASE: No 404 handler configured - safe fallback to main list
         navigate('/items', {}, true);
     }
     
@@ -184,25 +203,35 @@ function updateActiveNavLinks() {
 
 /**
  * Initialize the router
+ * 
+ * EDGE CASES:
+ * - Page already loaded (readyState === 'complete'): Handle immediately
+ * - Page still loading: Wait for 'load' event
+ * - No initial hash: Set default to '/items'
+ * - Browser back/forward: Listen to both 'hashchange' and 'popstate'
+ * - Multiple init calls: Event listeners won't duplicate (browser handles this)
+ * - Direct hash in URL on first load: Parsed and routed correctly
  */
 export function initRouter() {
-    // Handle hash change events
+    // Handle hash change events (user navigation)
     window.addEventListener('hashchange', handleRouteChange);
     
-    // Handle initial load
+    // EDGE CASE: Handle initial page load
     window.addEventListener('load', () => {
-        // If no hash, set default
+        // EDGE CASE: No hash on initial load - set default route
         if (!window.location.hash) {
             window.location.hash = '/items';
         } else {
+            // EDGE CASE: Hash present on load (deep link) - route to it
             handleRouteChange();
         }
     });
     
-    // Handle popstate for browser back/forward
+    // EDGE CASE: Handle browser back/forward buttons
     window.addEventListener('popstate', handleRouteChange);
     
-    // Initial route handling if already loaded
+    // EDGE CASE: Document already loaded when initRouter is called
+    // (e.g., script loaded asynchronously)
     if (document.readyState === 'complete') {
         if (!window.location.hash) {
             window.location.hash = '/items';

@@ -293,3 +293,65 @@ describe('Views Utils - Form Validation', () => {
     expect(result.errors.title).toBe('Это поле обязательно');
   });
 });
+
+describe('Views Utils - Color Contrast (Accessibility)', () => {
+  // Import contrast functions for testing
+  const {
+    getContrastRatio,
+    meetsContrastStandard,
+    verifyColorContrast
+  } = require('../js/views/utils.js');
+
+  test('should calculate contrast ratio between black and white', () => {
+    const ratio = getContrastRatio('#000000', '#ffffff');
+    expect(ratio).toBeCloseTo(21, 1); // Maximum contrast
+  });
+
+  test('should calculate contrast ratio between same colors', () => {
+    const ratio = getContrastRatio('#ffffff', '#ffffff');
+    expect(ratio).toBeCloseTo(1, 1); // Minimum contrast
+  });
+
+  test('should verify good contrast passes WCAG AA', () => {
+    const result = verifyColorContrast('#000000', '#ffffff');
+    expect(result.passes).toBe(true);
+    expect(result.level).toBe('AAA');
+  });
+
+  test('should verify poor contrast fails WCAG AA', () => {
+    const result = verifyColorContrast('#777777', '#888888');
+    expect(result.passes).toBe(false);
+    expect(result.level).toBe('Fail');
+  });
+
+  test('should handle colors without # prefix', () => {
+    const ratio = getContrastRatio('000000', 'ffffff');
+    expect(ratio).toBeCloseTo(21, 1);
+  });
+
+  test('should verify large text has lower requirements', () => {
+    // Contrast that passes AA for large text but not normal
+    expect(meetsContrastStandard(3.5, 'AA', true)).toBe(true);
+    expect(meetsContrastStandard(3.5, 'AA', false)).toBe(false);
+  });
+
+  test('should verify AAA standard is stricter than AA', () => {
+    expect(meetsContrastStandard(5, 'AA', false)).toBe(true);
+    expect(meetsContrastStandard(5, 'AAA', false)).toBe(false);
+  });
+
+  test('should provide detailed contrast information', () => {
+    const result = verifyColorContrast('#333333', '#ffffff');
+    expect(result).toHaveProperty('ratio');
+    expect(result).toHaveProperty('passes');
+    expect(result).toHaveProperty('level');
+    expect(result).toHaveProperty('details');
+    expect(result.details).toContain('Contrast ratio');
+    expect(result.details).toContain('WCAG');
+  });
+
+  test('should handle invalid color formats gracefully', () => {
+    const ratio = getContrastRatio('invalid', '#ffffff');
+    expect(ratio).toBe(0);
+  });
+});
