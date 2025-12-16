@@ -1,0 +1,16 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Копируем package.json
+COPY package*.json ./
+COPY package-lock.json ./
+
+# Устанавливаем все зависимости (включая dev)
+RUN npm ci
+
+# Копируем исходный код
+COPY . .
+
+# Запускаем тесты
+CMD ["npm", "run", "test:ci"]
