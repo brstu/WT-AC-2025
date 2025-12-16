@@ -1,0 +1,108 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Конференция по веб-разработке",
+      "description": "Ежегодная конференция для веб-разработчиков с докладами от ведущих специалистов отрасли. Обсуждение современных технологий, фреймворков и лучших практик разработки. В программе: мастер-классы, нетворкинг и розыгрыш призов.",
+      "date": "2025-02-15",
+      "time": "10:00",
+      "location": "Минск, ул. Притыцкого, 62, конференц-зал",
+      "category": "Конференция",
+      "organizer": "TechHub Belarus",
+      "maxParticipants": 200,
+      "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&auto=format&fit=crop",
+      "createdAt": "2025-01-10T10:00:00Z"
+    },
+    {
+      "id": 2,
+      "title": "Мастер-класс по React",
+      "description": "Практический мастер-класс по созданию современных веб-приложений с использованием React 18. Изучение хуков, контекста, и оптимизации производительности. Подходит для разработчиков с базовыми знаниями JavaScript.",
+      "date": "2025-02-20",
+      "time": "14:00",
+      "location": "Брест, ул. Московская, 267, IT-Hub",
+      "category": "Мастер-класс",
+      "organizer": "React Community",
+      "maxParticipants": 30,
+      "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&auto=format&fit=crop",
+      "createdAt": "2025-01-12T14:30:00Z"
+    },
+    {
+      "id": 3,
+      "title": "Хакатон \"Innovation Challenge\"",
+      "description": "Командный хакатон на 48 часов. Создание инновационных решений в сфере искусственного интеллекта и машинного обучения. Призовой фонд - 10 000 BYN. Питание и напитки включены.",
+      "date": "2025-03-01",
+      "time": "09:00",
+      "location": "Гродно, пр. Космонавтов, 21, Технопарк",
+      "category": "Хакатон",
+      "organizer": "Innovation Lab",
+      "maxParticipants": 100,
+      "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&auto=format&fit=crop",
+      "createdAt": "2025-01-15T09:00:00Z"
+    },
+    {
+      "id": 4,
+      "title": "Митап JavaScript Belarus",
+      "description": "Регулярная встреча JavaScript-разработчиков. Три доклада по актуальным темам: TypeScript 5.0, Bun runtime и новые возможности ES2024. После докладов - неформальное общение и пицца.",
+      "date": "2025-02-25",
+      "time": "18:30",
+      "location": "Минск, ул. Немига, 5, Space",
+      "category": "Митап",
+      "organizer": "JS Belarus",
+      "maxParticipants": 80,
+      "image": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&auto=format&fit=crop",
+      "createdAt": "2025-01-18T11:00:00Z"
+    },
+    {
+      "id": 5,
+      "title": "Курс \"Backend разработка на Node.js\"",
+      "description": "Интенсивный курс по backend-разработке. Изучение Express, Fastify, работа с базами данных PostgreSQL и MongoDB, аутентификация и деплой. Длительность: 8 недель, 2 занятия в неделю.",
+      "date": "2025-03-10",
+      "time": "19:00",
+      "location": "Онлайн (Zoom)",
+      "category": "Курс",
+      "organizer": "IT Academy",
+      "maxParticipants": 50,
+      "image": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&auto=format&fit=crop",
+      "createdAt": "2025-01-20T16:00:00Z"
+    },
+    {
+      "id": 6,
+      "title": "Выставка IT-стартапов",
+      "description": "Демонстрация лучших белорусских стартапов. Возможность для инвесторов найти перспективные проекты, а для стартапов - получить финансирование. Участвуют более 50 проектов.",
+      "date": "2025-03-15",
+      "time": "11:00",
+      "location": "Минск, пр. Победителей, 65, Expo",
+      "category": "Выставка",
+      "organizer": "Startup Belarus",
+      "maxParticipants": 500,
+      "image": "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&auto=format&fit=crop",
+      "createdAt": "2025-01-22T13:00:00Z"
+    },
+    {
+      "id": 7,
+      "title": "Семинар по кибербезопасности",
+      "description": "Практический семинар по защите веб-приложений. Разбор типичных уязвимостей OWASP Top 10, методы защиты и инструменты для тестирования безопасности.",
+      "date": "2025-03-20",
+      "time": "15:00",
+      "location": "Минск, ул. Сурганова, 43, БГУ",
+      "category": "Семинар",
+      "organizer": "CyberSec BY",
+      "maxParticipants": 40,
+      "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&auto=format&fit=crop",
+      "createdAt": "2025-01-25T10:00:00Z"
+    },
+    {
+      "id": 8,
+      "title": "Вебинар: UI/UX дизайн 2025",
+      "description": "Обзор трендов в UI/UX дизайне на 2025 год. Новые подходы к проектированию интерфейсов, работа с AI-инструментами и accessibility. Бесплатное участие.",
+      "date": "2025-02-28",
+      "time": "12:00",
+      "location": "Онлайн (YouTube)",
+      "category": "Вебинар",
+      "organizer": "Design Community",
+      "maxParticipants": 1000,
+      "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format&fit=crop",
+      "createdAt": "2025-01-28T08:00:00Z"
+    }
+  ]
+}
