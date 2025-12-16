@@ -2,20 +2,20 @@
   --bg: #f5f7fa;
   --bg-muted: #eef1f5;
   --text: #111;
-  --card: rgba(255,255,255,92%);
+  --card: rgba(255 255 255 / 92%);
   --accent: #007aff;
   --border: #dcdfe4;
-  --shadow: 0 14px 40px rgba(0,0,0,12%);
+  --shadow: 0 14px 40px rgba(0 0 0 / 12%);
 }
 
 [data-theme="dark"] {
   --bg: #0e1117;
   --bg-muted: #161b22;
   --text: #eaeaea;
-  --card: rgba(30,30,30,95%);
+  --card: rgba(30 30 30 / 95%);
   --accent: #4da3ff;
   --border: #2a2f3a;
-  --shadow: 0 18px 48px rgba(0,0,0,60%);
+  --shadow: 0 18px 48px rgba(0 0 0 / 60%);
 }
 
 * { box-sizing: border-box; }
