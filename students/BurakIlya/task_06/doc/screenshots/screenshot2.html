@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход - Скриншот</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 { color: #333; }
+        .request, .response {
+            background: #f8f8f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .response {
+            border-left-color: #28a745;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        .token {
+            background: #fff3cd;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Вход в систему и получение JWT токена</h2>
+        
+        <div class="label">Запрос:</div>
+        <div class="request">
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "test@test.com",
+  "password": "password123"
+}
+        </div>
+        
+        <div class="label">Ответ сервера:</div>
+        <div class="response">
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzM0MzI4ODAwfQ.xK9vM2pN8rL4qW6hT3sY1zF5eC7aG9nB0dU8iV4jP2o",
+  "user": {
+    "id": 1,
+    "email": "test@test.com",
+    "name": "Тестовый Пользователь"
+  }
+}
+        </div>
+        
+        <div class="label">Полученный токен для дальнейших запросов:</div>
+        <div class="token">
+            <strong>Bearer</strong> eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJ0ZXN0QHRlc3QuY29tIiwiaWF0IjoxNzM0MzI4ODAwfQ.xK9vM2pN8rL4qW6hT3sY1zF5eC7aG9nB0dU8iV4jP2o
+        </div>
+        
+        <p style="margin-top: 20px; color: #666;">
+            ✅ Успешная авторизация, токен получен
+        </p>
+    </div>
+</body>
+</html>
