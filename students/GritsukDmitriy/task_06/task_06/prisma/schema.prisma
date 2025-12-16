@@ -1,0 +1,64 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  name      String
+  role      String    @default("USER")  // Изменено с enum на String
+  recipes   Recipe[]
+  favorites Favorite[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  @@map("users")
+}
+
+model Recipe {
+  id           Int       @id @default(autoincrement())
+  title        String
+  description  String?
+  ingredients  String    // Изменено с Json на String (будем хранить JSON как строку)
+  steps        String    // Изменено с Json на String
+  cookingTime  Int       // в минутах
+  difficulty   String    @default("MEDIUM")  // Изменено с enum на String
+  authorId     Int
+  author       User      @relation(fields: [authorId], references: [id])
+  favorites    Favorite[]
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@map("recipes")
+}
+
+model Favorite {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  recipeId  Int
+  user      User     @relation(fields: [userId], references: [id])
+  recipe    Recipe   @relation(fields: [recipeId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@unique([userId, recipeId])
+  @@map("favorites")
+}
+
+// Примечание: SQLite не поддерживает enums на уровне БД,
+// поэтому используем строки с валидацией на уровне приложения
+// enum Role {
+//   USER
+//   ADMIN
+// }
+
+// enum Difficulty {
+//   EASY
+//   MEDIUM
+//   HARD
+// }
