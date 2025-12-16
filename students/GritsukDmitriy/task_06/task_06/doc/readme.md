@@ -147,7 +147,7 @@ API использует JWT токены для аутентификации.
 
 * Authorization: Bearer наш-jwt-токен
 
-### Создание рецепта:
+### Создание рецепта
 
 ``` bash
     POST /api/recipes
