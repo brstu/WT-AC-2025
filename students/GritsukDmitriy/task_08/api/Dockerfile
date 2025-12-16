@@ -4,7 +4,7 @@ WORKDIR /app
 
 COPY db.json .
 
-RUN npm install -g json-server
+RUN npm install -g json-server@0.17.4
 
 EXPOSE 3000
 

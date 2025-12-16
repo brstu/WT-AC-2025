@@ -108,7 +108,6 @@ docker-compose up --build
 docker-compose down
 ```
 
-
 ## Таблица критериев
 
 | Критерий                                                                | Баллы |  Выполнено |
