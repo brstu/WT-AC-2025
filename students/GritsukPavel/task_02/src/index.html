@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Афиша событий - Минск</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <div class="header-content">
+          <h1>Афиша событий</h1>
+          <div class="burger-menu">
+            <button class="burger-btn">☰</button>
+            <nav class="burger-nav">
+              <a href="#concerts">Концерты</a>
+              <a href="#theater">Театр</a>
+              <a href="#cinema">Кино</a>
+            </nav>
+          </div>
+        </div>
+      </header>
+
+      <main>
+        <section class="tabs-section">
+          <div class="tabs-container">
+            <div class="tab-buttons">
+              <button class="tab-btn active" data-tab="concerts">
+                Концерты
+              </button>
+              <button class="tab-btn" data-tab="theater">Театр</button>
+              <button class="tab-btn" data-tab="cinema">Кино</button>
+              <button class="tab-btn" data-tab="exhibitions">Выставки</button>
+            </div>
+
+            <div class="tab-content">
+              <div class="tab-panel active" id="concerts">
+                <h2>Концерты</h2>
+                <div class="events-list" id="events-concerts">
+                  <div class="event-card">
+                    <img src="img/concert1.jpg" alt="Концерт рок группы" />
+                    <div class="event-info">
+                      <h3>Рок-фестиваль 2025</h3>
+                      <p>15 января, 19:00</p>
+                      <p>Минск-Арена</p>
+                      <button
+                        class="btn-details"
+                        data-tooltip="Нажмите чтобы узнать подробнее"
+                      >
+                        Подробнее
+                      </button>
+                      <button class="btn-like">♡</button>
+                      <button class="btn-delete">Удалить</button>
+                    </div>
+                  </div>
+                  <div class="event-card">
+                    <img src="img/concert2.jpg" alt="Джазовый концерт" />
+                    <div class="event-info">
+                      <h3>Джаз вечер</h3>
+                      <p>20 января, 20:00</p>
+                      <p>Дворец Республики</p>
+                      <button
+                        class="btn-details"
+                        data-tooltip="Узнайте больше о событии"
+                      >
+                        Подробнее
+                      </button>
+                      <button class="btn-like">♡</button>
+                      <button class="btn-delete">Удалить</button>
+                    </div>
+                  </div>
+                  <div class="event-card">
+                    <img src="img/concert3.jpg" alt="Поп концерт" />
+                    <div class="event-info">
+                      <h3>Поп-хиты 2025</h3>
+                      <p>25 января, 18:30</p>
+                      <p>Falcon Club</p>
+                      <button
+                        class="btn-details"
+                        data-tooltip="Посмотреть детали"
+                      >
+                        Подробнее
+                      </button>
+                      <button class="btn-like">♡</button>
+                      <button class="btn-delete">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="theater">
+                <h2>Театр</h2>
+                <div class="events-list" id="events-theater">
+                  <div class="event-card">
+                    <img src="img/theater1.jpg" alt="Театральная постановка" />
+                    <div class="event-info">
+                      <h3>Гамлет</h3>
+                      <p>12 января, 19:00</p>
+                      <p>Национальный театр</p>
+                      <button
+                        class="btn-details"
+                        data-tooltip="Подробная информация"
+                      >
+                        Подробнее
+                      </button>
+                      <button class="btn-like">♡</button>
+                      <button class="btn-delete">Удалить</button>
+                    </div>
+                  </div>
+                  <div class="event-card">
+                    <img src="img/theater2.jpg" alt="Балет" />
+                    <div class="event-info">
+                      <h3>Лебединое озеро</h3>
+                      <p>18 января, 18:00</p>
+                      <p>Большой театр</p>
+                      <button
+                        class="btn-details"
+                        data-tooltip="Больше информации"
+                      >
+                        Подробнее
+                      </button>
+                      <button class="btn-like">♡</button>
+                      <button class="btn-delete">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="cinema">
+                <h2>Кино</h2>
+                <div class="events-list" id="events-cinema">
+                  <div class="event-card">
+                    <img src="img/cinema1.jpg" alt="Кинопремьера" />
+                    <div class="event-info">
+                      <h3>Новый блокбастер</h3>
+                      <p>10 января, 21:00</p>
+                      <p>Кинотеатр Октябрь</p>
+                      <button
+                        class="btn-details"
+                        data-tooltip="Информация о фильме"
+                      >
+                        Подробнее
+                      </button>
+                      <button class="btn-like">♡</button>
+                      <button class="btn-delete">Удалить</button>
+                    </div>
+                  </div>
+                  <div class="event-card">
+                    <img src="img/cinema2.jpg" alt="Арт-хаус кино" />
+                    <div class="event-info">
+                      <h3>Фестиваль арт-хауса</h3>
+                      <p>22 января, 19:30</p>
+                      <p>Дом кино</p>
+                      <button
+                        class="btn-details"
+                        data-tooltip="Подробнее об арт-хаусе"
+                      >
+                        Подробнее
+                      </button>
+                      <button class="btn-like">♡</button>
+                      <button class="btn-delete">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-panel" id="exhibitions">
+                <h2>Выставки</h2>
+                <div class="events-list" id="events-exhibitions">
+                  <div class="event-card">
+                    <img
+                      src="img/exhibition1.jpg"
+                      alt="Художественная выставка"
+                    />
+                    <div class="event-info">
+                      <h3>Современное искусство</h3>
+                      <p>весь январь</p>
+                      <p>Национальный музей</p>
+                      <button
+                        class="btn-details"
+                        data-tooltip="Детали выставки"
+                      >
+                        Подробнее
+                      </button>
+                      <button class="btn-like">♡</button>
+                      <button class="btn-delete">Удалить</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="accordion-section">
+          <h2>Часто задаваемые вопросы</h2>
+          <div class="accordion">
+            <div class="accordion-item">
+              <button class="accordion-btn">Как купить билеты?</button>
+              <div class="accordion-content">
+                <p>
+                  Вы можете купить билеты онлайн на нашем сайте или в кассах
+                  перед мероприятием.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-btn">Можно ли вернуть билеты?</button>
+              <div class="accordion-content">
+                <p>
+                  Возврат билетов возможен не позднее чем за 3 дня до начала
+                  мероприятия.
+                </p>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <button class="accordion-btn">
+                Есть ли скидки для студентов?
+              </button>
+              <div class="accordion-content">
+                <p>
+                  Да, студенты получают скидку 15% при предъявлении
+                  студенческого билета.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="form-section">
+          <h2>Обратная связь</h2>
+          <form id="contact-form">
+            <div class="form-group">
+              <label for="name">Имя*</label>
+              <input type="text" id="name" name="name" />
+              <span class="error-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="email">Email*</label>
+              <input type="email" id="email" name="email" />
+              <span class="error-message"></span>
+            </div>
+            <div class="form-group">
+              <label for="message">Сообщение* (минимум 20 символов)</label>
+              <textarea id="message" name="message" rows="5"></textarea>
+              <span class="error-message"></span>
+            </div>
+            <button type="submit" id="submit-btn" disabled>Отправить</button>
+            <div id="form-result"></div>
+          </form>
+        </section>
+      </main>
+
+      <footer>
+        <p>&copy; 2025 Афиша событий Минск. Все права защищены.</p>
+      </footer>
+    </div>
+
+    <div class="modal" id="event-modal">
+      <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <h2 id="modal-title">Название события</h2>
+        <div id="modal-body">
+          <p>Здесь будет подробная информация о событии...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tooltip" id="tooltip"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
