@@ -70,7 +70,10 @@ POST /api/games
   "rating": 9.7,
   "imageUrl": "https://example.com/witcher3.jpg"
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/task_06
 ### Получение списка игр
 
 GET /api/games
