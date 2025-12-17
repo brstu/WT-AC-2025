@@ -13,7 +13,7 @@ body {
   padding: 3rem 1rem;
   text-align: center;
   background:
-    linear-gradient(135deg, rgba(99,102,241,.15), rgba(236,72,153,.15));
+    linear-gradient(135deg, rgba(99 102 241 / 15%), rgba(236 72 153 / 15%));
   border-bottom: 1px solid #1f2937;
 }
 
@@ -84,8 +84,8 @@ button:hover {
 .card {
   background: linear-gradient(
     160deg,
-    rgba(15,23,42,.9),
-    rgba(2,6,23,.9)
+    rgba(15 23 42 / 90%),
+    rgba(2 6 23 / 90%)
   );
   border: 1px solid #1f2937;
   border-radius: 16px;
@@ -96,7 +96,7 @@ button:hover {
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(99,102,241,.15);
+  box-shadow: 0 12px 30px rgba(99 102 241 / 15%);
 }
 
 .card h3 {

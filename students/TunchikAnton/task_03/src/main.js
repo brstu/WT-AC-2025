@@ -5,11 +5,11 @@ const CACHE_TTL = 60_000;
 const list = document.getElementById('list');
 const status = document.getElementById('status');
 const searchInput = document.getElementById('search');
-const filterSelect = document.getElementById('gameFilter');
-const refreshBtn = document.getElementById('refreshBtn');
+const filterSelect = document.getElementById('game-filter');
+const refreshBtn = document.getElementById('refresh-btn');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
-const pageInfo = document.getElementById('pageInfo');
+const pageInfo = document.getElementById('page-info');
 
 let page = 1;
 let controller = null;
