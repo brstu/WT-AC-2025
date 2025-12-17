@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог книг | SPA на чистом JS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Навигация -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#/books" class="logo">
+                    <i class="fas fa-book"></i> Каталог книг
+                </a>
+                <div class="nav-links">
+                    <a href="#/books" class="nav-link">
+                        <i class="fas fa-list"></i> Все книги
+                    </a>
+                    <a href="#/new" class="nav-link">
+                        <i class="fas fa-plus"></i> Добавить книгу
+                    </a>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Уведомления -->
+        <div id="notification" class="notification hidden"></div>
+
+        <!-- Основной контент -->
+        <main id="main-content">
+            <div class="container">
+                <div class="loading" id="loading">
+                    <i class="fas fa-spinner fa-spin"></i> Загрузка...
+                </div>
+                <div id="view-content"></div>
+            </div>
+        </main>
+
+        <!-- Подтверждение удаления -->
+        <div id="delete-modal" class="modal hidden">
+            <div class="modal-content">
+                <h3>Подтверждение удаления</h3>
+                <p>Вы уверены, что хотите удалить эту книгу? Это действие нельзя отменить.</p>
+                <div class="modal-actions">
+                    <button id="cancel-delete" class="btn btn-secondary">Отмена</button>
+                    <button id="confirm-delete" class="btn btn-danger">Удалить</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <div class="container">
+                <p>Лабораторная работа 04. REST-клиент SPA. Вариант 18: Каталог книг</p>
+                <p>Используется mock API</p>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="app.js"></script>
+</body>
+</html>

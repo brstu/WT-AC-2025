@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/playwright:v1.40.0-focal
+
+WORKDIR /app
+
+# Устанавливаем зависимости
+COPY package*.json ./
+RUN npm ci
+
+# Копируем исходный код и тесты
+COPY . .
+
+# Устанавливаем переменные окружения
+ENV CI=true
+ENV PORT=3000
+
+# Запускаем тесты
+CMD ["npm", "run", "test:e2e:ci"]

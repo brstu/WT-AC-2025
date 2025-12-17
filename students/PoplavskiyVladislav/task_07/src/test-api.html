@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test API</title>
+</head>
+<body>
+    <h1>Testing API Connection</h1>
+    <button onclick="testAPI()">Test API</button>
+    <div id="result"></div>
+    
+    <script>
+        async function testAPI() {
+            const resultDiv = document.getElementById('result')
+            resultDiv.innerHTML = 'Testing...'
+            
+            try {
+                const response = await fetch('http://localhost:3001/events')
+                if (response.ok) {
+                    const data = await response.json()
+                    resultDiv.innerHTML = `
+                        <h3>✅ API работает!</h3>
+                        <p>Получено мероприятий: ${data.length}</p>
+                        <pre>${JSON.stringify(data, null, 2)}</pre>
+                    `
+                } else {
+                    resultDiv.innerHTML = `❌ Ошибка HTTP: ${response.status}`
+                }
+            } catch (error) {
+                resultDiv.innerHTML = `❌ Ошибка: ${error.message}`
+            }
+        }
+        
+        // Автоматически тестируем при загрузке
+        window.onload = testAPI
+    </script>
+</body>
+</html>
