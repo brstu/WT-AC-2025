@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Трекер погоды - Лабораторная работа 03</title>
+        <meta
+            name="description"
+            content="Трекер погоды по городам с кэшированием результатов на 1 минуту"
+        />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>🌤️ Трекер погоды</h1>
+                <p class="subtitle">Кэширование результатов на 1 минуту</p>
+            </header>
+
+            <main>
+                <section class="search-section" aria-labelledby="search-title">
+                    <h2 id="search-title" class="visually-hidden">Поиск погоды по городу</h2>
+                    <div class="search-wrapper">
+                        <label for="city-search" class="visually-hidden"
+                            >Название города для поиска погоды</label
+                        >
+                        <input
+                            type="search"
+                            id="city-search"
+                            placeholder="Введите название города (например, Moscow, London, Paris...)"
+                            aria-label="Поиск города"
+                            autocomplete="off"
+                        />
+                        <button
+                            type="button"
+                            id="search-btn"
+                            class="btn btn-primary"
+                            aria-label="Искать погоду"
+                        >
+                            <span class="btn-text">Поиск</span>
+                        </button>
+                        <button
+                            type="button"
+                            id="refresh-btn"
+                            class="btn btn-secondary"
+                            aria-label="Обновить данные (игнорировать кэш)"
+                            title="Обновить данные и игнорировать кэш"
+                        >
+                            <span class="btn-text">🔄 Обновить</span>
+                        </button>
+                    </div>
+                    <div class="cache-info" id="cache-info" aria-live="polite"></div>
+                </section>
+
+                <section
+                    class="weather-cards"
+                    id="weather-cards"
+                    aria-live="polite"
+                    aria-label="Результаты погоды"
+                >
+                    <!-- Здесь будут карточки с погодой -->
+                </section>
+
+                <section class="popular-cities" aria-labelledby="popular-title">
+                    <h2 id="popular-title">Популярные города</h2>
+                    <div class="cities-grid" role="group" aria-label="Список популярных городов">
+                        <button type="button" class="city-btn" data-city="Moscow">Москва</button>
+                        <button type="button" class="city-btn" data-city="London">Лондон</button>
+                        <button type="button" class="city-btn" data-city="New York">
+                            Нью-Йорк
+                        </button>
+                        <button type="button" class="city-btn" data-city="Tokyo">Токио</button>
+                        <button type="button" class="city-btn" data-city="Paris">Париж</button>
+                        <button type="button" class="city-btn" data-city="Berlin">Берлин</button>
+                        <button type="button" class="city-btn" data-city="Sydney">Сидней</button>
+                        <button type="button" class="city-btn" data-city="Dubai">Дубай</button>
+                    </div>
+                </section>
+
+                <!-- Новая секция: Бесконечный скролл городов -->
+                <section class="infinite-scroll-section" aria-labelledby="all-cities-title">
+                    <div class="section-header">
+                        <h2 id="all-cities-title">Все города мира</h2>
+                        <button
+                            type="button"
+                            id="toggle-infinite-scroll"
+                            class="btn btn-secondary"
+                            aria-expanded="false"
+                            aria-controls="cities-list-container"
+                        >
+                            <span class="btn-text">📋 Показать список</span>
+                        </button>
+                    </div>
+
+                    <div id="cities-list-container" class="cities-list-container hidden">
+                        <div class="cities-list" id="cities-list">
+                            <!-- Города будут загружаться динамически -->
+                            <div class="scroll-sentinel" id="scroll-sentinel"></div>
+                        </div>
+                        <div class="loading-indicator" id="loading-indicator" aria-live="polite">
+                            <div class="spinner" role="status" aria-label="Загрузка"></div>
+                            <p>Загрузка городов...</p>
+                        </div>
+                    </div>
+                </section>
+            </main>
+
+            <footer>
+                <p>Лабораторная работа 03 | Логинов Глеб | 2025</p>
+            </footer>
+        </div>
+
+        <script type="module" src="scripts/main.js"></script>
+    </body>
+</html>
+
