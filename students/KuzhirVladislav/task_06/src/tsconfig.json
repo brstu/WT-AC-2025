@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist",
+    "rootDir": "./"
+  },
+  "include": ["*.ts", "controllers/**/*.ts", "routes/**/*.ts", "middleware/**/*.ts", "utils/**/*.ts", "prisma/**/*.ts"],
+  "exclude": ["node_modules"]
+}

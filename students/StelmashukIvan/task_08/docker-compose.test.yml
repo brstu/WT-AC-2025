@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    ports:
+      - "3000:3000"
+    environment:
+      - CI=true
+      - NODE_ENV=test
+
+  e2e:
+    build:
+      context: .
+      dockerfile: Dockerfile.playwright
+    depends_on:
+      - frontend
+    environment:
+      - BASE_URL=http://frontend:3000
+    command: ["npm", "run", "test:e2e:ci"]
