@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TechHub - сайт о современных технологиях и гаджетах. Обзоры, сравнения, советы по выбору смартфонов, ноутбуков, умных часов и других устройств."
+    />
+    <meta
+      name="keywords"
+      content="технологии, гаджеты, обзоры, смартфоны, ноутбуки, умные часы, новинки"
+    />
+    <meta name="author" content="TechHub" />
+
+    <!-- Open Graph мета-теги для соцсетей -->
+    <meta
+      property="og:title"
+      content="TechHub - Современные технологии и гаджеты"
+    />
+    <meta
+      property="og:description"
+      content="Актуальные обзоры, честные сравнения и экспертные советы по выбору гаджетов"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- Theme Color для браузеров -->
+    <meta
+      name="theme-color"
+      content="#0066cc"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#0a84ff"
+      media="(prefers-color-scheme: dark)"
+    />
+
+    <title>TechHub - Современные технологии и гаджеты</title>
+
+    <!-- Preconnect для оптимизации загрузки -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+
+    <!-- Critical CSS для LCP оптимизации -->
+    <link rel="preload" href="styles.css" as="style" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <!--
+    ПРИМЕЧАНИЕ ПО ИЗОБРАЖЕНИЯМ 2x:
+    
+    В проекте используются ссылки на изображения с суффиксом -2x.jpg для Retina дисплеев.
+    Например: smartphone-desktop-2x.jpg, laptop-tablet-2x.jpg и т.д.
+    
+    Эти изображения должны быть созданы в разрешении в 2 раза больше обычных (например, 800x600 вместо 400x300).
+    
+    Если файлы *-2x.jpg отсутствуют, браузер автоматически использует 1x версии.
+    Это graceful degradation - сайт будет работать корректно даже без 2x изображений.
+    
+    Для production рекомендуется:
+    1. Создать 2x версии всех изображений (удвоенное разрешение)
+    2. Оптимизировать их с помощью инструментов сжатия (ImageOptim, Squoosh, etc.)
+    3. Использовать современные форматы (WebP, AVIF) в дополнительных <source> элементах
+  -->
+
+  <body>
+    <!-- Ссылка для быстрого перехода к контенту -->
+    <a href="#main-content" class="skip-to-content"
+      >Перейти к основному содержанию</a
+    >
+
+    <!-- Шапка сайта с навигацией -->
+    <header class="site-header" role="banner">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <h1>TechHub</h1>
+            <p class="tagline">Ваш гид в мире технологий</p>
+          </div>
+          <nav
+            class="main-nav"
+            role="navigation"
+            aria-label="Основная навигация"
+          >
+            <ul role="list">
+              <li><a href="#hero">Главная</a></li>
+              <li><a href="#reviews">Обзоры</a></li>
+              <li><a href="#comparisons">Сравнения</a></li>
+              <li><a href="#guides">Гайды</a></li>
+              <li><a href="#news">Новости</a></li>
+            </ul>
+          </nav>
+          <button
+            class="theme-toggle"
+            id="theme-toggle"
+            aria-label="Переключить тему"
+            title="Переключить тему"
+          >
+            <span class="theme-icon theme-icon-light" aria-hidden="true"
+              >☀️</span
+            >
+            <span class="theme-icon theme-icon-dark" aria-hidden="true"
+              >🌙</span
+            >
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Основной контент -->
+    <main id="main-content" role="main">
+      <!-- Секция Hero -->
+      <section
+        id="hero"
+        class="hero-section"
+        aria-labelledby="hero-title"
+        role="region"
+      >
+        <div class="container">
+          <h2 id="hero-title">Откройте мир технологий</h2>
+          <p class="hero-description">
+            Актуальные обзоры, честные сравнения и экспертные советы по выбору
+            гаджетов
+          </p>
+          <a href="#reviews" class="cta-button" aria-label="Перейти к обзорам"
+            >Смотреть обзоры</a
+          >
+        </div>
+      </section>
+
+      <!-- Секция с последними обзорами -->
+      <section
+        id="reviews"
+        class="reviews-section"
+        aria-labelledby="reviews-title"
+      >
+        <div class="container">
+          <h2 id="reviews-title">Последние обзоры</h2>
+          <div class="reviews-grid">
+            <!--
+              АДАПТИВНЫЕ ИЗОБРАЖЕНИЯ:
+              
+              Используемые техники:
+              1. <picture> - контейнер для множественных источников
+              2. <source media> - выбор изображения по размеру экрана
+              3. srcset с 1x/2x - поддержка Retina дисплеев (высокая плотность пикселей)
+              4. sizes - указывает браузеру размер отображения для оптимального выбора
+              5. loading="lazy" - отложенная загрузка для LCP оптимизации
+              6. width/height - предотвращение CLS (layout shift)
+              7. aspect-ratio в CSS - сохранение пропорций
+              
+              Логика выбора изображений:
+              - Desktop (1024px+): 400px фиксированная ширина
+              - Tablet (600px+): 50vw (половина viewport)
+              - Mobile (<600px): 100vw (полная ширина viewport)
+              
+              Для Retina дисплеев браузер автоматически выбирает 2x версию
+            -->
+            <!-- Обзор 1 -->
+            <article class="review-card">
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="assets/images/smartphone-desktop.jpg"
+                />
+                <source
+                  media="(min-width: 600px)"
+                  srcset="assets/images/smartphone-tablet.jpg"
+                />
+                <img
+                  src="assets/images/smartphone-mobile.jpg"
+                  alt="Флагманский смартфон с тройной камерой на столе"
+                  loading="lazy"
+                  width="400"
+                  height="300"
+                />
+              </picture>
+              <div class="card-content">
+                <h3>Обзор флагманского смартфона 2025</h3>
+                <p class="review-meta">
+                  <time datetime="2025-10-15">15 октября 2025</time>
+                  <span aria-label="Категория">Смартфоны</span>
+                </p>
+                <p class="review-excerpt">
+                  Подробный обзор нового флагмана: производительность, камера,
+                  автономность и все, что нужно знать перед покупкой.
+                </p>
+                <a
+                  href="#"
+                  class="read-more"
+                  aria-label="Читать полный обзор флагманского смартфона"
+                  >Читать далее →</a
+                >
+              </div>
+            </article>
+
+            <!-- Обзор 2 -->
+            <article class="review-card">
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="assets/images/laptop-desktop.jpg"
+                />
+                <source
+                  media="(min-width: 600px)"
+                  srcset="assets/images/laptop-tablet.jpg"
+                />
+                <img
+                  src="assets/images/laptop-mobile.jpg"
+                  alt="Ультрабук с открытым экраном на рабочем столе"
+                  loading="lazy"
+                  width="400"
+                  height="300"
+                />
+              </picture>
+              <div class="card-content">
+                <h3>Лучшие ультрабуки для работы</h3>
+                <p class="review-meta">
+                  <time datetime="2025-10-12">12 октября 2025</time>
+                  <span aria-label="Категория">Ноутбуки</span>
+                </p>
+                <p class="review-excerpt">
+                  Сравнили 10 ультрабуков: мощность, портативность, время
+                  работы. Какой выбрать для продуктивной работы?
+                </p>
+                <a
+                  href="#"
+                  class="read-more"
+                  aria-label="Читать полный обзор ультрабуков"
+                  >Читать далее →</a
+                >
+              </div>
+            </article>
+
+            <!-- Обзор 3 -->
+            <article class="review-card">
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcset="assets/images/smartwatch-desktop.jpg"
+                />
+                <source
+                  media="(min-width: 600px)"
+                  srcset="assets/images/smartwatch-tablet.jpg"
+                />
+                <img
+                  src="assets/images/smartwatch-mobile.jpg"
+                  alt="Умные часы на руке показывают фитнес-данные"
+                  loading="lazy"
+                  width="400"
+                  height="300"
+                />
+              </picture>
+              <div class="card-content">
+                <h3>Умные часы: топ-5 моделей года</h3>
+                <p class="review-meta">
+                  <time datetime="2025-10-10">10 октября 2025</time>
+                  <span aria-label="Категория">Носимые устройства</span>
+                </p>
+                <p class="review-excerpt">
+                  Полный разбор лучших умных часов: функции здоровья,
+                  спорт-режимы, дизайн и совместимость.
+                </p>
+                <a
+                  href="#"
+                  class="read-more"
+                  aria-label="Читать полный обзор умных часов"
+                  >Читать далее →</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Секция сравнений -->
+      <section
+        id="comparisons"
+        class="comparisons-section"
+        aria-labelledby="comparisons-title"
+      >
+        <div class="container">
+          <h2 id="comparisons-title">Популярные сравнения</h2>
+          <div class="comparisons-grid">
+            <article class="comparison-card">
+              <h3>iPhone 15 Pro vs Samsung Galaxy S24 Ultra</h3>
+              <p>
+                Битва флагманов: что лучше в камерах, производительности и
+                экосистеме
+              </p>
+              <ul class="comparison-specs" aria-label="Основные характеристики">
+                <li>
+                  <strong>Процессор:</strong> A17 Pro vs Snapdragon 8 Gen 3
+                </li>
+                <li><strong>Камера:</strong> 48MP vs 200MP</li>
+                <li><strong>Батарея:</strong> 3274 mAh vs 5000 mAh</li>
+              </ul>
+              <a
+                href="#"
+                class="read-more"
+                aria-label="Читать полное сравнение iPhone и Samsung"
+                >Смотреть сравнение →</a
+              >
+            </article>
+
+            <article class="comparison-card">
+              <h3>MacBook Air M3 vs Dell XPS 13</h3>
+              <p>
+                Премиальные ультрабуки: ARM против x86, macOS против Windows
+              </p>
+              <ul class="comparison-specs" aria-label="Основные характеристики">
+                <li><strong>Вес:</strong> 1.24 кг vs 1.19 кг</li>
+                <li><strong>Автономность:</strong> 18 часов vs 12 часов</li>
+                <li><strong>Цена:</strong> от 119 990₽ vs от 149 990₽</li>
+              </ul>
+              <a
+                href="#"
+                class="read-more"
+                aria-label="Читать полное сравнение MacBook и Dell"
+                >Смотреть сравнение →</a
+              >
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Секция гайдов -->
+      <section
+        id="guides"
+        class="guides-section"
+        aria-labelledby="guides-title"
+      >
+        <div class="container">
+          <h2 id="guides-title">Гайды по выбору</h2>
+          <div class="guides-list">
+            <article class="guide-item">
+              <div class="guide-icon" aria-hidden="true">📱</div>
+              <div class="guide-content">
+                <h3>Как выбрать смартфон в 2025 году</h3>
+                <p>
+                  Процессор, память, камера, батарея - разбираем все важные
+                  характеристики и на что обратить внимание при выборе.
+                </p>
+                <a
+                  href="#"
+                  class="guide-link"
+                  aria-label="Читать гайд по выбору смартфона"
+                  >Читать гайд →</a
+                >
+              </div>
+            </article>
+
+            <article class="guide-item">
+              <div class="guide-icon" aria-hidden="true">💻</div>
+              <div class="guide-content">
+                <h3>Ноутбук для разработки: что важно</h3>
+                <p>
+                  CPU, RAM, SSD, дисплей - подбираем оптимальную конфигурацию
+                  для программирования и какие компромиссы допустимы.
+                </p>
+                <a
+                  href="#"
+                  class="guide-link"
+                  aria-label="Читать гайд по выбору ноутбука для разработки"
+                  >Читать гайд →</a
+                >
+              </div>
+            </article>
+
+            <article class="guide-item">
+              <div class="guide-icon" aria-hidden="true">⌚</div>
+              <div class="guide-content">
+                <h3>Умные часы: нужны ли они вам</h3>
+                <p>
+                  Фитнес-трекинг, уведомления, NFC-платежи - определяем ваши
+                  потребности и выбираем подходящую модель.
+                </p>
+                <a
+                  href="#"
+                  class="guide-link"
+                  aria-label="Читать гайд по выбору умных часов"
+                  >Читать гайд →</a
+                >
+              </div>
+            </article>
+
+            <article class="guide-item">
+              <div class="guide-icon" aria-hidden="true">🎧</div>
+              <div class="guide-content">
+                <h3>TWS-наушники: топ критериев</h3>
+                <p>
+                  Качество звука, шумоподавление, время работы, удобство -
+                  выбираем беспроводные наушники под ваш бюджет.
+                </p>
+                <a
+                  href="#"
+                  class="guide-link"
+                  aria-label="Читать гайд по выбору TWS-наушников"
+                  >Читать гайд →</a
+                >
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Секция новостей -->
+      <section id="news" class="news-section" aria-labelledby="news-title">
+        <div class="container">
+          <h2 id="news-title">Последние новости</h2>
+          <div class="news-grid">
+            <article class="news-card">
+              <time datetime="2025-10-16" class="news-date"
+                >16 октября 2025</time
+              >
+              <h3>Apple анонсировала новые MacBook Pro на M4</h3>
+              <p>
+                Увеличенная производительность на 30%, улучшенный дисплей и до
+                24 часов автономной работы.
+              </p>
+            </article>
+
+            <article class="news-card">
+              <time datetime="2025-10-15" class="news-date"
+                >15 октября 2025</time
+              >
+              <h3>Samsung представила складной смартфон нового поколения</h3>
+              <p>
+                Galaxy Z Fold 6 получил более прочный экран и улучшенную систему
+                камер.
+              </p>
+            </article>
+
+            <article class="news-card">
+              <time datetime="2025-10-14" class="news-date"
+                >14 октября 2025</time
+              >
+              <h3>Xiaomi запускает новую линейку умных часов</h3>
+              <p>
+                Watch S4 предлагает профессиональный мониторинг здоровья по
+                доступной цене.
+              </p>
+            </article>
+
+            <article class="news-card">
+              <time datetime="2025-10-13" class="news-date"
+                >13 октября 2025</time
+              >
+              <h3>Google Pixel 9: улучшения в фото с AI</h3>
+              <p>
+                Новые алгоритмы искусственного интеллекта делают фотографии еще
+                лучше.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Секция подписки на новости -->
+      <section class="newsletter-section" aria-labelledby="newsletter-title">
+        <div class="container">
+          <h2 id="newsletter-title">Подпишитесь на новости</h2>
+          <p>Получайте свежие обзоры и новости технологий на вашу почту</p>
+          <form class="newsletter-form" aria-label="Форма подписки на рассылку">
+            <label for="email" class="visually-hidden">Электронная почта</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Ваш email"
+              required
+              aria-required="true"
+              aria-describedby="email-description"
+            />
+            <button type="submit" class="submit-button">Подписаться</button>
+            <p id="email-description" class="visually-hidden">
+              Введите ваш email для получения новостей и обзоров
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Подвал сайта -->
+    <footer class="site-footer" role="contentinfo">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-column">
+            <h3>О TechHub</h3>
+            <p>
+              Мы помогаем разобраться в мире технологий и сделать правильный
+              выбор при покупке гаджетов.
+            </p>
+          </div>
+
+          <div class="footer-column">
+            <h3>Разделы</h3>
+            <nav aria-label="Навигация в подвале">
+              <ul>
+                <li><a href="#reviews">Обзоры</a></li>
+                <li><a href="#comparisons">Сравнения</a></li>
+                <li><a href="#guides">Гайды</a></li>
+                <li><a href="#news">Новости</a></li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="footer-column">
+            <h3>Контакты</h3>
+            <ul>
+              <li><a href="mailto:info@techhub.ru">info@techhub.ru</a></li>
+              <li><a href="tel:+74951234567">+7 (495) 123-45-67</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-column">
+            <h3>Социальные сети</h3>
+            <ul class="social-links">
+              <li><a href="#" aria-label="TechHub в Telegram">Telegram</a></li>
+              <li><a href="#" aria-label="TechHub в VK">VK</a></li>
+              <li><a href="#" aria-label="TechHub в YouTube">YouTube</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 TechHub. Все права защищены.</p>
+          <p>Сайт разработан с учетом стандартов доступности WCAG 2.1</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
