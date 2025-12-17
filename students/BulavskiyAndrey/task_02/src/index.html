@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Моя музыкальная коллекция</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1 id="main-title">Моя музыкальная коллекция</h1>
+
+    <button id="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">☰</button>
+
+    <nav id="main-nav" aria-label="Главная навигация" hidden>
+      <ul>
+        <li><a href="#playlists">Плейлисты</a></li>
+        <li><a href="#reviews">Обзоры</a></li>
+        <li><a href="#recs">Рекомендации</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <button id="theme-toggle">🌙 Тёмная тема</button>
+    </nav>
+  </header>
+
+  <main>
+    <section id="playlists" aria-labelledby="pl-heading">
+      <h2 id="pl-heading">Плейлисты</h2>
+      <div class="grid grid-cols" id="playlist-container">
+        <article data-id="pl1" tabindex="0">
+          <h3>Утренний плейлист</h3>
+          <p>Мягкие треки для бодрого старта</p>
+          <p><strong>Треки:</strong></p>
+          <ul>
+            <li>Весна — Анна П.</li>
+            <li>Пульс улиц — DJ Ночь</li>
+          </ul>
+          <div class="card-actions">
+            <button class="like-btn" aria-label="Поставить лайк">❤️</button>
+            <button class="delete-btn" aria-label="Удалить плейлист">🗑️</button>
+          </div>
+          <picture>
+            <source srcset="assets/sunset.webp" media="(min-width: 1025px)">
+            <source srcset="assets/sunset.webp" media="(min-width: 601px)">
+            <img src="assets/sunset.webp" alt="Обложка утреннего плейлиста">
+          </picture>
+        </article>
+
+        <article data-id="pl2" tabindex="0">
+          <h3>Вечерний чилл</h3>
+          <p>Спокойная музыка для отдыха после дня</p>
+          <p><strong>Треки:</strong></p>
+          <ul>
+            <li>Тишина — Moonlight</li>
+            <li>Сумерки — DJ Ветер</li>
+          </ul>
+          <div class="card-actions">
+            <button class="like-btn" aria-label="Поставить лайк">❤️</button>
+            <button class="delete-btn" aria-label="Удалить плейлист">🗑️</button>
+          </div>
+          <picture>
+            <source srcset="assets/dawn.webp" media="(min-width: 1025px)">
+            <source srcset="assets/dawn.webp" media="(min-width: 601px)">
+            <img src="assets/dawn.webp" alt="Обложка вечерний чилл ">
+          </picture>
+        </article>
+
+        <article data-id="pl3" tabindex="0">
+          <h3>Кофе и утро</h3>
+          <p>Лёгкие инструменталы для продуктивного дня</p>
+          <p><strong>Треки:</strong></p>
+          <ul>
+            <li>Луч солнца — PianoSky</li>
+            <li>Завтрак на террасе — Smooth Waves</li>
+          </ul>
+          <div class="card-actions">
+            <button class="like-btn" aria-label="Поставить лайк">❤️</button>
+            <button class="delete-btn" aria-label="Удалить плейлист">🗑️</button>
+          </div>  
+          <picture>
+            <source srcset="assets/coffee.webp" media="(min-width: 1025px)">
+            <source srcset="assets/coffee.webp" media="(min-width: 601px)">
+            <img src="assets/coffee.webp" alt="Обложка кофе и утро">
+          </picture>
+        </article>
+      </div>
+    </section>
+
+    <section id="reviews" aria-labelledby="rev-heading">
+      <h2 id="rev-heading">Обзоры альбомов</h2>
+      <div class="grid grid-cols" id="reviews-container">
+        <article class="playlist-card" tabindex="0" aria-label="Времена года">
+          <h3>Времена года</h3>
+          <p>Анна П. • 2019</p>
+          <p>★★★★☆</p>
+          <p>Тёплые оркестровые аранжировки...</p>
+          <picture>
+            <source srcset="assets/seasons.webp" media="(min-width: 1025px)">
+            <source srcset="assets/seasons.webp" media="(min-width: 601px)">
+            <img src="assets/seasons.webp" alt="Обложка альбома Времена года">
+          </picture>
+        </article>
+
+        <article class="playlist-card" tabindex="0" aria-label="Городские истории">
+          <h3>Городские истории</h3>
+          <p>DJ Ночь • 2021</p>
+          <p>★★★★☆</p>
+          <p>Современный электронный альбом...</p>
+          <picture>
+            <source srcset="assets/book.webp" media="(min-width: 1025px)">
+            <source srcset="assets/book.webp" media="(min-width: 601px)">
+            <img src="assets/book.webp" alt="Обложка альбома Городские истории">
+          </picture>
+        </article>
+
+        <article class="playlist-card" tabindex="0" aria-label="Ночной джаз">
+          <h3>Ночной джаз</h3>
+          <p>Jazz Trio • 2020</p>
+          <p>★★★★★</p>
+          <p>Мягкие саксофонные импровизации для вечернего отдыха.</p>
+          <picture>
+            <source srcset="assets/night_jazz.webp" media="(min-width: 1025px)">
+            <source srcset="assets/night_jazz.webp" media="(min-width: 601px)">
+            <img src="assets/night_jazz.webp" alt="Обложка альбома Ночной джаз">
+          </picture>
+        </article>
+      </div>
+    </section>
+
+    <aside id="recs" aria-labelledby="rec-heading">
+      <h2 id="rec-heading">Рекомендации</h2>
+      <ul>
+        <li tabindex="0">Если вы любите акустику — послушайте «Акустика у костра»</li>
+        <li tabindex="0">Любителям бита: подборка 90-х</li>
+        <li tabindex="0">Для вечерних прогулок — «Ночной джаз»</li>
+        <li tabindex="0">Фанатам электроники: альбом «Синтез рассвета»</li>
+      </ul>
+    </aside>
+    <section id="faq" aria-labelledby="faq-heading">
+      <h2 id="faq-heading">FAQ — Часто задаваемые вопросы</h2>
+      <div class="accordion">
+        <button aria-expanded="false" aria-controls="faq1">Как добавить новый плейлист?</button>
+        <div id="faq1" hidden>Нажмите кнопку «Добавить» и введите название, треки и описание.</div>
+
+        <button aria-expanded="false" aria-controls="faq2">Как сменить тему оформления?</button>
+        <div id="faq2" hidden>Используйте кнопку «🌙 Тёмная тема» в шапке сайта — она сохраняет выбор в localStorage.</div>
+
+        <button aria-expanded="false" aria-controls="faq3">Можно ли управлять с клавиатуры?</button>
+        <div id="faq3" hidden>Да! Все кнопки и ссылки доступны через Tab, а Enter/Space активируют элементы.</div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+  <nav aria-label="Ссылки в подвале сайта">
+    <ul>
+      <li><a href="#main-title">Наверх ↑</a></li>
+      <li><a href="#playlists">Плейлисты</a></li>
+      <li><a href="#reviews">Обзоры</a></li>
+      <li><a href="#recs">Рекомендации</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </nav>
+  <button id="open-modal">Отправить сообщение</button>
+  <p id="end">© 2025 Моя музыкальная коллекция. Все права защищены.</p>
+</footer>
+
+<!-- Модальное окно -->
+  <div id="modal" hidden>
+    <div class="modal-content">
+      <form id="modal-form">
+        <label>Имя: <input type="text" name="name" required></label>
+        <span id="name-error" class="error"></span>
+
+        <label>E-mail: <input type="email" name="email" required></label>
+        <span id="email-error" class="error"></span>
+
+        <label>Сообщение: <textarea name="message" required></textarea></label>
+        <span id="message-error" class="error"></span>
+
+        <button type="submit" id="submit-btn" disabled>Отправить</button>
+        <button type="button" id="close-modal">Закрыть</button>
+      </form>
+      <div id="form-result"></div>
+    </div>
+  </div>
+  <script src="./scripts/main.js" defer></script>
+</body>
+</html>
