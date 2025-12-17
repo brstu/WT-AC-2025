@@ -267,7 +267,11 @@
 }
 
 /* Адаптивность */
+<<<<<<< HEAD
 @media (max-width <= 768px) {
+=======
+@media (max-width: 768px) {
+>>>>>>> origin/task_07
   .container {
     padding: 0 15px;
   }
@@ -297,15 +301,25 @@
 
 /* Анимации */
 .fade-in {
+<<<<<<< HEAD
   animation: fade-in 0.3s ease-in;
 }
 
 @keyframes fade-in {
+=======
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+>>>>>>> origin/task_07
   from {
     opacity: 0;
     transform: translateY(20px);
   }
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/task_07
   to {
     opacity: 1;
     transform: translateY(0);
