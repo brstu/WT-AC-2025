@@ -267,11 +267,7 @@
 }
 
 /* Адаптивность */
-<<<<<<< HEAD
-@media (max-width <= 768px) {
-=======
-@media (max-width: 768px) {
->>>>>>> origin/task_07
+@media (width <= 768px) {
   .container {
     padding: 0 15px;
   }
@@ -301,10 +297,10 @@
 
 /* Анимации */
 .fade-in {
-  animation: fade-in 0.3s ease-in;
+  animation: fadeIn 0.3s ease-in;
 }
 
-@keyframes fade-in {
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(20px);

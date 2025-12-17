@@ -198,7 +198,7 @@
   font-size: 14px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .events-header {
     flex-direction: column;
     align-items: flex-start;
