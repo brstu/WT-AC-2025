@@ -126,7 +126,7 @@
   gap: 30px;
 }
 
-@media (max-width <= 768px) {
+@media (width <= 768px) {
   .event-content {
     grid-template-columns: 1fr;
   }
@@ -300,7 +300,7 @@
   animation: fade-in 0.3s ease-in;
 }
 
-@keyframes fadeIn {
+@keyframes fade-in {
   from {
     opacity: 0;
     transform: translateY(20px);
