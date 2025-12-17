@@ -267,7 +267,11 @@
 }
 
 /* Адаптивность */
+<<<<<<< HEAD
 @media (max-width <= 768px) {
+=======
+@media (max-width: 768px) {
+>>>>>>> origin/task_07
   .container {
     padding: 0 15px;
   }
@@ -305,7 +309,6 @@
     opacity: 0;
     transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
