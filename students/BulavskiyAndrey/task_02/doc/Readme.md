@@ -11,7 +11,7 @@
 <p align="right"><strong>Выполнил:</strong></p>
 <p align="right">Студент 4 курса</p>
 <p align="right">Группы АС-64</p>
-<p align="right">Игнаткевич К.С.</p>
+<p align="right">Булавский А.С.</p>
 <p align="right"><strong>Проверил:</strong></p>
 <p align="right">Несюк А.Н.</p>
 <br><br><br><br><br>
@@ -26,7 +26,7 @@
 
 ---
 
-### Вариант №24
+### Вариант №4
 
 ## Ход выполнения работы
 
