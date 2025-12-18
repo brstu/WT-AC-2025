@@ -20,6 +20,16 @@ header h1 {
   margin-bottom: 8px;
 }
 
+.list a {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.list a:hover {
+  text-decoration: underline;
+}
+
 nav a {
   color: #93c5fd;
   margin-right: 12px;
@@ -60,7 +70,7 @@ main {
   background: white;
   padding: 16px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  box-shadow: 0 4px 10px rgb(0 0 0 / 6%);
   list-style: none;
 }
 
@@ -68,21 +78,11 @@ main {
   margin-bottom: 8px;
 }
 
-.list a {
-  color: #2563eb;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.list a:hover {
-  text-decoration: underline;
-}
-
 .card {
   background: white;
   padding: 24px;
   border-radius: 14px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 8%);
 }
 
 .card h2 {
@@ -111,7 +111,7 @@ form {
   background: white;
   padding: 24px;
   border-radius: 14px;
-  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 8%);
   display: grid;
   gap: 12px;
 }
