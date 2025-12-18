@@ -1,17 +1,78 @@
-body { font-family: Arial, sans-serif; margin: 20px; }
-header { text-align: center; }
-nav a { margin: 0 10px; }
-#app { max-width: 800px; margin: 0 auto; }
-.card { border: 1px solid #ccc; padding: 10px; margin: 10px 0; border-radius: 5px; }
-form { display: grid; gap: 10px; }
-input, textarea { padding: 8px; width: 100%; }
-button { padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
-button:disabled { background: #ccc; }
-.loading { text-align: center; font-style: italic; }
-.error { color: red; }
-.empty { text-align: center; color: gray; }
-.notification { position: fixed; bottom: 20px; right: 20px; padding: 10px; background: green; color: white; display: none; }
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+}
 
+header {
+  text-align: center;
+}
+
+nav a {
+  margin: 0 10px;
+}
+
+#app {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 5px;
+}
+
+form {
+  display: grid;
+  gap: 10px;
+}
+
+input,
+textarea {
+  padding: 8px;
+  width: 100%;
+}
+
+button {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #ccc;
+}
+
+.loading {
+  text-align: center;
+  font-style: italic;
+}
+
+.error {
+  color: red;
+}
+
+.empty {
+  text-align: center;
+  color: gray;
+}
+
+.notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 10px;
+  background: green;
+  color: white;
+  display: none;
+}
+
+/* Исправленный медиа-запрос с правильным range notation */
 @media (max-width: 600px) {
-  form { grid-template-columns: 1fr; }
+  form {
+    grid-template-columns: 1fr;
+  }
 }
