@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог курсов</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="app">
+        <div class="header">
+            <h1>Каталог учебных курсов</h1>
+            <nav>
+                <a href="#/items">Все курсы</a>
+                <a href="#/new">Добавить курс</a>
+            </nav>
+        </div>
+        
+        <div id="content"></div>
+        
+        <div id="notification" style="display:none;"></div>
+    </div>
+
+    <script>
+        var courses = [
+            {id: 1, title: 'Веб-разработка для начинающих', description: 'Изучите основы HTML, CSS и JavaScript. Научитесь создавать современные адаптивные веб-сайты с нуля. Курс включает практические задания и проекты.', price: 2500, duration: 40, image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=400&h=300&fit=crop'},
+            {id: 2, title: 'Python для анализа данных', description: 'Освойте Python и популярные библиотеки для работы с данными: Pandas, NumPy, Matplotlib. Научитесь анализировать большие объемы данных.', price: 3200, duration: 50, image: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=400&h=300&fit=crop'},
+            {id: 3, title: 'Основы баз данных SQL', description: 'Полный курс по работе с реляционными базами данных. Изучите SQL запросы, проектирование БД, оптимизацию и администрирование.', price: 2800, duration: 35, image: 'https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=400&h=300&fit=crop'},
+            {id: 4, title: 'React и современный JavaScript', description: 'Углубленное изучение React, Redux, hooks и современных подходов к разработке SPA. Создание сложных веб-приложений.', price: 4500, duration: 60, image: 'https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=400&h=300&fit=crop'},
+            {id: 5, title: 'Machine Learning на практике', description: 'Изучите алгоритмы машинного обучения и их применение. Работа с TensorFlow и scikit-learn. Создание собственных ML моделей.', price: 5500, duration: 80, image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=300&fit=crop'},
+            {id: 6, title: 'Мобильная разработка на Flutter', description: 'Научитесь создавать кроссплатформенные мобильные приложения. Dart, Flutter виджеты, работа с API и базами данных.', price: 4200, duration: 55, image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=400&h=300&fit=crop'},
+            {id: 7, title: 'DevOps и автоматизация', description: 'Docker, Kubernetes, CI/CD, автоматизация развертывания. Научитесь настраивать современную инфраструктуру для проектов.', price: 4800, duration: 65, image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&h=300&fit=crop'},
+            {id: 8, title: 'UI/UX дизайн в Figma', description: 'Основы пользовательского интерфейса и опыта. Работа в Figma, создание прототипов, дизайн-системы и компоненты.', price: 3500, duration: 45, image: 'https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?w=400&h=300&fit=crop'},
+            {id: 9, title: 'Кибербезопасность для разработчиков', description: 'Изучите основы защиты приложений, OWASP Top 10, тестирование на проникновение, шифрование и безопасная разработка.', price: 4000, duration: 50, image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=400&h=300&fit=crop'},
+            {id: 10, title: 'Блокчейн и смарт-контракты', description: 'Разработка децентрализованных приложений на Ethereum. Solidity, Web3.js, создание и развертывание смарт-контрактов.', price: 5200, duration: 70, image: 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=300&fit=crop'},
+            {id: 11, title: 'Java Spring Framework', description: 'Полный курс по разработке enterprise приложений на Java Spring. Spring Boot, Spring Security, REST API, микросервисы.', price: 4500, duration: 75, image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop'},
+            {id: 12, title: 'Тестирование ПО', description: 'Автоматизация тестирования, unit-тесты, интеграционные тесты. Selenium, Pytest, тест-дизайн и отчетность.', price: 3300, duration: 40, image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop'}
+        ];
+        var currentId = null;
+        var loading = false;
+
+        // Router
+        function router() {
+            var hash = window.location.hash || '#/items';
+            var path = hash.substring(1);
+            
+            if (path === '/items' || path === '/') {
+                showList();
+            } else if (path.startsWith('/items/') && path.endsWith('/edit')) {
+                var id = path.split('/')[2];
+                showEdit(id);
+            } else if (path.startsWith('/items/')) {
+                var id = path.split('/')[2];
+                showDetail(id);
+            } else if (path === '/new') {
+                showNew();
+            }
+        }
+
+        window.addEventListener('hashchange', router);
+        window.addEventListener('load', function() {
+            router();
+        });
+
+        // API функции
+        function loadCourses() {
+            loading = false;
+            router();
+        }
+
+        function getCourse(id) {
+            for (var i = 0; i < courses.length; i++) {
+                if (courses[i].id == id) {
+                    return courses[i];
+                }
+            }
+            return null;
+        }
+
+        function deleteCourse(id) {
+            var confirm = window.confirm('Вы уверены что хотите удалить курс?');
+            if (!confirm) return;
+            
+            courses = courses.filter(function(c) { return c.id != id; });
+            showNotification('Курс удален');
+            window.location.hash = '#/items';
+        }
+
+        function createCourse(data) {
+            var maxId = 0;
+            for (var i = 0; i < courses.length; i++) {
+                if (courses[i].id > maxId) maxId = courses[i].id;
+            }
+            data.id = maxId + 1;
+            data.image = 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop';
+            courses.push(data);
+            showNotification('Курс создан');
+            window.location.hash = '#/items';
+        }
+
+        function updateCourse(id, data) {
+            for (var i = 0; i < courses.length; i++) {
+                if (courses[i].id == id) {
+                    courses[i].title = data.title;
+                    courses[i].description = data.description;
+                    courses[i].price = data.price;
+                    courses[i].duration = data.duration;
+                    break;
+                }
+            }
+            showNotification('Курс обновлен');
+            window.location.hash = '#/items/' + id;
+        }
+
+        // Views
+        function showLoading() {
+            document.getElementById('content').innerHTML = '<div class="loading">Загрузка...</div>';
+        }
+
+        function showError(msg) {
+            document.getElementById('content').innerHTML = '<div class="error">' + msg + '</div>';
+        }
+
+        function showNotification(msg) {
+            var notif = document.getElementById('notification');
+            notif.textContent = msg;
+            notif.style.display = 'block';
+            setTimeout(function() {
+                notif.style.display = 'none';
+            }, 3000);
+        }
+
+        function showList() {
+            if (loading) return;
+            
+            var content = document.getElementById('content');
+            var html = '<h2>Список курсов</h2>';
+            
+            if (courses.length === 0) {
+                html += '<p class="empty">Нет доступных курсов</p>';
+            } else {
+                html += '<div class="courses-grid">';
+                for (var i = 0; i < courses.length; i++) {
+                    var course = courses[i];
+                    html += '<div class="course-card">';
+                    html += '<img src="' + course.image + '" alt="' + course.title + '">';
+                    html += '<h3>' + course.title + '</h3>';
+                    html += '<p>' + course.description.substring(0, 100) + '...</p>';
+                    html += '<div class="course-info">';
+                    html += '<span>Цена: ' + course.price + ' руб.</span>';
+                    html += '<span>Длительность: ' + course.duration + ' ч.</span>';
+                    html += '</div>';
+                    html += '<a href="#/items/' + course.id + '" class="btn">Подробнее</a>';
+                    html += '</div>';
+                }
+                html += '</div>';
+            }
+            
+            content.innerHTML = html;
+        }
+
+        function showDetail(id) {
+            var course = getCourse(id);
+            
+            if (!course) {
+                showError('Курс не найден');
+                return;
+            }
+            
+            var content = document.getElementById('content');
+            var html = '<div class="detail">';
+            html += '<img src="' + course.image + '" alt="' + course.title + '">';
+            html += '<h2>' + course.title + '</h2>';
+            html += '<p>' + course.description + '</p>';
+            html += '<div class="course-info">';
+            html += '<p><strong>Цена:</strong> ' + course.price + ' руб.</p>';
+            html += '<p><strong>Длительность:</strong> ' + course.duration + ' часов</p>';
+            html += '</div>';
+            html += '<div class="actions">';
+            html += '<a href="#/items/' + id + '/edit" class="btn">Редактировать</a>';
+            html += '<button onclick="deleteCourse(' + id + ')" class="btn btn-delete">Удалить</button>';
+            html += '<a href="#/items" class="btn">Назад к списку</a>';
+            html += '</div>';
+            html += '</div>';
+            
+            content.innerHTML = html;
+        }
+
+        function showNew() {
+            var content = document.getElementById('content');
+            var html = '<div class="form-container">';
+            html += '<h2>Создать новый курс</h2>';
+            html += '<form onsubmit="handleCreate(event)">';
+            html += '<div class="form-group">';
+            html += '<label>Название курса:</label>';
+            html += '<input type="text" id="title" required>';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<label>Описание:</label>';
+            html += '<textarea id="description" rows="5" required></textarea>';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<label>Цена (руб):</label>';
+            html += '<input type="number" id="price" required>';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<label>Длительность (часы):</label>';
+            html += '<input type="number" id="duration" required>';
+            html += '</div>';
+            html += '<button type="submit" class="btn" id="submitBtn">Создать</button>';
+            html += '<a href="#/items" class="btn">Отмена</a>';
+            html += '</form>';
+            html += '</div>';
+            
+            content.innerHTML = html;
+        }
+
+        function showEdit(id) {
+            var course = getCourse(id);
+            
+            if (!course) {
+                showError('Курс не найден');
+                return;
+            }
+            
+            currentId = id;
+            
+            var content = document.getElementById('content');
+            var html = '<div class="form-container">';
+            html += '<h2>Редактировать курс</h2>';
+            html += '<form onsubmit="handleUpdate(event)">';
+            html += '<div class="form-group">';
+            html += '<label>Название курса:</label>';
+            html += '<input type="text" id="title" value="' + course.title + '" required>';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<label>Описание:</label>';
+            html += '<textarea id="description" rows="5" required>' + course.description + '</textarea>';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<label>Цена (руб):</label>';
+            html += '<input type="number" id="price" value="' + course.price + '" required>';
+            html += '</div>';
+            html += '<div class="form-group">';
+            html += '<label>Длительность (часы):</label>';
+            html += '<input type="number" id="duration" value="' + course.duration + '" required>';
+            html += '</div>';
+            html += '<button type="submit" class="btn" id="submitBtn">Сохранить</button>';
+            html += '<a href="#/items/' + id + '" class="btn">Отмена</a>';
+            html += '</form>';
+            html += '</div>';
+            
+            content.innerHTML = html;
+        }
+
+        // Form handlers
+        function handleCreate(e) {
+            e.preventDefault();
+            
+            var btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Отправка...';
+            
+            var data = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                price: parseInt(document.getElementById('price').value),
+                duration: parseInt(document.getElementById('duration').value)
+            };
+            
+            createCourse(data);
+        }
+
+        function handleUpdate(e) {
+            e.preventDefault();
+            
+            var btn = document.getElementById('submitBtn');
+            btn.disabled = true;
+            btn.textContent = 'Сохранение...';
+            
+            var data = {
+                title: document.getElementById('title').value,
+                description: document.getElementById('description').value,
+                price: parseInt(document.getElementById('price').value),
+                duration: parseInt(document.getElementById('duration').value)
+            };
+            
+            updateCourse(currentId, data);
+        }
+    </script>
+</body>
+</html>
