@@ -4,10 +4,10 @@
 
 ## Кэш‑подход
 
-- **Тип:** In-memory кэш (Map) + localStorage  
-- **TTL:** 1 минута  
-- **Ключ:** `stations:v1`  
-- **Инвалидация:** Временная на основе TTL  
+- **Тип:** In-memory кэш (Map) + localStorage
+- **TTL:** 1 минута
+- **Ключ:** `stations:v1`
+- **Инвалидация:** Временная на основе TTL
 
 ```js
 
@@ -29,7 +29,7 @@ function getCache(key) {
   return null;
 }
 
-``` 
+```
 
 Ретраи
 
