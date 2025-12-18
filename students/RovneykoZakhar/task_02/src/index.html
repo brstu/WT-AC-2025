@@ -82,25 +82,25 @@
 
     <section id="contact" aria-labelledby="contact-title" class="contact-section">
       <h2 id="contact-title">Свяжитесь с нами</h2>
-      <form id="contactForm" novalidate aria-describedby="formHelp">
-        <p id="formHelp" class="sr-note">Все поля проверяются при вводе и отправке</p>
+      <form id="contact-form" novalidate aria-describedby="form-help">
+        <p id="form-help" class="sr-note">Все поля проверяются при вводе и отправке</p>
         <div class="form-field">
           <label for="name">Имя*</label>
-          <input id="name" name="name" type="text" required aria-required="true" aria-invalid="false" aria-describedby="nameError">
-          <small id="nameError" class="error" role="alert"></small>
+          <input id="name" name="name" type="text" required aria-required="true" aria-invalid="false" aria-describedby="name-error">
+          <small id="name-error" class="error" role="alert"></small>
         </div>
         <div class="form-field">
           <label for="email">E‑mail*</label>
-          <input id="email" name="email" type="email" required aria-required="true" aria-invalid="false" aria-describedby="emailError" inputmode="email">
-          <small id="emailError" class="error" role="alert"></small>
+          <input id="email" name="email" type="email" required aria-required="true" aria-invalid="false" aria-describedby="email-error" inputmode="email">
+          <small id="email-error" class="error" role="alert"></small>
         </div>
         <div class="form-field">
           <label for="message">Сообщение (мин. 20 символов)*</label>
-          <textarea id="message" name="message" minlength="20" required aria-required="true" aria-invalid="false" aria-describedby="messageError"></textarea>
-          <small id="messageError" class="error" role="alert"></small>
+          <textarea id="message" name="message" minlength="20" required aria-required="true" aria-invalid="false" aria-describedby="message-error"></textarea>
+          <small id="message-error" class="error" role="alert"></small>
         </div>
-        <button id="submitBtn" type="submit" disabled aria-disabled="true">Отправить</button>
-        <p id="formResult" class="form-result" aria-live="polite"></p>
+        <button id="submit-btn" type="submit" disabled aria-disabled="true">Отправить</button>
+        <p id="form-result" class="form-result" aria-live="polite"></p>
       </form>
     </section>
   </main>
@@ -110,13 +110,13 @@
   </footer>
 
   <!-- Модалка «Поделиться» -->
-  <div class="modal-backdrop" id="shareModalBackdrop" hidden></div>
-  <div class="modal" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareTitle" aria-describedby="shareDesc" hidden>
+  <div class="modal-backdrop" id="share-modal-backdrop" hidden></div>
+  <div class="modal" id="share-modal" role="dialog" aria-modal="true" aria-labelledby="share-title" aria-describedby="share-desc" hidden>
     <div class="modal-header">
-      <h2 id="shareTitle">Поделиться цитатой</h2>
+      <h2 id="share-title">Поделиться цитатой</h2>
       <button class="modal-close" aria-label="Закрыть модальное окно" data-modal-close>&times;</button>
     </div>
-    <p id="shareDesc">Выберите способ поделиться этой цитатой:</p>
+    <p id="share-desc">Выберите способ поделиться этой цитатой:</p>
     <div class="modal-content">
       <button class="share-option" data-share="copy">Копировать текст</button>
       <button class="share-option" data-share="tweet">Twitter</button>
