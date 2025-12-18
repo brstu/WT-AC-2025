@@ -1,0 +1,39 @@
+---
+version: '3.8'
+
+services:
+  # Main application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: equipment-inventory-app
+    ports:
+      - "8080:80"
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    networks:
+      - app-network
+
+  # Mock API server (optional, for development)
+  mock-api:
+    image: node:20-alpine
+    container_name: equipment-mock-api
+    working_dir: /app
+    volumes:
+      - ./mock-api:/app
+    command: sh -c "npm install && npm start"
+    ports:
+      - "3001:3001"
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+    networks:
+      - app-network
+    profiles:
+      - dev
+
+networks:
+  app-network:
+    driver: bridge

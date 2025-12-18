@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Results</title>
+  <style>
+    body {
+      font-family: 'Courier New', monospace;
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 20px;
+      margin: 0;
+    }
+    pre {
+      background: #252526;
+      padding: 20px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .success { color: #4ec9b0; }
+    .header { color: #569cd6; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <pre><code class="header">Unit and Integration Test Results</code>
+
+
+> src@0.0.0 test
+> vitest --run
+
+
+[1m[46m RUN [49m[22m [36mv4.0.16 [39m[90m/home/runner/work/WT-AC-2025-Loginov/WT-AC-2025-Loginov/task_08/src[39m
+
+ [32m✓[39m src/components/ui/Button.test.jsx [2m([22m[2m5 tests[22m[2m)[22m[33m 311[2mms[22m[39m
+ [32m✓[39m src/pages/HomePage.test.jsx [2m([22m[2m6 tests[22m[2m)[22m[32m 93[2mms[22m[39m
+ [32m✓[39m src/components/ui/Card.test.jsx [2m([22m[2m4 tests[22m[2m)[22m[32m 34[2mms[22m[39m
+ [32m✓[39m src/store/themeSlice.test.js [2m([22m[2m3 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m src/features/auth/authSlice.test.js [2m([22m[2m4 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m src/store/notificationSlice.test.js [2m([22m[2m5 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m6 passed[39m[22m[90m (6)[39m
+[2m      Tests [22m [1m[32m27 passed[39m[22m[90m (27)[39m
+[2m   Start at [22m 15:51:25
+[2m   Duration [22m 5.09s[2m (transform 188ms, setup 373ms, import 564ms, tests 457ms, environment 2.92s)[22m
+
+</pre>
+</body>
+</html>
+  
