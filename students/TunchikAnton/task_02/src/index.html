@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <title>GadgetHub | Коллекция гаджетов</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<header class="header">
+  <nav class="nav container">
+    <div class="logo">
+      <span class="logo-icon">🚀</span>
+      <span class="logo-text">GadgetHub</span>
+    </div>
+    <ul class="nav-list">
+      <li><a href="#catalog" class="nav-link">Каталог</a></li>
+      <li><a href="#feedback" class="nav-link">Обратная связь</a></li>
+      <li>
+        <button class="theme-toggle" aria-label="Переключить тему">
+          <span class="theme-icon">🌙</span>
+        </button>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+<section id="hero" class="hero">
+  <div class="container hero-container">
+    <div class="hero-content">
+      <h1 class="hero-title">Инновационные гаджеты будущего</h1>
+      <p class="hero-subtitle">Исследуйте последние технологические новинки от ведущих брендов</p>
+      <a href="#catalog" class="hero-button">Смотреть коллекцию</a>
+    </div>
+  </div>
+</section>
+
+<section id="catalog" class="section">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Коллекция гаджетов</h2>
+      <p class="section-subtitle">Выберите бренд и изучите устройства</p>
+    </div>
+
+    <div class="tabs" role="tablist" aria-label="Бренды">
+      <button role="tab" aria-selected="true" data-brand="apple" class="tab-button active">
+        <span class="tab-icon"></span>
+        <span class="tab-text">Apple</span>
+      </button>
+      <button role="tab" aria-selected="false" data-brand="samsung" class="tab-button">
+        <span class="tab-icon">S</span>
+        <span class="tab-text">Samsung</span>
+      </button>
+      <button role="tab" aria-selected="false" data-brand="xiaomi" class="tab-button">
+        <span class="tab-icon">X</span>
+        <span class="tab-text">Xiaomi</span>
+      </button>
+    </div>
+
+    <div class="cards" id="cards">
+      <article class="card" data-brand="apple" data-id="iphone15">
+        <div class="card-badge">New</div>
+        <div class="card-content">
+          <header class="card-header">
+            <h2 class="card-title">iPhone 15 Pro</h2>
+            <div class="card-rating">
+              <span class="stars">★★★★★</span>
+              <span class="rating-text">4.9/5</span>
+            </div>
+          </header>
+          <p class="card-text">Титановый корпус, чип A17 Pro, динамический остров. Инновации в каждой детали.</p>
+          <div class="card-features">
+            <span class="feature">A17 Pro</span>
+            <span class="feature">48MP</span>
+            <span class="feature">iOS 17</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">
+              <span class="price">от 119 990 ₽</span>
+            </div>
+            <div class="card-actions">
+              <button class="action-button like-button" data-action="like">
+                <span class="button-icon">❤️</span>
+                <span class="like-count">0</span>
+              </button>
+              <button class="action-button delete-button" data-action="delete">
+                <span class="button-icon">🗑️</span>
+                Удалить
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-brand="samsung" data-id="galaxys24">
+        <div class="card-badge">AI</div>
+        <div class="card-content">
+          <header class="card-header">
+            <h2 class="card-title">Galaxy S24 Ultra</h2>
+            <div class="card-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-text">4.7/5</span>
+            </div>
+          </header>
+          <p class="card-text">Искусственный интеллект на борту, S-Pen в комплекте, камера 200МП.</p>
+          <div class="card-features">
+            <span class="feature">AI</span>
+            <span class="feature">200MP</span>
+            <span class="feature">Android</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">
+              <span class="price">от 89 990 ₽</span>
+            </div>
+            <div class="card-actions">
+              <button class="action-button like-button" data-action="like">
+                <span class="button-icon">❤️</span>
+                <span class="like-count">0</span>
+              </button>
+              <button class="action-button delete-button" data-action="delete">
+                <span class="button-icon">🗑️</span>
+                Удалить
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="card" data-brand="xiaomi" data-id="xiaomi14">
+        <div class="card-badge hot">HOT</div>
+        <div class="card-content">
+          <header class="card-header">
+            <h2 class="card-title">Xiaomi 14 Pro</h2>
+            <div class="card-rating">
+              <span class="stars">★★★★☆</span>
+              <span class="rating-text">4.6/5</span>
+            </div>
+          </header>
+          <p class="card-text">Snapdragon 8 Gen 3, Leica-камеры, зарядка 120W за 18 минут.</p>
+          <div class="card-features">
+            <span class="feature">SD 8G3</span>
+            <span class="feature">Leica</span>
+            <span class="feature">120W</span>
+          </div>
+          <div class="card-footer">
+            <div class="card-price">
+              <span class="price">от 59 990 ₽</span>
+            </div>
+            <div class="card-actions">
+              <button class="action-button like-button" data-action="like">
+                <span class="button-icon">❤️</span>
+                <span class="like-count">0</span>
+              </button>
+              <button class="action-button delete-button" data-action="delete">
+                <span class="button-icon">🗑️</span>
+                Удалить
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <p id="no-cards" class="no-cards" hidden>Нет устройств для выбранного бренда</p>
+  </div>
+</section>
+
+<section id="feedback" class="section section-muted">
+  <div class="container">
+    <div class="feedback-wrapper">
+      <div class="feedback-content">
+        <h2 class="section-title">Остались вопросы?</h2>
+        <p class="section-subtitle">Наша команда экспертов готова помочь вам с выбором и ответить на все вопросы</p>
+      </div>
+      
+      <div class="feedback-form-container">
+        <form novalidate class="feedback-form">
+          <h3 class="form-title">Напишите нам</h3>
+          <div class="field">
+            <label for="name" class="field-label">Имя</label>
+            <input id="name" name="name" placeholder="Ваше имя" required class="field-input">
+            <small class="error-message"></small>
+          </div>
+
+          <div class="field">
+            <label for="email" class="field-label">Email</label>
+            <input id="email" name="email" type="email" placeholder="example@mail.com" required class="field-input">
+            <small class="error-message"></small>
+          </div>
+
+          <div class="field">
+            <label for="message" class="field-label">Сообщение</label>
+            <textarea id="message" name="message" rows="5" placeholder="Расскажите, что вас интересует..." minlength="20" required class="field-textarea"></textarea>
+            <small class="error-message"></small>
+          </div>
+
+          <button type="submit" class="submit-button" disabled>
+            <span class="button-text">Отправить сообщение</span>
+            <span class="button-icon">→</span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <p class="form-result"></p>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <div class="logo">
+          <span class="logo-icon">🚀</span>
+          <span class="logo-text">GadgetHub</span>
+        </div>
+        <p class="footer-tagline">Технологии будущего уже сегодня</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="copyright">© 2025 GadgetHub. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
