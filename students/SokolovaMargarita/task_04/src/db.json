@@ -1,0 +1,71 @@
+{
+  "destinations": [
+    {
+      "id": "1",
+      "name": "Paris",
+      "description": "Город огней с Эйфелевой башней.",
+      "location": "France"
+    },
+    {
+      "id": "2",
+      "name": "Tokyo",
+      "description": "Яркий мегаполис с древними храмами.",
+      "location": "Japan"
+    },
+    {
+      "id": "3",
+      "name": "New York",
+      "description": "Большое яблоко с Статуей Свободы и Таймс-сквер.",
+      "location": "USA"
+    },
+    {
+      "id": "4",
+      "name": "Sydney",
+      "description": "Город-гавань, известный Оперным театром и пляжами.",
+      "location": "Australia"
+    },
+    {
+      "id": "5",
+      "name": "Moscow",
+      "description": "Историческая столица с Красной площадью и Кремлём.",
+      "location": "Russia"
+    },
+    {
+      "id": "6",
+      "name": "Rio de Janeiro",
+      "description": "Пляжный рай с статуей Христа-Искупителя.",
+      "location": "Brazil"
+    },
+    {
+      "id": "7",
+      "name": "Cape Town",
+      "description": "Живописный город на краю Африки с горой Столовой.",
+      "location": "South Africa"
+    },
+    {
+      "id": "8",
+      "name": "Bangkok",
+      "description": "Шумный город с храмами, рынками и уличной едой.",
+      "location": "Thailand"
+    },
+    {
+      "id": "9",
+      "name": "Istanbul",
+      "description": "Город, соединяющий Европу и Азию с собором Святой Софии.",
+      "location": "Turkey"
+    },
+    {
+      "id": "10",
+      "name": "Dubai",
+      "description": "Современный мегаполис с Бурдж-Халифа и роскошными курортами.",
+      "location": "UAE"
+    }
+  ],
+  "users": [
+    {
+      "id": "86a9",
+      "username": "as006322",
+      "password": "28112025"
+    }
+  ]
+}
