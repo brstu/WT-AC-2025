@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Трекер привычек | Лабораторная работа 02</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-seedling"></i> Трекер привычек</h1>
+            <div class="theme-toggle">
+                <button id="theme-toggle" aria-label="Переключить тему">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <main>
+            <section class="intro">
+                <h2>Отслеживайте свои привычки и достигайте целей!</h2>
+                <p>Добавляйте привычки, отмечайте прогресс и следите за своими успехами.</p>
+            </section>
+
+            <!-- Аккордеон с FAQ -->
+            <section class="accordion-section">
+                <h2><i class="fas fa-question-circle"></i> Часто задаваемые вопросы</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <button class="accordion-button" aria-expanded="false" aria-controls="panel1">
+                            Как работает трекер привычек?
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-panel" id="panel1" aria-hidden="true">
+                            <p>Трекер помогает формировать новые привычки через регулярное отслеживание. Добавляйте привычки, отмечайте их выполнение каждый день и следите за статистикой.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-button" aria-expanded="false" aria-controls="panel2">
+                            Сколько времени нужно для формирования привычки?
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-panel" id="panel2" aria-hidden="true">
+                            <p>По исследованиям, в среднем требуется от 21 до 66 дней. Ключ к успеху — регулярность и последовательность.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item">
+                        <button class="accordion-button" aria-expanded="false" aria-controls="panel3">
+                            Можно ли редактировать добавленные привычки?
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-panel" id="panel3" aria-hidden="true">
+                            <p>Да, вы можете редактировать или удалять привычки в любое время. Используйте кнопки редактирования на карточках привычек.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Форма добавления привычки -->
+            <section class="form-section">
+                <h2><i class="fas fa-plus-circle"></i> Добавить новую привычку</h2>
+                <form id="habit-form" novalidate>
+                    <div class="form-group">
+                        <label for="habit-name">Название привычки *</label>
+                        <input type="text" id="habit-name" name="habit-name" required minlength="2" maxlength="50" 
+                               placeholder="Например: Утренняя зарядка">
+                        <div class="error-message" id="name-error"></div>
+                        <div class="tooltip">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="tooltip-text">Название должно быть от 2 до 50 символов</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="habit-category">Категория</label>
+                        <select id="habit-category" name="habit-category">
+                            <option value="health">Здоровье</option>
+                            <option value="development">Развитие</option>
+                            <option value="work">Работа</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="habit-goal">Цель *</label>
+                        <textarea id="habit-goal" name="habit-goal" required minlength="20" 
+                                  placeholder="Опишите, чего вы хотите достичь с этой привычкой..."></textarea>
+                        <div class="error-message" id="goal-error"></div>
+                        <div class="tooltip">
+                            <i class="fas fa-info-circle"></i>
+                            <span class="tooltip-text">Минимум 20 символов. Опишите конкретную цель</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Сложность</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="difficulty" value="easy" checked>
+                                <span class="radio-custom"></span>
+                                Легкая
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="difficulty" value="medium">
+                                <span class="radio-custom"></span>
+                                Средняя
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="difficulty" value="hard">
+                                <span class="radio-custom"></span>
+                                Сложная
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" id="submit-btn" class="submit-btn" disabled>
+                        <i class="fas fa-plus"></i> Добавить привычку
+                    </button>
+                    <div id="form-success" class="success-message" aria-live="polite"></div>
+                </form>
+            </section>
+
+            <!-- Список привычек -->
+            <section class="habits-section">
+                <h2><i class="fas fa-list-check"></i> Мои привычки</h2>
+                <div class="habits-stats">
+                    <div class="stat">
+                        <span class="stat-value" id="total-habits">0</span>
+                        <span class="stat-label">Всего привычек</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-value" id="total-likes">0</span>
+                        <span class="stat-label">Лайков</span>
+                    </div>
+                </div>
+                
+                <div id="habits-container" class="habits-container">
+                    <!-- Карточки привычек будут добавляться здесь через JS -->
+                    <p id="no-habits-message" class="no-habits">У вас пока нет привычек. Добавьте первую!</p>
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>Лабораторная работа 02: DOM и события</p>
+            <p>Трекер привычек &copy; 2023</p>
+        </footer>
+    </div>
+
+    <!-- Модальное окно подтверждения удаления -->
+    <div id="delete-modal" class="modal" role="dialog" aria-modal="false" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title" class="modal-title">Подтверждение удаления</h3>
+                <button id="close-modal" class="close-modal" aria-label="Закрыть">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены, что хотите удалить эту привычку?</p>
+                <p class="habit-to-delete" id="habit-to-delete-name"></p>
+            </div>
+            <div class="modal-footer">
+                <button id="confirm-delete" class="btn-danger">Удалить</button>
+                <button id="cancel-delete" class="btn-secondary">Отмена</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

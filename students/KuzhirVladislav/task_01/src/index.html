@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ПетКеа — Забота о питомцам</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container nav">
+        <a href="#" class="logo">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+            <path d="M12 16v-4M12 8h.01" />
+          </svg>
+          ПетКеа
+        </a>
+        <input type="checkbox" id="nav-toggle-checkbox" />
+        <label for="nav-toggle-checkbox" class="nav-toggle"><span></span></label>
+        <nav class="nav-menu">
+          <a href="#tips">Советы</a>
+          <a href="#products">Товары</a>
+          <a href="#clinic">Ветклиника</a>
+          <a href="#contact">Контакты</a>
+          <a href="#clinic" class="btn">Записаться</a>
+        </nav>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Забота о ваших питомцах</h1>
+        <p>Профессиональные советы, качественные товары и ветеринарная помощь</p>
+        <div>
+          <a href="#tips" class="btn btn-primary">Советы по уходу</a>
+          <a href="#clinic" class="btn btn-outline">Записаться к ветеринару</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tips" class="section section-alt">
+      <div class="container section-header">
+        <h2>Советы по уходу</h2>
+        <p>Экспертные рекомендации для здоровья и счастья ваших любимцев</p>
+      </div>
+      <div class="container grid">
+        <div class="card">
+          <img src="assets/2.webp" alt="Груминг" />
+          <div class="card-content">
+            <span class="badge">Уход</span>
+            <h3>Правильный груминг питомца</h3>
+            <p>Регулярное купание и расчёсывание помогают поддерживать здоровье шерсти и кожи.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/3.webp" alt="Питание" />
+          <div class="card-content">
+            <span class="badge">Питание</span>
+            <h3>Сбалансированное питание</h3>
+            <p>Качественный корм — основа здоровья и долголетия.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets/5.webp" alt="Игры" />
+          <div class="card-content">
+            <span class="badge">Активность</span>
+            <h3>Игры и физическая активность</h3>
+            <p>Регулярные игры необходимы для психического здоровья питомцев.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="products" class="section">
+      <div class="container section-header">
+        <h2>Товары для питомцев</h2>
+        <p>Качественные товары для здоровья и комфорта</p>
+      </div>
+
+      <div class="container filters">
+        <input type="radio" name="filter" id="filter-all" checked /><label for="filter-all"
+          >Все</label
+        >
+        <input type="radio" name="filter" id="filter-food" /><label for="filter-food">Корм</label>
+        <input type="radio" name="filter" id="filter-toys" /><label for="filter-toys"
+          >Игрушки</label
+        >
+        <input type="radio" name="filter" id="filter-care" /><label for="filter-care">Уход</label>
+        <input type="radio" name="filter" id="filter-accessories" /><label for="filter-accessories"
+          >Аксессуары</label
+        >
+        <input type="radio" name="filter" id="filter-health" /><label for="filter-health"
+          >Здоровье</label
+        >
+      </div>
+
+      <div class="container grid products-grid">
+        <div class="card product-card" data-category="food">
+          <img src="assets/4.webp" alt="" />
+          <div class="card-content">
+            <span class="badge">Корм</span>
+            <h3>Премиум корм для собак</h3>
+            <p class="price">2 500 ₽</p>
+            <a href="#" class="btn btn-primary btn-full">В корзину</a>
+          </div>
+        </div>
+        <div class="card product-card" data-category="toys">
+          <img src="assets/4.webp" alt="" />
+          <div class="card-content">
+            <span class="badge">Игрушки</span>
+            <h3>Интерактивная игрушка</h3>
+            <p class="price">890 ₽</p>
+            <a href="#" class="btn btn-primary btn-full">В корзину</a>
+          </div>
+        </div>
+        <!-- Здесь ещё 5 карточек — они остались как в твоём последнем варианте -->
+        <div class="card product-card" data-category="toys">
+          <img src="assets/4.webp" alt="" />
+          <div class="card-content">
+            <span class="badge">Игрушки</span>
+            <h3>Интерактивная игрушка</h3>
+            <p class="price">890 ₽</p>
+            <a href="#" class="btn btn-primary btn-full">В корзину</a>
+          </div>
+        </div>
+        <div class="card product-card" data-category="care">
+          <img src="assets/4.webp" alt="" />
+          <div class="card-content">
+            <span class="badge">Уход</span>
+            <h3>Шампунь для шерсти</h3>
+            <p class="price">1 200 ₽</p>
+            <a href="#" class="btn btn-primary btn-full">В корзину</a>
+          </div>
+        </div>
+        <div class="card product-card" data-category="accessories">
+          <img src="assets/4.webp" alt="" />
+          <div class="card-content">
+            <span class="badge">Аксессуары</span>
+            <h3>Поводок премиум</h3>
+            <p class="price">3 100 ₽</p>
+            <a href="#" class="btn btn-primary btn-full">В корзину</a>
+          </div>
+        </div>
+        <div class="card product-card" data-category="health">
+          <img src="assets/4.webp" alt="" />
+          <div class="card-content">
+            <span class="badge">Здоровье</span>
+            <h3>Витамины для кошек</h3>
+            <p class="price">1 850 ₽</p>
+            <a href="#" class="btn btn-primary btn-full">В корзину</a>
+          </div>
+        </div>
+        <div class="card product-card" data-category="food">
+          <img src="assets/4.webp" alt="" />
+          <div class="card-content">
+            <span class="badge">Корм</span>
+            <h3>Корм для котят</h3>
+            <p class="price">2 100 ₽</p>
+            <a href="#" class="btn btn-primary btn-full">В корзину</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ВОТ ОНА — полностью адаптивная форма и картинка клиники -->
+    <section id="clinic" class="section section-alt">
+      <div class="container section-header">
+        <h2>Ветеринарная клиника</h2>
+        <p>Профессиональная помощь 24/7</p>
+      </div>
+      <div class="container clinic-grid">
+        <img class="clinic-img" src="assets/6.webp" alt="Наша ветклиника" />
+        <div class="card">
+          <div class="card-content">
+            <h3>Записаться на приём</h3>
+            <form>
+              <input type="text" placeholder="Ваше имя" required />
+              <input type="tel" placeholder="Телефон" required />
+              <input type="text" placeholder="Тип питомца (собака, кошка и т.д.)" />
+              <textarea placeholder="Причина обращения" rows="5"></textarea>
+              <button type="submit" class="btn btn-primary btn-full">Отправить заявку</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact" class="footer">
+      <div class="container footer-grid">
+        <div class="footer-col">
+          <a href="#" class="logo">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
+              <path d="M12 16v-4M12 8h.01" />
+            </svg>
+            ПетКеа
+          </a>
+          <p>Профессиональная забота о ваших питомцах с 2015 года</p>
+          <div class="footer-social">
+            <a href="#">f</a>
+            <a href="#">ig</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Разделы</h4>
+          <ul>
+            <li><a href="#tips">Советы по уходу</a></li>
+            <li><a href="#products">Товары</a></li>
+            <li><a href="#clinic">Ветклиника</a></li>
+            <li><a href="#contact">Контакты</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <div>
+            <p>
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                />
+              </svg>
+              +7 (999) 123-45-67
+            </p>
+            <p>
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                <path
+                  d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              info@pet,petcare.ru
+            </p>
+            <p>
+              <svg viewBox="0 0 24 24" stroke="currentColor" fill="none">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+              Москва, ул. Примерная, 123
+            </p>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Рассылка</h4>
+          <p>Получайте полезные советы и акции</p>
+          <form>
+            <input type="email" placeholder="Email" required />
+            <button type="submit" class="btn btn-primary">OK</button>
+          </form>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© 2024 ПетКеа. Все права защищены.</p>
+      </div>
+    </footer>
+  </body>
+</html>

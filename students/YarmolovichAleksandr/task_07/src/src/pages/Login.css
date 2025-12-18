@@ -1,0 +1,75 @@
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+  padding: 20px;
+}
+
+.login-container {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0 0 0 / 10%);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
+
+.login-container h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.login-container p {
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.login-form {
+  text-align: left;
+}
+
+.login-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+}
+
+.demo-credentials {
+  margin-top: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-align: left;
+}
+
+.demo-credentials h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-size: 16px;
+}
+
+.demo-credentials p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.btn-login {
+  background: linear-gradient(135deg, #ff3b3b 0%, #c40000 100%);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255 0 0 / 30%);
+}
+
+.btn-login:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255 0 0 / 40%);
+}

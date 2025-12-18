@@ -1,0 +1,69 @@
+name: Security Scan
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    # Run weekly on Monday at 2 AM
+    - cron: '0 2 * * 1'
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=high
+        continue-on-error: true
+
+      - name: Run Snyk security scan
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+      - name: Run OWASP Dependency Check
+        uses: dependency-check/Dependency-Check_Action@main
+        env:
+          JAVA_HOME: /opt/java/openjdk
+        with:
+          project: 'book-catalog'
+          path: '.'
+          format: 'HTML'
+          out: 'reports'
+
+      - name: Upload security reports
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: security-reports
+          path: |
+            reports/
+          retention-days: 30
+
+      - name: Notify on critical vulnerabilities
+        if: failure()
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { repo, owner } = context.repo;
+            github.rest.issues.create({
+              owner,
+              repo,
+              title: '🚨 Security Vulnerabilities Detected',
+              body: `Security scan has detected critical vulnerabilities. Please check the workflow run: ${context.runId}`,
+              labels: ['security', 'ci']
+            });
