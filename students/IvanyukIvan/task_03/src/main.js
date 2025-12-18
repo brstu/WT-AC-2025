@@ -46,23 +46,24 @@ let cacheEnabled = true;
 const memoryCache = new Map();
 
 // DOM элементы
-const searchInput = document.getElementById('searchInput');
-const clearSearchBtn = document.getElementById('clearSearch');
-const refreshBtn = document.getElementById('refreshBtn');
-const cacheToggle = document.getElementById('cacheToggle');
-const sortSelect = document.getElementById('sortSelect');
-const resultsCount = document.getElementById('resultsCount');
-const cacheStatus = document.getElementById('cacheStatus');
+const searchInput = document.getElementById('search-input');
+const clearSearchBtn = document.getElementById('clear-search');
+const refreshBtn = document.getElementById('refresh-btn');
+const cacheToggle = document.getElementById('cache-toggle');
+const sortSelect = document.getElementById('sort-select');
+const resultsCount = document.getElementById('results-count');
+const cacheStatus = document.getElementById('cache-status');
 const cacheText = document.querySelector('.cache-text');
-const loadingIndicator = document.getElementById('loadingIndicator');
-const errorMessage = document.getElementById('errorMessage');
-const emptyMessage = document.getElementById('emptyMessage');
-const albumsGrid = document.getElementById('albumsGrid');
-const prevPageBtn = document.getElementById('prevPage');
-const nextPageBtn = document.getElementById('nextPage');
-const currentPageSpan = document.getElementById('currentPage');
-const totalPagesSpan = document.getElementById('totalPages');
-const retryBtn = document.getElementById('retryBtn');
+const loadingIndicator = document.getElementById('loading-indicator');
+const errorMessage = document.getElementById('error-message');
+const emptyMessage = document.getElementById('empty-message');
+const albumsGrid = document.getElementById('albums-grid');
+const prevPageBtn = document.getElementById('prev-page');
+const nextPageBtn = document.getElementById('next-page');
+const currentPageSpan = document.getElementById('current-page');
+const totalPagesSpan = document.getElementById('total-pages');
+const retryBtn = document.getElementById('retry-btn');
+const errorText = document.getElementById('error-text');
 
 // Инициализация приложения
 function init() {

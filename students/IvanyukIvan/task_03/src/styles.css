@@ -1,3 +1,4 @@
+/* Основные стили */
 :root {
     --primary-color: #32e329;
     --secondary-color: #93fb90;
@@ -21,7 +22,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: #f9f9f9;
@@ -46,7 +47,7 @@ header {
 }
 
 header h1 {
-    font-family: 'Poppins', sans-serif;
+    font-family: Poppins, sans-serif;
     font-weight: 600;
     color: var(--primary-color);
     margin-bottom: 10px;
@@ -146,7 +147,7 @@ header h1 i {
     padding: 12px 24px;
     border: none;
     border-radius: 50px;
-    font-family: 'Poppins', sans-serif;
+    font-family: Poppins, sans-serif;
     font-weight: 500;
     font-size: 1rem;
     cursor: pointer;
@@ -163,9 +164,9 @@ header h1 i {
 }
 
 .btn-primary:hover {
-    background-color: #09ff00;
+    background-color: #93fb90;
     transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(108 92 231 / 30%);
+    box-shadow: 0 6px 12px rgba(108 92 231 30%);
 }
 
 .btn-secondary {
@@ -174,7 +175,7 @@ header h1 i {
 }
 
 .btn-secondary:hover {
-    background-color: #5df75a;
+    background-color: #93fb90;
     transform: translateY(-2px);
 }
 
@@ -205,7 +206,7 @@ header h1 i {
     transition: var(--transition);
 }
 
-.toggle-slider:before {
+.toggle-slider::before {
     content: '';
     position: absolute;
     width: 22px;
@@ -217,11 +218,11 @@ header h1 i {
     transition: var(--transition);
 }
 
-#cacheToggle:checked + .toggle-slider {
+#cache-toggle:checked + .toggle-slider {
     background-color: var(--success-color);
 }
 
-#cacheToggle:checked + .toggle-slider:before {
+#cache-toggle:checked + .toggle-slider::before {
     transform: translateX(24px);
 }
 
@@ -378,7 +379,7 @@ header h1 i {
 
 .album-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0 0 0 / 15%);
+    box-shadow: 0 15px 30px rgba(0 0 0 15%);
 }
 
 .album-cover {
@@ -396,7 +397,7 @@ header h1 i {
 }
 
 .album-title {
-    font-family: 'Poppins', sans-serif;
+    font-family: Poppins, sans-serif;
     font-weight: 600;
     font-size: 1.3rem;
     margin-bottom: 8px;
@@ -456,7 +457,7 @@ header h1 i {
     font-size: 0.9rem;
 }
 
-/* Пагинация */
+/* Пагинация - изменен порядок для соответствия правилам специфичности */
 .pagination-container {
     display: flex;
     justify-content: center;
@@ -475,14 +476,14 @@ header h1 i {
     min-width: 120px;
 }
 
-.btn-pagination:hover:not(:disabled) {
-    background-color: var(--primary-color);
-    color: white;
-}
-
 .btn-pagination:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+}
+
+.btn-pagination:hover:not(:disabled) {
+    background-color: var(--primary-color);
+    color: white;
 }
 
 .page-info {
@@ -539,6 +540,7 @@ header h1 i {
     margin-top: 10px;
 }
 
+/* Изменен порядок для соответствия правилам специфичности */
 .feature li {
     margin-bottom: 8px;
     color: var(--text-light);
@@ -554,8 +556,8 @@ footer {
     border-top: 1px solid var(--gray-color);
 }
 
-/* Адаптивность */
-@media (max-width: 768px) {
+/* Адаптивность - исправлена media feature запись */
+@media (width <= 768px) {
     .container {
         padding: 15px;
     }
