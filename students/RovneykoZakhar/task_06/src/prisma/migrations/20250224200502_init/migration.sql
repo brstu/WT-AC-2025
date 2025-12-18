@@ -1,16 +1,15 @@
--- CreateEnum
-CREATE TYPE "Provider" AS ENUM ('Github', 'Credentials');
+
 
 -- CreateTable
-CREATE TABLE "User" (
-    "id" TEXT NOT NULL,
-    "name" TEXT,
-    "password" TEXT,
-    "email" TEXT NOT NULL,
-    "provider" "Provider" NOT NULL,
-
-    CONSTRAINT "User_pkey" PRIMARY KEY ("id")
+CREATE TABLE User (
+                      id TEXT NOT NULL,
+                      name TEXT,
+                      password TEXT,
+                      email TEXT NOT NULL,
+                      provider ENUM('Github', 'Credentials') NOT NULL,
+                      CONSTRAINT User_pkey PRIMARY KEY (id)
 );
+
 
 -- CreateTable
 CREATE TABLE "Employee" (
