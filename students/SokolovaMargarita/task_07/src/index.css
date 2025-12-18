@@ -1,12 +1,12 @@
+@import url("react-toastify/dist/ReactToastify.css");
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgb(255 255 255 / 87%);
   background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
@@ -71,6 +71,3 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-
-/* Должен быть первым */
-@import url("react-toastify/dist/ReactToastify.css");
