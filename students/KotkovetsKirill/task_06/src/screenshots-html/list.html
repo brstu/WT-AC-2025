@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Список записей - Скриншот</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            width: 100%;
+            max-width: 700px;
+            padding: 40px;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        .records-list {
+            margin-top: 20px;
+        }
+        .record-item {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .record-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .record-type {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+        }
+        .record-id {
+            font-size: 12px;
+            color: #666;
+            background: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        .record-value {
+            font-size: 24px;
+            color: #667eea;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .record-info {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            font-size: 13px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+        .info-label {
+            font-weight: 500;
+            color: #666;
+        }
+        .record-notes {
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #666;
+            margin-top: 10px;
+        }
+        .count-badge {
+            display: inline-block;
+            background: #10b981;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 10px;
+        }
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>
+            Мои записи о здоровье
+            <span class="count-badge">3 записи</span>
+        </h1>
+        <p class="subtitle">Все ваши измерения и наблюдения</p>
+        
+        <button type="button">Обновить список</button>
+        
+        <div class="records-list">
+            <div class="record-item">
+                <div class="record-header">
+                    <div class="record-type">Давление</div>
+                    <div class="record-id">ID: 1</div>
+                </div>
+                <div class="record-value">120/80</div>
+                <div class="record-info">
+                    <div><span class="info-label">Дата:</span> 16.12.2025</div>
+                    <div><span class="info-label">Создано:</span> 16.12.2025 10:30</div>
+                    <div><span class="info-label">Цель:</span> Нормализовать давление</div>
+                </div>
+                <div class="record-notes">
+                    📝 Измерено утром натощак
+                </div>
+            </div>
+            
+            <div class="record-item">
+                <div class="record-header">
+                    <div class="record-type">Вес</div>
+                    <div class="record-id">ID: 2</div>
+                </div>
+                <div class="record-value">75 кг</div>
+                <div class="record-info">
+                    <div><span class="info-label">Дата:</span> 16.12.2025</div>
+                    <div><span class="info-label">Создано:</span> 16.12.2025 10:31</div>
+                    <div><span class="info-label">Цель:</span> Снизить до 70 кг</div>
+                </div>
+            </div>
+            
+            <div class="record-item">
+                <div class="record-header">
+                    <div class="record-type">Пульс</div>
+                    <div class="record-id">ID: 3</div>
+                </div>
+                <div class="record-value">72 уд/мин</div>
+                <div class="record-info">
+                    <div><span class="info-label">Дата:</span> 15.12.2025</div>
+                    <div><span class="info-label">Создано:</span> 15.12.2025 22:15</div>
+                    <div><span class="info-label">Цель:</span> Поддерживать норму</div>
+                </div>
+                <div class="record-notes">
+                    📝 В состоянии покоя, после ужина
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
