@@ -25,6 +25,7 @@
     "build": "craco build",
     "test": "craco test",
     "eject": "react-scripts eject",
+    "lint:css": "stylelint \"src/**/*.css\"",
     "lint": "eslint src/**/*.{ts,tsx} --fix",
     "format": "prettier --write src/**/*.{ts,tsx,js,json,css} cypress/**/*.{ts,js}",
     "prepare": "husky install"
