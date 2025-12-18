@@ -70,8 +70,8 @@ button:disabled {
   display: none;
 }
 
-/* Исправленный медиа-запрос с правильным range notation */
-@media (max-width: 600px) {
+/* Адаптивная вёрстка для мобильных устройств */
+@media (width <= 600px) {
   form {
     grid-template-columns: 1fr;
   }
