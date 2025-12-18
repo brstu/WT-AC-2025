@@ -193,7 +193,7 @@ header h1 i {
     cursor: pointer;
 }
 
-#cacheToggle {
+#cache-toggle {
     display: none;
 }
 
@@ -379,7 +379,7 @@ header h1 i {
 
 .album-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0 0 0 15%);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
 }
 
 .album-cover {
@@ -446,6 +446,12 @@ header h1 i {
     border-bottom: none;
 }
 
+/* Исправленный порядок: .feature li идет после .track-list li:last-child */
+.feature li {
+    margin-bottom: 8px;
+    color: var(--text-light);
+}
+
 .track-number {
     font-weight: 500;
     color: var(--text-light);
@@ -457,7 +463,7 @@ header h1 i {
     font-size: 0.9rem;
 }
 
-/* Пагинация - изменен порядок для соответствия правилам специфичности */
+/* Пагинация */
 .pagination-container {
     display: flex;
     justify-content: center;
@@ -538,12 +544,6 @@ header h1 i {
 .feature ul {
     list-style-position: inside;
     margin-top: 10px;
-}
-
-/* Изменен порядок для соответствия правилам специфичности */
-.feature li {
-    margin-bottom: 8px;
-    color: var(--text-light);
 }
 
 /* Футер */
