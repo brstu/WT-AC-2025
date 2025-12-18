@@ -1,149 +1,14 @@
-body {
-  min-height: 100vh;
-  margin: 0;
-  padding: 0;
-  background: #ffe4ec;
-  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-}
-
-#root {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-form, .note-form {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
-  padding: 32px 32px 24px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-  min-width: 340px;
-  align-items: center;
-}
-
-input[type="text"],
-input[type="date"],
-textarea {
-  border: 1px solid #ffd6e3;
-  border-radius: 12px;
-  padding: 10px 14px;
-  font-size: 1rem;
-  background: #fff;
-  width: 100%;
-  box-sizing: border-box;
-  transition: border 0.2s;
-}
-
-input[type="text"]:focus,
-input[type="date"]:focus,
-textarea:focus {
-  outline: none;
-  border: 1.5px solid #ffb6d5;
-}
-
-label {
-  font-weight: 500;
-  color: #d16b8a;
-  align-self: flex-start;
-}
-
-button, input[type="submit"] {
-  background: linear-gradient(90deg, #ffb6d5 0%, #ffd6e3 100%);
-  color: #fff;
-  border: none;
-  border-radius: 12px;
-  padding: 10px 32px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  box-shadow: 0 2px 8px 0 rgba(255,182,213,0.10);
-  transition: background 0.2s, box-shadow 0.2s;
-}
-
-button:hover, input[type="submit"]:hover {
-  background: linear-gradient(90deg, #ff8fcf 0%, #ffd6e3 100%);
-  box-shadow: 0 4px 16px 0 rgba(255,182,213,0.18);
-}
-
-.note-list, .note-detail {
-  background: #fff;
-  border-radius: 20px;
-  box-shadow: 0 4px 24px 0 rgba(0,0,0,0.07);
-  padding: 32px;
-  margin: 24px auto;
-  max-width: 600px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.note-list h2, .note-detail h2 {
-  color: #d16b8a;
-  margin-bottom: 18px;
-}
-
-.note-item {
-  background: #ffe4ec;
-  border-radius: 14px;
-  padding: 18px 24px;
-  margin-bottom: 16px;
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  transition: box-shadow 0.2s;
-}
-.note-item:hover {
-  box-shadow: 0 2px 12px 0 rgba(255,182,213,0.18);
-}
-
-.note-item .note-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #d16b8a;
-  margin-bottom: 6px;
-}
-
-.note-item .note-date {
-  font-size: 0.95rem;
-  color: #b48ca7;
-  margin-bottom: 8px;
-}
-
-.note-item .note-tags {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-.note-item .note-tag {
-  background: #ffd6e3;
-  color: #d16b8a;
-  border-radius: 8px;
-  padding: 2px 10px;
-  font-size: 0.9rem;
-}
-
-.note-item .note-content {
-  color: #444;
-  margin-top: 4px;
-}
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: rgb(255 255 255 / 87%);
   background-color: #242424;
 
   font-synthesis: none;
-  text-rendering: optimizeLegibility;
+  text-rendering: optimizelegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -153,6 +18,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
+
 a:hover {
   color: #535bf2;
 }
@@ -181,9 +47,11 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -192,14 +60,17 @@ button:focus-visible {
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
-    background-color: #ffffff;
+    background-color: #fff;
   }
+
   a:hover {
     color: #747bff;
   }
+
   button {
     background-color: #f9f9f9;
   }
 }
 
-@import "react-toastify/dist/ReactToastify.css";
+/* Должен быть первым */
+@import url("react-toastify/dist/ReactToastify.css");
