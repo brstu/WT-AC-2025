@@ -1,0 +1,26 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Дублирование стилей */
+.container {
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+.container2 {
+  padding: 20px;
+  background-color: #f0f0f0;
+}
+
+/* Неиспользуемые стили */
+.unused-class {
+  color: red;
+  font-size: 24px;
+}
+
+.another-unused {
+  display: flex;
+  justify-content: center;
+}
