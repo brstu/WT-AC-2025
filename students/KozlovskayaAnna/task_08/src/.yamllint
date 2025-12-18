@@ -1,0 +1,13 @@
+---
+extends: default
+rules:
+  document-start: disable
+  line-length:
+    max: 120
+  new-lines:
+    type: unix
+  brackets:
+    max-spaces-inside: 1
+  indentation:
+    spaces: 2
+    indent-sequences: consistent

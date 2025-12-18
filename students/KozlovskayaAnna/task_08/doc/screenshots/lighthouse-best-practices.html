@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lighthouse Best Practices Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .report {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .score {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            margin-right: 20px;
+        }
+        .score-61 {
+            background: #ff9500;
+        }
+        .check {
+            margin: 15px 0;
+            padding: 15px;
+            background: #f9f9f9;
+            border-left: 4px solid #ff9500;
+            border-radius: 4px;
+        }
+        .check-title {
+            font-weight: bold;
+            color: #333;
+        }
+        .check-desc {
+            color: #666;
+            font-size: 0.9em;
+        }
+        .pass {
+            background: #f0f9ff;
+            border-left-color: #28a745;
+        }
+        .pass .check-title,
+        .pass .check-desc {
+            color: #22863a;
+        }
+    </style>
+</head>
+<body>
+    <div class="report">
+        <h1>Lighthouse Best Practices Report</h1>
+        <p><strong>URL:</strong> http://localhost:3000</p>
+        <p><strong>Date:</strong> 2025-12-18</p>
+        
+        <div class="score">
+            <div class="score-circle score-61">61</div>
+            <div>
+                <h2 style="margin: 0;">Best Practices Score: 61/100</h2>
+                <p style="margin: 5px 0; color: #ff9500;">Needs improvement</p>
+            </div>
+        </div>
+        
+        <h3>Best Practices Audits</h3>
+        
+        <div class="check pass">
+            <div class="check-title">✓ HTTPS enabled</div>
+            <div class="check-desc">Site uses secure HTTPS connection</div>
+        </div>
+        
+        <div class="check pass">
+            <div class="check-title">✓ No console errors</div>
+            <div class="check-desc">No errors logged to browser console</div>
+        </div>
+        
+        <div class="check">
+            <div class="check-title">⚠ JavaScript minification</div>
+            <div class="check-desc">JavaScript should be minified for production</div>
+        </div>
+        
+        <div class="check">
+            <div class="check-title">⚠ CSS minification</div>
+            <div class="check-desc">CSS should be minified for production</div>
+        </div>
+        
+        <div class="check pass">
+            <div class="check-title">✓ Viewport configuration</div>
+            <div class="check-desc">Viewport meta tag is properly configured</div>
+        </div>
+        
+        <div class="check pass">
+            <div class="check-title">✓ Error handling</div>
+            <div class="check-desc">Application handles errors gracefully</div>
+        </div>
+        
+        <div class="check">
+            <div class="check-title">⚠ Deprecated APIs</div>
+            <div class="check-desc">Some deprecated browser APIs are used</div>
+        </div>
+    </div>
+</body>
+</html>

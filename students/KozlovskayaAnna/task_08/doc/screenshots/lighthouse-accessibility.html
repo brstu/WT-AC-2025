@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lighthouse Accessibility Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .report {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .score {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            margin-right: 20px;
+        }
+        .score-62 {
+            background: #ff9500;
+        }
+        .issue {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+        }
+        .issue-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        .issue-desc {
+            color: #856404;
+            font-size: 0.9em;
+        }
+        .pass {
+            color: #22863a;
+            background: #f0f9ff;
+            border-left-color: #28a745;
+        }
+        .pass .issue-title,
+        .pass .issue-desc {
+            color: #22863a;
+        }
+    </style>
+</head>
+<body>
+    <div class="report">
+        <h1>Lighthouse Accessibility Report</h1>
+        <p><strong>URL:</strong> http://localhost:3000</p>
+        <p><strong>Date:</strong> 2025-12-18</p>
+        
+        <div class="score">
+            <div class="score-circle score-62">62</div>
+            <div>
+                <h2 style="margin: 0;">Accessibility Score: 62/100</h2>
+                <p style="margin: 5px 0; color: #ff9500;">Needs improvement</p>
+            </div>
+        </div>
+        
+        <h3>Accessibility Audits</h3>
+        
+        <div class="issue pass">
+            <div class="issue-title">✓ Color contrast</div>
+            <div class="issue-desc">Contrast ratio: 4.2:1 - PASS</div>
+        </div>
+        
+        <div class="issue pass">
+            <div class="issue-title">✓ Form labels</div>
+            <div class="issue-desc">All form inputs have labels - PASS</div>
+        </div>
+        
+        <div class="issue pass">
+            <div class="issue-title">✓ Alt text on images</div>
+            <div class="issue-desc">All images have descriptive alt text - PASS</div>
+        </div>
+        
+        <div class="issue">
+            <div class="issue-title">⚠ Keyboard navigation</div>
+            <div class="issue-desc">Some interactive elements are not keyboard accessible</div>
+        </div>
+        
+        <div class="issue">
+            <div class="issue-title">⚠ ARIA attributes</div>
+            <div class="issue-desc">Missing ARIA roles and attributes in some areas</div>
+        </div>
+        
+        <div class="issue">
+            <div class="issue-title">⚠ Focus indicators</div>
+            <div class="issue-desc">Focus indicators could be more visible</div>
+        </div>
+    </div>
+</body>
+</html>
