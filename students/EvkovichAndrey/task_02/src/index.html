@@ -13,10 +13,10 @@
 
       <!-- Бургер-меню -->
       <button
-        id="burgerBtn"
+        id="burger-btn"
         class="burger"
         aria-label="Открыть меню"
-        aria-controls="mainNav"
+        aria-controls="main-nav"
         aria-expanded="false"
       >
         <span class="burger-bar" aria-hidden="true"></span>
@@ -24,7 +24,7 @@
         <span class="burger-bar" aria-hidden="true"></span>
       </button>
 
-      <nav id="mainNav" class="main-nav" aria-label="Главное меню">
+      <nav id="main-nav" class="main-nav" aria-label="Главное меню">
         <ul>
           <li><a href="#todo">Список дел</a></li>
           <li><a href="#ui-tabs">Табы</a></li>
@@ -36,16 +36,16 @@
   </header>
 
   <main class="container">
-    <!-- СЕКЦИЯ: To-Do список с фильтрами, drag-n-drop, модалкой подтверждения -->
+    <!-- СЕКЦИЯ: To-Do список -->
     <section id="todo" aria-labelledby="todo-title">
       <h2 id="todo-title">Список дел</h2>
 
       <article class="todo-builder">
-        <form id="todoForm" class="todo-form" aria-describedby="todoHelp">
-          <label for="todoInput" class="visually-hidden">Новая задача</label>
-          <input id="todoInput" name="todo" type="text" placeholder="Новая задача..." required />
+        <form id="todo-form" class="todo-form" aria-describedby="todo-help">
+          <label for="todo-input" class="visually-hidden">Новая задача</label>
+          <input id="todo-input" name="todo" type="text" placeholder="Новая задача..." required />
           <button type="submit" class="btn">Добавить</button>
-          <p id="todoHelp" class="help-text">Добавляйте задачи. Перетаскивайте, фильтруйте, ставьте лайки. Удаление — с подтверждением.</p>
+          <p id="todo-help" class="help-text">Добавляйте задачи. Перетаскивайте, фильтруйте, ставьте лайки. Удаление — с подтверждением.</p>
         </form>
 
         <!-- Фильтры + табы -->
@@ -59,13 +59,13 @@
           </div>
 
           <div id="panel-all" role="tabpanel" aria-labelledby="tab-all">
-            <ul id="todoList" class="todo-list" aria-label="Список задач"></ul>
+            <ul id="todo-list" class="todo-list" aria-label="Список задач"></ul>
           </div>
           <div id="panel-liked" role="tabpanel" aria-labelledby="tab-liked" hidden>
-            <ul id="todoListLiked" class="todo-list" aria-label="Любимые задачи"></ul>
+            <ul id="todo-list-liked" class="todo-list" aria-label="Любимые задачи"></ul>
           </div>
           <div id="panel-unliked" role="tabpanel" aria-labelledby="tab-unliked" hidden>
-            <ul id="todoListUnliked" class="todo-list" aria-label="Остальные задачи"></ul>
+            <ul id="todo-list-unliked" class="todo-list" aria-label="Остальные задачи"></ul>
           </div>
         </section>
       </article>
@@ -88,12 +88,7 @@
             Что умеет этот проект?
           </button>
         </h3>
-        <div
-          id="acc-panel-1"
-          role="region"
-          aria-labelledby="acc-btn-1"
-          hidden
-        >
+        <div id="acc-panel-1" role="region" aria-labelledby="acc-btn-1" hidden>
           <p>Drag‑n‑drop сортировка, фильтры табами, модальное подтверждение удаления, делегирование событий, доступность, мобильная адаптация.</p>
         </div>
 
@@ -107,46 +102,41 @@
             Как управлять с клавиатуры?
           </button>
         </h3>
-        <div
-          id="acc-panel-2"
-          role="region"
-          aria-labelledby="acc-btn-2"
-          hidden
-        >
-          <p>Tab/Shift+Tab — навигация по интерактивным элементам; Enter/Space — активация; Esc — закрытие модалки.</p>
+        <div id="acc-panel-2" role="region" aria-labelledby="acc-btn-2" hidden>
+          <p>Tab/Shift+Tab — навигация; Enter/Space — активация; Esc — закрытие модалки.</p>
         </div>
       </div>
     </section>
 
     <hr />
 
-    <!-- СЕКЦИЯ: Контактная форма с валидацией -->
+    <!-- СЕКЦИЯ: Контактная форма -->
     <section id="contact" aria-labelledby="contact-title">
       <h2 id="contact-title">Контактная форма</h2>
 
-      <form id="contactForm" novalidate aria-describedby="contactHelp">
-        <p id="contactHelp" class="help-text">Все поля валидируются при вводе и при отправке. Кнопка неактивна, если форма невалидна.</p>
+      <form id="contact-form" novalidate aria-describedby="contact-help">
+        <p id="contact-help" class="help-text">Все поля валидируются при вводе и при отправке. Кнопка неактивна, если форма невалидна.</p>
 
         <div class="form-group">
           <label for="name">Имя*</label>
           <input id="name" name="name" type="text" required aria-required="true" />
-          <span class="error" id="nameError" role="alert" aria-live="polite"></span>
+          <span class="error" id="name-error" role="alert" aria-live="polite"></span>
         </div>
 
         <div class="form-group">
           <label for="email">E‑mail*</label>
           <input id="email" name="email" type="email" required aria-required="true" />
-          <span class="error" id="emailError" role="alert" aria-live="polite"></span>
+          <span class="error" id="email-error" role="alert" aria-live="polite"></span>
         </div>
 
         <div class="form-group">
-          <label for="message">Сообщение (мин. 20 символов)*</label>
+          <label for="message">Сообщение*</label>
           <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
-          <span class="error" id="messageError" role="alert" aria-live="polite"></span>
+          <span class="error" id="message-error" role="alert" aria-live="polite"></span>
         </div>
 
-        <button id="contactSubmit" type="submit" class="btn" disabled>Отправить</button>
-        <div id="contactResult" class="result" aria-live="polite"></div>
+        <button id="contact-submit" type="submit" class="btn" disabled>Отправить</button>
+        <div id="contact-result" class="result" aria-live="polite"></div>
       </form>
     </section>
   </main>
@@ -157,28 +147,28 @@
     </div>
   </footer>
 
-  <!-- Модальное окно подтверждения -->
+  <!-- Модальное окно -->
   <div
-    id="confirmModal"
+    id="confirm-modal"
     class="modal"
     role="dialog"
     aria-modal="true"
-    aria-labelledby="confirmTitle"
-    aria-describedby="confirmDesc"
+    aria-labelledby="confirm-title"
+    aria-describedby="confirm-desc"
     hidden
   >
     <div class="modal-backdrop" data-close="true"></div>
     <div class="modal-content" role="document">
-      <h2 id="confirmTitle">Удалить задачу?</h2>
-      <p id="confirmDesc">Это действие необратимо.</p>
+      <h2 id="confirm-title">Удалить задачу?</h2>
+      <p id="confirm-desc">Это действие необратимо.</p>
       <div class="modal-actions">
-        <button id="confirmYes" class="btn btn-danger">Удалить</button>
-        <button id="confirmNo" class="btn" data-close="true">Отмена</button>
+        <button id="confirm-yes" class="btn btn-danger">Удалить</button>
+        <button id="confirm-no" class="btn" data-close="true">Отмена</button>
       </div>
     </div>
   </div>
 
-  <!-- Tooltip (универсальный) -->
+  <!-- Tooltip -->
   <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
 
   <script type="module" src="script.js"></script>
