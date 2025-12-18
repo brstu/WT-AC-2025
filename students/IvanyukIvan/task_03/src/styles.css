@@ -379,7 +379,7 @@ header h1 i {
 
 .album-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 15px 30px rgba(0 0 0 / 15%);
 }
 
 .album-cover {
@@ -442,14 +442,13 @@ header h1 i {
     justify-content: space-between;
 }
 
-.track-list li:last-child {
-    border-bottom: none;
-}
-
-/* Исправленный порядок: .feature li идет после .track-list li:last-child */
 .feature li {
     margin-bottom: 8px;
     color: var(--text-light);
+}
+
+.track-list li:last-child {
+    border-bottom: none;
 }
 
 .track-number {
