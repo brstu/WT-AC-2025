@@ -1,11 +1,10 @@
 :root {
-  /* Light theme colors */
-  --bg: #ffffff;
+  --bg: #fff;
   --bg-muted: #f8fafc;
   --text: #1e293b;
   --text-muted: #64748b;
   --text-light: #94a3b8;
-  --card: #ffffff;
+  --card: #fff;
   --accent: #3b82f6;
   --accent-hover: #2563eb;
   --accent-light: #dbeafe;
@@ -16,15 +15,15 @@
   --success: #10b981;
   --warning: #f59e0b;
   
-  /* Shadows */
-  --shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.12);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  /* Shadows - исправлена нотация цветовых функций и значения прозрачности */
+  --shadow: 0 10px 40px rgb(0 0 0 / 8%);
+  --shadow-lg: 0 20px 60px rgb(0 0 0 / 12%);
+  --shadow-sm: 0 2px 8px rgb(0 0 0 / 4%);
   
   /* Gradients */
   --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   --gradient-accent: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-  --gradient-card: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  --gradient-card: linear-gradient(135deg, #fff 0%, #f8fafc 100%);
   
   /* Effects */
   --backdrop: blur(20px);
@@ -52,10 +51,10 @@
   --success: #34d399;
   --warning: #fbbf24;
   
-  /* Dark theme shadows */
-  --shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
-  --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.35);
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  /* Dark theme shadows - исправлена нотация */
+  --shadow: 0 10px 40px rgb(0 0 0 / 25%);
+  --shadow-lg: 0 20px 60px rgb(0 0 0 / 35%);
+  --shadow-sm: 0 2px 8px rgb(0 0 0 / 15%);
   
   /* Dark theme gradients */
   --gradient: linear-gradient(135deg, #818cf8 0%, #a78bfa 100%);
@@ -86,7 +85,7 @@ body {
 
 /* Header */
 .header {
-  background: rgba(var(--card), 0.8);
+  background: rgb(from var(--card) r g b / 80%);
   backdrop-filter: var(--backdrop);
   position: sticky;
   top: 0;
@@ -200,7 +199,7 @@ body {
 
 .hero-subtitle {
   font-size: 1.25rem;
-  color: rgba(255,255,255,0.9);
+  color: rgb(255 255 255 / 90%);
   margin-bottom: 2rem;
 }
 
@@ -222,7 +221,7 @@ body {
 
 .hero-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 20%);
 }
 
 /* Section */
@@ -515,6 +514,13 @@ body {
   min-height: 120px;
 }
 
+.field-textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  background: var(--card);
+  box-shadow: 0 0 0 3px var(--accent-light);
+}
+
 .error-message {
   display: block;
   font-size: 0.75rem;
@@ -540,15 +546,15 @@ body {
   transition: var(--transition);
 }
 
-.submit-button:hover:not(:disabled) {
-  background: var(--accent-hover);
-  transform: translateY(-2px);
-}
-
 .submit-button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none !important;
+}
+
+.submit-button:hover:not(:disabled) {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
 }
 
 .form-result {
@@ -593,14 +599,14 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
   .feedback-wrapper {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .cards {
     grid-template-columns: 1fr;
   }
