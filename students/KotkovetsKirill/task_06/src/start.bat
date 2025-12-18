@@ -1,0 +1,3 @@
+@echo off
+echo Starting Health Diary server...
+call npm start
