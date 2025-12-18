@@ -2,6 +2,12 @@
 
 React SPA для учёта инвентаря и оборудования с ролями пользователей.
 
+## 🚀 Live Demo
+
+**[https://task07-sigma.vercel.app](https://task07-sigma.vercel.app)**
+
+> Для входа можно использовать любые учетные данные
+
 ## Быстрый старт
 
 ```bash
@@ -14,8 +20,11 @@ npm run dev
 # Сборка для production
 npm run build
 
-# Запуск тестов
+# Запуск тестов (39 tests в 8 test suites)
 npm test
+
+# Запуск тестов с UI интерфейсом
+npm run test:ui
 ```
 
 ## Переменные окружения
@@ -44,8 +53,10 @@ VITE_API_URL=http://localhost:3000/api
 - **State Management:** Redux Toolkit + RTK Query
 - **Routing:** React Router v7
 - **Forms:** React Hook Form + Zod
-- **Testing:** Vitest + React Testing Library
+- **Testing:** Vitest + React Testing Library (39 passing tests)
+- **Type Validation:** PropTypes
 - **Styling:** CSS Modules
+- **Deployment:** Vercel
 
 ## Структура проекта
 

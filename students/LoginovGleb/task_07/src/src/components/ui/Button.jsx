@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import './Button.css';
 
 export const Button = ({ 
@@ -19,4 +20,14 @@ export const Button = ({
       {children}
     </button>
   );
+};
+
+Button.propTypes = {
+  children: PropTypes.node,
+  variant: PropTypes.oneOf(['primary', 'secondary', 'danger', 'success']),
+  type: PropTypes.oneOf(['button', 'submit', 'reset']),
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool,
+  fullWidth: PropTypes.bool,
+  className: PropTypes.string,
 };
