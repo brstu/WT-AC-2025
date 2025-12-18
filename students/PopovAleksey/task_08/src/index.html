@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог художественных работ</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 20px;
+            background: white;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 300px;
+        }
+        .item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        button {
+            margin: 10px 5px;
+            padding: 10px 20px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .filter {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Каталог художественных работ</h1>
+        <div class="filter">
+            <button onclick="filter('all')">Все</button>
+            <button onclick="filter('painting')">Живопись</button>
+            <button onclick="filter('sculpture')">Скульптура</button>
+            <button onclick="filter('graphics')">Графика</button>
+        </div>
+    </div>
+    
+    <div id="gallery" class="gallery"></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
