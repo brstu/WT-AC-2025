@@ -257,7 +257,7 @@ docker run -d -p 8080:80 equipment-inventory
 
 - Automatically deployed via GitHub Actions
 - Triggered on push to main branch
-- URL: https://gleb7499.github.io/WT-AC-2025-Loginov/
+- URL: <https://gleb7499.github.io/WT-AC-2025-Loginov/>
 
 ## 📝 License
 
