@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Библиотека цитат</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./style.css">
+  <script type="module" src="./script.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="site-nav" aria-label="Главная навигация">
+      <button class="burger" aria-label="Открыть меню" aria-expanded="false" aria-controls="primary-menu">
+        <span class="burger-box" aria-hidden="true"></span>
+      </button>
+      <ul id="primary-menu" class="menu" role="menubar">
+        <li role="none"><a role="menuitem" href="#main">Каталог</a></li>
+        <li role="none"><a role="menuitem" href="#accordion">FAQ</a></li>
+        <li role="none"><a role="menuitem" href="#contact">Связаться</a></li>
+      </ul>
+    </nav>
+    <h1 class="site-title">Библиотека цитат</h1>
+    <section class="search-section" aria-label="Поиск по цитатам">
+      <label for="searchInput" class="visually-hidden">Поиск</label>
+      <input id="searchInput" type="search" placeholder="Найдите цитату или автора" aria-describedby="searchHelp">
+      <p id="searchHelp" class="sr-note">Введите текст для фильтрации списка цитат</p>
+    </section>
+  </header>
+
+  <main id="main">
+    <section aria-labelledby="tabs-title" class="tabs-section">
+      <h2 id="tabs-title">Категории цитат</h2>
+      <div class="tabs" role="tablist" aria-label="Категории">
+        <button role="tab" aria-selected="true" aria-controls="panel-all" id="tab-all" tabindex="0">Все</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-life" id="tab-life" tabindex="-1">О жизни</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-love" id="tab-love" tabindex="-1">О любви</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-work" id="tab-work" tabindex="-1">О работе</button>
+      </div>
+      <div id="panel-all" role="tabpanel" aria-labelledby="tab-all">
+        <section aria-label="Список цитат">
+          <div id="quotesContainer" class="cards" data-event-delegation="true">
+            <!-- Карточки цитат генерируются скриптом -->
+          </div>
+        </section>
+      </div>
+      <div id="panel-life" role="tabpanel" aria-labelledby="tab-life" hidden></div>
+      <div id="panel-love" role="tabpanel" aria-labelledby="tab-love" hidden></div>
+      <div id="panel-work" role="tabpanel" aria-labelledby="tab-work" hidden></div>
+    </section>
+
+    <section id="accordion" aria-labelledby="accordion-title" class="accordion-section">
+      <h2 id="accordion-title">FAQ по библиотеке</h2>
+      <div class="accordion">
+        <h3>
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-panel-1" id="acc-1">
+            Как поставить лайк цитате?
+          </button>
+        </h3>
+        <div id="acc-panel-1" role="region" aria-labelledby="acc-1" hidden>
+          <p>Нажмите кнопку «Лайк» на карточке. Повторное нажатие снимает лайк.</p>
+        </div>
+
+        <h3>
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-panel-2" id="acc-2">
+            Как поделиться цитатой?
+          </button>
+        </h3>
+        <div id="acc-panel-2" role="region" aria-labelledby="acc-2" hidden>
+          <p>Нажмите «Поделиться» и выберите способ. Откроется модальное окно с доступными вариантами.</p>
+        </div>
+
+        <h3>
+          <button class="accordion-trigger" aria-expanded="false" aria-controls="acc-panel-3" id="acc-3">
+            Как работает поиск?
+          </button>
+        </h3>
+        <div id="acc-panel-3" role="region" aria-labelledby="acc-3" hidden>
+          <p>Поиск фильтрует цитаты по тексту и автору в реальном времени.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" aria-labelledby="contact-title" class="contact-section">
+      <h2 id="contact-title">Свяжитесь с нами</h2>
+      <form id="contactForm" novalidate aria-describedby="formHelp">
+        <p id="formHelp" class="sr-note">Все поля проверяются при вводе и отправке</p>
+        <div class="form-field">
+          <label for="name">Имя*</label>
+          <input id="name" name="name" type="text" required aria-required="true" aria-invalid="false" aria-describedby="nameError">
+          <small id="nameError" class="error" role="alert"></small>
+        </div>
+        <div class="form-field">
+          <label for="email">E‑mail*</label>
+          <input id="email" name="email" type="email" required aria-required="true" aria-invalid="false" aria-describedby="emailError" inputmode="email">
+          <small id="emailError" class="error" role="alert"></small>
+        </div>
+        <div class="form-field">
+          <label for="message">Сообщение (мин. 20 символов)*</label>
+          <textarea id="message" name="message" minlength="20" required aria-required="true" aria-invalid="false" aria-describedby="messageError"></textarea>
+          <small id="messageError" class="error" role="alert"></small>
+        </div>
+        <button id="submitBtn" type="submit" disabled aria-disabled="true">Отправить</button>
+        <p id="formResult" class="form-result" aria-live="polite"></p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2025 Библиотека цитат</p>
+  </footer>
+
+  <!-- Модалка «Поделиться» -->
+  <div class="modal-backdrop" id="shareModalBackdrop" hidden></div>
+  <div class="modal" id="shareModal" role="dialog" aria-modal="true" aria-labelledby="shareTitle" aria-describedby="shareDesc" hidden>
+    <div class="modal-header">
+      <h2 id="shareTitle">Поделиться цитатой</h2>
+      <button class="modal-close" aria-label="Закрыть модальное окно" data-modal-close>&times;</button>
+    </div>
+    <p id="shareDesc">Выберите способ поделиться этой цитатой:</p>
+    <div class="modal-content">
+      <button class="share-option" data-share="copy">Копировать текст</button>
+      <button class="share-option" data-share="tweet">Twitter</button>
+      <button class="share-option" data-share="mail">E‑mail</button>
+    </div>
+  </div>
+
+  <!-- Tooltip шаблон -->
+  <div id="tooltip" role="tooltip" hidden></div>
+
+</body>
+</html>
