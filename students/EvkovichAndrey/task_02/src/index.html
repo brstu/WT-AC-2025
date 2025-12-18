@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>To‑Do Конструктор + UI компоненты</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1>Конструктор To‑Do</h1>
+
+      <!-- Бургер-меню -->
+      <button
+        id="burgerBtn"
+        class="burger"
+        aria-label="Открыть меню"
+        aria-controls="mainNav"
+        aria-expanded="false"
+      >
+        <span class="burger-bar" aria-hidden="true"></span>
+        <span class="burger-bar" aria-hidden="true"></span>
+        <span class="burger-bar" aria-hidden="true"></span>
+      </button>
+
+      <nav id="mainNav" class="main-nav" aria-label="Главное меню">
+        <ul>
+          <li><a href="#todo">Список дел</a></li>
+          <li><a href="#ui-tabs">Табы</a></li>
+          <li><a href="#accordion">Аккордеон</a></li>
+          <li><a href="#contact">Контактная форма</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- СЕКЦИЯ: To-Do список с фильтрами, drag-n-drop, модалкой подтверждения -->
+    <section id="todo" aria-labelledby="todo-title">
+      <h2 id="todo-title">Список дел</h2>
+
+      <article class="todo-builder">
+        <form id="todoForm" class="todo-form" aria-describedby="todoHelp">
+          <label for="todoInput" class="visually-hidden">Новая задача</label>
+          <input id="todoInput" name="todo" type="text" placeholder="Новая задача..." required />
+          <button type="submit" class="btn">Добавить</button>
+          <p id="todoHelp" class="help-text">Добавляйте задачи. Перетаскивайте, фильтруйте, ставьте лайки. Удаление — с подтверждением.</p>
+        </form>
+
+        <!-- Фильтры + табы -->
+        <section id="ui-tabs" aria-labelledby="tabs-title">
+          <h3 id="tabs-title">Фильтры (Табы)</h3>
+
+          <div class="tabs" role="tablist" aria-label="Фильтры задач">
+            <button role="tab" class="tab-btn" aria-selected="true" aria-controls="panel-all" id="tab-all">Все</button>
+            <button role="tab" class="tab-btn" aria-selected="false" aria-controls="panel-liked" id="tab-liked">Любимые</button>
+            <button role="tab" class="tab-btn" aria-selected="false" aria-controls="panel-unliked" id="tab-unliked">Остальные</button>
+          </div>
+
+          <div id="panel-all" role="tabpanel" aria-labelledby="tab-all">
+            <ul id="todoList" class="todo-list" aria-label="Список задач"></ul>
+          </div>
+          <div id="panel-liked" role="tabpanel" aria-labelledby="tab-liked" hidden>
+            <ul id="todoListLiked" class="todo-list" aria-label="Любимые задачи"></ul>
+          </div>
+          <div id="panel-unliked" role="tabpanel" aria-labelledby="tab-unliked" hidden>
+            <ul id="todoListUnliked" class="todo-list" aria-label="Остальные задачи"></ul>
+          </div>
+        </section>
+      </article>
+    </section>
+
+    <hr />
+
+    <!-- СЕКЦИЯ: Аккордеон -->
+    <section id="accordion" aria-labelledby="acc-title">
+      <h2 id="acc-title">Аккордеон</h2>
+
+      <div class="accordion" role="region" aria-labelledby="acc-title">
+        <h3>
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="acc-panel-1"
+            id="acc-btn-1"
+          >
+            Что умеет этот проект?
+          </button>
+        </h3>
+        <div
+          id="acc-panel-1"
+          role="region"
+          aria-labelledby="acc-btn-1"
+          hidden
+        >
+          <p>Drag‑n‑drop сортировка, фильтры табами, модальное подтверждение удаления, делегирование событий, доступность, мобильная адаптация.</p>
+        </div>
+
+        <h3>
+          <button
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="acc-panel-2"
+            id="acc-btn-2"
+          >
+            Как управлять с клавиатуры?
+          </button>
+        </h3>
+        <div
+          id="acc-panel-2"
+          role="region"
+          aria-labelledby="acc-btn-2"
+          hidden
+        >
+          <p>Tab/Shift+Tab — навигация по интерактивным элементам; Enter/Space — активация; Esc — закрытие модалки.</p>
+        </div>
+      </div>
+    </section>
+
+    <hr />
+
+    <!-- СЕКЦИЯ: Контактная форма с валидацией -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Контактная форма</h2>
+
+      <form id="contactForm" novalidate aria-describedby="contactHelp">
+        <p id="contactHelp" class="help-text">Все поля валидируются при вводе и при отправке. Кнопка неактивна, если форма невалидна.</p>
+
+        <div class="form-group">
+          <label for="name">Имя*</label>
+          <input id="name" name="name" type="text" required aria-required="true" />
+          <span class="error" id="nameError" role="alert" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">E‑mail*</label>
+          <input id="email" name="email" type="email" required aria-required="true" />
+          <span class="error" id="emailError" role="alert" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Сообщение (мин. 20 символов)*</label>
+          <textarea id="message" name="message" rows="4" required aria-required="true"></textarea>
+          <span class="error" id="messageError" role="alert" aria-live="polite"></span>
+        </div>
+
+        <button id="contactSubmit" type="submit" class="btn" disabled>Отправить</button>
+        <div id="contactResult" class="result" aria-live="polite"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; 2025 Конструктор To‑Do</small>
+    </div>
+  </footer>
+
+  <!-- Модальное окно подтверждения -->
+  <div
+    id="confirmModal"
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="confirmTitle"
+    aria-describedby="confirmDesc"
+    hidden
+  >
+    <div class="modal-backdrop" data-close="true"></div>
+    <div class="modal-content" role="document">
+      <h2 id="confirmTitle">Удалить задачу?</h2>
+      <p id="confirmDesc">Это действие необратимо.</p>
+      <div class="modal-actions">
+        <button id="confirmYes" class="btn btn-danger">Удалить</button>
+        <button id="confirmNo" class="btn" data-close="true">Отмена</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tooltip (универсальный) -->
+  <div id="tooltip" class="tooltip" role="tooltip" hidden></div>
+
+  <script type="module" src="script.js"></script>
+</body>
+</html>
