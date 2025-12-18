@@ -1,0 +1,19 @@
+{
+  "name": "portfolio-project",
+  "version": "1.0.0",
+  "description": "Portfolio project testing and deployment",
+  "main": "src/script.js",
+  "scripts": {
+    "test": "jest",
+    "start": "http-server src -p 8080",
+    "lint": "echo 'Linting...'",
+    "build": "echo 'Building...'"
+  },
+  "keywords": [],
+  "author": "Gritsuk Pavel",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "http-server": "^14.1.1"
+  }
+}
