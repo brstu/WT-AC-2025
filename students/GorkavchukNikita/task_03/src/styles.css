@@ -7,20 +7,25 @@
   --danger: #ff5b6a;
   --ok: #57d18f;
   --warn: #ffd36a;
-
   --r: 14px;
   --pad: 14px;
   --gap: 14px;
-  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --shadow: 0 10px 30px rgb(0 0 0 / 35%);
+  --mono: ui-monospace, "sfmono-regular", menlo, monaco, consolas, "liberation mono", monospace;
 }
 
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
 
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
+  font-family: system-ui, -apple-system, "Segoe UI", roboto, ubuntu, cantarell, "Noto Sans", arial;
   background:
     radial-gradient(1200px 700px at 20% -10%, #1a2350 0%, transparent 60%),
     radial-gradient(1000px 700px at 90% 10%, #2b1746 0%, transparent 60%),
@@ -28,10 +33,15 @@ body {
   color: var(--text);
 }
 
-.muted { color: var(--muted); }
-h1, h2 { margin: 0; }
+.muted {
+  color: var(--muted);
+}
 
-/* Topbar */
+h1,
+h2 {
+  margin: 0;
+}
+
 .topbar {
   padding: 18px 18px 10px;
   display: flex;
@@ -40,7 +50,9 @@ h1, h2 { margin: 0; }
   justify-content: space-between;
 }
 
-.topbar-title p { margin: 6px 0 0; }
+.topbar-title p {
+  margin: 6px 0 0;
+}
 
 .topbar-controls {
   display: flex;
@@ -50,7 +62,6 @@ h1, h2 { margin: 0; }
   justify-content: flex-end;
 }
 
-/* Layout */
 .layout {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -58,14 +69,13 @@ h1, h2 { margin: 0; }
   padding: 0 18px 18px;
 }
 
-/* Panels */
 .panel {
   border: 1px solid var(--stroke);
   border-radius: var(--r);
   box-shadow: var(--shadow);
   overflow: hidden;
   min-height: 60vh;
-  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.0));
+  background: linear-gradient(180deg, rgb(255 255 255 / 2%), rgb(255 255 255 / 0%));
 }
 
 .panel-head {
@@ -74,7 +84,7 @@ h1, h2 { margin: 0; }
   gap: 10px;
   align-items: flex-end;
   border-bottom: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.02);
+  background: rgb(255 255 255 / 2%);
 }
 
 .panel-head-detail {
@@ -82,9 +92,10 @@ h1, h2 { margin: 0; }
   justify-content: space-between;
 }
 
-.panel-detail .panel-head { padding: 16px; }
+.panel-detail .panel-head {
+  padding: 16px;
+}
 
-/* Fields */
 .field {
   display: flex;
   flex-direction: column;
@@ -92,37 +103,53 @@ h1, h2 { margin: 0; }
   min-width: 180px;
 }
 
-.field-grow { flex: 1; min-width: 240px; }
+.field-grow {
+  flex: 1;
+  min-width: 240px;
+}
 
-.field span { font-size: 12px; color: var(--muted); }
+.field span {
+  font-size: 12px;
+  color: var(--muted);
+}
 
 input {
   height: 38px;
   padding: 0 10px;
   border-radius: 10px;
   border: 1px solid var(--stroke);
-  background: rgba(0,0,0,0.25);
+  background: rgb(0 0 0 / 25%);
   color: var(--text);
   outline: none;
 }
-input::placeholder { color: #7781a0; }
 
-/* Buttons */
+input::placeholder {
+  color: #7781a0;
+}
+
 .btn {
   height: 38px;
   padding: 0 12px;
   border-radius: 10px;
   border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.04);
+  background: rgb(255 255 255 / 4%);
   color: var(--text);
   cursor: pointer;
 }
-.btn:hover { background: rgba(255,255,255,0.08); }
-.btn:disabled { opacity: 0.5; cursor: not-allowed; }
 
-.btn-ghost { background: transparent; }
+.btn:hover {
+  background: rgb(255 255 255 / 8%);
+}
 
-/* Statusbar */
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-ghost {
+  background: transparent;
+}
+
 .statusbar {
   padding: 10px var(--pad);
   display: flex;
@@ -130,23 +157,33 @@ input::placeholder { color: #7781a0; }
   justify-content: space-between;
   gap: 12px;
   border-bottom: 1px solid var(--stroke);
-  background: rgba(0,0,0,0.10);
+  background: rgb(0 0 0 / 10%);
 }
 
-.netStatus {
+.net-status {
   font-family: var(--mono);
   font-size: 12px;
   white-space: nowrap;
 }
 
-.netStatus-ok { color: var(--ok); }
-.netStatus-warn { color: var(--warn); }
-.netStatus-err { color: var(--danger); }
+.net-status-ok {
+  color: var(--ok);
+}
 
-/* List */
-.list { padding: var(--pad); display: grid; gap: 10px; }
+.net-status-warn {
+  color: var(--warn);
+}
 
-/* Cards (список фильмов) */
+.net-status-err {
+  color: var(--danger);
+}
+
+.list {
+  padding: var(--pad);
+  display: grid;
+  gap: 10px;
+}
+
 .card {
   display: grid;
   grid-template-columns: 54px 1fr auto;
@@ -154,10 +191,13 @@ input::placeholder { color: #7781a0; }
   padding: 10px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
-  background: rgba(0,0,0,0.18);
+  background: rgb(0 0 0 / 18%);
   align-items: center;
 }
-.card:hover { background: rgba(0,0,0,0.26); }
+
+.card:hover {
+  background: rgb(0 0 0 / 26%);
+}
 
 .card-poster {
   width: 54px;
@@ -165,12 +205,13 @@ input::placeholder { color: #7781a0; }
   border-radius: 10px;
   border: 1px solid var(--stroke);
   overflow: hidden;
-  background: rgba(255,255,255,0.02);
+  background: rgb(255 255 255 / 2%);
   display: grid;
   place-items: center;
   font-size: 11px;
   color: var(--muted);
 }
+
 .card-poster img {
   width: 100%;
   height: 100%;
@@ -178,71 +219,93 @@ input::placeholder { color: #7781a0; }
   display: block;
 }
 
-.card-title { font-weight: 650; }
-.card-sub { font-size: 12px; color: var(--muted); margin-top: 4px; }
-.card-btn { justify-self: end; }
+.card-title {
+  font-weight: 650;
+}
 
-/* Pager */
+.card-sub {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.card-btn {
+  justify-self: end;
+}
+
 .pager {
   padding: var(--pad);
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-top: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.02);
+  background: rgb(255 255 255 / 2%);
 }
 
-.pager-info { text-align: center; min-width: 120px; }
+.pager-info {
+  text-align: center;
+  min-width: 120px;
+}
 
-/* Detail */
-.detail { padding: 16px; }
-.detail-empty { color: var(--muted); line-height: 1.5; }
+.detail {
+  padding: 16px;
+}
 
-/* Detail card (оставлено как было — не BEM) */
-.detailCard {
+.detail-empty {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.detail-card {
   display: grid;
   grid-template-columns: 130px 1fr;
   gap: 14px;
   border: 1px solid var(--stroke);
   border-radius: 14px;
   padding: 14px;
-  background: rgba(0,0,0,0.18);
+  background: rgb(0 0 0 / 18%);
 }
 
-.detailPoster {
+.detail-poster {
   width: 130px;
   height: 190px;
   border-radius: 12px;
   border: 1px solid var(--stroke);
   overflow: hidden;
-  background: rgba(255,255,255,0.02);
+  background: rgb(255 255 255 / 2%);
 }
-.detailPoster img {
+
+.detail-poster img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 6px; }
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+
 .badge {
   font-size: 12px;
   padding: 4px 8px;
   border-radius: 999px;
   border: 1px solid var(--stroke);
-  background: rgba(255,255,255,0.04);
+  background: rgb(255 255 255 / 4%);
   color: var(--text);
 }
 
-/* Skeleton */
 .skeleton {
   border-radius: 12px;
   border: 1px solid var(--stroke);
   background: linear-gradient(
     90deg,
-    rgba(255,255,255,0.04),
-    rgba(255,255,255,0.10),
-    rgba(255,255,255,0.04)
+    rgb(255 255 255 / 4%),
+    rgb(255 255 255 / 10%),
+    rgb(255 255 255 / 4%)
   );
   background-size: 300% 100%;
   animation: shimmer 1.2s infinite linear;
@@ -250,15 +313,26 @@ input::placeholder { color: #7781a0; }
 }
 
 @keyframes shimmer {
-  0% { background-position: 0% 0; }
-  100% { background-position: 100% 0; }
+  0% {
+    background-position: 0% 0;
+  }
+
+  100% {
+    background-position: 100% 0;
+  }
 }
 
-/* Footer */
-.footer { padding: 0 18px 18px; font-size: 12px; }
+.footer {
+  padding: 0 18px 18px;
+  font-size: 12px;
+}
 
-/* Responsive */
-@media (max-width: 980px) {
-  .layout { grid-template-columns: 1fr; }
-  .panel { min-height: auto; }
+@media (width <= 980px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    min-height: auto;
+  }
 }

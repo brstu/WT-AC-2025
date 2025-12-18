@@ -1,42 +1,40 @@
 const els = {
-  searchInput: document.querySelector('#searchInput'),
-  yearInput: document.querySelector('#yearInput'),
-  refreshBtn: document.querySelector('#refreshBtn'),
+  searchInput: document.querySelector('#search-input'),
+  yearInput: document.querySelector('#year-input'),
+  refreshBtn: document.querySelector('#refresh-btn'),
   list: document.querySelector('#list'),
   detail: document.querySelector('#detail'),
-  prevBtn: document.querySelector('#prevBtn'),
-  nextBtn: document.querySelector('#nextBtn'),
-  pageInfo: document.querySelector('#pageInfo'),
-  netStatus: document.querySelector('#netStatus'),
-  detailMeta: document.querySelector('#detailMeta'),
+  prevBtn: document.querySelector('#prev-btn'),
+  nextBtn: document.querySelector('#next-btn'),
+  pageInfo: document.querySelector('#page-info'),
+  netStatus: document.querySelector('#net-status'),
+  detailMeta: document.querySelector('#detail-meta'),
 }
 
-const CONFIG = {
-  apiKey: '8c5132b',
+const config = {
+  apiKey: 'PASTE_YOUR_VALID_KEY_HERE',
   pageSize: 10,
-  cacheTtlMs: 3 * 60 * 1000, // 3 минуты (для демонстрации)
+  cacheTtlMs: 3 * 60 * 1000,
   retries: 2,
   backoffMs: 450,
   timeoutMs: 5500,
   debounceMs: 350,
 }
 
-const memoryCache = new Map() // key -> { exp, value }
-const LS_PREFIX = 'lab03_cache_v1:'
+const memoryCache = new Map()
+const lsPrefix = 'lab03-cache-v3:'
 
 const state = {
   query: '',
   year: '',
   page: 1,
   totalPages: 1,
-  items: [],
   selectedId: null,
 }
 
 let listController = null
 let detailController = null
 
-// ----------------- helpers -----------------
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 const debounce = (fn, ms = 300) => {
@@ -47,52 +45,98 @@ const debounce = (fn, ms = 300) => {
   }
 }
 
-function setNetStatus(text, kind = '') {
+function setNetStatus(text, kind) {
   els.netStatus.textContent = text || ''
-  els.netStatus.className = 'netStatus'
-  if (kind) els.netStatus.classList.add(`netStatus--${kind}`)
+  els.netStatus.className = 'net-status'
+
+  if (kind === 'ok') {
+    els.netStatus.classList.add('net-status-ok')
+  }
+
+  if (kind === 'warn') {
+    els.netStatus.classList.add('net-status-warn')
+  }
+
+  if (kind === 'err') {
+    els.netStatus.classList.add('net-status-err')
+  }
 }
 
 function fmtMeta(meta) {
-  if (!meta) return ''
+  if (!meta) {
+    return ''
+  }
+
   const parts = []
-  if (meta.fromCache) parts.push(`cache:${meta.cacheLayer}`)
-  if (typeof meta.attempts === 'number') parts.push(`attempts:${meta.attempts}`)
+
+  if (meta.fromCache) {
+    parts.push(`cache:${meta.cacheLayer}`)
+  }
+
+  if (typeof meta.attempts === 'number') {
+    parts.push(`attempts:${meta.attempts}`)
+  }
+
   return parts.join(' • ')
 }
 
-// ----------------- cache TTL -----------------
+function safeText(v) {
+  return (v ?? '').toString()
+}
+
 function cacheGet(key) {
   const now = Date.now()
   const m = memoryCache.get(key)
-  if (m && m.exp > now) return { hit: true, value: m.value, layer: 'memory' }
-  if (m) memoryCache.delete(key)
+
+  if (m && m.exp > now) {
+    return { hit: true, value: m.value, layer: 'memory' }
+  }
+
+  if (m) {
+    memoryCache.delete(key)
+  }
 
   try {
-    const raw = localStorage.getItem(LS_PREFIX + key)
-    if (!raw) return { hit: false }
+    const raw = localStorage.getItem(lsPrefix + key)
+
+    if (!raw) {
+      return { hit: false }
+    }
+
     const parsed = JSON.parse(raw)
+
     if (parsed.exp > now) {
       memoryCache.set(key, { exp: parsed.exp, value: parsed.value })
-      return { hit: true, value: parsed.value, layer: 'localStorage' }
+      return { hit: true, value: parsed.value, layer: 'local-storage' }
     }
-    localStorage.removeItem(LS_PREFIX + key)
-  } catch {}
+
+    localStorage.removeItem(lsPrefix + key)
+  } catch {
+    // ignore
+  }
 
   return { hit: false }
 }
 
 function cacheSet(key, value, ttlMs) {
   const exp = Date.now() + ttlMs
+
   memoryCache.set(key, { exp, value })
+
   try {
-    localStorage.setItem(LS_PREFIX + key, JSON.stringify({ exp, value }))
-  } catch {}
+    localStorage.setItem(lsPrefix + key, JSON.stringify({ exp, value }))
+  } catch {
+    // ignore
+  }
 }
 
-// ----------------- fetch retry/timeout/abort -----------------
 async function fetchJsonWithRetry(url, opts = {}) {
-  const { retries = 2, backoffMs = 500, timeoutMs = 5000, signal, fetchCacheMode = 'default', onRetry } = opts
+  const retries = opts.retries ?? 2
+  const backoffMs = opts.backoffMs ?? 500
+  const timeoutMs = opts.timeoutMs ?? 5000
+  const signal = opts.signal
+  const fetchCacheMode = opts.fetchCacheMode ?? 'default'
+  const onRetry = opts.onRetry
 
   let attempt = 0
   let lastErr = null
@@ -101,17 +145,22 @@ async function fetchJsonWithRetry(url, opts = {}) {
     const controller = new AbortController()
 
     const forwardAbort = () => controller.abort()
+
     if (signal) {
-      if (signal.aborted) controller.abort()
-      else signal.addEventListener('abort', forwardAbort, { once: true })
+      if (signal.aborted) {
+        controller.abort()
+      } else {
+        signal.addEventListener('abort', forwardAbort, { once: true })
+      }
     }
 
     const timer = setTimeout(() => controller.abort(), timeoutMs)
 
     try {
       const res = await fetch(url, {
+        method: 'GET',
         signal: controller.signal,
-        cache: fetchCacheMode, // для демонстрации "Обновить без кэша"
+        cache: fetchCacheMode,
         headers: { Accept: 'application/json' },
       })
 
@@ -129,15 +178,23 @@ async function fetchJsonWithRetry(url, opts = {}) {
       clearTimeout(timer)
       lastErr = err
 
-      if (signal) signal.removeEventListener('abort', forwardAbort)
+      if (signal) {
+        signal.removeEventListener('abort', forwardAbort)
+      }
 
-      // AbortError не ретраим
-      if (err?.name === 'AbortError') throw err
+      if (err?.name === 'AbortError') {
+        throw err
+      }
 
-      if (attempt >= retries) break
+      if (attempt >= retries) {
+        break
+      }
+
       attempt += 1
 
-      if (typeof onRetry === 'function') onRetry({ attempt, retries, err })
+      if (typeof onRetry === 'function') {
+        onRetry({ attempt, retries, err })
+      }
 
       const delay = backoffMs * Math.pow(2, attempt - 1)
       await sleep(delay)
@@ -147,61 +204,81 @@ async function fetchJsonWithRetry(url, opts = {}) {
   throw lastErr ?? new Error('Unknown network error')
 }
 
-async function requestJson(url, { cacheKey, ttlMs, forceRefresh = false, signal, onRetry } = {}) {
+async function requestJson(url, opts = {}) {
+  const cacheKey = opts.cacheKey
+  const ttlMs = opts.ttlMs ?? config.cacheTtlMs
+  const forceRefresh = opts.forceRefresh ?? false
+  const signal = opts.signal
+  const onRetry = opts.onRetry
+
   if (!forceRefresh && cacheKey) {
     const hit = cacheGet(cacheKey)
-    if (hit.hit) return { data: hit.value, meta: { fromCache: true, cacheLayer: hit.layer, attempts: 0 } }
+
+    if (hit.hit) {
+      return { data: hit.value, meta: { fromCache: true, cacheLayer: hit.layer, attempts: 0 } }
+    }
   }
 
   const fetchCacheMode = forceRefresh ? 'no-store' : 'default'
-  const { data, attempts } = await fetchJsonWithRetry(url, {
-    retries: CONFIG.retries,
-    backoffMs: CONFIG.backoffMs,
-    timeoutMs: CONFIG.timeoutMs,
+
+  const result = await fetchJsonWithRetry(url, {
+    retries: config.retries,
+    backoffMs: config.backoffMs,
+    timeoutMs: config.timeoutMs,
     signal,
     fetchCacheMode,
     onRetry,
   })
 
-  if (cacheKey) cacheSet(cacheKey, data, ttlMs ?? CONFIG.cacheTtlMs)
-  return { data, meta: { fromCache: false, attempts } }
+  if (cacheKey) {
+    cacheSet(cacheKey, result.data, ttlMs)
+  }
+
+  return { data: result.data, meta: { fromCache: false, attempts: result.attempts } }
 }
 
-// ----------------- OMDb URLs -----------------
-function buildListUrl({ q, year, page }) {
+function buildListUrl(q, year, page) {
   const params = new URLSearchParams()
-  params.set('apikey', CONFIG.apiKey)
+
+  params.set('apikey', config.apiKey)
   params.set('type', 'movie')
-  params.set('s', q || 'a') // OMDb требует s
+  params.set('s', q || 'a')
   params.set('page', String(page))
-  if (year) params.set('y', year)
+
+  if (year) {
+    params.set('y', year)
+  }
 
   return `https://www.omdbapi.com/?${params.toString()}`
 }
 
-function buildDetailUrl({ id }) {
+function buildDetailUrl(id) {
   const params = new URLSearchParams()
-  params.set('apikey', CONFIG.apiKey)
+
+  params.set('apikey', config.apiKey)
   params.set('i', id)
   params.set('plot', 'short')
+
   return `https://www.omdbapi.com/?${params.toString()}`
 }
 
-// ----------------- UI -----------------
 function renderListSkeleton() {
   els.list.innerHTML = Array.from({ length: 7 })
-    .map(() => `<div class="skeleton" aria-hidden="true"></div>`)
+    .map(() => '<div class="skeleton" aria-hidden="true"></div>')
     .join('')
 }
 
-function renderEmpty(text) {
-  els.list.innerHTML = `<div class="detail__empty">${text}</div>`
+function renderListEmpty(text) {
+  els.list.innerHTML = `<div class="detail-empty">${safeText(text)}</div>`
 }
 
-function renderError(err) {
+function renderListError(err) {
   const msg =
-    err?.name === 'AbortError' ? 'Запрос отменён (AbortController).' : `Ошибка: ${String(err?.message || err)}`
-  els.list.innerHTML = `<div class="detail__empty" style="color: var(--danger);">${msg}</div>`
+    err?.name === 'AbortError'
+      ? 'Запрос отменён (AbortController).'
+      : `Ошибка: ${safeText(err?.message || err)}`
+
+  els.list.innerHTML = `<div class="detail-empty" style="color: var(--danger);">${msg}</div>`
 }
 
 function renderList(items) {
@@ -209,17 +286,17 @@ function renderList(items) {
     .map((m) => {
       const posterHtml =
         m.Poster && m.Poster !== 'N/A'
-          ? `<img src="${m.Poster}" alt="${m.Title} poster" loading="lazy" />`
-          : `<span>no poster</span>`
+          ? `<img src="${m.Poster}" alt="${safeText(m.Title)} poster" loading="lazy" />`
+          : '<span>no poster</span>'
 
       return `
         <div class="card">
-          <div class="card__poster">${posterHtml}</div>
+          <div class="card-poster">${posterHtml}</div>
           <div>
-            <div class="card__title">${m.Title}</div>
-            <div class="card__sub">${m.Year} • ${m.Type}</div>
+            <div class="card-title">${safeText(m.Title)}</div>
+            <div class="card-sub">${safeText(m.Year)} • ${safeText(m.Type)}</div>
           </div>
-          <button class="btn" data-open="${m.imdbID}">Открыть</button>
+          <button class="btn card-btn" type="button" data-open="${safeText(m.imdbID)}">Открыть</button>
         </div>
       `
     })
@@ -230,49 +307,55 @@ function renderList(items) {
   })
 }
 
-function renderDetailEmpty(text) {
-  els.detail.innerHTML = `<div class="detail__empty">${text}</div>`
-}
-
 function renderDetailSkeleton() {
   els.detail.innerHTML = `
-    <div class="detailCard">
-      <div class="detailPoster skeleton" style="height:190px;"></div>
+    <div class="detail-card">
+      <div class="detail-poster skeleton" style="height: 190px;"></div>
       <div>
-        <div class="skeleton" style="height:18px;"></div>
-        <div class="skeleton" style="height:14px;margin-top:10px;"></div>
-        <div class="skeleton" style="height:14px;margin-top:10px;"></div>
+        <div class="skeleton" style="height: 18px;"></div>
+        <div class="skeleton" style="height: 14px; margin-top: 10px;"></div>
+        <div class="skeleton" style="height: 14px; margin-top: 10px;"></div>
       </div>
     </div>
   `
 }
 
-function renderDetail(d) {
-  if (d?.Response === 'False') {
-    renderDetailEmpty(`OMDb: ${d?.Error || 'не удалось загрузить детали'}`)
+function renderDetailEmpty(text) {
+  els.detail.innerHTML = `<div class="detail-empty">${safeText(text)}</div>`
+}
+
+function renderDetail(data) {
+  if (data?.Response === 'False') {
+    renderDetailEmpty(`OMDb: ${safeText(data?.Error || 'не удалось загрузить детали')}`)
     return
   }
 
   const posterHtml =
-    d.Poster && d.Poster !== 'N/A' ? `<img src="${d.Poster}" alt="${d.Title} poster" />` : ''
+    data.Poster && data.Poster !== 'N/A'
+      ? `<img src="${data.Poster}" alt="${safeText(data.Title)} poster" />`
+      : ''
 
   const badges = [
-    d.Rated ? `Rated: ${d.Rated}` : null,
-    d.Runtime ? `Runtime: ${d.Runtime}` : null,
-    d.Genre ? `Genre: ${d.Genre}` : null,
-    d.imdbRating && d.imdbRating !== 'N/A' ? `IMDb: ${d.imdbRating}` : null,
+    data.Rated ? `Rated: ${data.Rated}` : null,
+    data.Runtime ? `Runtime: ${data.Runtime}` : null,
+    data.Genre ? `Genre: ${data.Genre}` : null,
+    data.imdbRating && data.imdbRating !== 'N/A' ? `IMDb: ${data.imdbRating}` : null,
   ].filter(Boolean)
 
   els.detail.innerHTML = `
-    <div class="detailCard">
-      <div class="detailPoster">${posterHtml}</div>
+    <div class="detail-card">
+      <div class="detail-poster">${posterHtml}</div>
       <div>
-        <h3 style="margin:0;">${d.Title} (${d.Year})</h3>
-        <p class="muted" style="margin:8px 0 0;line-height:1.45;">${d.Plot || '—'}</p>
-        <p class="muted" style="margin:8px 0 0;"><span style="opacity:.9;">Director:</span> ${d.Director || '—'}</p>
-        <p class="muted" style="margin:6px 0 0;"><span style="opacity:.9;">Actors:</span> ${d.Actors || '—'}</p>
+        <h3 style="margin: 0;">${safeText(data.Title)} (${safeText(data.Year)})</h3>
+        <p class="muted" style="margin: 8px 0 0; line-height: 1.45;">${safeText(data.Plot || '—')}</p>
+        <p class="muted" style="margin: 8px 0 0;"><span style="opacity: 0.9;">Director:</span> ${safeText(
+          data.Director || '—'
+        )}</p>
+        <p class="muted" style="margin: 6px 0 0;"><span style="opacity: 0.9;">Actors:</span> ${safeText(
+          data.Actors || '—'
+        )}</p>
         <div class="badges">
-          ${badges.map((b) => `<span class="badge">${b}</span>`).join('')}
+          ${badges.map((b) => `<span class="badge">${safeText(b)}</span>`).join('')}
         </div>
       </div>
     </div>
@@ -285,48 +368,56 @@ function updatePager() {
   els.nextBtn.disabled = state.page >= state.totalPages
 }
 
-// ----------------- flows -----------------
-async function loadList({ forceRefresh = false } = {}) {
+async function loadList(opts = {}) {
+  const forceRefresh = opts.forceRefresh ?? false
   const q = state.query.trim()
   const year = state.year.trim()
   const page = state.page
 
-  if (listController) listController.abort()
+  if (listController) {
+    listController.abort()
+  }
+
   listController = new AbortController()
 
   renderListSkeleton()
   setNetStatus('loading:list…', 'warn')
 
-  const url = buildListUrl({ q, year, page })
-  const cacheKey = `omdb:list:q=${q}|y=${year}|p=${page}`
+  const url = buildListUrl(q, year, page)
+  const cacheKey = `omdb-list-q=${q}-y=${year}-p=${page}`
 
   try {
-    const { data, meta } = await requestJson(url, {
+    const result = await requestJson(url, {
       cacheKey,
-      ttlMs: CONFIG.cacheTtlMs,
+      ttlMs: config.cacheTtlMs,
       forceRefresh,
       signal: listController.signal,
       onRetry: ({ attempt, retries, err }) => {
-        setNetStatus(`retry ${attempt}/${retries} (list): ${String(err?.message || err)}`, 'warn')
+        setNetStatus(`retry ${attempt}/${retries} (list): ${safeText(err?.message || err)}`, 'warn')
       },
     })
 
+    const data = result.data
+    const meta = result.meta
+
     if (data?.Response === 'False') {
-      state.items = []
       state.totalPages = 1
       updatePager()
-      renderEmpty(`OMDb: ${data?.Error || 'нет результатов'}`)
+      renderListEmpty(`OMDb: ${safeText(data?.Error || 'нет результатов')}`)
       setNetStatus(`ok:list • ${fmtMeta(meta)}`, 'ok')
       return
     }
 
     const items = Array.isArray(data?.Search) ? data.Search : []
     const total = Number(data?.totalResults || 0)
-    state.items = items
-    state.totalPages = Math.max(1, Math.ceil(total / CONFIG.pageSize))
 
-    if (!items.length) renderEmpty('Пусто. Попробуй другой запрос.')
-    else renderList(items)
+    state.totalPages = Math.max(1, Math.ceil(total / config.pageSize))
+
+    if (!items.length) {
+      renderListEmpty('Пусто. Попробуй другой запрос.')
+    } else {
+      renderList(items)
+    }
 
     updatePager()
     setNetStatus(`ok:list • ${fmtMeta(meta)}`, 'ok')
@@ -335,51 +426,61 @@ async function loadList({ forceRefresh = false } = {}) {
       setNetStatus('aborted:list', 'warn')
       return
     }
+
+    renderListError(err)
     setNetStatus('error:list', 'err')
-    renderError(err)
+  } finally {
+    // finally по требованиям
   }
 }
 
-async function openDetail(id, { forceRefresh = false } = {}) {
+async function openDetail(id, opts = {}) {
+  const forceRefresh = opts.forceRefresh ?? false
+
   state.selectedId = id
 
-  if (detailController) detailController.abort()
+  if (detailController) {
+    detailController.abort()
+  }
+
   detailController = new AbortController()
 
   renderDetailSkeleton()
   els.detailMeta.textContent = 'loading…'
 
-  const url = buildDetailUrl({ id })
-  const cacheKey = `omdb:detail:${id}`
+  const url = buildDetailUrl(id)
+  const cacheKey = `omdb-detail-${id}`
 
   try {
-    const { data, meta } = await requestJson(url, {
+    const result = await requestJson(url, {
       cacheKey,
-      ttlMs: CONFIG.cacheTtlMs,
+      ttlMs: config.cacheTtlMs,
       forceRefresh,
       signal: detailController.signal,
       onRetry: ({ attempt, retries, err }) => {
-        els.detailMeta.textContent = `retry ${attempt}/${retries}: ${String(err?.message || err)}`
+        els.detailMeta.textContent = `retry ${attempt}/${retries}: ${safeText(err?.message || err)}`
       },
     })
 
-    els.detailMeta.textContent = fmtMeta(meta) || 'ok'
-    renderDetail(data)
+    els.detailMeta.textContent = fmtMeta(result.meta) || 'ok'
+    renderDetail(result.data)
   } catch (err) {
     if (err?.name === 'AbortError') {
       els.detailMeta.textContent = 'aborted'
       return
     }
+
     els.detailMeta.textContent = 'error'
-    renderDetailEmpty(`Ошибка деталей: ${String(err?.message || err)}`)
+    renderDetailEmpty(`Ошибка деталей: ${safeText(err?.message || err)}`)
+  } finally {
+    // finally по требованиям
   }
 }
 
-// ----------------- events -----------------
 const triggerSearch = debounce(() => {
   state.page = 1
   loadList()
-}, CONFIG.debounceMs)
+}, config.debounceMs)
 
 els.searchInput.addEventListener('input', (e) => {
   state.query = e.target.value
@@ -408,13 +509,16 @@ els.nextBtn.addEventListener('click', () => {
 
 els.refreshBtn.addEventListener('click', () => {
   loadList({ forceRefresh: true })
-  if (state.selectedId) openDetail(state.selectedId, { forceRefresh: true })
+
+  if (state.selectedId) {
+    openDetail(state.selectedId, { forceRefresh: true })
+  }
 })
 
-// ----------------- init -----------------
 function init() {
   renderDetailEmpty('Выбери фильм из списка слева.')
-  renderEmpty('Начни вводить запрос в поле «Поиск».')
+  renderListEmpty('Начни вводить запрос в поле «Поиск».')
   updatePager()
 }
+
 init()

@@ -15,7 +15,12 @@
       </div>
 
       <div class="topbar-controls">
-        <button id="refreshBtn" class="btn btn-ghost" title="Игнорировать кэш и перезагрузить">
+        <button
+          id="refresh-btn"
+          class="btn btn-ghost"
+          title="Игнорировать кэш и перезагрузить"
+          type="button"
+        >
           Обновить (без кэша)
         </button>
       </div>
@@ -26,35 +31,40 @@
         <div class="panel-head">
           <label class="field field-grow">
             <span>Поиск</span>
-            <input id="searchInput" placeholder="например: Batman, Matrix, Interstellar..." />
+            <input
+              id="search-input"
+              placeholder="например: Batman, Matrix, Interstellar..."
+            />
           </label>
 
           <label class="field">
             <span>Год (опц.)</span>
-            <input id="yearInput" inputmode="numeric" placeholder="2014" />
+            <input id="year-input" inputmode="numeric" placeholder="2014" />
           </label>
         </div>
 
         <div class="statusbar">
           <div class="muted">Новый поиск отменяет предыдущий запрос. Есть ретраи + таймаут.</div>
-          <div id="netStatus" class="netStatus" aria-live="polite"></div>
+          <div id="net-status" class="net-status" aria-live="polite"></div>
         </div>
 
         <div id="list" class="list" aria-live="polite"></div>
 
         <div class="pager">
-          <button id="prevBtn" class="btn" disabled>← Назад</button>
+          <button id="prev-btn" class="btn" type="button" disabled>← Назад</button>
+
           <div class="pager-info">
-            <span id="pageInfo" class="muted">Стр. 1</span>
+            <span id="page-info" class="muted">Стр. 1</span>
           </div>
-          <button id="nextBtn" class="btn" disabled>Вперёд →</button>
+
+          <button id="next-btn" class="btn" type="button" disabled>Вперёд →</button>
         </div>
       </section>
 
       <section class="panel panel-detail">
         <div class="panel-head panel-head-detail">
           <h2>Детали</h2>
-          <span id="detailMeta" class="muted"></span>
+          <span id="detail-meta" class="muted"></span>
         </div>
 
         <div id="detail" class="detail"></div>
@@ -62,7 +72,7 @@
     </main>
 
     <footer class="footer muted">
-      DevTools → Network: сравни первый запрос и повтор (cache), и повтор после “Обновить (без кэша)”.
+      DevTools → Network: сравни первый запрос и повтор (cache), и повтор после «Обновить (без кэша)».
     </footer>
 
     <script type="module" src="./main.js"></script>
