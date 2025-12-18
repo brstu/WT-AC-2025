@@ -47,6 +47,7 @@ task_05/
 Все endpoints подключены в `index.js` под префиксом `/api/v1` и документированы через JSDoc/Swagger.
 
 ### Events
+
 - GET /api/v1/events
   - Параметры: `q` (поиск по title/description), `limit`, `offset`
   - Возвращает: { data: [...], meta: { total, limit, offset, hasMore } }
@@ -67,6 +68,7 @@ task_05/
   - Удаление события (204 если успешно)
 
 ### Registrations
+
 - GET /api/v1/events/:eventId/registrations
   - Список регистраций для события
 
@@ -105,13 +107,13 @@ task_05/
 npm install
 ```
 
-2. Запуск в режиме разработки (nodemon):
+1. Запуск в режиме разработки (nodemon):
 
 ```bash
 npm run dev
 ```
 
-3. Откройте:
+1. Откройте:
 - API: http://localhost:3000/api/v1
 - Swagger UI: http://localhost:3000/docs
 
