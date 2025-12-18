@@ -78,8 +78,7 @@ API — основные эндпоинты
 - CRUD маршруты реализованы в `routes/posts.js`, защита маршрутов — `middleware/auth.js`.
 - Хеширование паролей — `bcrypt` в `routes/auth.js`.
 
-Реализованные компоненты
-------------------------
+## Реализованные компоненты
 
 - Аутентификация: регистрация (`/api/auth/signup`), логин (`/api/auth/login`) с выдачей JWT.
 - Middleware `auth` для проверки Bearer‑токена и прикрепления `req.user`.
@@ -111,4 +110,5 @@ API — основные эндпоинты
 - Если у вас в PowerShell возникают ошибки при запуске `npm` (ExecutionPolicy), выполните команды в CMD или разрешите выполнение сценариев согласно политике безопасности Windows.
 
 ## Ссылка на гитхаб
+
 Ссылка <https://github.com/annkrq/WT-AC-2025/tree/main/students/KozlovskayaAnna/task_06>
