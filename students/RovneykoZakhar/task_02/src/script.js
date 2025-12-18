@@ -1,4 +1,3 @@
-// ES Module
 const quotes = [
   { id: 1, text: 'Жизнь — это то, что с тобой происходит, пока ты строишь планы.', author: 'Джон Леннон', category: 'life', liked: false },
   { id: 2, text: 'Любовь — единственная сила, способная превратить врага в друга.', author: 'Мартин Лютер Кинг', category: 'love', liked: false },
@@ -12,7 +11,6 @@ let activeCategory = 'all';
 let lastFocusedElement = null;
 let currentShareQuote = null;
 
-// Helpers
 const qs = (sel, parent = document) => parent.querySelector(sel);
 const qsa = (sel, parent = document) => [...parent.querySelectorAll(sel)];
 const setHidden = (el, hidden) => { el.hidden = !!hidden; };
@@ -120,11 +118,9 @@ function openModal(quote) {
   setHidden(backdrop, false);
   setHidden(modal, false);
 
-  // Фокус в модалку
   const firstFocusable = qsa('button, [href], input, textarea, [tabindex]:not([tabindex="-1"])', modal)[0];
   firstFocusable?.focus();
 
-  // Trap focus
   function trap(e) {
     const focusables = qsa('button, [href], input, textarea, [tabindex]:not([tabindex="-1"])', modal);
     const first = focusables[0];
