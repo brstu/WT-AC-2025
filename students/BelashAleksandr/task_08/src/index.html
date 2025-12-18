@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Приют для питомцев</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .pets {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .pet {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            width: 280px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .pet img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 3px;
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 3px;
+            margin: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        .filters {
+            margin: 20px 0;
+            text-align: center;
+        }
+        input {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🐾 Приют для питомцев</h1>
+        
+        <div class="filters">
+            <input type="text" id="search-input" placeholder="Поиск...">
+            <button onclick="searchPets()">Искать</button>
+            <button onclick="loadPets()">Показать всех</button>
+        </div>
+
+        <div id="pets" class="pets"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
