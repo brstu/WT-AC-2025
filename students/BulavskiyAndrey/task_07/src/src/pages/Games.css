@@ -1,0 +1,20 @@
+.games-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.games-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.games-header h1 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-size: 2.5rem;
+}
+
+.games-header p {
+  color: #666;
+  font-size: 1.1rem;
+}

@@ -1,0 +1,34 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title": "Концерт рок-группы",
+      "date": "2025-12-20",
+      "location": "Центральный стадион",
+      "totalSeats": 500
+    },
+    {
+      "id": 2,
+      "title": "Театральная постановка",
+      "date": "2025-12-25",
+      "location": "Драматический театр",
+      "totalSeats": 300
+    }
+  ],
+  "tickets": [
+    {
+      "id": 1,
+      "eventId": 1,
+      "seat": "A-12",
+      "price": 50,
+      "sold": true
+    },
+    {
+      "id": 2,
+      "eventId": 1,
+      "seat": "A-13",
+      "price": 50,
+      "sold": false
+    }
+  ]
+}
