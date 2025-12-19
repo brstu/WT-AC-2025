@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Шахматы — правила, турниры, гроссмейстеры и лучшие партии</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Сайт о шахматах: базовые правила, крупнейшие турниры, топ‑гроссмейстеры и видео лучших партий.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <img src="assets/chess-logo.png" alt="Логотип Chess Guide" width="48" height="48">
+      <h1>Chess Guide: правила, турниры и лучшие партии</h1>
+    </div>
+    <nav aria-label="Основная навигация">
+      <ul id="primary-nav" class="nav-list">
+        <li><a href="#rules">Правила</a></li>
+        <li><a href="#tournaments">Турниры</a></li>
+        <li><a href="#players">Гроссмейстеры</a></li>
+        <li><a href="#highlights">Лучшие партии</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section id="intro">
+      <h2>О шахматах</h2>
+      <p>Шахматы — древняя стратегическая игра, где два игрока сражаются на доске 8×8, стремясь поставить мат королю соперника.</p>
+      <figure>
+        <img src="assets/chess-arena.png" alt="Шахматная доска и фигуры" width="1200" height="675">
+        <figcaption>Классическая шахматная доска с фигурами.</figcaption>
+      </figure>
+    </section>
+
+    <section id="rules">
+      <h2>Базовые правила</h2>
+      <article>
+        <h3>Ходы фигур</h3>
+        <ul>
+          <li><strong>Пешка:</strong> ходит вперёд, бьёт по диагонали.</li>
+          <li><strong>Конь:</strong> буква «Г».</li>
+          <li><strong>Слон:</strong> по диагонали.</li>
+          <li><strong>Ладья:</strong> по вертикали/горизонтали.</li>
+          <li><strong>Ферзь:</strong> как ладья + слон.</li>
+          <li><strong>Король:</strong> на одну клетку в любом направлении.</li>
+        </ul>
+      </article>
+      <article>
+        <h3>Цель игры</h3>
+        <p>Главная цель — поставить мат королю соперника. Ничья возможна при пате, трёхкратном повторении позиции или недостатке материала.</p>
+      </article>
+    </section>
+
+    <section id="tournaments">
+      <h2>Крупные турниры</h2>
+      <div class="cards grid grid-3">
+        <article class="card">
+          <h3>Чемпионат мира</h3>
+          <p>Главный матч за титул чемпиона мира, проводится каждые два года.</p>
+        </article>
+        <article class="card">
+          <h3>Турнир претендентов</h3>
+          <p>Определяет соперника действующего чемпиона мира.</p>
+        </article>
+        <article class="card">
+          <h3>Tata Steel Chess</h3>
+          <p>Один из самых престижных ежегодных турниров в Вейк‑ан‑Зее.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="players">
+      <h2>Топ‑гроссмейстеры</h2>
+      <ul class="player-list">
+        <li>
+          <article>
+            <h3>Магнус Карлсен</h3>
+            <p>Норвежский гроссмейстер, чемпион мира 2013–2023, известен универсальным стилем.</p>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3>Иан Непомнящий</h3>
+            <p>Российский гроссмейстер, двукратный победитель турнира претендентов.</p>
+          </article>
+        </li>
+        <li>
+          <article>
+            <h3>Дин Лижэнь</h3>
+            <p>Китайский гроссмейстер, чемпион мира 2023 года.</p>
+          </article>
+        </li>
+      </ul>
+    </section>
+
+    <section id="highlights">
+      <h2>Лучшие партии</h2>
+      <div class="video-grid grid grid-2">
+        <article>
+          <h3>Лучшая партия в истории</h3>
+          <iframe title="Лучшая партия в истории" src="https://www.youtube.com/watch?v=QU55fv6GA2w" loading="lazy"></iframe>
+        </article>
+        <article>
+          <h3>Топ 10 лучших ходов в истории шахмат</h3>
+          <iframe title="Топ 10 лучших ходов в истории шахмат" src="https://www.youtube.com/watch?v=jVAJ2yDlvMo" loading="lazy"></iframe>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <form>
+      <h2>Подписка на обновления</h2>
+      <label for="email">Email</label>
+      <input id="email" type="email" required placeholder="you@example.com">
+      <button type="submit">Подписаться</button>
+    </form>
+    <p>© 2025 Chess Guide. Учебный проект.</p>
+  </footer>
+</body>
+</html>
