@@ -112,6 +112,11 @@ h1 {
     font-weight: 600;
 }
 
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
 .form-group input,
 .form-group textarea,
 .form-group select {
@@ -121,11 +126,6 @@ h1 {
     border-radius: 8px;
     font-size: 1rem;
     transition: border-color 0.3s ease;
-}
-
-textarea {
-    min-height: 100px;
-    resize: vertical;
 }
 
 .form-group input:focus,
