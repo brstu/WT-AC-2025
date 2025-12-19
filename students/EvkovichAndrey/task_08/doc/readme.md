@@ -1,6 +1,7 @@
 # Отчёт по проекту Music Next.js App
 
 ## Тестирование
+
 - Unit‑тесты (Vitest):
   - `src/lib/formatters.test.ts` — проверка утилит форматирования.
   - `src/components/SearchInput.test.tsx` — проверка компонента ввода.
@@ -32,6 +33,7 @@ docker run -p 3000:3000 music-app
 ```bash
 docker-compose up -d
 ```
+
 CI/CD (GitHub Actions)
 Workflow .github/workflows/ci.yml:
 
