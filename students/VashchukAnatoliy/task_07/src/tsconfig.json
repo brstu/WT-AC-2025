@@ -1,45 +1,28 @@
 {
   "compilerOptions": {
-    /* ========================
-       Base
-    ======================== */
+
     "target": "ES2020",
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "useDefineForClassFields": true,
 
-    /* ========================
-       Module
-    ======================== */
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
 
-    /* ========================
-       JSX
-    ======================== */
     "jsx": "react-jsx",
 
-    /* ========================
-       Strictness
-    ======================== */
     "strict": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
 
-    /* ========================
-       Paths / Aliases
-    ======================== */
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
 
-    /* ========================
-       Types (🔥 ВАЖНО 🔥)
-    ======================== */
     "types": [
       "vite/client",
       "vitest/globals",
@@ -47,9 +30,6 @@
     ]
   },
 
-  /* ========================
-     Include / Exclude
-  ======================== */
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
