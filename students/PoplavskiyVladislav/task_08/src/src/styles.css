@@ -81,7 +81,11 @@ h1 {
     margin-bottom: 40px;
 }
 
+<<<<<<< HEAD
 @media (width <= 768px) {
+=======
+@media (max-width: 768px) {
+>>>>>>> origin/task_08
     .content {
         grid-template-columns: 1fr;
     }
@@ -123,11 +127,14 @@ h1 {
     transition: border-color 0.3s ease;
 }
 
+<<<<<<< HEAD
 textarea {
     min-height: 100px;
     resize: vertical;
 }
 
+=======
+>>>>>>> origin/task_08
 .form-group input:focus,
 .form-group textarea:focus,
 .form-group select:focus {
@@ -141,6 +148,14 @@ textarea {
     gap: 15px;
 }
 
+<<<<<<< HEAD
+=======
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+>>>>>>> origin/task_08
 .btn-primary {
     background: #4299e1;
     color: white;
@@ -296,7 +311,11 @@ footer {
     margin-top: 10px;
 }
 
+<<<<<<< HEAD
 @media (width <= 768px) {
+=======
+@media (max-width: 768px) {
+>>>>>>> origin/task_08
     h1 {
         font-size: 2rem;
     }
