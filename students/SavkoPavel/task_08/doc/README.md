@@ -48,7 +48,8 @@ npm test
 
 ---
 
-### Запуск приложения в Docker:
+### Запуск приложения в Docker
+
 ```bash
 docker build -t vacancies-app .
 docker run -p 3000:80 vacancies-app
