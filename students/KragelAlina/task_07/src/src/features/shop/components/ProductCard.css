@@ -10,11 +10,11 @@
 }
 
 .product-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
   transform: translateY(-4px);
 }
 
-.product-card__link {
+.product-card-link {
   text-decoration: none;
   color: inherit;
   flex: 1;
@@ -22,7 +22,7 @@
   flex-direction: column;
 }
 
-.product-card__image {
+.product-card-image {
   width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
@@ -30,21 +30,21 @@
   position: relative;
 }
 
-.product-card__image img {
+.product-card-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.product-card:hover .product-card__image img {
+.product-card:hover .product-card-image img {
   transform: scale(1.05);
 }
 
-.product-card__out-of-stock {
+.product-card-out-of-stock {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgb(0 0 0 / 70%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,21 +53,21 @@
   font-size: 14px;
 }
 
-.product-card__body {
+.product-card-body {
   padding: 12px;
   flex: 1;
   display: flex;
   flex-direction: column;
 }
 
-.product-card__title {
+.product-card-title {
   margin: 0 0 4px;
   font-size: 16px;
   font-weight: 600;
   line-height: 1.3;
 }
 
-.product-card__description {
+.product-card-description {
   margin: 0 0 8px;
   font-size: 13px;
   color: var(--text-muted, #6b7280);
@@ -75,13 +75,13 @@
   flex: 1;
 }
 
-.product-card__rating {
+.product-card-rating {
   font-size: 13px;
   color: var(--text-muted, #6b7280);
   margin-bottom: 8px;
 }
 
-.product-card__footer {
+.product-card-footer {
   padding: 12px;
   border-top: 1px solid var(--border-color, #e5e7eb);
   display: flex;
@@ -90,13 +90,13 @@
   gap: 8px;
 }
 
-.product-card__price {
+.product-card-price {
   font-size: 18px;
   font-weight: 700;
   color: var(--primary, #3b82f6);
 }
 
-.product-card__btn {
+.product-card-btn {
   padding: 8px 12px;
   background: var(--primary, #3b82f6);
   color: white;
@@ -109,11 +109,11 @@
   white-space: nowrap;
 }
 
-.product-card__btn:hover:not(:disabled) {
-  background: var(--primary-hover, #2563eb);
-}
-
-.product-card__btn:disabled {
+.product-card-btn:disabled {
   background: var(--text-muted, #9ca3af);
   cursor: not-allowed;
+}
+
+.product-card-btn:hover:not(:disabled) {
+  background: var(--primary-hover, #2563eb);
 }

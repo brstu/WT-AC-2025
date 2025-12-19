@@ -16,7 +16,7 @@ export function ProductDetailPage() {
 
   if (isLoading) {
     return (
-      <div className="product-detail-page__loading">
+      <div className="product-detail-page-loading">
         <Spinner />
       </div>
     );
@@ -24,9 +24,9 @@ export function ProductDetailPage() {
 
   if (error || !product) {
     return (
-      <div className="product-detail-page__error">
+      <div className="product-detail-page-error">
         <h2>Product not found</h2>
-        <Link to="/" className="product-detail-page__link">
+        <Link to="/" className="product-detail-page-link">
           Back to Shop
         </Link>
       </div>
@@ -51,48 +51,48 @@ export function ProductDetailPage() {
 
   return (
     <div className="product-detail-page">
-      <Link to="/" className="product-detail-page__back">
+      <Link to="/" className="product-detail-page-back">
         ← Back to Shop
       </Link>
 
-      <div className="product-detail-page__container">
-        <div className="product-detail-page__image">
+      <div className="product-detail-page-container">
+        <div className="product-detail-page-image">
           <img src={product.image} alt={product.name} />
         </div>
 
-        <div className="product-detail-page__info">
-          <h1 className="product-detail-page__title">{product.name}</h1>
+        <div className="product-detail-page-info">
+          <h1 className="product-detail-page-title">{product.name}</h1>
 
-          <div className="product-detail-page__rating">
+          <div className="product-detail-page-rating">
             ⭐ Rating: {product.rating}/5
           </div>
 
-          <p className="product-detail-page__description">
+          <p className="product-detail-page-description">
             {product.description}
           </p>
 
-          <div className="product-detail-page__category">
-            <span className="product-detail-page__label">Category:</span>
-            <span className="product-detail-page__value">
+          <div className="product-detail-page-category">
+            <span className="product-detail-page-label">Category:</span>
+            <span className="product-detail-page-value">
               {product.category.charAt(0).toUpperCase() + product.category.slice(1)}
             </span>
           </div>
 
-          <div className="product-detail-page__price">
-            <span className="product-detail-page__label">Price:</span>
-            <span className="product-detail-page__amount">${product.price}</span>
+          <div className="product-detail-page-price">
+            <span className="product-detail-page-label">Price:</span>
+            <span className="product-detail-page-amount">${product.price}</span>
           </div>
 
-          <div className="product-detail-page__stock">
-            <span className="product-detail-page__label">In Stock:</span>
-            <span className={`product-detail-page__stock-value ${product.stock === 0 ? 'out' : ''}`}>
+          <div className="product-detail-page-stock">
+            <span className="product-detail-page-label">In Stock:</span>
+            <span className={`product-detail-page-stock-value${product.stock === 0 ? '-out' : ''}`}>
               {product.stock === 0 ? 'Out of Stock' : `${product.stock} units`}
             </span>
           </div>
 
           {product.stock > 0 && (
-            <div className="product-detail-page__actions">
-              <div className="product-detail-page__quantity">
+            <div className="product-detail-page-actions">
+              <div className="product-detail-page-quantity">
                 <label htmlFor="quantity">Quantity:</label>
                 <input
                   type="number"
@@ -105,7 +105,7 @@ export function ProductDetailPage() {
               </div>
 
               <button
-                className="product-detail-page__add-btn"
+                className="product-detail-page-add-btn"
                 onClick={handleAddToCart}
               >
                 Add to Cart
@@ -114,7 +114,7 @@ export function ProductDetailPage() {
           )}
 
           {product.stock === 0 && (
-            <button className="product-detail-page__add-btn" disabled>
+            <button className="product-detail-page-add-btn" disabled>
               Out of Stock
             </button>
           )}
