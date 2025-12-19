@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Team Pulse — фан‑сообщество</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Фан‑хаб e‑sports команды Team Pulse: состав, матчи, хайлайты.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Пропустить к контенту</a>
+
+  <header class="site-header" role="banner">
+    <div class="branding">
+      <img src="image/logo.webp" alt="Логотип Team Pulse" width="40" height="40">
+      <h1 class="site-title">Team Pulse — фан‑сообщество</h1>
+    </div>
+
+    <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">
+      <span class="visually-hidden">Открыть меню</span>
+      ☰
+    </button>
+
+    <nav id="primary-nav" class="site-nav" aria-label="Основная навигация">
+      <ul>
+        <li><a href="#roster">Состав</a></li>
+        <li><a href="#matches">Матчи</a></li>
+        <li><a href="#highlights">Хайлайты</a></li>
+        <li><a href="#about">О комьюнити</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" aria-labelledby="hero-title">
+      <h2 id="hero-title">Новости и форма</h2>
+      <p>Последние результаты, лучшие моменты и аналитика от фан‑комьюнити.</p>
+      <form class="subscribe" aria-labelledby="subscribe-title">
+        <h3 id="subscribe-title">Подписка на апдейты</h3>
+        <div class="form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required>
+        </div>
+        <button type="submit">Подписаться</button>
+      </form>
+    </section>
+
+    <section id="roster" aria-labelledby="roster-title">
+      <h2 id="roster-title">Состав</h2>
+
+      <article class="player-card" aria-labelledby="p1-name">
+        <img src="image/ace.webp" alt="Игрок Ace — снайпер, в форме Team Pulse">
+        <div>
+          <h3 id="p1-name">Ace — Снайпер</h3>
+          <p><strong>Роль:</strong> AWP / капитан</p>
+          <p><strong>Статистика:</strong> K/D 1.18, рейтинг 1.12</p>
+        </div>
+      </article>
+
+      <article class="player-card" aria-labelledby="p2-name">
+        <img src="image/blitz.png" alt="Игрок Blitz — рифлер, в форме Team Pulse">
+        <div>
+          <h3 id="p2-name">Blitz — Рифлер</h3>
+          <p><strong>Роль:</strong> Entry / луркер</p>
+          <p><strong>Статистика:</strong> K/D 1.05, рейтинг 1.06</p>
+        </div>
+      </article>
+
+      <article class="player-card" aria-labelledby="p3-name">
+        <img src="image/core.webp" alt="Игрок Core — саппорт, в форме Team Pulse">
+        <div>
+          <h3 id="p3-name">Core — Саппорт</h3>
+          <p><strong>Роль:</strong> Anchor / утилити</p>
+          <p><strong>Статистика:</strong> K/D 0.98, рейтинг 1.00</p>
+        </div>
+      </article>
+    </section>
+
+    <section id="matches" aria-labelledby="matches-title">
+      <h2 id="matches-title">Матчи</h2>
+      <div class="match-grid" role="list">
+        <article class="match-card" role="listitem" aria-labelledby="m1-title">
+          <h3 id="m1-title">Team Pulse vs Thunder — 2:1</h3>
+          <p><strong>Турнир:</strong> Aurora Cup</p>
+          <p><strong>Карты:</strong> Mirage (16:12), Inferno (9:16), Anubis (13:11)</p>
+          <a class="btn" href="#" aria-label="Подробнее о матче Team Pulse vs Thunder">Подробнее</a>
+        </article>
+
+        <article class="match-card" role="listitem" aria-labelledby="m2-title">
+          <h3 id="m2-title">Team Pulse vs Nova — 0:2</h3>
+          <p><strong>Турнир:</strong> Solaris League</p>
+          <p><strong>Карты:</strong> Nuke (10:16), Overpass (8:16)</p>
+          <a class="btn" href="#" aria-label="Подробнее о матче Team Pulse vs Nova">Подробнее</a>
+        </article>
+
+        <article class="match-card" role="listitem" aria-labelledby="m3-title">
+          <h3 id="m3-title">Team Pulse vs Orion — 2:0</h3>
+          <p><strong>Турнир:</strong> Vertex Open</p>
+          <p><strong>Карты:</strong> Ancient (16:9), Vertigo (16:13)</p>
+          <a class="btn" href="#" aria-label="Подробнее о матче Team Pulse vs Orion">Подробнее</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="highlights" aria-labelledby="highlights-title">
+      <h2 id="highlights-title">Хайлайты</h2>
+      <article class="highlight" aria-labelledby="h1-title">
+        <h3 id="h1-title">Ace — клатч 1v3 на Mirage</h3>
+        <figure>
+          <img src="image/mirage.webp" alt="Кадр клатча 1 против 3 на карте Mirage">
+          <figcaption>Момент решающего раунда — грамотные позиции и тайминг.</figcaption>
+        </figure>
+        <a class="btn" href="#" aria-label="Смотреть хайлайт Ace — клатч 1v3">Смотреть</a>
+      </article>
+
+      <article class="highlight" aria-labelledby="h2-title">
+        <h3 id="h2-title">Blitz — entry‑два фрага на Inferno</h3>
+        <figure>
+          <img src="image/inferno.webp" alt="Blitz делает два начальных фрага на карте Inferno">
+          <figcaption>Чистый entry и агрессивный контроль зоны.</figcaption>
+        </figure>
+        <a class="btn" href="#" aria-label="Смотреть хайлайт Blitz — два entry фрага">Смотреть</a>
+      </article>
+    </section>
+
+    <section id="about" aria-labelledby="about-title">
+      <h2 id="about-title">О комьюнити</h2>
+      <p>Мы — фанаты, которые собирают статистику, пишут гайды и оформляют лучшие моменты команды. Присоединяйся к обсуждениям и делись идеями.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <nav aria-label="Ссылки в футере">
+      <ul>
+        <li><a href="#about">О нас</a></li>
+        <li><a href="#" rel="noopener">Twitter</a></li>
+        <li><a href="#" rel="noopener">YouTube</a></li>
+      </ul>
+    </nav>
+    <p>© 2025 Team Pulse Fan Community</p>
+  </footer>
+
+</body>
+</html>
