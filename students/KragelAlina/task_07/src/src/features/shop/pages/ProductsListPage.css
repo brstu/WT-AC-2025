@@ -84,14 +84,14 @@
   margin-bottom: 32px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .products-list-page-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 16px;
   }
 }
 
-@media (max-width: 480px) {
+@media (width <= 480px) {
   .products-list-page-grid {
     grid-template-columns: 1fr;
   }
