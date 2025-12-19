@@ -52,7 +52,7 @@ body {
 }
 
 .logo {
-    font-family: Playfair Display, serif;
+    font-family: "Playfair Display", serif;
     font-size: 1.8rem;
     display: flex;
     align-items: center;
