@@ -52,7 +52,7 @@
   gap: 40px;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .product-detail-page-container {
     grid-template-columns: 1fr;
     gap: 24px;
