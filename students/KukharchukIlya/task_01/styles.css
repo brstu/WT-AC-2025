@@ -197,6 +197,10 @@ body {
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow);
+  /* Предотвращает cumulative layout shift */
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .gallery-item-image {
@@ -204,6 +208,9 @@ body {
   height: 250px;
   object-fit: cover;
   display: block;
+
+  /* Оптимизация производительности */
+  content-visibility: auto;
 }
 
 .gallery-item-caption {
@@ -469,26 +476,4 @@ body {
 .gallery-grid {
   display: grid;
   gap: 1.5rem;
-}
-
-/* Оптимизация загрузки изображений */
-.gallery-item {
-  background: var(--background-color);
-  border-radius: var(--border-radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  /* Предотвращает cumulative layout shift */
-  min-height: 300px;
-  display: flex;
-  flex-direction: column;
-}
-
-.gallery-item-image {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  display: block;
-
-  /* Оптимизация производительности */
-  content-visibility: auto;
 }
