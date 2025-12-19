@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Каталог настольных игр</title>
+    
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body { 
+        font-family: system-ui, sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+      }
+      #root { min-height: 100vh; }
+      
+      .app-loading { 
+        display: flex; 
+        justify-content: center; 
+        align-items: center; 
+        min-height: 100vh; 
+        font-size: 1.5rem;
+      }
+    </style>
+
+    <link rel="preload" as="style" href="/src/App.css">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://cf.geekdo-images.com">
+  </head>
+  <body>
+    <div id="root">
+      <div class="app-loading">Загрузка...</div>
+    </div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
