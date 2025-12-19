@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Гид по кофейням — карта и отзывы</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Фан‑гид по кофейням города: карта (заглушка), карточки, отзывы.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Пропустить к контенту</a>
+
+  <header class="site-header" role="banner">
+    <div class="branding">
+      <h1 class="site-title">Гид по кофейням</h1>
+    </div>
+
+    <button class="menu-toggle" aria-controls="primary-nav" aria-expanded="false">
+      <span class="visually-hidden">Открыть меню</span>☰
+    </button>
+
+    <nav id="primary-nav" class="site-nav" aria-label="Основная навигация">
+      <ul>
+        <li><a href="#map">Карта</a></li>
+        <li><a href="#guide">Кофейни</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Отправить отзыв</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section aria-labelledby="tabs-title" class="tabs-section">
+      <h2 id="tabs-title">Навигация по гиду</h2>
+
+      <div class="tabs" role="tablist" aria-label="Разделы гида">
+        <button role="tab" aria-selected="true" aria-controls="tab-map" id="tab-map-btn" tabindex="0">Карта</button>
+        <button role="tab" aria-selected="false" aria-controls="tab-list" id="tab-list-btn" tabindex="-1">Список кофейн</button>
+      </div>
+
+      <div id="tab-map" role="tabpanel" aria-labelledby="tab-map-btn">
+        <section id="map" aria-labelledby="map-title" class="map-placeholder">
+          <h3 id="map-title">Карта (заглушка)</h3>
+          <p>Здесь будет интерактивная карта. Пока — заглушка с пояснением.</p>
+          <div class="map-box" role="img" aria-label="Схематичная карта центра города с отмеченными кофейнями">MAP</div>
+        </section>
+      </div>
+
+      <div id="tab-list" role="tabpanel" aria-labelledby="tab-list-btn" hidden>
+        <section id="guide" aria-labelledby="guide-title">
+          <h3 id="guide-title">Список кофейн</h3>
+
+          <div class="cards" id="cards" role="list">
+            <article class="card" role="listitem" data-id="1">
+              <header>
+                <h4>Roast & Bloom</h4>
+                <p class="meta">Спешиалти, фильтр, десерты</p>
+              </header>
+              <figure>
+                <img src="images/coffie1.jpg" alt="Интерьер Roast & Bloom, деревянные столы и бариста">
+                <figcaption>Лучший раф и эфиопия V60.</figcaption>
+              </figure>
+              <p>Просторная кофейня в центре. Уютно для работы и встреч.</p>
+              <div class="card-actions">
+                <button class="like-btn" aria-pressed="false">❤ Лайк</button>
+                <button class="delete-btn" aria-label="Удалить карточку">Удалить</button>
+                <button class="review-btn" data-modal-open="review" aria-haspopup="dialog" aria-controls="review-modal">Оставить отзыв</button>
+              </div>
+            </article>
+
+            <article class="card" role="listitem" data-id="2">
+              <header>
+                <h4>Beans & Beats</h4>
+                <p class="meta">Латте‑арт, саундтреки</p>
+              </header>
+              <figure>
+                <img src="images/coffie2.webp" alt="Бар Beans & Beats, бариста наливает эспрессо">
+                <figcaption>Миксы под настроения и сезонные напитки.</figcaption>
+              </figure>
+              <p>Комфортная атмосфера с музыкой, классный флэт уайт.</p>
+              <div class="card-actions">
+                <button class="like-btn" aria-pressed="false">❤ Лайк</button>
+                <button class="delete-btn" aria-label="Удалить карточку">Удалить</button>
+                <button class="review-btn" data-modal-open="review" aria-haspopup="dialog" aria-controls="review-modal">Оставить отзыв</button>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title" class="faq">
+      <h2 id="faq-title">FAQ по кофейням</h2>
+
+      <div class="accordion" role="region" aria-label="Часто задаваемые вопросы">
+        <div class="acc-item">
+          <h3>
+            <button class="acc-trigger" aria-expanded="false" aria-controls="acc-panel-1" id="acc-btn-1">
+              Как выбрать хорошую кофейню?
+            </button>
+          </h3>
+          <div id="acc-panel-1" role="region" aria-labelledby="acc-btn-1" hidden>
+            <p>Смотрите на зерно, оборудование, квалификацию бариста и отзывы постоянных гостей.</p>
+          </div>
+        </div>
+
+        <div class="acc-item">
+          <h3>
+            <button class="acc-trigger" aria-expanded="false" aria-controls="acc-panel-2" id="acc-btn-2">
+              Чем спешиалти отличается от обычного кофе?
+            </button>
+          </h3>
+          <div id="acc-panel-2" role="region" aria-labelledby="acc-btn-2" hidden>
+            <p>Спешиалти — отборные зерна, точные профили обжарки и стандарты приготовления, выше стабильность вкуса.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Модальное окно: отзыв -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title">Оставить отзыв о кофейне</h2>
+
+      <button class="open-modal" data-modal-open="review" aria-haspopup="dialog" aria-controls="review-modal">Открыть форму отзыва</button>
+
+      <div class="modal-backdrop" id="review-backdrop" hidden></div>
+
+      <div class="modal" id="review-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" hidden>
+        <div class="modal-header">
+          <h3 id="modal-title">Ваш отзыв</h3>
+          <p id="modal-desc">Заполните форму: имя, email и сообщение (минимум 20 символов).</p>
+          <button class="modal-close" aria-label="Закрыть модальное окно">✕</button>
+        </div>
+
+        <form class="review-form" novalidate>
+          <div class="form-row">
+            <label for="name">Имя<span aria-hidden="true"> *</span></label>
+            <input id="name" name="name" type="text" required aria-required="true" autocomplete="name" placeholder="Ваше имя">
+            <div class="error" id="error-name" role="alert"></div>
+          </div>
+
+          <div class="form-row">
+            <label for="email">E‑mail<span aria-hidden="true"> *</span></label>
+            <input id="email" name="email" type="email" required aria-required="true" autocomplete="email" placeholder="you@example.com" inputmode="email">
+            <div class="error" id="error-email" role="alert"></div>
+          </div>
+
+          <div class="form-row">
+            <label for="message">Сообщение<span aria-hidden="true"> *</span></label>
+            <textarea id="message" name="message" rows="4" required aria-required="true" minlength="20" placeholder="Минимум 20 символов"></textarea>
+            <div class="error" id="error-message" role="alert"></div>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="submit-btn" disabled aria-disabled="true">Отправить</button>
+          </div>
+        </form>
+
+        <div class="result" id="result" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <nav aria-label="Навигация в футере">
+      <ul>
+        <li><a href="#map">Карта</a></li>
+        <li><a href="#guide">Кофейни</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <p>© 2025 Гид по кофейням</p>
+  </footer>
+
+  <script src="script.js" type="module" defer></script>
+</body>
+</html>
