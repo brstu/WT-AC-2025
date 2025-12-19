@@ -1,0 +1,318 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Kanban API",
+    "version": "1.0.0",
+    "description": "API для задач и колонок Kanban"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3005/api/v1"
+    }
+  ],
+  "paths": {
+    "/columns": {
+      "get": {
+        "summary": "Получить все колонки",
+        "responses": {
+          "200": {
+            "description": "Список колонок"
+          }
+        }
+      },
+      "post": {
+        "summary": "Создать новую колонку",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Созданная колонка"
+          },
+          "422": {
+            "description": "Ошибка валидации"
+          }
+        }
+      }
+    },
+    "/columns/{id}": {
+      "get": {
+        "summary": "Получить колонку по ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Детали колонки"
+          },
+          "404": {
+            "description": "Колонка не найдена"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Обновить колонку",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Обновленная колонка"
+          },
+          "404": {
+            "description": "Колонка не найдена"
+          },
+          "422": {
+            "description": "Ошибка валидации"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удалить колонку",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Удалено"
+          },
+          "404": {
+            "description": "Колонка не найдена"
+          }
+        }
+      }
+    },
+    "/tasks": {
+      "get": {
+        "summary": "Получить задачи с пагинацией, поиском, фильтром, сортировкой",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "columnId",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "sortBy",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "title",
+                "dueDate"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Список задач с метаданными"
+          }
+        }
+      },
+      "post": {
+        "summary": "Создать новую задачу",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "columnId": {
+                    "type": "integer"
+                  },
+                  "dueDate": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Созданная задача"
+          },
+          "400": {
+            "description": "Некорректная колонка"
+          },
+          "422": {
+            "description": "Ошибка валидации"
+          }
+        }
+      }
+    },
+    "/tasks/{id}": {
+      "get": {
+        "summary": "Получить задачу по ID",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Детали задачи"
+          },
+          "404": {
+            "description": "Задача не найдена"
+          }
+        }
+      },
+      "patch": {
+        "summary": "Обновить задачу",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "columnId": {
+                    "type": "integer"
+                  },
+                  "dueDate": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Обновленная задача"
+          },
+          "400": {
+            "description": "Некорректная колонка"
+          },
+          "404": {
+            "description": "Задача не найдена"
+          },
+          "422": {
+            "description": "Ошибка валидации"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Удалить задачу",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Удалено"
+          },
+          "404": {
+            "description": "Задача не найдена"
+          }
+        }
+      }
+    }
+  }
+}
