@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>База хакатонов</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <div class="app">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#/" class="logo">
+                    <i class="fas fa-code"></i>
+                    <span>HackBase</span>
+                </a>
+                
+                <div class="nav-links">
+                    <a href="#/hackathons" class="nav-link" data-link>
+                        <i class="fas fa-list"></i>
+                        <span>Все хакатоны</span>
+                    </a>
+                    <a href="#/new" class="nav-link" data-link>
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Добавить</span>
+                    </a>
+                    <a href="#/stats" class="nav-link" data-link>
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Статистика</span>
+                    </a>
+                    <a href="#" id="resetData" class="nav-link">
+                        <i class="fas fa-redo"></i>
+                        <span>Сброс данных</span>
+                    </a>
+                </div>
+                
+                <div class="nav-search">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input 
+                            type="text" 
+                            id="globalSearch" 
+                            placeholder="Поиск хакатонов..."
+                            autocomplete="off"
+                        >
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div id="notification" class="notification hidden">
+            <span id="notificationMessage"></span>
+            <button class="notification-close">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <main id="app-content" class="main-content">
+            <div class="welcome-screen">
+                <div class="welcome-content">
+                    <h1><i class="fas fa-laptop-code"></i> База хакатонов</h1>
+                    <p>Управляйте хакатонами, отслеживайте участников и создавайте новые события</p>
+                    <div class="welcome-actions">
+                        <a href="#/hackathons" class="btn btn-primary" data-link>
+                            <i class="fas fa-rocket"></i>
+                            Смотреть хакатоны
+                        </a>
+                        <a href="#/new" class="btn btn-secondary" data-link>
+                            <i class="fas fa-plus"></i>
+                            Создать хакатон
+                        </a>
+                    </div>
+                    <div class="demo-info">
+                        <p><i class="fas fa-info-circle"></i> Демо-режим: данные сохраняются в localStorage</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div id="confirmModal" class="modal hidden">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3>Подтверждение удаления</h3>
+                    <button class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p id="confirmMessage">Вы уверены, что хотите удалить этот хакатон?</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="confirmCancel" class="btn btn-secondary">Отмена</button>
+                    <button id="confirmOk" class="btn btn-danger">Удалить</button>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4><i class="fas fa-info-circle"></i> О приложении</h4>
+                    <p>База хакатонов - SPA приложение с hash-маршрутизацией</p>
+                    <p>CRUD операции с использованием JSONPlaceholder API и localStorage</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-code"></i> Технологии</h4>
+                    <p>Vanilla JavaScript (ES6+)</p>
+                    <p>HTML5, CSS3, Flexbox, Grid</p>
+                    <p>Модульная архитектура</p>
+                </div>
+                <div class="footer-section">
+                    <h4><i class="fas fa-wrench"></i> Отладка</h4>
+                    <p>Откройте DevTools (F12) для:</p>
+                    <p>• Просмотра запросов к API</p>
+                    <p>• Проверки localStorage</p>
+                    <p>• Отладки JavaScript</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>База хакатонов &copy; 2023 | Используется JSONPlaceholder API для демонстрации запросов</p>
+                <p class="footer-note">Приложение создано для демонстрации SPA с hash-маршрутизацией и CRUD операциями</p>
+            </div>
+        </footer>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
