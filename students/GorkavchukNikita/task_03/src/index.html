@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Работа 3</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>Фильмы онлайн</h1>
+        <p class="muted">OMDb • Поиск + детали • Retry/Timeout/Abort • Cache (TTL)</p>
+      </div>
+
+      <div class="topbar-controls">
+        <button
+          id="refresh-btn"
+          class="btn btn-ghost"
+          title="Игнорировать кэш и перезагрузить"
+          type="button"
+        >
+          Обновить (без кэша)
+        </button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel">
+        <div class="panel-head">
+          <label class="field field-grow">
+            <span>Поиск</span>
+            <input
+              id="search-input"
+              placeholder="например: Batman, Matrix, Interstellar..."
+            />
+          </label>
+
+          <label class="field">
+            <span>Год (опц.)</span>
+            <input id="year-input" inputmode="numeric" placeholder="2014" />
+          </label>
+        </div>
+
+        <div class="statusbar">
+          <div class="muted">Новый поиск отменяет предыдущий запрос. Есть ретраи + таймаут.</div>
+          <div id="net-status" class="net-status" aria-live="polite"></div>
+        </div>
+
+        <div id="list" class="list" aria-live="polite"></div>
+
+        <div class="pager">
+          <button id="prev-btn" class="btn" type="button" disabled>← Назад</button>
+
+          <div class="pager-info">
+            <span id="page-info" class="muted">Стр. 1</span>
+          </div>
+
+          <button id="next-btn" class="btn" type="button" disabled>Вперёд →</button>
+        </div>
+      </section>
+
+      <section class="panel panel-detail">
+        <div class="panel-head panel-head-detail">
+          <h2>Детали</h2>
+          <span id="detail-meta" class="muted"></span>
+        </div>
+
+        <div id="detail" class="detail"></div>
+      </section>
+    </main>
+
+    <footer class="footer muted">
+      DevTools → Network: сравни первый запрос и повтор (cache), и повтор после «Обновить (без кэша)».
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
