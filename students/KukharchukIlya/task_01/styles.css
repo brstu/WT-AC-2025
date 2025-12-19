@@ -197,6 +197,7 @@ body {
   border-radius: var(--border-radius);
   overflow: hidden;
   box-shadow: var(--shadow);
+
   /* Предотвращает cumulative layout shift */
   min-height: 300px;
   display: flex;
