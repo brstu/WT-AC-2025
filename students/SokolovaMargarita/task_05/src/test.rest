@@ -1,0 +1,38 @@
+### Получить все колонки
+GET http://localhost:8080/api/v1/columns
+
+### Получить колонку по ID
+GET http://localhost:8080/api/v1/columns/1
+
+### Создать новую колонку
+POST http://localhost:8080/api/v1/columns
+Content-Type: application/json
+
+{
+  "name": "Backlog"
+}
+
+### Обновить колонку
+PATCH http://localhost:8080/api/v1/columns/1
+Content-Type: application/json
+
+{
+  "name": "To Do Updated"
+}
+
+### Удалить колонку
+DELETE http://localhost:8080/api/v1/columns/1
+
+### Получить задачи с фильтрами
+GET http://localhost:8080/api/v1/tasks?q=test&limit=5&offset=0&columnId=1&sortBy=title
+
+### Создать задачу
+POST http://localhost:8080/api/v1/tasks
+Content-Type: application/json
+
+{
+  "title": "Новая задача",
+  "columnId": 1,
+  "description": "Описание теста",
+  "dueDate": "2023-12-01T00:00:00Z"
+}

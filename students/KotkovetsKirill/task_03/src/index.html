@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Вакансии по городам</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Каталог вакансий</h1>
+
+      <div class="controls">
+        <input type="text" id="search-input" placeholder="Поиск вакансий..." />
+        <select id="city-filter">
+          <option value="">Все города</option>
+          <option value="Москва">Москва</option>
+          <option value="Санкт-Петербург">Санкт-Петербург</option>
+          <option value="Минск">Минск</option>
+          <option value="Киев">Киев</option>
+          <option value="Брест">Брест</option>
+        </select>
+        <button id="refresh-btn">Обновить</button>
+      </div>
+
+      <div id="loading-indicator" style="display: none">
+        <img src="img/loading.gif" alt="Загрузка данных" />
+        Загрузка...
+      </div>
+
+      <div id="error-message" style="display: none"></div>
+
+      <div id="vacancy-list"></div>
+
+      <div class="pagination">
+        <button id="prev-btn" disabled>Назад</button>
+        <span id="page-info"></span>
+        <button id="next-btn">Вперед</button>
+      </div>
+    </div>
+
+    <script>
+      var currentPage = 1;
+      var totalPages = 1;
+      var allVacancies = [];
+      var cache = {};
+      var controller = null;
+      var searchTimeout;
+
+      function generateMockVacancies() {
+        var jobs = [
+          "Frontend разработчик",
+          "Backend разработчик",
+          "Fullstack разработчик",
+          "DevOps инженер",
+          "QA Engineer",
+          "Data Scientist",
+          "Product Manager",
+          "UI/UX Designer",
+          "System Administrator",
+          "Mobile Developer",
+          "Team Lead",
+          "Scrum Master",
+          "Business Analyst",
+          "Technical Writer",
+          "Security Engineer",
+          "ML Engineer",
+          "Cloud Architect",
+          "Software Engineer",
+          "Database Administrator",
+          "Network Engineer",
+        ];
+        var cities = [
+          "Москва",
+          "Санкт-Петербург",
+          "Минск",
+          "Киев",
+          "Брест",
+          "Москва",
+          "Санкт-Петербург",
+          "Минск",
+          "Киев",
+          "Брест",
+        ];
+        var companies = [
+          "Tech Corp",
+          "Digital Solutions",
+          "IT Innovations",
+          "Code Masters",
+          "Web Studio",
+          "Software House",
+          "Digital Agency",
+          "Tech Lab",
+          "Innovation Hub",
+          "Smart Systems",
+        ];
+
+        var vacancies = [];
+        for (var i = 0; i < 50; i++) {
+          vacancies.push({
+            id: i + 1,
+            title: jobs[Math.floor(Math.random() * jobs.length)],
+            city: cities[Math.floor(Math.random() * cities.length)],
+            company: companies[Math.floor(Math.random() * companies.length)],
+            salary: (Math.floor(Math.random() * 10) + 5) * 10000,
+            description:
+              "Описание вакансии " +
+              (i + 1) +
+              ". Требуется опыт работы и знание технологий.",
+          });
+        }
+        return vacancies;
+      }
+
+      function mockFetch(url) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            if (Math.random() > 0.9) {
+              reject(new Error("Network error"));
+              return;
+            }
+
+            var allData = generateMockVacancies();
+            resolve({
+              ok: true,
+              json: function () {
+                return Promise.resolve(allData);
+              },
+            });
+          }, Math.random() * 1000 + 500);
+        });
+      }
+
+      function fetchWithRetry(url, options) {
+        var retries = options.retries || 3;
+        var backoffMs = options.backoffMs || 1000;
+        var timeoutMs = options.timeoutMs || 5000;
+
+        return new Promise(function (resolve, reject) {
+          var attempt = 0;
+
+          function tryFetch() {
+            attempt++;
+
+            if (controller) {
+              controller.abort();
+            }
+            controller = new AbortController();
+
+            var timeoutId = setTimeout(function () {
+              controller.abort();
+            }, timeoutMs);
+
+            mockFetch(url, { signal: controller.signal })
+              .then(function (response) {
+                clearTimeout(timeoutId);
+                resolve(response);
+              })
+              .catch(function (error) {
+                clearTimeout(timeoutId);
+
+                if (attempt < retries) {
+                  console.log("Retry attempt " + attempt);
+                  setTimeout(tryFetch, backoffMs * attempt);
+                } else {
+                  reject(error);
+                }
+              });
+          }
+
+          tryFetch();
+        });
+      }
+
+      function getFromCache(key) {
+        var item = cache[key];
+        if (item) {
+          var now = new Date().getTime();
+          if (now - item.timestamp < 60000) {
+            return item.data;
+          }
+        }
+        return null;
+      }
+
+      function setCache(key, data) {
+        cache[key] = {
+          data: data,
+          timestamp: new Date().getTime(),
+        };
+      }
+
+      function showLoading() {
+        document.getElementById("loading-indicator").style.display = "block";
+        document.getElementById("vacancy-list").style.display = "none";
+        document.getElementById("error-message").style.display = "none";
+      }
+
+      function hideLoading() {
+        document.getElementById("loading-indicator").style.display = "none";
+        document.getElementById("vacancy-list").style.display = "block";
+      }
+
+      function showError(message) {
+        var errorDiv = document.getElementById("error-message");
+        errorDiv.textContent = "Ошибка: " + message;
+        errorDiv.style.display = "block";
+        document.getElementById("vacancy-list").style.display = "none";
+        document.getElementById("loading-indicator").style.display = "none";
+      }
+
+      async function loadVacancies(ignoreCache) {
+        showLoading();
+
+        var cacheKey = "vacancies_all";
+
+        if (!ignoreCache) {
+          var cached = getFromCache(cacheKey);
+          if (cached) {
+            allVacancies = cached;
+            filterAndDisplay();
+            hideLoading();
+            return;
+          }
+        }
+
+        try {
+          var response = await fetchWithRetry(
+            "https://api.example.com/vacancies",
+            {
+              retries: 3,
+              backoffMs: 1000,
+              timeoutMs: 5000,
+            }
+          );
+
+          if (!response.ok) {
+            throw new Error("HTTP error");
+          }
+
+          var data = await response.json();
+          allVacancies = data;
+          setCache(cacheKey, data);
+
+          filterAndDisplay();
+          hideLoading();
+        } catch (error) {
+          console.error(error);
+          showError(error.message);
+        }
+      }
+
+      function filterAndDisplay() {
+        var searchTerm = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        var cityFilter = document.getElementById("city-filter").value;
+
+        var filtered = allVacancies.filter(function (v) {
+          var matchSearch =
+            v.title.toLowerCase().indexOf(searchTerm) !== -1 ||
+            v.company.toLowerCase().indexOf(searchTerm) !== -1;
+          var matchCity = !cityFilter || v.city === cityFilter;
+          return matchSearch && matchCity;
+        });
+
+        var itemsPerPage = 10;
+        totalPages = Math.ceil(filtered.length / itemsPerPage);
+
+        if (currentPage > totalPages) {
+          currentPage = totalPages || 1;
+        }
+
+        var start = (currentPage - 1) * itemsPerPage;
+        var end = start + itemsPerPage;
+        var pageVacancies = filtered.slice(start, end);
+
+        displayVacancies(pageVacancies);
+        updatePagination();
+      }
+
+      function displayVacancies(vacancies) {
+        var container = document.getElementById("vacancy-list");
+
+        if (vacancies.length === 0) {
+          container.innerHTML = '<div class="empty">Вакансии не найдены</div>';
+          return;
+        }
+
+        var html = "";
+        for (var i = 0; i < vacancies.length; i++) {
+          var v = vacancies[i];
+          html += '<div class="vacancy-card">';
+          html += "<h3>" + v.title + "</h3>";
+          html += '<div class="vacancy-info">';
+          html += '<span class="city">' + v.city + "</span>";
+          html += '<span class="company">' + v.company + "</span>";
+          html += '<span class="salary">' + v.salary + " руб.</span>";
+          html += "</div>";
+          html += "<p>" + v.description + "</p>";
+          html += "</div>";
+        }
+
+        container.innerHTML = html;
+      }
+
+      function updatePagination() {
+        document.getElementById("page-info").textContent =
+          "Страница " + currentPage + " из " + totalPages;
+        document.getElementById("prev-btn").disabled = currentPage <= 1;
+        document.getElementById("next-btn").disabled = currentPage >= totalPages;
+      }
+
+      document
+        .getElementById("search-input")
+        .addEventListener("input", function () {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(function () {
+            currentPage = 1;
+            filterAndDisplay();
+          }, 300);
+        });
+
+      document
+        .getElementById("city-filter")
+        .addEventListener("change", function () {
+          if (controller) {
+            controller.abort();
+          }
+          currentPage = 1;
+          filterAndDisplay();
+        });
+
+      document
+        .getElementById("refresh-btn")
+        .addEventListener("click", function () {
+          loadVacancies(true);
+        });
+
+      document.getElementById("prev-btn").addEventListener("click", function () {
+        if (currentPage > 1) {
+          currentPage--;
+          filterAndDisplay();
+          window.scrollTo(0, 0);
+        }
+      });
+
+      document.getElementById("next-btn").addEventListener("click", function () {
+        if (currentPage < totalPages) {
+          currentPage++;
+          filterAndDisplay();
+          window.scrollTo(0, 0);
+        }
+      });
+
+      loadVacancies(false);
+    </script>
+  </body>
+</html>

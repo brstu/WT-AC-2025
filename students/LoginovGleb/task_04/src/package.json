@@ -1,0 +1,36 @@
+{
+  "name": "events-spa",
+  "version": "1.0.0",
+  "description": "SPA приложение для управления лентой событий",
+  "type": "module",
+  "author": "Логинов Глеб Олегович",
+  "license": "MIT",
+  "scripts": {
+    "start": "npx serve . -l 8080",
+    "server": "npx json-server --watch db.json --port 3000",
+    "dev": "concurrently \"npm run start\" \"npm run server\"",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0",
+    "json-server": "^0.17.4",
+    "serve": "^14.2.1"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "moduleFileExtensions": [
+      "js"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
+    "collectCoverageFrom": [
+      "js/**/*.js"
+    ],
+    "transform": {}
+  }
+}
