@@ -20,7 +20,7 @@
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
     line-height: 1.6;
     color: #333;
     background-color: #f8f9fa;
@@ -52,7 +52,7 @@ body {
 }
 
 .logo {
-    font-family: 'Playfair Display', serif;
+    font-family: Playfair Display, serif;
     font-size: 1.8rem;
     display: flex;
     align-items: center;
@@ -80,7 +80,8 @@ body {
     gap: 8px;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover,
+.nav-link.active {
     background-color: rgba(255 255 255 / 10%);
 }
 
@@ -315,7 +316,7 @@ body {
     gap: 2rem;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .detail-body {
         grid-template-columns: 1fr;
     }
@@ -376,7 +377,7 @@ body {
 .form-control:focus {
     outline: none;
     border-color: var(--secondary-color);
-    box-shadow: 0 0 0 3px rgba(52 152 219 20%);
+    box-shadow: 0 0 0 3px rgba(52 152 219 / 20%);
 }
 
 textarea.form-control {
@@ -415,7 +416,7 @@ textarea.form-control {
     gap: 1.5rem;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .form-grid {
         grid-template-columns: 1fr;
     }
@@ -429,7 +430,9 @@ textarea.form-control {
 }
 
 /* Состояния загрузки, ошибки и пустого состояния */
-.loading-state, .error-state, .empty-state {
+.loading-state,
+.error-state,
+.empty-state {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -445,7 +448,8 @@ textarea.form-control {
     margin-bottom: 1.5rem;
 }
 
-.double-bounce1, .double-bounce2 {
+.double-bounce1,
+.double-bounce2 {
     width: 100%;
     height: 100%;
     border-radius: 50%;
@@ -454,33 +458,39 @@ textarea.form-control {
     position: absolute;
     top: 0;
     left: 0;
-    animation: sk-bounce 2.0s infinite ease-in-out;
+    animation: sk-bounce 2s infinite ease-in-out;
 }
 
 .double-bounce2 {
-    animation-delay: -1.0s;
+    animation-delay: -1s;
 }
 
 @keyframes sk-bounce {
-    0%, 100% { 
-        transform: scale(0.0);
-    } 50% { 
-        transform: scale(1.0);
+    0%,
+    100% {
+        transform: scale(0);
+    }
+
+    50% {
+        transform: scale(1);
     }
 }
 
-.error-state i, .empty-state i {
+.error-state i,
+.empty-state i {
     font-size: 4rem;
     margin-bottom: 1.5rem;
     color: var(--light-gray);
 }
 
-.error-state h2, .empty-state h2 {
+.error-state h2,
+.empty-state h2 {
     margin-bottom: 1rem;
     color: var(--primary-color);
 }
 
-.error-state p, .empty-state p {
+.error-state p,
+.empty-state p {
     margin-bottom: 1.5rem;
     color: var(--gray-color);
     max-width: 500px;
@@ -489,10 +499,7 @@ textarea.form-control {
 /* Модальные окна */
 .modal-overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-color: rgba(0 0 0 / 50%);
     display: flex;
     align-items: center;
@@ -561,12 +568,19 @@ textarea.form-control {
     overflow: hidden;
     display: flex;
     align-items: center;
-    animation: slideInRight 0.3s ease;
+    animation: slide-in-right 0.3s ease;
 }
 
-@keyframes slideInRight {
-    from { transform: translateX(100%); opacity: 0; }
-    to { transform: translateX(0); opacity: 1; }
+@keyframes slide-in-right {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
 }
 
 .notification-content {
@@ -622,26 +636,27 @@ textarea.form-control {
 }
 
 /* Адаптивность */
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .header .container {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .nav {
         width: 100%;
         justify-content: center;
     }
-    
+
     .museums-list {
         grid-template-columns: 1fr;
     }
-    
-    .detail-header, .detail-actions {
+
+    .detail-header,
+    .detail-actions {
         flex-direction: column;
         align-items: stretch;
     }
-    
+
     .btn {
         width: 100%;
         justify-content: center;
