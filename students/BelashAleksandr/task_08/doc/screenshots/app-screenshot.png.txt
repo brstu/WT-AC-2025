@@ -1,0 +1,2 @@
+# Placeholder for app-screenshot.png
+# В реальности здесь был бы скриншот приложения
