@@ -1,0 +1,153 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: radial-gradient(circle at top, #111827, #020617);
+  color: #e5e7eb;
+}
+
+.header {
+  padding: 3rem 1rem;
+  text-align: center;
+  background:
+    linear-gradient(135deg, rgba(99 102 241 / 15%), rgba(236 72 153 / 15%));
+  border-bottom: 1px solid #1f2937;
+}
+
+.header h1 {
+  font-size: 2.4rem;
+  margin-bottom: .5rem;
+}
+
+.header p {
+  color: #9ca3af;
+}
+
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 2rem 1rem;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: 1fr 200px auto;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+input,
+select {
+  background: #020617;
+  border: 1px solid #1f2937;
+  color: #e5e7eb;
+  padding: .7rem .9rem;
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #6366f1;
+}
+
+button {
+  background: linear-gradient(135deg, #6366f1, #ec4899);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  padding: .7rem 1rem;
+}
+
+button:hover {
+  opacity: .9;
+}
+
+.status {
+  min-height: 1.5rem;
+  margin-bottom: 1rem;
+  color: #f87171;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card {
+  background: linear-gradient(
+    160deg,
+    rgba(15 23 42 / 90%),
+    rgba(2 6 23 / 90%)
+  );
+  border: 1px solid #1f2937;
+  border-radius: 16px;
+  padding: 1.3rem 1.4rem;
+  margin-bottom: 1.2rem;
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(99 102 241 / 15%);
+}
+
+.card h3 {
+  margin: 0 0 .3rem;
+  font-size: 1.2rem;
+}
+
+.card small {
+  color: #a5b4fc;
+  font-weight: 500;
+}
+
+.card p {
+  margin-top: .6rem;
+  color: #cbd5f5;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.pagination span {
+  color: #9ca3af;
+}
+
+/* Skeleton */
+.skeleton {
+  height: 88px;
+  border-radius: 16px;
+  background: linear-gradient(
+    90deg,
+    #020617 25%,
+    #1e293b 37%,
+    #020617 63%
+  );
+  background-size: 400% 100%;
+  animation: skeleton 1.4s infinite;
+  margin-bottom: 1.2rem;
+}
+
+@keyframes skeleton {
+  0% { background-position: 100% 0 }
+  100% { background-position: -100% 0 }
+}
+
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: #6b7280;
+}

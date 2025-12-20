@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Киберспортивные турниры</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+<header class="header">
+  <div class="header-inner">
+    <h1>Киберспортивные турниры</h1>
+    <p>Поиск, фильтрация, кэширование и повторные запросы</p>
+  </div>
+</header>
+
+<main class="container">
+  <section class="controls">
+    <input
+      type="search"
+      id="search"
+      placeholder="Поиск турнира..."
+    />
+
+    <select id="game-filter">
+      <option value="">Все дисциплины</option>
+      <option value="CS">CS:GO</option>
+      <option value="Dota">Dota 2</option>
+      <option value="LoL">League of Legends</option>
+    </select>
+
+    <button id="refresh-btn">Обновить данные</button>
+  </section>
+
+  <div id="status" class="status"></div>
+
+  <ul id="list" class="list"></ul>
+
+  <div class="pagination">
+    <button id="prev">←</button>
+    <span id="page-info"></span>
+    <button id="next">→</button>
+  </div>
+</main>
+
+<footer class="footer">
+  <p>Учебный проект · Клиент к API</p>
+</footer>
+
+<script type="module" src="main.js"></script>
+</body>
+</html>
