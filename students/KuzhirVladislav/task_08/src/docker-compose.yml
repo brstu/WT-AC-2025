@@ -1,0 +1,17 @@
+version: '3.9'
+services:
+  frontend:
+    build: .
+    ports:
+      - '5173:80'
+    environment:
+      - VITE_API_URL=http://backend:3001
+
+  backend:
+    image: node:22-alpine
+    working_dir: /app
+    command: npx json-server --watch /app/db.json --port 3001
+    volumes:
+      - .:/app
+    ports:
+      - '3001:3001'
