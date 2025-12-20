@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  password  String
+  name      String?
+  role      Role      @default(FREELANCER)
+  clients   Client[]
+  invoices  Invoice[]
+  comments  Comment[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Client {
+  id        String    @id @default(cuid())
+  name      String
+  email     String?   @unique
+  phone     String?
+  address   String?
+  ownerId   String
+  owner     User      @relation(fields: [ownerId], references: [id])
+  invoices  Invoice[]
+  comments  Comment[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Invoice {
+  id        String        @id @default(cuid())
+  number    String
+  amount    Decimal
+  status    InvoiceStatus @default(PENDING)
+  dueDate   DateTime?
+  issuedAt  DateTime      @default(now())
+  clientId  String
+  client    Client        @relation(fields: [clientId], references: [id])
+  ownerId   String
+  owner     User          @relation(fields: [ownerId], references: [id])
+  createdAt DateTime      @default(now())
+  updatedAt DateTime      @updatedAt
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  text      String
+  clientId  String
+  client    Client   @relation(fields: [clientId], references: [id])
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+}
+
+enum Role {
+  FREELANCER
+  ADMIN
+}
+
+enum InvoiceStatus {
+  PENDING
+  PAID
+  OVERDUE
+  CANCELLED
+}
