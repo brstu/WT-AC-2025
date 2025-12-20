@@ -153,7 +153,7 @@ Nginx настроен для SPA:
 
 ### 5.1 CI Workflow
 
-Файл: `.github/workflows/ci.yml`  
+Файл: `.github/workflows/ci.yml`
 
 Pipeline выполняется при:
 - `push`;
