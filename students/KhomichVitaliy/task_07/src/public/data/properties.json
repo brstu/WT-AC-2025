@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "title": "Уютная квартира в центре Москвы",
+    "price": 5000,
+    "location": "Москва, Арбат",
+    "rooms": 2,
+    "area": 65,
+    "image": "https://picsum.photos/400/300?random=1",
+    "description": "Светлая квартира с видом на центр. Полностью меблирована, рядом метро."
+  },
+  {
+    "id": 2,
+    "title": "Домик у озера в Подмосковье",
+    "price": 12000,
+    "location": "Подмосковье, Истра",
+    "rooms": 4,
+    "area": 150,
+    "image": "https://picsum.photos/400/300?random=2",
+    "description": "Частный дом с баней и мангалом. Идеально для отдыха с семьей."
+  },
+  {
+    "id": 3,
+    "title": "Студия в Санкт-Петербурге",
+    "price": 3500,
+    "location": "Санкт-Петербург, Невский",
+    "rooms": 1,
+    "area": 35,
+    "image": "https://picsum.photos/400/300?random=3",
+    "description": "Современная студия в историческом центре. Wi-Fi, кондиционер."
+  },
+  {
+    "id": 4,
+    "title": "Коттедж в Сочи",
+    "price": 15000,
+    "location": "Сочи, Адлер",
+    "rooms": 5,
+    "area": 200,
+    "image": "https://picsum.photos/400/300?random=4",
+    "description": "Коттедж с бассейном и видом на море. Рядом пляж."
+  },
+  {
+    "id": 5,
+    "title": "Апартаменты в Казани",
+    "price": 4200,
+    "location": "Казань, Кремль",
+    "rooms": 2,
+    "area": 55,
+    "image": "https://picsum.photos/400/300?random=5",
+    "description": "Апартаменты рядом с Кремлём. Отличный вариант для туристов."
+  },
+  {
+    "id": 6,
+    "title": "Таунхаус в Екатеринбурге",
+    "price": 9800,
+    "location": "Екатеринбург, Академический",
+    "rooms": 3,
+    "area": 120,
+    "image": "https://picsum.photos/400/300?random=6",
+    "description": "Современный таунхаус с гаражом и террасой."
+  },
+  {
+    "id": 7,
+    "title": "Квартира в Новосибирске",
+    "price": 3700,
+    "location": "Новосибирск, Центр",
+    "rooms": 1,
+    "area": 40,
+    "image": "https://picsum.photos/400/300?random=7",
+    "description": "Уютная однушка рядом с университетом."
+  },
+  {
+    "id": 8,
+    "title": "Вилла в Крыму",
+    "price": 20000,
+    "location": "Ялта, Приморский парк",
+    "rooms": 6,
+    "area": 250,
+    "image": "https://picsum.photos/400/300?random=8",
+    "description": "Вилла с садом и видом на море."
+  },
+  {
+    "id": 9,
+    "title": "Квартира в Нижнем Новгороде",
+    "price": 4100,
+    "location": "Нижний Новгород, Покровка",
+    "rooms": 2,
+    "area": 60,
+    "image": "https://picsum.photos/400/300?random=9",
+    "description": "Квартира в историческом центре города."
+  },
+  {
+    "id": 10,
+    "title": "Дом в Красной Поляне",
+    "price": 13500,
+    "location": "Красная Поляна, Сочи",
+    "rooms": 4,
+    "area": 180,
+    "image": "https://picsum.photos/400/300?random=10",
+    "description": "Дом для горнолыжного отдыха. Рядом трассы и канатная дорога."
+  }
+]
