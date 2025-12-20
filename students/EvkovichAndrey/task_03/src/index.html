@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Каталог станций метро/остановок</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Каталог станций</h1>
+      <form id="search-form" role="search" aria-label="Поиск станций">
+        <label for="search-query">Поиск</label>
+        <input id="search-query" name="q" type="search" placeholder="Введите станцию..." autocomplete="off" />
+        <button id="refresh-btn" type="button" aria-label="Обновить">Обновить</button>
+      </form>
+    </header>
+
+    <main>
+      <section aria-live="polite">
+        <h2>Список станций</h2>
+        <div id="status-message" class="status" role="status"></div>
+        <div id="station-list" class="list"></div>
+        <nav class="pagination" aria-label="Пагинация">
+          <button id="pagination-prev" aria-label="Предыдущая страница" disabled>Назад</button>
+          <span id="page-indicator">Стр. 1</span>
+          <button id="pagination-next" aria-label="Следующая страница" disabled>Вперёд</button>
+        </nav>
+      </section>
+    </main>
+
+    <footer>
+      <small>Демо: загрузка, поиск с дебаунсом, кэш, ретраи, таймаут, отмена.</small>
+    </footer>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
