@@ -44,6 +44,11 @@
   margin-left: auto;
 }
 
+.notification-close:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
 @keyframes slide-in {
   from {
     transform: translateX(400px);

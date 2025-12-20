@@ -1,9 +1,9 @@
-.equipment-form {
+.game-form {
   max-width: 600px;
   margin: 0 auto;
 }
 
-.equipment-form select {
+.game-form select {
   width: 100%;
   padding: 0.75rem;
   border: 1px solid var(--border-color);
@@ -14,12 +14,13 @@
   cursor: pointer;
 }
 
-.equipment-form select:focus {
-  outline: none;
+.game-form select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
   border-color: var(--primary-color);
 }
 
-.equipment-form textarea {
+.game-form textarea {
   resize: vertical;
   font-family: inherit;
 }

@@ -19,16 +19,16 @@ export const Navbar = () => {
     <nav className="navbar">
       <div className="navbar-container">
         <Link to="/" className="navbar-brand">
-          Учёт оборудования
+          Каталог игр
         </Link>
         
         <div className="navbar-menu">
           {isAuthenticated && (
             <>
-              <Link to="/equipment" className="navbar-link">
-                Оборудование
+              <Link to="/games" className="navbar-link">
+                Игры
               </Link>
-              <Link to="/equipment/new" className="navbar-link">
+              <Link to="/games/new" className="navbar-link">
                 Добавить
               </Link>
             </>

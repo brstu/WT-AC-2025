@@ -11,61 +11,61 @@ const baseQuery = fetchBaseQuery({
   },
 });
 
-export const equipmentApi = createApi({
-  reducerPath: 'equipmentApi',
+export const gamesApi = createApi({
+  reducerPath: 'gamesApi',
   baseQuery,
-  tagTypes: ['Equipment'],
+  tagTypes: ['Game'],
   endpoints: (builder) => ({
-    getEquipmentList: builder.query({
+    getGamesList: builder.query({
       query: ({ page = 1, limit = 10, search = '' }) => ({
-        url: '/equipment',
+        url: '/games',
         params: { page, limit, search },
       }),
       providesTags: (result) =>
         result
           ? [
-              ...result.data.map(({ id }) => ({ type: 'Equipment', id })),
-              { type: 'Equipment', id: 'LIST' },
+              ...result.data.map(({ id }) => ({ type: 'Game', id })),
+              { type: 'Game', id: 'LIST' },
             ]
-          : [{ type: 'Equipment', id: 'LIST' }],
+          : [{ type: 'Game', id: 'LIST' }],
     }),
-    getEquipmentById: builder.query({
-      query: (id) => `/equipment/${id}`,
-      providesTags: (result, error, id) => [{ type: 'Equipment', id }],
+    getGameById: builder.query({
+      query: (id) => `/games/${id}`,
+      providesTags: (result, error, id) => [{ type: 'Game', id }],
     }),
-    createEquipment: builder.mutation({
-      query: (equipment) => ({
-        url: '/equipment',
+    createGame: builder.mutation({
+      query: (game) => ({
+        url: '/games',
         method: 'POST',
-        body: equipment,
+        body: game,
       }),
-      invalidatesTags: [{ type: 'Equipment', id: 'LIST' }],
-      async onQueryStarted(equipment, { dispatch, queryFulfilled }) {
+      invalidatesTags: [{ type: 'Game', id: 'LIST' }],
+      async onQueryStarted(game, { dispatch, queryFulfilled }) {
         try {
-          const { data: newEquipment } = await queryFulfilled;
+          const { data: newGame } = await queryFulfilled;
           // Optimistic update
           dispatch(
-            equipmentApi.util.updateQueryData('getEquipmentList', {}, (draft) => {
-              draft.data.unshift(newEquipment);
+            gamesApi.util.updateQueryData('getGamesList', {}, (draft) => {
+              draft.data.unshift(newGame);
             })
           );
         } catch {}
       },
     }),
-    updateEquipment: builder.mutation({
-      query: ({ id, ...equipment }) => ({
-        url: `/equipment/${id}`,
+    updateGame: builder.mutation({
+      query: ({ id, ...game }) => ({
+        url: `/games/${id}`,
         method: 'PUT',
-        body: equipment,
+        body: game,
       }),
       invalidatesTags: (result, error, { id }) => [
-        { type: 'Equipment', id },
-        { type: 'Equipment', id: 'LIST' },
+        { type: 'Game', id },
+        { type: 'Game', id: 'LIST' },
       ],
       async onQueryStarted({ id, ...patch }, { dispatch, queryFulfilled }) {
         // Optimistic update
         const patchResult = dispatch(
-          equipmentApi.util.updateQueryData('getEquipmentById', id, (draft) => {
+          gamesApi.util.updateQueryData('getGameById', id, (draft) => {
             Object.assign(draft, patch);
           })
         );
@@ -76,19 +76,19 @@ export const equipmentApi = createApi({
         }
       },
     }),
-    deleteEquipment: builder.mutation({
+    deleteGame: builder.mutation({
       query: (id) => ({
-        url: `/equipment/${id}`,
+        url: `/games/${id}`,
         method: 'DELETE',
       }),
       invalidatesTags: (result, error, id) => [
-        { type: 'Equipment', id },
-        { type: 'Equipment', id: 'LIST' },
+        { type: 'Game', id },
+        { type: 'Game', id: 'LIST' },
       ],
       async onQueryStarted(id, { dispatch, queryFulfilled }) {
         // Optimistic update
         const patchResult = dispatch(
-          equipmentApi.util.updateQueryData('getEquipmentList', {}, (draft) => {
+          gamesApi.util.updateQueryData('getGamesList', {}, (draft) => {
             const index = draft.data.findIndex((item) => item.id === id);
             if (index !== -1) {
               draft.data.splice(index, 1);
@@ -106,10 +106,10 @@ export const equipmentApi = createApi({
 });
 
 export const {
-  useGetEquipmentListQuery,
-  useGetEquipmentByIdQuery,
-  useCreateEquipmentMutation,
-  useUpdateEquipmentMutation,
-  useDeleteEquipmentMutation,
+  useGetGamesListQuery,
+  useGetGameByIdQuery,
+  useCreateGameMutation,
+  useUpdateGameMutation,
+  useDeleteGameMutation,
   usePrefetch,
-} = equipmentApi;
+} = gamesApi;

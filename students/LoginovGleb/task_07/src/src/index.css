@@ -1,5 +1,5 @@
 /* CSS Variables for theming */
-:root[data-theme="light"] {
+:root[data-theme='light'] {
   --primary-color: #2563eb;
   --primary-dark: #1d4ed8;
   --secondary-color: #7c3aed;
@@ -17,7 +17,7 @@
   --input-bg: #fff;
 }
 
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   --primary-color: #3b82f6;
   --primary-dark: #2563eb;
   --secondary-color: #8b5cf6;

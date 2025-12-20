@@ -50,6 +50,12 @@
   transition: transform 0.3s ease;
 }
 
+.theme-toggle:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .theme-toggle:hover {
   transform: scale(1.1);
 }
@@ -74,6 +80,11 @@
   cursor: pointer;
   font-weight: 500;
   transition: background-color 0.3s ease;
+}
+
+.navbar-logout:focus {
+  outline: 2px solid var(--danger-color);
+  outline-offset: 2px;
 }
 
 .navbar-logout:hover {

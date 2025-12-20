@@ -1,4 +1,4 @@
-.equipment-list-page {
+.games-list-page {
   padding: 2rem 0;
 }
 
@@ -19,31 +19,31 @@
   max-width: 400px;
 }
 
-.equipment-grid {
+.games-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
-.equipment-card-link {
+.games-card-link {
   text-decoration: none;
   color: var(--text-color);
   display: block;
 }
 
-.equipment-card-link h3 {
+.games-card-link h3 {
   margin: 0 0 0.5rem;
   color: var(--primary-color);
 }
 
-.equipment-category {
+.games-category {
   color: var(--text-secondary);
   margin: 0.5rem 0;
 }
 
-.equipment-status,
-.equipment-location {
+.games-status,
+.games-location {
   margin: 0.5rem 0;
 }
 

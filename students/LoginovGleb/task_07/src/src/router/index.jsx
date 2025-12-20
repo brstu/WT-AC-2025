@@ -7,10 +7,10 @@ import { Spinner } from '../components/ui/Spinner';
 // Lazy load pages for code splitting
 const HomePage = lazy(() => import('../pages/HomePage').then(m => ({ default: m.HomePage })));
 const LoginPage = lazy(() => import('../features/auth/pages/LoginPage').then(m => ({ default: m.LoginPage })));
-const EquipmentListPage = lazy(() => import('../features/equipment/pages/EquipmentListPage').then(m => ({ default: m.EquipmentListPage })));
-const EquipmentDetailPage = lazy(() => import('../features/equipment/pages/EquipmentDetailPage').then(m => ({ default: m.EquipmentDetailPage })));
-const EquipmentNewPage = lazy(() => import('../features/equipment/pages/EquipmentNewPage').then(m => ({ default: m.EquipmentNewPage })));
-const EquipmentEditPage = lazy(() => import('../features/equipment/pages/EquipmentEditPage').then(m => ({ default: m.EquipmentEditPage })));
+const GamesListPage = lazy(() => import('../features/games/pages/GamesListPage').then(m => ({ default: m.GamesListPage })));
+const GameDetailPage = lazy(() => import('../features/games/pages/GameDetailPage').then(m => ({ default: m.GameDetailPage })));
+const GameNewPage = lazy(() => import('../features/games/pages/GameNewPage').then(m => ({ default: m.GameNewPage })));
+const GameEditPage = lazy(() => import('../features/games/pages/GameEditPage').then(m => ({ default: m.GameEditPage })));
 const NotFoundPage = lazy(() => import('../pages/NotFoundPage').then(m => ({ default: m.NotFoundPage })));
 
 const SuspenseWrapper = ({ children }) => (
@@ -33,13 +33,13 @@ const router = createBrowserRouter([
         element: <SuspenseWrapper><LoginPage /></SuspenseWrapper>,
       },
       {
-        path: 'equipment',
+        path: 'games',
         children: [
           {
             index: true,
             element: (
               <ProtectedRoute>
-                <SuspenseWrapper><EquipmentListPage /></SuspenseWrapper>
+                <SuspenseWrapper><GamesListPage /></SuspenseWrapper>
               </ProtectedRoute>
             ),
           },
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
             path: 'new',
             element: (
               <ProtectedRoute>
-                <SuspenseWrapper><EquipmentNewPage /></SuspenseWrapper>
+                <SuspenseWrapper><GameNewPage /></SuspenseWrapper>
               </ProtectedRoute>
             ),
           },
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
             path: ':id',
             element: (
               <ProtectedRoute>
-                <SuspenseWrapper><EquipmentDetailPage /></SuspenseWrapper>
+                <SuspenseWrapper><GameDetailPage /></SuspenseWrapper>
               </ProtectedRoute>
             ),
           },
@@ -63,7 +63,7 @@ const router = createBrowserRouter([
             path: ':id/edit',
             element: (
               <ProtectedRoute>
-                <SuspenseWrapper><EquipmentEditPage /></SuspenseWrapper>
+                <SuspenseWrapper><GameEditPage /></SuspenseWrapper>
               </ProtectedRoute>
             ),
           },

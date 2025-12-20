@@ -1,22 +1,29 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useGetEquipmentListQuery, usePrefetch } from '../api/equipmentApi';
+import { useGetGamesListQuery, usePrefetch } from '../api/gamesApi';
 import { Spinner } from '../../../components/ui/Spinner';
 import { Card } from '../../../components/ui/Card';
 import { Button } from '../../../components/ui/Button';
 import { Input } from '../../../components/ui/Input';
-import './EquipmentListPage.css';
+import './GamesListPage.css';
 
-export const EquipmentListPage = () => {
+export const GamesListPage = () => {
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState('');
-  const { data, error, isLoading, isFetching } = useGetEquipmentListQuery({ 
+  const { data, error, isLoading, isFetching } = useGetGamesListQuery({ 
     page, 
     limit: 10, 
     search 
   });
   
-  const prefetchPage = usePrefetch('getEquipmentList');
+  const prefetchPage = usePrefetch('getGamesList');
+
+  // Cancel ongoing requests when component unmounts
+  useEffect(() => {
+    return () => {
+      // RTK Query automatically cancels ongoing requests on unmount
+    };
+  }, []);
 
   const handlePrefetch = (nextPage) => {
     prefetchPage({ page: nextPage, limit: 10, search });
@@ -30,20 +37,20 @@ export const EquipmentListPage = () => {
     return (
       <div className="error-container">
         <h2>Ошибка загрузки</h2>
-        <p>{error.message || 'Не удалось загрузить список оборудования'}</p>
+        <p>{error.message || 'Не удалось загрузить список игр'}</p>
       </div>
     );
   }
 
-  const equipmentList = data?.data || [];
-  const isEmpty = equipmentList.length === 0;
+  const gamesList = data?.data || [];
+  const isEmpty = gamesList.length === 0;
 
   return (
-    <div className="equipment-list-page">
+    <div className="games-list-page">
       <div className="page-header">
-        <h1>Список оборудования</h1>
-        <Link to="/equipment/new">
-          <Button>Добавить оборудование</Button>
+        <h1>Каталог игр</h1>
+        <Link to="/games/new">
+          <Button>Добавить игру</Button>
         </Link>
       </div>
 
@@ -61,31 +68,31 @@ export const EquipmentListPage = () => {
 
       {isEmpty ? (
         <div className="empty-state">
-          <p>Нет оборудования в базе данных</p>
-          <Link to="/equipment/new">
-            <Button>Добавить первое оборудование</Button>
+          <p>Нет игр в каталоге</p>
+          <Link to="/games/new">
+            <Button>Добавить первую игру</Button>
           </Link>
         </div>
       ) : (
         <>
           {isFetching && <div className="loading-overlay">Загрузка...</div>}
-          <div className="equipment-grid">
-            {equipmentList.map((equipment) => (
-              <Card key={equipment.id}>
+          <div className="games-grid">
+            {gamesList.map((game) => (
+              <Card key={game.id}>
                 <Link 
-                  to={`/equipment/${equipment.id}`}
-                  className="equipment-card-link"
+                  to={`/games/${game.id}`}
+                  className="game-card-link"
                   onMouseEnter={() => prefetchPage({ page, limit: 10, search })}
                 >
-                  <h3>{equipment.name}</h3>
-                  <p className="equipment-category">{equipment.category}</p>
-                  <p className="equipment-status">
-                    Статус: <span className={`status-${equipment.status}`}>
-                      {equipment.status}
+                  <h3>{game.name}</h3>
+                  <p className="game-category">{game.category}</p>
+                  <p className="game-status">
+                    Статус: <span className={`status-${game.status}`}>
+                      {game.status}
                     </span>
                   </p>
-                  <p className="equipment-location">
-                    Местоположение: {equipment.location}
+                  <p className="game-location">
+                    Платформа: {game.location}
                   </p>
                 </Link>
               </Card>
@@ -110,7 +117,7 @@ export const EquipmentListPage = () => {
                 setPage(page + 1);
                 handlePrefetch(page + 1);
               }}
-              disabled={equipmentList.length < 10}
+              disabled={gamesList.length < 10}
               onMouseEnter={() => handlePrefetch(page + 1)}
             >
               Следующая

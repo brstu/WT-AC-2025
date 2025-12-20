@@ -1,31 +1,31 @@
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { useGetEquipmentByIdQuery, useDeleteEquipmentMutation } from '../api/equipmentApi';
+import { useGetGameByIdQuery, useDeleteGameMutation } from '../api/gamesApi';
 import { useDispatch } from 'react-redux';
 import { showNotification } from '../../../store/notificationSlice';
 import { Spinner } from '../../../components/ui/Spinner';
 import { Button } from '../../../components/ui/Button';
 import { Card } from '../../../components/ui/Card';
-import './EquipmentDetailPage.css';
+import './GameDetailPage.css';
 
-export const EquipmentDetailPage = () => {
+export const GameDetailPage = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { data: equipment, error, isLoading } = useGetEquipmentByIdQuery(id);
-  const [deleteEquipment, { isLoading: isDeleting }] = useDeleteEquipmentMutation();
+  const { data: game, error, isLoading } = useGetGameByIdQuery(id);
+  const [deleteGame, { isLoading: isDeleting }] = useDeleteGameMutation();
 
   const handleDelete = async () => {
-    if (window.confirm('Вы уверены, что хотите удалить это оборудование?')) {
+    if (window.confirm('Вы уверены, что хотите удалить эту игру?')) {
       try {
-        await deleteEquipment(id).unwrap();
+        await deleteGame(id).unwrap();
         dispatch(showNotification({
-          message: 'Оборудование успешно удалено',
+          message: 'Игра успешно удалена',
           type: 'success'
         }));
-        navigate('/equipment');
+        navigate('/games');
       } catch (error) {
         dispatch(showNotification({
-          message: error?.data?.message || 'Ошибка при удалении оборудования',
+          message: error?.data?.message || 'Ошибка при удалении игры',
           type: 'error'
         }));
       }
@@ -40,19 +40,19 @@ export const EquipmentDetailPage = () => {
     return (
       <div className="error-container">
         <h2>Ошибка загрузки</h2>
-        <p>{error?.data?.message || 'Не удалось загрузить информацию об оборудовании'}</p>
-        <Link to="/equipment">
+        <p>{error?.data?.message || 'Не удалось загрузить информацию об игре'}</p>
+        <Link to="/games">
           <Button>Вернуться к списку</Button>
         </Link>
       </div>
     );
   }
 
-  if (!equipment) {
+  if (!game) {
     return (
       <div className="error-container">
-        <h2>Оборудование не найдено</h2>
-        <Link to="/equipment">
+        <h2>Игра не найдена</h2>
+        <Link to="/games">
           <Button>Вернуться к списку</Button>
         </Link>
       </div>
@@ -60,68 +60,68 @@ export const EquipmentDetailPage = () => {
   }
 
   return (
-    <div className="equipment-detail-page">
+    <div className="game-detail-page">
       <div className="detail-header">
-        <Link to="/equipment" className="back-link">
+        <Link to="/games" className="back-link">
           ← Назад к списку
         </Link>
       </div>
 
       <Card>
         <div className="detail-content">
-          <h1>{equipment.name}</h1>
+          <h1>{game.name}</h1>
           
           <div className="detail-grid">
             <div className="detail-item">
-              <span className="detail-label">Категория:</span>
-              <span className="detail-value">{equipment.category}</span>
+              <span className="detail-label">Жанр:</span>
+              <span className="detail-value">{game.category}</span>
             </div>
             
             <div className="detail-item">
               <span className="detail-label">Статус:</span>
-              <span className={`detail-value status-${equipment.status}`}>
-                {equipment.status}
+              <span className={`detail-value status-${game.status}`}>
+                {game.status}
               </span>
             </div>
             
             <div className="detail-item">
-              <span className="detail-label">Местоположение:</span>
-              <span className="detail-value">{equipment.location}</span>
+              <span className="detail-label">Платформа:</span>
+              <span className="detail-value">{game.location}</span>
             </div>
             
-            {equipment.serialNumber && (
+            {game.serialNumber && (
               <div className="detail-item">
-                <span className="detail-label">Серийный номер:</span>
-                <span className="detail-value">{equipment.serialNumber}</span>
+                <span className="detail-label">Разработчик:</span>
+                <span className="detail-value">{game.serialNumber}</span>
               </div>
             )}
             
-            {equipment.purchaseDate && (
+            {game.purchaseDate && (
               <div className="detail-item">
-                <span className="detail-label">Дата покупки:</span>
+                <span className="detail-label">Дата выхода:</span>
                 <span className="detail-value">
-                  {new Date(equipment.purchaseDate).toLocaleDateString('ru-RU')}
+                  {new Date(game.purchaseDate).toLocaleDateString('ru-RU')}
                 </span>
               </div>
             )}
             
-            {equipment.assignedTo && (
+            {game.assignedTo && (
               <div className="detail-item">
-                <span className="detail-label">Назначено:</span>
-                <span className="detail-value">{equipment.assignedTo}</span>
+                <span className="detail-label">Издатель:</span>
+                <span className="detail-value">{game.assignedTo}</span>
               </div>
             )}
             
-            {equipment.description && (
+            {game.description && (
               <div className="detail-item full-width">
                 <span className="detail-label">Описание:</span>
-                <p className="detail-value">{equipment.description}</p>
+                <p className="detail-value">{game.description}</p>
               </div>
             )}
           </div>
 
           <div className="detail-actions">
-            <Link to={`/equipment/${id}/edit`}>
+            <Link to={`/games/${id}/edit`}>
               <Button>Редактировать</Button>
             </Link>
             <Button 
