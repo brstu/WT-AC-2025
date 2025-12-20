@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Кинофестиваль - Коллекция фильмов</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        /* Навигация */
+        .navbar {
+            background: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+            text-decoration: none;
+        }
+        
+        .nav-links a {
+            color: #4a5568;
+            text-decoration: none;
+            margin-left: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        
+        .nav-links a:hover {
+            background: #edf2f7;
+        }
+        
+        /* Контейнер */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        /* Заголовок */
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: white;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Карточки фильмов */
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .movie-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .movie-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .movie-card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+        }
+        
+        .movie-card-header h3 {
+            font-size: 1.25rem;
+            color: #2d3748;
+        }
+        
+        .rating {
+            padding: 0.25rem 0.5rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: bold;
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        
+        .movie-card-body p {
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+        
+        .movie-card-footer {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        /* Кнопки */
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.875rem;
+        }
+        
+        .btn-primary {
+            background: #4299e1;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #a0aec0;
+            color: white;
+        }
+        
+        .btn-danger {
+            background: #f56565;
+            color: white;
+        }
+        
+        /* Поиск */
+        .search-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 0.75rem 1rem;
+            border: none;
+            border-radius: 2rem;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Детальная страница */
+        .movie-detail {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .movie-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .movie-meta span {
+            padding: 0.25rem 0.75rem;
+            background: #edf2f7;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+        }
+        
+        /* Форма */
+        .movie-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #cbd5e0;
+            border-radius: 5px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+        
+        /* Футер */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <a href="#" class="logo">🎬 Кинофестиваль</a>
+        <div class="nav-links">
+            <a href="#home" onclick="showSection('home')">Главная</a>
+            <a href="#create" onclick="showSection('create')">Добавить фильм</a>
+            <a href="#detail" onclick="showSection('detail')">Пример детальной</a>
+        </div>
+    </nav>
+
+    <!-- Главная страница -->
+    <div id="home" class="container">
+        <div class="page-header">
+            <h1>Коллекция фильмов кинофестиваля</h1>
+            <input type="text" class="search-input" placeholder="Поиск фильмов..." 
+                   oninput="searchMovies(this.value)">
+        </div>
+        
+        <div class="movies-grid" id="movies-list">
+            <!-- Фильмы будут добавлены через JS -->
+        </div>
+    </div>
+
+    <!-- Страница создания фильма -->
+    <div id="create" class="container" style="display: none;">
+        <div class="page-header">
+            <h1>Добавить новый фильм</h1>
+        </div>
+        
+        <form class="movie-form" onsubmit="createMovie(event)">
+            <div class="form-group">
+                <label>Название фильма *</label>
+                <input type="text" id="title" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Режиссер *</label>
+                <input type="text" id="director" required>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Год выпуска *</label>
+                    <input type="number" id="year" min="1900" max="2024" value="2024" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Рейтинг (0-10) *</label>
+                    <input type="number" id="rating" min="0" max="10" step="0.1" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Длительность (мин) *</label>
+                    <input type="number" id="duration" min="1" required>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Категория *</label>
+                <select id="category" required>
+                    <option value="">Выберите категорию</option>
+                    <option value="Полнометражный">Полнометражный</option>
+                    <option value="Короткометражный">Короткометражный</option>
+                    <option value="Документальный">Документальный</option>
+                    <option value="Анимационный">Анимационный</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Описание *</label>
+                <textarea id="description" rows="4" required></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Добавить фильм</button>
+            <button type="button" class="btn btn-secondary" onclick="showSection('home')">Отмена</button>
+        </form>
+    </div>
+
+    <!-- Детальная страница -->
+    <div id="detail" class="container" style="display: none;">
+        <div class="movie-detail">
+            <h1 id="detail-title">Паразиты</h1>
+            <div class="movie-meta">
+                <span id="detail-rating">Рейтинг: 8.6/10</span>
+                <span id="detail-year">2019</span>
+                <span id="detail-category">Полнометражный</span>
+                <span id="detail-duration">132 мин</span>
+            </div>
+            
+            <div class="movie-info">
+                <h3>Режиссер</h3>
+                <p id="detail-director">Пон Джун Хо</p>
+                
+                <h3>Описание</h3>
+                <p id="detail-description">Оскароносный фильм о корейской семье, которая внедряется в дом богатой семьи.</p>
+            </div>
+            
+            <div class="movie-card-footer">
+                <button class="btn btn-primary">Редактировать</button>
+                <button class="btn btn-danger">Удалить</button>
+                <button class="btn btn-secondary" onclick="showSection('home')">Назад к списку</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <p>© 2024 Коллекция фильмов кинофестиваля</p>
+    </footer>
+
+    <script>
+        // Данные фильмов
+        let movies = [
+            {
+                id: 1,
+                title: "Паразиты",
+                director: "Пон Джун Хо",
+                year: 2019,
+                rating: 8.6,
+                category: "Полнометражный",
+                description: "Оскароносный фильм о корейской семье, которая внедряется в дом богатой семьи.",
+                duration: 132
+            },
+            {
+                id: 2,
+                title: "Душа",
+                director: "Пит Доктер",
+                year: 2020,
+                rating: 8.1,
+                category: "Анимационный",
+                description: "Джазовый музыкант попадает в мир душ до рождения и открывает смысл жизни.",
+                duration: 100
+            },
+            {
+                id: 3,
+                title: "Рома",
+                director: "Альфонсо Куарон",
+                year: 2018,
+                rating: 7.7,
+                category: "Полнометражный",
+                description: "Личная драма о жизни домработницы в Мехико 1970-х годов.",
+                duration: 135
+            },
+            {
+                id: 4,
+                title: "Земля кочевников",
+                director: "Хлоя Чжао",
+                year: 2020,
+                rating: 7.3,
+                category: "Документальный",
+                description: "История о людях, путешествующих по Америке в поисках временной работы.",
+                duration: 107
+            }
+        ];
+
+        // Показать/скрыть разделы
+        function showSection(sectionId) {
+            document.querySelectorAll('.container').forEach(div => {
+                div.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+            if (sectionId === 'home') {
+                renderMovies();
+            }
+        }
+
+        // Поиск фильмов
+        function searchMovies(query) {
+            const filtered = movies.filter(movie =>
+                movie.title.toLowerCase().includes(query.toLowerCase()) ||
+                movie.director.toLowerCase().includes(query.toLowerCase())
+            );
+            renderMovies(filtered);
+        }
+
+        // Отрисовка фильмов
+        function renderMovies(moviesToRender = movies) {
+            const container = document.getElementById('movies-list');
+            container.innerHTML = '';
+            
+            moviesToRender.forEach(movie => {
+                const movieCard = document.createElement('div');
+                movieCard.className = 'movie-card';
+                movieCard.innerHTML = `
+                    <div class="movie-card-header">
+                        <h3>${movie.title}</h3>
+                        <span class="rating">${movie.rating}/10</span>
+                    </div>
+                    <div class="movie-card-body">
+                        <p><strong>Режиссер:</strong> ${movie.director}</p>
+                        <p><strong>Год:</strong> ${movie.year}</p>
+                        <p><strong>Категория:</strong> ${movie.category}</p>
+                        <p>${movie.description.length > 80 ? movie.description.substring(0, 80) + '...' : movie.description}</p>
+                    </div>
+                    <div class="movie-card-footer">
+                        <button class="btn btn-primary" onclick="showMovieDetail(${movie.id})">Подробнее</button>
+                        <button class="btn btn-secondary" onclick="editMovie(${movie.id})">Редактировать</button>
+                        <button class="btn btn-danger" onclick="deleteMovie(${movie.id})">Удалить</button>
+                    </div>
+                `;
+                container.appendChild(movieCard);
+            });
+        }
+
+        // Показать детальную информацию
+        function showMovieDetail(id) {
+            const movie = movies.find(m => m.id === id);
+            if (movie) {
+                document.getElementById('detail-title').textContent = movie.title;
+                document.getElementById('detail-rating').textContent = `Рейтинг: ${movie.rating}/10`;
+                document.getElementById('detail-year').textContent = movie.year;
+                document.getElementById('detail-category').textContent = movie.category;
+                document.getElementById('detail-duration').textContent = `${movie.duration} мин`;
+                document.getElementById('detail-director').textContent = movie.director;
+                document.getElementById('detail-description').textContent = movie.description;
+                showSection('detail');
+            }
+        }
+
+        // Создать фильм
+        function createMovie(event) {
+            event.preventDefault();
+            
+            const newMovie = {
+                id: movies.length > 0 ? Math.max(...movies.map(m => m.id)) + 1 : 1,
+                title: document.getElementById('title').value,
+                director: document.getElementById('director').value,
+                year: parseInt(document.getElementById('year').value),
+                rating: parseFloat(document.getElementById('rating').value),
+                duration: parseInt(document.getElementById('duration').value),
+                category: document.getElementById('category').value,
+                description: document.getElementById('description').value
+            };
+            
+            movies.push(newMovie);
+            alert('Фильм успешно добавлен!');
+            showSection('home');
+            
+            // Сброс формы
+            event.target.reset();
+        }
+
+        // Удалить фильм
+        function deleteMovie(id) {
+            if (confirm('Удалить этот фильм?')) {
+                movies = movies.filter(movie => movie.id !== id);
+                renderMovies();
+                alert('Фильм удален!');
+            }
+        }
+
+        // Редактировать фильм
+        function editMovie(id) {
+            const movie = movies.find(m => m.id === id);
+            if (movie) {
+                document.getElementById('title').value = movie.title;
+                document.getElementById('director').value = movie.director;
+                document.getElementById('year').value = movie.year;
+                document.getElementById('rating').value = movie.rating;
+                document.getElementById('duration').value = movie.duration;
+                document.getElementById('category').value = movie.category;
+                document.getElementById('description').value = movie.description;
+                
+                // Изменяем форму для редактирования
+                const form = document.querySelector('#create form');
+                form.onsubmit = function(e) {
+                    e.preventDefault();
+                    movie.title = document.getElementById('title').value;
+                    movie.director = document.getElementById('director').value;
+                    movie.year = parseInt(document.getElementById('year').value);
+                    movie.rating = parseFloat(document.getElementById('rating').value);
+                    movie.duration = parseInt(document.getElementById('duration').value);
+                    movie.category = document.getElementById('category').value;
+                    movie.description = document.getElementById('description').value;
+                    
+                    alert('Фильм обновлен!');
+                    showSection('home');
+                };
+                
+                showSection('create');
+            }
+        }
+
+        // Инициализация
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMovies();
+        });
+    </script>
+</body>
+</html>
