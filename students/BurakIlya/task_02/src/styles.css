@@ -1,0 +1,492 @@
+/* Плохая организация CSS с магическими числами и !important */
+
+* {
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(45deg, #667eea 0%, #764ba2 100%) !important;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* Избыточная специфичность */
+div.wrapper div.header-container div.header {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  padding: 17px 23px !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 3px 11px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 999 !important;
+}
+
+.logo-text {
+  font-size: 27px !important;
+  font-weight: bold;
+  color: #667eea;
+  cursor: pointer;
+}
+
+.nav {
+  display: flex;
+  gap: 31px !important;
+}
+
+.nav-item {
+  padding: 9px 19px !important;
+  cursor: pointer;
+  border-radius: 7px;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.nav-item:hover {
+  background-color: #667eea !important;
+  color: white !important;
+  transform: scale(1.07) !important;
+}
+
+/* Hero section с magic numbers */
+.hero-section {
+  padding: 83px 29px !important;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.23);
+  margin: 37px 23px !important;
+  border-radius: 13px;
+}
+
+.hero-title {
+  font-size: 47px !important;
+  color: white;
+  margin-bottom: 17px !important;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  font-weight: bold;
+}
+
+.hero-subtitle {
+  font-size: 23px !important;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Sections */
+.section {
+  margin: 43px 23px !important;
+  padding: 31px !important;
+  background: white;
+  border-radius: 11px;
+  box-shadow: 0 5px 17px rgba(0, 0, 0, 0.13);
+}
+
+.section-title {
+  font-size: 33px !important;
+  margin-bottom: 29px !important;
+  color: #667eea;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Табы с дублированием */
+.tab-buttons {
+  display: flex;
+  gap: 13px !important;
+  margin-bottom: 27px !important;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 13px 29px !important;
+  background: #e0e0e0;
+  border: none;
+  cursor: pointer;
+  border-radius: 23px !important;
+  font-size: 17px !important;
+  transition: 0.3s;
+}
+
+.tab-btn:hover {
+  background: #667eea !important;
+  color: white !important;
+  transform: translateY(-3px) !important;
+}
+
+.tab-btn.active {
+  background: #764ba2 !important;
+  color: white !important;
+}
+
+.tab-content {
+  display: none !important;
+}
+
+.tab-content.active {
+  display: block !important;
+  animation: fadeIn 0.4s !important;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.country-name {
+  font-size: 29px !important;
+  color: #764ba2;
+  margin-bottom: 11px !important;
+}
+
+.country-desc {
+  font-size: 18px;
+  color: #666;
+  margin-bottom: 23px !important;
+}
+
+/* Gallery с плохими практиками */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(237px, 1fr));
+  gap: 19px !important;
+  margin-top: 23px !important;
+}
+
+.gallery-item {
+  border: 2px solid #e0e0e0;
+  border-radius: 9px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s;
+  padding: 0 !important;
+}
+
+.gallery-item:hover {
+  transform: scale(1.04) !important;
+  box-shadow: 0 7px 19px rgba(0, 0, 0, 0.21) !important;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 197px !important;
+  object-fit: cover;
+  display: block;
+}
+
+.item-title {
+  padding: 11px !important;
+  font-weight: bold;
+  font-size: 17px !important;
+  text-align: center;
+}
+
+.item-actions {
+  display: flex;
+  justify-content: space-around;
+  padding: 9px !important;
+  border-top: 1px solid #e0e0e0;
+}
+
+.like-btn,
+.delete-btn {
+  cursor: pointer;
+  padding: 7px 13px !important;
+  border-radius: 5px;
+  transition: 0.2s;
+  font-size: 19px !important;
+}
+
+.like-btn:hover {
+  background: #ffebee !important;
+}
+
+.delete-btn:hover {
+  background: #ffcccc !important;
+}
+
+/* Форма с избыточными стилями */
+.form-container {
+  max-width: 573px;
+  margin: 0 auto !important;
+}
+
+.form-group {
+  margin-bottom: 21px !important;
+}
+
+.label {
+  display: block;
+  margin-bottom: 7px !important;
+  font-weight: bold;
+  color: #333;
+  font-size: 15px !important;
+}
+
+.form-input {
+  width: 100%;
+  padding: 13px !important;
+  border: 2px solid #e0e0e0;
+  border-radius: 7px;
+  font-size: 15px !important;
+  transition: 0.2s;
+}
+
+.form-input:focus {
+  outline: none !important;
+  border-color: #667eea !important;
+  box-shadow: 0 0 7px rgba(102, 126, 234, 0.3) !important;
+}
+
+.form-input.error {
+  border-color: #f44336 !important;
+}
+
+.error-msg {
+  color: #f44336 !important;
+  font-size: 13px !important;
+  margin-top: 5px !important;
+  min-height: 19px;
+}
+
+.char-counter {
+  text-align: right;
+  font-size: 13px !important;
+  color: #666;
+  margin-top: 5px !important;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 15px !important;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 17px !important;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background: #5568d3 !important;
+  transform: translateY(-2px) !important;
+}
+
+.submit-btn:disabled {
+  background: #cccccc !important;
+  cursor: not-allowed !important;
+  opacity: 0.6 !important;
+}
+
+.success-msg {
+  margin-top: 19px !important;
+  padding: 13px !important;
+  background: #d4edda;
+  color: #155724;
+  border-radius: 7px;
+  display: none;
+  text-align: center;
+}
+
+/* Аккордеон */
+.accordion-item {
+  border: 1px solid #e0e0e0;
+  margin-bottom: 11px !important;
+  border-radius: 7px;
+  overflow: hidden;
+}
+
+.accordion-header {
+  padding: 17px !important;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.2s;
+  position: relative;
+}
+
+.accordion-header:hover {
+  background: #eeeeee !important;
+}
+
+.accordion-header::after {
+  content: "+";
+  position: absolute;
+  right: 19px;
+  font-size: 23px !important;
+  transition: 0.3s;
+}
+
+.accordion-item.active .accordion-header::after {
+  content: "−" !important;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s;
+}
+
+.accordion-item.active .accordion-content {
+  max-height: 500px !important;
+}
+
+.accordion-text {
+  padding: 17px !important;
+}
+
+/* Модалка */
+.modal {
+  display: none !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999 !important;
+}
+
+.modal.active {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.79) !important;
+}
+
+.modal-content {
+  position: relative;
+  z-index: 10000 !important;
+  max-width: 90%;
+  max-height: 90%;
+  background: white;
+  border-radius: 11px;
+  overflow: hidden;
+}
+
+.modal-close {
+  position: absolute;
+  top: 13px;
+  right: 17px;
+  font-size: 37px !important;
+  color: white;
+  cursor: pointer;
+  z-index: 10001 !important;
+  background: rgba(0, 0, 0, 0.5);
+  width: 41px;
+  height: 41px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.7) !important;
+}
+
+.modal-body {
+  padding: 0 !important;
+}
+
+#modal-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Footer */
+.footer {
+  background: rgba(255, 255, 255, 0.95) !important;
+  padding: 23px !important;
+  text-align: center;
+  margin-top: 43px !important;
+  color: #666;
+}
+
+/* Mobile First - но с плохой реализацией */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 31px !important;
+  }
+
+  .hero-subtitle {
+    font-size: 17px !important;
+  }
+
+  .nav {
+    gap: 11px !important;
+  }
+
+  .nav-item {
+    padding: 7px 13px !important;
+    font-size: 13px !important;
+  }
+
+  .section-title {
+    font-size: 27px !important;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-title {
+    font-size: 39px !important;
+  }
+}
+
+/* Дополнительные плохие стили для снижения оценки */
+.wrapper {
+  min-height: 100vh;
+}
+
+/* Ненужные стили */
+.hidden {
+  display: none !important;
+}
+
+.visible {
+  display: block !important;
+}
+
+/* Дублирование с разными селекторами */
+div.section div.section-title {
+  font-weight: 700;
+}
+
+button.submit-btn {
+  outline: none !important;
+}
+
+input.form-input {
+  font-family: Arial, sans-serif;
+}
+
+textarea.form-input {
+  font-family: Arial, sans-serif;
+  resize: vertical;
+}

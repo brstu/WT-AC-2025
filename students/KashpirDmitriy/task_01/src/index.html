@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Музыка недели</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <h1 class="logo">Музыка недели</h1>
+            <nav aria-label="Основная навигация">
+                <ul class="nav">
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#playlists">Плейлисты</a></li>
+                    <li><a href="#reviews">Обзоры</a></li>
+                    <li><a href="#contact">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container">
+                <h2>Каждую неделю — новые эмоции</h2>
+                <p>Лучшие треки, плейлисты и честные обзоры свежих альбомов.</p>
+                <a href="#playlists" class="btn">Слушать сейчас</a>
+            </div>
+        </section>
+
+        <section id="playlists" class="section">
+            <div class="container">
+                <h2 class="section-title">Плейлисты недели</h2>
+                <div class="grid">
+                    <article class="card">
+                        <picture>
+                            <source srcset="https://picsum.photos/600/400?random=1" media="(min-width: 1024px)">
+                            <source srcset="https://picsum.photos/400/300?random=1" media="(min-width: 600px)">
+                            <img src="https://picsum.photos/300/200?random=1" alt="Плейлист Chill Vibes — спокойная музыка для работы" loading="lazy">
+                        </picture>
+                        <h3>Chill Vibes</h3>
+                        <p>20 треков для спокойной работы и учёбы.</p>
+                    </article>
+                    <article class="card">
+                        <picture>
+                            <source srcset="https://picsum.photos/600/400?random=2" media="(min-width: 1024px)">
+                            <source srcset="https://picsum.photos/400/300?random=2" media="(min-width: 600px)">
+                            <img src="https://picsum.photos/300/200?random=2" alt="Плейлист Workout Energy — энергичная музыка для тренировок" loading="lazy">
+                        </picture>
+                        <h3>Workout Energy</h3>
+                        <p>Энергичный микс для спорта.</p>
+                    </article>
+                    <article class="card">
+                        <picture>
+                            <source srcset="https://picsum.photos/600/400?random=3" media="(min-width: 1024px)">
+                            <source srcset="https://picsum.photos/400/300?random=3" media="(min-width: 600px)">
+                            <img src="https://picsum.photos/300/200?random=3" alt="Плейлист Indie Discoveries — новые инди-артисты" loading="lazy">
+                        </picture>
+                        <h3>Indie Discoveries</h3>
+                        <p>Свежие имена инди-сцены.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="reviews" class="section bg-light">
+            <div class="container">
+                <h2 class="section-title">Обзоры альбомов</h2>
+                <div class="flex">
+                    <article class="review">
+                        <h3>Billie Eilish – HIT ME HARD AND SOFT</h3>
+                        <p>Новый альбом — это чистая магия. 9/10 ★</p>
+                    </article>
+                    <article class="review">
+                        <h3>The Weeknd – Dawn FM</h3>
+                        <p>Ретро-вайб 80-х в современном звучании. 8.5/10 ★</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer id="contact" class="footer">
+        <div class="container">
+            <p>© 2025 Музыка недели. Все права защищены.</p>
+            <form aria-label="Подписка на рассылку">
+                <label for="email">Подпишись на новые плейлисты:</label>
+                <input type="email" id="email" placeholder="email@example.com" required>
+                <button type="submit">Подписаться</button>
+            </form>
+        </div>
+    </footer>
+</body>
+</html>

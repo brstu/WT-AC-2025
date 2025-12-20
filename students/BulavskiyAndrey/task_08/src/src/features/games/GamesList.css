@@ -1,0 +1,31 @@
+.games-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(0 0 0 / 10%);
+}
+
+.empty-state h3 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+}
+
+.empty-state p {
+  color: #666;
+  font-size: 1.1rem;
+}
+
+@media (width <= 768px) {
+  .games-list {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
