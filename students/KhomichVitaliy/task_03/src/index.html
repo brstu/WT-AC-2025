@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Афиша мероприятий города</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-calendar-alt"></i> Афиша мероприятий города</h1>
+            <p class="subtitle">Актуальные события и мероприятия на этой неделе</p>
+        </header>
+
+        <div class="controls">
+            <div class="search-container">
+                <i class="fas fa-search"></i>
+                <input 
+                    type="text" 
+                    id="searchInput" 
+                    placeholder="Поиск мероприятий..." 
+                    autocomplete="off"
+                >
+                <div class="search-info">
+                    <span id="searchStatus">Введите запрос для поиска</span>
+                </div>
+            </div>
+
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="categoryFilter"><i class="fas fa-filter"></i> Категория:</label>
+                    <select id="categoryFilter">
+                        <option value="">Все категории</option>
+                        <option value="music">Музыка</option>
+                        <option value="theater">Театр</option>
+                        <option value="exhibition">Выставка</option>
+                        <option value="sport">Спорт</option>
+                        <option value="lecture">Лекция</option>
+                        <option value="festival">Фестиваль</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="dateFilter"><i class="fas fa-calendar-day"></i> Дата:</label>
+                    <select id="dateFilter">
+                        <option value="">Любая дата</option>
+                        <option value="today">Сегодня</option>
+                        <option value="tomorrow">Завтра</option>
+                        <option value="weekend">Выходные</option>
+                        <option value="nextWeek">Следующая неделя</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="priceFilter"><i class="fas fa-tag"></i> Цена:</label>
+                    <select id="priceFilter">
+                        <option value="">Любая цена</option>
+                        <option value="free">Бесплатно</option>
+                        <option value="paid">Платные</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="refreshBtn" class="btn btn-primary">
+                    <i class="fas fa-sync-alt"></i> Обновить
+                </button>
+                <button id="clearCacheBtn" class="btn btn-secondary">
+                    <i class="fas fa-trash-alt"></i> Очистить кэш
+                </button>
+                <div class="cache-info">
+                    <i class="fas fa-database"></i>
+                    <span id="cacheStatus">Кэш пуст</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="state-indicators">
+            <div id="loadingIndicator" class="loading hidden">
+                <div class="spinner"></div>
+                <span>Загрузка мероприятий...</span>
+            </div>
+            
+            <div id="errorIndicator" class="error hidden">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span id="errorMessage">Произошла ошибка</span>
+                <button id="retryBtn" class="btn btn-small">Повторить</button>
+            </div>
+            
+            <div id="emptyIndicator" class="empty hidden">
+                <i class="fas fa-calendar-times"></i>
+                <span>Мероприятия не найдены. Попробуйте изменить параметры поиска.</span>
+            </div>
+        </div>
+
+        <div class="events-grid" id="eventsContainer">
+
+            <div class="skeleton-container">
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+            </div>
+        </div>
+
+        <div class="pagination">
+            <button id="prevBtn" class="btn btn-pagination" disabled>
+                <i class="fas fa-chevron-left"></i> Назад
+            </button>
+            <span id="pageInfo">Страница 1 из 1</span>
+            <button id="nextBtn" class="btn btn-pagination" disabled>
+                Вперед <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+
+        <footer>
+            <div class="request-info">
+                <h3><i class="fas fa-info-circle"></i> Информация о запросах:</h3>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">Текущий статус:</span>
+                        <span id="requestStatus" class="info-value idle">Ожидание</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Кэшировано:</span>
+                        <span id="cachedRequests" class="info-value">0 запросов</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Ретраев:</span>
+                        <span id="retryCount" class="info-value">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">Прервано запросов:</span>
+                        <span id="abortedCount" class="info-value">0</span>
+                    </div>
+                </div>
+                
+                <div class="cache-controls">
+                    <h4>Настройки запросов:</h4>
+                    <div class="slider-container">
+                        <label for="timeoutSlider">Таймаут запроса: <span id="timeoutValue">5000</span> мс</label>
+                        <input type="range" id="timeoutSlider" min="1000" max="10000" step="1000" value="5000">
+                    </div>
+                    <div class="slider-container">
+                        <label for="retrySlider">Макс. ретраев: <span id="retryValue">2</span></label>
+                        <input type="range" id="retrySlider" min="0" max="5" step="1" value="2">
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="useCacheCheckbox" checked>
+                        <label for="useCacheCheckbox">Использовать кэш</label>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="footer-note">
+                
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

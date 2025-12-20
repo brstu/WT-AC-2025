@@ -1,0 +1,77 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  password  String
+  firstName String
+  lastName  String
+  role      String   @default("USER")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  equipment    Equipment[]
+  refreshTokens RefreshToken[]
+
+  @@map("users")
+}
+
+model Equipment {
+  id           String    @id @default(uuid())
+  name         String
+  type         String
+  serialNumber String    @unique
+  manufacturer String
+  model        String
+  purchaseDate DateTime
+  warrantyEnd  DateTime?
+  status       String    @default("AVAILABLE")
+  location     String
+  notes        String?
+  ownerId      String
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  owner User @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@map("equipment")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("refresh_tokens")
+}
+
+model PasswordResetToken {
+  id        String   @id @default(uuid())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("password_reset_tokens")
+}
+
+// Enums are not supported by SQLite, so we use strings with validation at the application level
+// Role: USER, ADMIN
+// EquipmentType: COMPUTER, LAPTOP, MONITOR, PRINTER, SCANNER, NETWORK, PHONE, SERVER, STORAGE, OTHER
+// EquipmentStatus: AVAILABLE, IN_USE, MAINTENANCE, RETIRED, BROKEN
