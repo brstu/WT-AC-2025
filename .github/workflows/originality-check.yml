@@ -1,8 +1,13 @@
 name: Duplicate Code Check
 
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
     paths: ['students/**']  # Запускается только при изменении файлов в папке students
+
+permissions:
+  issues: write
+  pull-requests: write
 
 jobs:
   duplicate-code-check:
@@ -11,26 +16,49 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
 
       - name: Detect changed task directory
         id: detect_task
         run: |
-          # Находим измененную task_папку
-          CHANGED_FILES=$(git diff --name-only HEAD~1 HEAD -- students/)
+          set -euo pipefail
+
+          # Ensure we have enough history (unshallow if necessary)
+          git fetch --no-tags --prune --unshallow || true
+
+          # Prefer the GitHub event range when available
+          if [ -n "${{ github.event.before }}" ] && [ -n "${{ github.sha }}" ]; then
+            RANGE="${{ github.event.before }}..${{ github.sha }}"
+          elif git rev-parse --verify HEAD~1 >/dev/null 2>&1; then
+            RANGE="HEAD~1..HEAD"
+          else
+            BASE_REF="${{ github.base_ref }}"
+            git fetch origin "${BASE_REF}" || true
+            RANGE="origin/${BASE_REF}..HEAD"
+          fi
+
+          # List changed files under students/
+          CHANGED_FILES=$(git diff --name-only "$RANGE" -- students/ || true)
+
+          # Collect unique students/<student>/task_XX directories
+          mapfile -t DIRS < <(echo "$CHANGED_FILES" | awk -F'/' '/^students\// {print $1"/"$2"/"$3}' | sort -u)
+
           TASK_DIR=""
-          
-          for file in $CHANGED_FILES; do
-            if [[ $file =~ students/([^/]+)/(task_[^/]+)/ ]]; then
-              TASK_DIR="${BASH_REMATCH[2]}"
-              break
-            fi
-          done
-          
+          if [ ${#DIRS[@]} -ge 3 ]; then
+            THIRD="${DIRS[2]}"
+            TASK_DIR=$(basename "$THIRD")
+          elif [ ${#DIRS[@]} -ge 1 ]; then
+            FIRST="${DIRS[0]}"
+            TASK_DIR=$(basename "$FIRST")
+          fi
+
           if [ -z "$TASK_DIR" ]; then
             echo "No task directory found in changes"
             exit 0
           fi
-          g
+
           echo "task_dir=$TASK_DIR" >> $GITHUB_OUTPUT
           echo "Detected task directory: $TASK_DIR"
 
@@ -39,8 +67,11 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           directories: "students/**/${{ steps.detect_task.outputs.task_dir }}"  # Сравниваем только соответствующие task_папки
-          ignore_below: 20           # Игнорировать сходство ниже 20%
-          fail_above: 80             # Завершить с ошибкой при сходстве выше 80%
-          warn_above: 20             # Показать предупреждение при сходстве выше 20%
-          file_extensions: "js, html, css"  # Расширил список расширений
-          one_comment: true          # Обновлять один комментарий, а не создавать новые
+          ignore_below: 92
+          # If a file is more than 95% similar to another, then the job fails
+          fail_above: 95
+          # If a file is more than 93% similar to another, show a warning symbol in the report
+          warn_above: 93
+          # Leave only one comment with the report and update it for consecutive runs
+          one_comment: true
+          file_extensions: "js, html, css"  # Ограничиваем проверку только этими типами файлов

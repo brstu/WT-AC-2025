@@ -1,0 +1,19 @@
+{
+  "name": "characters-handbook",
+  "version": "1.0.0",
+  "description": "Справочник персонажей - SPA приложение",
+  "main": "index.html",
+  "scripts": {
+    "start": "concurrently \"npm run server\" \"npm run dev\"",
+    "server": "json-server --watch db.json --port 3000 --delay 500",
+    "dev": "live-server --port=8080 --open=index.html",
+    "build": "echo 'No build step required'"
+  },
+  "dependencies": {
+    "json-server": "^0.17.4"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2",
+    "live-server": "^1.2.2"
+  }
+}

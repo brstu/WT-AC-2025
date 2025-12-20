@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gaming Blog</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gaming Blog</h1>
+            <p>Обзоры, новости и обсуждения игр</p>
+        </header>
+
+        <main>
+            <!-- Табы жанров -->
+            <section class="tabs" role="tablist" aria-label="Жанры игр">
+                <ul class="tabs-list">
+                    <li>
+                        <button class="tabs-trigger" role="tab" aria-selected="true" aria-controls="action-panel" id="action-tab">
+                            Экшен
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tabs-trigger" role="tab" aria-selected="false" aria-controls="rpg-panel" id="rpg-tab" tabindex="-1">
+                            РПГ
+                        </button>
+                    </li>
+                    <li>
+                        <button class="tabs-trigger" role="tab" aria-selected="false" aria-controls="strategy-panel" id="strategy-tab" tabindex="-1">
+                            Стратегии
+                        </button>
+                    </li>
+                </ul>
+
+                <!-- Панель экшен-игр -->
+                <div class="tabs-panel" role="tabpanel" id="action-panel" aria-labelledby="action-tab" aria-hidden="false">
+                    <h2>Экшен-игры</h2>
+                    <div class="games-grid" id="action-games">
+                        <!-- Карточки игр будут добавлены через JS -->
+                    </div>
+                </div>
+
+                <!-- Панель РПГ -->
+                <div class="tabs-panel" role="tabpanel" id="rpg-panel" aria-labelledby="rpg-tab" aria-hidden="true">
+                    <h2>Ролевые игры</h2>
+                    <div class="games-grid" id="rpg-games">
+                        <!-- Карточки игр будут добавлены через JS -->
+                    </div>
+                </div>
+
+                <!-- Панель стратегий -->
+                <div class="tabs-panel" role="tabpanel" id="strategy-panel" aria-labelledby="strategy-tab" aria-hidden="true">
+                    <h2>Стратегии</h2>
+                    <div class="games-grid" id="strategy-games">
+                        <!-- Карточки игр будут добавлены через JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Форма комментариев -->
+            <section class="comments-section">
+                <h2>Оставить комментарий</h2>
+                <form id="comment-form" novalidate>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Имя *</label>
+                        <input type="text" id="name" class="form-control" required>
+                        <div class="error-message" id="name-error">Пожалуйста, введите ваше имя</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email *</label>
+                        <input type="email" id="email" class="form-control" required>
+                        <div class="error-message" id="email-error">Пожалуйста, введите корректный email</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message" class="form-label">Сообщение *</label>
+                        <textarea id="message" class="form-control" rows="5" required minlength="20"></textarea>
+                        <div class="error-message" id="message-error">Сообщение должно содержать не менее 20 символов</div>
+                    </div>
+
+                    <button type="submit" class="btn-submit" id="submit-btn" disabled>Отправить комментарий</button>
+                </form>
+
+                <div class="comments-list" id="comments-list">
+                    <!-- Комментарии будут добавляться здесь -->
+                </div>
+            </section>
+        </main>
+
+        <!-- Модальное окно для обзоров -->
+        <div class="modal" id="review-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal-content">
+                <button class="modal-close" id="modal-close" aria-label="Закрыть модальное окно">×</button>
+                <h2 id="modal-title">Обзор игры</h2>
+                <div id="modal-body">
+                    <!-- Содержимое модального окна будет заполнено через JS -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

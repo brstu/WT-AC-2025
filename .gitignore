@@ -1,3 +1,5 @@
+# Ignore local answers for lab defenses
+doc/defense_answers.md
 # OS
 .DS_Store
 Thumbs.db
