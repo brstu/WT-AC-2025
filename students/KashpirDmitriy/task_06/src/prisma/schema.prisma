@@ -1,0 +1,55 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  name      String?
+  role      String    @default("user")
+  bookings  Booking[]
+  payments  Payment[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Slot {
+  id        Int       @id @default(autoincrement())
+  startTime DateTime
+  endTime   DateTime
+  capacity  Int
+  price     Float?
+  bookings  Booking[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Booking {
+  id        Int       @id @default(autoincrement())
+  slotId    Int
+  userId    Int
+  status    String    @default("pending")
+  slot      Slot      @relation(fields: [slotId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  payment   Payment?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Payment {
+  id        Int       @id @default(autoincrement())
+  bookingId Int       @unique
+  userId    Int
+  amount    Float
+  status    String    @default("pending")
+  booking   Booking   @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
