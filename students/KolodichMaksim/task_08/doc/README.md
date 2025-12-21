@@ -2,8 +2,8 @@
 
 > **Testing, Docker, CI/CD и аудит качества**
 
-**Студент:** Kolodich Maksim
-**Лабораторная работа:** 08 — Каталог курсов
+**Студент:** Колодич Максим
+**Лабораторная работа:** 09 — Каталог курсов
 
 ---
 
@@ -87,11 +87,11 @@ task_08/
 | Критерий | Статус | Рекомендация |
 |---|---:|---|
 | E2E (Playwright) | ✅ | Есть 2 сценария в `tests/e2e/catalog.spec.ts` |
-| Unit / Integration (Vitest) | ⚠️ | Unit тесты не найдены — добавить тесты для компонентов и утилит
-| CI/CD | ✅ | `.github/workflows/ci.yml` запускает тесты, сборку и Lighthouse CI
-| Docker | ⚠️ | `Dockerfile` находится в `src/` — лучше переместить в корень и добавить `docker-compose.yml` для локального запуска
-| Lighthouse / Audit | N/A | GitHub Action настроен для запуска Lighthouse CI — требуется проверка результатов
-| Документация | ⚠️ | Рекомендуется добавить `REPORT.md` и `DEPLOYMENT.md` с результатами тестов и инструкциями по деплою
+| Unit / Integration (Vitest) | ⚠️ | Unit тесты не найдены — добавить тесты для компонентов и утилит |
+| CI/CD | ✅ | `.github/workflows/ci.yml` запускает тесты, сборку и Lighthouse CI |
+| Docker | ⚠️ | `Dockerfile` находится в `src/` — лучше перенести в корень и добавить `docker-compose.yml` для локального запуска |
+| Lighthouse / Audit | N/A | GitHub Action настроен для запуска Lighthouse CI — требуется проверка результатов |
+| Документация | ⚠️ | Рекомендуется добавить `REPORT.md` и `DEPLOYMENT.md` с результатами тестов и инструкциями по деплою |
 
 ---
 
