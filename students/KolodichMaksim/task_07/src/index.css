@@ -1,12 +1,12 @@
 :root {
-  --bg: #ffffff;
-  --text: #000000;
+  --bg: #fff;
+  --text: #000;
   --card: #f9f9f9;
 }
 
 [data-theme='dark'] {
   --bg: #121212;
-  --text: #ffffff;
+  --text: #fff;
   --card: #1e1e1e;
 }
 
