@@ -1,0 +1,33 @@
+{
+  "clubs": [
+    {
+      "id": 1,
+      "name": "GIS & Urban Lab",
+      "category": "Наука",
+      "description": "Практика QGIS, анализ городской среды, мини-проекты и разбор кейсов.",
+      "meeting": "Ср 18:00",
+      "contactEmail": "gis.lab@uni.example",
+      "createdAt": "2025-12-01T10:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Клуб английского",
+      "category": "Языки",
+      "description": "Разговорная практика, дебаты, подготовка к B2, мини-презентации.",
+      "meeting": "Пт 17:30",
+      "contactEmail": "english.club@uni.example",
+      "createdAt": "2025-12-03T12:00:00.000Z"
+    }
+  ],
+  "applications": [
+    {
+      "id": 1,
+      "clubId": 2,
+      "studentName": "Анна",
+      "email": "anna@example.com",
+      "course": "3",
+      "message": "Хочу улучшить speaking и подготовиться к экзамену.",
+      "createdAt": "2025-12-10T09:30:00.000Z"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "student-clubs-spa",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "api": "json-server --watch db.json --port 3000",
+    "dev": "npx serve . -p 5173",
+    "test": "echo \"Open tests/index.html in browser\""
+  },
+  "devDependencies": {
+    "json-server": "^0.17.4",
+    "serve": "^14.2.4"
+  }
+}
