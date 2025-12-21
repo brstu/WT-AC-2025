@@ -60,7 +60,7 @@
 ### JWT
 
 - Секрет: `JWT_SECRET` (в `.env`)
-- Access token: подписывается в `/api/auth/login` с `expiresIn: '1h'`. 
+- Access token: подписывается в `/api/auth/login` с `expiresIn: '1h'`.
 
 ### Валидация
 
@@ -148,7 +148,6 @@ task_06/
 npm install
 ```
 
-
 ### Настройка `.env`
 
 Скопируйте `.env.example` -> `.env` и установите подходящие параметры:
@@ -158,7 +157,6 @@ DATABASE_URL="postgresql://postgres:password@localhost:5432/gallery_db?schema=pu
 JWT_SECRET=your_very_long_and_secure_secret_key_here_change_it
 ```
 
-
 ### Инициализация БД и seed
 
 ```bash
@@ -166,14 +164,12 @@ npm run migrate
 npm run seed
 ```
 
-
 ### Запуск
 
 ```bash
 npm run dev    # с nodemon
 npm start      # production
 ```
-
 
 ---
 
