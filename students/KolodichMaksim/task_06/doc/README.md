@@ -54,16 +54,20 @@
 ## 2. Технические детали
 
 ### Хеширование паролей
+
 - Используется `bcryptjs` с 10 раундами (`bcrypt.hash(password, 10)` в seed и при регистрации).
 
 ### JWT
+
 - Секрет: `JWT_SECRET` (в `.env`)
-- Access token: подписывается в `/api/auth/login` с `expiresIn: '1h'`.
+- Access token: подписывается в `/api/auth/login` с `expiresIn: '1h'`. 
 
 ### Валидация
+
 - Реализована минимальная валидация (проверка наличия `email` и `password` при регистрации/логине и обязательных полей при создании), но библиотека Joi/валидаторы не используются в текущей версии.
 
 ### Проверка прав доступа
+
 - Владение проверяется по `ownerId` альбома (на чтение/обновление/удаление и при добавлении фото).
 
 ---
@@ -115,6 +119,7 @@ task_06/
   - Response (200): `{ "token": "eyJ..." }`  (JWT, expiresIn 1h)
 
 ### Albums
+
 - POST `/api/albums` — create (protected)
 - GET `/api/albums` — list (protected)
 - GET `/api/albums/:id` — get (protected, ownership)
@@ -122,6 +127,7 @@ task_06/
 - DELETE `/api/albums/:id` — delete (protected, ownership)
 
 ### Photos
+
 - POST `/api/albums/:albumId/photos` — add photo to album (protected)
 - DELETE `/api/photos/:id` — delete photo (protected, ownership)
 
@@ -137,28 +143,37 @@ task_06/
 ## 7. Запуск проекта
 
 ### Установка
+
 ```bash
 npm install
 ```
 
+
 ### Настройка `.env`
+
 Скопируйте `.env.example` -> `.env` и установите подходящие параметры:
+
 ```env
 DATABASE_URL="postgresql://postgres:password@localhost:5432/gallery_db?schema=public"
 JWT_SECRET=your_very_long_and_secure_secret_key_here_change_it
 ```
 
+
 ### Инициализация БД и seed
+
 ```bash
 npm run migrate
 npm run seed
 ```
 
+
 ### Запуск
+
 ```bash
 npm run dev    # с nodemon
 npm start      # production
 ```
+
 
 ---
 
