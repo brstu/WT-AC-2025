@@ -7,12 +7,12 @@ test.describe('Home Page E2E Tests', () => {
     // Check main title
     await expect(
       page.getByRole('heading', {
-        name: 'Система учёта инвентаря и оборудования',
+        name: /Каталог игр|Game Library/i,
       })
     ).toBeVisible();
 
     // Check subtitle
-    await expect(page.getByText(/Управляйте оборудованием вашей организации/i)).toBeVisible();
+    await expect(page.getByText(/Управляйте коллекцией игр/i)).toBeVisible();
   });
 
   test('should display login button when not authenticated', async ({ page }) => {
@@ -33,11 +33,11 @@ test.describe('Home Page E2E Tests', () => {
     await expect(page.getByRole('heading', { name: 'Возможности системы' })).toBeVisible();
 
     // Check all 6 feature cards
-    await expect(page.getByText('📋 Учёт оборудования')).toBeVisible();
+    await expect(page.getByText('🎮 Каталог игр')).toBeVisible();
     await expect(page.getByText('🔍 Поиск и фильтрация')).toBeVisible();
-    await expect(page.getByText('📊 Отслеживание статуса')).toBeVisible();
-    await expect(page.getByText('👥 Управление назначением')).toBeVisible();
-    await expect(page.getByText('📍 Локализация')).toBeVisible();
+    await expect(page.getByText('⭐ Рейтинги и отзывы')).toBeVisible();
+    await expect(page.getByText('📊 Статистика')).toBeVisible();
+    await expect(page.getByText('🎯 Персонализация')).toBeVisible();
     await expect(page.getByText('🔐 Безопасность')).toBeVisible();
   });
 
@@ -58,7 +58,7 @@ test.describe('Home Page E2E Tests', () => {
     await page.goto('/');
     await expect(
       page.getByRole('heading', {
-        name: 'Система учёта инвентаря и оборудования',
+        name: /Каталог игр|Game Library/i,
       })
     ).toBeVisible();
 
@@ -66,7 +66,7 @@ test.describe('Home Page E2E Tests', () => {
     await page.setViewportSize({ width: 375, height: 667 });
     await expect(
       page.getByRole('heading', {
-        name: 'Система учёта инвентаря и оборудования',
+        name: /Каталог игр|Game Library/i,
       })
     ).toBeVisible();
   });

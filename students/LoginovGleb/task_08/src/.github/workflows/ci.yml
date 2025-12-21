@@ -223,16 +223,16 @@ jobs:
           context: task_08/src
           file: task_08/src/Dockerfile
           push: false
-          tags: equipment-inventory:${{ github.sha }}
+          tags: game-catalog:${{ github.sha }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
       
       - name: Test Docker image
         run: |
           cd task_08/src
-          docker build -t equipment-inventory:test .
+          docker build -t game-catalog:test .
           docker run -d -p 8080:80 \
-            --name test-container equipment-inventory:test
+            --name test-container game-catalog:test
           sleep 5
           curl -f http://localhost:8080 || exit 1
           docker stop test-container

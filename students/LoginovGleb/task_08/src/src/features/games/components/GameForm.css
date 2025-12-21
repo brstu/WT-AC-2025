@@ -1,0 +1,29 @@
+.game-form-card {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.game-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.game-new-page,
+.game-edit-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.game-new-page h1,
+.game-edit-page h1 {
+  margin-bottom: 1.5rem;
+}

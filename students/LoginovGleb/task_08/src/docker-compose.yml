@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: equipment-inventory-app
+    container_name: game-catalog-app
     ports:
       - "8080:80"
     environment:
@@ -19,7 +19,7 @@ services:
   # Mock API server (optional, for development)
   mock-api:
     image: node:20-alpine
-    container_name: equipment-mock-api
+    container_name: game-catalog-mock-api
     working_dir: /app
     volumes:
       - ./mock-api:/app

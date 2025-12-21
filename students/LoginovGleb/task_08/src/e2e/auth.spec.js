@@ -40,7 +40,7 @@ test.describe('Authentication E2E Tests', () => {
     await expect(passwordInput).toHaveValue('password123');
   });
 
-  test('should submit login form with credentials', async ({ page }) => {
+  test('should submit login form and navigate to games page', async ({ page }) => {
     // Fill in form
     await page.getByLabel(/имя пользователя/i).fill('admin');
     await page.getByLabel(/пароль/i).fill('admin123');
@@ -48,9 +48,11 @@ test.describe('Authentication E2E Tests', () => {
     // Submit form
     await page.getByRole('button', { name: /войти/i }).click();
 
-    // Wait for potential navigation or error message
-    // This will depend on your actual API implementation
-    await page.waitForTimeout(1000);
+    // Wait for navigation to games page
+    await page.waitForURL('/games', { timeout: 5000 });
+    
+    // Verify we're on the games page
+    await expect(page).toHaveURL('/games');
   });
 
   test('should navigate to home page from login', async ({ page }) => {
