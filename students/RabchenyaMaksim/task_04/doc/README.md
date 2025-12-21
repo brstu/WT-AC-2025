@@ -30,7 +30,7 @@
 - Технологии: чистый JavaScript (ES modules), CSS, HTML
 - Структура проекта: см. ниже
 
-**Структура (основные файлы)**
+### Структура (основные файлы)
 - [src/index.html](src/index.html) : точка входа приложения и подключение роутера.
 - [src/style.css](src/style.css) : стили интерфейса.
 - [src/db.json](src/db.json) : начальные данные для mock‑сервера (`json-server`).
@@ -61,21 +61,21 @@
 ## Запуск проекта (локально)
 
 1. Открыть проект в VS Code.
-2. Установить `json-server` (если хотите использовать mock API):
+1. Установить `json-server` (если хотите использовать mock API):
 
 ```powershell
 npm install -g json-server
 json-server --watch src/db.json --port 3000
 ```
 
-3. Запустить Live Server или открыть `src/index.html` через любой статический сервер (или расширение Live Server в VS Code):
+1. Запустить Live Server или открыть `src/index.html` через любой статический сервер (или расширение Live Server в VS Code):
 
 ```powershell
 # пример с live-server (если установлен глобально)
 live-server src
 ```
 
-4. Откройте в браузере `http://127.0.0.1:5500/` (или адрес Live Server). API должен быть доступен на `http://localhost:3000`.
+1. Откройте в браузере `http://127.0.0.1:5500/` (или адрес Live Server). API должен быть доступен на `http://localhost:3000`.
 
 Если вы не хотите запускать `json-server`, можно модифицировать `src/modules/api.js`, чтобы использовать `localStorage` или относительные пути.
 
