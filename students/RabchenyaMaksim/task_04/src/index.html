@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заметки — SPA CRUD</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Мои заметки</h1>
+    <nav>
+      <a href="#/items">Все заметки</a> | 
+      <a href="#/new">+ Новая</a>
+    </nav>
+  </header>
+
+  <main id="app">
+    <div class="loading">Загрузка...</div>
+  </main>
+
+  <div id="notification"></div>
+
+  <script type="module">
+    import { router } from './modules/router.js';
+    window.addEventListener('load', () => router.navigate());
+    window.addEventListener('hashchange', () => router.navigate());
+  </script>
+</body>
+</html>
