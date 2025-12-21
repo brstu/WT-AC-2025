@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Приют животных</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Карточки животных из приюта</h1>
+    
+    <div class="controls">
+      <input type="text" id="search" placeholder="Поиск по имени или виду...">
+      <button id="refresh">Обновить (игнор кэша)</button>
+    </div>
+
+    <div id="status"></div>
+
+    <div id="list"></div>
+
+    <div class="pagination">
+      <button id="prev" disabled>Предыдущая</button>
+      <span id="page-info">Страница 1</span>
+      <button id="next">Следующая</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
