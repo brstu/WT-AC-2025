@@ -1,0 +1,52 @@
+:root {
+  --bg: #ffffff;
+  --text: #000000;
+  --card: #f9f9f9;
+}
+
+[data-theme='dark'] {
+  --bg: #121212;
+  --text: #ffffff;
+  --card: #1e1e1e;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.loader, .error {
+  text-align: center;
+  padding: 50px;
+  font-size: 1.2rem;
+}
+
+button {
+  margin: 5px;
+  padding: 8px 16px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 10px 0;
+  background: var(--card);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
