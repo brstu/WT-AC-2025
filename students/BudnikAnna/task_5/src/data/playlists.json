@@ -1,0 +1,18 @@
+[
+  {
+    "id": "b6caa67e-9f2b-4ed9-8be2-6e9ac0c1c0a1",
+    "title": "Road Cycling — Power Session",
+    "done": false,
+    "dueDate": "2026-01-10",
+    "createdAt": "2025-12-22T00:00:00.000Z",
+    "updatedAt": "2025-12-22T00:00:00.000Z"
+  },
+  {
+    "id": "1b20b3e2-4d8b-4c1b-8b1f-2d0d2f2d0b20",
+    "title": "Chill Electronic — Night Ride",
+    "done": true,
+    "dueDate": "2025-12-01",
+    "createdAt": "2025-12-01T10:00:00.000Z",
+    "updatedAt": "2025-12-02T12:00:00.000Z"
+  }
+]
