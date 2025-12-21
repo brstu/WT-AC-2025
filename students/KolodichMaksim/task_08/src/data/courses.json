@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "title": "React для начинающих",
+    "description": "Полный курс по React с нуля до профессионала. Hooks, Router, Context и многое другое.",
+    "instructor": "Иван Петров",
+    "duration": "24 часа",
+    "price": 4990,
+    "category": "Frontend"
+  },
+  {
+    "id": 2,
+    "title": "TypeScript Advanced",
+    "description": "Глубокое погружение в TypeScript: generics, utility types, conditional types.",
+    "instructor": "Мария Сидорова",
+    "duration": "16 часов",
+    "price": 5990,
+    "category": "Frontend"
+  },
+  {
+    "id": 3,
+    "title": "Node.js и Express",
+    "description": "Создание REST API на Node.js с использованием Express и MongoDB.",
+    "instructor": "Алексей Иванов",
+    "duration": "20 часов",
+    "price": 4500,
+    "category": "Backend"
+  }
+]
