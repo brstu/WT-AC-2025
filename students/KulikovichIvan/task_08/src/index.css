@@ -7,8 +7,8 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
   line-height: 1.6;
-  color: #333;
-  background-color: #f5f5f5;
+  color: rgb(51 51 51);
+  background-color: rgb(245 245 245);
 }
 
 .app {
@@ -21,8 +21,8 @@ header {
   text-align: center;
   margin-bottom: 40px;
   padding: 20px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: linear-gradient(135deg, rgb(102 126 234) 0%, rgb(118 75 162) 100%);
+  color: rgb(255 255 255);
   border-radius: 10px;
 }
 
@@ -31,15 +31,15 @@ header h1 {
 }
 
 .podcast-list {
-  background: white;
+  background: rgb(255 255 255);
   border-radius: 10px;
   padding: 30px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
 }
 
 .podcast-list h2 {
   margin-bottom: 20px;
-  color: #333;
+  color: rgb(51 51 51);
 }
 
 .podcast-list ul {
@@ -49,22 +49,22 @@ header h1 {
 .podcast-item {
   padding: 20px;
   margin-bottom: 15px;
-  border: 1px solid #eaeaea;
+  border: 1px solid rgb(234 234 234);
   border-radius: 8px;
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .podcast-item:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 12px rgb(0 0 0 / 10%);
 }
 
 .podcast-item h3 {
-  color: #667eea;
+  color: rgb(102 126 234);
   margin-bottom: 10px;
 }
 
 .podcast-item p {
-  color: #666;
+  color: rgb(102 102 102);
   margin-bottom: 5px;
 }
