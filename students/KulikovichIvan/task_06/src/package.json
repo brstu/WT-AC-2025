@@ -1,0 +1,20 @@
+{
+  "name": "booking-service",
+  "version": "1.0.0",
+  "description": "Сервис бронирований событий с ролями пользователей",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node seed.js"
+  },
+  "keywords": ["express", "sqlite", "jwt", "booking", "events"],
+  "author": "Крагель Алина",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "sqlite3": "^5.1.6",
+    "bcrypt": "^5.1.1",
+    "jsonwebtoken": "^9.0.2",
+    "dotenv": "^16.3.1"
+  }
+}

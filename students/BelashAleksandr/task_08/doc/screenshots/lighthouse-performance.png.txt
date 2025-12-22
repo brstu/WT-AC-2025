@@ -1,0 +1,2 @@
+# Placeholder for lighthouse-performance.png
+# В реальности здесь был бы скриншот Lighthouse с показателями Performance

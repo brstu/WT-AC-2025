@@ -1,0 +1,13 @@
+{
+  "name": "shelter-app",
+  "version": "1.0.0",
+  "description": "Pet shelter application",
+  "main": "index.html",
+  "scripts": {
+    "test": "jest",
+    "start": "python -m http.server 8000"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0"
+  }
+}
