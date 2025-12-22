@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Портфолио фотографа — ЛР02</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Портфолио фотографа</h1>
+    <p class="lead">Табы серий · Модалка‑слайдшоу · Tooltip для EXIF · Форма контакта</p>
+  </header>
+
+  <main>
+    <!-- Tabs -->
+    <section aria-labelledby="series-heading" class="series">
+      <h2 id="series-heading">Серии работ</h2>
+      <div role="tablist" aria-label="Серии фотографий" class="tabs" id="tabs">
+        <button role="tab" aria-selected="true" aria-controls="panel-1" id="tab-1">Серия 1</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-2" id="tab-2">Серия 2</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-3" id="tab-3">Серия 3</button>
+      </div>
+
+      <div class="tab-panels">
+        <section id="panel-1" role="tabpanel" aria-labelledby="tab-1">
+          <h3 class="visually-hidden">Серия 1</h3>
+          <div class="gallery" data-series="1">
+            <!-- Серия 1: Городские пейзажи -->
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Городской пейзаж.jpg" alt="Городской пейзаж — интерьер и улица" tabindex="0" data-index="0" data-exif="aperture:f/4;shutter:1/250;iso:100;camera:Canon EOS R" />
+                <figcaption>Городской пейзаж</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like title="Лайк" aria-label="Поставить лайк">♥</button>
+                <button class="icon-btn" data-delete title="Удалить" aria-label="Удалить фото">🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Улица и архитектура.jpg" alt="Улица с современными зданиями" tabindex="0" data-index="1" data-exif="aperture:f/5.6;shutter:1/320;iso:200;camera:Sony A7III" />
+                <figcaption>Улица и архитектура</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Ночной город.jpg" alt="Ночной городской пейзаж" tabindex="0" data-index="2" data-exif="aperture:f/1.8;shutter:1/60;iso:800;camera:Canon 5D" />
+                <figcaption>Ночной город</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Архитектура.jpg" alt="Современная архитектура в городе" tabindex="0" data-index="3" data-exif="aperture:f/6.3;shutter:1/320;iso:200;camera:Fujifilm X-T3" />
+                <figcaption>Архитектура</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Закат в городе.jpg" alt="Закат над городом" tabindex="0" data-index="4" data-exif="aperture:f/4;shutter:1/200;iso:200;camera:Canon 6D" />
+                <figcaption>Закат в городе</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="panel-2" role="tabpanel" aria-labelledby="tab-2" hidden>
+          <h3 class="visually-hidden">Серия 2</h3>
+          <div class="gallery" data-series="2">
+            <!-- Серия 2: Портреты -->
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Портрет -студия.jpg" alt="Портрет — женщина в студии" tabindex="0" data-index="0" data-exif="aperture:f/2.8;shutter:1/125;iso:200;camera:Nikon D850" />
+                <figcaption>Портрет — студия</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Портрет - на улице.jpg" alt="Портрет — мужчина на открытом воздухе" tabindex="0" data-index="1" data-exif="aperture:f/3.2;shutter:1/200;iso:100;camera:Canon EOS R" />
+                <figcaption>Портрет — на улице</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Портрет - дети.jpg" alt="Портрет — дети" tabindex="0" data-index="2" data-exif="aperture:f/4;shutter:1/200;iso:200;camera:Sony A7III" />
+                <figcaption>Портрет — дети</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Черно-белый портрет.jpg" alt="Портрет — женщина в черно-белом" tabindex="0" data-index="3" data-exif="aperture:f/1.8;shutter:1/125;iso:100;camera:Fujifilm X-T3" />
+                <figcaption>Чёрно‑белый портрет</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="panel-3" role="tabpanel" aria-labelledby="tab-3" hidden>
+          <h3 class="visually-hidden">Серия 3</h3>
+          <div class="gallery" data-series="3">
+            <!-- Серия 3: Пейзажи и природа -->
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Пейзаж - горы.jpg" alt="Пейзаж — горы и озеро" tabindex="0" data-index="0" data-exif="aperture:f/8;shutter:1/125;iso:100;camera:Canon 6D" />
+                <figcaption>Пейзаж — горы</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Лес.jpg" alt="Пейзаж — лес" tabindex="0" data-index="1" data-exif="aperture:f/5.6;shutter:1/60;iso:200;camera:Sony A7III" />
+                <figcaption>Лес</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Поля.jpg" alt="Пейзаж — поле" tabindex="0" data-index="2" data-exif="aperture:f/11;shutter:1/125;iso:100;camera:Nikon D850" />
+                <figcaption>Поля</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <figure>
+                <img src="scripts/image/Берег.jpg" alt="Пейзаж — берег моря" tabindex="0" data-index="3" data-exif="aperture:f/5.6;shutter:1/200;iso:200;camera:Canon 6D" />
+                <figcaption>Берег</figcaption>
+              </figure>
+              <div class="card-actions">
+                <button class="icon-btn" aria-pressed="false" data-like>♥</button>
+                <button class="icon-btn" data-delete>🗑</button>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Lightbox modal -->
+    <!-- Lightbox modal -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+      <div class="lightbox-inner">
+        <button class="close" aria-label="Закрыть (Esc)" data-lb-close>×</button>
+        <button class="prev" aria-label="Предыдущее (стрелка влево)" data-lb-prev>‹</button>
+        <div class="lb-content">
+          <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" alt="Фото галереи" id="lb-image">
+          <p id="lb-caption"></p>
+          <p id="lb-exif" class="exif"></p>
+        </div>
+        <button class="next" aria-label="Следующее (стрелка вправо)" data-lb-next>›</button>
+      </div>
+    </div>
+
+    <!-- Tooltip element (re-used) -->
+    <div id="tooltip" role="status" aria-hidden="true" class="tooltip" hidden></div>
+
+    <!-- Контактная форма -->
+    <section id="contact" aria-labelledby="contact-heading" class="contact">
+      <h2 id="contact-heading">Связаться</h2>
+      <form id="contact-form" novalidate>
+        <div class="form-row">
+          <label for="name">Имя *</label>
+          <input id="name" name="name" required minlength="2" />
+          <small class="error" id="err-name"></small>
+        </div>
+        <div class="form-row">
+          <label for="email">E‑mail *</label>
+          <input id="email" name="email" type="email" required />
+          <small class="error" id="err-email"></small>
+        </div>
+        <div class="form-row">
+          <label for="message">Сообщение *</label>
+          <textarea id="message" name="message" required minlength="20"></textarea>
+          <small class="error" id="err-message"></small>
+        </div>
+        <div class="form-row">
+          <button id="submit" type="submit" disabled>Отправить</button>
+        </div>
+      </form>
+      <div id="form-result" aria-live="polite"></div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Лабораторная работа 02 — Портфолио фотографа</p>
+  </footer>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>

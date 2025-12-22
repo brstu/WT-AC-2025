@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Сайт клуба настольных игр: встречи, события, рейтинги."
+    />
+    <title>Dice & Friends — клуб настольных игр</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+
+  <body>
+    <a class="skip-link" href="#content">Перейти к содержимому</a>
+
+    <header class="site-header">
+      <div class="container header-row">
+        <div class="brand" aria-label="Название клуба">
+          <span class="logo" aria-hidden="true">🎲</span>
+          <div class="brand-text">
+            <p class="brand-name">Dice & Friends</p>
+            <p class="brand-tagline">встречи • события • рейтинги</p>
+          </div>
+        </div>
+
+        <nav class="site-nav" aria-label="Основная навигация">
+          <ul class="nav-list">
+            <li><a href="#meetups">Встречи</a></li>
+            <li><a href="#events">События</a></li>
+            <li><a href="#ratings">Рейтинги</a></li>
+            <li><a href="#join">Записаться</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="content" class="site-main">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <h1 id="hero-title">Клуб настольных игр в твоём городе</h1>
+            <p class="lead">
+              Каждую неделю собираемся играть в евро, пати-игры и дуэльки.
+              Есть новичковые столы, турниры и честный рейтинг.
+            </p>
+
+            <div class="hero-actions" role="group" aria-label="Быстрые действия">
+              <a class="btn primary" href="#join">Записаться на встречу</a>
+              <a class="btn" href="#events">Посмотреть события</a>
+            </div>
+
+            <dl class="hero-stats" aria-label="Коротко о клубе">
+              <div class="stat">
+                <dt>Игры</dt>
+                <dd>120+</dd>
+              </div>
+              <div class="stat">
+                <dt>Встречи</dt>
+                <dd>еженедельно</dd>
+              </div>
+              <div class="stat">
+                <dt>Новички</dt>
+                <dd>welcome 🤝</dd>
+              </div>
+            </dl>
+          </div>
+
+          <aside class="hero-card" aria-labelledby="hero-image-title">
+            <h2 class="h3" id="hero-image-title">Что вас ждёт</h2>
+
+            <figure class="hero-figure">
+              <img
+                src="./assets/hero-board.svg"
+                alt="Иллюстрация: игровое поле, фишки и кубик"
+                loading="lazy"
+              />
+              <figcaption class="muted small">
+                Настолки, новые знакомства и турниры по выходным.
+              </figcaption>
+            </figure>
+
+            <article class="card" aria-label="Карточка ближайшей встречи">
+              <p class="card-title">Ближайшая встреча</p>
+              <p class="muted">
+                <time datetime="2025-12-21T18:30">21 декабря, 18:30</time><br />
+                Антикафе “Кубик”, ул. Примерная, 10
+              </p>
+              <a class="btn small" href="#join">Забронировать место</a>
+            </article>
+          </aside>
+        </div>
+      </section>
+
+      <section id="meetups" class="section" aria-labelledby="meetups-title">
+        <div class="container">
+          <h2 id="meetups-title">Встречи</h2>
+          <p class="section-lead">
+            Выбирай формат — для новичков, любителей стратегии или весёлой компании.
+          </p>
+
+          <div class="grid cards" role="list" aria-label="Форматы встреч">
+            <article class="card" role="listitem" aria-labelledby="m1">
+              <div class="card-top">
+                <img class="icon" src="./assets/icon-meetup.svg" alt="" aria-hidden="true" />
+                <h3 id="m1">Новичковый стол</h3>
+              </div>
+              <p>Объясняем правила, подбираем игру по времени и сложности.</p>
+              <p class="muted">60–120 мин • Новички</p>
+            </article>
+
+            <article class="card" role="listitem" aria-labelledby="m2">
+              <div class="card-top">
+                <img class="icon" src="./assets/icon-calendar.svg" alt="" aria-hidden="true" />
+                <h3 id="m2">Евро-вечер</h3>
+              </div>
+              <p>Стратегии, ресурсы и движок — для тех, кто любит подумать.</p>
+              <p class="muted">120–180 мин • Средний уровень+</p>
+            </article>
+
+            <article class="card" role="listitem" aria-labelledby="m3">
+              <div class="card-top">
+                <img class="icon" src="./assets/icon-trophy.svg" alt="" aria-hidden="true" />
+                <h3 id="m3">Турнир/лига</h3>
+              </div>
+              <p>Рейтинговые игры, таблица лидеров, призы и сезонные итоги.</p>
+              <p class="muted">по расписанию • Участие по записи</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="events" class="section alt" aria-labelledby="events-title">
+        <div class="container">
+          <h2 id="events-title">События</h2>
+          <p class="section-lead">Ближайшие активности клуба.</p>
+
+          <div class="grid cards" role="list" aria-label="Список событий">
+            <article class="card" role="listitem" aria-labelledby="e1">
+              <h3 id="e1">Турнир по дуэльной игре</h3>
+              <p class="muted"><time datetime="2025-12-28T12:00">28 декабря, 12:00</time> • 16 мест</p>
+              <p>4 раунда, швейцарка. Призы: промо и сертификаты.</p>
+              <a class="link" href="#join">Записаться</a>
+            </article>
+
+            <article class="card" role="listitem" aria-labelledby="e2">
+              <h3 id="e2">Ночь настолок</h3>
+              <p class="muted"><time datetime="2026-01-04T19:00">4 января, 19:00</time> • свободный формат</p>
+              <p>Играем до позднего. Можно принести свою игру — найдём стол.</p>
+              <a class="link" href="#join">Записаться</a>
+            </article>
+
+            <article class="card" role="listitem" aria-labelledby="e3">
+              <h3 id="e3">Обучение: “как читать правила”</h3>
+              <p class="muted"><time datetime="2026-01-11T17:00">11 января, 17:00</time> • для новичков</p>
+              <p>Как быстро понимать правила и не бояться “сложных коробок”.</p>
+              <a class="link" href="#join">Записаться</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="ratings" class="section" aria-labelledby="ratings-title">
+        <div class="container">
+          <h2 id="ratings-title">Рейтинги</h2>
+          <p class="section-lead">
+            Топ участников сезона (пример). Таблица доступна и прокручивается на мобильном.
+          </p>
+
+          <div class="table-wrap" role="region" aria-label="Таблица рейтинга" tabindex="0">
+            <table class="rating-table">
+              <caption>Топ-5 участников сезона</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Место</th>
+                  <th scope="col">Участник</th>
+                  <th scope="col">Очки</th>
+                  <th scope="col">Игр</th>
+                  <th scope="col">Жанр</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">1</th><td>Алина</td><td>1840</td><td>22</td><td>Евро</td></tr>
+                <tr><th scope="row">2</th><td>Никита</td><td>1765</td><td>19</td><td>Дуэльные</td></tr>
+                <tr><th scope="row">3</th><td>Марина</td><td>1710</td><td>20</td><td>Пати</td></tr>
+                <tr><th scope="row">4</th><td>Евгений</td><td>1690</td><td>18</td><td>Кооп</td></tr>
+                <tr><th scope="row">5</th><td>Данил</td><td>1645</td><td>16</td><td>Абстракты</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="join" class="section alt" aria-labelledby="join-title">
+        <div class="container join-grid">
+          <div>
+            <h2 id="join-title">Запись на встречу</h2>
+            <p class="section-lead">Заполни форму — мы подтвердим участие.</p>
+
+            <form class="form" action="#" method="post">
+              <div class="field">
+                <label for="name">Имя</label>
+                <input id="name" name="name" type="text" required />
+              </div>
+
+              <div class="field">
+                <label for="contact">Контакт (email или Telegram)</label>
+                <input id="contact" name="contact" type="text" required aria-describedby="contact-hint" />
+                <p class="hint" id="contact-hint">Пример: name@example.com или @nickname</p>
+              </div>
+
+              <div class="field">
+                <label for="format">Формат</label>
+                <select id="format" name="format" required>
+                  <option value="">Выбери формат…</option>
+                  <option value="newbies">Новичковый стол</option>
+                  <option value="euro">Евро-вечер</option>
+                  <option value="tournament">Турнир/лига</option>
+                </select>
+              </div>
+
+              <div class="check">
+                <input id="agree" name="agree" type="checkbox" required />
+                <label for="agree">Согласен(на) на обработку заявки</label>
+              </div>
+
+              <button class="btn primary" type="submit">Отправить заявку</button>
+            </form>
+          </div>
+
+          <aside class="card contact" aria-labelledby="contact-title">
+            <h3 id="contact-title">Контакты</h3>
+            <address class="muted">
+              <p><strong>Место:</strong> Антикафе “Кубик”, ул. Примерная, 10</p>
+              <p><strong>Часы:</strong> Пт–Вс, 18:00–23:00</p>
+              <p><strong>Связь:</strong> @dicefriends • club@example.com</p>
+            </address>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-row">
+        <p class="muted">© 2025 Dice & Friends — ЛР-01</p>
+        <ul class="footer-links" aria-label="Ссылки в подвале">
+          <li><a href="#meetups">Встречи</a></li>
+          <li><a href="#events">События</a></li>
+          <li><a href="#ratings">Рейтинги</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Каталог npm‑пакетов</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<header class="header">
+  <h1>Каталог npm‑пакетов</h1>
+  <div class="controls">
+    <label for="search-input">Поиск пакетов</label>
+    <input
+            id="search-input"
+            type="search"
+            placeholder="Поиск пакетов (например: react)"
+    />
+    <button id="refresh-btn" class="secondary">
+      Обновить (игнор кэша)
+    </button>
+  </div>
+</header>
+
+<main>
+  <section id="status-bar" class="status">
+    <div id="loader" class="loader hidden">
+      <div class="spinner"></div>
+      <span>Загрузка…</span>
+    </div>
+    <div id="retry-loader" class="retry hidden">
+      <span>Повторная попытка…</span>
+    </div>
+    <div id="error-box" class="error hidden"></div>
+    <div id="empty-box" class="empty hidden">Ничего не найдено</div>
+  </section>
+
+  <section>
+    <ul id="results-list" class="results skeleton skeleton-active">
+      <!-- skeleton items -->
+      <li class="card">
+        <div class="skeleton-line title"></div>
+        <div class="skeleton-line subtitle"></div>
+        <div class="skeleton-line small"></div>
+      </li>
+      <li class="card">
+        <div class="skeleton-line title"></div>
+        <div class="skeleton-line subtitle"></div>
+        <div class="skeleton-line small"></div>
+      </li>
+      <li class="card">
+        <div class="skeleton-line title"></div>
+        <div class="skeleton-line subtitle"></div>
+        <div class="skeleton-line small"></div>
+      </li>
+      <li class="card">
+        <div class="skeleton-line title"></div>
+        <div class="skeleton-line subtitle"></div>
+        <div class="skeleton-line small"></div>
+      </li>
+      <li class="card">
+        <div class="skeleton-line title"></div>
+        <div class="skeleton-line subtitle"></div>
+        <div class="skeleton-line small"></div>
+      </li>
+    </ul>
+  </section>
+
+  <nav class="pagination">
+    <button id="prev-page" class="secondary" disabled>Назад</button>
+    <span id="page-info">Стр. 1</span>
+    <button id="next-page" class="secondary">Вперёд</button>
+  </nav>
+</main>
+
+<footer class="footer">
+  <small>
+    Поиск по npm registry (registry.npmjs.org/-/v1/search)
+  </small>
+</footer>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>

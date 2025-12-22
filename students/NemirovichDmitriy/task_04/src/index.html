@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Энциклопедия растений</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Энциклопедия растений</h1>
+            <nav>
+                <a href="#/items">Список растений</a>
+                <a href="#/new">Добавить растение</a>
+            </nav>
+        </header>
+        
+        <main id="app">
+            <div id="loading" style="display: none;">
+                <p>Загрузка...</p>
+            </div>
+            <div id="error" style="display: none;">
+                <p>Произошла ошибка</p>
+            </div>
+            <div id="content"></div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2025 Энциклопедия растений</p>
+        </footer>
+    </div>
+    
+    <div id="notification" style="display: none;"></div>
+    
+    <script src="js/api.js"></script>
+    <script src="js/views.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

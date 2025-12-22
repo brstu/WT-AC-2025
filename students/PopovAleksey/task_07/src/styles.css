@@ -1,0 +1,19 @@
+/* Файл стилей - не используется, так как все стили inline */
+
+.container {
+  padding: 20px;
+}
+
+.button {
+  padding: 10px 20px;
+}
+
+/* Эти стили никогда не применяются */
+.unused-class {
+  color: red;
+  font-size: 20px;
+}
+
+.another-unused {
+  background: blue;
+}
