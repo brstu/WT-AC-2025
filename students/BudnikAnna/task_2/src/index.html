@@ -1,0 +1,215 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ЛР — Коллекция настолок (вариант 27)</title>
+  <meta
+    name="description"
+    content="Коллекция настольных игр: табы жанров, модалка правил, делегирование лайков, форма с валидацией и a11y."
+  />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand" aria-label="Название проекта">
+        <span class="brand-mark" aria-hidden="true">🎲</span>
+        <span class="brand-title">Коллекция настолок</span>
+      </div>
+
+      <nav class="nav" aria-label="Основная навигация">
+        <ul class="nav-list">
+          <li><a class="nav-link" href="#collection">Коллекция</a></li>
+          <li><a class="nav-link" href="#faq">FAQ</a></li>
+          <li><a class="nav-link" href="#feedback">Обратная связь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="main">
+    <section id="collection" class="section">
+      <div class="container">
+        <header class="section-head">
+          <h1 class="h1">Лабораторная работа — вариант 27</h1>
+          <p class="lead">
+            Табами выбирай жанр, открывай правила в модалке и ставь лайк играм — всё с доступностью (a11y) и чистым JS.
+          </p>
+        </header>
+
+        <div class="panel">
+          <div class="panel-top">
+            <h2 class="h2">Жанры</h2>
+            <p class="muted">
+              Подсказка: в табах работают клавиши <kbd>←</kbd>/<kbd>→</kbd>, <kbd>Home</kbd>/<kbd>End</kbd>.
+            </p>
+          </div>
+
+          <div id="genre-tabs" class="tabs" role="tablist" aria-label="Табы жанров"></div>
+          <div id="genre-panels" class="tabpanels"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section section--alt">
+      <div class="container">
+        <h2 class="h2">FAQ и советы</h2>
+        <p class="muted">Аккордеон доступен с клавиатуры и использует ARIA.</p>
+
+        <div class="accordion" id="accordion" aria-label="FAQ">
+          <div class="acc-item">
+            <h3 class="acc-title">
+              <button
+                class="acc-btn"
+                type="button"
+                aria-expanded="false"
+                aria-controls="acc-panel-1"
+                id="acc-btn-1"
+              >
+                Как выбрать игру для компании?
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-1" role="region" aria-labelledby="acc-btn-1" hidden>
+              <p>
+                Смотри на <strong>количество игроков</strong> и <strong>время партии</strong>.
+                Для компании 4–6 человек лучше заходят пати-игры и лёгкие стратегии.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <h3 class="acc-title">
+              <button
+                class="acc-btn"
+                type="button"
+                aria-expanded="false"
+                aria-controls="acc-panel-2"
+                id="acc-btn-2"
+              >
+                Что означают лайки и где они сохраняются?
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-2" role="region" aria-labelledby="acc-btn-2" hidden>
+              <p>
+                Лайк — это отметка «нравится». Состояние сохраняется в <code>localStorage</code> в браузере.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <h3 class="acc-title">
+              <button
+                class="acc-btn"
+                type="button"
+                aria-expanded="false"
+                aria-controls="acc-panel-3"
+                id="acc-btn-3"
+              >
+                Как управлять модальным окном с клавиатуры?
+              </button>
+            </h3>
+            <div class="acc-panel" id="acc-panel-3" role="region" aria-labelledby="acc-btn-3" hidden>
+              <p>
+                Открывай кнопкой «Правила». Закрывай <kbd>Esc</kbd> или кнопкой «Закрыть».
+                Фокус остаётся внутри модалки (focus trap).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="feedback" class="section">
+      <div class="container">
+        <h2 class="h2">Обратная связь</h2>
+        <p class="muted">Валидация при вводе и при отправке. Кнопка неактивна, если форма невалидна.</p>
+
+        <div class="form-wrap">
+          <form id="feedback-form" class="form" novalidate>
+            <div class="field">
+              <label class="label" for="name">Имя <span class="req" aria-hidden="true">*</span></label>
+              <input
+                id="name"
+                name="name"
+                class="input"
+                type="text"
+                autocomplete="name"
+                required
+                aria-describedby="error-name"
+              />
+              <p id="error-name" class="error" role="alert" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="email">E-mail</label>
+              <input
+                id="email"
+                name="email"
+                class="input"
+                type="email"
+                autocomplete="email"
+                aria-describedby="error-email"
+              />
+              <p id="error-email" class="error" role="alert" aria-live="polite"></p>
+            </div>
+
+            <div class="field">
+              <label class="label" for="message">Сообщение</label>
+              <textarea
+                id="message"
+                name="message"
+                class="textarea"
+                rows="5"
+                minlength="20"
+                placeholder="Минимум 20 символов…"
+                aria-describedby="error-message"
+              ></textarea>
+              <p id="error-message" class="error" role="alert" aria-live="polite"></p>
+            </div>
+
+            <div class="form-actions">
+              <button id="submit-btn" class="btn" type="submit" disabled>Отправить</button>
+              <p class="muted small">Отправка не уходит на сервер — результат выводится ниже.</p>
+            </div>
+          </form>
+
+          <div class="result" id="form-result" role="status" aria-live="polite" aria-atomic="true"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="small muted">© 2025 · ЛР по JS · Вариант 27</p>
+      <p class="small muted">Сделано на чистом JavaScript (ES-модули), без библиотек.</p>
+    </div>
+  </footer>
+
+  <div class="modal" id="rules-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+    <div class="modal-overlay" data-action="close-modal" aria-hidden="true"></div>
+
+    <div class="modal-dialog" role="document">
+      <div class="modal-head">
+        <h2 class="h2 modal-title" id="modal-title">Правила</h2>
+        <button class="icon-btn" type="button" data-action="close-modal" aria-label="Закрыть модальное окно">
+          ✕
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p class="muted" id="modal-meta"></p>
+        <div id="modal-content" class="rules"></div>
+      </div>
+
+      <div class="modal-foot">
+        <button class="btn btn--ghost" type="button" data-action="close-modal">Закрыть (Esc)</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./scripts/main.js"></script>
+</body>
+</html>
