@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap);
 
 :root {
   --primary: #4f46e5;
@@ -19,7 +19,7 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: Inter, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   min-height: 100vh;
   color: var(--dark);
@@ -33,7 +33,7 @@ body {
 
 /* Header */
 .header {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(255 255 255 / 95%);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--gray-light);
   padding: 1rem 0;
@@ -67,9 +67,8 @@ body {
   font-size: 1.5rem;
   font-weight: 800;
   background: linear-gradient(135deg, var(--primary), #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
 }
 
 .nav-links {
@@ -107,10 +106,10 @@ body {
 .hero {
   text-align: center;
   padding: 4rem 1rem;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255 255 255 / 90%);
   border-radius: 1rem;
   margin-bottom: 3rem;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgb(0 0 0 / 10%);
 }
 
 .hero h1 {
@@ -118,9 +117,8 @@ body {
   font-weight: 800;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, var(--primary), #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
 }
 
 .hero p {
@@ -155,7 +153,7 @@ body {
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(79, 70, 229, 0.3);
+  box-shadow: 0 10px 20px rgb(79 70 229 / 30%);
 }
 
 .btn-secondary {
@@ -189,13 +187,13 @@ body {
   background: white;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 15px 30px rgb(0 0 0 / 15%);
 }
 
 .meme-card {
@@ -294,7 +292,7 @@ body {
   padding: 1.5rem;
   border-radius: 1rem;
   margin-bottom: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
 }
 
 .search-input {
@@ -333,7 +331,7 @@ body {
   padding: 2rem;
   border-radius: 1rem;
   text-align: center;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
 }
 
 .feature-icon {
@@ -358,7 +356,7 @@ body {
   background: white;
   border-radius: 1rem;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
 }
 
 .meme-detail-image {
@@ -393,7 +391,7 @@ body {
   background: white;
   padding: 2rem;
   border-radius: 1rem;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
 }
 
 .form-title {
@@ -454,7 +452,7 @@ body {
   padding: 4rem;
   background: white;
   border-radius: 1rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 15px rgb(0 0 0 / 10%);
 }
 
 .error h2 {
@@ -473,9 +471,8 @@ body {
   font-weight: 800;
   margin-bottom: 1rem;
   background: linear-gradient(135deg, var(--primary), #8b5cf6);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
   background-clip: text;
+  color: transparent;
 }
 
 .not-found p {
@@ -504,7 +501,7 @@ body {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .header-content {
     flex-direction: column;
     gap: 1rem;
