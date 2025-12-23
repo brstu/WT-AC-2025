@@ -1,0 +1,25 @@
+{
+    "name": "NASA APOD Gallery",
+    "short_name": "NASA APOD",
+    "description": "Галерея Astronomy Picture of the Day от NASA с клиентским кэшированием и асинхронными запросами",
+    "start_url": "./",
+    "display": "standalone",
+    "background_color": "#1a1a2e",
+    "theme_color": "#0b3d91",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "./icon.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "./icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "categories": ["education", "science"],
+    "lang": "ru",
+    "dir": "ltr"
+}
