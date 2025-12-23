@@ -1,0 +1,157 @@
+:root {
+  --bg: #0b0f14;
+  --card: #121925;
+  --text: #e8eef7;
+  --muted: #a7b2c3;
+  --border: #223045;
+  --danger: #ff5a6a;
+  --ok: #36d399;
+  --warn: #fbbf24;
+  --focus: #7aa2ff;
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  background: radial-gradient(1200px 800px at 20% 10%, #142033 0%, var(--bg) 55%);
+  color: var(--text);
+  font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+a { color: inherit; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 16px; }
+
+.header {
+  position: sticky; top: 0;
+  backdrop-filter: blur(10px);
+  background: rgba(11, 15, 20, 0.7);
+  border-bottom: 1px solid rgba(34, 48, 69, 0.7);
+  z-index: 10;
+}
+.header__row {
+  display: flex; gap: 12px;
+  align-items: center; justify-content: space-between;
+}
+.brand { display: flex; flex-direction: column; gap: 2px; }
+.brand__title { font-weight: 800; letter-spacing: 0.2px; }
+.brand__sub { color: var(--muted); font-size: 13px; }
+
+.nav { display: flex; gap: 10px; flex-wrap: wrap; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 12px;
+  border: 1px solid var(--border);
+  background: rgba(18, 25, 37, 0.6);
+  border-radius: 999px;
+}
+.pill:focus { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.main { padding: 18px 0 40px; }
+
+.card {
+  border: 1px solid var(--border);
+  background: rgba(18, 25, 37, 0.7);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+}
+
+.row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.row--between { justify-content: space-between; }
+
+.badge {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(18, 25, 37, 0.9);
+  color: var(--text);
+  cursor: pointer;
+  user-select: none;
+}
+.btn:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: 0.55; cursor: not-allowed; }
+.btn--primary { border-color: rgba(122, 162, 255, 0.6); }
+.btn--danger { border-color: rgba(255, 90, 106, 0.6); color: #ffd7db; }
+
+.form { display: grid; gap: 12px; }
+.field { display: grid; gap: 6px; }
+label { color: var(--muted); font-size: 13px; }
+input, textarea, select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(11, 15, 20, 0.6);
+  color: var(--text);
+}
+textarea { min-height: 110px; resize: vertical; }
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.help { color: var(--muted); font-size: 13px; }
+.error { color: #ffb4bd; font-size: 13px; min-height: 18px; }
+
+.state {
+  padding: 18px;
+  border: 1px dashed rgba(34, 48, 69, 0.9);
+  border-radius: 16px;
+  color: var(--muted);
+}
+
+.skeleton {
+  height: 14px;
+  border-radius: 10px;
+  background: rgba(167, 178, 195, 0.15);
+  overflow: hidden;
+  position: relative;
+}
+.skeleton::after{
+  content:"";
+  position:absolute; inset:0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  animation: shimmer 1.15s infinite;
+}
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+.toast-wrap {
+  position: fixed;
+  top: 14px; right: 14px;
+  display: grid;
+  gap: 10px;
+  z-index: 50;
+}
+.toast {
+  border: 1px solid var(--border);
+  background: rgba(18, 25, 37, 0.95);
+  border-radius: 14px;
+  padding: 10px 12px;
+  min-width: 260px;
+  box-shadow: 0 14px 40px rgba(0,0,0,0.35);
+}
+.toast__title { font-weight: 700; }
+.toast__msg { color: var(--muted); font-size: 13px; margin-top: 2px; }
+.toast--ok { border-color: rgba(54, 211, 153, 0.6); }
+.toast--err { border-color: rgba(255, 90, 106, 0.6); }
+.toast--warn { border-color: rgba(251, 191, 36, 0.6); }
