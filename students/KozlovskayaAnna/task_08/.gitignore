@@ -1,0 +1,67 @@
+# Gitignore для проекта
+
+# IDE и редакторы
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Зависимости Node.js
+node_modules/
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Результаты и артефакты
+dist/
+build/
+coverage/
+.nyc_output/
+jest-coverage/
+
+# Логи
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# Временные файлы
+tmp/
+temp/
+*.tmp
+.cache/
+
+# Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Lighthouse
+.lighthouseci/
+lighthouserc.json.bak
+
+# Окружение
+.env
+.env.local
+.env.*.local
+.env.test
+.env.development.local
+.env.production.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# Git
+.git/
+.gitattributes

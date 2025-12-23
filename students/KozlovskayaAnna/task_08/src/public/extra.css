@@ -1,0 +1,122 @@
+/* Дополнительные CSS правила для стилизации компонентов */
+
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --danger-color: #f56565;
+  --success-color: #48bb78;
+}
+
+/* Общие стили */
+body, html, * {
+  margin: 0;
+  padding: 0;
+}
+
+/* Стили карточки */
+.post-card {
+  background: white !important;
+  border: 1px solid #e0e0e0 !important;
+  padding: 20px !important;
+}
+
+/* Адаптивные стили */
+@media (width <= 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .container {
+    width: 100% !important;
+  }
+}
+
+/* Стили */
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary:visited {
+  background: #5568d3;
+}
+
+/* Абсолютное позиционирование */
+.modal {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 9999;
+}
+
+/* Излишние переходы */
+* {
+  transition: all 0.3s ease;
+}
+
+/* Классы */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+  background: white;
+}
+
+.container:hover {
+  box-shadow: 0 5px 20px rgb(0 0 0 / 20%);
+}
+
+/* Шрифты */
+.header h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, sans-serif;
+  font-size: 2.5em;
+}
+
+/* Дублирование кода */
+.btn {
+  border: none;
+  cursor: pointer;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn:active {
+  opacity: 0.8;
+}
+
+/* Стили текста */
+.text-muted {
+  color: #999;
+}
+
+.text-light {
+  color: #ccc;
+}
+
+/* Размеры */
+.card {
+  margin: 10px;
+  padding: 20px;
+  gap: 15px;
+}
+
+/* Излишняя специфичность */
+html body div.container .row .col {
+  display: flex;
+}
+
+/* Flexbox */
+.flex-container {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+/* Grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(1fr, 1fr));
+}

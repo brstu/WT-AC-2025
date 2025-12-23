@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог-платформа</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Блог-платформа</h1>
+            <p>Добро пожаловать на нашу платформу для блогинга</p>
+        </header>
+
+        <nav class="nav">
+            <button id="new-post-btn" class="btn btn-primary">Новая статья</button>
+        </nav>
+
+        <main class="main">
+            <div id="posts-list" class="posts-list"></div>
+        </main>
+
+        <div id="modal" class="modal" style="display: none;">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 id="modal-title">Новая статья</h2>
+                <form id="post-form">
+                    <div class="form-group">
+                        <label for="title-input">Название:</label>
+                        <input type="text" id="title-input" placeholder="Введите название статьи" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="content-input">Содержание:</label>
+                        <textarea id="content-input" rows="6" placeholder="Введите содержание статьи"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-success">Сохранить</button>
+                    <button type="button" class="btn btn-cancel" id="cancel-btn">Отмена</button>
+                </form>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p>&copy; 2025 Блог-платформа. Все права защищены.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

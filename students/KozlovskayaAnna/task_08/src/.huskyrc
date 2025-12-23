@@ -1,0 +1,9 @@
+{
+  "name": "blog-platform-hooks",
+  "version": "1.0.0",
+  "description": "Husky configuration for pre-commit hooks",
+  "hooks": {
+    "pre-commit": "npm run lint",
+    "pre-push": "npm test"
+  }
+}

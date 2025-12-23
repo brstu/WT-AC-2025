@@ -1,0 +1,44 @@
+# Игнорируемые файлы для Git
+
+# Зависимости
+node_modules/
+package-lock.json
+yarn.lock
+
+# Результаты тестов
+coverage/
+.nyc_output/
+dist/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Временные файлы
+tmp/
+temp/
+*.log
+npm-debug.log*
+
+# Cypress
+cypress/screenshots/
+cypress/videos/
+
+# Lighthouse
+.lighthouseci/
+
+# Docker
+.dockerignore
+
+# Build output
+build/
+out/

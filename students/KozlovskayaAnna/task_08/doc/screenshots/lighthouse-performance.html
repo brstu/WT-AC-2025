@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lighthouse Performance Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .report {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .score {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            margin-right: 20px;
+        }
+        .score-58 {
+            background: #ff9500;
+        }
+        .metric {
+            margin: 10px 0;
+            padding: 10px;
+            background: #f9f9f9;
+            border-left: 4px solid #ff9500;
+        }
+        .metric-name {
+            font-weight: bold;
+            color: #333;
+        }
+        .metric-value {
+            color: #666;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="report">
+        <h1>Lighthouse Performance Report</h1>
+        <p><strong>URL:</strong> http://localhost:3000</p>
+        <p><strong>Date:</strong> 2025-12-18</p>
+        
+        <div class="score">
+            <div class="score-circle score-58">58</div>
+            <div>
+                <h2 style="margin: 0;">Performance Score: 58/100</h2>
+                <p style="margin: 5px 0; color: #ff9500;">Needs improvement</p>
+            </div>
+        </div>
+        
+        <h3>Metrics</h3>
+        
+        <div class="metric">
+            <div class="metric-name">First Contentful Paint (FCP)</div>
+            <div class="metric-value">1.2 seconds - GOOD</div>
+        </div>
+        
+        <div class="metric">
+            <div class="metric-name">Largest Contentful Paint (LCP)</div>
+            <div class="metric-value">2.1 seconds - NEEDS IMPROVEMENT</div>
+        </div>
+        
+        <div class="metric">
+            <div class="metric-name">Cumulative Layout Shift (CLS)</div>
+            <div class="metric-value">0.05 - GOOD</div>
+        </div>
+        
+        <div class="metric">
+            <div class="metric-name">Total Blocking Time (TBT)</div>
+            <div class="metric-value">320 ms - NEEDS IMPROVEMENT</div>
+        </div>
+        
+        <div class="metric">
+            <div class="metric-name">Speed Index</div>
+            <div class="metric-value">1.8 seconds - OK</div>
+        </div>
+    </div>
+</body>
+</html>
