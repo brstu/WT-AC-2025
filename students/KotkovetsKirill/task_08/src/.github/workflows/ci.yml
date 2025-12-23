@@ -1,0 +1,32 @@
+---
+name: CI
+
+on:
+  push:
+    branches: [main, task_08]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install
+        working-directory: ./src
+        run: npm install
+
+      - name: Test
+        working-directory: ./src
+        run: npm test -- --run
+
+      - name: Build
+        working-directory: ./src
+        run: npm run build
