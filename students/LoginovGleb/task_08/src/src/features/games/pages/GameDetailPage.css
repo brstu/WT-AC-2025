@@ -1,0 +1,46 @@
+.game-detail-page {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.detail-actions {
+  display: flex;
+  gap: 1rem;
+}
+
+.detail-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.detail-info p {
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}
+
+.description {
+  margin-top: 0.5rem;
+  color: var(--text-secondary);
+  white-space: pre-wrap;
+}
+
+.back-link {
+  margin-top: 2rem;
+}
+
+.error-container {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--error);
+}
