@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memes Gallery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        
+        .search-container {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-box {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 15px 20px;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            transition: border-color 0.3s;
+        }
+        
+        .search-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .search-button {
+            padding: 15px 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .search-button:hover {
+            transform: translateY(-2px);
+        }
+        
+        .memes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .meme-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .meme-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+        
+        .meme-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .meme-content {
+            padding: 20px;
+        }
+        
+        .meme-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .meme-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .meme-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .like-button {
+            background: none;
+            border: none;
+            color: #e74c3c;
+            cursor: pointer;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background 0.2s;
+        }
+        
+        .like-button:hover {
+            background: rgba(231, 76, 60, 0.1);
+        }
+        
+        .views {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .meme-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .tag {
+            background: #f0f0f0;
+            padding: 3px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        #loading {
+            text-align: center;
+            padding: 50px;
+            color: white;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        #error {
+            background: #ffeaea;
+            color: #e74c3c;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            border-radius: 15px;
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .memes-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎭 Memes Gallery</h1>
+            <p>Discover the funniest memes on the internet</p>
+        </header>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input 
+                    type="text" 
+                    id="search-input" 
+                    class="search-input" 
+                    placeholder="Search memes..."
+                    aria-label="Search for memes"
+                >
+                <button id="search-button" class="search-button">Search</button>
+            </div>
+        </div>
+        
+        <div id="error"></div>
+        
+        <div id="loading">
+            <div class="spinner"></div>
+            <p>Loading memes...</p>
+        </div>
+        
+        <div id="memes-container" class="memes-grid">
+            <!-- Memes will be loaded here -->
+        </div>
+        
+        <footer>
+            <p>© 2024 Memes Gallery. All rights reserved.</p>
+            <p>Lab 08 - Quality and Deployment</p>
+        </footer>
+    </div>
+    
+    <script src="/src/index.js"></script>
+</body>
+</html>
