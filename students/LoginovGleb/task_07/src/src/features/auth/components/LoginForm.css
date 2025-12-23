@@ -1,0 +1,20 @@
+.login-form {
+  max-width: 400px;
+  width: 100%;
+}
+
+.login-form h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+  color: var(--text-color);
+}
+
+.login-hint {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.login-hint p {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+}

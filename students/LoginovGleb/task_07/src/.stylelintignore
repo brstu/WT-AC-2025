@@ -1,0 +1,4 @@
+# Ignore built files
+dist/
+build/
+*.min.css

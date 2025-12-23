@@ -1,0 +1,26 @@
+.game-form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.game-form select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 1rem;
+  background-color: var(--input-bg);
+  color: var(--text-color);
+  cursor: pointer;
+}
+
+.game-form select:focus {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+  border-color: var(--primary-color);
+}
+
+.game-form textarea {
+  resize: vertical;
+  font-family: inherit;
+}
