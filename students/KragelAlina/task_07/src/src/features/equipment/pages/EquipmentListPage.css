@@ -1,0 +1,112 @@
+.equipment-list-page {
+  padding: 2rem 0;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.page-header h1 {
+  color: var(--text-color);
+  margin: 0;
+}
+
+.search-section {
+  margin-bottom: 2rem;
+  max-width: 400px;
+}
+
+.equipment-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.equipment-card-link {
+  text-decoration: none;
+  color: var(--text-color);
+  display: block;
+}
+
+.equipment-card-link h3 {
+  margin: 0 0 0.5rem;
+  color: var(--primary-color);
+}
+
+.equipment-category {
+  color: var(--text-secondary);
+  margin: 0.5rem 0;
+}
+
+.equipment-status,
+.equipment-location {
+  margin: 0.5rem 0;
+}
+
+.status-available {
+  color: var(--success-color);
+  font-weight: 600;
+}
+
+.status-in-use {
+  color: var(--warning-color);
+  font-weight: 600;
+}
+
+.status-maintenance {
+  color: var(--info-color);
+  font-weight: 600;
+}
+
+.status-retired {
+  color: var(--danger-color);
+  font-weight: 600;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.empty-state p {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.page-info {
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(0 0 0 / 30%);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  z-index: 999;
+}
+
+.error-container {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.error-container h2 {
+  color: var(--danger-color);
+  margin-bottom: 1rem;
+}
