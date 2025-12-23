@@ -1,0 +1,70 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  line-height: 1.6;
+  color: rgb(51 51 51);
+  background-color: rgb(245 245 245);
+}
+
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgb(102 126 234) 0%, rgb(118 75 162) 100%);
+  color: rgb(255 255 255);
+  border-radius: 10px;
+}
+
+header h1 {
+  font-size: 2.5rem;
+}
+
+.podcast-list {
+  background: rgb(255 255 255);
+  border-radius: 10px;
+  padding: 30px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
+}
+
+.podcast-list h2 {
+  margin-bottom: 20px;
+  color: rgb(51 51 51);
+}
+
+.podcast-list ul {
+  list-style: none;
+}
+
+.podcast-item {
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid rgb(234 234 234);
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.podcast-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgb(0 0 0 / 10%);
+}
+
+.podcast-item h3 {
+  color: rgb(102 126 234);
+  margin-bottom: 10px;
+}
+
+.podcast-item p {
+  color: rgb(102 102 102);
+  margin-bottom: 5px;
+}
