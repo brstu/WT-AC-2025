@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Портфолио веб-разработчика - галерея проектов">
+  <title>Галерея работ | Портфолио</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Шапка сайта -->
+  <header class="header">
+    <div class="container header-content">
+      <div class="logo">
+        <h1>📂 Моё портфолио</h1>
+      </div>
+      <nav class="nav">
+        <a href="#/projects" class="nav-link">Все проекты</a>
+        <a href="#/projects/new" class="btn btn-primary">+ Добавить проект</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Основной контейнер приложения -->
+  <main class="main">
+    <div class="container">
+      <div id="app">
+        <!-- Контент страницы будет динамически загружаться здесь -->
+        <div class="spinner-container">
+          <div class="spinner"></div>
+          <p>Загрузка приложения...</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Подвал -->
+  <footer class="footer">
+    <div class="container">
+      <p>Лабораторная работа №4 — SPA Портфолио</p>
+      <p>Создано с использованием Vanilla JS, Hash Router, JSON Server</p>
+    </div>
+  </footer>
+
+  <!-- Подключение модулей -->
+  <script type="module" src="app.js"></script>
+</body>
+</html>
