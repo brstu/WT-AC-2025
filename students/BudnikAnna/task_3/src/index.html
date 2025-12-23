@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ЛР — Вариант 27: Travel places (cache + retry + abort)</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="container">
+      <div class="header">
+        <div>
+          <h1>Список городов/мест для путешествий</h1>
+          <p class="muted">
+            Вариант 27 — локальный кэш (TTL) + retry/timeout/AbortController + поиск/фильтры + пагинация
+          </p>
+        </div>
+
+        <div class="header-actions">
+          <button id="refreshBtn" class="btn">
+            Обновить
+            <span id="refreshSpinner" class="spinner hidden" aria-hidden="true"></span>
+          </button>
+          <button id="clearCacheBtn" class="btn btn-secondary">Очистить кэш</button>
+        </div>
+      </div>
+
+      <section class="panel">
+        <div class="row">
+          <label class="field">
+            <span>Поиск</span>
+            <input id="searchInput" type="search" placeholder="например: Porto, Japan, beach, budget..." />
+          </label>
+
+          <label class="field">
+            <span>Регион</span>
+            <select id="regionSelect">
+              <option value="">Все</option>
+              <option value="Europe">Europe</option>
+              <option value="Asia">Asia</option>
+              <option value="Americas">Americas</option>
+              <option value="Africa">Africa</option>
+              <option value="Oceania">Oceania</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Тип</span>
+            <select id="typeSelect">
+              <option value="">Все</option>
+              <option value="City">City</option>
+              <option value="Nature">Nature</option>
+              <option value="Beach">Beach</option>
+              <option value="Culture">Culture</option>
+              <option value="Mountains">Mountains</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span>Бюджет</span>
+            <select id="budgetSelect">
+              <option value="">Любой</option>
+              <option value="Budget">Budget</option>
+              <option value="Mid">Mid</option>
+              <option value="High">High</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="row row-bottom">
+          <div class="toggles">
+            <label class="check">
+              <input id="ignoreCacheCheck" type="checkbox" />
+              <span>Игнорировать локальный кэш (на этот запрос)</span>
+            </label>
+
+            <label class="check">
+              <input id="simulateFailCheck" type="checkbox" />
+              <span>Dev: симулировать ошибку (показать retry)</span>
+            </label>
+          </div>
+
+          <div class="meta">
+            <div id="statusLine" class="status">Готово</div>
+            <div id="cacheLine" class="muted">Cache: —</div>
+          </div>
+        </div>
+      </section>
+    </header>
+
+    <main class="container">
+      <section id="messageBox" class="message hidden"></section>
+
+      <section id="list" class="grid" aria-live="polite"></section>
+
+      <section class="footer">
+        <div class="muted" id="resultInfo">—</div>
+
+        <nav class="pagination" aria-label="Пагинация">
+          <button id="prevBtn" class="btn btn-secondary">← Назад</button>
+          <div id="pages" class="pages"></div>
+          <button id="nextBtn" class="btn btn-secondary">Вперёд →</button>
+        </nav>
+      </section>
+    </main>
+
+    <template id="cardTpl">
+      <article class="card">
+        <div class="card-top">
+          <h3 class="card-title"></h3>
+          <span class="pill"></span>
+        </div>
+        <div class="card-sub muted"></div>
+        <p class="card-desc"></p>
+        <div class="tags"></div>
+      </article>
+    </template>
+
+    <template id="skeletonTpl">
+      <article class="card">
+        <div class="skeleton line w-70"></div>
+        <div class="skeleton line w-45"></div>
+        <div class="skeleton line w-95"></div>
+        <div class="skeleton line w-85"></div>
+        <div class="skeleton row">
+          <div class="skeleton chip"></div>
+          <div class="skeleton chip"></div>
+          <div class="skeleton chip"></div>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="./main.js"></script>
+  </body>
+</html>
