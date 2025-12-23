@@ -1,0 +1,52 @@
+<svg width="1366" height="768" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1366" height="768" fill="#f5f5f5"/>
+  
+  <!-- Header -->
+  <rect width="1366" height="80" fill="#333"/>
+  <text x="40" y="35" font-family="Arial" font-size="24" fill="white">Справочник Open-Source проектов</text>
+  <text x="40" y="65" font-family="Arial" font-size="14" fill="white">Главная</text>
+  <text x="140" y="65" font-family="Arial" font-size="14" fill="white">Добавить проект</text>
+  
+  <!-- Title -->
+  <text x="40" y="130" font-family="Arial" font-size="28" fill="#333">Список проектов</text>
+  
+  <!-- Project Cards -->
+  <g transform="translate(40, 160)">
+    <!-- Card 1 -->
+    <rect width="400" height="320" fill="white" stroke="#ddd"/>
+    <rect y="0" width="400" height="150" fill="#e0e0e0"/>
+    <text x="10" y="175" font-family="Arial" font-size="18" fill="#333" font-weight="bold">React</text>
+    <text x="10" y="200" font-family="Arial" font-size="12" fill="#666">A JavaScript library for building user interfaces</text>
+    <text x="10" y="225" font-family="Arial" font-size="11" fill="#999">Автор: facebook</text>
+    <text x="10" y="245" font-family="Arial" font-size="11" fill="#999">⭐ 200000</text>
+    <text x="10" y="280" font-family="Arial" font-size="12" fill="blue" text-decoration="underline">Подробнее</text>
+    <text x="100" y="280" font-family="Arial" font-size="12" fill="green" text-decoration="underline">Редактировать</text>
+    <text x="230" y="280" font-family="Arial" font-size="12" fill="red">Удалить</text>
+  </g>
+  
+  <g transform="translate(470, 160)">
+    <!-- Card 2 -->
+    <rect width="400" height="320" fill="white" stroke="#ddd"/>
+    <rect y="0" width="400" height="150" fill="#d0d0d0"/>
+    <text x="10" y="175" font-family="Arial" font-size="18" fill="#333" font-weight="bold">Vue</text>
+    <text x="10" y="200" font-family="Arial" font-size="12" fill="#666">The Progressive JavaScript Framework</text>
+    <text x="10" y="225" font-family="Arial" font-size="11" fill="#999">Автор: vuejs</text>
+    <text x="10" y="245" font-family="Arial" font-size="11" fill="#999">⭐ 180000</text>
+    <text x="10" y="280" font-family="Arial" font-size="12" fill="blue" text-decoration="underline">Подробнее</text>
+    <text x="100" y="280" font-family="Arial" font-size="12" fill="green" text-decoration="underline">Редактировать</text>
+    <text x="230" y="280" font-family="Arial" font-size="12" fill="red">Удалить</text>
+  </g>
+  
+  <g transform="translate(900, 160)">
+    <!-- Card 3 -->
+    <rect width="400" height="320" fill="white" stroke="#ddd"/>
+    <rect y="0" width="400" height="150" fill="#c0c0c0"/>
+    <text x="10" y="175" font-family="Arial" font-size="18" fill="#333" font-weight="bold">Angular</text>
+    <text x="10" y="200" font-family="Arial" font-size="12" fill="#666">Platform for building mobile and desktop web apps</text>
+    <text x="10" y="225" font-family="Arial" font-size="11" fill="#999">Автор: angular</text>
+    <text x="10" y="245" font-family="Arial" font-size="11" fill="#999">⭐ 85000</text>
+    <text x="10" y="280" font-family="Arial" font-size="12" fill="blue" text-decoration="underline">Подробнее</text>
+    <text x="100" y="280" font-family="Arial" font-size="12" fill="green" text-decoration="underline">Редактировать</text>
+    <text x="230" y="280" font-family="Arial" font-size="12" fill="red">Удалить</text>
+  </g>
+</svg>
