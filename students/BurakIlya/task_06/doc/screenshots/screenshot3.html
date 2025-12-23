@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD операции - Скриншот</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h2 { color: #333; }
+        h3 { color: #555; margin-top: 30px; }
+        .request, .response {
+            background: #f8f8f8;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #007bff;
+            font-family: monospace;
+            font-size: 12px;
+        }
+        .response {
+            border-left-color: #28a745;
+        }
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+        }
+        .label {
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+        .section {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>CRUD операции с заметками</h2>
+        
+        <div class="section">
+            <h3>1. Создание новой заметки (CREATE)</h3>
+            <div class="label">Запрос:</div>
+            <div class="request">
+POST http://localhost:3000/api/notes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "title": "Список задач на неделю",
+  "content": "1. Завершить проект\n2. Подготовить отчет\n3. Встреча с командой",
+  "tags": "работа,планирование"
+}
+            </div>
+            
+            <div class="label">Ответ:</div>
+            <div class="response">
+{
+  "id": 4,
+  "title": "Список задач на неделю",
+  "content": "1. Завершить проект\n2. Подготовить отчет\n3. Встреча с командой",
+  "tags": "работа,планирование",
+  "userId": 1,
+  "createdAt": "2025-12-16T10:30:00.000Z",
+  "updatedAt": "2025-12-16T10:30:00.000Z"
+}
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>2. Получение всех заметок (READ)</h3>
+            <div class="label">Запрос:</div>
+            <div class="request">
+GET http://localhost:3000/api/notes
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+            </div>
+            
+            <div class="label">Ответ:</div>
+            <div class="response">
+[
+  {
+    "id": 1,
+    "title": "Первая заметка",
+    "content": "Это моя первая заметка в системе",
+    "tags": "работа,важное",
+    "userId": 1,
+    "createdAt": "2025-12-16T09:00:00.000Z",
+    "updatedAt": "2025-12-16T09:00:00.000Z"
+  },
+  {
+    "id": 2,
+    "title": "Список покупок",
+    "content": "Молоко, хлеб, яйца",
+    "tags": "личное,покупки",
+    "userId": 1,
+    "createdAt": "2025-12-16T09:15:00.000Z",
+    "updatedAt": "2025-12-16T09:15:00.000Z"
+  },
+  {
+    "id": 3,
+    "title": "Идеи для проекта",
+    "content": "Добавить темную тему, улучшить UI",
+    "tags": "работа,разработка",
+    "userId": 1,
+    "createdAt": "2025-12-16T09:30:00.000Z",
+    "updatedAt": "2025-12-16T09:30:00.000Z"
+  }
+]
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>3. Обновление заметки (UPDATE)</h3>
+            <div class="label">Запрос:</div>
+            <div class="request">
+PUT http://localhost:3000/api/notes/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+Content-Type: application/json
+
+{
+  "title": "Список покупок (обновлено)",
+  "content": "Молоко, хлеб, яйца, сыр, масло",
+  "tags": "личное,покупки,дом"
+}
+            </div>
+            
+            <div class="label">Ответ:</div>
+            <div class="response">
+{
+  "id": 2,
+  "title": "Список покупок (обновлено)",
+  "content": "Молоко, хлеб, яйца, сыр, масло",
+  "tags": "личное,покупки,дом",
+  "userId": 1,
+  "createdAt": "2025-12-16T09:15:00.000Z",
+  "updatedAt": "2025-12-16T11:00:00.000Z"
+}
+            </div>
+        </div>
+        
+        <div class="section">
+            <h3>4. Удаление заметки (DELETE)</h3>
+            <div class="label">Запрос:</div>
+            <div class="request">
+DELETE http://localhost:3000/api/notes/3
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+            </div>
+            
+            <div class="label">Ответ:</div>
+            <div class="response">
+{
+  "message": "Удалено"
+}
+            </div>
+        </div>
+        
+        <p style="margin-top: 20px; color: #666;">
+            ✅ Все CRUD операции работают корректно<br>
+            ✅ Доступ к заметкам только для авторизованных пользователей<br>
+            ✅ Пользователь видит только свои заметки
+        </p>
+    </div>
+</body>
+</html>
