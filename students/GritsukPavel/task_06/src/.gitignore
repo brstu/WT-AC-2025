@@ -1,0 +1,5 @@
+diary.db
+*.sqlite
+*.db
+node_modules/
+.env
