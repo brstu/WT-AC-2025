@@ -56,6 +56,7 @@ Content-Type: application/json
 * 2 заметки
 
 ## Структура проекта
+
 task_06/
 ├── src/
 │   ├── config/
