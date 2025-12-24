@@ -1,0 +1,51 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  passwordHash String
+  createdAt    DateTime  @default(now())
+
+  podcasts     Podcast[]
+  episodes     Episode[]
+}
+
+model Podcast {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  episodes    Episode[]
+}
+
+model Episode {
+  id          String   @id @default(cuid())
+  title       String
+  summary     String?
+  audioUrl    String?
+  publishedAt DateTime?
+  isPrivate   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  podcastId   String
+  podcast     Podcast  @relation(fields: [podcastId], references: [id], onDelete: Cascade)
+
+  ownerId     String
+  owner       User     @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+
+  @@index([ownerId])
+  @@index([podcastId])
+}
