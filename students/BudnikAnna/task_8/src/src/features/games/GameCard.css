@@ -1,0 +1,161 @@
+.game-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0 0 0 / 10%);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 76%;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0 0 0 / 15%);
+}
+
+.game-image {
+  height: 200px;
+  overflow: hidden;
+}
+
+.game-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.game-card:hover .game-image img {
+  transform: scale(1.05);
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 200px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 60px;
+  color: white;
+}
+
+.game-info {
+  padding: 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.game-title {
+  margin: 0 0 12px;
+}
+
+.game-title a {
+  color: #2c3e50;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.game-title a:hover {
+  color: #3498db;
+}
+
+.game-description {
+  color: #666;
+  line-height: 1.5;
+  margin-bottom: 15px;
+  flex: 1;
+}
+
+.game-details {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 15px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.detail {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;  
+}
+
+.label {
+  font-size: 12px;
+  color: #666;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.complexity,
+.players-count,
+.time,
+.rating-stars {
+  font-size: 14px;
+  color: #f39c12; 
+}
+
+.game-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 12px 0;
+  border-top: 1px solid #eee;
+  border-bottom: 1px solid #eee;
+}
+
+.rating-stars {
+  color: #f39c12;
+  font-size: 18px;
+}
+
+.star {
+  margin-right: 2px;
+}
+
+.star.half {
+  opacity: 0.7;
+}
+
+.star.empty {
+  color: #ddd;
+}
+
+.rating-value {
+  font-weight: bold;
+  color: #f39c12;
+  font-size: 14px;
+}
+
+.game-category {
+  margin-bottom: 15px;
+}
+
+.category-tag {
+  background: #e8f4fd;
+  color: #3498db;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.game-actions {
+  margin-top: auto;
+  text-align: center;
+}
