@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f6fa;
+  color: #2f3640;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+nav {
+  background: #273c75;
+  padding: 15px;
+}
+
+nav a {
+  color: white;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+h1, h2 {
+  margin-top: 0;
+}
+
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 10%);
+}
+
+.card-actions {
+  margin-top: 10px;
+}
+
+button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #44bd32;
+  color: white;
+}
+
+.btn-danger {
+  background: #e84118;
+  color: white;
+  margin-left: 10px;
+}
+
+.btn-secondary {
+  background: #718093;
+  color: white;
+}
+
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+input, textarea {
+  width: 100%;
+  margin-bottom: 12px;
+  padding: 8px;
+}
