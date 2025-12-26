@@ -3,7 +3,7 @@ describe("DOM фильтр", () => {
     document.body.innerHTML = `
       <div>
         <input id="filter" />
-        <button id="filter-btn">go</button>
+        <button id="filterBtn">go</button>
         <div id="catalog"></div>
       </div>
     `;
@@ -20,7 +20,7 @@ describe("DOM фильтр", () => {
 
   test("фильтр по буквам сокращает список", () => {
     const input = document.getElementById("filter");
-    const button = document.getElementById("filter-btn");
+    const button = document.getElementById("filterBtn");
     input.value = "кот";
     button.click();
 
