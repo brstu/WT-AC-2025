@@ -1,0 +1,20 @@
+{
+  "name": "startup-catalog",
+  "version": "0.0.1",
+  "description": "Минимальный каталог стартапов для лабораторной работы",
+  "main": "public/script.js",
+  "scripts": {
+    "start": "http-server ./public -p 3000",
+    "test": "jest",
+    "lint": "echo lint skipped",
+    "build": "mkdir -p dist && cp -r public/* dist/"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "@testing-library/dom": "^9.3.4",
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
