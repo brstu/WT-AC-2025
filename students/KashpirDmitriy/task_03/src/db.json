@@ -1,0 +1,14 @@
+{
+  "plants": [
+    { "id": 1, "common_name": "Rose", "scientific_name": "Rosa spp.", "family": "Rosaceae", "cycle": "Perennial", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=1" } },
+    { "id": 2, "common_name": "Tulip", "scientific_name": "Tulipa spp.", "family": "Liliaceae", "cycle": "Annual", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=2" } },
+    { "id": 3, "common_name": "Sunflower", "scientific_name": "Helianthus annuus", "family": "Asteraceae", "cycle": "Annual", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=3" } },
+    { "id": 4, "common_name": "Oak", "scientific_name": "Quercus robur", "family": "Fagaceae", "cycle": "Perennial", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=4" } },
+    { "id": 5, "common_name": "Lily", "scientific_name": "Lilium spp.", "family": "Liliaceae", "cycle": "Perennial", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=5" } },
+    { "id": 6, "common_name": "Cactus", "scientific_name": "Cactaceae", "family": "Cactaceae", "cycle": "Perennial", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=6" } },
+    { "id": 7, "common_name": "Lavender", "scientific_name": "Lavandula angustifolia", "family": "Lamiaceae", "cycle": "Perennial", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=7" } },
+    { "id": 8, "common_name": "Orchid", "scientific_name": "Orchidaceae", "family": "Orchidaceae", "cycle": "Perennial", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=8" } },
+    { "id": 9, "common_name": "Bamboo", "scientific_name": "Bambusa vulgaris", "family": "Poaceae", "cycle": "Perennial", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=9" } },
+    { "id": 10, "common_name": "Fern", "scientific_name": "Polypodiopsida", "family": "Pteridophytes", "cycle": "Perennial", "default_image": { "thumbnail": "https://picsum.photos/300/300?random=10" } }
+  ]
+}
