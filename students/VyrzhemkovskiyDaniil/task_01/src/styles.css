@@ -483,13 +483,6 @@ a:focus {
     gap: var(--space-md);
 }
 
-.social a {
-    color: var(--text-light);
-    text-decoration: none;
-    padding: 0.5rem;
-    border-radius: var(--radius);
-}
-
 .back-top {
     color: var(--text-light);
     text-decoration: none;
