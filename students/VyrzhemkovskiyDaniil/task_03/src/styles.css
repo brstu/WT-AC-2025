@@ -370,7 +370,7 @@ footer {
 /* Уведомления */
 .notification {
     align-items: center;
-    animation: slideIn 0.3s ease;
+    animation: slide-in 0.3s ease;
     background: var(--main-color);
     border-radius: var(--radius-small);
     box-shadow: var(--shadow);
@@ -392,7 +392,7 @@ footer {
     background: #4CAF50;
 }
 
-@keyframes slideIn {
+@keyframes slide-in {
     from {
         opacity: 0;
         transform: translateX(100%);
@@ -405,7 +405,7 @@ footer {
 }
 
 /* Медиазапросы */
-@media (max-width: 768px) {
+@media (width <= 768px) {
     .container {
         padding: 15px;
     }
