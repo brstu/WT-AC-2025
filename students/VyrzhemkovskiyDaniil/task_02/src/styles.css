@@ -616,7 +616,26 @@ label {
 }
 
 input[type="text"],
-input[type="email"],
+input[type="email"] {
+    width: 100%;
+    padding: 18px;
+    border: 3px solid var(--form-border);
+    border-radius: 12px;
+    font-size: 1.1em;
+    background: var(--form-bg);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    font-family: 'Comic Sans MS', Arial, sans-serif;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgb(139 0 255 / 20%);
+    transform: translateY(-2px);
+}
+
 select,
 textarea {
     width: 100%;
@@ -630,8 +649,6 @@ textarea {
     font-family: 'Comic Sans MS', Arial, sans-serif;
 }
 
-input[type="text"]:focus,
-input[type="email"]:focus,
 select:focus,
 textarea:focus {
     outline: none;
@@ -938,6 +955,7 @@ footer {
         display: flex !important;
         position: static;
         flex-direction: row;
+        flex-wrap: nowrap;
         gap: 30px;
         background: none;
         width: auto;
@@ -982,8 +1000,8 @@ footer {
     
     .features {
         flex-direction: row;
-        justify-content: space-between;
         flex-wrap: wrap;
+        justify-content: space-between;
     }
     
     .feature {
@@ -997,6 +1015,7 @@ footer {
     
     .game-icons {
         flex-direction: row;
+        flex-wrap: nowrap;
         justify-content: center;
         gap: 30px;
     }
