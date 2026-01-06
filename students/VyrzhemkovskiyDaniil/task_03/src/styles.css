@@ -314,13 +314,6 @@ button:not(:disabled):hover {
     margin: 30px 0;
 }
 
-.pagination button {
-    background: white;
-    border: 2px solid var(--border-color);
-    color: var(--dark-text);
-    padding: 10px 20px;
-}
-
 .pagination button:not(:disabled):hover {
     background: var(--main-color);
     border-color: var(--main-color);
