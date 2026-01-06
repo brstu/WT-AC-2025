@@ -15,8 +15,8 @@
     --gray: #636e72;
     --border: #dfe6e9;
     
-    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+    --shadow: 0 4px 6px rgb(0 0 0 / 10%);
+    --shadow-lg: 0 10px 15px rgb(0 0 0 / 10%);
     --radius: 8px;
     --radius-lg: 16px;
     
@@ -73,7 +73,7 @@ body {
 }
 
 h1, h2, h3 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 600;
     line-height: 1.3;
 }
@@ -117,7 +117,7 @@ a:focus {
     color: white;
     border: none;
     border-radius: var(--radius);
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s;
@@ -161,7 +161,7 @@ a:focus {
 }
 
 .logo-text {
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 700;
     font-size: 1.5rem;
 }
@@ -250,7 +250,6 @@ a:focus {
 .hero-title {
     font-size: 3rem;
     background: linear-gradient(45deg, var(--primary), var(--accent));
-    -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
 }
@@ -481,7 +480,7 @@ a:focus {
 }
 
 .footer-logo {
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 600;
     font-size: 1.25rem;
 }
@@ -500,7 +499,11 @@ a:focus {
 
 .social a:hover,
 .social a:focus {
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 10%);
+}
+
+.nav-list a:hover {
+    color: var(--accent);
 }
 
 .back-top {
@@ -511,7 +514,7 @@ a:focus {
 /* ===== МЕДИА-ЗАПРОСЫ ===== */
 
 /* Планшет (до 1024px) */
-@media (max-width: 1024px) {
+@media (width <= 1024px) {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
     
@@ -532,7 +535,7 @@ a:focus {
 }
 
 /* Мобильные (до 600px) */
-@media (max-width: 600px) {
+@media (width <= 600px) {
     :root {
         --space-md: 1rem;
         --space-lg: 2rem;
@@ -594,7 +597,7 @@ a:focus {
 }
 
 /* Десктоп (1024px+) */
-@media (min-width: 1024px) {
+@media (width >= 1024px) {
     .bio-content {
         grid-template-columns: 1fr 1fr;
     }
@@ -632,14 +635,14 @@ a:focus {
 /* Высокий контраст */
 @media (prefers-contrast: high) {
     :root {
-        --primary: #0000ff;
-        --accent: #ff0000;
-        --dark: #000000;
-        --light: #ffffff;
+        --primary: #00f;
+        --accent: #f00;
+        --dark: #000;
+        --light: #fff;
     }
     
     .button {
-        border: 2px solid currentColor;
+        border: 2px solid currentcolor;
     }
 }
 
@@ -647,7 +650,7 @@ a:focus {
 @media (prefers-color-scheme: dark) {
     :root {
         --light: #1a1a1a;
-        --text: #ffffff;
+        --text: #fff;
         --border: #404040;
     }
     
