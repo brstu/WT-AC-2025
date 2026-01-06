@@ -1097,4 +1097,73 @@ textarea:focus {
     }
     
     .game-icons a {
-        min-width: 200
+        min-width: 200px;
+    }
+
+    .nav-list li a:hover {
+        background: rgb(255 255 255 / 20%);
+        border-color: white;
+        padding: 10px 20px;
+    }
+}
+
+@media (width >= 1024px) {
+    .art-card {
+        width: calc(33.333% - 40px);
+    }
+    
+    .art-card img {
+        height: 350px;
+    }
+    
+    .character-info {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .feature {
+        min-height: 280px;
+    }
+}
+
+@media (width >= 1440px) {
+    .art-card img {
+        height: 400px;
+    }
+}
+
+@media (width >= 768px) {
+    .nav-list {
+        display: flex !important;
+        position: static;
+        flex-flow: row nowrap;
+        gap: 30px;
+        background: none;
+        width: auto;
+        border-top: none;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
+
+@media (width >= 768px) {
+    .gallery-container {
+        flex-flow: row wrap;
+        justify-content: center;
+        gap: 40px;
+    }
+}
+
+@media (width >= 768px) {
+    .features {
+        flex-flow: row wrap;
+        justify-content: space-between;
+    }
+}
+
+@media (width >= 768px) {
+    .game-icons {
+        flex-flow: row nowrap;
+        justify-content: center;
+        gap: 30px;
+    }
+}
