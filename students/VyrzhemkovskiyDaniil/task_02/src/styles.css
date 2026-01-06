@@ -49,6 +49,9 @@ body {
         radial-gradient(circle at 90% 80%, rgb(253 203 110 / 10%) 0%, transparent 20%),
         radial-gradient(circle at 50% 50%, rgb(139 0 255 / 5%) 0%, transparent 30%);
     min-height: 100vh;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-color);
+    background-attachment: fixed;
 }
 
 a {
@@ -215,6 +218,7 @@ section {
     max-width: 1400px;
     margin-left: auto;
     margin-right: auto;
+    transform: translateZ(0);
 }
 
 .section-description {
@@ -417,10 +421,10 @@ section {
 
 .like-btn.liked {
     color: var(--error-color);
-    animation: heartBeat 0.5s;
+    animation: heart-beat 0.5s;
 }
 
-@keyframes heartBeat {
+@keyframes heart-beat {
     0% { transform: scale(1); }
     25% { transform: scale(1.4); }
     50% { transform: scale(1.2); }
@@ -754,10 +758,20 @@ textarea:not([disabled]):valid {
 #submission-result:not(:empty) {
     background: linear-gradient(135deg, rgb(0 184 148 / 10%) 0%, rgb(253 203 110 / 10%) 100%);
     border: 3px solid var(--undertale-green);
-    animation: slideIn 0.6s ease;
+    animation: slide-in 0.6s ease;
 }
 
-@keyframes slideIn {
+@keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(5deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes slide-in {
     from {
         opacity: 0;
         transform: translateY(-30px);
@@ -799,10 +813,10 @@ textarea:not([disabled]):valid {
     text-align: center;
     border: 5px solid var(--primary-color);
     box-shadow: 0 25px 70px rgb(0 0 0 / 60%);
-    animation: modalAppear 0.6s ease;
+    animation: modal-appear 0.6s ease;
 }
 
-@keyframes modalAppear {
+@keyframes modal-appear {
     from {
         opacity: 0;
         transform: scale(0.7) translateY(-100px);
@@ -888,16 +902,6 @@ footer {
     font-style: italic;
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-20px) rotate(5deg); }
-}
-
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
 .art-card:nth-child(1) { animation: float 8s ease-in-out infinite; }
 .art-card:nth-child(2) { animation: float 8s ease-in-out infinite 1s; }
 .art-card:nth-child(3) { animation: float 8s ease-in-out infinite 2s; }
@@ -910,11 +914,11 @@ footer {
     pointer-events: none;
     z-index: 10000;
     font-size: 30px;
-    animation: heartFloat 2s ease-out forwards;
+    animation: heart-float 2s ease-out forwards;
     filter: drop-shadow(0 0 10px rgb(255 255 255 / 70%));
 }
 
-@keyframes heartFloat {
+@keyframes heart-float {
     0% {
         transform: translateY(0) scale(1) rotate(0deg);
         opacity: 1;
@@ -925,10 +929,6 @@ footer {
     }
 }
 
-section {
-    transform: translateZ(0);
-}
-
 @media (width >= 768px) {
     .menu-toggle {
         display: none;
@@ -937,7 +937,7 @@ section {
     .nav-list {
         display: flex !important;
         position: static;
-        flex-flow: row;
+        flex-direction: row;
         gap: 30px;
         background: none;
         width: auto;
@@ -952,15 +952,10 @@ section {
         border-radius: 25px;
         border: 2px solid transparent;
     }
-    
-    .nav-list li a:hover {
-        background: rgb(255 255 255 / 20%);
-        border-color: white;
-        padding: 10px 20px;
-    }
 
     .gallery-container {
-        flex-flow: row wrap;
+        flex-direction: row;
+        flex-wrap: wrap;
         justify-content: center;
         gap: 40px;
     }
@@ -1009,6 +1004,12 @@ section {
     .game-icons a {
         min-width: 200px;
     }
+
+    .nav-list li a:hover {
+        background: rgb(255 255 255 / 20%);
+        border-color: white;
+        padding: 10px 20px;
+    }
 }
 
 @media (width >= 1024px) {
@@ -1038,12 +1039,6 @@ section {
 html {
     scrollbar-width: thin;
     scrollbar-color: var(--primary-color) var(--bg-color);
-}
-
-body {
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--bg-color);
-    background-attachment: fixed;
 }
 
 .scrollbar-custom {
