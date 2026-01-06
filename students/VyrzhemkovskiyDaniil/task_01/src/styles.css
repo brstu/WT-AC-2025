@@ -14,12 +14,10 @@
     --text-light: #f8f9fa;
     --gray: #636e72;
     --border: #dfe6e9;
-    
     --shadow: 0 4px 6px rgb(0 0 0 / 10%);
     --shadow-lg: 0 10px 15px rgb(0 0 0 / 10%);
     --radius: 8px;
     --radius-lg: 16px;
-    
     --space-xs: 0.5rem;
     --space-sm: 1rem;
     --space-md: 2rem;
@@ -315,7 +313,6 @@ a:focus {
     left: 0;
 }
 
-/* Альбомы */
 .albums-grid {
     display: grid;
     gap: var(--space-lg);
@@ -342,7 +339,6 @@ a:focus {
     margin: var(--space-md) 0;
 }
 
-/* Видео */
 .videos-grid {
     display: grid;
     gap: var(--space-lg);
@@ -373,7 +369,6 @@ a:focus {
     opacity: 0.8;
 }
 
-/* Фан-арт */
 .fanart-grid {
     display: grid;
     gap: var(--space-lg);
@@ -406,7 +401,6 @@ a:focus {
     font-size: 0.9rem;
 }
 
-/* Форма вступления */
 .join-content {
     display: grid;
     gap: var(--space-xl);
@@ -464,7 +458,6 @@ a:focus {
     border-color: var(--primary);
 }
 
-/* ===== ПОДВАЛ ===== */
 .footer {
     background: var(--dark);
     color: var(--text-light);
@@ -497,23 +490,20 @@ a:focus {
     border-radius: var(--radius);
 }
 
-.social a:hover,
-.social a:focus {
-    background: rgb(255 255 255 / 10%);
+.back-top {
+    color: var(--text-light);
+    text-decoration: none;
 }
 
 .nav-list a:hover {
     color: var(--accent);
 }
 
-.back-top {
-    color: var(--text-light);
-    text-decoration: none;
+.social a:hover,
+.social a:focus {
+    background: rgb(255 255 255 / 10%);
 }
 
-/* ===== МЕДИА-ЗАПРОСЫ ===== */
-
-/* Планшет (до 1024px) */
 @media (width <= 1024px) {
     h1 { font-size: 2rem; }
     h2 { font-size: 1.75rem; }
@@ -534,7 +524,6 @@ a:focus {
     }
 }
 
-/* Мобильные (до 600px) */
 @media (width <= 600px) {
     :root {
         --space-md: 1rem;
@@ -579,7 +568,6 @@ a:focus {
         text-align: center;
     }
     
-    /* Улучшение доступности для касаний */
     .button,
     .nav-list a {
         min-height: 44px;
@@ -592,11 +580,10 @@ a:focus {
     input,
     select,
     textarea {
-        font-size: 16px; /* Предотвращает масштабирование в iOS */
+        font-size: 16px;
     }
 }
 
-/* Десктоп (1024px+) */
 @media (width >= 1024px) {
     .bio-content {
         grid-template-columns: 1fr 1fr;
@@ -619,7 +606,6 @@ a:focus {
     }
 }
 
-/* Улучшение доступности */
 @media (prefers-reduced-motion: reduce) {
     * {
         animation-duration: 0.01ms !important;
@@ -632,7 +618,6 @@ a:focus {
     }
 }
 
-/* Высокий контраст */
 @media (prefers-contrast: high) {
     :root {
         --primary: #00f;
@@ -646,7 +631,6 @@ a:focus {
     }
 }
 
-/* Темная тема */
 @media (prefers-color-scheme: dark) {
     :root {
         --light: #1a1a1a;
