@@ -972,7 +972,6 @@ html {
 
 /* Медиа-запросы */
 @media (width >= 768px) {
-
     .menu-toggle {
         display: none;
     }
