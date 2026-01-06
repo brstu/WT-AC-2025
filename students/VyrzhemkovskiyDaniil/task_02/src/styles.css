@@ -946,6 +946,82 @@ footer {
     }
 }
 
+html {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-color);
+}
+
+.scrollbar-custom {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-color);
+}
+
+.game-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    border-radius: 15px;
+    color: white;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border: 2px solid white;
+    font-weight: bold;
+}
+
+.nav-list li a {
+    display: block;
+    padding: 15px var(--spacing);
+    color: white;
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
+    transition: all 0.3s ease;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.game-icons a:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgb(0 0 0 / 30%);
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
+}
+
+.nav-list li a:hover {
+    background: rgb(255 255 255 / 10%);
+    padding-left: 25px;
+    color: var(--undertale-yellow);
+}
+
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%238b00ff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 18px center;
+    background-size: 20px;
+    padding-right: 50px;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgb(139 0 255 / 20%);
+    transform: translateY(-2px);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 180px;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgb(139 0 255 / 20%);
+    transform: translateY(-2px);
+}
+
 @media (width >= 768px) {
     .menu-toggle {
         display: none;
@@ -1021,46 +1097,4 @@ footer {
     }
     
     .game-icons a {
-        min-width: 200px;
-    }
-
-    .nav-list li a:hover {
-        background: rgb(255 255 255 / 20%);
-        border-color: white;
-        padding: 10px 20px;
-    }
-}
-
-@media (width >= 1024px) {
-    .art-card {
-        width: calc(33.333% - 40px);
-    }
-    
-    .art-card img {
-        height: 350px;
-    }
-    
-    .character-info {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    
-    .feature {
-        min-height: 280px;
-    }
-}
-
-@media (width >= 1440px) {
-    .art-card img {
-        height: 400px;
-    }
-}
-
-html {
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--bg-color);
-}
-
-.scrollbar-custom {
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary-color) var(--bg-color);
-}
+        min-width: 200
