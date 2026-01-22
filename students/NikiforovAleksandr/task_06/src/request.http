@@ -1,0 +1,68 @@
+@tokenUser = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoidXNlcjEiLCJyb2xlIjoidXNlciIsImlhdCI6MTc2NjE1OTU2MH0.TiFyMwDw6cdmdinPU9rKXbJpUmjU8F4lPV8QLZJX-3A
+@tokenAdmin = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3NjYxNTk1Nzh9.081nG1Ho33k5CsWwpOGN9FhmR4q3msvR2cn5FwZHTak
+
+### Логин пользователя
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "user123"
+}
+
+### Логин админа
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "admin",
+  "password": "admin123"
+}
+
+### Получение всех задач
+GET http://localhost:3000/api/tasks
+Authorization: Bearer {{tokenUser}}
+
+### Создание задачи пользователем
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+Authorization: Bearer {{tokenUser}}
+
+{
+  "title": "Первая тема форума"
+}
+
+### Создание задачи админом
+POST http://localhost:3000/api/tasks
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{
+  "title": "Админская тема"
+}
+
+### Обновление задачи пользователем
+PUT http://localhost:3000/api/tasks/4
+Content-Type: application/json
+Authorization: Bearer {{tokenUser}}
+
+{
+  "title": "Обновлённая тема пользователем"
+}
+
+### Обновление задачи админом
+PUT http://localhost:3000/api/tasks/2
+Content-Type: application/json
+Authorization: Bearer {{tokenAdmin}}
+
+{
+  "title": "Обновлённая тема админом"
+}
+
+### Удаление задачи пользователем
+DELETE http://localhost:3000/api/tasks/1
+Authorization: Bearer {{tokenUser}}
+
+### Удаление задачи админом
+DELETE http://localhost:3000/api/tasks/2
+Authorization: Bearer {{tokenAdmin}}

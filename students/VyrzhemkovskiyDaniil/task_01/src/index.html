@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Официальный фан-клуб группы 'Neon Dreams'">
+    <title>Neon Dreams - Фан-клуб</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Пропуск навигации -->
+    <a href="#main" class="skip-link">К основному содержанию</a>
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <a href="/" class="logo">
+                    <span class="logo-text">Neon Dreams</span>
+                    <span class="logo-sub">Фан-клуб</span>
+                </a>
+                
+                <button class="menu-toggle" aria-label="Меню" aria-expanded="false">
+                    <span class="menu-icon"></span>
+                </button>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li><a href="#bio">Биография</a></li>
+                        <li><a href="#albums">Альбомы</a></li>
+                        <li><a href="#videos">Видео</a></li>
+                        <li><a href="#fanart">Фан-арт</a></li>
+                        <li><a href="#join">Вступить</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Основное содержание -->
+    <main id="main" class="main">
+        <!-- Герой -->
+        <section class="hero">
+            <div class="container">
+                <h1 class="hero-title">Neon Dreams</h1>
+                <p class="hero-subtitle">Электронная музыка нового поколения</p>
+                <a href="#join" class="button">Присоединиться</a>
+            </div>
+        </section>
+
+        <!-- Биография -->
+        <section id="bio" class="section bio">
+            <div class="container">
+                <h2 class="section-title">О группе</h2>
+                <div class="bio-content">
+                    <div class="bio-image">
+                        <div class="image-placeholder" role="img" aria-label="Группа Neon Dreams на сцене"></div>
+                    </div>
+                    <div class="bio-text">
+                        <p>Neon Dreams — российская электронная группа, основанная в 2018 году. Участники: Алекс (вокал), Марк (синтезаторы), Лиза (визуалы).</p>
+                        <p>Стиль: синти-поп, электроника, инди. Более 100 млн стримов, участники крупных фестивалей Европы.</p>
+                        <ul class="achievements">
+                            <li>Победители "Электронная музыка года 2022"</li>
+                            <li>3 номинации на международные премии</li>
+                            <li>Туры по 15 странам</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Альбомы -->
+        <section id="albums" class="section albums">
+            <div class="container">
+                <h2 class="section-title">Дискография</h2>
+                <div class="albums-grid">
+                    <article class="album-card">
+                        <h3 class="album-title">Neon Nights (2020)</h3>
+                        <div class="album-cover" role="img" aria-label="Обложка альбома Neon Nights"></div>
+                        <p class="album-desc">Дебютный альбом. Хиты: "Mid City", "Electric Love".</p>
+                        <button class="button small">Слушать</button>
+                    </article>
+                    
+                    <article class="album-card">
+                        <h3 class="album-title">Digital Waves (2022)</h3>
+                        <div class="album-cover" role="img" aria-label="Обложка альбома Digital Waves"></div>
+                        <p class="album-desc">Эксперименты с жанрами. Совместные работы.</p>
+                        <button class="button small">Слушать</button>
+                    </article>
+                    
+                    <article class="album-card">
+                        <h3 class="album-title">Future Echoes (2024)</h3>
+                        <div class="album-cover" role="img" aria-label="Обложка альбома Future Echoes"></div>
+                        <p class="album-desc">Новый альбом. Предзаказ открыт.</p>
+                        <button class="button small">Предзаказ</button>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Видео -->
+        <section id="videos" class="section videos">
+            <div class="container">
+                <h2 class="section-title">Клипы</h2>
+                <div class="videos-grid">
+                    <div class="video-card">
+                        <h3>Mid City</h3>
+                        <div class="video-placeholder" role="img" aria-label="Превью клипа Mid City">
+                            <span class="play-icon" aria-hidden="true">▶</span>
+                        </div>
+                        <p>Снято в Токио. 50M+ просмотров.</p>
+                    </div>
+                    
+                    <div class="video-card">
+                        <h3>Electric Love</h3>
+                        <div class="video-placeholder" role="img" aria-label="Превью клипа Electric Love">
+                            <span class="play-icon" aria-hidden="true">▶</span>
+                        </div>
+                        <p>Анимационный клип. Номинация на премию.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Фан-арт -->
+        <section id="fanart" class="section fanart">
+            <div class="container">
+                <h2 class="section-title">Фан-арт</h2>
+                <p class="section-subtitle">Работы наших фанатов</p>
+                
+                <div class="fanart-grid">
+                    <figure class="fanart-item">
+                        <div class="art-image" role="img" aria-label="Фан-арт: неоновые портреты"></div>
+                        <figcaption>
+                            <h3>Neon Portraits</h3>
+                            <p>Автор: @digital_artist</p>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="fanart-item">
+                        <div class="art-image" role="img" aria-label="Фан-арт: абстрактная композиция"></div>
+                        <figcaption>
+                            <h3>Abstract Dreams</h3>
+                            <p>Автор: @paint_master</p>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="fanart-item">
+                        <div class="art-image" role="img" aria-label="Фан-арт: цифровая иллюстрация"></div>
+                        <figcaption>
+                            <h3>Digital Trio</h3>
+                            <p>Автор: @illustrator_pro</p>
+                        </figcaption>
+                    </figure>
+                    
+                    <figure class="fanart-item">
+                        <div class="art-image" role="img" aria-label="Фан-арт: концертный коллаж"></div>
+                        <figcaption>
+                            <h3>Concert Memories</h3>
+                            <p>Автор: @photo_fan</p>
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- Вступление -->
+        <section id="join" class="section join">
+            <div class="container">
+                <h2 class="section-title">Вступить в клуб</h2>
+                
+                <div class="join-content">
+                    <div class="benefits">
+                        <h3>Преимущества:</h3>
+                        <ul>
+                            <li>Ранний доступ к билетам</li>
+                            <li>Эксклюзивный мерч</li>
+                            <li>Встречи с группой</li>
+                            <li>Неизданные демо</li>
+                            <li>Скидки 20%</li>
+                        </ul>
+                    </div>
+                    
+                    <form class="join-form">
+                        <div class="form-group">
+                            <label for="name">Имя *</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="plan">Тариф</label>
+                            <select id="plan">
+                                <option value="free">Бесплатный</option>
+                                <option value="premium">Премиум (1000₽/год)</option>
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="button">Вступить</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p class="footer-logo">Neon Dreams Fan Club</p>
+                    <p>© 2025. Для фанатов, фанатами.</p>
+                </div>
+                
+                <div class="social">
+                    <a href="#" aria-label="ВКонтакте">VK</a>
+                    <a href="#" aria-label="Telegram">TG</a>
+                    <a href="#" aria-label="YouTube">YT</a>
+                    <a href="#" aria-label="Instagram">IG</a>
+                </div>
+                
+                <a href="#main" class="back-top">Наверх ↑</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

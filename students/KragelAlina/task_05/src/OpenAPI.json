@@ -1,0 +1,615 @@
+{
+"openapi": "3.0.0",
+"info": {
+"title": "Arts & Galleries API",
+"version": "1.0.0",
+"description": "# API для управления артами и галереями с лайками\n\nЭтот REST API предоставляет полный набор эндпоинтов для управления:\n- **Артами** — отдельные произведения искусства с лайками\n- **Галереями** — выставки и коллекции артов с лайками\n\n## Возможности\n- Полный CRUD для артов и галерей\n- Лайки для артов и галерей\n- Поиск, фильтрация, сортировка и пагинация\n- Валидация данных\n- Централизованная обработка ошибок\n\n## Коды статусов\n- `200` — Успешный запрос\n- `201` — Ресурс создан\n- `204` — Успешное удаление\n- `400` — Некорректный запрос\n- `404` — Ресурс не найден\n- `422` — Ошибка валидации\n- `500` — Внутренняя ошибка сервера",
+"contact": {
+"name": "Крагель Алина Максимовна"
+},
+"license": {
+"name": "ISC",
+"url": "https://opensource.org/licenses/ISC"
+}
+},
+"servers": [
+{
+"url": "http://localhost:3000",
+"description": "Development server"
+}
+],
+"tags": [
+{
+"name": "Arts",
+"description": "Операции с артами"
+},
+{
+"name": "Galleries",
+"description": "Операции с галереями"
+}
+],
+"paths": {
+"/api/v1/teams": {
+"get": {
+"summary": "Получить список артов",
+"description": "Возвращает список артов с поддержкой поиска, фильтрации, сортировки и пагинации",
+"tags": ["Arts"],
+"parameters": [
+{
+"in": "query",
+"name": "q",
+"schema": { "type": "string" },
+"description": "Поиск по названию, стилю и описанию"
+},
+{
+"in": "query",
+"name": "artType",
+"schema": { "type": "string" },
+"description": "Фильтр по типу арта"
+},
+{
+"in": "query",
+"name": "origin",
+"schema": { "type": "string" },
+"description": "Фильтр по происхождению (стране)"
+},
+{
+"in": "query",
+"name": "isFeatured",
+"schema": { "type": "boolean" },
+"description": "Фильтр по избранным артам"
+},
+{
+"in": "query",
+"name": "limit",
+"schema": { "type": "integer", "minimum": 1, "maximum": 100, "default": 10 }
+},
+{
+"in": "query",
+"name": "offset",
+"schema": { "type": "integer", "minimum": 0, "default": 0 }
+},
+{
+"in": "query",
+"name": "sortBy",
+"schema": { "type": "string", "enum": ["name", "likes", "createdYear", "createdAt"], "default": "createdAt" }
+},
+{
+"in": "query",
+"name": "order",
+"schema": { "type": "string", "enum": ["asc", "desc"], "default": "desc" }
+}
+],
+"responses": {
+"200": {
+"description": "Пагинированный список артов",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/PaginatedArts" }
+}
+}
+},
+"422": {
+"description": "Ошибка валидации параметров",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Error" }
+}
+}
+}
+}
+},
+"post": {
+"summary": "Создать новый арт",
+"description": "Создаёт новый арт",
+"tags": ["Arts"],
+"requestBody": {
+"required": true,
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/CreateArt" }
+}
+}
+},
+"responses": {
+"201": {
+"description": "Арт успешно создан",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Art" }
+}
+}
+},
+"422": {
+"description": "Ошибка валидации",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Error" }
+}
+}
+}
+}
+}
+},
+"/api/v1/teams/{id}": {
+"get": {
+"summary": "Получить арт по ID",
+"tags": ["Arts"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" },
+"description": "ID арта"
+}
+],
+"responses": {
+"200": {
+"description": "Информация об арте",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Art" }
+}
+}
+},
+"404": {
+"description": "Арт не найден",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Error" }
+}
+}
+}
+}
+},
+"put": {
+"summary": "Полностью обновить арт",
+"tags": ["Arts"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" }
+}
+],
+"requestBody": {
+"required": true,
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/CreateArt" }
+}
+}
+},
+"responses": {
+"200": {
+"description": "Арт обновлён",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Art" }
+}
+}
+},
+"404": { "$ref": "#/paths/~1api~1v1~1teams~1{id}/get/responses/404" },
+"422": { "$ref": "#/paths/~1api~1v1~1teams/post/responses/422" }
+}
+},
+"patch": {
+"summary": "Частично обновить арт",
+"tags": ["Arts"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" }
+}
+],
+"requestBody": {
+"required": true,
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/UpdateArt" }
+}
+}
+},
+"responses": {
+"200": { "$ref": "#/paths/~1api~1v1~1teams~1{id}/put/responses/200" },
+"404": { "$ref": "#/paths/~1api~1v1~1teams~1{id}/get/responses/404" },
+"422": { "$ref": "#/paths/~1api~1v1~1teams/post/responses/422" }
+}
+},
+"delete": {
+"summary": "Удалить арт",
+"tags": ["Arts"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" }
+}
+],
+"responses": {
+"204": { "description": "Арт успешно удалён" },
+"404": { "$ref": "#/paths/~1api~1v1~1teams~1{id}/get/responses/404" }
+}
+}
+},
+"/api/v1/teams/{id}/like": {
+"post": {
+"summary": "Лайкнуть арт",
+"description": "Увеличивает количество лайков на 1",
+"tags": ["Arts"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" }
+}
+],
+"responses": {
+"200": {
+"description": "Лайк добавлен",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Art" }
+}
+}
+},
+"404": { "$ref": "#/paths/~1api~1v1~1teams~1{id}/get/responses/404" }
+}
+}
+},
+"/api/v1/tournaments": {
+"get": {
+"summary": "Получить список галерей",
+"description": "Возвращает список галерей с поддержкой поиска, фильтрации, сортировки и пагинации",
+"tags": ["Galleries"],
+"parameters": [
+{
+"in": "query",
+"name": "q",
+"schema": { "type": "string" },
+"description": "Поиск по названию и описанию"
+},
+{
+"in": "query",
+"name": "artType",
+"schema": { "type": "string" },
+"description": "Фильтр по типу искусства"
+},
+{
+"in": "query",
+"name": "category",
+"schema": { "type": "string", "enum": ["modern", "abstract", "digital", "classical"] },
+"description": "Фильтр по категории"
+},
+{
+"in": "query",
+"name": "limit",
+"schema": { "type": "integer", "minimum": 1, "maximum": 100, "default": 10 }
+},
+{
+"in": "query",
+"name": "offset",
+"schema": { "type": "integer", "minimum": 0, "default": 0 }
+},
+{
+"in": "query",
+"name": "sortBy",
+"schema": { "type": "string", "enum": ["name", "startDate", "endDate", "likes", "createdAt"], "default": "createdAt" }
+},
+{
+"in": "query",
+"name": "order",
+"schema": { "type": "string", "enum": ["asc", "desc"], "default": "desc" }
+}
+],
+"responses": {
+"200": {
+"description": "Пагинированный список галерей",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/PaginatedGalleries" }
+}
+}
+},
+"422": { "$ref": "#/paths/~1api~1v1~1teams/get/responses/422" }
+}
+},
+"post": {
+"summary": "Создать новую галерею",
+"tags": ["Galleries"],
+"requestBody": {
+"required": true,
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/CreateGallery" }
+}
+}
+},
+"responses": {
+"201": {
+"description": "Галерея успешно создана",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Gallery" }
+}
+}
+},
+"422": { "$ref": "#/paths/~1api~1v1~1teams/post/responses/422" }
+}
+}
+},
+"/api/v1/tournaments/{id}": {
+"get": {
+"summary": "Получить галерею по ID",
+"tags": ["Galleries"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" },
+"description": "ID галереи"
+}
+],
+"responses": {
+"200": {
+"description": "Информация о галерее",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Gallery" }
+}
+}
+},
+"404": {
+"description": "Галерея не найдена",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Error" }
+}
+}
+}
+}
+},
+"put": {
+"summary": "Полностью обновить галерею",
+"tags": ["Galleries"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" }
+}
+],
+"requestBody": {
+"required": true,
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/CreateGallery" }
+}
+}
+},
+"responses": {
+"200": { "$ref": "#/paths/~1api~1v1~1tournaments/get/responses/200" },
+"404": { "$ref": "#/paths/~1api~1v1~1tournaments~1{id}/get/responses/404" },
+"422": { "$ref": "#/paths/~1api~1v1~1tournaments/post/responses/422" }
+}
+},
+"patch": {
+"summary": "Частично обновить галерею",
+"tags": ["Galleries"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" }
+}
+],
+"requestBody": {
+"required": true,
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/UpdateGallery" }
+}
+}
+},
+"responses": {
+"200": { "$ref": "#/paths/~1api~1v1~1tournaments/get/responses/200" },
+"404": { "$ref": "#/paths/~1api~1v1~1tournaments~1{id}/get/responses/404" },
+"422": { "$ref": "#/paths/~1api~1v1~1tournaments/post/responses/422" }
+}
+},
+"delete": {
+"summary": "Удалить галерею",
+"tags": ["Galleries"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" }
+}
+],
+"responses": {
+"204": { "description": "Галерея успешно удалена" },
+"404": { "$ref": "#/paths/~1api~1v1~1tournaments~1{id}/get/responses/404" }
+}
+}
+},
+"/api/v1/tournaments/{id}/like": {
+"post": {
+"summary": "Лайкнуть галерею",
+"description": "Увеличивает количество лайков на 1",
+"tags": ["Galleries"],
+"parameters": [
+{
+"in": "path",
+"name": "id",
+"required": true,
+"schema": { "type": "string" }
+}
+],
+"responses": {
+"200": {
+"description": "Лайк добавлен",
+"content": {
+"application/json": {
+"schema": { "$ref": "#/components/schemas/Gallery" }
+}
+}
+},
+"404": { "$ref": "#/paths/~1api~1v1~1tournaments~1{id}/get/responses/404" }
+}
+}
+}
+},
+"components": {
+"schemas": {
+"Art": {
+"type": "object",
+"required": ["name", "style", "origin", "artType"],
+"properties": {
+"id": { "type": "string", "example": "a1705312800000" },
+"name": { "type": "string", "maxLength": 100, "example": "Starry Night Remix" },
+"style": { "type": "string", "maxLength": 10, "example": "VNCT" },
+"origin": { "type": "string", "example": "Netherlands" },
+"artType": { "type": "string", "example": "Painting" },
+"createdYear": { "type": "string", "format": "date", "example": "2024-05-20" },
+"imageUrl": { "type": "string", "format": "uri", "example": "https://example.com/image.png" },
+"likes": { "type": "integer", "minimum": 0, "example": 5420 },
+"isFeatured": { "type": "boolean", "example": true },
+"description": { "type": "string", "maxLength": 1000 },
+"createdAt": { "type": "string", "format": "date-time" },
+"updatedAt": { "type": "string", "format": "date-time" }
+}
+},
+"CreateArt": {
+"type": "object",
+"required": ["name", "style", "origin", "artType"],
+"properties": {
+"name": { "type": "string", "minLength": 1, "maxLength": 100 },
+"style": { "type": "string", "minLength": 2, "maxLength": 10, "pattern": "^[A-Za-z0-9]+$" },
+"origin": { "type": "string", "minLength": 2, "maxLength": 50 },
+"artType": { "type": "string", "minLength": 1, "maxLength": 50 },
+"createdYear": { "type": "string", "format": "date" },
+"imageUrl": { "type": "string", "format": "uri" },
+"likes": { "type": "integer", "minimum": 0, "default": 0 },
+"isFeatured": { "type": "boolean", "default": true },
+"description": { "type": "string", "maxLength": 1000 }
+}
+},
+"UpdateArt": {
+"type": "object",
+"properties": {
+"name": { "type": "string", "minLength": 1, "maxLength": 100 },
+"style": { "type": "string", "minLength": 2, "maxLength": 10, "pattern": "^[A-Za-z0-9]+$" },
+"origin": { "type": "string", "minLength": 2, "maxLength": 50 },
+"artType": { "type": "string", "minLength": 1, "maxLength": 50 },
+"createdYear": { "type": "string", "format": "date" },
+"imageUrl": { "type": "string", "format": "uri" },
+"likes": { "type": "integer", "minimum": 0 },
+"isFeatured": { "type": "boolean" },
+"description": { "type": "string", "maxLength": 1000 }
+}
+},
+"PaginatedArts": {
+"type": "object",
+"properties": {
+"data": { "type": "array", "items": { "$ref": "#/components/schemas/Art" } },
+"pagination": {
+"type": "object",
+"properties": {
+"total": { "type": "integer" },
+"limit": { "type": "integer" },
+"offset": { "type": "integer" },
+"hasMore": { "type": "boolean" }
+}
+}
+}
+},
+"Gallery": {
+"type": "object",
+"required": ["name", "artType", "startDate", "endDate"],
+"properties": {
+"id": { "type": "string", "example": "g1705312800000" },
+"name": { "type": "string", "maxLength": 100, "example": "Modern Art Exhibition 2025" },
+"artType": { "type": "string", "example": "Painting" },
+"startDate": { "type": "string", "format": "date-time", "example": "2025-02-01T10:00:00Z" },
+"endDate": { "type": "string", "format": "date-time", "example": "2025-02-15T22:00:00Z" },
+"likes": { "type": "integer", "minimum": 0, "example": 850000 },
+"maxArts": { "type": "integer", "minimum": 2, "maximum": 128, "example": 24 },
+"category": { "type": "string", "enum": ["modern", "abstract", "digital", "classical"], "example": "modern" },
+"description": { "type": "string", "maxLength": 1000 },
+"createdAt": { "type": "string", "format": "date-time" },
+"updatedAt": { "type": "string", "format": "date-time" }
+}
+},
+"CreateGallery": {
+"type": "object",
+"required": ["name", "artType", "startDate", "endDate"],
+"properties": {
+"name": { "type": "string", "minLength": 1, "maxLength": 100 },
+"artType": { "type": "string", "minLength": 1, "maxLength": 50 },
+"startDate": { "type": "string", "format": "date-time" },
+"endDate": { "type": "string", "format": "date-time" },
+"likes": { "type": "integer", "minimum": 0, "default": 0 },
+"maxArts": { "type": "integer", "minimum": 2, "maximum": 128, "default": 16 },
+"category": { "type": "string", "enum": ["modern", "abstract", "digital", "classical"], "default": "modern" },
+"description": { "type": "string", "maxLength": 1000 }
+}
+},
+"UpdateGallery": {
+"type": "object",
+"properties": {
+"name": { "type": "string", "minLength": 1, "maxLength": 100 },
+"artType": { "type": "string", "minLength": 1, "maxLength": 50 },
+"startDate": { "type": "string", "format": "date-time" },
+"endDate": { "type": "string", "format": "date-time" },
+"likes": { "type": "integer", "minimum": 0 },
+"maxArts": { "type": "integer", "minimum": 2, "maximum": 128 },
+"category": { "type": "string", "enum": ["modern", "abstract", "digital", "classical"] },
+"description": { "type": "string", "maxLength": 1000 }
+}
+},
+"PaginatedGalleries": {
+"type": "object",
+"properties": {
+"data": { "type": "array", "items": { "$ref": "#/components/schemas/Gallery" } },
+"pagination": {
+"type": "object",
+"properties": {
+"total": { "type": "integer" },
+"limit": { "type": "integer" },
+"offset": { "type": "integer" },
+"hasMore": { "type": "boolean" }
+}
+}
+}
+},
+"Error": {
+"type": "object",
+"properties": {
+"status": { "type": "string", "enum": ["fail", "error"] },
+"message": { "type": "string" },
+"errors": {
+"type": "array",
+"items": {
+"type": "object",
+"properties": {
+"field": { "type": "string" },
+"message": { "type": "string" }
+}
+}
+}
+}
+}
+}
+}
+}

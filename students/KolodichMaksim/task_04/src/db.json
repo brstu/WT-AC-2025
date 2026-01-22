@@ -1,0 +1,20 @@
+{
+  "vacancies": [
+    {
+      "id": 1,
+      "title": "Frontend Developer",
+      "company": "xAI",
+      "location": "Remote",
+      "salary": "100000-150000",
+      "description": "Ищем разработчика на Vanilla JS для крутых проектов."
+    },
+    {
+      "id": 2,
+      "title": "Backend Engineer",
+      "company": "Google",
+      "location": "Moscow",
+      "salary": "200000",
+      "description": "Работа с Node.js и базами данных."
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Каталог гаджетов</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Магазин гаджетов</h1>
+        <div class="search">
+            <input type="text" id="search" placeholder="Поиск...">
+        </div>
+    </div>
+    
+    <div class="container">
+        <div class="sidebar">
+            <h3>Категории</h3>
+            <div onclick="filterCategory('all')">Все</div>
+            <div onclick="filterCategory('phone')">Телефоны</div>
+            <div onclick="filterCategory('laptop')">Ноутбуки</div>
+            <div onclick="filterCategory('tablet')">Планшеты</div>
+        </div>
+        
+        <div class="products" id="products">
+            <div class="product" data-category="phone">
+                <img src="https://picsum.photos/200/200?random=1" width="200" height="200" alt="Смартфон Galaxy S21">
+                <div class="title">Смартфон Galaxy S21</div>
+                <div class="price">45000 руб</div>
+                <button onclick="addToCart(1)">Купить</button>
+            </div>
+            
+            <div class="product" data-category="laptop">
+                <img src="https://picsum.photos/200/200?random=2" width="200" height="200" alt="Ноутбук HP Pavilion">
+                <div class="title">Ноутбук HP Pavilion</div>
+                <div class="price">65000 руб</div>
+                <button onclick="addToCart(2)">Купить</button>
+            </div>
+            
+            <div class="product" data-category="tablet">
+                <img src="https://picsum.photos/200/200?random=3" width="200" height="200" alt="Планшет iPad Air">
+                <div class="title">Планшет iPad Air</div>
+                <div class="price">55000 руб</div>
+                <button onclick="addToCart(3)">Купить</button>
+            </div>
+            
+            <div class="product" data-category="phone">
+                <img src="https://picsum.photos/200/200?random=4" width="200" height="200" alt="iPhone 13 Pro">
+                <div class="title">iPhone 13 Pro</div>
+                <div class="price">85000 руб</div>
+                <button onclick="addToCart(4)">Купить</button>
+            </div>
+            
+            <div class="product" data-category="laptop">
+                <img src="https://picsum.photos/200/200?random=5" width="200" height="200" alt="MacBook Pro">
+                <div class="title">MacBook Pro</div>
+                <div class="price">150000 руб</div>
+                <button onclick="addToCart(5)">Купить</button>
+            </div>
+            
+            <div class="product" data-category="tablet">
+                <img src="https://picsum.photos/200/200?random=6" width="200" height="200" alt="Samsung Galaxy Tab">
+                <div class="title">Samsung Galaxy Tab</div>
+                <div class="price">35000 руб</div>
+                <button onclick="addToCart(6)">Купить</button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="cart" id="cart">
+        <h3>Корзина (<span id="cart-count">0</span>)</h3>
+        <div id="cart-items"></div>
+        <div class="total">Итого: <span id="total">0</span> руб</div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>

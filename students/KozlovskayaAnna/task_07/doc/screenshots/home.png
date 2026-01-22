@@ -1,0 +1,39 @@
+<svg width="1200" height="800" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="800" fill="#f5f5f5"/>
+  
+  <!-- Header -->
+  <rect width="1200" height="80" fill="#333"/>
+  <text x="50" y="50" font-family="Arial" font-size="24" fill="white">Блог-платформа</text>
+  <text x="1050" y="50" font-family="Arial" font-size="16" fill="white">Главная</text>
+  
+  <!-- Title -->
+  <text x="50" y="130" font-family="Arial" font-size="28" fill="#333">Все посты</text>
+  
+  <!-- Post 1 -->
+  <rect x="50" y="160" width="1100" height="120" fill="white" stroke="#ddd"/>
+  <circle cx="100" cy="210" r="30" fill="#007bff"/>
+  <text x="150" y="200" font-family="Arial" font-size="18" fill="#333">Пост о веб-разработке</text>
+  <text x="150" y="225" font-family="Arial" font-size="14" fill="#666">В этом посте рассказывается о современных подходах...</text>
+  <rect x="150" y="240" width="80" height="30" fill="#007bff"/>
+  <text x="165" y="260" font-family="Arial" font-size="12" fill="white">Читать</text>
+  
+  <!-- Post 2 -->
+  <rect x="50" y="300" width="1100" height="120" fill="white" stroke="#ddd"/>
+  <circle cx="100" cy="350" r="30" fill="#28a745"/>
+  <text x="150" y="340" font-family="Arial" font-size="18" fill="#333">React и его возможности</text>
+  <text x="150" y="365" font-family="Arial" font-size="14" fill="#666">Статья посвящена библиотеке React и созданию компонентов...</text>
+  <rect x="150" y="380" width="80" height="30" fill="#007bff"/>
+  <text x="165" y="400" font-family="Arial" font-size="12" fill="white">Читать</text>
+  
+  <!-- Post 3 -->
+  <rect x="50" y="440" width="1100" height="120" fill="white" stroke="#ddd"/>
+  <circle cx="100" cy="490" r="30" fill="#dc3545"/>
+  <text x="150" y="480" font-family="Arial" font-size="18" fill="#333">Работа с API в JavaScript</text>
+  <text x="150" y="505" font-family="Arial" font-size="14" fill="#666">Как правильно работать с внешними API и обрабатывать данные...</text>
+  <rect x="150" y="520" width="80" height="30" fill="#007bff"/>
+  <text x="165" y="540" font-family="Arial" font-size="12" fill="white">Читать</text>
+  
+  <!-- Footer -->
+  <rect y="720" width="1200" height="80" fill="#333"/>
+  <text x="500" y="765" font-family="Arial" font-size="14" fill="white">© 2025 Блог-платформа</text>
+</svg>

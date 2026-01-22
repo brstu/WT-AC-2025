@@ -1,0 +1,37 @@
+{
+  "name": "blog-platform",
+  "version": "1.0.0",
+  "description": "Простая блог-платформа",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node src/server.js",
+    "build": "echo Building... && copy public\\* dist\\",
+    "test": "jest",
+    "test:e2e": "cypress run",
+    "lint": "eslint src/**/*.js",
+    "lint:fix": "eslint src/**/*.js --fix",
+    "lighthouse": "lighthouse http://localhost:3000 --view"
+  },
+  "keywords": [
+    "blog",
+    "platform"
+  ],
+  "author": "Козловская Анна",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "jest": "^29.5.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/dom": "^9.3.1",
+    "eslint": "^8.40.0",
+    "prettier": "^2.8.8",
+    "cypress": "^13.1.0",
+    "lighthouse": "^10.0.0",
+    "husky": "^8.0.3"
+  }
+}

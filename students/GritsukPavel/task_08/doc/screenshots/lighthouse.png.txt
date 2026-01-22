@@ -1,0 +1,5 @@
+Lighthouse Audit Results
+Performance: 74
+Accessibility: 82
+Best Practices: 78
+SEO: 81

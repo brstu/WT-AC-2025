@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Каталог стартапов</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Каталог стартапов</h1>
+    <p>Коллекция инновационных проектов на разных стадиях развития.</p>
+    <div class="filters">
+      <label for="filter">Фильтр по названию:</label>
+      <input id="filter" type="text" placeholder="Введите кусок названия" />
+      <button id="filter-btn">Искать</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="catalog" class="catalog"></section>
+  </main>
+
+  <footer>
+    <small>Демонстрационный каталог стартапов. Данные для примера.</small>
+  </footer>
+
+  <script src="../lib/catalog.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

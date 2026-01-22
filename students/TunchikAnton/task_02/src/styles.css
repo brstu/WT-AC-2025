@@ -1,0 +1,226 @@
+:root {
+  --bg: #f5f7fa;
+  --bg-muted: #eef1f5;
+  --text: #111;
+  --card: rgba(255 255 255 / 92%);
+  --accent: #007aff;
+  --border: #dcdfe4;
+  --shadow: 0 14px 40px rgba(0 0 0 / 12%);
+}
+
+[data-theme="dark"] {
+  --bg: #0e1117;
+  --bg-muted: #161b22;
+  --text: #eaeaea;
+  --card: rgba(30 30 30 / 95%);
+  --accent: #4da3ff;
+  --border: #2a2f3a;
+  --shadow: 0 18px 48px rgba(0 0 0 / 60%);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 1rem;
+}
+
+.header {
+  background: var(--card);
+  backdrop-filter: blur(14px);
+  position: sticky;
+  top: 0;
+  box-shadow: var(--shadow);
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+}
+
+.nav-list a {
+  text-decoration: none;
+  color: var(--text);
+}
+
+/* Sections */
+.section {
+  padding: 4rem 0;
+}
+
+.section-muted {
+  background: var(--bg-muted);
+}
+
+.section-title {
+  font-size: 2.2rem;
+}
+
+.section-subtitle {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.tabs button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+}
+
+.tabs button[aria-selected="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--card);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+  transition: transform .3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Tooltip */
+.tooltip-trigger {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-size: .8rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.tooltip-trigger::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 130%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: .4rem .6rem;
+  border-radius: 8px;
+  white-space: nowrap;
+  font-size: .75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+.tooltip-trigger:hover::after,
+.tooltip-trigger:focus::after {
+  opacity: 1;
+}
+
+/* Actions */
+.card-actions {
+  display: flex;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+.card-actions button {
+  padding: .4rem .8rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: none;
+  cursor: pointer;
+}
+
+/* FORM */
+.feedback-form {
+  max-width: 460px;
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+  margin-bottom: 1rem;
+}
+
+.field label {
+  font-weight: 500;
+}
+
+input, textarea {
+  padding: .65rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: .95rem;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+small {
+  color: #d93025;
+  font-size: .75rem;
+}
+
+.feedback-form button {
+  width: 100%;
+  padding: .7rem;
+  border-radius: 12px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.feedback-form button:disabled {
+  opacity: .5;
+}

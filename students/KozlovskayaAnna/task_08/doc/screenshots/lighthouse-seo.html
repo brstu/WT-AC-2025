@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lighthouse SEO Report</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .report {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .score {
+            display: flex;
+            align-items: center;
+            margin: 15px 0;
+        }
+        .score-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+            color: white;
+            margin-right: 20px;
+        }
+        .score-55 {
+            background: #ff9500;
+        }
+        .audit {
+            margin: 15px 0;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 4px;
+        }
+        .audit-title {
+            font-weight: bold;
+            color: #856404;
+        }
+        .audit-desc {
+            color: #856404;
+            font-size: 0.9em;
+        }
+        .pass {
+            background: #f0f9ff;
+            border-left-color: #28a745;
+        }
+        .pass .audit-title,
+        .pass .audit-desc {
+            color: #22863a;
+        }
+        .fail {
+            background: #ffe6e6;
+            border-left-color: #dc3545;
+        }
+        .fail .audit-title,
+        .fail .audit-desc {
+            color: #721c24;
+        }
+    </style>
+</head>
+<body>
+    <div class="report">
+        <h1>Lighthouse SEO Report</h1>
+        <p><strong>URL:</strong> http://localhost:3000</p>
+        <p><strong>Date:</strong> 2025-12-18</p>
+        
+        <div class="score">
+            <div class="score-circle score-55">55</div>
+            <div>
+                <h2 style="margin: 0;">SEO Score: 55/100</h2>
+                <p style="margin: 5px 0; color: #ff9500;">Needs improvement</p>
+            </div>
+        </div>
+        
+        <h3>SEO Audits</h3>
+        
+        <div class="audit pass">
+            <div class="audit-title">✓ Meta tags present</div>
+            <div class="audit-desc">Page has meta description and title tags</div>
+        </div>
+        
+        <div class="audit pass">
+            <div class="audit-title">✓ Mobile-friendly</div>
+            <div class="audit-desc">Page is mobile-friendly and responsive</div>
+        </div>
+        
+        <div class="audit fail">
+            <div class="audit-title">✗ robots.txt not found</div>
+            <div class="audit-desc">robots.txt file is not present at root</div>
+        </div>
+        
+        <div class="audit">
+            <div class="audit-title">⚠ Structured data</div>
+            <div class="audit-desc">Missing JSON-LD or microdata markup</div>
+        </div>
+        
+        <div class="audit pass">
+            <div class="audit-title">✓ HTTP status 200</div>
+            <div class="audit-desc">Page returns correct HTTP status code</div>
+        </div>
+        
+        <div class="audit">
+            <div class="audit-title">⚠ Open Graph tags</div>
+            <div class="audit-desc">Open Graph meta tags are missing</div>
+        </div>
+        
+        <div class="audit">
+            <div class="audit-title">⚠ Canonical tag</div>
+            <div class="audit-desc">Canonical tag is not specified</div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,228 @@
+{
+  "albums": [
+    {
+      "id": "2",
+      "title": "Abbey Road",
+      "artist": "The Beatles",
+      "year": 1969,
+      "genre": "Rock",
+      "description": "Один из последних студийных альбомов The Beatles."
+    },
+    {
+      "id": "4",
+      "title": "Thriller",
+      "artist": "Michael Jackson",
+      "year": 1982,
+      "genre": "Pop",
+      "description": "Самый продаваемый альбом всех времён."
+    },
+    {
+      "id": "5",
+      "title": "Back in Black",
+      "artist": "AC/DC",
+      "year": 1980,
+      "genre": "Hard rock",
+      "description": "Мощный и легендарный альбом, символ рока 80-х."
+    },
+    {
+      "id": "6",
+      "title": "Nevermind",
+      "artist": "Nirvana",
+      "year": 1991,
+      "genre": "Grunge",
+      "description": "Альбом, изменивший звучание 90-х."
+    },
+    {
+      "id": "7",
+      "title": "Hotel California",
+      "artist": "Eagles",
+      "year": 1976,
+      "genre": "Soft rock",
+      "description": "Один из культовых альбомов американского рока."
+    },
+    {
+      "id": "8",
+      "title": "Led Zeppelin IV",
+      "artist": "Led Zeppelin",
+      "year": 1971,
+      "genre": "Hard rock",
+      "description": "Содержит легендарный трек Stairway to Heaven."
+    },
+    {
+      "id": "9",
+      "title": "Born to Run",
+      "artist": "Bruce Springsteen",
+      "year": 1975,
+      "genre": "Rock",
+      "description": "Знаковый альбом американского романтика дорог."
+    },
+    {
+      "id": "10",
+      "title": "21",
+      "artist": "Adele",
+      "year": 2011,
+      "genre": "Soul",
+      "description": "Мощный вокал и душевные баллады."
+    },
+    {
+      "id": "11",
+      "title": "Random Access Memories",
+      "artist": "Daft Punk",
+      "year": 2013,
+      "genre": "Electronic",
+      "description": "Возвращение к живому звуку и диско."
+    },
+    {
+      "id": "12",
+      "title": "1989",
+      "artist": "Taylor Swift",
+      "year": 2014,
+      "genre": "Pop",
+      "description": "Смена стиля Тейлор на синт-поп и успех по всему миру."
+    },
+    {
+      "id": "13",
+      "title": "DAMN.",
+      "artist": "Kendrick Lamar",
+      "year": 2017,
+      "genre": "Hip-hop",
+      "description": "Лирически сильный и социально значимый альбом."
+    },
+    {
+      "id": "14",
+      "title": "OK Computer",
+      "artist": "Radiohead",
+      "year": 1997,
+      "genre": "Alternative",
+      "description": "Прорыв в экспериментальном роке конца 90-х."
+    },
+    {
+      "id": "15",
+      "title": "Appetite for Destruction",
+      "artist": "Guns N' Roses",
+      "year": 1987,
+      "genre": "Hard rock",
+      "description": "Дебют, сделавший группу суперзвёздами."
+    },
+    {
+      "id": "16",
+      "title": "Revolver",
+      "artist": "The Beatles",
+      "year": 1966,
+      "genre": "Psychedelic rock",
+      "description": "Экспериментальный этап The Beatles."
+    },
+    {
+      "id": "17",
+      "title": "A Night at the Opera",
+      "artist": "Queen",
+      "year": 1975,
+      "genre": "Rock",
+      "description": "Содержит Bohemian Rhapsody — шедевр группы."
+    },
+    {
+      "id": "18",
+      "title": "The Wall",
+      "artist": "Pink Floyd",
+      "year": 1979,
+      "genre": "Progressive rock",
+      "description": "Концептуальный альбом о самоизоляции и обществе."
+    },
+    {
+      "id": "19",
+      "title": "Sgt. Pepper's Lonely Hearts Club Band",
+      "artist": "The Beatles",
+      "year": 1967,
+      "genre": "Psychedelic rock",
+      "description": "Один из самых влиятельных альбомов XX века."
+    },
+    {
+      "id": "20",
+      "title": "Goodbye Yellow Brick Road",
+      "artist": "Elton John",
+      "year": 1973,
+      "genre": "Pop rock",
+      "description": "Один из лучших альбомов Элтона Джона."
+    },
+    {
+      "id": "21",
+      "title": "Toxicity",
+      "artist": "System of a Down",
+      "year": 2001,
+      "genre": "Metal",
+      "description": "Сочетание агрессии и социального послания."
+    },
+    {
+      "id": "22",
+      "title": "Parachutes",
+      "artist": "Coldplay",
+      "year": 2000,
+      "genre": "Alternative rock",
+      "description": "Меланхоличный и атмосферный дебют Coldplay."
+    },
+    {
+      "id": "23",
+      "title": "American Idiot",
+      "artist": "Green Day",
+      "year": 2004,
+      "genre": "Punk rock",
+      "description": "Панк-рок опера о современном обществе."
+    },
+    {
+      "id": "24",
+      "title": "Ten",
+      "artist": "Pearl Jam",
+      "year": 1991,
+      "genre": "Grunge",
+      "description": "Вдохновляющий дебют с мощным вокалом."
+    },
+    {
+      "id": "25",
+      "title": "Californication",
+      "artist": "Red Hot Chili Peppers",
+      "year": 1999,
+      "genre": "Funk rock",
+      "description": "Вернувшийся Джон Фрушанте и новое звучание."
+    },
+    {
+      "id": "26",
+      "title": "Hybrid Theory",
+      "artist": "Linkin Park",
+      "year": 2000,
+      "genre": "Nu metal",
+      "description": "Дебют, определивший стиль поколения."
+    },
+    {
+      "id": "27",
+      "title": "Black Album",
+      "artist": "Metallica",
+      "year": 1991,
+      "genre": "Metal",
+      "description": "Один из самых успешных метал-альбомов в истории."
+    },
+    {
+      "id": "28",
+      "title": "Nevermind the Bollocks",
+      "artist": "Sex Pistols",
+      "year": 1977,
+      "genre": "Punk",
+      "description": "Символ протеста и анархии."
+    },
+    {
+      "id": "29",
+      "title": "Discovery",
+      "artist": "Daft Punk",
+      "year": 2001,
+      "genre": "Electronic",
+      "description": "Французская электроника на пике вдохновения."
+    },
+    {
+      "id": "23d7",
+      "title": "вывфывф",
+      "artist": "вффв",
+      "year": 123,
+      "genre": "вфыв",
+      "description": "ывф"
+    }
+  ]
+}

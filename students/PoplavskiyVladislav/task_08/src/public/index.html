@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Event Management System">
+    <title>Event Management System</title>
+    <link rel="stylesheet" href="/src/styles.css">
+    <link rel="icon" href="favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎉 Event Management System</h1>
+            <p class="subtitle">Test, deploy, and manage your events efficiently</p>
+        </header>
+
+        <main>
+            <section class="dashboard">
+                <div class="stats">
+                    <div class="stat-card">
+                        <h3>Total Events</h3>
+                        <p class="stat-number" id="total-events">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Total Attendees</h3>
+                        <p class="stat-number" id="total-attendees">0</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>Upcoming</h3>
+                        <p class="stat-number" id="upcoming-events">0</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="content">
+                <div class="form-section">
+                    <h2>Create New Event</h2>
+                    <form id="event-form">
+                        <div class="form-group">
+                            <label for="title">Event Title *</label>
+                            <input type="text" id="title" name="title" required 
+                                   placeholder="Enter event title">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="date">Date *</label>
+                                <input type="date" id="date" name="date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="time">Time *</label>
+                                <input type="time" id="time" name="time" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="location">Location *</label>
+                            <input type="text" id="location" name="location" required 
+                                   placeholder="Enter event location">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <textarea id="description" name="description" 
+                                      placeholder="Describe your event"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="attendees">Expected Attendees</label>
+                            <input type="number" id="attendees" name="attendees" 
+                                   min="0" value="0">
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Create Event</button>
+                    </form>
+                </div>
+
+                <div class="events-section">
+                    <div id="events-container">
+                        <!-- Events will be loaded here by JavaScript -->
+                        <p class="loading">Loading events...</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="features">
+                <h2>✨ Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>✅ Unit Testing</h3>
+                        <p>Jest for component and service testing</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔧 Integration Testing</h3>
+                        <p>API testing with Supertest</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🌐 E2E Testing</h3>
+                        <p>Playwright for end-to-end testing</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🐳 Docker</h3>
+                        <p>Containerized deployment</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🚀 CI/CD</h3>
+                        <p>GitHub Actions pipeline</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📊 Lighthouse</h3>
+                        <p>Performance and quality monitoring</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Event Management System &copy; 2024 | Lab 08: Quality and Deployment</p>
+            <p class="tech-stack">Node.js | Express | Docker | GitHub Actions | Lighthouse</p>
+        </footer>
+    </div>
+
+    <script src="/src/components/EventList.js"></script>
+    <script src="/src/components/EventForm.js"></script>
+    <script>
+        // Initialize components
+        const eventList = new EventList('events-container');
+        const eventForm = new EventForm('event-form');
+        
+        // Make available globally for testing
+        window.eventList = eventList;
+        window.eventForm = eventForm;
+        
+        // Update stats
+        async function updateStats() {
+            try {
+                const response = await fetch('/api/events');
+                const events = await response.json();
+                
+                document.getElementById('total-events').textContent = events.length;
+                document.getElementById('total-attendees').textContent = 
+                    events.reduce((sum, event) => sum + (event.attendees || 0), 0);
+                
+                const upcoming = events.filter(event => 
+                    new Date(event.date) >= new Date()
+                ).length;
+                document.getElementById('upcoming-events').textContent = upcoming;
+            } catch (error) {
+                console.error('Error updating stats:', error);
+            }
+        }
+        
+        // Update stats every 30 seconds
+        updateStats();
+        setInterval(updateStats, 30000);
+    </script>
+</body>
+</html>

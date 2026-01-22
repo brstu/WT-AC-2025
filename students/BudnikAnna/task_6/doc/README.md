@@ -143,3 +143,4 @@ curl -X POST [http://localhost:3000/api/episodes](http://localhost:3000/api/epis
 ### Публичные эпизоды без токена (опционально)
 
 curl [http://localhost:3000/api/public/episodes](http://localhost:3000/api/public/episodes)
+* seed с демо-данными Formula 1

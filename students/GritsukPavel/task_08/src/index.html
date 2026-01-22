@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Портфолио проектов</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <h1 style="color: blue; font-size: 32px;">Мои Проекты</h1>
+        
+        <div id="filter">
+            <button onclick="filterProjects('all')">Все</button>
+            <button onclick="filterProjects('web')">Веб</button>
+            <button onclick="filterProjects('mobile')">Мобильные</button>
+        </div>
+
+        <div id="projects"></div>
+
+        <div id="form">
+            <h2>Добавить проект</h2>
+            <input type="text" id="title" placeholder="Название">
+            <input type="text" id="category" placeholder="Категория">
+            <input type="text" id="image" placeholder="URL изображения">
+            <button onclick="addProject()">Добавить</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

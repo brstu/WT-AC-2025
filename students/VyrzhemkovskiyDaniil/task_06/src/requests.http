@@ -1,0 +1,91 @@
+### Health check
+GET http://localhost:3000/api/health
+
+### Главная страница
+GET http://localhost:3000/
+
+### Регистрация нового пользователя
+POST http://localhost:3000/api/auth/signup
+Content-Type: application/json
+
+{
+  "username": "Алексей Иванов",
+  "email": "alexey@example.com",
+  "password": "password123"
+}
+
+### Вход пользователя 1
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "ivan@example.com",
+  "password": "user123"
+}
+
+### Вход пользователя 2
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "maria@example.com",
+  "password": "test123"
+}
+
+### Сохраняем токен пользователя 1
+@tokenUser1 = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoi0JjQstCw0L0g0J_QtdGC0YDQvtCyIiwiZW1haWwiOiJpdmFuQGV4YW1wbGUuY29tIiwiaWF0IjoxNzY3MzY4MTMxLCJleHAiOjE3NjczNzE3MzF9.T2wvjTkuMwZ6wNqZTiwt3MwVBzluoqPqsBqkHhrSCcw
+
+### Сохраняем токен пользователя 2
+@tokenUser2 = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoi0JzQsNGA0LjRjyDQodC40LTQvtGA0L7QstCwIiwiZW1haWwiOiJtYXJpYUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NzM2ODE1NiwiZXhwIjoxNzY3MzcxNzU2fQ.WpnEUr6PVGjlpsJK8nB6cmrWACwlUyK_1sqEUlD-zcA
+
+### Получение профиля текущего пользователя
+GET http://localhost:3000/api/users/me
+Authorization: Bearer {{tokenUser1}}
+
+### Получение всех тренировок пользователя
+GET http://localhost:3000/api/workouts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoi0JzQsNGA0LjRjyDQodC40LTQvtGA0L7QstCwIiwiZW1haWwiOiJtYXJpYUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NzM2ODE1NiwiZXhwIjoxNzY3MzcxNzU2fQ.WpnEUr6PVGjlpsJK8nB6cmrWACwlUyK_1sqEUlD-zcA
+
+### Создание новой тренировки
+POST http://localhost:3000/api/workouts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoi0JzQsNGA0LjRjyDQodC40LTQvtGA0L7QstCwIiwiZW1haWwiOiJtYXJpYUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NzM2ODE1NiwiZXhwIjoxNzY3MzcxNzU2fQ.WpnEUr6PVGjlpsJK8nB6cmrWACwlUyK_1sqEUlD-zcA
+
+{
+  "date": "2024-01-15 08:00:00",
+  "exerciseType": "Бег",
+  "durationMinutes": 45,
+  "caloriesBurned": 450,
+  "notes": "Интервальный бег в парке"
+}
+
+### Получение конкретной тренировки
+GET http://localhost:3000/api/workouts/8
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoi0JzQsNGA0LjRjyDQodC40LTQvtGA0L7QstCwIiwiZW1haWwiOiJtYXJpYUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NzM2ODE1NiwiZXhwIjoxNzY3MzcxNzU2fQ.WpnEUr6PVGjlpsJK8nB6cmrWACwlUyK_1sqEUlD-zcA
+
+### Обновление тренировки
+PUT http://localhost:3000/api/workouts/1
+Content-Type: application/json
+Authorization: Bearer {{tokenUser1}}
+
+{
+  "durationMinutes": 50,
+  "caloriesBurned": 500,
+  "notes": "Обновленная заметка: было очень интенсивно!"
+}
+
+### Статистика: сводка
+GET http://localhost:3000/api/workouts/stats/summary
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoi0JzQsNGA0LjRjyDQodC40LTQvtGA0L7QstCwIiwiZW1haWwiOiJtYXJpYUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NzM2ODE1NiwiZXhwIjoxNzY3MzcxNzU2fQ.WpnEUr6PVGjlpsJK8nB6cmrWACwlUyK_1sqEUlD-zcA
+
+### Статистика: по типам упражнений
+GET http://localhost:3000/api/workouts/stats/by-type
+Authorization: Bearer {{tokenUser1}}
+
+### Удаление тренировки
+DELETE http://localhost:3000/api/workouts/1
+Authorization: Bearer {{tokenUser1}}
+
+### Попытка получить чужую тренироку (должна вернуть ошибку 403)
+GET http://localhost:3000/api/workouts/6
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsInVzZXJuYW1lIjoi0JzQsNGA0LjRjyDQodC40LTQvtGA0L7QstCwIiwiZW1haWwiOiJtYXJpYUBleGFtcGxlLmNvbSIsImlhdCI6MTc2NzM2ODE1NiwiZXhwIjoxNzY3MzcxNzU2fQ.WpnEUr6PVGjlpsJK8nB6cmrWACwlUyK_1sqEUlD-zcA

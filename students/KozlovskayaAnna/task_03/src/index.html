@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="ru">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ЛР03 — Асинхронность и HTTP‑кэш</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>🎵 Русская музыка • Топ-треки 2020–2025</h1>
+      <p class="subtitle">120+ хитов русской сцены: поиск, кэширование, отмена запросов и ретраи</p>
+    </header>
+
+    <div class="controls">
+      <input id="search" placeholder="Поиск по названию трека или альбому..." aria-label="Поиск" />
+      <button id="refresh">Обновить</button>
+    </div>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+    <div id="banner" class="banner" aria-hidden="true"></div>
+
+    <div id="list" class="list"></div>
+
+    <div class="pagination" id="pagination"></div>
+  </main>
+
+  <script src="scripts/main.js" defer></script>
+</body>
+
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лабораторная работа 02: Undertale Fan Art Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="header">
+        <a href="#" class="logo">UNDERTALE FANS</a>
+        <nav class="nav" id="main-nav">
+            <button class="menu-toggle" id="menu-toggle" aria-expanded="false" aria-controls="nav-list">
+                Меню
+            </button>
+            <ul class="nav-list" id="nav-list" hidden>
+                <li><a href="#about">О проекте</a></li>
+                <li><a href="#gallery">Фанарты</a></li>
+                <li><a href="#characters">Персонажи</a></li>
+                <li><a href="#contact-form">Обратная связь</a></li>
+            </ul>
+        </nav>
+         <button class="theme-toggle" id="theme-toggle" aria-label="Переключить тему">
+            <span class="theme-icon">🌙</span>
+        </button>
+    </header>
+
+    <main>
+        <section class="about-section" id="about">
+            <div class="about-content">
+                <h1>Добро пожаловать в мир Undertale!</h1>
+                <div class="about-text">
+                    <p>Этот сайт создан фанатами для фанатов культовой игры Undertale. Здесь собрана коллекция лучших фанартов, созданных талантливыми художниками со всего мира.</p>
+                    
+                    <div class="features">
+                        <div class="feature">
+                            <h2>🎮 Оригинальные персонажи</h2>
+                            <p>Фрис, Санс, Папайрус и другие любимые герои</p>
+                        </div>
+                        <div class="feature">
+                            <h2>🎨 Фанарты от сообщества</h2>
+                            <p>Работы талантливых художников-фанатов</p>
+                        </div>
+                        <div class="feature">
+                            <h2>❤️ Поддержка авторов</h2>
+                            <p>Лайки и комментарии для ваших любимых работ</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="gallery-section" id="gallery">
+            <h2>Галерея Фанартов</h2>
+            <p class="section-description">Откройте для себя удивительные работы по вселенной Undertale. Нажмите на изображение для просмотра в полном размере.</p>
+            
+            <div class="gallery-container" id="art-gallery-container">
+                
+                <article class="art-card" data-id="art-1" tabindex="0">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&h=600" 
+                             alt="Фрис в Подземелье" 
+                             class="art-image" 
+                             data-action="open-modal"
+                             tabindex="0">
+                        
+                        <div class="art-tooltip" role="tooltip">
+                            Персонаж: Фрис (Frisk), Автор: UndertaleFanArt
+                        </div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Путешествие Фрис</h3>
+                        <button class="like-btn" data-action="like" aria-label="Нравится">🤍</button>
+                    </div>
+                </article>
+
+                <article class="art-card" data-id="art-2" tabindex="0">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&h=600" 
+                             alt="Санс и Папайрус" 
+                             class="art-image" 
+                             data-action="open-modal"
+                             tabindex="0">
+                        
+                        <div class="art-tooltip" role="tooltip">
+                            Персонажи: Санс и Папайрус, Стиль: Chibi Art
+                        </div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Братья Скелеты</h3>
+                        <button class="like-btn" data-action="like" aria-label="Нравится">🤍</button>
+                    </div>
+                </article>
+
+                <article class="art-card" data-id="art-3" tabindex="0">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1618331833071-1c0c6ee3d19e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&h=600" 
+                             alt="Андайн и Альфис" 
+                             class="art-image" 
+                             data-action="open-modal"
+                             tabindex="0">
+                        
+                        <div class="art-tooltip" role="tooltip">
+                            Персонажи: Андайн и Альфис, Автор: UT_Fan_Artist
+                        </div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Лаборатория</h3>
+                        <button class="like-btn" data-action="like" aria-label="Нравится">🤍</button>
+                    </div>
+                </article>
+
+                <article class="art-card" data-id="art-4" tabindex="0">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1563089145-599997674d42?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&h=600" 
+                             alt="Ториэль - козлиная мама" 
+                             class="art-image" 
+                             data-action="open-modal"
+                             tabindex="0">
+                        
+                        <div class="art-tooltip" role="tooltip">
+                            Персонаж: Ториэль, Техника: Цифровая живопись
+                        </div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Дом Ториэль</h3>
+                        <button class="like-btn" data-action="like" aria-label="Нравится">🤍</button>
+                    </div>
+                </article>
+
+                <article class="art-card" data-id="art-5" tabindex="0">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1543857778-c4a1a569e388?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&h=600" 
+                             alt="Андайн в битве" 
+                             class="art-image" 
+                             data-action="open-modal"
+                             tabindex="0">
+                        
+                        <div class="art-tooltip" role="tooltip">
+                            Персонаж: Андайн, Сцена: Финал битвы
+                        </div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Решимость Андайн</h3>
+                        <button class="like-btn" data-action="like" aria-label="Нравится">🤍</button>
+                    </div>
+                </article>
+
+                <article class="art-card" data-id="art-6" tabindex="0">
+                    <div class="image-wrapper">
+                        <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80&h=600" 
+                             alt="Меттатон в шоу" 
+                             class="art-image" 
+                             data-action="open-modal"
+                             tabindex="0">
+                        
+                        <div class="art-tooltip" role="tooltip">
+                            Персонаж: Меттатон, Стиль: Глэм-арт
+                        </div>
+                    </div>
+                    
+                    <div class="card-details">
+                        <h3>Шоу Меттатона</h3>
+                        <button class="like-btn" data-action="like" aria-label="Нравится">🤍</button>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="characters-section" id="characters">
+            <h2>Персонажи Undertale</h2>
+            <div class="characters-content">
+                <div class="character-info">
+                    <div class="character-item">
+                        <div class="character-icon">👧</div>
+                        <h3>Фрис (Frisk)</h3>
+                        <p>Главный герой игры, упавший в Подземелье. Решает судьбу всех монстров.</p>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-icon">💀</div>
+                        <h3>Санс (Sans)</h3>
+                        <p>Ленивый, но добрый скелет-стражник. Любит шутки и кетчуп.</p>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-icon">🦴</div>
+                        <h3>Папайрус (Papyrus)</h3>
+                        <p>Энергичный скелет, мечтающий вступить в Королевскую Гвардию. Готовит ужасную пасту.</p>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-icon">🐐</div>
+                        <h3>Ториэль (Toriel)</h3>
+                        <p>Заботливая козлиная мама, опекающая Фрис. Бывшая королева Подземелья.</p>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-icon">👑</div>
+                        <h3>Андайн (Undyne)</h3>
+                        <p>Капитан Королевской Гвардии. Неустрашимая воительница с сильным чувством справедливости.</p>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-icon">🔬</div>
+                        <h3>Альфис (Alphys)</h3>
+                        <p>Гениальный, но неуверенный в себе ученый. Обожает аниме и технологии.</p>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-icon">🤖</div>
+                        <h3>Меттатон (Mettaton)</h3>
+                        <p>Звезда шоу-бизнеса Подземелья. Робот-знаменитость с драматичной натурой.</p>
+                    </div>
+                    <div class="character-item">
+                        <div class="character-icon">👑</div>
+                        <h3>Азриэль (Asriel)</h3>
+                        <p>Принц Подземелья. Изначально доброе существо с трагической судьбой.</p>
+                    </div>
+                </div>
+                
+                <div class="game-links">
+                    <h3>Официальные ресурсы</h3>
+                    <div class="game-icons">
+                        <a href="https://undertale.com" target="_blank" aria-label="Официальный сайт Undertale">
+                            <span class="game-icon">🎮</span>
+                            <span class="game-text">Официальный сайт</span>
+                        </a>
+                        <a href="https://store.steampowered.com/app/391540/Undertale/" target="_blank" aria-label="Undertale в Steam">
+                            <span class="game-icon">⚡</span>
+                            <span class="game-text">Купить в Steam</span>
+                        </a>
+                        <a href="https://www.deltarune.com" target="_blank" aria-label="Deltarune">
+                            <span class="game-icon">🌟</span>
+                            <span class="game-text">Deltarune</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact-section" id="contact-form">
+            <h2>Форма Обратной Связи</h2>
+            <p class="section-description">Хотите предложить фанарт для галереи или задать вопрос? Напишите нам!</p>
+            
+            <form class="contact-form" id="main-contact-form" novalidate>
+                <div class="form-group">
+                    <label for="name">Имя (обязательно):</label>
+                    <input type="text" id="name" name="name" required data-min-length="1" placeholder="Введите ваше имя">
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail (для ответа):</label>
+                    <input type="email" id="email" name="email" required placeholder="example@email.com">
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Тема сообщения:</label>
+                    <select id="subject" name="subject">
+                        <option value="">Выберите тему</option>
+                        <option value="fanart">Предложить фанарт</option>
+                        <option value="question">Задать вопрос</option>
+                        <option value="collaboration">Сотрудничество</option>
+                        <option value="other">Другое</option>
+                    </select>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Сообщение (минимум 20 символов):</label>
+                    <textarea id="message" name="message" required data-min-length="20" placeholder="Расскажите о вашем предложении или задайте вопрос..."></textarea>
+                    <span class="error-message" aria-live="polite"></span>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter">Хочу получать новости о новых фанартах</label>
+                </div>
+
+                <button type="submit" id="submit-btn" disabled>Отправить сообщение</button>
+            </form>
+            <p id="submission-result" aria-live="polite"></p>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">UNDERTALE FAN ART GALLERY</div>
+            <p class="footer-copyright">&copy; 2025 Undertale Fan Art Gallery. Все фанарты принадлежат их авторам. Undertale © Toby Fox.</p>
+            <p class="footer-note">Этот сайт создан фанатами для фанатов. Мы не претендуем на права оригинальных персонажей.</p>
+        </div>
+    </footer>
+
+    <div class="modal" id="art-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+        <div class="modal-content">
+            <h3 id="modal-title">Детальный просмотр фанарта</h3>
+            <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" 
+                 alt="Детальный просмотр фанарта Undertale" 
+                 id="modal-image">
+            <p id="modal-description">Фанарт по вселенной Undertale</p>
+            <button id="modal-close-btn" aria-label="Закрыть окно">✖</button>
+        </div>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

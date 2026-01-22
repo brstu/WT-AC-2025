@@ -1,0 +1,94 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "title": "Лендинг для кофейни Bean & Brew",
+      "category": "Web",
+      "description": "Современный одностраничный сайт с анимациями, интерактивной картой филиалов и формой бронирования столика.",
+      "link": "https://beanbrew.example.com",
+      "image": "https://unblast.com/wp-content/uploads/2020/09/Portfolio-Web-Design-Template-5.jpg",
+      "tags": [
+        "landing",
+        "ui/ux",
+        "animation",
+        "map"
+      ],
+      "createdAt": "2025-11-15T10:00:00.000Z"
+    },
+    {
+      "id": "3",
+      "title": "Дашборд аналитики SalesPro",
+      "category": "DataViz",
+      "description": "Тёмная панель управления продажами с графиками в реальном времени, фильтрами и экспортом отчётов.",
+      "link": "https://salespro-dashboard.example.com",
+      "image": "https://cdn.dribbble.com/userupload/43387713/file/original-6af3358e1ae38eab78e7853ab5e95798.png",
+      "tags": [
+        "dashboard",
+        "charts",
+        "dark theme",
+        "react"
+      ],
+      "createdAt": "2025-09-05T09:15:00.000Z"
+    },
+    {
+      "id": "4",
+      "title": "Фирменный стиль для стартапа EcoBox",
+      "category": "Branding",
+      "description": "Полный брендбук: логотип, цветовая палитра, типографика, визитки и гайдлайны для упаковки экологичных продуктов.",
+      "link": "https://ecobox-brand.example.com",
+      "image": "https://res.cloudinary.com/vistaprint/images/v1760718544/ideas-and-advice-prod/blogadmin/image-10-8/image-10-8.png",
+      "tags": [
+        "logo",
+        "identity",
+        "branding",
+        "eco"
+      ],
+      "createdAt": "2025-08-12T11:45:00.000Z"
+    },
+    {
+      "id": "5",
+      "title": "Интернет-магазин модной одежды TrendyWear",
+      "category": "E-commerce",
+      "description": "Полноценный магазин с каталогом, корзиной, фильтрами по размеру/цвету и интеграцией оплаты.",
+      "link": "https://trendywear.example.shop",
+      "image": "https://pixel77.com/wp-content/uploads/2024/06/ecommerce-website-designs-1-1024x768.webp",
+      "tags": [
+        "shop",
+        "e-commerce",
+        "responsive",
+        "payment"
+      ],
+      "createdAt": "2025-07-28T16:20:00.000Z"
+    },
+    {
+      "id": "6",
+      "title": "Лендинг для онлайн-курсов LearnHub",
+      "category": "Web",
+      "description": "Конверсионный лендинг с видео-превью курсов, отзывами и формой записи на пробный урок.",
+      "link": "https://learnhub.example.com",
+      "image": "https://unbounce.com/photos/40-LP-examples-of-2023-horizontal.jpg",
+      "tags": [
+        "education",
+        "landing",
+        "conversion",
+        "video"
+      ],
+      "createdAt": "2025-06-10T13:00:00.000Z"
+    },
+    {
+      "id": "7",
+      "title": "Админ-панель для SaaS сервиса TaskFlow",
+      "category": "Web",
+      "description": "Многостраничное приложение для управления задачами команд с ролями, уведомлениями и интеграцией календаря.",
+      "link": "https://taskflow-admin.example.com",
+      "image": "https://cdn.dribbble.com/userupload/24839161/file/original-013ea46b5fd8fd3600eb8f22dda00204.png",
+      "tags": [
+        "saas",
+        "admin",
+        "teamwork",
+        "vue"
+      ],
+      "createdAt": "2025-05-18T08:40:00.000Z"
+    }
+  ]
+}

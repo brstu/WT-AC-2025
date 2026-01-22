@@ -1,0 +1,34 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql" // или "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  albums    Album[]
+  createdAt DateTime @default(now())
+}
+
+model Album {
+  id        Int      @id @default(autoincrement())
+  title     String
+  ownerId   Int
+  owner     User     @relation(fields: [ownerId], references: [id])
+  photos    Photo[]
+  createdAt DateTime @default(now())
+}
+
+model Photo {
+  id        Int      @id @default(autoincrement())
+  url       String
+  description String? @default("")
+  albumId   Int
+  album     Album    @relation(fields: [albumId], references: [id])
+  createdAt DateTime @default(now())
+}
