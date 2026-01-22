@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Справочник растений</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Справочник растений</h1>
+    
+    <div class="controls">
+      <input type="text" id="search" placeholder="Поиск по названию или семейству..." autofocus />
+      <button id="refresh">Обновить ↻</button>
+    </div>
+
+    <div id="status"></div>
+
+    <div id="plants" class="grid"></div>
+
+    <div class="pagination">
+      <button id="prev" disabled>← Назад</button>
+      <span id="page-info">Страница 1</span>
+      <button id="next">Вперёд →</button>
+    </div>
+
+    <div class="skeleton" id="skeleton">
+      <div class="card skeleton-card"></div>
+      <div class="card skeleton-card"></div>
+      <div class="card skeleton-card"></div>
+      <div class="card skeleton-card"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
