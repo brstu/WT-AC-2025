@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Мини-курс: Тайм-менеджмент и финансовая грамотность</title>
+  <meta name="description" content="Обучающий мини-курс по тайм-менеджменту и финансовой грамотности" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <!-- Skip link для доступности -->
+  <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <h1 class="site-title">Мини-курс</h1>
+
+      <nav class="site-nav" aria-label="Навигация по курсу">
+        <ul class="nav-list">
+          <li><a href="#about">О курсе</a></li>
+          <li><a href="#lessons">Уроки</a></li>
+          <li><a href="#tips">Практика</a></li>
+          <li><a href="#signup">Запись</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site-main">
+    <!-- О курсе -->
+    <section id="about" class="section">
+      <div class="container">
+        <h2>О курсе</h2>
+        <p>
+          Данный обучающий мини-курс посвящён основам тайм-менеджмента и
+          финансовой грамотности. Материал разбит на короткие микро-уроки,
+          позволяющие изучать тему постепенно и без перегрузки.
+        </p>
+      </div>
+    </section>
+
+    <!-- Уроки -->
+    <section id="lessons" class="section">
+      <div class="container">
+        <h2>Микро-уроки</h2>
+
+        <div class="lessons-grid">
+          <article class="lesson-card">
+            <h3>Урок 1. Цели и приоритеты</h3>
+            <p>
+              Постановка целей по SMART и определение приоритетов с помощью
+              матрицы Эйзенхауэра.
+            </p>
+          </article>
+
+          <article class="lesson-card">
+            <h3>Урок 2. Планирование времени</h3>
+            <p>
+              Использование ежедневников, календарей и техники Pomodoro
+              для повышения продуктивности.
+            </p>
+          </article>
+
+          <article class="lesson-card">
+            <h3>Урок 3. Личный бюджет</h3>
+            <p>
+              Учёт доходов и расходов, правило 50/30/20 и финансовая подушка
+              безопасности.
+            </p>
+          </article>
+
+          <article class="lesson-card">
+            <h3>Урок 4. Финансовые привычки</h3>
+            <p>
+              Формирование полезных привычек: регулярные накопления,
+              отказ от импульсивных покупок.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Практика -->
+    <section id="tips" class="section">
+      <div class="container">
+        <h2>Практические рекомендации</h2>
+
+        <article>
+          <h3>Чек-лист на каждый день</h3>
+          <ul>
+            <li>Запланировать 3 ключевые задачи</li>
+            <li>Проверить расходы за день</li>
+            <li>Выделить время на отдых</li>
+            <li>Избегать многозадачности</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Форма -->
+    <section id="signup" class="section">
+      <div class="container">
+        <h2>Запись на курс</h2>
+
+        <form class="signup-form">
+          <div class="form-field">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" required />
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required />
+          </div>
+
+          <div class="form-field">
+            <label for="topic">Интересующая тема</label>
+            <select id="topic" name="topic">
+              <option value="time">Тайм-менеджмент</option>
+              <option value="finance">Финансовая грамотность</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn">Записаться</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>Учебный проект. HTML / CSS. 2025</p>
+    </div>
+  </footer>
+</body>
+</html>
