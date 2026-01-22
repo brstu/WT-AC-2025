@@ -104,4 +104,43 @@
 * инструкции запуска и описание эндпоинтов в README
 * `.env.example` (секреты и настройки окружения)
 * синхронизация схемы БД (sync alter)
+* (по желанию) seed с демо-данными Formula 1
+
+## 7) Примеры использования (cURL)
+
+### Signup → получить токен
+
+curl -X POST [http://localhost:3000/api/auth/signup](http://localhost:3000/api/auth/signup)
+-H "Content-Type: application/json"
+-d '{"email":"[test@f1.com](mailto:test@f1.com)","password":"qwerty123"}'
+
+### Login → получить токен
+
+curl -X POST [http://localhost:3000/api/auth/login](http://localhost:3000/api/auth/login)
+-H "Content-Type: application/json"
+-d '{"email":"[test@f1.com](mailto:test@f1.com)","password":"qwerty123"}'
+
+### Использование токена
+
+TOKEN="PASTE_TOKEN_HERE"
+curl [http://localhost:3000/api/podcasts](http://localhost:3000/api/podcasts)
+-H "Authorization: Bearer $TOKEN"
+
+### Создать подкаст
+
+curl -X POST [http://localhost:3000/api/podcasts](http://localhost:3000/api/podcasts)
+-H "Authorization: Bearer $TOKEN"
+-H "Content-Type: application/json"
+-d '{"title":"F1 Weekend Debrief","description":"Разбор гонок и стратегии"}'
+
+### Создать приватный эпизод
+
+curl -X POST [http://localhost:3000/api/episodes](http://localhost:3000/api/episodes)
+-H "Authorization: Bearer $TOKEN"
+-H "Content-Type: application/json"
+-d '{"podcastId":"<PODCAST_ID>","title":"Team Radio Leaks","summary":"Приватные заметки","isPrivate":true}'
+
+### Публичные эпизоды без токена (опционально)
+
+curl [http://localhost:3000/api/public/episodes](http://localhost:3000/api/public/episodes)
 * seed с демо-данными Formula 1
