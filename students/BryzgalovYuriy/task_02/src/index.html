@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Музыкальная медиатека — ЛР02 DOM и события</title>
+  <meta name="description" content="Интерактивная музыкальная медиатека: табы, модалка, делегирование, формы и валидация." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">♫</span>
+        <div>
+          <p class="brand-title">Музыкальная медиатека</p>
+          <p class="brand-subtitle">ЛР02: DOM, события, a11y, формы</p>
+        </div>
+      </div>
+
+      <button
+        class="burger"
+        type="button"
+        aria-label="Открыть меню"
+        aria-expanded="false"
+        aria-controls="site-nav"
+      >
+        <span class="burger-lines" aria-hidden="true"></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Навигация сайта">
+        <ul class="nav-list">
+          <li><a href="#library">Медиатека</a></li>
+          <li><a href="#tips">Советы</a></li>
+          <li><a href="#feedback">Обратная связь</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="site-main" role="main">
+    <section id="library" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h1>Медиатека</h1>
+          <p class="muted">
+            Тут есть табы (жанры/плейлисты), делегирование на списке треков, модалка “Играет сейчас” и поиск.
+          </p>
+        </header>
+
+        <!-- Форма поиска (по варианту) -->
+        <form class="search" id="searchForm" novalidate>
+          <label class="search-label" for="query">Поиск треков</label>
+          <div class="search-row">
+            <input
+              id="query"
+              name="query"
+              type="search"
+              placeholder="Например: night, jazz, focus…"
+              autocomplete="off"
+            />
+            <button class="btn" type="submit">Найти</button>
+            <button class="btn btn-secondary" type="button" id="resetSearch">Сброс</button>
+          </div>
+          <p class="hint" id="searchHint">Подсказка: поиск работает по названию и артисту.</p>
+        </form>
+
+        <!-- Табы -->
+        <div class="tabs" aria-label="Навигация медиатеки">
+          <div class="tablist" role="tablist" aria-label="Разделы медиатеки">
+            <button
+              class="tab"
+              role="tab"
+              id="tab-genres"
+              aria-selected="true"
+              aria-controls="panel-genres"
+              tabindex="0"
+              type="button"
+            >
+              Жанры
+            </button>
+
+            <button
+              class="tab"
+              role="tab"
+              id="tab-playlists"
+              aria-selected="false"
+              aria-controls="panel-playlists"
+              tabindex="-1"
+              type="button"
+            >
+              Плейлисты
+            </button>
+          </div>
+
+          <div
+            id="panel-genres"
+            class="tabpanel"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-genres"
+          >
+            <div class="pill-row" aria-label="Список жанров">
+              <button class="pill" type="button" data-genre="all" aria-pressed="true">Все</button>
+              <button class="pill" type="button" data-genre="focus" aria-pressed="false">Focus</button>
+              <button class="pill" type="button" data-genre="jazz" aria-pressed="false">Jazz</button>
+              <button class="pill" type="button" data-genre="electro" aria-pressed="false">Electro</button>
+            </div>
+          </div>
+
+          <div
+            id="panel-playlists"
+            class="tabpanel"
+            role="tabpanel"
+            tabindex="0"
+            aria-labelledby="tab-playlists"
+            hidden
+          >
+            <div class="pill-row" aria-label="Список плейлистов">
+              <button class="pill" type="button" data-playlist="study" aria-pressed="false">Учёба</button>
+              <button class="pill" type="button" data-playlist="workout" aria-pressed="false">Тренировка</button>
+              <button class="pill" type="button" data-playlist="chill" aria-pressed="false">Чилл</button>
+              <button class="pill" type="button" data-playlist="all" aria-pressed="true">Все</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Список треков (делегирование событий) -->
+        <section class="tracks" aria-labelledby="tracksTitle">
+          <h2 id="tracksTitle">Треки</h2>
+
+          <p class="sr-only" aria-live="polite" id="announce"></p>
+
+          <ul class="track-list" id="trackList" aria-label="Список треков">
+            <!-- Генерируется JS -->
+          </ul>
+
+          <div class="empty" id="emptyState" hidden>
+            <p>Ничего не найдено. Попробуй изменить фильтр или запрос.</p>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <!-- Аккордеон (3-й компонент) -->
+    <section id="tips" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Советы по прослушиванию и фокусу</h2>
+          <p class="muted">Аккордеон доступен с клавиатуры (Enter/Space), состояние через aria-expanded.</p>
+        </header>
+
+        <div class="accordion" id="accordion">
+          <div class="acc-item">
+            <h3 class="acc-title">
+              <button
+                class="acc-btn"
+                type="button"
+                aria-expanded="false"
+                aria-controls="acc-panel-1"
+                id="acc-1"
+              >
+                Как выбрать музыку для учёбы?
+              </button>
+            </h3>
+            <div
+              class="acc-panel"
+              id="acc-panel-1"
+              role="region"
+              aria-labelledby="acc-1"
+              hidden
+            >
+              <p>
+                Для чтения и задач лучше подходят треки без резких смен и без вокала. Начни с жанров Focus/Electro.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <h3 class="acc-title">
+              <button
+                class="acc-btn"
+                type="button"
+                aria-expanded="false"
+                aria-controls="acc-panel-2"
+                id="acc-2"
+              >
+                Как не залипать в переключение треков?
+              </button>
+            </h3>
+            <div
+              class="acc-panel"
+              id="acc-panel-2"
+              role="region"
+              aria-labelledby="acc-2"
+              hidden
+            >
+              <p>
+                Выбери плейлист и поставь таймер на 25 минут (Pomodoro). Переключайся только на перерыве.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <h3 class="acc-title">
+              <button
+                class="acc-btn"
+                type="button"
+                aria-expanded="false"
+                aria-controls="acc-panel-3"
+                id="acc-3"
+              >
+                Зачем лайки и избранное?
+              </button>
+            </h3>
+            <div
+              class="acc-panel"
+              id="acc-panel-3"
+              role="region"
+              aria-labelledby="acc-3"
+              hidden
+            >
+              <p>
+                Лайки помогают быстро собрать подборку под настроение. В этой работе лайки сохраняются в localStorage (бонус).
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Форма с валидацией (обязательная по заданию) -->
+    <section id="feedback" class="section">
+      <div class="container">
+        <header class="section-header">
+          <h2>Обратная связь</h2>
+          <p class="muted">Валидация при вводе и при отправке. Кнопка отправки активна только когда форма валидна.</p>
+        </header>
+
+        <form class="form" id="feedbackForm" novalidate>
+          <div class="field">
+            <label for="name">Имя <span aria-hidden="true">*</span></label>
+            <input
+              id="name"
+              name="name"
+              type="text"
+              required
+              autocomplete="name"
+              aria-describedby="nameError"
+            />
+            <p class="error" id="nameError" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="email">E-mail</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              inputmode="email"
+              autocomplete="email"
+              aria-describedby="emailError"
+            />
+            <p class="error" id="emailError" aria-live="polite"></p>
+          </div>
+
+          <div class="field">
+            <label for="message">Сообщение (минимум 20 символов)</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              minlength="20"
+              required
+              aria-describedby="messageError"
+            ></textarea>
+            <p class="error" id="messageError" aria-live="polite"></p>
+          </div>
+
+          <button class="btn" id="submitBtn" type="submit" disabled>Отправить</button>
+
+          <div class="result" id="formResult" aria-live="polite"></div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+      <p>ЛР02 • Чистый JS (ES6+) • DOM и события • 2025</p>
+      <p><a href="#library">Наверх</a></p>
+    </div>
+  </footer>
+
+  <!-- Модальное окно "Играет сейчас" -->
+  <div class="modal-backdrop" id="modalBackdrop" hidden></div>
+
+  <div
+    class="modal"
+    id="nowPlayingModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modalTitle"
+    aria-describedby="modalDesc"
+    hidden
+  >
+    <div class="modal-content" role="document">
+      <div class="modal-header">
+        <h2 id="modalTitle">Играет сейчас</h2>
+        <button class="icon-btn" id="closeModal" type="button" aria-label="Закрыть окно">✕</button>
+      </div>
+
+      <p class="muted" id="modalDesc">Информация о выбранном треке.</p>
+
+      <div class="now-playing">
+        <p><strong>Трек:</strong> <span id="npTitle">—</span></p>
+        <p><strong>Артист:</strong> <span id="npArtist">—</span></p>
+        <p><strong>Жанр:</strong> <span id="npGenre">—</span></p>
+        <p><strong>Длительность:</strong> <span id="npDuration">—</span></p>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-secondary" id="modalLike" type="button" aria-pressed="false">Лайк</button>
+        <button class="btn" id="modalOk" type="button">Понятно</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
