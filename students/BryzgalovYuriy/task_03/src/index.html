@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Каталог художников и картин — ЛР03</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="header">
+    <h1>Каталог художников и картин</h1>
+    <p class="subtitle">
+      ЛР03 — асинхронность, fetch, AbortController, retry, HTTP-кэш
+    </p>
+  </header>
+
+  <main class="container">
+    <!-- Управление -->
+    <section class="controls">
+      <label>
+        Поиск по названию картины:
+        <input id="searchInput" type="search" placeholder="например: accusamus" />
+      </label>
+
+      <button id="refreshBtn">Обновить (без кэша)</button>
+    </section>
+
+    <!-- Состояния -->
+    <div id="status" class="status"></div>
+
+    <!-- Список -->
+    <ul id="list" class="list"></ul>
+
+    <!-- Пагинация -->
+    <div class="pagination">
+      <button id="prevBtn">← Назад</button>
+      <span id="pageInfo"></span>
+      <button id="nextBtn">Вперёд →</button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>ЛР03 • Асинхронность и HTTP-кэш • 2025</p>
+  </footer>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
