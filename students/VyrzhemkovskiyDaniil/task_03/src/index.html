@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Клиент новостей с кэшированием</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Клиент для загрузки новостей с кэшированием, повторными попытками и фильтрацией">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-newspaper" aria-hidden="true"></i> Новостной клиент</h1>
+            <p>Загрузка статей с кэшированием, фильтрацией и обработкой ошибок</p>
+        </header>
+
+        <main>
+            <div class="controls">
+                <div class="search-box">
+                    <input type="text" id="search" placeholder="Поиск по заголовку или тексту..." aria-label="Поиск новостей">
+                    <select id="category" aria-label="Фильтр по категориям">
+                        <option value="">Все категории</option>
+                        <option value="технологии">Технологии</option>
+                        <option value="спорт">Спорт</option>
+                        <option value="политика">Политика</option>
+                        <option value="бизнес">Бизнес</option>
+                        <option value="наука">Наука</option>
+                        <option value="культура">Культура</option>
+                    </select>
+                    <button type="button" id="load" aria-label="Загрузить новости">Загрузить новости</button>
+                    <button type="button" id="refresh" aria-label="Обновить новости (игнорировать кэш)" title="Игнорировать кэш">
+                        <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" id="cancel" disabled aria-label="Отменить текущий запрос">
+                        <i class="fas fa-times" aria-hidden="true"></i> Отмена
+                    </button>
+                </div>
+            </div>
+
+            <div class="status">
+                <div id="loading" class="hidden">
+                    <div class="spinner" aria-hidden="true"></div>
+                    <span>Загрузка новостей...</span>
+                </div>
+                <div id="error" class="hidden" role="alert">
+                    <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                    <span id="error-text"></span>
+                    <button type="button" id="retry" aria-label="Повторить запрос">Повторить попытку</button>
+                </div>
+                <div id="empty" class="hidden">
+                    <i class="fas fa-inbox" aria-hidden="true"></i>
+                    <span>Новости не найдены</span>
+                    <p class="empty-hint">Попробуйте изменить параметры поиска</p>
+                </div>
+            </div>
+
+            <div class="stats">
+                <span>Новостей в кэше: <span id="cache-count">0</span></span>
+                <span>Сохранено запросов: <span id="cache-saved">0</span></span>
+                <button type="button" id="clear-cache" aria-label="Очистить кэш">Очистить кэш</button>
+            </div>
+
+            <div class="news-grid" id="news-grid" role="list" aria-label="Список новостей">
+                <!-- Новости будут здесь -->
+            </div>
+
+            <div class="pagination">
+                <button type="button" id="prev" disabled aria-label="Предыдущая страница">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i>
+                </button>
+                <span id="page-info">Страница 1 из 1</span>
+                <button type="button" id="next" disabled aria-label="Следующая страница">
+                    <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </main>
+
+        <footer>
+            <p>Демонстрация работы с API: кэширование, повторные попытки, таймауты и отмена запросов</p>
+            <p class="footer-note">Используется тестовый API с русскоязычным контентом</p>
+        </footer>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
