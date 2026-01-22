@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Лента отзывов о местах — ЛР04 SPA</title>
+  <meta name="description" content="SPA на чистом JS: hash-роутинг, CRUD к API, список/деталь/создание/редактирование." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Перейти к содержимому</a>
+
+  <header class="header">
+    <div class="container header-inner">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">★</span>
+        <div>
+          <p class="brand-title">Лента отзывов о местах</p>
+          <p class="brand-subtitle">ЛР04 • SPA • Hash-маршрутизация • CRUD</p>
+        </div>
+      </div>
+
+      <nav class="nav" aria-label="Навигация">
+        <a class="nav-link" href="#/items">Список</a>
+        <a class="nav-link" href="#/new">Новый отзыв</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div id="toast" class="toast" aria-live="polite" aria-atomic="true"></div>
+    <div id="app" class="app" aria-live="polite"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>ЛР04 • Чистый JS • 2025</p>
+      <p><a href="#/items">Наверх</a></p>
+    </div>
+  </footer>
+
+  <script type="module" src="scripts/main.js"></script>
+</body>
+</html>
