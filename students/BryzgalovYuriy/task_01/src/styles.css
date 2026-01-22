@@ -1,0 +1,157 @@
+/* Сброс */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Базовые стили */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  background-color: #f4f6f8;
+  color: #222;
+}
+
+.container {
+  max-width: 1100px;
+  padding: 0 16px;
+  margin: 0 auto;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  transform: translateY(-200%);
+}
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Header */
+.site-header {
+  background-color: #2c3e50;
+  color: #fff;
+}
+
+.header-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 0;
+}
+
+.site-title {
+  font-size: 24px;
+}
+
+.site-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.site-nav a {
+  color: #fff;
+  text-decoration: none;
+}
+.site-nav a:hover {
+  text-decoration: underline;
+}
+
+/* Sections */
+.section {
+  padding: 32px 0;
+}
+
+.section h2 {
+  margin-bottom: 16px;
+  color: #2c3e50;
+}
+
+/* Lessons grid */
+.lessons-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.lesson-card {
+  background-color: #fff;
+  padding: 16px;
+  border-radius: 6px;
+  border-left: 4px solid #3498db;
+}
+
+/* Form */
+.signup-form {
+  max-width: 400px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+label {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+input,
+select {
+  padding: 8px;
+  border: 1px solid #aaa;
+  border-radius: 4px;
+}
+
+.btn {
+  padding: 10px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.btn:hover {
+  background-color: #2980b9;
+}
+
+/* Footer */
+.site-footer {
+  background-color: #2c3e50;
+  color: #fff;
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* Фокус */
+:focus-visible {
+  outline: 3px solid #f39c12;
+}
+
+/* ====== BREAKPOINT 601px ====== */
+@media (min-width: 601px) {
+  .header-inner {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .lessons-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ====== BREAKPOINT 1025px ====== */
+@media (min-width: 1025px) {
+  .lessons-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
